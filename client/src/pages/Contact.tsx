@@ -46,34 +46,21 @@ export default function Contact() {
                 </div>
               </div>
               
-              {/* Mock Fresha Integration */}
+              {/* Calendly Integration */}
               <div className="bg-white rounded-xl p-6 border-2 border-primary">
                 <h3 className="font-semibold mb-4">Book Your Skin Consultation</h3>
-                <div className="space-y-3">
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select preferred doctor" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="dr-terrell">Dr. Terrell</SelectItem>
-                      <SelectItem value="dr-renee">Dr. Renee</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Input type="date" />
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select time slot" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="9am">9:00 AM</SelectItem>
-                      <SelectItem value="11am">11:00 AM</SelectItem>
-                      <SelectItem value="2pm">2:00 PM</SelectItem>
-                      <SelectItem value="4pm">4:00 PM</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                    Book Now via Fresha
-                  </Button>
+                <p className="text-sm text-foreground/70 mb-4">
+                  Schedule your virtual consultation to discuss your skin goals and receive personalized treatment recommendations.
+                </p>
+                <div className="h-96 w-full">
+                  <iframe
+                    src="https://calendly.com/your-calendly-link-skin"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    title="Schedule Skin Consultation"
+                    className="rounded-lg"
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -101,27 +88,21 @@ export default function Contact() {
                 </div>
               </div>
               
-              {/* Mock Calendly Integration */}
+              {/* Calendly Integration */}
               <div className="bg-white rounded-xl p-6 border-2 border-primary">
                 <h3 className="font-semibold mb-4">Schedule Your Discovery Call</h3>
-                <div className="space-y-3">
-                  <Input type="text" placeholder="Full Name" />
-                  <Input type="email" placeholder="Email Address" />
-                  <Input type="tel" placeholder="Phone Number" />
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select focus area" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="performance">Performance Optimization</SelectItem>
-                      <SelectItem value="decision">Decision-Making</SelectItem>
-                      <SelectItem value="mindset">Mindset Transformation</SelectItem>
-                      <SelectItem value="planning">Strategic Planning</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                    Schedule Call
-                  </Button>
+                <p className="text-sm text-foreground/70 mb-4">
+                  Book your complimentary virtual consultation to explore your transformation journey.
+                </p>
+                <div className="h-96 w-full">
+                  <iframe
+                    src="https://calendly.com/your-calendly-link-mind"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    title="Schedule Mind Discovery Call"
+                    className="rounded-lg"
+                  ></iframe>
                 </div>
               </div>
             </div>
