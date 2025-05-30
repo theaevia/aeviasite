@@ -15,70 +15,68 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 w-full z-50 glass-effect border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center">
           {/* Logo */}
-          <div className="flex-1">
-            <Link href="/">
-              <a className="text-2xl font-serif font-bold text-foreground smooth-transition hover:text-primary">
-                The Aevia
-              </a>
-            </Link>
-          </div>
+          <Link href="/">
+            <span className="text-2xl font-serif font-bold text-foreground smooth-transition hover:text-primary cursor-pointer">
+              The Aevia
+            </span>
+          </Link>
           
           {/* Center Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 ml-12">
             <Link href="/">
-              <a className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary",
+              <span className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
                 isActive("/") ? "text-primary font-semibold" : "text-foreground"
               )}>
                 Home
-              </a>
+              </span>
             </Link>
             <Link href="/skin">
-              <a className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary",
+              <span className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
                 isActive("/skin") ? "text-primary font-semibold" : "text-foreground"
               )}>
                 Skin
-              </a>
+              </span>
             </Link>
             <Link href="/mind">
-              <a className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary",
+              <span className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
                 isActive("/mind") ? "text-primary font-semibold" : "text-foreground"
               )}>
                 Mind
-              </a>
+              </span>
             </Link>
             <Link href="/about">
-              <a className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary",
+              <span className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
                 isActive("/about") ? "text-primary font-semibold" : "text-foreground"
               )}>
                 About
-              </a>
+              </span>
             </Link>
             <Link href="/journal">
-              <a className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary",
+              <span className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
                 isActive("/journal") ? "text-primary font-semibold" : "text-foreground"
               )}>
                 Journal
-              </a>
+              </span>
             </Link>
             <Link href="/contact">
-              <a className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary",
+              <span className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
                 isActive("/contact") ? "text-primary font-semibold" : "text-foreground"
               )}>
                 Contact
-              </a>
+              </span>
             </Link>
           </div>
           
-          {/* Contact Info */}
-          <div className="flex-1 flex justify-end items-center space-x-4">
+          {/* Right side icons */}
+          <div className="hidden md:flex items-center space-x-4 ml-12">
             <a href="https://instagram.com/theaevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <Instagram className="h-5 w-5" />
             </a>
