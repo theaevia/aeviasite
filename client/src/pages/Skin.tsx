@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Dna, Droplet, Sparkles, Clock, Check, DollarSign } from "lucide-react";
+import { Dna, Droplet, Sparkles, Clock, Check, Banknote } from "lucide-react";
 
 export default function Skin() {
   return (
@@ -56,7 +56,7 @@ export default function Skin() {
             
             <div className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl">
               <Sparkles className="text-primary text-4xl mx-auto mb-4" />
-              <h3 className="text-xl font-serif font-semibold mb-3">Botulinum Toxin</h3>
+              <h3 className="text-xl font-serif font-semibold mb-3">Anti-Wrinkle Injections</h3>
               <p className="text-foreground/70 text-sm">Precision muscle relaxation for natural-looking wrinkle reduction</p>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function Skin() {
             <div className="bg-primary/10 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
               <h3 className="text-2xl font-serif font-semibold mb-4 text-primary">20-Minute Clinical Session</h3>
               <p className="text-lg text-foreground/80 mb-6">
-                A comprehensive clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or botulinum toxin.
+                A comprehensive clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or anti-wrinkle injections.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -97,11 +97,11 @@ export default function Skin() {
                   <h4 className="font-semibold text-foreground mb-3">Pricing:</h4>
                   <ul className="space-y-2 text-foreground/70">
                     <li className="flex items-center">
-                      <DollarSign className="h-4 w-4 text-primary mr-3" />
+                      <Banknote className="h-4 w-4 text-primary mr-3" />
                       £50 (fee fully redeemable)
                     </li>
                     <li className="flex items-center">
-                      <DollarSign className="h-4 w-4 text-primary mr-3" />
+                      <Banknote className="h-4 w-4 text-primary mr-3" />
                       £65 with treatment same day
                     </li>
                   </ul>
