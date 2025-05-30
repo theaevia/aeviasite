@@ -17,7 +17,7 @@ export default function Skin() {
                 Doctor-led treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
               </p>
               <Link href="/contact">
-                <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 shadow-lg">
+                <Button className="btn-medical px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:scale-105 shadow-lg">
                   Book The Aevia Skin Consultation
                 </Button>
               </Link>
@@ -116,31 +116,31 @@ export default function Skin() {
           
           <div className="grid md:grid-cols-5 gap-8">
             <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 btn-medical">1</div>
               <h3 className="font-semibold mb-2">Book Consultation</h3>
               <p className="text-sm text-foreground/70">Schedule your Aevia Skin Consultation</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 btn-medical">2</div>
               <h3 className="font-semibold mb-2">Facial Mapping</h3>
               <p className="text-sm text-foreground/70">Comprehensive clinical assessment</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 btn-medical">3</div>
               <h3 className="font-semibold mb-2">Treatment Plan</h3>
               <p className="text-sm text-foreground/70">Tailored recommendations for your goals</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 btn-medical">4</div>
               <h3 className="font-semibold mb-2">Treatment</h3>
               <p className="text-sm text-foreground/70">Begin your regenerative journey</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">5</div>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 btn-medical">5</div>
               <h3 className="font-semibold mb-2">Results</h3>
               <p className="text-sm text-foreground/70">Experience natural, lasting transformation</p>
             </div>
