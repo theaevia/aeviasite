@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Dna, Droplet, Heart, Sparkles, Clock, Check } from "lucide-react";
+import { Dna, Droplet, Sparkles, Clock, Check, DollarSign } from "lucide-react";
 
 export default function Skin() {
   return (
@@ -18,7 +18,7 @@ export default function Skin() {
               </p>
               <Link href="/contact">
                 <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 shadow-lg">
-                  Book Consultation (£50, redeemable)
+                  Book The Aevia Skin Consultation
                 </Button>
               </Link>
             </div>
@@ -41,7 +41,7 @@ export default function Skin() {
             <p className="text-lg text-foreground/70 max-w-3xl mx-auto">Science-backed procedures that work with your body's natural healing processes</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl">
               <Dna className="text-primary text-4xl mx-auto mb-4" />
               <h3 className="text-xl font-serif font-semibold mb-3">Polynucleotides</h3>
@@ -55,14 +55,8 @@ export default function Skin() {
             </div>
             
             <div className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl">
-              <Heart className="text-primary text-4xl mx-auto mb-4" />
-              <h3 className="text-xl font-serif font-semibold mb-3">PRP</h3>
-              <p className="text-foreground/70 text-sm">Platelet-rich plasma therapy using your body's own healing factors</p>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl">
               <Sparkles className="text-primary text-4xl mx-auto mb-4" />
-              <h3 className="text-xl font-serif font-semibold mb-3">Botox</h3>
+              <h3 className="text-xl font-serif font-semibold mb-3">Botulinum Toxin</h3>
               <p className="text-foreground/70 text-sm">Precision muscle relaxation for natural-looking wrinkle reduction</p>
             </div>
           </div>
@@ -73,26 +67,70 @@ export default function Skin() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Your Journey to Radiant Skin</h2>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Skin Consultation</h2>
+            <div className="bg-primary/10 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
+              <h3 className="text-2xl font-serif font-semibold mb-4 text-primary">20-Minute Clinical Session</h3>
+              <p className="text-lg text-foreground/80 mb-6">
+                A comprehensive clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or botulinum toxin.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="text-left">
+                  <h4 className="font-semibold text-foreground mb-3">Perfect for:</h4>
+                  <ul className="space-y-2 text-foreground/70">
+                    <li className="flex items-center">
+                      <Check className="h-4 w-4 text-primary mr-3" />
+                      First-time clients
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="h-4 w-4 text-primary mr-3" />
+                      Unsure clients seeking guidance
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="h-4 w-4 text-primary mr-3" />
+                      Personalized treatment planning
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="text-left">
+                  <h4 className="font-semibold text-foreground mb-3">Pricing:</h4>
+                  <ul className="space-y-2 text-foreground/70">
+                    <li className="flex items-center">
+                      <DollarSign className="h-4 w-4 text-primary mr-3" />
+                      £50 (fee fully redeemable)
+                    </li>
+                    <li className="flex items-center">
+                      <DollarSign className="h-4 w-4 text-primary mr-3" />
+                      £65 with treatment same day
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-serif font-bold mb-8">Your Journey to Radiant Skin</h3>
           </div>
           
           <div className="grid md:grid-cols-5 gap-8">
             <div className="text-center">
               <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
-              <h3 className="font-semibold mb-2">Virtual Consultation</h3>
-              <p className="text-sm text-foreground/70">Book your £50 consultation with our doctors</p>
+              <h3 className="font-semibold mb-2">Book Consultation</h3>
+              <p className="text-sm text-foreground/70">Schedule your Aevia Skin Consultation</p>
             </div>
             
             <div className="text-center">
               <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
-              <h3 className="font-semibold mb-2">Assessment</h3>
-              <p className="text-sm text-foreground/70">Complete pre-consultation questionnaire</p>
+              <h3 className="font-semibold mb-2">Facial Mapping</h3>
+              <p className="text-sm text-foreground/70">Comprehensive clinical assessment</p>
             </div>
             
             <div className="text-center">
               <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
-              <h3 className="font-semibold mb-2">Personalized Plan</h3>
-              <p className="text-sm text-foreground/70">Receive customized treatment recommendations</p>
+              <h3 className="font-semibold mb-2">Treatment Plan</h3>
+              <p className="text-sm text-foreground/70">Tailored recommendations for your goals</p>
             </div>
             
             <div className="text-center">
@@ -114,10 +152,10 @@ export default function Skin() {
       <section className="py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
-          <p className="text-lg text-foreground/70 mb-8">Consultation fee fully redeemable against your first treatment</p>
+          <p className="text-lg text-foreground/70 mb-8">Book The Aevia Skin Consultation - fee fully redeemable against your first treatment</p>
           <Link href="/contact">
             <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 shadow-lg">
-              Book Your Consultation Now
+              Book The Aevia Skin Consultation
             </Button>
           </Link>
         </div>

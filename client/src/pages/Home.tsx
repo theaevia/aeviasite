@@ -80,7 +80,7 @@ export default function Home() {
               subtitle="Regenerative Aesthetics"
               description="Regenerative aesthetics that enhance your natural beauty without fillers"
               image="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
-              features={["Polynucleotides", "Skin boosters", "PRP treatments", "Botox"]}
+              features={["Polynucleotides", "Skin boosters", "Botulinum toxin"]}
               ctaText="Learn More About Skin Treatments"
               onCtaClick={() => window.location.href = "/skin"}
             />
