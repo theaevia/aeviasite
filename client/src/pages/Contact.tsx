@@ -34,7 +34,7 @@ export default function Contact() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center">
                   <Clock className="text-primary mr-3 h-5 w-5" />
-                  <span className="text-foreground/70">45-minute virtual consultation</span>
+                  <span className="text-foreground/70">20-minute virtual consultation</span>
                 </div>
                 <div className="flex items-center">
                   <PoundSterling className="text-primary mr-3 h-5 w-5" />
@@ -89,7 +89,7 @@ export default function Contact() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center">
                   <Clock className="text-primary mr-3 h-5 w-5" />
-                  <span className="text-foreground/70">30-minute discovery call</span>
+                  <span className="text-foreground/70">30-minute virtual consultation</span>
                 </div>
                 <div className="flex items-center">
                   <Gift className="text-primary mr-3 h-5 w-5" />
