@@ -37,12 +37,12 @@ export default function Navigation() {
               <img 
                 src={logoBlack} 
                 alt="The Aevia" 
-                className="h-8 w-auto group-hover:opacity-0 smooth-transition"
+                className="h-12 w-auto group-hover:opacity-0 smooth-transition"
               />
               <img 
                 src={logoGold} 
                 alt="The Aevia" 
-                className="h-8 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
+                className="h-12 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
               />
             </div>
           </Link>
