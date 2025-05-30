@@ -20,7 +20,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/skin">
-                <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 hover:scale-105 shadow-lg min-w-48">
+                <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-white hover:text-primary hover:scale-105 shadow-lg min-w-48 hover:border-2 hover:border-primary">
                   Explore Aevia Skin
                 </Button>
               </Link>
