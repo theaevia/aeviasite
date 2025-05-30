@@ -19,15 +19,19 @@ export default function Home() {
               Regenerative aesthetics and high-agency coaching for professionals who demand excellence
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/skin">
-                <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-white hover:text-primary hover:scale-105 shadow-lg min-w-48 hover:border-2 hover:border-primary">
-                  Explore Aevia Skin
-                </Button>
+              <Link href="/contact?type=skin">
+                <a
+                  className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium text-base smooth-transition shadow-lg border-2 border-primary transition-colors hover:bg-white hover:text-primary"
+                >
+                  Book Skin Consultation
+                </a>
               </Link>
-              <Link href="/mind">
-                <Button variant="outline" className="border-2 border-primary text-primary px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary hover:text-primary-foreground hover:scale-105 shadow-lg min-w-48">
-                  Explore Aevia Mind
-                </Button>
+              <Link href="/contact?type=mind">
+                <a
+                  className="bg-white text-primary px-6 py-3 rounded-xl font-medium text-base smooth-transition shadow-lg border-2 border-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  Book Mind Discovery Call
+                </a>
               </Link>
             </div>
           </div>
