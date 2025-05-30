@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Instagram } from "lucide-react";
+import logoBlack from "@assets/Logo Black.png";
 
 export default function Footer() {
   return (
@@ -7,7 +8,11 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-serif font-bold mb-4">The Aevia</h3>
+            <img 
+              src={logoBlack} 
+              alt="The Aevia" 
+              className="h-10 w-auto mb-4 filter invert"
+            />
             <p className="text-gray-300 text-sm">Doctor-led transformation for skin and mind</p>
           </div>
           
@@ -15,18 +20,18 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <Link href="/skin">
-                  <a className="hover:text-primary smooth-transition">Aevia Skin</a>
+                <Link href="/skin" className="hover:text-primary smooth-transition">
+                  Aevia Skin
                 </Link>
               </li>
               <li>
-                <Link href="/mind">
-                  <a className="hover:text-primary smooth-transition">Aevia Mind</a>
+                <Link href="/mind" className="hover:text-primary smooth-transition">
+                  Aevia Mind
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
-                  <a className="hover:text-primary smooth-transition">Consultations</a>
+                <Link href="/contact" className="hover:text-primary smooth-transition">
+                  Consultations
                 </Link>
               </li>
             </ul>
@@ -36,13 +41,13 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">About</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <Link href="/about">
-                  <a className="hover:text-primary smooth-transition">Our Team</a>
+                <Link href="/about" className="hover:text-primary smooth-transition">
+                  Our Team
                 </Link>
               </li>
               <li>
-                <Link href="/journal">
-                  <a className="hover:text-primary smooth-transition">Journal</a>
+                <Link href="/journal" className="hover:text-primary smooth-transition">
+                  Journal
                 </Link>
               </li>
               <li>

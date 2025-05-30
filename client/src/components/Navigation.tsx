@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import logoBlack from "@assets/Logo Black.png";
+import logoGold from "@assets/Logo Gold.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -31,9 +33,18 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
-            <span onClick={handleLinkClick} className="text-2xl font-serif font-bold text-foreground smooth-transition hover:text-primary cursor-pointer">
-              The Aevia
-            </span>
+            <div onClick={handleLinkClick} className="cursor-pointer group relative smooth-transition">
+              <img 
+                src={logoBlack} 
+                alt="The Aevia" 
+                className="h-8 w-auto group-hover:opacity-0 smooth-transition"
+              />
+              <img 
+                src={logoGold} 
+                alt="The Aevia" 
+                className="h-8 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
+              />
+            </div>
           </Link>
           
           {/* Desktop Navigation */}
