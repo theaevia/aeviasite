@@ -148,6 +148,126 @@ export default function Skin() {
         </div>
       </section>
 
+      {/* How Booking Works */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-8">How does booking work at The Aevia?</h2>
+          <div className="bg-accent/20 rounded-2xl p-8 mb-12">
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              All new clients start with a virtual consultation, which lets us assess your needs before scheduling treatment. You'll then be invited to book your in-clinic session.
+              <br /><br />
+              <strong>Already know what you want?</strong> Returning clients can book directly.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="text-center">
+              <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
+              <p className="text-foreground/70 mb-6">Start with a virtual consultation</p>
+              <Link href="/contact">
+                <Button className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium smooth-transition hover:bg-primary/90 shadow-lg w-full">
+                  Book Virtual Consultation
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="text-center">
+              <h3 className="text-xl font-serif font-semibold mb-4">Returning Clients</h3>
+              <p className="text-foreground/70 mb-6">Book treatments directly</p>
+              <a href="https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="border-2 border-primary text-primary px-6 py-3 rounded-xl font-medium smooth-transition hover:bg-primary hover:text-primary-foreground shadow-lg w-full">
+                  Book Treatment via Fresha
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 bg-accent/30">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Treatment Fees</h2>
+            <p className="text-lg text-foreground/70">Transparent pricing for all our regenerative treatments</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-serif font-semibold mb-4 text-center">Consultation</h3>
+              <div className="text-center mb-4">
+                <span className="text-3xl font-bold text-primary">£50</span>
+                <p className="text-sm text-foreground/70">Fully redeemable</p>
+              </div>
+              <ul className="space-y-2 text-sm text-foreground/70">
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  20-minute virtual session
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Facial mapping
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Personalized treatment plan
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-serif font-semibold mb-4 text-center">Polynucleotides</h3>
+              <div className="text-center mb-4">
+                <span className="text-2xl font-bold text-primary">From £300</span>
+                <p className="text-sm text-foreground/70">Per treatment</p>
+              </div>
+              <ul className="space-y-2 text-sm text-foreground/70">
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  DNA-based regeneration
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Natural skin healing
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Long-lasting results
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-serif font-semibold mb-4 text-center">Skin Boosters</h3>
+              <div className="text-center mb-4">
+                <span className="text-2xl font-bold text-primary">From £250</span>
+                <p className="text-sm text-foreground/70">Per treatment</p>
+              </div>
+              <ul className="space-y-2 text-sm text-foreground/70">
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Deep hydration
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Improved skin quality
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Natural glow
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="text-sm text-foreground/60">
+              Final pricing will be confirmed during your consultation based on your individual treatment plan.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-6 text-center">
