@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import logoBlack from "@assets/Logo Black.png";
 import logoGold from "@assets/Logo Gold.png";
+import TikTokIcon from "@assets/SVGs/tiktok-fill-svgrepo-com.svg?react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -37,12 +38,12 @@ export default function Navigation() {
               <img 
                 src={logoBlack} 
                 alt="The Aevia" 
-                className="h-12 w-auto group-hover:opacity-0 smooth-transition"
+                className="h-16 w-auto group-hover:opacity-0 smooth-transition"
               />
               <img 
                 src={logoGold} 
                 alt="The Aevia" 
-                className="h-12 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
+                className="h-16 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
               />
             </div>
           </Link>
@@ -101,8 +102,11 @@ export default function Navigation() {
           
           {/* Right side icons */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="https://instagram.com/theaevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <Instagram className="h-5 w-5" />
+            </a>
+            <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <TikTokIcon className="h-5 w-5" />
             </a>
             <Link href="/contact">
               <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
@@ -176,8 +180,11 @@ export default function Navigation() {
               </Link>
               
               <div className="flex items-center space-x-4 pt-4">
-                <a href="https://instagram.com/theaevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                   <Instagram className="h-5 w-5" />
+                </a>
+                <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                  <TikTokIcon className="h-5 w-5" />
                 </a>
                 <Link href="/contact">
                   <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">

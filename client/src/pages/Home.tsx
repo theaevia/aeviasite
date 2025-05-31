@@ -41,10 +41,21 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Difference</h2>
             <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-              The Aevia offers two distinct, doctor-led services:<br />
-              <span style={{ fontWeight: 600, color: '#8A7350' }}>Medical Aesthetics</span> for natural, science-backed skin rejuvenation, and <br />
-              <span style={{ fontWeight: 600, color: '#8A7350' }}>Performance and Transformative Coaching</span> for professionals seeking clarity, confidence, and agency. Whether you're drawn to one or both, each path is designed to deliver focused, expert-led transformation.
-            </p>
+  The Aevia offers two distinct, doctor-led services:&nbsp;
+  <span className="font-semibold text-accent inline">
+    Medical&nbsp;Aesthetics
+  </span>{" "}
+  for natural, science-backed skin rejuvenation, and&nbsp;
+  <span className="font-semibold text-accent inline sm:hidden">
+    Performance&nbsp;Coaching
+  </span>
+  <span className="font-semibold text-accent hidden sm:inline">
+    Performance&nbsp;and&nbsp;Transformative&nbsp;Coaching
+  </span>{" "}
+  for professionals seeking clarity, confidence, and agency. Whether you're
+  drawn to one or both, each path is designed to deliver focused, expert-led
+  transformation.
+</p>
           </div>
           
           {/* Doctors Introduction */}

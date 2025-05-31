@@ -128,13 +128,13 @@ export default function Contact() {
             <div>
               <Phone className="text-primary text-2xl mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Phone</h3>
-              <p className="text-foreground/70">+44 20 7946 0958</p>
+              <a href="tel:+447448012556" className="text-foreground/70 hover:text-primary smooth-transition">+44 7448 012556</a>
             </div>
             
             <div>
               <Mail className="text-primary text-2xl mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-foreground/70">hello@theaevia.com</p>
+              <a href="mailto:hello@theaevia.co.uk" className="text-foreground/70 hover:text-primary smooth-transition">hello@theaevia.co.uk</a>
             </div>
           </div>
         </div>

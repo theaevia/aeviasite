@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Instagram } from "lucide-react";
 import logoBlack from "@assets/Logo Black.png";
+import TikTokIcon from "@assets/SVGs/tiktok-fill-svgrepo-com.svg?react";
 
 export default function Footer() {
   return (
@@ -59,9 +60,20 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Connect</h4>
             <div className="space-y-4">
-              <a href="https://instagram.com/theaevia" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gray-300 hover:text-primary smooth-transition">
-                <Instagram className="mr-2 h-4 w-4" />
-                @theaevia
+              <div className="flex items-center text-sm text-gray-300 space-x-2">
+                <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                  <Instagram className="h-4 w-4" />
+                </a>
+                <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                  <TikTokIcon className="h-4 w-4" />
+                </a>
+                <span className="ml-2">@the.aevia</span>
+              </div>
+              <a href="mailto:hello@theaevia.co.uk" className="flex items-center text-sm text-gray-300 hover:text-primary smooth-transition">
+                hello@theaevia.co.uk
+              </a>
+              <a href="tel:+447448012556" className="flex items-center text-sm text-gray-300 hover:text-primary smooth-transition">
+                +44 7448 012556
               </a>
               <p className="text-sm text-gray-300">Kings Cross, London</p>
             </div>
