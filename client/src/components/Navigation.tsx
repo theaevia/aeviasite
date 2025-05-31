@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
-import logoBlack from "@assets/Logo Black.png";
-import logoGold from "@assets/Logo Gold.png";
+import logoBlack from "@assets/logos/Logo Black.png";
+import logoGold from "@assets/logos/Logo Gold.png";
 import TikTokIcon from "@assets/SVGs/tiktok-fill-svgrepo-com.svg?react";
 
 export default function Navigation() {

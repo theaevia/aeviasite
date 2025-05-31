@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Instagram } from "lucide-react";
-import logoBlack from "@assets/Logo Black.png";
+import logoBlack from "@assets/logos/Logo Black.png";
 import TikTokIcon from "@assets/SVGs/tiktok-fill-svgrepo-com.svg?react";
 
 export default function Footer() {

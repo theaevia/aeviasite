@@ -23,29 +23,29 @@ export default function About() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600" 
+                  src="/assets/about_pics/Terrell Website Pic.JPG" 
                   alt="Dr. Terrell - Regenerative Medicine Specialist" 
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-serif font-bold mb-4">Dr. Terrell</h2>
-                <p className="text-lg text-primary mb-4">Regenerative Medicine Specialist</p>
+                <h2 className="text-3xl font-serif font-bold mb-4">Dr. Terrell Okhiria</h2>
+                <p className="text-lg text-primary mb-4">GP Trainee & Aesthetic Medicine Doctor</p>
                 <p className="text-foreground/70 mb-6 leading-relaxed">
-                  With over 15 years of experience in regenerative medicine, Dr. Terrell pioneers cutting-edge treatments that harness the body's natural healing capabilities. His expertise in polynucleotides and PRP therapy has transformed thousands of patients' skin health.
+                  Dr. Terrell Okhiria is a medical doctor and aesthetics specialist focused on regenerative, science-led skin treatments. With a background in emergency medicine and GP training, he blends clinical expertise with an eye for natural, understated results.
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center text-foreground/70">
                     <GraduationCap className="text-primary mr-3 h-5 w-5" />
-                    MD, Imperial College London
+                    MBBS, BSc, Imperial College London
                   </div>
                   <div className="flex items-center text-foreground/70">
                     <IdCard className="text-primary mr-3 h-5 w-5" />
-                    Fellowship in Regenerative Medicine
+                    GP Trainee, North Central London
                   </div>
                   <div className="flex items-center text-foreground/70">
                     <Award className="text-primary mr-3 h-5 w-5" />
-                    Leading researcher in aesthetic medicine
+                    Co-founder, The Aevia
                   </div>
                 </div>
               </div>
@@ -54,29 +54,29 @@ export default function About() {
             {/* Dr. Renee */}
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-last lg:order-first">
-                <h2 className="text-3xl font-serif font-bold mb-4">Dr. Renee</h2>
-                <p className="text-lg text-primary mb-4">Aesthetic Medicine Expert</p>
+                <h2 className="text-3xl font-serif font-bold mb-4">Dr. Renee Okhiria</h2>
+                <p className="text-lg text-primary mb-4">Medical and Aesthetic Doctor</p>
                 <p className="text-foreground/70 mb-6 leading-relaxed">
                   Dr. Renee combines artistic vision with medical precision to deliver natural-looking aesthetic results. Her philosophy centers on enhancing each patient's unique beauty through minimally invasive, scientifically-proven treatments.
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center text-foreground/70">
                     <GraduationCap className="text-primary mr-3 h-5 w-5" />
-                    MD, University of Edinburgh
+                    MBBS, BSc, University of Manchester & Imperial College London
                   </div>
                   <div className="flex items-center text-foreground/70">
                     <IdCard className="text-primary mr-3 h-5 w-5" />
-                    Advanced Aesthetic Medicine Certification
+                    Resident Doctor, East of England
                   </div>
                   <div className="flex items-center text-foreground/70">
                     <Award className="text-primary mr-3 h-5 w-5" />
-                    International speaker on non-surgical aesthetics
+                    Co-founder, The Aevia
                   </div>
                 </div>
               </div>
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600" 
+                  src="/assets/about_pics/Renee Website Pic.jpeg" 
                   alt="Dr. Renee - Aesthetic Medicine Expert" 
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />
@@ -87,29 +87,29 @@ export default function About() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600" 
-                  alt="Dr. Manu - Performance Psychology Coach" 
+                  src="/assets/about_pics/Manu Website Pic.png" 
+                  alt="Dr. Manu - Performance and Transformative Coach" 
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-serif font-bold mb-4">Dr. Manu</h2>
-                <p className="text-lg text-primary mb-4">Performance Psychology Coach</p>
+                <h2 className="text-3xl font-serif font-bold mb-4">Dr. Manu Sidhu</h2>
+                <p className="text-lg text-primary mb-4">Medical Doctor & Performance Coach</p>
                 <p className="text-foreground/70 mb-6 leading-relaxed">
                   Dr. Manu bridges the gap between medicine and high-performance coaching, helping executives and professionals unlock their full potential. His evidence-based approach to mindset transformation creates lasting behavioral change.
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center text-foreground/70">
                     <GraduationCap className="text-primary mr-3 h-5 w-5" />
-                    MD & PhD in Psychology, Oxford University
+                    MBBS, BSc, Imperial College London
                   </div>
                   <div className="flex items-center text-foreground/70">
                     <IdCard className="text-primary mr-3 h-5 w-5" />
-                    Certified High-Performance Coach
+                    Psychiatric Doctor, High-Performance Coach
                   </div>
                   <div className="flex items-center text-foreground/70">
                     <Award className="text-primary mr-3 h-5 w-5" />
-                    Consultant to Fortune 500 executives
+                    Co-founder, The Aevia
                   </div>
                 </div>
               </div>
