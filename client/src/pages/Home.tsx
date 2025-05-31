@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Leaf, Brain } from "lucide-react";
 import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
+import { BookingButton } from "@/components/BookingButton";
 
 export default function Home() {
   return (
@@ -16,23 +17,19 @@ export default function Home() {
               <span className="text-primary">Skin and Mind</span>
             </h1>
             <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Regenerative aesthetics and high-agency coaching for professionals who demand excellence
+            Medical aesthetics and performance coaching for professionals who demand excellence.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/contact?type=skin">
-                <a
-                  className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium text-base smooth-transition shadow-lg border-2 border-primary transition-colors hover:bg-white hover:text-primary"
-                >
+            <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
+              <div className="w-full sm:w-64">
+                <BookingButton href="/contact?type=skin" variant="skin" className="w-full">
                   Book Skin Consultation
-                </a>
-              </Link>
-              <Link href="/contact?type=mind">
-                <a
-                  className="bg-white text-primary px-6 py-3 rounded-xl font-medium text-base smooth-transition shadow-lg border-2 border-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-                >
+                </BookingButton>
+              </div>
+              <div className="w-full sm:w-64">
+                <BookingButton href="/contact?type=mind" variant="mind" className="w-full">
                   Book Mind Discovery Call
-                </a>
-              </Link>
+                </BookingButton>
+              </div>
             </div>
           </div>
         </div>
@@ -44,8 +41,9 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Difference</h2>
             <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-              Our unique dual approach combines doctor-led regenerative aesthetics with transformative coaching, 
-              creating a comprehensive pathway to both physical and mental excellence.
+              The Aevia offers two distinct, doctor-led services:<br />
+              <span style={{ fontWeight: 600, color: '#8A7350' }}>Medical Aesthetics</span> for natural, science-backed skin rejuvenation, and <br />
+              <span style={{ fontWeight: 600, color: '#8A7350' }}>Performance and Transformative Coaching</span> for professionals seeking clarity, confidence, and agency. Whether you're drawn to one or both, each path is designed to deliver focused, expert-led transformation.
             </p>
           </div>
           
@@ -60,16 +58,16 @@ export default function Home() {
             </div>
             
             <div className="text-center">
-              <h3 className="text-xl font-serif font-semibold mb-2">Dr. Terrell</h3>
-              <p className="text-foreground/70">Regenerative Medicine Specialist</p>
+              <h3 className="text-xl font-serif font-semibold mb-2">Dr. Terrell Okhiria</h3>
+              <p className="text-foreground/70">Aesthetic Medicine Doctor & GP Trainee</p>
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-serif font-semibold mb-2">Dr. Renee</h3>
-              <p className="text-foreground/70">Aesthetic Medicine Expert</p>
+              <h3 className="text-xl font-serif font-semibold mb-2">Dr. Renee Okhiria</h3>
+              <p className="text-foreground/70">Aesthetic Medicine Doctor</p>
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-serif font-semibold mb-2">Dr. Manu</h3>
-              <p className="text-foreground/70">Performance Psychology Coach</p>
+              <h3 className="text-xl font-serif font-semibold mb-2">Dr. Manu Sidhu</h3>
+              <p className="text-foreground/70">Medical Doctor & Performance Coach</p>
             </div>
           </div>
         </div>
@@ -81,18 +79,18 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12">
             <ServiceCard
               title="Aevia Skin"
-              subtitle="Regenerative Aesthetics"
-              description="Regenerative aesthetics that enhance your natural beauty without fillers"
+              subtitle="Medical Aesthetics"
+              description="Science-backed, regenerative approaches that restore your skin's natural quality. Results that feel like you, only fresher."
               image="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
-              features={["Polynucleotides", "Skin boosters", "Anti-wrinkle injections"]}
+              features={["The Aevia Skin Consultation", "Polynucleotides", "Skin Boosters", "Anti-wrinkle Injections"]}
               ctaText="Learn More About Skin Treatments"
               onCtaClick={() => window.location.href = "/skin"}
             />
 
             <ServiceCard
               title="Aevia Mind"
-              subtitle="High-Agency Coaching"
-              description="High-agency coaching for professionals seeking transformation"
+              subtitle="Performance & Transformative Coaching"
+              description="Coaching designed for professionals ready to think sharper, act with confidence, and create meaningful change."
               image="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
               features={["Performance optimization", "Decision-making clarity", "Transformative mindset shifts", "Strategic life planning"]}
               ctaText="Explore Mind Coaching"
@@ -114,7 +112,7 @@ export default function Home() {
             <TestimonialCard
               name="Sarah M."
               service="Aevia Skin"
-              quote="The polynucleotide treatment gave me the most natural, glowing skin I've ever had. No downtime, just beautiful results."
+              quote="The polynucleotide treatment gave me the most natural, glowing skin I've ever had. Barely any downtime, just beautiful results."
               image="https://images.unsplash.com/photo-1594736797933-d0051d8a8fdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100"
               likes={127}
               comments={8}
@@ -123,7 +121,7 @@ export default function Home() {
             <TestimonialCard
               name="Marcus K."
               service="Aevia Mind"
-              quote="Dr. Manu's coaching completely transformed my decision-making. I've never felt more focused and intentional."
+              quote="Dr. Manu's coaching helped me unlock clarity and execute decisions with confidence. I've never felt more aligned or driven."
               image="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100"
               likes={89}
               comments={12}
@@ -146,17 +144,17 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Begin Your Transformation</h2>
           <p className="text-lg text-foreground/70 mb-12">Limited availability for our exclusive, doctor-led approach</p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/contact">
-              <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 hover:scale-105 shadow-lg">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
+            <div className="w-full sm:w-64">
+              <BookingButton href="/contact?type=skin" variant="skin" className="w-full">
                 Book Skin Consultation
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button variant="outline" className="border-2 border-primary text-primary px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary hover:text-primary-foreground hover:scale-105 shadow-lg">
+              </BookingButton>
+            </div>
+            <div className="w-full sm:w-64">
+              <BookingButton href="/contact?type=mind" variant="mind" className="w-full">
                 Book Mind Discovery Call
-              </Button>
-            </Link>
+              </BookingButton>
+            </div>
           </div>
         </div>
       </section>
