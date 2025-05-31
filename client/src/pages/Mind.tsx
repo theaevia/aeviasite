@@ -1,33 +1,38 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Rocket, Lightbulb, Brain, Swords, Check } from "lucide-react";
+import { BookingButton } from "@/components/BookingButton";
+import { IconBadge } from "@/components/IconBadge";
 
 export default function Mind() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-muted py-20 lg:py-32">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
               <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
-                Aevia Mind: <span className="text-primary">High-Agency Coaching</span>
+                Aevia Mind: <span className="text-primary">Performance and Transformative Coaching</span>
               </h1>
               <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
                 Transformative coaching for professionals who demand excellence in every aspect of their performance and life.
               </p>
-              <Link href="/contact">
-                <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 shadow-lg">
-                  Book Discovery Call
-                </Button>
-              </Link>
+              <BookingButton href="/contact?type=mind" variant="skin" className="w-full sm:w-auto">
+                Book Discovery Call
+              </BookingButton>
             </div>
-            <div className="order-first lg:order-last">
-              <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional coaching session in modern, minimalist office setting" 
-                className="rounded-2xl shadow-lg w-full h-auto"
-              />
+            <div className="order-1 lg:order-2 w-full">
+              <div className="relative w-full pb-[75%]">
+                <img 
+                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                  alt="Professional coaching session in modern, minimalist office setting" 
+                  className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
+                  loading="eager"
+                  width={800}
+                  height={600}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -43,20 +48,20 @@ export default function Mind() {
           
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div className="flex items-start">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-xl flex items-center justify-center mr-4 mt-1">
-                  <Rocket className="h-6 w-6" />
-                </div>
+              <div className="flex items-start group">
+                <IconBadge className="mr-4">
+                  <Rocket className="h-7 w-7 stroke-[1.6]" />
+                </IconBadge>
                 <div>
                   <h3 className="text-xl font-serif font-semibold mb-2">Performance Optimization</h3>
-                  <p className="text-foreground/70">Unlock your peak performance potential through scientifically-backed coaching methodologies and personalized strategies.</p>
+                  <p className="text-foreground/70">Unlock your peak performance potential through scientifically-backed coaching methodologies.</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-xl flex items-center justify-center mr-4 mt-1">
-                  <Lightbulb className="h-6 w-6" />
-                </div>
+              <div className="flex items-start group">
+                <IconBadge className="mr-4">
+                  <Lightbulb className="h-7 w-7 stroke-[1.6]" />
+                </IconBadge>
                 <div>
                   <h3 className="text-xl font-serif font-semibold mb-2">Decision-Making Clarity</h3>
                   <p className="text-foreground/70">Develop frameworks for making high-stakes decisions with confidence and precision in complex environments.</p>
@@ -65,20 +70,20 @@ export default function Mind() {
             </div>
             
             <div className="space-y-8">
-              <div className="flex items-start">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-xl flex items-center justify-center mr-4 mt-1">
-                  <Brain className="h-6 w-6" />
-                </div>
+              <div className="flex items-start group">
+                <IconBadge className="mr-4">
+                  <Brain className="h-7 w-7 stroke-[1.6]" />
+                </IconBadge>
                 <div>
                   <h3 className="text-xl font-serif font-semibold mb-2">Mindset Transformation</h3>
                   <p className="text-foreground/70">Rewire limiting beliefs and develop a high-agency mindset that drives exceptional results and sustained success.</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-xl flex items-center justify-center mr-4 mt-1">
-                  <Swords className="h-6 w-6" />
-                </div>
+              <div className="flex items-start group">
+                <IconBadge className="mr-4">
+                  <Swords className="h-7 w-7 stroke-[1.6]" />
+                </IconBadge>
                 <div>
                   <h3 className="text-xl font-serif font-semibold mb-2">Strategic Life Planning</h3>
                   <p className="text-foreground/70">Create comprehensive life strategies that align your professional ambitions with personal fulfillment and values.</p>
@@ -200,21 +205,17 @@ export default function Mind() {
             <div className="text-center">
               <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
               <p className="text-foreground/70 mb-6">Start with a discovery call</p>
-              <Link href="/contact">
-                <Button className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium smooth-transition hover:bg-primary/90 shadow-lg w-full">
-                  Book Discovery Call
-                </Button>
-              </Link>
+              <BookingButton href="/contact?type=mind" variant="skin" className="w-full">
+                Book Discovery Call
+              </BookingButton>
             </div>
             
             <div className="text-center">
               <h3 className="text-xl font-serif font-semibold mb-4">Returning Clients</h3>
               <p className="text-foreground/70 mb-6">Book coaching sessions directly</p>
-              <a href="https://www.fresha.com/a/the-aevia-mind-london-260-pentonville-road-pigze91v" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="border-2 border-primary text-primary px-6 py-3 rounded-xl font-medium smooth-transition hover:bg-primary hover:text-primary-foreground shadow-lg w-full">
-                  Book Coaching via Fresha
-                </Button>
-              </a>
+              <BookingButton href="https://www.fresha.com/a/the-aevia-mind-london-260-pentonville-road-pigze91v" variant="skin" className="w-full">
+                Book Coaching Sessions
+              </BookingButton>
             </div>
           </div>
         </div>
@@ -334,11 +335,9 @@ export default function Mind() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Unlock Your Potential?</h2>
           <p className="text-lg text-foreground/70 mb-8">Start with a complimentary discovery call to explore your transformation journey</p>
-          <Link href="/contact">
-            <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 shadow-lg">
-              Book Your Discovery Call
-            </Button>
-          </Link>
+          <BookingButton href="/contact?type=mind" variant="skin" className="w-full sm:w-auto">
+            Book Your Discovery Call
+          </BookingButton>
         </div>
       </section>
     </div>

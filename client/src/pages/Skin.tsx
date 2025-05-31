@@ -1,33 +1,37 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Clock, Check, Banknote } from "lucide-react";
+import { BookingButton } from "@/components/BookingButton";
 
 export default function Skin() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-white py-20 lg:py-32">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
               <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
                 Aevia Skin: <span className="text-primary">Regenerative Aesthetics</span>
               </h1>
               <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
                 Doctor-led treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
               </p>
-              <Link href="/contact">
-                <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 shadow-lg">
-                  Book The Aevia Skin Consultation
-                </Button>
-              </Link>
+              <BookingButton href="/contact?type=skin" variant="skin" className="w-full sm:w-auto">
+                Book The Aevia Skin Consultation
+              </BookingButton>
             </div>
-            <div className="order-first lg:order-last">
-              <img 
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern aesthetic treatment room with professional equipment" 
-                className="rounded-2xl shadow-lg w-full h-auto"
-              />
+            <div className="order-1 lg:order-2 w-full">
+              <div className="relative w-full pb-[75%]">
+                <img 
+                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                  alt="Modern aesthetic treatment room with professional equipment" 
+                  className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
+                  loading="eager"
+                  width={800}
+                  height={600}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -71,7 +75,7 @@ export default function Skin() {
             <div className="bg-primary/10 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
               <h3 className="text-2xl font-serif font-semibold mb-4 text-primary">20-Minute Clinical Session</h3>
               <p className="text-lg text-foreground/80 mb-6">
-                A comprehensive clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or anti-wrinkle injections.
+                A comprehensive virtual clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or anti-wrinkle injections.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -88,7 +92,7 @@ export default function Skin() {
                     </li>
                     <li className="flex items-center">
                       <Check className="h-4 w-4 text-primary mr-3" />
-                      Personalized treatment planning
+                      Personalised treatment planning
                     </li>
                   </ul>
                 </div>
@@ -98,11 +102,11 @@ export default function Skin() {
                   <ul className="space-y-2 text-foreground/70">
                     <li className="flex items-center">
                       <Banknote className="h-4 w-4 text-primary mr-3" />
-                      £50 (fee fully redeemable)
+                      £50 one-time fee
                     </li>
                     <li className="flex items-center">
                       <Banknote className="h-4 w-4 text-primary mr-3" />
-                      £65 with treatment same day
+                      Fully redeemable against your first treatment
                     </li>
                   </ul>
                 </div>
@@ -164,20 +168,18 @@ export default function Skin() {
             <div className="text-center">
               <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
               <p className="text-foreground/70 mb-6">Start with a virtual consultation</p>
-              <Link href="/contact">
-                <Button className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium smooth-transition hover:bg-primary/90 shadow-lg w-full">
-                  Book Virtual Consultation
-                </Button>
-              </Link>
+              <BookingButton href="/contact?type=skin" variant="skin" className="w-full">
+                Book Virtual Consultation
+              </BookingButton>
             </div>
             
             <div className="text-center">
               <h3 className="text-xl font-serif font-semibold mb-4">Returning Clients</h3>
               <p className="text-foreground/70 mb-6">Book treatments directly</p>
-              <a href="https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="border-2 border-primary text-primary px-6 py-3 rounded-xl font-medium smooth-transition hover:bg-primary hover:text-primary-foreground shadow-lg w-full">
-                  Book Treatment via Fresha
-                </Button>
+              <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" target="_blank" rel="noopener noreferrer" className="w-full block">
+                <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" variant="skin" className="w-full">
+                  Book Treatments
+                </BookingButton>
               </a>
             </div>
           </div>
@@ -192,7 +194,7 @@ export default function Skin() {
             <p className="text-lg text-foreground/70">Transparent pricing for all our regenerative treatments</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-xl font-serif font-semibold mb-4 text-center">Consultation</h3>
               <div className="text-center mb-4">
@@ -258,6 +260,28 @@ export default function Skin() {
                 </li>
               </ul>
             </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <h3 className="text-xl font-serif font-semibold mb-4 text-center">Anti-Wrinkle</h3>
+              <div className="text-center mb-4">
+                <span className="text-2xl font-bold text-primary">From £120</span>
+                <p className="text-sm text-foreground/70">Per treatment area</p>
+              </div>
+              <ul className="space-y-2 text-sm text-foreground/70">
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Muscle relaxation
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Natural-looking results
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-4 w-4 text-primary mr-2" />
+                  Quick, minimally invasive
+                </li>
+              </ul>
+            </div>
           </div>
           
           <div className="text-center mt-12">
@@ -273,11 +297,9 @@ export default function Skin() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
           <p className="text-lg text-foreground/70 mb-8">Book The Aevia Skin Consultation - fee fully redeemable against your first treatment</p>
-          <Link href="/contact">
-            <Button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-lg smooth-transition hover:bg-primary/90 shadow-lg">
-              Book The Aevia Skin Consultation
-            </Button>
-          </Link>
+          <BookingButton href="/contact?type=skin" variant="skin" className="w-full sm:w-auto">
+            Book The Aevia Skin Consultation
+          </BookingButton>
         </div>
       </section>
     </div>

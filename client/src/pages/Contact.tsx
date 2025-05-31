@@ -28,7 +28,7 @@ export default function Contact() {
               <div className="text-center mb-8">
                 <Leaf className="text-primary text-4xl mx-auto mb-4" />
                 <h2 className="text-2xl font-serif font-bold mb-4">Aevia Skin Consultation</h2>
-                <p className="text-foreground/70">Personalized assessment with our medical and aesthetic doctors</p>
+                <p className="text-foreground/70">Personalised assessment with Dr. Terrell or Dr. Renee</p>
               </div>
               
               <div className="space-y-4 mb-8">
