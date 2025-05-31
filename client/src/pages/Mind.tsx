@@ -25,8 +25,8 @@ export default function Mind() {
             <div className="order-1 lg:order-2 w-full">
               <div className="relative w-full pb-[75%]">
                 <img 
-                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                  alt="Professional coaching session in modern, minimalist office setting" 
+                  src="/assets/Mind Hero Image GPT1.png" 
+                  alt="Aevia Mind clinic showcasing desk during a coaching session" 
                   className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                   loading="eager"
                   width={800}

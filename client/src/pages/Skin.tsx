@@ -24,8 +24,8 @@ export default function Skin() {
             <div className="order-1 lg:order-2 w-full">
               <div className="relative w-full pb-[75%]">
                 <img 
-                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                  alt="Modern aesthetic treatment room with professional equipment" 
+                  src="/assets/Skin Model GPT.png" 
+                  alt="Female model showcasing regenerative skin treatments results" 
                   className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                   loading="eager"
                   width={800}
