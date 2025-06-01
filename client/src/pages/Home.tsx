@@ -14,7 +14,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl lg:text-6xl font-serif font-bold mb-6 leading-tight text-balance">
-              Hello{" "}
+              Doctor-Led Transformation for{" "}
               <span className="text-primary">Skin and Mind</span>
             </h1>
             <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
