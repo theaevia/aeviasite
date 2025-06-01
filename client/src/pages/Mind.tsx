@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Rocket, Lightbulb, Brain, Swords, Check } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
+import mindHeroImage from "@assets/hero_images/mind-hero.png";
 
 export default function Mind() {
   return (
@@ -25,7 +26,7 @@ export default function Mind() {
             <div className="order-1 lg:order-2 w-full">
               <div className="relative w-full pb-[75%]">
                 <img 
-                  src="/assets/hero_images/Mind Hero Image GPT1.png" 
+                  src={mindHeroImage}
                   alt="Aevia Mind clinic showcasing desk during a coaching session" 
                   className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                   loading="eager"

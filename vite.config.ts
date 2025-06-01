@@ -27,10 +27,24 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
         "@shared": path.resolve(__dirname, "shared"),
         "@assets": path.resolve(__dirname, "client/assets"),
       },
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.jpg', '.jpeg', '.png', '.svg']
     },
     build: {
       outDir: path.resolve(__dirname, "dist/public"),
       emptyOutDir: true,
+      assetsDir: 'assets',
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, "client/index.html"),
+        },
+        output: {
+          assetFileNames: 'assets/[name].[hash][extname]'
+        }
+      },
+    },
+    assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg'],
+    optimizeDeps: {
+      include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.svg']
     },
     server: {
       port: Number(process.env.PORT) || 5000,

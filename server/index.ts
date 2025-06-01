@@ -1,12 +1,28 @@
+import 'dotenv/config';
+const PORT = Number(process.env.PORT ?? 3000);
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import helmet from "helmet";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
+const isProd = process.env.NODE_ENV === 'production';
 
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "img-src": ["'self'", "data:", "https:", "blob:"],
+      "frame-src": ["'self'", "https://calendly.com", "https://www.calendly.com"],
+      "connect-src": ["'self'", "https://calendly.com", "https://www.calendly.com"],
+    },
+  },
+}));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
@@ -57,13 +73,19 @@ app.use((req, res, next) => {
       log(`Error: ${message}`, "error");
     });
 
-    if (app.get("env") === "development") {
+    if (!isProd) {
       await setupVite(app, server);
     } else {
-      serveStatic(app);
+      // Serve static files from the public directory
+      app.use(express.static(path.join(__dirname, 'public')));
+      // Serve assets from the assets directory
+      app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+      // Fallback to index.html for client-side routing
+      app.get('*', (_req, res) =>
+        res.sendFile(path.join(__dirname, 'public', 'index.html'))
+      );
     }
 
-    const PORT = parseInt(process.env.PORT || '5000', 10);
     server.listen({
       port: PORT,
       host: "0.0.0.0",

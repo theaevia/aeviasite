@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "concurrently \"PORT=3000 tsx server/index.ts\" \"vite --port 5000\"",
     "build": "NODE_ENV=production vite build --config vite.config.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "start": "node --enable-source-maps dist/index.js",
+    "start": "NODE_ENV=production node --enable-source-maps dist/index.js",
     "check": "tsc",
     "db:push": "drizzle-kit push"
   },
@@ -51,6 +51,7 @@
     "cmdk": "^1.1.1",
     "connect-pg-simple": "^10.0.0",
     "date-fns": "^3.6.0",
+    "dotenv": "^16.5.0",
     "drizzle-orm": "^0.39.1",
     "drizzle-zod": "^0.7.0",
     "embla-carousel-react": "^8.6.0",

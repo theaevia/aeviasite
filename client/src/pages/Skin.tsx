@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Clock, Check, Banknote } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
+import skinModelImage from "@assets/hero_images/skin-model.png";
 
 export default function Skin() {
   return (
@@ -24,7 +25,7 @@ export default function Skin() {
             <div className="order-1 lg:order-2 w-full">
               <div className="relative w-full pb-[75%]">
                 <img 
-                  src="/assets/hero_images/Skin Model GPT.png" 
+                  src={skinModelImage}
                   alt="Female model showcasing regenerative skin treatments results" 
                   className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                   loading="eager"

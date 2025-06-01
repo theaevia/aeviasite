@@ -1,4 +1,7 @@
 import { GraduationCap, Award, IdCard } from "lucide-react";
+import terrellImage from "@assets/about_pics/terrell-pic3.jpg";
+import reneeImage from "@assets/about_pics/renee-pic.jpg";
+import manuImage from "@assets/about_pics/manu-pic.png";
 
 export default function About() {
   return (
@@ -23,7 +26,7 @@ export default function About() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/assets/about_pics/Terrell Website Pic.JPG" 
+                  src={terrellImage}
                   alt="Dr. Terrell - Regenerative Medicine Specialist" 
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />
@@ -76,7 +79,7 @@ export default function About() {
               </div>
               <div>
                 <img 
-                  src="/assets/about_pics/Renee Website Pic.jpeg" 
+                  src={reneeImage}
                   alt="Dr. Renee - Aesthetic Medicine Expert" 
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />
@@ -87,7 +90,7 @@ export default function About() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="/assets/about_pics/Manu Website Pic.png" 
+                  src={manuImage}
                   alt="Dr. Manu - Performance and Transformative Coach" 
                   className="rounded-2xl shadow-lg w-full h-auto"
                 />

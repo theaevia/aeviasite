@@ -1,9 +1,10 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Leaf, Brain } from "lucide-react";
+import { Leaf, Brain, Star } from "lucide-react";
 import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
+import clinicImage from "@assets/hero_images/aevia-clinic.jpg";
 
 export default function Home() {
   return (
@@ -62,7 +63,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-3 flex justify-center mb-12">
               <img 
-                src="/assets/hero_images/Aevia Clinic.JPG" 
+                src={clinicImage}
                 alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team" 
                 className="rounded-2xl shadow-lg w-full max-w-2xl h-auto object-cover"
               />
@@ -150,7 +151,7 @@ export default function Home() {
               reviewUrl="https://maps.app.goo.gl/HVS56S8yDgGuCeqC9"
             />
 
-            <TestimonialCard
+            {/* <TestimonialCard
               name="Sarah M."
               service="Aevia Skin"
               quote="The skin consultation was incredibly thorough. Dr. Renee took the time to understand my concerns and created a personalized plan."
@@ -178,7 +179,7 @@ export default function Home() {
               likes={178}
               comments={20}
               reviewUrl="https://maps.app.goo.gl/your-review-id"
-            />
+            /> */}
           </div>
 
           <div className="text-center">
@@ -188,7 +189,7 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               <Button variant="outline" className="group">
-                <span className="mr-2">💬</span>
+                <Star className="w-4 h-4 mr-2 text-yellow-600" />
                 Read Client Stories
                 <svg
                   className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
