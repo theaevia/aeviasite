@@ -63,22 +63,12 @@ app.use((req, res, next) => {
       serveStatic(app);
     }
 
-    const port = process.env.PORT ? Number(process.env.PORT) : 5000;
+    const PORT = parseInt(process.env.PORT || '5000', 10);
     server.listen({
-      port,
+      port: PORT,
       host: "0.0.0.0",
-      reusePort: true,
     }, () => {
-      log(`Server running on port ${port}`);
-    });
-
-    // Handle graceful shutdown
-    process.on('SIGTERM', () => {
-      log('SIGTERM received. Shutting down gracefully...');
-      server.close(() => {
-        log('Server closed');
-        process.exit(0);
-      });
+      log(`Server running on port ${PORT}`);
     });
 
   } catch (error) {

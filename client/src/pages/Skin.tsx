@@ -198,7 +198,7 @@ export default function Skin() {
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-xl font-serif font-semibold mb-4 text-center">Consultation</h3>
               <div className="text-center mb-4">
-                <span className="text-3xl font-bold text-primary">£50</span>
+                <span className="text-3xl font-bold text-primary">£30</span>
                 <p className="text-sm text-foreground/70">Fully redeemable</p>
               </div>
               <ul className="space-y-2 text-sm text-foreground/70">

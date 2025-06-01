@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import logoBlack from "@assets/logos/Logo Black.png";
 import logoGold from "@assets/logos/Logo Gold.png";
-import TikTokIcon from "@assets/SVGs/tiktok-fill-svgrepo-com.svg?react";
+import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 
 export default function Navigation() {
   const [location] = useLocation();

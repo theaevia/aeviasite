@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "concurrently \"PORT=3000 tsx server/index.ts\" \"vite --port 5000\"",
-    "build": "NODE_ENV=production vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=cjs --outdir=dist",
-    "start": "node dist/index.js",
+    "build": "NODE_ENV=production vite build --config vite.config.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "start": "node --enable-source-maps dist/index.js",
     "check": "tsc",
     "db:push": "drizzle-kit push"
   },

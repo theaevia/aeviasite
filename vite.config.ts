@@ -3,10 +3,11 @@ import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import path from "path";
 import { fileURLToPath } from "url";
+import type { ConfigEnv, UserConfig } from 'vite';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig(async ({ command }) => {
+export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> => {
   // Only load Replit plugins in `vite dev`
   const replitPlugins: any[] = [];
   if (command === "serve" && process.env.REPL_ID) {
@@ -30,7 +31,10 @@ export default defineConfig(async ({ command }) => {
     build: {
       outDir: path.resolve(__dirname, "dist/public"),
       emptyOutDir: true,
-      // No rollupOptions.input needed—Vite will use client/index.html automatically
+    },
+    server: {
+      port: Number(process.env.PORT) || 5000,
+      open: true,
     },
   };
 });

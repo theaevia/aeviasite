@@ -38,7 +38,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center">
                   <PoundSterling className="text-primary mr-3 h-5 w-5" />
-                  <span className="text-foreground/70">£50 (fully redeemable against first treatment)</span>
+                  <span className="text-foreground/70">£30 (fully redeemable against first treatment)</span>
                 </div>
                 <div className="flex items-center">
                   <Calendar className="text-primary mr-3 h-5 w-5" />

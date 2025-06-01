@@ -68,7 +68,7 @@ The positioning should emphasize the medical expertise of the doctors (Dr. Terre
   - PRP
   - Botox
 - Feature image: Close-up of radiant, natural-looking skin
-- **CTA Button**: "Book Skin Consultation (£50, redeemable)"
+- **CTA Button**: "Book Skin Consultation (£30, redeemable)"
 
 ### 5. Aevia Mind Section
 - **Heading**: "Aevia Mind: High-Agency Coaching"

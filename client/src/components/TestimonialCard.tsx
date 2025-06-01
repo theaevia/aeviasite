@@ -1,4 +1,4 @@
-import { Heart, MessageCircle } from "lucide-react";
+import { Star, ExternalLink } from "lucide-react";
 
 interface TestimonialCardProps {
   name: string;
@@ -7,29 +7,46 @@ interface TestimonialCardProps {
   image: string;
   likes: number;
   comments: number;
+  reviewUrl?: string; // Optional Google review URL
 }
 
-export default function TestimonialCard({ name, service, quote, image, likes, comments }: TestimonialCardProps) {
+export default function TestimonialCard({ name, service, quote, image, likes, comments, reviewUrl }: TestimonialCardProps) {
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase();
+  };
+
   return (
-    <div className="bg-secondary rounded-2xl p-6 smooth-transition hover:shadow-lg">
+    <div className="bg-secondary rounded-2xl p-6 smooth-transition hover:shadow-lg relative">
       <div className="flex items-center mb-4">
-        <Heart className="h-4 w-4 text-primary mr-2" />
-        <MessageCircle className="h-4 w-4 text-primary" />
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+        ))}
       </div>
       <p className="text-foreground/80 mb-4 italic">"{quote}"</p>
       <div className="flex items-center space-x-3">
-        <img src={image} alt={name} className="w-12 h-12 rounded-full object-cover" />
+        <div className="w-12 h-12 rounded-full bg-[#F5F1EA] border border-primary/20 shadow-sm flex items-center justify-center">
+          <span className="font-serif text-primary text-lg font-medium">{getInitials(name)}</span>
+        </div>
         <div>
           <p className="font-semibold text-foreground">{name}</p>
           <p className="text-sm text-foreground/70">{service}</p>
         </div>
       </div>
-      <div className="flex items-center text-gray-400 text-sm mt-4">
-        <Heart className="h-3 w-3 mr-2" />
-        <span className="mr-4">{likes}</span>
-        <MessageCircle className="h-3 w-3 mr-2" />
-        <span>{comments}</span>
-      </div>
+      {reviewUrl && (
+        <a 
+          href={reviewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-4 right-4 text-foreground/50 hover:text-primary smooth-transition"
+          aria-label="View on Google Reviews"
+        >
+          <ExternalLink className="h-4 w-4" />
+        </a>
+      )}
     </div>
   );
 }

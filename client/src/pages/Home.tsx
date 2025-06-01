@@ -62,7 +62,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-3 flex justify-center mb-12">
               <img 
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                src="/assets/hero_images/Aevia Clinic.JPG" 
                 alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team" 
                 className="rounded-2xl shadow-lg w-full max-w-2xl h-auto object-cover"
               />
@@ -119,33 +119,92 @@ export default function Home() {
             <p className="text-lg text-foreground/70">Real results from our community</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <TestimonialCard
+              name="Joan H."
+              service="Aevia Skin"
+              quote="It's been a few weeks since I had my fantastic experience at The Aevia with Dr Renée and Dr Terrell. They addressed the dark circles under my eyes with polynucleotide injections, and the results have been magical."
+              image=""
+              likes={127}
+              comments={8}
+              reviewUrl="https://maps.app.goo.gl/jpQNgXg92eiBesPD8"
+            />
+
+            <TestimonialCard
+              name="Michelle C."
+              service="Aevia Skin"
+              quote="Thank you once again to both doctors. Really satisfied with everything. I will most definitely highly recommend you to my friends and colleagues. I look forward to my next session with you."
+              image=""
+              likes={89}
+              comments={12}
+              reviewUrl="https://maps.app.goo.gl/Cqjt1Rcym1uQ9ByB6"
+            />
+
+            <TestimonialCard
+              name="Maria A."
+              service="Aevia Skin"
+              quote="A great experience at The Aevia! Dr Terrell is so friendly and explains everything thoroughly! Will definitely be back again!"
+              image=""
+              likes={203}
+              comments={24}
+              reviewUrl="https://maps.app.goo.gl/HVS56S8yDgGuCeqC9"
+            />
+
             <TestimonialCard
               name="Sarah M."
               service="Aevia Skin"
-              quote="The polynucleotide treatment gave me the most natural, glowing skin I've ever had. Barely any downtime, just beautiful results."
-              image="https://images.unsplash.com/photo-1594736797933-d0051d8a8fdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100"
-              likes={127}
-              comments={8}
+              quote="The skin consultation was incredibly thorough. Dr. Renee took the time to understand my concerns and created a personalized plan."
+              image=""
+              likes={156}
+              comments={15}
+              reviewUrl="https://maps.app.goo.gl/your-review-id"
             />
 
             <TestimonialCard
-              name="Marcus K."
+              name="David L."
               service="Aevia Mind"
-              quote="Dr. Manu's coaching helped me unlock clarity and execute decisions with confidence. I've never felt more aligned or driven."
-              image="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100"
-              likes={89}
-              comments={12}
+              quote="The performance coaching sessions have been transformative. I've gained clarity in my career decisions and personal life."
+              image=""
+              likes={92}
+              comments={10}
+              reviewUrl="https://maps.app.goo.gl/your-review-id"
             />
 
             <TestimonialCard
-              name="Elena R."
+              name="Sophie T."
               service="Both Services"
-              quote="The combination of skin treatments and coaching created such a holistic transformation. I feel confident inside and out."
-              image="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100"
-              likes={203}
-              comments={24}
+              quote="Starting with skin treatments and then adding coaching was the perfect combination. The results have been life-changing."
+              image=""
+              likes={178}
+              comments={20}
+              reviewUrl="https://maps.app.goo.gl/your-review-id"
             />
+          </div>
+
+          <div className="text-center">
+            <a 
+              href="https://www.google.com/maps/place/The+Aevia/@51.5310793,-0.1203023,17z/data=!4m18!1m9!3m8!1s0x48761be0d6318279:0x6231887d02d12d6b!2sThe+Aevia!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!3m7!1s0x48761be0d6318279:0x6231887d02d12d6b!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!5m1!1e2?hl=en-GB&entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="group">
+                <span className="mr-2">💬</span>
+                Read Client Stories
+                <svg
+                  className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Button>
+            </a>
           </div>
         </div>
       </section>
