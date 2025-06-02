@@ -36,7 +36,7 @@ const treatmentCategories: TreatmentCategory[] = [
         name: "Discovery Call",
         description: "A 30-minute call to explore your goals, challenges, and whether we're the right fit to work together.",
         duration: "30min",
-        price: "Free",
+        price: "Complementary",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2606786&eid=4557161&oiid=sv%3A22711298&share&pId=2507365"
       },
       {
