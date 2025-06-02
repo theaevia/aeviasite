@@ -20,7 +20,7 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
 
   return {
     root: path.resolve(__dirname, "client"),
-    publicDir: path.resolve(__dirname, "client"),
+    publicDir: path.resolve(__dirname, "client/public"),
     plugins: [react(), svgr(), ...replitPlugins],
     resolve: {
       alias: {
@@ -33,13 +33,20 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
     build: {
       outDir: path.resolve(__dirname, "dist/public"),
       emptyOutDir: true,
+      copyPublicDir: true,
       assetsDir: 'assets',
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, "client/index.html"),
         },
         output: {
-          assetFileNames: 'assets/[name].[hash][extname]'
+          assetFileNames: (assetInfo) => {
+            if (!assetInfo.name) return 'assets/[name].[hash][extname]';
+            if (assetInfo.name.includes('public/')) {
+              return '[name][extname]';
+            }
+            return 'assets/[name].[hash][extname]';
+          }
         }
       },
     },
