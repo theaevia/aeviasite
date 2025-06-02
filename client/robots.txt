@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /dev/
+Disallow: /staging/
+Disallow: /test/
+Allow: /
+
+Sitemap: https://www.theaevia.co.uk/sitemap.xml 
