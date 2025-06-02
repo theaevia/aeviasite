@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --header-h: 80px; /* Default header height, will be updated by JS */
   --background: 0 0% 100%; /* #FFFFFF */
   --foreground: 0 0% 17%; /* #2D2D2D */
   --muted: 43 10% 96%; /* #F9F8F6 */

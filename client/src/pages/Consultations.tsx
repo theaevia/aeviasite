@@ -24,9 +24,11 @@ export default function Consultations() {
       const sectionId = type === 'mind' ? 'mind-booking' : 'skin-booking';
       const section = document.getElementById(sectionId);
       if (section) {
-        const headerOffset = 100; // Adjust this value based on your header height
+        const headerH = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue('--header-h')
+        ) || 80; // fallback to 80px if not set
         const elementPosition = section.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition = elementPosition + window.pageYOffset - headerH;
 
         window.scrollTo({
           top: offsetPosition,
