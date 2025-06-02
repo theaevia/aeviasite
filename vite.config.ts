@@ -20,6 +20,7 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
 
   return {
     root: path.resolve(__dirname, "client"),
+    publicDir: path.resolve(__dirname, "client"),
     plugins: [react(), svgr(), ...replitPlugins],
     resolve: {
       alias: [
