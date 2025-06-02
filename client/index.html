@@ -24,7 +24,14 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="./src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+    <!-- Replit development banner - only included in development -->
+    <script type="text/javascript">
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        const script = document.createElement('script');
+        script.src = "https://replit.com/public/js/replit-dev-banner.js";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    </script>
   </body>
 </html>

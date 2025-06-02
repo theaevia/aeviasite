@@ -17,11 +17,45 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "default-src": ["'self'"],
       "img-src": ["'self'", "data:", "https:", "blob:"],
-      "frame-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com"],
-      "connect-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com", "https://api.calendly.com"],
-      "script-src": ["'self'", "'unsafe-inline'", "https://assets.calendly.com"],
-      "style-src": ["'self'", "'unsafe-inline'", "https://assets.calendly.com"],
+      "frame-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com", "https://www.googletagmanager.com"],
+      "connect-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com", "https://api.calendly.com", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
+      "script-src": [
+        "'self'",
+        "'unsafe-inline'", // Required for GTM and inline scripts
+        "https://www.googletagmanager.com",
+        "https://assets.calendly.com",
+        ...(isProd ? [] : ["https://replit.com"]) // Only include Replit in development
+      ],
+      "script-src-elem": [
+        "'self'",
+        "'unsafe-inline'", // Required for GTM and inline scripts
+        "https://www.googletagmanager.com",
+        "https://assets.calendly.com",
+        ...(isProd ? [] : ["https://replit.com"]) // Only include Replit in development
+      ],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'", // Required for dynamic styles
+        "https://assets.calendly.com",
+        "https://fonts.googleapis.com"
+      ],
+      "style-src-elem": [
+        "'self'",
+        "'unsafe-inline'", // Required for dynamic styles
+        "https://assets.calendly.com",
+        "https://fonts.googleapis.com" // Explicitly allow Google Fonts stylesheets
+      ],
+      "font-src": [
+        "'self'",
+        "https://fonts.gstatic.com"
+      ],
+      "frame-ancestors": ["'none'"], // Prevents site from being embedded in iframes
+      "form-action": ["'self'"], // Restricts form submissions to same origin
+      "base-uri": ["'self'"], // Restricts base tag to same origin
+      "object-src": ["'none'"], // Prevents object/embed/applet tags
+      "upgrade-insecure-requests": [], // Upgrades HTTP to HTTPS
     },
   },
 }));
