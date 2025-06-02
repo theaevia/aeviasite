@@ -297,7 +297,7 @@ export default function Treatments() {
       </div>
 
       {/* Skin Section */}
-      <div className="mb-20 bg-muted/0 sm:bg-muted py-12 px-6 rounded-none sm:rounded-2xl">
+      <div className="mb-20 bg-muted py-12 px-6 rounded-2xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold text-primary mb-2 tracking-wider font-serif">SKIN</h2>
           <p className="text-lg text-muted-foreground">Professional skin rejuvenation treatments and consultations</p>
@@ -342,7 +342,7 @@ export default function Treatments() {
       </div>
 
       {/* Mind Section */}
-      <div id="mind" className="bg-muted/0 sm:bg-muted py-12 px-6 rounded-none sm:rounded-2xl">
+      <div id="mind" className="bg-muted py-12 px-6 rounded-2xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold text-primary mb-2 tracking-wider font-serif">MIND</h2>
           <p className="text-lg text-muted-foreground">Transformative coaching for high-performers</p>
