@@ -297,7 +297,7 @@ export default function Treatments() {
       </div>
 
       {/* Skin Section */}
-      <div className="mb-20 bg-muted py-12 px-6 rounded-2xl">
+      <div className="mb-20 bg-muted/0 sm:bg-muted py-12 px-6 rounded-none sm:rounded-2xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold text-primary mb-2 tracking-wider font-serif">SKIN</h2>
           <p className="text-lg text-muted-foreground">Professional skin rejuvenation treatments and consultations</p>
@@ -312,7 +312,7 @@ export default function Treatments() {
                 {cat.treatments.map((treatment, idx) => (
                   <div
                     key={treatment.name}
-                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 sm:hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded-lg"
+                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 sm:hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
                   >
                     <div className="flex-1 pr-8 sm:w-[70%]">
                       <div className="font-semibold text-lg mb-2">{treatment.name}</div>
@@ -342,7 +342,7 @@ export default function Treatments() {
       </div>
 
       {/* Mind Section */}
-      <div id="mind" className="bg-muted py-12 px-6 rounded-2xl">
+      <div id="mind" className="bg-muted/0 sm:bg-muted py-12 px-6 rounded-none sm:rounded-2xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold text-primary mb-2 tracking-wider font-serif">MIND</h2>
           <p className="text-lg text-muted-foreground">Transformative coaching for high-performers</p>
@@ -357,7 +357,7 @@ export default function Treatments() {
                 {cat.treatments.map((treatment, idx) => (
                   <div
                     key={treatment.name}
-                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 sm:hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded-lg"
+                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 sm:hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
                   >
                     <div className="flex-1 pr-8 sm:w-[70%]">
                       <div className="font-semibold text-lg mb-2">{treatment.name}</div>
