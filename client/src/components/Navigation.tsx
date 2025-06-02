@@ -74,6 +74,14 @@ export default function Navigation() {
                 Mind
               </span>
             </Link>
+            <Link href="/consultations">
+              <span onClick={handleLinkClick} className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
+                isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
+              )}>
+                Consultations
+              </span>
+            </Link>
             <Link href="/about">
               <span onClick={handleLinkClick} className={cn(
                 "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
