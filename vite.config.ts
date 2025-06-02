@@ -22,11 +22,20 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
     root: path.resolve(__dirname, "client"),
     plugins: [react(), svgr(), ...replitPlugins],
     resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "client/src"),
-        "@shared": path.resolve(__dirname, "shared"),
-        "@assets": path.resolve(__dirname, "client/assets"),
-      },
+      alias: [
+        {
+          find: "@",
+          replacement: path.resolve(__dirname, "client/src")
+        },
+        {
+          find: "@shared",
+          replacement: path.resolve(__dirname, "shared")
+        },
+        {
+          find: "@assets",
+          replacement: path.resolve(__dirname, "client/assets")
+        }
+      ],
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.jpg', '.jpeg', '.png', '.svg']
     },
     build: {

@@ -20,7 +20,7 @@ export default function Home() {
               <span className="text-primary">Skin and Mind</span>
             </h1>
             <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
-            Medical aesthetics and performance coaching for professionals who demand excellence.
+            Medical aesthetics and performance coaching for professionals who demand excellence. Based in Kings Cross, London.
             </p>
             <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
               <div className="w-full sm:w-64">
@@ -220,7 +220,8 @@ export default function Home() {
       <section className="py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Begin Your Transformation</h2>
-          <p className="text-lg text-foreground/70 mb-12">Limited availability for our exclusive, doctor-led approach</p>
+          <p className="text-lg text-foreground/70">Limited availability for our exclusive, doctor-led approach</p>
+          <p className="text-lg text-foreground/70 mb-8">Based in Kings Cross, London</p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
             <div className="w-full sm:w-64">
               <BookingButton href="/contact?type=skin" variant="skin" className="w-full">
