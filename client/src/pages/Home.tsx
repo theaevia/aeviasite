@@ -64,11 +64,20 @@ export default function Home() {
           {/* Doctors Introduction */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-3 flex justify-center mb-12">
-              <img 
-                src={clinicImage}
-                alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team" 
-                className="rounded-2xl shadow-lg w-full max-w-2xl h-auto object-cover"
-              />
+              <picture>
+                <source srcSet={clinicImage} type="image/webp" />
+                {/* If you have a JPEG fallback, add it here: */}
+                {/* <source srcSet={clinicImageJpg} type="image/jpeg" /> */}
+                <img 
+                  src={clinicImage}
+                  alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team" 
+                  className="rounded-2xl shadow-lg w-full max-w-2xl h-auto object-cover"
+                  loading="lazy"
+                  width="800"
+                  height="533"
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                />
+              </picture>
             </div>
             
             <div className="text-center">
