@@ -221,7 +221,7 @@ export default function Skin() {
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-xl font-serif font-semibold mb-4 text-center">Polynucleotides</h3>
               <div className="text-center mb-4">
-                <span className="text-2xl font-bold text-primary">From £300</span>
+                <span className="text-2xl font-bold text-primary">From £250</span>
                 <p className="text-sm text-foreground/70">Per treatment</p>
               </div>
               <ul className="space-y-2 text-sm text-foreground/70">
