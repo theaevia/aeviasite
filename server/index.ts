@@ -18,8 +18,10 @@ app.use(helmet({
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
       "img-src": ["'self'", "data:", "https:", "blob:"],
-      "frame-src": ["'self'", "https://calendly.com", "https://www.calendly.com"],
-      "connect-src": ["'self'", "https://calendly.com", "https://www.calendly.com"],
+      "frame-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com"],
+      "connect-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com", "https://api.calendly.com"],
+      "script-src": ["'self'", "'unsafe-inline'", "https://assets.calendly.com"],
+      "style-src": ["'self'", "'unsafe-inline'", "https://assets.calendly.com"],
     },
   },
 }));
