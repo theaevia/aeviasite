@@ -1,11 +1,12 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Instagram, Menu, X } from "lucide-react";
+import { Instagram, Menu, X, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import logoBlack from "@assets/logos/logo-black-transparent.png";
 import logoGold from "@assets/logos/logo-gold-transparent.png";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
+import { FaGoogle } from "react-icons/fa";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -101,12 +102,15 @@ export default function Navigation() {
           </div>
           
           {/* Right side icons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-6">
             <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-              <Instagram className="h-5 w-5" />
+              <Instagram className="h-5 w-5" strokeWidth={3} />
             </a>
             <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <TikTokIcon className="h-5 w-5" />
+            </a>
+            <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <FaGoogle className="h-4 w-4 fill-current" />
             </a>
             <Link href="/consultations">
               <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
@@ -179,12 +183,15 @@ export default function Navigation() {
                 </span>
               </Link>
               
-              <div className="flex items-center space-x-4 pt-4">
+              <div className="flex items-center space-x-6 pt-4">
                 <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-                  <Instagram className="h-5 w-5" />
+                  <Instagram className="h-5 w-5" strokeWidth={2.5} />
                 </a>
                 <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                   <TikTokIcon className="h-5 w-5" />
+                </a>
+                <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                  <FaGoogle className="h-4 w-4 fill-current" />
                 </a>
                 <Link href="/consultations">
                   <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
