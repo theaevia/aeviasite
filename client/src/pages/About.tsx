@@ -58,7 +58,7 @@ export default function About() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-last lg:order-first">
                 <h2 className="text-3xl font-serif font-bold mb-4">Dr. Renee Okhiria</h2>
-                <p className="text-lg text-primary mb-4">Medical and Aesthetic Doctor</p>
+                <p className="text-lg text-primary mb-4">Medical & Aesthetic Doctor</p>
                 <p className="text-foreground/70 mb-6 leading-relaxed">
                   Dr. Renee combines artistic vision with medical precision to deliver natural-looking aesthetic results. Her philosophy centers on enhancing each patient's unique beauty through minimally invasive, scientifically-proven treatments.
                 </p>
