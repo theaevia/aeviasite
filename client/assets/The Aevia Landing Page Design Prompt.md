@@ -36,7 +36,7 @@ The positioning should emphasize the medical expertise of the doctors (Dr. Terre
 
 ### Design Inspiration
 - OTO CBD (clean, luxury wellness aesthetic)
-- Function of Beauty (personalized approach to beauty)
+- Function of Beauty (personalised approach to beauty)
 - HighAgency.com (professional coaching with clear value proposition)
 
 ## Page Structure
@@ -85,7 +85,7 @@ The positioning should emphasize the medical expertise of the doctors (Dr. Terre
 - Brief section highlighting what makes The Aevia unique:
   - Doctor-led expertise
   - Science-backed approaches
-  - Personalized treatment plans
+  - personalised treatment plans
   - Exclusive, private setting
   - Virtual consultation convenience
 
@@ -116,7 +116,7 @@ The positioning should emphasize the medical expertise of the doctors (Dr. Terre
 - Step-by-step explanation of the consultation process:
   1. Book virtual consultation
   2. Complete pre-consultation questionnaire
-  3. Meet with doctor for personalized assessment
+  3. Meet with doctor for personalised assessment
   4. Receive customized treatment/coaching plan
   5. Begin transformation journey
 - Emphasize the £50 consultation fee being redeemable against first treatment

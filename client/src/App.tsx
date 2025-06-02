@@ -10,6 +10,7 @@ import Mind from "@/pages/Mind";
 import About from "@/pages/About";
 import Journal from "@/pages/Journal";
 import Consultations from "@/pages/Consultations";
+import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/journal" component={Journal} />
         <Route path="/consultations" component={Consultations} />
+        <Route path="/treatments" component={Treatments} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

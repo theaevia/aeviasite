@@ -45,7 +45,7 @@ export default function Consultations() {
             Book Your <span className="text-primary">Consultation</span>
           </h1>
           <p className="text-xl text-foreground/70">
-            Begin your transformation journey with a personalized consultation
+            Begin your transformation journey with a personalised consultation
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function Consultations() {
               <div className="bg-white rounded-xl p-6 border-2 border-primary">
                 <h3 className="font-semibold mb-4">Book Your Skin Consultation</h3>
                 <p className="text-sm text-foreground/70 mb-4">
-                  Schedule your virtual consultation to discuss your skin goals and receive personalized treatment recommendations.
+                  Schedule your virtual consultation to discuss your skin goals and receive personalised treatment recommendations.
                 </p>
                 <div className="w-full max-w-full overflow-x-auto">
                   <div
@@ -112,7 +112,7 @@ export default function Consultations() {
                 </div>
                 <div className="flex items-center">
                   <Target className="text-primary mr-3 h-5 w-5" />
-                  <span className="text-foreground/70">Personalized coaching strategy discussion</span>
+                  <span className="text-foreground/70">Personalised coaching strategy discussion</span>
                 </div>
               </div>
               

@@ -213,7 +213,7 @@ export default function Skin() {
                 </li>
                 <li className="flex items-center">
                   <Check className="h-4 w-4 text-primary mr-2" />
-                  Personalized treatment plan
+                  Personalised treatment plan
                 </li>
               </ul>
             </div>
@@ -289,6 +289,9 @@ export default function Skin() {
             <p className="text-sm text-foreground/60">
               Final pricing will be confirmed during your consultation based on your individual treatment plan.
             </p>
+            <Button asChild className="mt-6">
+              <a href="/treatments">More information</a>
+            </Button>
           </div>
         </div>
       </section>

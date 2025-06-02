@@ -32,25 +32,27 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 w-full z-50 glass-effect border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+        <div className="grid grid-cols-3 items-center">
           {/* Logo */}
-          <Link href="/">
-            <div onClick={handleLinkClick} className="cursor-pointer group relative smooth-transition">
-              <img 
-                src={logoBlack} 
-                alt="The Aevia" 
-                className="h-16 w-auto group-hover:opacity-0 smooth-transition"
-              />
-              <img 
-                src={logoGold} 
-                alt="The Aevia" 
-                className="h-16 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
-              />
-            </div>
-          </Link>
+          <div className="justify-self-start">
+            <Link href="/">
+              <div onClick={handleLinkClick} className="cursor-pointer group relative smooth-transition flex-shrink-0">
+                <img 
+                  src={logoBlack} 
+                  alt="The Aevia" 
+                  className="h-16 w-auto group-hover:opacity-0 smooth-transition"
+                />
+                <img 
+                  src={logoGold} 
+                  alt="The Aevia" 
+                  className="h-16 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
+                />
+              </div>
+            </Link>
+          </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 justify-self-center">
             <Link href="/">
               <span onClick={handleLinkClick} className={cn(
                 "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
@@ -80,7 +82,15 @@ export default function Navigation() {
                 "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
                 isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
               )}>
-                Consultations
+                Consultation
+              </span>
+            </Link>
+            <Link href="/treatments">
+              <span onClick={handleLinkClick} className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
+                isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
+              )}>
+                Treatments
               </span>
             </Link>
             <Link href="/about">
@@ -102,7 +112,7 @@ export default function Navigation() {
           </div>
           
           {/* Right side icons */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="justify-self-end hidden md:flex items-center space-x-6">
             <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <Instagram className="h-5 w-5" strokeWidth={3} />
             </a>
@@ -120,7 +130,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden col-span-2 justify-self-end">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-foreground hover:text-primary smooth-transition"
@@ -163,7 +173,15 @@ export default function Navigation() {
                   "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
                   isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
                 )}>
-                  Consultations
+                  Consultation
+                </span>
+              </Link>
+              <Link href="/treatments">
+                <span onClick={handleLinkClick} className={cn(
+                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
+                )}>
+                  Treatments
                 </span>
               </Link>
               <Link href="/about">

@@ -145,7 +145,7 @@ export default function Mind() {
                 </li>
                 <li className="flex items-center text-foreground/70">
                   <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                  Personalized frameworks
+                  personalised frameworks
                 </li>
                 <li className="flex items-center text-foreground/70">
                   <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
@@ -291,7 +291,7 @@ export default function Mind() {
                 </li>
                 <li className="flex items-center">
                   <Check className="h-4 w-4 text-primary mr-2" />
-                  Personalized frameworks
+                  personalised frameworks
                 </li>
                 <li className="flex items-center">
                   <Check className="h-4 w-4 text-primary mr-2" />
@@ -327,6 +327,11 @@ export default function Mind() {
             <p className="text-sm text-foreground/60">
               Package selection will be discussed during your discovery call based on your specific goals and timeline.
             </p>
+            <Link href="/treatments#mind">
+              <Button asChild className="mt-6">
+                <span>More information</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

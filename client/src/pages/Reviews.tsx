@@ -48,7 +48,7 @@ export default function Reviews() {
           <TestimonialCard
             name="Sarah M."
             service="Aevia Skin"
-            quote="The skin consultation was incredibly thorough. Dr. Renee took the time to understand my concerns and created a personalized plan."
+            quote="The skin consultation was incredibly thorough. Dr. Renee took the time to understand my concerns and created a personalised plan."
             image=""
             likes={156}
             comments={15}
