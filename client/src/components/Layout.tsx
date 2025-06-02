@@ -11,7 +11,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "The Aevia",
   "url": "https://www.theaevia.co.uk",
-  "logo": "https://www.theaevia.co.uk/aevia-logo.png",
+  "logo": "/aevia-logo.png",
   "description": "The Aevia is a premium doctor-led brand combining advanced aesthetic treatments with transformative performance coaching.",
   "address": {
     "@type": "PostalAddress",
@@ -51,8 +51,8 @@ const organizationSchema = {
       "@type": "MedicalClinic",
       "name": "Aevia Skin",
       "url": "https://www.theaevia.co.uk/skin",
-      "logo": "https://www.theaevia.co.uk/aevia-skin.png",
-      "image": "https://www.theaevia.co.uk/aevia-skin.png",
+      "logo": "/aevia-skin.png",
+      "image": "/aevia-skin.png",
       "description": "Doctor-led clinic offering advanced skin rejuvenation, including polynucleotides, skin boosters, and anti-wrinkle treatments.",
       "address": {
         "@type": "PostalAddress",
@@ -103,7 +103,7 @@ const organizationSchema = {
       "@type": "HealthAndBeautyBusiness",
       "name": "Aevia Mind",
       "url": "https://www.theaevia.co.uk/mind",
-      "logo": "https://www.theaevia.co.uk/aevia-mind.png",
+      "logo": "/aevia-mind.png",
       "description": "Doctor-led performance and transformative coaching for professionals, led by Dr Manu Sidhu.",
       "address": {
         "@type": "PostalAddress",
