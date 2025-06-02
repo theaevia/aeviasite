@@ -16,6 +16,26 @@ export default function Contact() {
     };
   }, []);
 
+  // Add scroll handler
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+    if (type === 'mind' || type === 'skin') {
+      const sectionId = type === 'mind' ? 'mind-booking' : 'skin-booking';
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const headerOffset = 100; // Adjust this value based on your header height
+        const elementPosition = section.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -35,7 +55,7 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* Skin Consultation */}
-            <div className="bg-accent/30 rounded-2xl p-8">
+            <div id="skin-booking" className="bg-accent/30 rounded-2xl p-8">
               <div className="text-center mb-8">
                 <Leaf className="text-primary text-4xl mx-auto mb-4" />
                 <h2 className="text-2xl font-serif font-bold mb-4">Aevia Skin Consultation</h2>
@@ -74,7 +94,7 @@ export default function Contact() {
             </div>
 
             {/* Mind Discovery Call */}
-            <div className="bg-muted rounded-2xl p-8">
+            <div id="mind-booking" className="bg-muted rounded-2xl p-8 scroll-margin-top-32">
               <div className="text-center mb-8">
                 <Brain className="text-primary text-4xl mx-auto mb-4" />
                 <h2 className="text-2xl font-serif font-bold mb-4">Aevia Mind Discovery Call</h2>
@@ -97,7 +117,7 @@ export default function Contact() {
               </div>
               
               {/* Calendly Inline Widget for Mind Discovery Call */}
-              <div className="bg-white rounded-xl p-6 border-2 border-primary">
+              <div id="mind-widget" className="bg-white rounded-xl p-6 border-2 border-primary">
                 <h3 className="font-semibold mb-4">Schedule Your Discovery Call</h3>
                 <p className="text-sm text-foreground/70 mb-4">
                   Book your complimentary virtual consultation to explore your transformation journey.
