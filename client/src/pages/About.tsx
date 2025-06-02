@@ -13,7 +13,7 @@ export default function About() {
             Meet the <span className="text-primary">Aevia Team</span>
           </h1>
           <p className="text-xl text-foreground/70 leading-relaxed">
-            Three world-class doctors united by a shared vision of holistic transformation
+          A doctor-led team committed to natural results, self-confidence, and science-backed care.
           </p>
         </div>
       </section>
