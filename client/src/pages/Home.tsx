@@ -4,9 +4,9 @@ import { Leaf, Brain, Star } from "lucide-react";
 import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
-import clinicImage from "@assets/hero_images/aevia-clinic3.jpg";
-import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.png";
-import skinModel2 from "@assets/hero_images/skin-model-2.png";
+import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
+import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
+import skinModel2 from "@assets/hero_images/skin-model-2.webp";
 
 export default function Home() {
   return (

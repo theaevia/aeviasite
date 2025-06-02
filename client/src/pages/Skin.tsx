@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Clock, Check, Banknote } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
-import skinModelImage from "@assets/hero_images/skin-model.png";
+import skinModelImage from "@assets/hero_images/skin-model.webp";
 
 export default function Skin() {
   return (

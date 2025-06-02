@@ -23,21 +23,12 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
     publicDir: path.resolve(__dirname, "client"),
     plugins: [react(), svgr(), ...replitPlugins],
     resolve: {
-      alias: [
-        {
-          find: "@",
-          replacement: path.resolve(__dirname, "client/src")
-        },
-        {
-          find: "@shared",
-          replacement: path.resolve(__dirname, "shared")
-        },
-        {
-          find: "@assets",
-          replacement: path.resolve(__dirname, "client/assets")
-        }
-      ],
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.jpg', '.jpeg', '.png', '.svg']
+      alias: {
+        '@': path.resolve(__dirname, 'client/src'),
+        '@shared': path.resolve(__dirname, 'shared'),
+        '@assets': path.resolve(__dirname, 'client/assets')
+      },
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.jpg', '.jpeg', '.png', '.svg', '.webp']
     },
     build: {
       outDir: path.resolve(__dirname, "dist/public"),
@@ -52,9 +43,9 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
         }
       },
     },
-    assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg'],
+    assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg', '**/*.webp'],
     optimizeDeps: {
-      include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.svg']
+      include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.svg', '**/*.webp']
     },
     server: {
       port: Number(process.env.PORT) || 5000,

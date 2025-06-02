@@ -1,7 +1,7 @@
 import { GraduationCap, Award, IdCard } from "lucide-react";
-import terrellImage from "@assets/about_pics/terrell-pic3.jpg";
-import reneeImage from "@assets/about_pics/renee-pic.jpg";
-import manuImage from "@assets/about_pics/manu-pic.png";
+import terrellImage from "@assets/about_pics/terrell-pic3.webp";
+import reneeImage from "@assets/about_pics/renee-pic.webp";
+import manuImage from "@assets/about_pics/manu-pic.webp";
 
 export default function About() {
   return (

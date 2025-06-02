@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Menu, X, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
-import logoBlack from "@assets/logos/logo-black-transparent.png";
-import logoGold from "@assets/logos/logo-gold-transparent.png";
+import logoBlack from "@assets/logos/logo-black-transparent.webp";
+import logoGold from "@assets/logos/logo-gold-transparent.webp";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
 

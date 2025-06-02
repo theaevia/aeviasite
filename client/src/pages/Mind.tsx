@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Rocket, Lightbulb, Brain, Swords, Check } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
-import mindHeroImage from "@assets/hero_images/mind-hero.png";
+import mindHeroImage from "@assets/hero_images/mind-hero.webp";
 
 export default function Mind() {
   return (
