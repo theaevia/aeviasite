@@ -75,14 +75,14 @@ const treatmentCategories: TreatmentCategory[] = [
     treatments: [
       {
         name: "In Clinic Consultation",
-        description: "A full-face skin consultation for first-time clients. Includes clinical facial mapping and treatment planning (e.g. Polynucleotides, Profhilo, or anti-wrinkle treatment). Option to proceed with treatment during same visit. Ideal for first-time clients or those looking to refresh their treatment plan with trusted medical advice. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
+        description: "A full-face skin consultation for first-time clients. Includes clinical facial mapping and treatment planning. Option to proceed with treatment during same visit. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
         duration: "20min",
         price: "£50",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23094023&share&pId=2507365"
       },
       {
         name: "Virtual Consultation",
-        description: "A full-face skin consultation for first-time clients. Includes clinical discussion, skin assessment and tailored treatment planning. Ideal for first-time clients or those looking to refresh their treatment plan with trusted medical advice. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
+        description: "A full-face skin consultation for first-time clients. Includes clinical discussion, skin assessment and tailored treatment planning. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
         duration: "20min",
         price: "£30",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23069103&share&pId=2507365"
@@ -306,13 +306,13 @@ export default function Treatments() {
           .filter(cat => cat.category !== "Performance & Transformative Coaching")
           .map((cat) => (
             <div key={cat.category} className="mb-12">
-              <h2 className="text-2xl font-semibold mb-2">{cat.category}</h2>
-              {cat.description && <p className="mb-6 text-muted-foreground">{cat.description}</p>}
+              <h2 className="text-2xl font-semibold mb-2 text-center sm:text-left">{cat.category}</h2>
+              {cat.description && <p className="mb-6 text-muted-foreground text-center sm:text-left">{cat.description}</p>}
               <div className="divide-y divide-gray-200 bg-white rounded-lg">
                 {cat.treatments.map((treatment, idx) => (
                   <div
                     key={treatment.name}
-                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded-lg"
+                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 sm:hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded-lg"
                   >
                     <div className="flex-1 pr-8 sm:w-[70%]">
                       <div className="font-semibold text-lg mb-2">{treatment.name}</div>
@@ -351,13 +351,13 @@ export default function Treatments() {
           .filter(cat => cat.category === "Performance & Transformative Coaching")
           .map((cat) => (
             <div key={cat.category} className="mb-12">
-              <h2 className="text-2xl font-semibold mb-2">{cat.category}</h2>
-              {cat.description && <p className="mb-6 text-muted-foreground">{cat.description}</p>}
+              <h2 className="text-2xl font-semibold mb-2 text-center sm:text-left">{cat.category}</h2>
+              {cat.description && <p className="mb-6 text-muted-foreground text-center sm:text-left">{cat.description}</p>}
               <div className="divide-y divide-gray-200 bg-white rounded-lg">
                 {cat.treatments.map((treatment, idx) => (
                   <div
                     key={treatment.name}
-                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded-lg"
+                    className="flex flex-col sm:flex-row py-6 px-4 transition-all duration-200 sm:hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded-lg"
                   >
                     <div className="flex-1 pr-8 sm:w-[70%]">
                       <div className="font-semibold text-lg mb-2">{treatment.name}</div>
