@@ -31,7 +31,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-primary smooth-transition">
+                <Link href="/consultations" className="hover:text-primary smooth-transition">
                   Consultations
                 </Link>
               </li>

@@ -18,7 +18,7 @@ export default function Skin() {
               <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
                 Doctor-led treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
               </p>
-              <BookingButton href="/contact?type=skin" variant="skin" className="w-full sm:w-auto">
+              <BookingButton href="/consultations?type=skin" variant="skin" className="w-full sm:w-auto">
                 Book The Aevia Skin Consultation
               </BookingButton>
             </div>
@@ -169,7 +169,7 @@ export default function Skin() {
             <div className="text-center">
               <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
               <p className="text-foreground/70 mb-6">Start with a virtual consultation</p>
-              <BookingButton href="/contact?type=skin" variant="skin" className="w-full">
+              <BookingButton href="/consultations?type=skin" variant="skin" className="w-full">
                 Book Virtual Consultation
               </BookingButton>
             </div>
@@ -298,7 +298,7 @@ export default function Skin() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
           <p className="text-lg text-foreground/70 mb-8">Book The Aevia Skin Consultation - fee fully redeemable against your first treatment</p>
-          <BookingButton href="/contact?type=skin" variant="skin" className="w-full sm:w-auto">
+          <BookingButton href="/consultations?type=skin" variant="skin" className="w-full sm:w-auto">
             Book The Aevia Skin Consultation
           </BookingButton>
         </div>

@@ -90,12 +90,12 @@ export default function Navigation() {
                 Journal
               </span>
             </Link>
-            <Link href="/contact">
+            <Link href="/consultations">
               <span onClick={handleLinkClick} className={cn(
                 "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/contact") ? "text-primary font-semibold" : "text-foreground"
+                isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
               )}>
-                Contact
+                Consultations
               </span>
             </Link>
           </div>
@@ -108,7 +108,7 @@ export default function Navigation() {
             <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <TikTokIcon className="h-5 w-5" />
             </a>
-            <Link href="/contact">
+            <Link href="/consultations">
               <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                 Book Now
               </Button>
@@ -170,12 +170,12 @@ export default function Navigation() {
                   Journal
                 </span>
               </Link>
-              <Link href="/contact">
+              <Link href="/consultations">
                 <span onClick={handleLinkClick} className={cn(
                   "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/contact") ? "text-primary font-semibold" : "text-foreground"
+                  isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
                 )}>
-                  Contact
+                  Consultations
                 </span>
               </Link>
               
@@ -186,7 +186,7 @@ export default function Navigation() {
                 <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                   <TikTokIcon className="h-5 w-5" />
                 </a>
-                <Link href="/contact">
+                <Link href="/consultations">
                   <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                     Book Now
                   </Button>

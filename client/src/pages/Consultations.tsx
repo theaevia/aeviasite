@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Leaf, Brain, Clock, PoundSterling, Calendar, Gift, Target, MapPin, Phone, Mail } from "lucide-react";
 import { useEffect } from "react";
 
-export default function Contact() {
+export default function Consultations() {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -42,7 +42,7 @@ export default function Contact() {
       <section className="bg-secondary py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6">
-            Get in <span className="text-primary">Touch</span>
+            Book Your <span className="text-primary">Consultation</span>
           </h1>
           <p className="text-xl text-foreground/70">
             Begin your transformation journey with a personalized consultation
@@ -50,7 +50,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Options */}
+      {/* Consultation Options */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 mb-16">

@@ -19,7 +19,7 @@ export default function Mind() {
               <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
                 Transformative coaching for professionals who demand excellence in every aspect of their performance and life.
               </p>
-              <BookingButton href="/contact?type=mind" variant="skin" className="w-full sm:w-auto">
+              <BookingButton href="/consultations?type=mind" variant="skin" className="w-full sm:w-auto">
                 Book Discovery Call
               </BookingButton>
             </div>
@@ -121,7 +121,7 @@ export default function Mind() {
                   Action plan development
                 </li>
               </ul>
-              <Link href="/contact">
+              <Link href="/consultations">
                 <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                   Start Discovery
                 </Button>
@@ -152,7 +152,7 @@ export default function Mind() {
                   Performance tracking
                 </li>
               </ul>
-              <Link href="/contact">
+              <Link href="/consultations">
                 <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   Begin Transformation
                 </Button>
@@ -180,7 +180,7 @@ export default function Mind() {
                   Leadership frameworks
                 </li>
               </ul>
-              <Link href="/contact">
+              <Link href="/consultations">
                 <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                   Achieve Mastery
                 </Button>
@@ -206,7 +206,7 @@ export default function Mind() {
             <div className="text-center">
               <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
               <p className="text-foreground/70 mb-6">Start with a discovery call</p>
-              <BookingButton href="/contact?type=mind" variant="skin" className="w-full">
+              <BookingButton href="/consultations?type=mind" variant="skin" className="w-full">
                 Book Discovery Call
               </BookingButton>
             </div>
@@ -336,7 +336,7 @@ export default function Mind() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Unlock Your Potential?</h2>
           <p className="text-lg text-foreground/70 mb-8">Start with a complimentary discovery call to explore your transformation journey</p>
-          <BookingButton href="/contact?type=mind" variant="skin" className="w-full sm:w-auto">
+          <BookingButton href="/consultations?type=mind" variant="skin" className="w-full sm:w-auto">
             Book Your Discovery Call
           </BookingButton>
         </div>
