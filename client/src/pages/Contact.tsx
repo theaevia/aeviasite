@@ -3,8 +3,19 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Leaf, Brain, Clock, PoundSterling, Calendar, Gift, Video, MapPin, Phone, Mail } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Contact() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -46,21 +57,18 @@ export default function Contact() {
                 </div>
               </div>
               
-              {/* Calendly Integration */}
+              {/* Calendly Inline Widget */}
               <div className="bg-white rounded-xl p-6 border-2 border-primary">
                 <h3 className="font-semibold mb-4">Book Your Skin Consultation</h3>
                 <p className="text-sm text-foreground/70 mb-4">
                   Schedule your virtual consultation to discuss your skin goals and receive personalized treatment recommendations.
                 </p>
-                <div className="h-96 w-full">
-                  <iframe
-                    src="https://calendly.com/your-calendly-link-skin"
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    title="Schedule Skin Consultation"
-                    className="rounded-lg"
-                  ></iframe>
+                <div className="w-full max-w-full overflow-x-auto">
+                  <div
+                    className="calendly-inline-widget"
+                    data-url="https://calendly.com/admin-theaevia/aevia-skin-consultation?hide_event_type_details=1&hide_gdpr_banner=1&text_color=2d2d2d&primary_color=c5a87a"
+                    style={{ minWidth: "0", width: "100%", height: "700px" }}
+                  ></div>
                 </div>
               </div>
             </div>
@@ -88,21 +96,18 @@ export default function Contact() {
                 </div>
               </div>
               
-              {/* Calendly Integration */}
+              {/* Calendly Inline Widget for Mind Discovery Call */}
               <div className="bg-white rounded-xl p-6 border-2 border-primary">
                 <h3 className="font-semibold mb-4">Schedule Your Discovery Call</h3>
                 <p className="text-sm text-foreground/70 mb-4">
                   Book your complimentary virtual consultation to explore your transformation journey.
                 </p>
-                <div className="h-96 w-full">
-                  <iframe
-                    src="https://calendly.com/your-calendly-link-mind"
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    title="Schedule Mind Discovery Call"
-                    className="rounded-lg"
-                  ></iframe>
+                <div className="w-full max-w-full overflow-x-auto">
+                  <div
+                    className="calendly-inline-widget"
+                    data-url="https://calendly.com/admin-theaevia/aevia-skin-consultation-clone?hide_event_type_details=1&hide_gdpr_banner=1&text_color=2d2d2d&primary_color=c5a87a"
+                    style={{ minWidth: "0", width: "100%", height: "700px" }}
+                  ></div>
                 </div>
               </div>
             </div>

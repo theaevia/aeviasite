@@ -5,6 +5,8 @@ import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
 import clinicImage from "@assets/hero_images/aevia-clinic.jpg";
+import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.png";
+import skinModel2 from "@assets/hero_images/skin-model-2.png";
 
 export default function Home() {
   return (
@@ -93,20 +95,24 @@ export default function Home() {
               title="Aevia Skin"
               subtitle="Medical Aesthetics"
               description="Science-backed, regenerative approaches that restore your skin's natural quality. Results that feel like you, only fresher."
-              image="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
+              image={skinModel2}
               features={["The Aevia Skin Consultation", "Polynucleotides", "Skin Boosters", "Anti-wrinkle Injections"]}
               ctaText="Learn More About Skin Treatments"
               onCtaClick={() => window.location.href = "/skin"}
+              imagePositionTop={false}
+              objectPosition="center 20%"
             />
 
             <ServiceCard
               title="Aevia Mind"
               subtitle="Performance & Transformative Coaching"
               description="Coaching designed for professionals ready to think sharper, act with confidence, and create meaningful change."
-              image="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
+              image={mindCoachingStairs}
               features={["Performance optimization", "Decision-making clarity", "Transformative mindset shifts", "Strategic life planning"]}
               ctaText="Explore Mind Coaching"
               onCtaClick={() => window.location.href = "/mind"}
+              imagePositionTop={false}
+              objectPosition="center 40%"
             />
           </div>
         </div>

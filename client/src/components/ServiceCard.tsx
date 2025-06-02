@@ -10,6 +10,8 @@ interface ServiceCardProps {
   ctaText: string;
   onCtaClick: () => void;
   backgroundColor?: string;
+  imagePositionTop?: boolean;
+  objectPosition?: string;
 }
 
 export default function ServiceCard({ 
@@ -20,7 +22,9 @@ export default function ServiceCard({
   features, 
   ctaText, 
   onCtaClick,
-  backgroundColor = "bg-white"
+  backgroundColor = "bg-white",
+  imagePositionTop = false,
+  objectPosition
 }: ServiceCardProps) {
   return (
     <div className={`${backgroundColor} rounded-2xl p-8 shadow-lg smooth-transition hover:shadow-xl`}>
@@ -30,7 +34,12 @@ export default function ServiceCard({
         <p className="text-foreground/70 mb-6">{description}</p>
       </div>
       
-      <img src={image} alt={title} className="rounded-xl mb-6 w-full h-48 object-cover" />
+      <img
+        src={image}
+        alt={title}
+        className={`rounded-xl mb-6 w-full h-48 object-cover${imagePositionTop ? ' object-top' : ''}`}
+        style={objectPosition ? { objectPosition } : undefined}
+      />
       
       <ul className="space-y-2 mb-6">
         {features.map((feature, index) => (
