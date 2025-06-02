@@ -311,7 +311,7 @@ export default function Treatments() {
         {/* Step 3: Stick the nav under the header with floating effect */}
         <nav
           ref={navRef}
-          className="sticky z-30 flex justify-center mt-10"
+          className="sticky z-30 flex justify-center mt-9"
           style={{ top: "calc(var(--header-h, 80px) + 1.5rem)" }}
         >
           <div className="flex gap-2 px-2 py-1 rounded-full border border-muted-foreground/10 bg-white/80 shadow-md backdrop-blur supports-[backdrop-filter]:bg-white/60 -translate-y-1/2">
@@ -343,7 +343,7 @@ export default function Treatments() {
         {/* Signature Offers Section */}
         <div className="mb-20">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold font-serif mb-2 tracking-wider text-primary">Signature One-Time Offers</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold font-serif mb-3 tracking-wider text-primary">Signature One-Time Offers</h2>
             <p className="text-lg text-muted-foreground">Exclusive one-time experiences to refresh, restore, and revitalise</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
