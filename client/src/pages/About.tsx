@@ -33,7 +33,7 @@ export default function About() {
               </div>
               <div>
                 <h2 className="text-3xl font-serif font-bold mb-4">Dr. Terrell Okhiria</h2>
-                <p className="text-lg text-primary mb-4">GP Trainee & Aesthetic Medicine Doctor</p>
+                <p className="text-lg text-primary mb-4">GP Trainee & Aesthetic Doctor</p>
                 <p className="text-foreground/70 mb-6 leading-relaxed">
                   Dr. Terrell Okhiria is a medical doctor and aesthetics specialist focused on regenerative, science-led skin treatments. With a background in emergency medicine and GP training, he blends clinical expertise with an eye for natural, understated results.
                 </p>
