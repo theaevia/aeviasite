@@ -98,14 +98,6 @@ export default function Navigation() {
                 Journal
               </span>
             </Link>
-            <Link href="/consultations">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                Consultations
-              </span>
-            </Link>
           </div>
           
           {/* Right side icons */}
@@ -162,6 +154,14 @@ export default function Navigation() {
                   Mind
                 </span>
               </Link>
+              <Link href="/consultations">
+                <span onClick={handleLinkClick} className={cn(
+                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
+                )}>
+                  Consultations
+                </span>
+              </Link>
               <Link href="/about">
                 <span onClick={handleLinkClick} className={cn(
                   "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
@@ -176,14 +176,6 @@ export default function Navigation() {
                   isActive("/journal") ? "text-primary font-semibold" : "text-foreground"
                 )}>
                   Journal
-                </span>
-              </Link>
-              <Link href="/consultations">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Consultations
                 </span>
               </Link>
               
