@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Leaf, Brain, Clock, PoundSterling, Calendar, Gift, Video, MapPin, Phone, Mail } from "lucide-react";
+import { Leaf, Brain, Clock, PoundSterling, Calendar, Gift, Target, MapPin, Phone, Mail } from "lucide-react";
 import { useEffect } from "react";
 
 export default function Contact() {
@@ -91,8 +91,8 @@ export default function Contact() {
                   <span className="text-foreground/70">Complimentary (no charge)</span>
                 </div>
                 <div className="flex items-center">
-                  <Video className="text-primary mr-3 h-5 w-5" />
-                  <span className="text-foreground/70">Virtual meeting via Zoom</span>
+                  <Target className="text-primary mr-3 h-5 w-5" />
+                  <span className="text-foreground/70">Personalized coaching strategy discussion</span>
                 </div>
               </div>
               
