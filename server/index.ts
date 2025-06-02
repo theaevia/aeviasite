@@ -20,7 +20,16 @@ app.use(helmet({
       "default-src": ["'self'"],
       "img-src": ["'self'", "data:", "https:", "blob:"],
       "frame-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com", "https://www.googletagmanager.com"],
-      "connect-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com", "https://api.calendly.com", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
+      "connect-src": [
+        "'self'",
+        "https://calendly.com",
+        "https://www.calendly.com",
+        "https://assets.calendly.com",
+        "https://api.calendly.com",
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com",
+        "https://region1.google-analytics.com" // Required for GA4
+      ],
       "script-src": [
         "'self'",
         "'unsafe-inline'", // Required for GTM and inline scripts
@@ -39,7 +48,7 @@ app.use(helmet({
         "'self'",
         "'unsafe-inline'", // Required for dynamic styles
         "https://assets.calendly.com",
-        "https://fonts.googleapis.com"
+        "https://fonts.googleapis.com" // Explicitly allow Google Fonts stylesheets
       ],
       "style-src-elem": [
         "'self'",
@@ -55,8 +64,10 @@ app.use(helmet({
       "form-action": ["'self'"], // Restricts form submissions to same origin
       "base-uri": ["'self'"], // Restricts base tag to same origin
       "object-src": ["'none'"], // Prevents object/embed/applet tags
-      "upgrade-insecure-requests": [], // Upgrades HTTP to HTTPS
+      "upgrade-insecure-requests": null, // Upgrades HTTP to HTTPS (boolean directive)
+      "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [], // CSP violation reporting in production
     },
+    reportOnly: false, // Set to true to test CSP without blocking
   },
 }));
 app.use(express.json({ limit: '1mb' }));
@@ -95,6 +106,13 @@ app.use((req, res, next) => {
   });
 
   next();
+});
+
+// Add CSP report endpoint
+app.post('/api/csp-report', express.json({ type: 'application/csp-report' }), (req, res) => {
+  const report = req.body;
+  log(`CSP Violation: ${JSON.stringify(report)}`, "warn");
+  res.status(204).end();
 });
 
 (async () => {
