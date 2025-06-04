@@ -42,8 +42,10 @@ export default function About() {
                   <h2 className="text-3xl font-serif font-bold mb-4">Dr. Terrell Okhiria</h2>
                   <p className="text-lg text-primary mb-4">GP Trainee & Aesthetic Doctor</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
-                    Dr. Terrell Okhiria is a medical doctor and aesthetics specialist focused on regenerative, science-led skin treatments. With a background in emergency medicine and GP training, he blends clinical expertise with an eye for natural, understated results.
-                  </p>
+                    Dr. Terrell Okhiria is a medical doctor and GP trainee based in North Central London. He holds an MBBS and intercalated BSc from Imperial College London and is certified in advanced aesthetic medicine. With a strong foundation in clinical medicine and a deep understanding of skin physiology, he specialises in regenerative, science-led treatments that support long-term skin health and natural rejuvenation.
+                    <br /><br />
+                    Known for his calm hands and precise technique, Dr. Terrell blends medical experience with a refined aesthetic sensibility — offering treatments that are both effective and understated. His approach is rooted in evidence-based care and tailored to each individual. As a co-founder of The Aevia, he is committed to raising the standard of modern aesthetics through doctor-led, research-driven practice.
+                </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
                       <GraduationCap className="text-primary mr-3 h-5 w-5" />
@@ -67,7 +69,7 @@ export default function About() {
                   <h2 className="text-3xl font-serif font-bold mb-4">Dr. Renee Okhiria</h2>
                   <p className="text-lg text-primary mb-4">Medical & Aesthetic Doctor</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
-                    Dr. Renee combines artistic vision with medical precision to deliver natural-looking aesthetic results. Her philosophy centers on enhancing each patient's unique beauty through minimally invasive, scientifically-proven treatments.
+                  Dr. Renée Okhiria is a qualified medical doctor with an MBBS from the University of Manchester and a BSc from Imperial College London. She holds advanced certification in aesthetic medicine, with a focus on non-surgical facial rejuvenation. Known for her artistic eye and meticulous technique, Dr. Renée combines medical precision with creative vision to deliver refined, natural-looking results. Her approach focuses on enhancing each patient’s unique features through evidence-based, minimally invasive treatments—prioritising elegance, harmony, and long-term skin health.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
@@ -106,7 +108,7 @@ export default function About() {
                   <h2 className="text-3xl font-serif font-bold mb-4">Dr. Manu Sidhu</h2>
                   <p className="text-lg text-primary mb-4">Medical Doctor & Performance Coach</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
-                    Dr. Manu bridges the gap between medicine and high-performance coaching, helping executives and professionals unlock their full potential. His evidence-based approach to mindset transformation creates lasting behavioral change.
+                  Dr. Manu Okhiria is a medical doctor and certified performance coach with an MBBS and a BSc from Imperial College London. He brings a deep understanding of brain science and human behaviour to his work—helping professionals and high-performers unlock clarity, consistency, and long-term growth. With a special interest in mindset and mental wellbeing, Manu blends clinical insight with evidence-based coaching to guide lasting behavioural transformation. He is the author of The Mind Explored, host of the MindTech podcast, and a clinical advisor to the wellbeing platform Pareful.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
@@ -115,7 +117,7 @@ export default function About() {
                     </div>
                     <div className="flex items-center text-foreground/70">
                       <IdCard className="text-primary mr-3 h-5 w-5" />
-                      Psychiatric Doctor, High-Performance Coach
+                      Medical Doctor, High-Performance Coach
                     </div>
                     <div className="flex items-center text-foreground/70">
                       <Award className="text-primary mr-3 h-5 w-5" />
