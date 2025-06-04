@@ -44,7 +44,7 @@ export default function About() {
                   <p className="text-foreground/70 mb-6 leading-relaxed">
                     Dr. Terrell Okhiria is a medical doctor and GP trainee based in North Central London. He holds an MBBS and intercalated BSc from Imperial College London and is certified in advanced aesthetic medicine. With a strong foundation in clinical medicine and a deep understanding of skin physiology, he specialises in regenerative, science-led treatments that support long-term skin health and natural rejuvenation.
                     <br /><br />
-                    Known for his calm hands and precise technique, Dr. Terrell blends medical experience with a refined aesthetic sensibility — offering treatments that are both effective and understated. His approach is rooted in evidence-based care and tailored to each individual. As a co-founder of The Aevia, he is committed to raising the standard of modern aesthetics through doctor-led, research-driven practice.
+                    Known for his calm hands and precise technique, Dr. Terrell blends medical experience with a refined aesthetic taste, offering treatments that are both effective and understated. His approach is rooted in evidence-based care and tailored to each individual. As a co-founder of The Aevia, he is committed to raising the standard of modern aesthetics through doctor-led, research-driven practice.
                 </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
