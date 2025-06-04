@@ -20,7 +20,8 @@ export default function SEO({
   type = 'website',
 }: SEOProps) {
   const [location] = useLocation();
-  const canonicalUrl = `${BASE_URL}${location === '/' ? '' : location}`;
+  const canonicalPath = location.split(/[?#]/)[0];
+  const canonicalUrl = `${BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
 
   return (
     <Helmet>
