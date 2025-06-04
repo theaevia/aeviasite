@@ -69,7 +69,7 @@ export default function About() {
                   <h2 className="text-3xl font-serif font-bold mb-4">Dr. Renee Okhiria</h2>
                   <p className="text-lg text-primary mb-4">Medical & Aesthetic Doctor</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
-                  Dr. Renée Okhiria is a qualified medical doctor with an MBBS from the University of Manchester and a BSc from Imperial College London. She holds advanced certification in aesthetic medicine, with a focus on non-surgical facial rejuvenation. Known for her artistic eye and meticulous technique, Dr. Renée combines medical precision with creative vision to deliver refined, natural-looking results. Her approach focuses on enhancing each patient’s unique features through evidence-based, minimally invasive treatments—prioritising elegance, harmony, and long-term skin health.
+                  Dr. Renée Okhiria is a qualified medical doctor with an MBBS from the University of Manchester and a BSc from Imperial College London. She holds advanced certification in aesthetic medicine, with a focus on non-surgical facial rejuvenation. Known for her artistic eye and meticulous technique, Dr. Renée combines medical precision with creative vision to deliver refined, natural-looking results. Her approach focuses on enhancing each patient’s unique features through evidence-based, minimally invasive treatments, prioritising elegance, harmony, and long-term skin health.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
@@ -108,7 +108,7 @@ export default function About() {
                   <h2 className="text-3xl font-serif font-bold mb-4">Dr. Manu Sidhu</h2>
                   <p className="text-lg text-primary mb-4">Medical Doctor & Performance Coach</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
-                  Dr. Manu Okhiria is a medical doctor and certified performance coach with an MBBS and a BSc from Imperial College London. He brings a deep understanding of brain science and human behaviour to his work — helping professionals and high-performers unlock clarity, consistency, and long-term growth. With a special interest in mindset and mental wellbeing, Manu blends clinical insight with evidence-based coaching to guide lasting behavioural transformation. He is the author of The Mind Explored, host of the MindTech podcast, and a clinical advisor to the wellbeing platform Pareful.
+                  Dr. Manu Okhiria is a medical doctor and certified performance coach with an MBBS and a BSc from Imperial College London. He brings a deep understanding of brain science and human behaviour to his work, helping professionals and high-performers unlock clarity, consistency, and long-term growth. With a special interest in mindset and mental wellbeing, Manu blends clinical insight with evidence-based coaching to guide lasting behavioural transformation. He is the author of The Mind Explored, host of the MindTech podcast, and a clinical advisor to the wellbeing platform Pareful.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
