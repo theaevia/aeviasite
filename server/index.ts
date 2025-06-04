@@ -134,22 +134,28 @@ app.post('/api/csp-report', express.json({ type: 'application/csp-report' }), (r
     } else {
       // Handle case sensitivity and index.html variations
       app.use((req, res, next) => {
-        const url = req.url.toLowerCase();
-        // Redirect index.html to directory
-        if (url.endsWith('/index.html')) {
-          return res.redirect(301, url.replace(/\/index\.html$/, ''));
+        const { pathname, search } = new URL(req.originalUrl, 'http://dummy');
+        const lowerPath = pathname.toLowerCase();
+
+        // Redirect index.html requests to their directory
+        if (lowerPath.endsWith('/index.html')) {
+          return res.redirect(301, lowerPath.replace(/\/index\.html$/, ''));
         }
-        // Redirect uppercase URLs to lowercase
-        if (url !== req.url) {
-          return res.redirect(301, url);
+
+        // Only lowercase paths that don't point to a file
+        if (pathname !== lowerPath && path.extname(pathname) === '') {
+          return res.redirect(301, lowerPath + search);
         }
+
         next();
       });
 
-      // Serve static files from the public directory
+      // Serve static files from the public directory but let the SPA handler
+      // return index.html so we can inject canonical tags
       app.use(express.static(path.join(__dirname, 'public'), {
-        setHeaders: (res, path) => {
-          if (path.endsWith('.html')) {
+        index: false,
+        setHeaders: (res, filePath) => {
+          if (filePath.endsWith('.html')) {
             res.setHeader('Cache-Control', 'no-cache');
           } else {
             res.setHeader('Cache-Control', 'public, max-age=31536000');
