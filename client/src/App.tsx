@@ -12,6 +12,7 @@ import Journal from "@/pages/Journal";
 import Consultations from "@/pages/Consultations";
 import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
+import { HelmetProvider } from 'react-helmet-async';
 
 function Router() {
   return (
@@ -32,12 +33,14 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 

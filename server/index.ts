@@ -6,11 +6,13 @@ import { setupVite, serveStatic, log } from "./vite";
 import helmet from "helmet";
 import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
+const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${PORT}`;
 
 // Security middleware
 app.use(helmet({
@@ -130,14 +132,68 @@ app.post('/api/csp-report', express.json({ type: 'application/csp-report' }), (r
     if (!isProd) {
       await setupVite(app, server);
     } else {
+      // Handle case sensitivity and index.html variations
+      app.use((req, res, next) => {
+        const url = req.url.toLowerCase();
+        // Redirect index.html to directory
+        if (url.endsWith('/index.html')) {
+          return res.redirect(301, url.replace(/\/index\.html$/, ''));
+        }
+        // Redirect uppercase URLs to lowercase
+        if (url !== req.url) {
+          return res.redirect(301, url);
+        }
+        next();
+      });
+
       // Serve static files from the public directory
-      app.use(express.static(path.join(__dirname, 'public')));
+      app.use(express.static(path.join(__dirname, 'public'), {
+        setHeaders: (res, path) => {
+          if (path.endsWith('.html')) {
+            res.setHeader('Cache-Control', 'no-cache');
+          } else {
+            res.setHeader('Cache-Control', 'public, max-age=31536000');
+          }
+        }
+      }));
+      
       // Serve assets from the assets directory
-      app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+      app.use('/assets', express.static(path.join(__dirname, 'public/assets'), {
+        maxAge: '1y'
+      }));
+
+      // Handle trailing slashes
+      app.use((req, res, next) => {
+        const url = req.url;
+        // Remove trailing slash except for root
+        if (url.length > 1 && url.endsWith('/')) {
+          return res.redirect(301, url.slice(0, -1));
+        }
+        // Add trailing slash to root
+        if (url === '') {
+          return res.redirect(301, '/');
+        }
+        next();
+      });
+
       // Fallback to index.html for client-side routing
-      app.get('*', (_req, res) =>
-        res.sendFile(path.join(__dirname, 'public', 'index.html'))
-      );
+      app.get('*', (req, res) => {
+        const canonicalUrl = `${BASE_URL}${req.path === '/' ? '' : req.path}`;
+        // Set both header and HTML for canonical URL
+        res.setHeader('Link', `<${canonicalUrl}>; rel="canonical"`);
+        
+        // Read the index.html file
+        const indexPath = path.join(__dirname, 'public', 'index.html');
+        fs.readFile(indexPath, 'utf8', (err, data) => {
+          if (err) {
+            return res.status(500).send('Error loading page');
+          }
+          // Insert canonical link tag
+          const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
+          const modifiedHtml = data.replace('</head>', `${canonicalTag}\n</head>`);
+          res.send(modifiedHtml);
+        });
+      });
     }
 
     server.listen({
