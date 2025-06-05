@@ -117,13 +117,31 @@ export default function Navigation() {
           
           {/* Right side icons */}
           <div className="justify-self-end hidden md:flex items-center space-x-6">
-            <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <a
+              href="https://instagram.com/the.aevia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="The Aevia on Instagram"
+              className="text-foreground hover:text-primary smooth-transition"
+            >
               <Instagram className="h-5 w-5" strokeWidth={3} />
             </a>
-            <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <a
+              href="https://www.tiktok.com/@the.aevia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="The Aevia on TikTok"
+              className="text-foreground hover:text-primary smooth-transition"
+            >
               <TikTokIcon className="h-5 w-5" />
             </a>
-            <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <a
+              href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Reviews"
+              className="text-foreground hover:text-primary smooth-transition"
+            >
               <FaGoogle className="h-4 w-4 fill-current" />
             </a>
             <Link href="/consultations">
@@ -137,6 +155,7 @@ export default function Navigation() {
           <div className="md:hidden col-span-2 justify-self-end">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle mobile menu"
               className="text-foreground hover:text-primary smooth-transition"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
