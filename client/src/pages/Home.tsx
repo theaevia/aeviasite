@@ -75,11 +75,12 @@ transformation.
                   <source srcSet={clinicImage} type="image/webp" />
                   {/* If you have a JPEG fallback, add it here: */}
                   {/* <source srcSet={clinicImageJpg} type="image/jpeg" /> */}
-                  <img 
+                  <img
                     src={clinicImage}
-                    alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team" 
+                    alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team"
                     className="rounded-2xl shadow-lg w-full max-w-2xl h-auto object-cover"
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                     width="800"
                     height="533"
                     sizes="(max-width: 1024px) 100vw, 800px"

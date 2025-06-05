@@ -32,9 +32,12 @@ export default function About() {
               {/* Dr. Terrell */}
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <img 
+                  <img
                     src={terrellImage}
-                    alt="Dr. Terrell - Regenerative Medicine Specialist" 
+                    alt="Dr. Terrell - Regenerative Medicine Specialist"
+                    width="600"
+                    height="800"
+                    loading="lazy"
                     className="rounded-2xl shadow-lg w-full h-auto"
                   />
                 </div>
@@ -87,9 +90,12 @@ export default function About() {
                   </div>
                 </div>
                 <div>
-                  <img 
+                  <img
                     src={reneeImage}
-                    alt="Dr. Renee - Aesthetic Medicine Expert" 
+                    alt="Dr. Renee - Aesthetic Medicine Expert"
+                    width="600"
+                    height="800"
+                    loading="lazy"
                     className="rounded-2xl shadow-lg w-full h-auto"
                   />
                 </div>
@@ -98,9 +104,12 @@ export default function About() {
               {/* Dr. Manu */}
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <img 
+                  <img
                     src={manuImage}
-                    alt="Dr. Manu - Performance and Transformative Coach" 
+                    alt="Dr. Manu - Performance and Transformative Coach"
+                    width="480"
+                    height="600"
+                    loading="lazy"
                     className="rounded-2xl shadow-lg w-full h-auto"
                   />
                 </div>
