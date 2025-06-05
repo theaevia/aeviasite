@@ -83,9 +83,9 @@ const treatmentCategories: TreatmentCategory[] = [
       },
       {
         name: "Virtual Consultation",
-        description: "A full-face skin consultation for first-time clients. Includes clinical discussion, skin assessment and tailored treatment planning. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
+        description: "A full-face skin consultation for first-time clients. Includes clinical discussion, skin assessment and tailored treatment planning.",
         duration: "20min",
-        price: "£30",
+        price: "Complementary",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23069103&share&pId=2507365"
       },
     ]
