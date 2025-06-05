@@ -32,11 +32,12 @@ export default function Mind() {
               </div>
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
-                  <img 
+                  <img
                     src={mindHeroImage}
-                    alt="Aevia Mind clinic showcasing desk during a coaching session" 
+                    alt="Aevia Mind clinic showcasing desk during a coaching session"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                     loading="eager"
+                    fetchPriority="high"
                     width={800}
                     height={600}
                   />

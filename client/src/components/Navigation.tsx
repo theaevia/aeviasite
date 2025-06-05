@@ -37,14 +37,18 @@ export default function Navigation() {
           <div className="justify-self-start">
             <Link href="/">
               <div onClick={handleLinkClick} className="cursor-pointer group relative smooth-transition flex-shrink-0">
-                <img 
-                  src={logoBlack} 
-                  alt="The Aevia" 
+                <img
+                  src={logoBlack}
+                  alt="The Aevia"
+                  width="916"
+                  height="500"
                   className="h-16 w-auto group-hover:opacity-0 smooth-transition"
                 />
-                <img 
-                  src={logoGold} 
-                  alt="The Aevia" 
+                <img
+                  src={logoGold}
+                  alt="The Aevia"
+                  width="916"
+                  height="500"
                   className="h-16 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
                 />
               </div>

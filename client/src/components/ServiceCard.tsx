@@ -37,6 +37,9 @@ export default function ServiceCard({
       <img
         src={image}
         alt={title}
+        width="800"
+        height="533"
+        loading="lazy"
         className={`rounded-xl mb-6 w-full h-48 object-cover${imagePositionTop ? ' object-top' : ''}`}
         style={objectPosition ? { objectPosition } : undefined}
       />
