@@ -75,18 +75,18 @@ const treatmentCategories: TreatmentCategory[] = [
     description: "Services to guide new clients through their skin treatment journey with us. Fee redeemable against first treatment.",
     treatments: [
       {
-        name: "In Clinic Consultation",
-        description: "A full-face skin consultation for first-time clients. Includes clinical facial mapping and treatment planning. Option to proceed with treatment during same visit. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
-        duration: "20min",
-        price: "£50",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23094023&share&pId=2507365"
-      },
-      {
         name: "Virtual Consultation",
         description: "A full-face skin consultation for first-time clients. Includes clinical discussion, skin assessment and tailored treatment planning.",
         duration: "20min",
         price: "Complementary",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23069103&share&pId=2507365"
+      },
+      {
+        name: "In Clinic Consultation",
+        description: "A full-face skin consultation for first-time clients. Includes clinical facial mapping and treatment planning. Option to proceed with treatment during same visit. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
+        duration: "20min",
+        price: "£50",
+        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23094023&share&pId=2507365"
       },
     ]
   },
