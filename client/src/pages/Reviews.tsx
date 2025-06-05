@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
 import SEO from "@/components/SEO";
+import reviewsHero from "@assets/hero_images/reviews-hero.webp";
 
 export default function Reviews() {
   return (
@@ -11,7 +12,7 @@ export default function Reviews() {
       <SEO 
         title="Client Reviews - The Aevia"
         description="Read authentic reviews from our clients about their experiences with our medical aesthetics treatments and performance coaching at The Aevia clinic in Kings Cross."
-        image="/hero_images/reviews-hero.webp"
+        image={reviewsHero}
       />
       <div className="min-h-screen py-20">
         <div className="max-w-6xl mx-auto px-6">

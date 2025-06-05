@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Link } from "wouter";
 import { Calendar, Clock, Tag } from "lucide-react";
 import SEO from "@/components/SEO";
+import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 
 export default function Journal() {
   return (
@@ -10,7 +11,7 @@ export default function Journal() {
       <SEO 
         title="The Aevia Journal - Expert Insights on Skin & Mind"
         description="Explore our journal for expert insights on medical aesthetics, performance coaching, and holistic wellness. Stay informed with the latest research and trends from our doctor-led team."
-        image="/hero_images/aevia-clinic3.webp"
+        image={clinicImage}
       />
       <div className="min-h-screen">
         {/* Hero Section */}

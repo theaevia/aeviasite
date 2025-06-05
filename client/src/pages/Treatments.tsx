@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import SEO from "@/components/SEO";
+import skinModelOg from "@assets/hero_images/skin-model-2.webp";
 
 interface Treatment {
   name: string;
@@ -300,7 +301,7 @@ export default function Treatments() {
       <SEO 
         title="Medical Aesthetics Treatments - The Aevia"
         description="Discover our range of doctor-led medical aesthetics treatments. From polynucleotides to skin boosters, experience science-backed treatments for natural, lasting results."
-        image="/hero_images/skin-model-2.webp"
+        image={skinModelOg}
       />
       <div className="min-h-screen">
         {/* Hero Section */}

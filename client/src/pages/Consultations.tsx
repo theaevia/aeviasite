@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import SEO from "@/components/SEO";
+import clinicImage2 from "@assets/hero_images/aevia-clinic2.webp";
 
 export default function Consultations() {
   const [location, setLocation] = useLocation();
@@ -54,7 +55,7 @@ export default function Consultations() {
       <SEO 
         title="Book Your Consultation - The Aevia"
         description="Book your personalized consultation with our expert doctors. Choose between medical aesthetics and performance coaching consultations at our Kings Cross clinic."
-        image="/hero_images/aevia-clinic2.webp"
+        image={clinicImage2}
       />
       <div className="min-h-screen">
         {/* Hero Section */}

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Clock, Check, Banknote } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import skinModelImage from "@assets/hero_images/skin-model.webp";
+import skinModelOg from "@assets/hero_images/skin-model-2.webp";
 import SEO from "@/components/SEO";
 
 export default function Skin() {
@@ -11,7 +12,7 @@ export default function Skin() {
       <SEO 
         title="Aevia Skin - Medical Aesthetics & Regenerative Treatments"
         description="Experience science-backed skin rejuvenation with our doctor-led medical aesthetics. From polynucleotides to skin boosters, discover treatments that enhance your natural beauty."
-        image="/hero_images/skin-model-2.webp"
+        image={skinModelOg}
       />
       <div className="min-h-screen">
         {/* Hero Section */}

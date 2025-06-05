@@ -10,8 +10,8 @@ export default function About() {
       <SEO 
         title="About The Aevia - Meet Our Doctor-Led Team"
         description="Meet the doctor-led team behind The Aevia. Our founders combine medical expertise with a passion for natural results and transformative coaching in Kings Cross, London."
-        image="/about_pics/terrell-pic3.webp"
-      /> 
+        image={terrellImage}
+      />
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="bg-secondary py-20 lg:py-32">

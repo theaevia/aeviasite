@@ -15,7 +15,7 @@ export default function Home() {
       <SEO 
         title="The Aevia - Doctor-Led Transformation for Skin and Mind"
         description="Medical aesthetics and performance coaching for professionals who demand excellence. Based in Kings Cross, London. Book your consultation today."
-        image="/aevia-clinic3.webp"
+        image={clinicImage}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
