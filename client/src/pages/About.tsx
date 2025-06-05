@@ -7,10 +7,10 @@ import manuImage from "@assets/about_pics/manu-pic.webp";
 export default function About() {
   return (
     <>
-      <SEO 
+      <SEO
         title="About The Aevia - Meet Our Doctor-Led Team"
         description="Meet the doctor-led team behind The Aevia. Our founders combine medical expertise with a passion for natural results and transformative coaching in Kings Cross, London."
-        image="/about_pics/terrell-pic3.webp"
+        image={terrellImage}
       />
       <div className="min-h-screen">
         {/* Hero Section */}

@@ -9,10 +9,10 @@ import SEO from "@/components/SEO";
 export default function Mind() {
   return (
     <>
-      <SEO 
+      <SEO
         title="Aevia Mind - Performance & Transformative Coaching"
         description="Doctor-led performance coaching for professionals seeking clarity, confidence, and agency. Transform your mindset and achieve your full potential with our evidence-based approach."
-        image="/hero_images/mind-hero.webp"
+        image={mindHeroImage}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
