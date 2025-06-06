@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Dna, Droplet, Sparkles, Clock, Check, Banknote } from "lucide-react";
+import { Dna, Droplet, Sparkles, Clock, Check, Banknote, Gift, Camera } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import skinModelImage from "@assets/hero_images/skin-model.webp";
 import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
@@ -121,12 +121,12 @@ export default function Skin() {
                     <h4 className="font-semibold text-foreground mb-3">Pricing:</h4>
                     <ul className="space-y-2 text-foreground/70">
                       <li className="flex items-center">
-                        <Banknote className="h-4 w-4 text-primary mr-3" />
-                        £50 one-time fee
+                        <Gift className="h-4 w-4 text-primary mr-3" />
+                        Complimentary (usually £30, now complimentary for first-time clients)
                       </li>
                       <li className="flex items-center">
-                        <Banknote className="h-4 w-4 text-primary mr-3" />
-                        Fully redeemable against your first treatment
+                        <Camera className="h-4 w-4 text-primary mr-3" />
+                        Virtual consultation
                       </li>
                     </ul>
                   </div>
