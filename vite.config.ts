@@ -41,11 +41,11 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
         },
         output: {
           assetFileNames: (assetInfo) => {
-            if (!assetInfo.name) return 'assets/[name].[hash][extname]';
+            if (!assetInfo.name) return 'assets/[name][extname]';
             if (assetInfo.name.includes('public/')) {
               return '[name][extname]';
             }
-            return 'assets/[name].[hash][extname]';
+            return 'assets/[name][extname]';
           }
         }
       },
