@@ -8,7 +8,7 @@ import Home from "@/pages/Home";
 import Skin from "@/pages/Skin";
 import Mind from "@/pages/Mind";
 import About from "@/pages/About";
-import Journal from "@/pages/Journal";
+import JournalPlaceholder from "@/pages/JournalPlaceholder";
 import Consultations from "@/pages/Consultations";
 import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
@@ -22,7 +22,7 @@ function Router() {
         <Route path="/skin" component={Skin} />
         <Route path="/mind" component={Mind} />
         <Route path="/about" component={About} />
-        <Route path="/journal" component={Journal} />
+        <Route path="/journal" component={JournalPlaceholder} />
         <Route path="/consultations" component={Consultations} />
         <Route path="/treatments" component={Treatments} />
         <Route component={NotFound} />

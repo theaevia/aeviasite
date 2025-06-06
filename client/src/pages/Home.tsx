@@ -6,6 +6,7 @@ import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
 import SEO from "@/components/SEO";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
+import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
 import skinModel2 from "@assets/hero_images/skin-model-2.webp";
 
@@ -72,18 +73,20 @@ transformation.
             <div className="grid md:grid-cols-3 gap-8 mb-16">
               <div className="md:col-span-3 flex justify-center mb-12">
                 <picture>
-                  <source srcSet={clinicImage} type="image/webp" />
-                  {/* If you have a JPEG fallback, add it here: */}
-                  {/* <source srcSet={clinicImageJpg} type="image/jpeg" /> */}
+                  <source
+                    srcSet={`${clinicImage800} 800w, ${clinicImage} 1600w`}
+                    type="image/webp"
+                  />
                   <img
                     src={clinicImage}
+                    srcSet={`${clinicImage800} 800w, ${clinicImage} 1600w`}
                     alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team"
                     className="rounded-2xl shadow-lg w-full max-w-2xl h-auto object-cover"
                     loading="eager"
                     fetchPriority="high"
-                    width="800"
-                    height="533"
-                    sizes="(max-width: 1024px) 100vw, 800px"
+                    width="1600"
+                    height="1200"
+                    sizes="(max-width: 1024px) 100vw, 1600px"
                   />
                 </picture>
               </div>

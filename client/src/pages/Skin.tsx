@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Clock, Check, Banknote } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import skinModelImage from "@assets/hero_images/skin-model.webp";
+import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
+import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
+import skinModel2Image800 from "@assets/hero_images/skin-model-2-800w.webp";
 import SEO from "@/components/SEO";
 
 export default function Skin() {
@@ -31,15 +34,23 @@ export default function Skin() {
               </div>
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
-                  <img
-                    src={skinModelImage}
-                    alt="Female model showcasing regenerative skin treatments results"
-                    className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
-                    loading="eager"
-                    fetchPriority="high"
-                    width={800}
-                    height={600}
-                  />
+                  <picture>
+                    <source
+                      srcSet={`${skinModelImage800} 800w, ${skinModelImage} 1600w`}
+                      type="image/webp"
+                    />
+                    <img
+                      src={skinModelImage}
+                      srcSet={`${skinModelImage800} 800w, ${skinModelImage} 1600w`}
+                      alt="Aevia Skin clinic showcasing skin treatments"
+                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
+                      loading="eager"
+                      fetchPriority="high"
+                      width="1600"
+                      height="1200"
+                      sizes="(max-width: 1024px) 100vw, 1600px"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>

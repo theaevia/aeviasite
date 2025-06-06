@@ -4,6 +4,7 @@ import { Rocket, Lightbulb, Brain, Swords, Check } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import mindHeroImage from "@assets/hero_images/mind-hero.webp";
+import mindHeroImage800 from "@assets/hero_images/mind-hero-800w.webp";
 import SEO from "@/components/SEO";
 
 export default function Mind() {
@@ -32,15 +33,23 @@ export default function Mind() {
               </div>
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
-                  <img
-                    src={mindHeroImage}
-                    alt="Aevia Mind clinic showcasing desk during a coaching session"
-                    className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
-                    loading="eager"
-                    fetchPriority="high"
-                    width={800}
-                    height={600}
-                  />
+                  <picture>
+                    <source
+                      srcSet={`${mindHeroImage800} 800w, ${mindHeroImage} 1600w`}
+                      type="image/webp"
+                    />
+                    <img
+                      src={mindHeroImage}
+                      srcSet={`${mindHeroImage800} 800w, ${mindHeroImage} 1600w`}
+                      alt="Aevia Mind clinic showcasing desk during a coaching session"
+                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
+                      loading="eager"
+                      fetchPriority="high"
+                      width="1600"
+                      height="1200"
+                      sizes="(max-width: 1024px) 100vw, 1600px"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
