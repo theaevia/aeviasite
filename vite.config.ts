@@ -26,7 +26,10 @@ export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> 
       alias: {
         '@': path.resolve(__dirname, 'client/src'),
         '@shared': path.resolve(__dirname, 'shared'),
-        '@assets': path.resolve(__dirname, 'client/assets')
+        '@assets': path.resolve(__dirname, 'client/assets'),
+        '@/components': path.resolve(__dirname, 'client/src/components'),
+        '@/pages': path.resolve(__dirname, 'client/src/pages'),
+        '@/lib': path.resolve(__dirname, 'client/src/lib')
       },
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.jpg', '.jpeg', '.png', '.svg', '.webp']
     },
