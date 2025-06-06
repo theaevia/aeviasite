@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -12,6 +12,43 @@ import { Check } from "lucide-react";
 import SEO from "@/components/SEO";
 
 export default function Consultations() {
+  const [location, setLocation] = useLocation();
+  const searchParams = new URLSearchParams(window.location.search);
+  const type = searchParams.get("type") || "skin";
+  const packageType = searchParams.get("package");
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  // Add scroll handler
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+    if (type === 'mind' || type === 'skin') {
+      const sectionId = type === 'mind' ? 'mind-booking' : 'skin-booking';
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const headerH = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue('--header-h')
+        ) || 80; // fallback to 80px if not set
+        const elementPosition = section.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerH;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, []);
+
   return (
     <>
       <SEO 
@@ -50,8 +87,8 @@ export default function Consultations() {
                     <span className="text-foreground/70">20-minute virtual consultation</span>
                   </div>
                   <div className="flex items-center">
-                    <PoundSterling className="text-primary mr-3 h-5 w-5" />
-                    <span className="text-foreground/70">£30 (fully redeemable against first treatment)</span>
+                    <Gift className="text-primary mr-3 h-5 w-5" />
+                    <span className="text-foreground/70">Complimentary (no charge)</span>
                   </div>
                   <div className="flex items-center">
                     <Calendar className="text-primary mr-3 h-5 w-5" />
