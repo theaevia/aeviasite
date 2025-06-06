@@ -117,13 +117,13 @@ export default function Navigation() {
           
           {/* Right side icons */}
           <div className="justify-self-end hidden md:flex items-center space-x-6">
-            <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <Instagram className="h-5 w-5" strokeWidth={3} />
             </a>
-            <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <TikTokIcon className="h-5 w-5" />
             </a>
-            <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <FaGoogle className="h-4 w-4 fill-current" />
             </a>
             <Link href="/consultations">
@@ -138,6 +138,7 @@ export default function Navigation() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-foreground hover:text-primary smooth-transition"
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -206,13 +207,13 @@ export default function Navigation() {
               </Link>
               
               <div className="flex items-center space-x-6 pt-4">
-                <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                   <Instagram className="h-5 w-5" strokeWidth={2.5} />
                 </a>
-                <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                   <TikTokIcon className="h-5 w-5" />
                 </a>
-                <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                   <FaGoogle className="h-4 w-4 fill-current" />
                 </a>
                 <Link href="/consultations">
