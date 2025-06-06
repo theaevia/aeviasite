@@ -105,7 +105,7 @@ export default function Consultations() {
                   <div className="w-full max-w-full overflow-x-auto">
                     <div
                       className="calendly-inline-widget"
-                      data-url="https://calendly.com/admin-theaevia/aevia-skin-consultation?hide_event_type_details=1&hide_gdpr_banner=1&text_color=2d2d2d&primary_color=c5a87a"
+                      data-url="https://calendly.com/theaevia/aevia-skin-consultation?hide_event_type_details=1&hide_gdpr_banner=1&text_color=2d2d2d&primary_color=c5a87a"
                       style={{ minWidth: "0", width: "100%", height: "700px" }}
                     ></div>
                   </div>
@@ -144,7 +144,7 @@ export default function Consultations() {
                   <div className="w-full max-w-full overflow-x-auto">
                     <div
                       className="calendly-inline-widget"
-                      data-url="https://calendly.com/admin-theaevia/aevia-skin-consultation-clone?hide_event_type_details=1&hide_gdpr_banner=1&text_color=2d2d2d&primary_color=c5a87a"
+                      data-url="https://calendly.com/theaevia/aevia-skin-consultation-clone?hide_event_type_details=1&hide_gdpr_banner=1&text_color=2d2d2d&primary_color=c5a87a"
                       style={{ minWidth: "0", width: "100%", height: "700px" }}
                     ></div>
                   </div>
