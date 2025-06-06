@@ -63,10 +63,10 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Connect</h4>
             <div className="space-y-4">
               <div className="flex items-center text-sm text-gray-300 space-x-2">
-                <a href="https://instagram.com/the.aevia" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   <Instagram className="h-4 w-4" />
                 </a>
-                <a href="https://www.tiktok.com/@the.aevia" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   <TikTokIcon className="h-4 w-4" />
                 </a>
                 <span className="ml-2">@the.aevia</span>

@@ -14,7 +14,7 @@
   --card-foreground: 0 0% 17%;
   --border: 20 6% 90%;
   --input: 20 6% 90%;
-  --primary: 36 35% 62%; /* #C5A87A */
+  --primary: 36 35% 40%; /* #8A6D42 - improved contrast */
   --primary-foreground: 0 0% 100%;
   --secondary: 43 14% 97%; /* #FAFAF8 */
   --secondary-foreground: 0 0% 17%;
@@ -22,16 +22,16 @@
   --accent-foreground: 0 0% 17%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 60 9% 98%;
-  --ring: 36 35% 62%;
+  --ring: 36 35% 40%;
   --radius: 0.75rem;
-  --chart-1: 36 35% 62%;
+  --chart-1: 36 35% 40%;
   --chart-2: 95 16% 89%;
   --chart-3: 43 14% 97%;
   --chart-4: 25 5% 45%;
   --chart-5: 0 0% 17%;
   --sidebar-background: 0 0% 100%;
   --sidebar-foreground: 0 0% 17%;
-  --sidebar-primary: 36 35% 62%;
+  --sidebar-primary: 36 35% 40%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 43 14% 97%;
   --sidebar-accent-foreground: 0 0% 17%;
