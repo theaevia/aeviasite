@@ -21,7 +21,8 @@ export default function SEO({
   type = 'website',
 }: SEOProps) {
   const [location] = useLocation();
-  const canonicalPath = location.split(/[?#]/)[0];
+  // Preserve query parameters in the canonical URL but strip hash fragments
+  const canonicalPath = location.split('#')[0];
   const canonicalUrl = `${BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
 
   return (

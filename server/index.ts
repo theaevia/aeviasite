@@ -184,7 +184,8 @@ app.post('/api/csp-report', express.json({ type: 'application/csp-report' }), (r
 
       // Fallback to index.html for client-side routing
       app.get('*', (req, res) => {
-        const canonicalUrl = `${BASE_URL}${req.path === '/' ? '' : req.path}`;
+        const pathWithQuery = req.originalUrl.split('#')[0];
+        const canonicalUrl = `${BASE_URL}${pathWithQuery === '/' ? '' : pathWithQuery}`;
         // Set both header and HTML for canonical URL
         res.setHeader('Link', `<${canonicalUrl}>; rel="canonical"`);
         
