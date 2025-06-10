@@ -13,6 +13,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
 const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${PORT}`;
+const VALID_ROUTES = [
+  '/',
+  '/skin',
+  '/mind',
+  '/about',
+  '/journal',
+  '/consultations',
+  '/treatments',
+];
 
 // Security middleware
 app.use(helmet({
@@ -184,8 +193,13 @@ app.post('/api/csp-report', express.json({ type: 'application/csp-report' }), (r
 
       // Fallback to index.html for client-side routing
       app.get('*', (req, res) => {
-        const pathWithQuery = req.originalUrl.split('#')[0];
-        const canonicalUrl = `${BASE_URL}${pathWithQuery === '/' ? '' : pathWithQuery}`;
+        const canonicalUrl = `${BASE_URL}${req.path === '/' ? '' : req.path}`;
+
+        const isFileRequest = path.extname(req.path) !== '';
+        const isKnownRoute = VALID_ROUTES.includes(req.path.toLowerCase());
+
+        res.status(isFileRequest || !isKnownRoute ? 404 : 200);
+
         // Set both header and HTML for canonical URL
         res.setHeader('Link', `<${canonicalUrl}>; rel="canonical"`);
         
