@@ -8,14 +8,14 @@ import SEO from "@/components/SEO";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
-import skinModel2 from "@assets/hero_images/skin-model-2.webp";
+import skinModel4 from "@assets/hero_images/royalty-free-skin4.webp";
 
 export default function Home() {
   return (
     <>
       <SEO 
         title="The Aevia | Aesthetics & Coaching Clinic | King's Cross, London"
-        description="Doctor-led non-surgical treatments and performance coaching for those wishing to look and feel their best, with natural and lasting results. Visit The Aevia in King’s Cross, London."
+        description="Doctor-led non-surgical treatments and performance coaching for those wishing to look and feel their best, with natural and lasting results. Visit The Aevia in King's Cross, London."
         image="/aevia-clinic3.webp"
       />
       <div className="min-h-screen">
@@ -115,12 +115,12 @@ transformation.
                 title="Aevia Skin"
                 subtitle="Medical Aesthetics"
                 description="Science-backed, regenerative approaches that restore your skin's natural quality. Results that feel like you, only fresher."
-                image={skinModel2}
+                image={skinModel4}
                 features={["The Aevia Skin Consultation", "Polynucleotides", "Skin Boosters", "Anti-wrinkle Injections"]}
                 ctaText="Learn More About Skin Treatments"
                 onCtaClick={() => window.location.href = "/skin"}
                 imagePositionTop={false}
-                objectPosition="center 20%"
+                objectPosition="center 30%"
               />
 
               <ServiceCard

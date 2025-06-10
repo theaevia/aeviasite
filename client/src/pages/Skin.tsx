@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Clock, Check, Banknote, Gift, Camera } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
+import skinHeroImage from "@assets/hero_images/royalty-free-skin3.webp";
 import skinModelImage from "@assets/hero_images/skin-model.webp";
 import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
 import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
@@ -14,7 +15,7 @@ export default function Skin() {
       <SEO 
         title="Aevia Skin | Medical Aesthetics | King's Cross, London"
         description="Experience regenerative, science-backed skin treatments led by doctors. For those who value natural results and long-term skin health. King's Cross, London."
-        image="/hero_images/skin-model-2.webp"
+        image="/hero_images/royalty-free-skin4.webp"
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -36,12 +37,11 @@ export default function Skin() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={`${skinModelImage800} 800w, ${skinModelImage} 1600w`}
+                      srcSet={skinHeroImage}
                       type="image/webp"
                     />
                     <img
-                      src={skinModelImage}
-                      srcSet={`${skinModelImage800} 800w, ${skinModelImage} 1600w`}
+                      src={skinHeroImage}
                       alt="Aevia Skin clinic showcasing skin treatments"
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                       loading="eager"
