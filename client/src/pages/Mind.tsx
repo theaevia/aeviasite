@@ -11,8 +11,8 @@ export default function Mind() {
   return (
     <>
       <SEO 
-        title="Aevia Mind - Performance & Transformative Coaching"
-        description="Doctor-led performance coaching for professionals seeking clarity, confidence, and agency. Transform your mindset and achieve your full potential with our evidence-based approach."
+        title="Aevia Mind | Performance Coaching | King's Cross, London"
+        description="Doctor-led coaching for professionals seeking clarity, confidence, and agency. For those who wish to transform their mindset and reach their full potential, with Dr. Manu Sidhu."
         image="/hero_images/mind-hero.webp"
       />
       <div className="min-h-screen">
