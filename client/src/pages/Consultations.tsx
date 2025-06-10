@@ -52,8 +52,8 @@ export default function Consultations() {
   return (
     <>
       <SEO 
-        title="Book Your Consultation - The Aevia"
-        description="Book your personalized consultation with our expert doctors. Choose between medical aesthetics and performance coaching consultations at our Kings Cross clinic."
+        title="The Aevia | Book Your Consultation | King's Cross, London"
+        description="Book your personalised consultation with our expert doctors. Choose between medical aesthetics and performance coaching consultations at our Kings Cross clinic."
         image="/hero_images/aevia-clinic2.webp"
       />
       <div className="min-h-screen">

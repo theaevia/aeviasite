@@ -298,8 +298,8 @@ export default function Treatments() {
   return (
     <>
       <SEO 
-        title="Medical Aesthetics Treatments - The Aevia"
-        description="Discover our range of doctor-led medical aesthetics treatments. From polynucleotides to skin boosters, experience science-backed treatments for natural, lasting results."
+        title="The Aevia | Aesthetic & Coaching Services | King's Cross, London"
+        description="Discover our range of doctor-led medical aesthetics treatments. With a focus on regenerative aesthetics, experience science-backed treatments for natural, lasting results."
         image="/hero_images/skin-model-2.webp"
       />
       <div className="min-h-screen">

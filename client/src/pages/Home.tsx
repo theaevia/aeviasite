@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="The Aevia - Doctor-Led Transformation for Skin and Mind"
-        description="Medical aesthetics and performance coaching for professionals who demand excellence. Based in Kings Cross, London. Book your consultation today."
+        title="The Aevia | Aesthetics & Coaching Clinic | King's Cross, London"
+        description="Doctor-led non-surgical treatments and performance coaching for those wishing to look and feel their best, with natural and lasting results. Visit The Aevia in King’s Cross, London."
         image="/aevia-clinic3.webp"
       />
       <div className="min-h-screen">

@@ -8,7 +8,7 @@ export default function About() {
   return (
     <>
       <SEO 
-        title="About The Aevia - Meet Our Doctor-Led Team"
+        title="The Aevia | Meet Our Doctor-Led Team | King's Cross, London"
         description="Meet the doctor-led team behind The Aevia. Our founders combine medical expertise with a passion for natural results and transformative coaching in Kings Cross, London."
         image="/about_pics/terrell-pic3.webp"
       />

@@ -12,8 +12,8 @@ export default function Skin() {
   return (
     <>
       <SEO 
-        title="Aevia Skin - Medical Aesthetics & Regenerative Treatments"
-        description="Experience science-backed skin rejuvenation with our doctor-led medical aesthetics. From polynucleotides to skin boosters, discover treatments that enhance your natural beauty."
+        title="Aevia Skin | Medical Aesthetics | King's Cross, London"
+        description="Experience regenerative, science-backed skin treatments led by doctors. For those who value natural results and long-term skin health. King's Cross, London."
         image="/hero_images/skin-model-2.webp"
       />
       <div className="min-h-screen">
