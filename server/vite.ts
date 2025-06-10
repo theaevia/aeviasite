@@ -36,10 +36,7 @@ export async function setupVite(app: Express, server: Server) {
       },
     },
     server: serverOptions,
-    appType: "custom",
-    optimizeDeps: {
-      exclude: ['@/components/*', '@/pages/*']
-    }
+    appType: "custom"
   });
 
   app.use(vite.middlewares);
