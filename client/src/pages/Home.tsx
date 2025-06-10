@@ -5,6 +5,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
 import SEO from "@/components/SEO";
+import LocationMap from "@/components/LocationMap";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
@@ -13,7 +14,7 @@ import skinModel4 from "@assets/hero_images/royalty-free-skin4.webp";
 export default function Home() {
   return (
     <>
-      <SEO 
+      <SEO
         title="The Aevia | Aesthetics & Coaching Clinic | King's Cross, London"
         description="Doctor-led non-surgical treatments and performance coaching for those wishing to look and feel their best, with natural and lasting results. Visit The Aevia in King's Cross, London."
         image="/aevia-clinic3.webp"
@@ -28,16 +29,25 @@ export default function Home() {
                 <span className="text-primary">Skin and Mind</span>
               </h1>
               <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Medical aesthetics and performance coaching for professionals who demand excellence. Based in Kings Cross, London.
+                Medical aesthetics and performance coaching for professionals
+                who demand excellence. Based in Kings Cross, London.
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
                 <div className="w-full sm:w-64">
-                  <BookingButton href="/consultations?type=skin" variant="skin" className="w-full">
+                  <BookingButton
+                    href="/consultations?type=skin"
+                    variant="skin"
+                    className="w-full"
+                  >
                     Book Skin Consultation
                   </BookingButton>
                 </div>
                 <div className="w-full sm:w-64">
-                  <BookingButton href="/consultations?type=mind" variant="mind" className="w-full">
+                  <BookingButton
+                    href="/consultations?type=mind"
+                    variant="mind"
+                    className="w-full"
+                  >
                     Book Mind Discovery Call
                   </BookingButton>
                 </div>
@@ -50,25 +60,27 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Difference</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">
+                The Aevia Difference
+              </h2>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-The Aevia offers two distinct, doctor-led services:&nbsp;
-<span className="font-semibold text-accent inline">
-  Medical&nbsp;Aesthetics
-</span>{" "}
-for natural, science-backed skin rejuvenation, and&nbsp;
-<span className="font-semibold text-accent inline sm:hidden">
-  Performance&nbsp;Coaching
-</span>
-<span className="font-semibold text-accent hidden sm:inline">
-  Performance&nbsp;and&nbsp;Transformative&nbsp;Coaching
-</span>{" "}
-for professionals seeking clarity, confidence, and agency. Whether you're
-drawn to one or both, each path is designed to deliver focused, expert-led
-transformation.
-</p>
+                The Aevia offers two distinct, doctor-led services:&nbsp;
+                <span className="font-semibold text-accent inline">
+                  Medical&nbsp;Aesthetics
+                </span>{" "}
+                for natural, science-backed skin rejuvenation, and&nbsp;
+                <span className="font-semibold text-accent inline sm:hidden">
+                  Performance&nbsp;Coaching
+                </span>
+                <span className="font-semibold text-accent hidden sm:inline">
+                  Performance&nbsp;and&nbsp;Transformative&nbsp;Coaching
+                </span>{" "}
+                for professionals seeking clarity, confidence, and agency.
+                Whether you're drawn to one or both, each path is designed to
+                deliver focused, expert-led transformation.
+              </p>
             </div>
-            
+
             {/* Doctors Introduction */}
             <div className="grid md:grid-cols-3 gap-8 mb-16">
               <div className="md:col-span-3 flex justify-center mb-12">
@@ -90,18 +102,28 @@ transformation.
                   />
                 </picture>
               </div>
-              
+
               <div className="text-center">
-                <h3 className="text-xl font-serif font-semibold mb-2">Dr. Terrell Okhiria</h3>
-                <p className="text-foreground/70">Aesthetic Medicine Doctor & GP Trainee</p>
+                <h3 className="text-xl font-serif font-semibold mb-2">
+                  Dr. Terrell Okhiria
+                </h3>
+                <p className="text-foreground/70">
+                  Aesthetic Medicine Doctor & GP Trainee
+                </p>
               </div>
               <div className="text-center">
-                <h3 className="text-xl font-serif font-semibold mb-2">Dr. Renee Okhiria</h3>
+                <h3 className="text-xl font-serif font-semibold mb-2">
+                  Dr. Renee Okhiria
+                </h3>
                 <p className="text-foreground/70">Aesthetic Medicine Doctor</p>
               </div>
               <div className="text-center">
-                <h3 className="text-xl font-serif font-semibold mb-2">Dr. Manu Sidhu</h3>
-                <p className="text-foreground/70">Medical Doctor & Performance Coach</p>
+                <h3 className="text-xl font-serif font-semibold mb-2">
+                  Dr. Manu Sidhu
+                </h3>
+                <p className="text-foreground/70">
+                  Medical Doctor & Performance Coach
+                </p>
               </div>
             </div>
           </div>
@@ -116,9 +138,14 @@ transformation.
                 subtitle="Medical Aesthetics"
                 description="Science-backed, regenerative approaches that restore your skin's natural quality. Results that feel like you, only fresher."
                 image={skinModel4}
-                features={["The Aevia Skin Consultation", "Polynucleotides", "Skin Boosters", "Anti-wrinkle Injections"]}
+                features={[
+                  "The Aevia Skin Consultation",
+                  "Polynucleotides",
+                  "Skin Boosters",
+                  "Anti-wrinkle Injections",
+                ]}
                 ctaText="Learn More About Skin Treatments"
-                onCtaClick={() => window.location.href = "/skin"}
+                onCtaClick={() => (window.location.href = "/skin")}
                 imagePositionTop={false}
                 objectPosition="center 30%"
               />
@@ -128,9 +155,14 @@ transformation.
                 subtitle="Performance & Transformative Coaching"
                 description="Coaching designed for professionals ready to think sharper, act with confidence, and create meaningful change."
                 image={mindCoachingStairs}
-                features={["Performance optimization", "Decision-making clarity", "Transformative mindset shifts", "Strategic life planning"]}
+                features={[
+                  "Performance optimization",
+                  "Decision-making clarity",
+                  "Transformative mindset shifts",
+                  "Strategic life planning",
+                ]}
                 ctaText="Explore Mind Coaching"
-                onCtaClick={() => window.location.href = "/mind"}
+                onCtaClick={() => (window.location.href = "/mind")}
                 imagePositionTop={false}
                 objectPosition="center 40%"
               />
@@ -142,10 +174,14 @@ transformation.
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Client Transformations</h2>
-              <p className="text-lg text-foreground/70">Real results from our community</p>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">
+                Client Transformations
+              </h2>
+              <p className="text-lg text-foreground/70">
+                Real results from our community
+              </p>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <TestimonialCard
                 name="Joan H."
@@ -209,7 +245,7 @@ transformation.
             </div>
 
             <div className="text-center">
-              <a 
+              <a
                 href="https://www.google.com/maps/place/The+Aevia/@51.5310793,-0.1203023,17z/data=!4m18!1m9!3m8!1s0x48761be0d6318279:0x6231887d02d12d6b!2sThe+Aevia!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!3m7!1s0x48761be0d6318279:0x6231887d02d12d6b!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!5m1!1e2?hl=en-GB&entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -233,23 +269,45 @@ transformation.
                 </Button>
               </a>
             </div>
+
+            {/* Location Map */}
+            <div className="mt-16">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-center mb-6">
+                Find Us
+              </h2>
+              <LocationMap />
+            </div>
           </div>
         </section>
 
         {/* Final CTA */}
         <section className="py-20 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Begin Your Transformation</h2>
-            <p className="text-lg text-foreground/70">Limited availability for our exclusive, doctor-led approach</p>
-            <p className="text-lg text-foreground/70 mb-8">Based in Kings Cross, London</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">
+              Begin Your Transformation
+            </h2>
+            <p className="text-lg text-foreground/70">
+              Limited availability for our exclusive, doctor-led approach
+            </p>
+            <p className="text-lg text-foreground/70 mb-8">
+              Based in Kings Cross, London
+            </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
               <div className="w-full sm:w-64">
-                <BookingButton href="/consultations?type=skin" variant="skin" className="w-full">
+                <BookingButton
+                  href="/consultations?type=skin"
+                  variant="skin"
+                  className="w-full"
+                >
                   Book Skin Consultation
                 </BookingButton>
               </div>
               <div className="w-full sm:w-64">
-                <BookingButton href="/consultations?type=mind" variant="mind" className="w-full">
+                <BookingButton
+                  href="/consultations?type=mind"
+                  variant="mind"
+                  className="w-full"
+                >
                   Book Mind Discovery Call
                 </BookingButton>
               </div>
