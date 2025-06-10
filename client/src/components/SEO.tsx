@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'wouter';
+import logoFavicon from '@assets/logos/logo-gold.webp';
 
 interface SEOProps {
   title?: string;
@@ -39,13 +40,19 @@ export default function SEO({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      
+
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={canonicalUrl} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
+
+      {/* Favicons */}
+      <link rel="icon" type="image/webp" href={logoFavicon} />
+      <link rel="apple-touch-icon" href={logoFavicon} />
+      <link rel="icon" type="image/webp" sizes="192x192" href={logoFavicon} />
+      <link rel="icon" type="image/webp" sizes="512x512" href={logoFavicon} />
     </Helmet>
   );
-} 
+}
