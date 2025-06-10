@@ -30,7 +30,15 @@ app.use(helmet({
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
       "default-src": ["'self'"],
       "img-src": ["'self'", "data:", "https:", "blob:"],
-      "frame-src": ["'self'", "https://calendly.com", "https://www.calendly.com", "https://assets.calendly.com", "https://www.googletagmanager.com"],
+      "frame-src": [
+        "'self'",
+        "https://calendly.com",
+        "https://www.calendly.com",
+        "https://assets.calendly.com",
+        "https://www.googletagmanager.com",
+        "https://maps.google.com",
+        "https://www.google.com"
+      ],
       "connect-src": [
         "'self'",
         "https://calendly.com",
