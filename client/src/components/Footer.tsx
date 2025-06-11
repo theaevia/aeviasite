@@ -77,7 +77,7 @@ export default function Footer() {
               <a href="tel:+447448012556" className="flex items-center text-sm text-gray-300 hover:text-primary smooth-transition">
                 +44 7448 012556
               </a>
-              <p className="text-sm text-gray-300">Kings Cross, London</p>
+              <p className="text-sm text-gray-300">Minsony, 260 Pentonville Road, N1 9JY, Kings Cross, London</p>
             </div>
           </div>
         </div>

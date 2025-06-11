@@ -3,6 +3,8 @@ import SEO from "@/components/SEO";
 import terrellImage from "@assets/about_pics/terrell-pic3.webp";
 import reneeImage from "@assets/about_pics/renee-pic.webp";
 import manuImage from "@assets/about_pics/manu-pic.webp";
+import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 export default function About() {
   return (
@@ -72,7 +74,7 @@ export default function About() {
                   <h2 className="text-3xl font-serif font-bold mb-4">Dr. Renee Okhiria</h2>
                   <p className="text-lg text-primary mb-4">Medical & Aesthetic Doctor</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
-                  Dr. Renée Okhiria is a qualified medical doctor with an MBBS from the University of Manchester and a BSc from Imperial College London. She holds advanced certification in aesthetic medicine, with a focus on non-surgical facial rejuvenation. Known for her artistic eye and meticulous technique, Dr. Renée combines medical precision with creative vision to deliver refined, natural-looking results. Her approach focuses on enhancing each patient’s unique features through evidence-based, minimally invasive treatments, prioritising elegance, harmony, and long-term skin health.
+                  Dr. Renée Okhiria is a qualified medical doctor with an MBBS from the University of Manchester and a BSc from Imperial College London. She holds advanced certification in aesthetic medicine, with a focus on non-surgical facial rejuvenation. Known for her artistic eye and meticulous technique, Dr. Renée combines medical precision with creative vision to deliver refined, natural-looking results. Her approach focuses on enhancing each patient's unique features through evidence-based, minimally invasive treatments, prioritising elegance, harmony, and long-term skin health.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
@@ -149,6 +151,77 @@ export default function About() {
             <p className="text-lg text-foreground/50 italic">- The Aevia Team</p>
           </div>
         </section>
+
+        {/* Clinic Information Section */}
+        <section className="py-20 bg-secondary">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">
+                Our <span className="text-primary">Clinic</span>
+              </h2>
+              <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+                Visit us at our clinic in the heart of Kings Cross, London
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="space-y-8">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Location</h3>
+                  <a 
+                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-foreground/70 hover:text-primary smooth-transition block"
+                  >
+                    Minsony, 260 Pentonville Road<br />
+                    N1 9JY, Kings Cross<br />
+                    London
+                  </a>
+                </div>
+
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Opening Hours</h3>
+                  <p className="text-foreground/70">
+                    Daily: 12:00 PM - 7:00 PM
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Contact</h3>
+                  <div className="space-y-3">
+                    <a 
+                      href="tel:+447448012556" 
+                      className="block text-foreground/70 hover:text-primary smooth-transition"
+                    >
+                      +44 7448 012556
+                    </a>
+                    <a 
+                      href="mailto:hello@theaevia.co.uk" 
+                      className="block text-foreground/70 hover:text-primary smooth-transition"
+                    >
+                      hello@theaevia.co.uk
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Book a Consultation</h3>
+                  <Link href="/consultations">
+                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
+                      Book Now
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Journal Section */}
+        {/* ... existing code ... */}
       </div>
     </>
   );
