@@ -11,7 +11,7 @@ export default function Clinic() {
         image="/aevia-logo.png"
       />
       <div className="min-h-screen">
-        <section className="bg-secondary py-20 lg:py-32">
+        <section className="bg-secondary py-20 lg:py-32 mb-12 lg:mb-20">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
               Our <span className="text-primary">Clinic</span>
@@ -21,7 +21,7 @@ export default function Clinic() {
             </p>
           </div>
         </section>
-        <section className="py-20 bg-secondary">
+        <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12">
               <div className="space-y-8">

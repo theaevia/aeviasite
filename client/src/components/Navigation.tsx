@@ -121,10 +121,20 @@ export default function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <Link href="/about">
-                  <DropdownMenuItem onSelect={handleLinkClick}>Team</DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={handleLinkClick}
+                    className="hover:bg-primary/10 focus:bg-primary/10"
+                  >
+                    Team
+                  </DropdownMenuItem>
                 </Link>
                 <Link href="/clinic">
-                  <DropdownMenuItem onSelect={handleLinkClick}>Clinic</DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={handleLinkClick}
+                    className="hover:bg-primary/10 focus:bg-primary/10"
+                  >
+                    Clinic
+                  </DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
             </DropdownMenu>
