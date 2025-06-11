@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import { Link } from "wouter";
+import LocationMap from "@/components/LocationMap";
 
 export default function Clinic() {
   return (
@@ -71,6 +72,12 @@ export default function Clinic() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-12">
+          <div className="max-w-4xl mx-auto px-6">
+            <LocationMap />
           </div>
         </section>
       </div>

@@ -9,6 +9,7 @@ import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
 import skinModel4 from "@assets/hero_images/royalty-free-skin4.webp";
+import LocationMap from "@/components/LocationMap";
 
 export default function Home() {
   return (
@@ -254,6 +255,12 @@ transformation.
                 </BookingButton>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-6">
+            <LocationMap />
           </div>
         </section>
       </div>
