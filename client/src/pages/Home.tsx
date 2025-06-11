@@ -4,6 +4,7 @@ import { Leaf, Brain, Star } from "lucide-react";
 import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
+import LocationMap from "@/components/LocationMap";
 import SEO from "@/components/SEO";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
@@ -233,6 +234,12 @@ transformation.
                 </Button>
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-secondary">
+          <div className="max-w-4xl mx-auto px-6">
+            <LocationMap />
           </div>
         </section>
 

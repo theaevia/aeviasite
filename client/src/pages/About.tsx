@@ -5,6 +5,7 @@ import reneeImage from "@assets/about_pics/renee-pic.webp";
 import manuImage from "@assets/about_pics/manu-pic.webp";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import LocationMap from "@/components/LocationMap";
 
 export default function About() {
   return (
@@ -216,6 +217,9 @@ export default function About() {
                   </Link>
                 </div>
               </div>
+            </div>
+            <div className="mt-12">
+              <LocationMap />
             </div>
           </div>
         </section>
