@@ -1,6 +1,12 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Instagram, Menu, X, User } from "lucide-react";
+import { Instagram, Menu, X, User, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import logoBlack from "@assets/logos/logo-black-transparent.webp";
@@ -11,6 +17,7 @@ import { FaGoogle } from "react-icons/fa";
 export default function Navigation() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   const isActive = (path: string) => {
     if (path === "/" && location === "/") return true;
@@ -20,12 +27,14 @@ export default function Navigation() {
 
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
+    setIsAboutOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Close mobile menu when location changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsAboutOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
@@ -97,14 +106,38 @@ export default function Navigation() {
                 Treatments
               </span>
             </Link>
-            <Link href="/about">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/about") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                About
-              </span>
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isActive("/about") || isActive("/clinic")
+                      ? "text-primary font-semibold"
+                      : "text-foreground"
+                  )}
+                >
+                  About <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/about">
+                  <DropdownMenuItem
+                    onSelect={handleLinkClick}
+                    className="hover:bg-primary/10 focus:bg-primary/10"
+                  >
+                    Our Team
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/clinic">
+                  <DropdownMenuItem
+                    onSelect={handleLinkClick}
+                    className="hover:bg-primary/10 focus:bg-primary/10"
+                  >
+                    Our Clinic
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Link href="/journal">
               <span onClick={handleLinkClick} className={cn(
                 "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
@@ -189,14 +222,42 @@ export default function Navigation() {
                   Treatments
                 </span>
               </Link>
-              <Link href="/about">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/about") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  About
-                </span>
-              </Link>
+              <button
+                onClick={() => setIsAboutOpen(!isAboutOpen)}
+                className={cn(
+                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  (isActive("/about") || isActive("/clinic")) && "text-primary font-semibold"
+                )}
+              >
+                <span>About</span>
+                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isAboutOpen && "rotate-180")} />
+              </button>
+              {isAboutOpen && (
+                <div className="ml-4 flex flex-col space-y-2">
+                  <Link href="/about">
+                    <span
+                      onClick={handleLinkClick}
+                      className={cn(
+                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                        isActive("/about") ? "text-primary font-semibold" : "text-foreground"
+                      )}
+                    >
+                      Our Team
+                    </span>
+                  </Link>
+                  <Link href="/clinic">
+                    <span
+                      onClick={handleLinkClick}
+                      className={cn(
+                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                        isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
+                      )}
+                    >
+                      Our Clinic
+                    </span>
+                  </Link>
+                </div>
+              )}
               <Link href="/journal">
                 <span onClick={handleLinkClick} className={cn(
                   "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
