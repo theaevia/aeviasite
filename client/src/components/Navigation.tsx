@@ -125,7 +125,7 @@ export default function Navigation() {
                     onSelect={handleLinkClick}
                     className="hover:bg-primary/10 focus:bg-primary/10"
                   >
-                    Team
+                    Our Team
                   </DropdownMenuItem>
                 </Link>
                 <Link href="/clinic">
@@ -133,7 +133,7 @@ export default function Navigation() {
                     onSelect={handleLinkClick}
                     className="hover:bg-primary/10 focus:bg-primary/10"
                   >
-                    Clinic
+                    Our Clinic
                   </DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
@@ -242,7 +242,7 @@ export default function Navigation() {
                         isActive("/about") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
-                      Team
+                      Our Team
                     </span>
                   </Link>
                   <Link href="/clinic">
@@ -253,7 +253,7 @@ export default function Navigation() {
                         isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
-                      Clinic
+                      Our Clinic
                     </span>
                   </Link>
                 </div>
