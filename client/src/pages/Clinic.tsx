@@ -21,8 +21,8 @@ export default function Clinic() {
             </p>
           </div>
         </section>
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-6">
+        <section className="bg-white">
+          <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               <div className="space-y-8">
                 <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
