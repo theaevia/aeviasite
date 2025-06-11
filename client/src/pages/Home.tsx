@@ -28,7 +28,7 @@ export default function Home() {
                 <span className="text-primary">Skin and Mind</span>
               </h1>
               <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Medical aesthetics and performance coaching for professionals who demand excellence. Based in Kings Cross, London.
+              Medical aesthetics and performance coaching for those who value natural, regenerative and long-lasting results. Based in Kings Cross, London.
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
                 <div className="w-full sm:w-64">
@@ -93,11 +93,11 @@ transformation.
               
               <div className="text-center">
                 <h3 className="text-xl font-serif font-semibold mb-2">Dr. Terrell Okhiria</h3>
-                <p className="text-foreground/70">Aesthetic Medicine Doctor & GP Trainee</p>
+                <p className="text-foreground/70">Aesthetic Doctor & GP Trainee</p>
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-serif font-semibold mb-2">Dr. Renee Okhiria</h3>
-                <p className="text-foreground/70">Aesthetic Medicine Doctor</p>
+                <p className="text-foreground/70">Aesthetic & Medical Doctor</p>
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-serif font-semibold mb-2">Dr. Manu Sidhu</h3>
