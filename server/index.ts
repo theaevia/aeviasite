@@ -62,6 +62,7 @@ app.use(helmet({
         "https://assets.calendly.com",
         ...(isProd ? [] : ["https://replit.com"]) // Only include Replit in development
       ],
+      "script-src-attr": ["'unsafe-inline'"],
       "style-src": [
         "'self'",
         "'unsafe-inline'", // Required for dynamic styles
