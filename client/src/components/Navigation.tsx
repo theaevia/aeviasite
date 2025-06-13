@@ -111,7 +111,7 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isActive("/about") || isActive("/clinic")
+                    isActive("/team") || isActive("/clinic")
                       ? "text-primary font-semibold"
                       : "text-foreground"
                   )}
@@ -120,7 +120,7 @@ export default function Navigation() {
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <Link href="/about">
+                <Link href="/team">
                   <DropdownMenuItem
                     onSelect={handleLinkClick}
                     className="hover:bg-primary/10 focus:bg-primary/10"
@@ -226,7 +226,7 @@ export default function Navigation() {
                 onClick={() => setIsAboutOpen(!isAboutOpen)}
                 className={cn(
                   "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  (isActive("/about") || isActive("/clinic")) && "text-primary font-semibold"
+                  (isActive("/team") || isActive("/clinic")) && "text-primary font-semibold"
                 )}
               >
                 <span>About</span>
@@ -234,12 +234,12 @@ export default function Navigation() {
               </button>
               {isAboutOpen && (
                 <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/about">
+                  <Link href="/team">
                     <span
                       onClick={handleLinkClick}
                       className={cn(
                         "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                        isActive("/about") ? "text-primary font-semibold" : "text-foreground"
+                        isActive("/team") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
                       Our Team

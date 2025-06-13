@@ -17,7 +17,7 @@ const VALID_ROUTES = [
   '/',
   '/skin',
   '/mind',
-  '/about',
+  '/team',
   '/journal',
   '/consultations',
   '/treatments',

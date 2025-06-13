@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Route, Switch } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,7 +7,7 @@ import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import Skin from "@/pages/Skin";
 import Mind from "@/pages/Mind";
-import About from "@/pages/About";
+import Team from "@/pages/Team";
 import Clinic from "@/pages/Clinic";
 import JournalPlaceholder from "@/pages/JournalPlaceholder";
 import Consultations from "@/pages/Consultations";
@@ -22,7 +22,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/skin" component={Skin} />
         <Route path="/mind" component={Mind} />
-        <Route path="/about" component={About} />
+        <Route path="/team" component={Team} />
         <Route path="/clinic" component={Clinic} />
         <Route path="/journal" component={JournalPlaceholder} />
         <Route path="/consultations" component={Consultations} />

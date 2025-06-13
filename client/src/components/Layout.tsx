@@ -31,19 +31,19 @@ const organizationSchema = {
       "@type": "Person",
       "name": "Dr Terrell Okhiria",
       "jobTitle": "Co-Founder",
-      "url": "https://www.theaevia.co.uk/about"
+      "url": "https://www.theaevia.co.uk/team"
     },
     {
       "@type": "Person",
       "name": "Dr Renée Okhiria",
       "jobTitle": "Co-Founder",
-      "url": "https://www.theaevia.co.uk/about"
+      "url": "https://www.theaevia.co.uk/team"
     },
     {
       "@type": "Person",
       "name": "Dr Manu Sidhu",
       "jobTitle": "Co-Founder",
-      "url": "https://www.theaevia.co.uk/about"
+      "url": "https://www.theaevia.co.uk/team"
     }
   ],
   "department": [
@@ -80,13 +80,13 @@ const organizationSchema = {
           "@type": "Person",
           "name": "Dr Terrell Okhiria",
           "jobTitle": "Medical Aesthetic Doctor",
-          "url": "https://www.theaevia.co.uk/about"
+          "url": "https://www.theaevia.co.uk/team"
         },
         {
           "@type": "Person",
           "name": "Dr Renée Okhiria",
           "jobTitle": "Medical Aesthetic Doctor",
-          "url": "https://www.theaevia.co.uk/about"
+          "url": "https://www.theaevia.co.uk/team"
         }
       ],
       "service": {
@@ -125,7 +125,7 @@ const organizationSchema = {
         "@type": "Person",
         "name": "Dr Manu Sidhu",
         "jobTitle": "Medical Doctor, Performance and Transformative Coach",
-        "url": "https://www.theaevia.co.uk/about"
+        "url": "https://www.theaevia.co.uk/team"
       },
       "service": {
         "@type": "Service",
