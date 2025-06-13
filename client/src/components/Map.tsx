@@ -3,6 +3,7 @@ interface MapProps {
 }
 
 export default function Map({ className = "" }: MapProps) {
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (
     <div className={`w-full h-[500px] rounded-2xl overflow-hidden shadow-lg ${className}`}>
       <iframe
@@ -13,7 +14,7 @@ export default function Map({ className = "" }: MapProps) {
         allowFullScreen
         allow="geolocation"
         referrerPolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed/v1/place?q=260+Pentonville+Road,+London&zoom=17&key=AIzaSyCDgTsuub3PQLTOFCUWH62hG7_MCw-JVaY"
+        src={`https://www.google.com/maps/embed/v1/place?q=260+Pentonville+Road,+London&zoom=17&key=${apiKey}`}
       />
     </div>
   );
