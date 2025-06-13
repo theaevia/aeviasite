@@ -5,7 +5,6 @@ import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
 import SEO from "@/components/SEO";
-import MapEmbed from "@/components/MapEmbed";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
