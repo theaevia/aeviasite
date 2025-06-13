@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import SEO from "@/components/SEO";
 import { Link } from "wouter";
-import MapEmbed from "@/components/MapEmbed";
+import SEO from "@/components/SEO";
+import Map from "@/components/Map";
 
 export default function Clinic() {
   return (
@@ -12,9 +12,9 @@ export default function Clinic() {
         image="/aevia-logo.png"
       />
       <div className="min-h-screen">
-        <section className="bg-secondary py-20 lg:py-32 mb-8 lg:mb-12">
+        <section className="bg-secondary py-12 lg:py-16 mb-8 lg:mb-12">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
               Our <span className="text-primary">Clinic</span>
             </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">
@@ -28,10 +28,10 @@ export default function Clinic() {
               <div className="space-y-8">
                 <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
                   <h3 className="text-xl font-serif font-semibold mb-4">Location</h3>
-                  <a
-                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <a 
+                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
                     className="text-foreground/70 hover:text-primary smooth-transition block"
                   >
                     Minsony, 260 Pentonville Road<br />
@@ -48,14 +48,14 @@ export default function Clinic() {
                 <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
                   <h3 className="text-xl font-serif font-semibold mb-4">Contact</h3>
                   <div className="space-y-3">
-                    <a
-                      href="tel:+447448012556"
+                    <a 
+                      href="tel:+447448012556" 
                       className="block text-foreground/70 hover:text-primary smooth-transition"
                     >
                       +44 7448 012556
                     </a>
-                    <a
-                      href="mailto:hello@theaevia.co.uk"
+                    <a 
+                      href="mailto:hello@theaevia.co.uk" 
                       className="block text-foreground/70 hover:text-primary smooth-transition"
                     >
                       hello@theaevia.co.uk
@@ -77,7 +77,7 @@ export default function Clinic() {
         {/* Map Section */}
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6">
-            <MapEmbed className="rounded-2xl shadow-lg w-full" />
+            <Map className="rounded-2xl shadow-lg w-full" />
           </div>
         </section>
       </div>

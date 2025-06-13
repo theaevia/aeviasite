@@ -10,6 +10,7 @@ import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
 import skinModel4 from "@assets/hero_images/royalty-free-skin4.webp";
+import Map from "@/components/Map";
 
 export default function Home() {
   return (
@@ -257,12 +258,68 @@ transformation.
             </div>
           </div>
         </section>
-        {/* Map Section */}
+
+        {/* Clinic Information Section */}
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6">
-            <MapEmbed className="rounded-2xl shadow-lg w-full" />
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">
+                Visit Our <span className="text-primary">Clinic</span>
+              </h2>
+              <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+                Located in the heart of Kings Cross, London
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Location</h3>
+                  <a 
+                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-foreground/70 hover:text-primary smooth-transition block"
+                  >
+                    Minsony, 260 Pentonville Road<br />
+                    N1 9JY, Kings Cross<br />
+                    London
+                  </a>
+                </div>
+
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Opening Hours</h3>
+                  <p className="text-foreground/70">
+                    Daily: 12:00 PM - 7:00 PM
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Contact</h3>
+                  <div className="space-y-3">
+                    <a 
+                      href="tel:+447448012556" 
+                      className="block text-foreground/70 hover:text-primary smooth-transition"
+                    >
+                      +44 7448 012556
+                    </a>
+                    <a 
+                      href="mailto:hello@theaevia.co.uk" 
+                      className="block text-foreground/70 hover:text-primary smooth-transition"
+                    >
+                      hello@theaevia.co.uk
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <Map />
+            </div>
           </div>
         </section>
+
+        {/* Journal Section */}
+        {/* ... rest of the code ... */}
       </div>
     </>
   );
