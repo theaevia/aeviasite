@@ -26,6 +26,7 @@ interface SignatureOffer {
   features: string[];
   normalPrice: string;
   bookingUrl: string;
+  ctaText: string;
 }
 
 const treatmentCategories: TreatmentCategory[] = [
@@ -98,21 +99,21 @@ const treatmentCategories: TreatmentCategory[] = [
         name: "One Area (Forehead, Frown or Crow's Feet)",
         description: "Choose one area to target. Designed to reduce lines while maintaining natural expression.",
         duration: "30min",
-        price: "£180",
+        price: "£160",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418601&share&pId=2507365"
       },
       {
         name: "Two Areas (Forehead, Frown or Crow's Feet)",
         description: "Choose two areas to target. Designed to reduce lines while maintaining natural expression.",
         duration: "45min",
-        price: "£230",
+        price: "£220",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418602&share&pId=2507365"
       },
       {
         name: "Three Areas (Forehead, Frown or Crow's Feet)",
         description: "Choose three areas to target. Designed to reduce lines while maintaining natural expression.",
         duration: "45min",
-        price: "£280",
+        price: "£260",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418603&share&pId=2507365"
       },
       {
@@ -166,6 +167,53 @@ const treatmentCategories: TreatmentCategory[] = [
     ]
   },
   {
+    category: "Microneedling (Collagen Induction)",
+    description: "Collagen induction therapy for texture, scars, and overall skin rejuvenation. Performed with the Dermalogica microneedling device for safety and results.",
+    treatments: [
+      {
+        name: "Microneedling (Coming Soon)",
+        description: "Advanced microneedling using the Dermalogica device. Improves texture, scars, and stimulates collagen. Available soon.",
+        duration: "45min",
+        price: "TBA",
+        bookingUrl: "#"
+      }
+    ]
+  },
+  {
+    category: "Clinical Peels (Brighten & Renew)",
+    description: "Professional-grade peels to brighten, smooth, and even skin tone. Multiple options for different skin needs.",
+    treatments: [
+      {
+        name: "Glycolic Peel (Coming Soon)",
+        description: "AHA peel for brightening, smoothing, and improving skin texture. Available soon.",
+        duration: "30min",
+        price: "TBA",
+        bookingUrl: "#"
+      },
+      {
+        name: "Salicylic Peel (Coming Soon)",
+        description: "BHA peel ideal for oily, acne-prone skin. Helps unclog pores and reduce breakouts. Available soon.",
+        duration: "30min",
+        price: "TBA",
+        bookingUrl: "#"
+      },
+      {
+        name: "Lactic Acid Peel (Coming Soon)",
+        description: "Gentle AHA peel for hydration and mild exfoliation. Suitable for sensitive skin. Available soon.",
+        duration: "30min",
+        price: "TBA",
+        bookingUrl: "#"
+      },
+      {
+        name: "TCA Peel (Coming Soon)",
+        description: "Medium-depth peel for pigmentation, texture, and rejuvenation. Available soon.",
+        duration: "30min",
+        price: "TBA",
+        bookingUrl: "#"
+      }
+    ]
+  },
+  {
     category: "Polynucleotides (Skin Repair & Regeneration)",
     description: "Injectable skin treatments that use purified DNA fragments to support long-term repair and tissue regeneration.",
     treatments: [
@@ -189,30 +237,48 @@ const treatmentCategories: TreatmentCategory[] = [
 
 const signatureOffers: SignatureOffer[] = [
   {
-    name: "Anti-Wrinkle (3 Areas) + Polynucleotides",
+    name: "WRINKLE RESET\nAnti-Wrinkle (3 Areas) + Polynucleotides",
     price: "£400",
     description: "Signature rejuvenation: smooth dynamic lines, revive tired skin, and stimulate natural skin repair - all in one visit.",
     features: [
+      "Smooth fine lines, wrinkles and tired skin",
       "Anti-wrinkle treatment for 3 areas (e.g. forehead, frown, crow's feet)",
       "Full-face polynucleotide skin booster",
       "One appointment, one seamless price",
     ],
     normalPrice: "£580",
-    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1627420&share&pId=2507365"
+    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1627420&share&pId=2507365",
+    ctaText: "Book My Wrinkle Reset"
   },
   {
-    name: "Advanced Skin Booster (Profhilo)",
-    price: "£200",
-    description: "Experience deep, lasting hydration and natural radiance with our award-winning injectable moisturiser.",
+    name: "GLOW REVIVAL\nFull-Face Profhilo + Under-Eye Polynucleotides",
+    price: "£450",
+    description: "Experience deep, lasting hydration and under-eye radiance with a pairing of Profhilo and under-eye Polynucleotides.",
     features: [
-      "First session of Profhilo",
-      "Suitable for face, neck, or hands",
-      "Ideal for dull, tired, or ageing skin",
+      "Face and eyes treated in a single session",
+      "High-definition glow and hydration from Profhilo",
+      "Under-eye brightening and rejuvenation from Polynucleotides",
       "Second session recommended in 4 weeks for optimal results"
     ],
-    normalPrice: "£300",
-    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23323400&share&pId=2507365"
-  }
+    normalPrice: "£550",
+    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1638856&share&pId=2507365",
+    ctaText: "Book My Glow Revival"
+  },
+  {
+    name: "The Perfect Tone Protocol\nComing Soon",
+    price: "TBA",
+    description: "A comprehensive, doctor-led protocol for even tone and stubborn pigmentation. Combines advanced clinical peels, microneedling, and targeted skincare for visible, lasting results.",
+    features: [
+      "Multi-step protocol for hyperpigmentation",
+      "Doctor-led assessment and monitoring",
+      "Combination of peels, microneedling, and prescription skincare",
+      "Personalised aftercare and support",
+      "Results-driven, safe for all skin types"
+    ],
+    normalPrice: "TBA",
+    bookingUrl: "#",
+    ctaText: "Join Waitlist"
+  },
 ];
 
 export default function Treatments() {
@@ -350,35 +416,39 @@ export default function Treatments() {
           {/* Signature Offers Section */}
           <div className="mb-20">
             <div className="text-center mb-10">
-              <h2 className="text-4xl lg:text-5xl font-bold font-serif mb-3 tracking-wider text-primary">Signature One-Time Offers</h2>
-              <p className="text-lg text-muted-foreground">Exclusive one-time experiences to refresh, restore, and revitalise</p>
+              <h2 className="text-4xl lg:text-5xl font-bold font-serif mb-3 tracking-wider text-primary">Signature Offers</h2>
+              <p className="text-lg text-muted-foreground">Our most popular treatments to refresh, restore, and revitalise</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-              {signatureOffers.map((offer) => (
-                <div key={offer.name} className="bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
-                  <div className="flex-1 flex flex-col items-center">
-                    <h3 className="text-2xl font-serif font-bold mb-2">{offer.name}</h3>
-                    <span className="text-primary font-bold text-2xl mb-1">{offer.price}</span>
-                    <p className="text-foreground/70 mb-4">{offer.description}</p>
-                    <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3">
-                      {offer.features.map(feature => (
-                        <li key={feature} className="relative pl-6 leading-relaxed">
-                          <Check className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <hr className="border-t border-[#e0ddd9] my-4 w-3/4 mx-auto" />
-                    <div className="text-xs text-muted-foreground">Normally {offer.normalPrice} — exclusive introductory offer. A medical consultation is required before any prescription treatment.</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {signatureOffers.map((offer) => {
+                const [mainTitle, subtitle] = offer.name.split('\n');
+                return (
+                  <div key={offer.name} className={`bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 ${signatureOffers.length === 3 ? 'lg:col-span-1' : ''}`}>
+                    <div className="flex-1 flex flex-col items-center">
+                      <h3 className="text-2xl font-serif font-bold mb-1">{mainTitle}</h3>
+                      {subtitle && <p className="text-base text-foreground/60 font-normal mb-2">{subtitle}</p>}
+                      <span className="text-primary font-bold text-2xl mb-1">{offer.price}</span>
+                      <p className="text-foreground/70 mb-4">{offer.description}</p>
+                      <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3">
+                        {offer.features.map(feature => (
+                          <li key={feature} className="relative pl-6 leading-relaxed">
+                            <Check className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <hr className="border-t border-[#e0ddd9] my-4 w-3/4 mx-auto" />
+                      <div className="text-xs text-muted-foreground">Normally {offer.normalPrice}. A medical consultation is required before any prescription treatment.</div>
+                    </div>
+                    <Button 
+                      onClick={() => handleSignatureOfferBook(offer.bookingUrl)}
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
+                    >
+                      {offer.ctaText}
+                    </Button>
                   </div>
-                  <Button 
-                    onClick={() => handleSignatureOfferBook(offer.bookingUrl)}
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
-                  >
-                    Book Signature Offer
-                  </Button>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
