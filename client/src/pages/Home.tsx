@@ -62,6 +62,8 @@ const signatureOffers = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -90,6 +92,34 @@ export default function Home() {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  // Swipe functionality
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+
+    // Reset values
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   const renderOfferCard = (offer: any, index: number) => {
@@ -270,6 +300,9 @@ transformation.
                   <div 
                     className="flex transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                   >
                     {signatureOffers.map((offer, index) => (
                       <div key={offer.name} className="w-full flex-shrink-0">
@@ -323,9 +356,24 @@ transformation.
         {/* Instagram-Style Testimonials */}
         <section className="py-12 md:py-20 bg-secondary">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-8 md:mb-16">
+            <div className="text-center mb-6 md:mb-8">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Client Transformations</h2>
               <p className="text-lg text-foreground/70">Real results from our community</p>
+            </div>
+            
+            {/* Trust Metric */}
+            <div className="text-center mb-4 md:mb-6">
+              <div className="inline-flex items-center bg-primary/10 border border-primary/20 rounded-2xl px-6 py-3 md:py-4">
+                <div className="flex items-center space-x-1 mr-3">
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                </div>
+                <span className="text-xl font-bold text-primary">5.0</span>
+                <span className="text-foreground/70 ml-2 font-medium">from our clients</span>
+              </div>
             </div>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8 md:mb-12">
