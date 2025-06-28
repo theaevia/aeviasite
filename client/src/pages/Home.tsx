@@ -169,7 +169,7 @@ export default function Home() {
                 <span className="text-primary">Skin and Mind</span>
               </h1>
               <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Medical aesthetics and performance coaching for those who value natural, regenerative and long-lasting results. Based in Kings Cross, London.
+              Medical aesthetics and performance coaching for those who value natural, regenerative and long-lasting results. Based in <span className="font-bold text-primary">Kings Cross, London</span>.
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
                 <div className="w-full sm:w-64">
