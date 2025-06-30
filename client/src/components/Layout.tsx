@@ -1,6 +1,7 @@
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { useEffect } from "react";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -174,6 +175,7 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
+      <WhatsAppWidget />
     </div>
   );
 }

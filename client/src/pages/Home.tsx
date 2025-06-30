@@ -11,53 +11,9 @@ import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
 import skinModel4 from "@assets/hero_images/royalty-free-skin4.webp";
 import Map from "@/components/Map";
-
-// Signature offers data
-const signatureOffers = [
-  {
-    name: "Wrinkle Reset\nAnti-Wrinkle (3 Areas) + Polynucleotides",
-    price: "£400",
-    description: "Signature rejuvenation: smooth dynamic lines, revive tired skin, and stimulate natural skin repair - all in one visit.",
-    features: [
-      "Smooth fine lines, wrinkles and tired skin",
-      "Anti-wrinkle treatment for 3 areas (e.g. forehead, frown, crow's feet)",
-      "Full-face polynucleotide skin booster",
-      "One appointment, one seamless price",
-    ],
-    normalPrice: "£580",
-    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1627420&share&pId=2507365",
-    ctaText: "Book My Wrinkle Reset"
-  },
-  {
-    name: "Glow Revival\nFull-Face Profhilo + Under-Eye Polynucleotides",
-    price: "£450",
-    description: "Experience deep, lasting hydration and under-eye radiance with a pairing of Profhilo and under-eye Polynucleotides.",
-    features: [
-      "Face and eyes treated in a single session",
-      "High-definition glow and hydration from Profhilo",
-      "Under-eye brightening and rejuvenation from Polynucleotides",
-      "Second session recommended in 4 weeks for optimal results"
-    ],
-    normalPrice: "£550",
-    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1638856&share&pId=2507365",
-    ctaText: "Book My Glow Revival"
-  },
-  {
-    name: "The Perfect Tone Protocol\nComing Soon",
-    price: "TBA",
-    description: "A comprehensive, doctor-led protocol for even tone and stubborn pigmentation. Combines advanced clinical peels, microneedling, and targeted skincare for visible, lasting results.",
-    features: [
-      "Multi-step protocol for hyperpigmentation",
-      "Doctor-led assessment and monitoring",
-      "Combination of peels, microneedling, and prescription skincare",
-      "Personalised aftercare and support",
-      "Results-driven, safe for all skin types"
-    ],
-    normalPrice: "TBA",
-    bookingUrl: "#",
-    ctaText: "Join Waitlist"
-  },
-];
+import WhatsAppWidget from "@/components/WhatsAppWidget";
+import { signatureOffers } from "@/data/signatureOffers";
+import { testimonials } from "@/data/testimonials";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -311,7 +267,6 @@ transformation.
                     ))}
                   </div>
                 </div>
-
                 {/* Navigation Arrows */}
                 <button
                   onClick={prevSlide}
@@ -327,7 +282,6 @@ transformation.
                 >
                   <ChevronRight className="w-5 h-5 text-primary" />
                 </button>
-
                 {/* Dots Indicator */}
                 <div className="flex justify-center mt-6 space-x-2">
                   {signatureOffers.map((_, index) => (
@@ -343,7 +297,6 @@ transformation.
                     />
                   ))}
                 </div>
-
                 {/* Slide Counter */}
                 <div className="text-center mt-2 text-sm text-muted-foreground">
                   {currentSlide + 1} of {signatureOffers.length}
@@ -360,7 +313,6 @@ transformation.
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Client Transformations</h2>
               <p className="text-lg text-foreground/70">Real results from our community</p>
             </div>
-            
             {/* Trust Metric */}
             <div className="text-center mb-4 md:mb-6">
               <div className="inline-flex items-center bg-primary/10 border border-primary/20 rounded-2xl px-6 py-3 md:py-4">
@@ -375,47 +327,19 @@ transformation.
                 <span className="text-foreground/70 ml-2 font-medium">from our clients</span>
               </div>
             </div>
-            
             <div className="grid md:grid-cols-3 gap-6 mb-8 md:mb-12">
-              <TestimonialCard
-                name="Joan H."
-                service="Aevia Skin"
-                quote="It's been a few weeks since I had my fantastic experience at The Aevia with Dr Renée and Dr Terrell. They addressed the dark circles under my eyes with polynucleotide injections, and the results have been magical."
-                image=""
-                likes={127}
-                comments={8}
-                reviewUrl="https://maps.app.goo.gl/jpQNgXg92eiBesPD8"
-              />
-
-              <TestimonialCard
-                name="Michelle C."
-                service="Aevia Skin"
-                quote="Thank you once again to both doctors. Really satisfied with everything. I will most definitely highly recommend you to my friends and colleagues. I look forward to my next session with you."
-                image=""
-                likes={89}
-                comments={12}
-                reviewUrl="https://maps.app.goo.gl/Cqjt1Rcym1uQ9ByB6"
-              />
-
-              <TestimonialCard
-                name="Maria A."
-                service="Aevia Skin"
-                quote="A great experience at The Aevia! Dr Terrell is so friendly and explains everything thoroughly! Will definitely be back again!"
-                image=""
-                likes={203}
-                comments={24}
-                reviewUrl="https://maps.app.goo.gl/HVS56S8yDgGuCeqC9"
-              />
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={testimonial.name} {...testimonial} />
+              ))}
             </div>
-
             <div className="text-center">
               <a 
                 href="https://www.google.com/maps/place/The+Aevia/@51.5310793,-0.1203023,17z/data=!4m18!1m9!3m8!1s0x48761be0d6318279:0x6231887d02d12d6b!2sThe+Aevia!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!3m7!1s0x48761be0d6318279:0x6231887d02d12d6b!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!5m1!1e2?hl=en-GB&entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="outline" className="group">
-                  <Star className="w-4 h-4 mr-2 text-yellow-600" />
+                <Button className="group bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary transition-colors duration-200">
+                  <Star className="w-4 h-4 mr-2 transition-colors duration-200 text-white group-hover:text-yellow-600" />
                   Read Client Stories
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
@@ -468,7 +392,6 @@ transformation.
                 Located in the heart of Kings Cross, London
               </p>
             </div>
-
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
@@ -484,14 +407,12 @@ transformation.
                     London
                   </a>
                 </div>
-
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-xl font-serif font-semibold mb-4">Opening Hours</h3>
                   <p className="text-foreground/70">
                     Daily: 12:00 PM - 7:00 PM
                   </p>
                 </div>
-
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-xl font-serif font-semibold mb-4">Contact</h3>
                   <div className="space-y-3">
@@ -510,12 +431,12 @@ transformation.
                   </div>
                 </div>
               </div>
-
               <Map />
             </div>
           </div>
         </section>
       </div>
+      <WhatsAppWidget />
     </>
   );
 }
