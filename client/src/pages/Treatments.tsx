@@ -135,6 +135,13 @@ const treatmentCategories: TreatmentCategory[] = [
         price: "£350",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418468&share&pId=2507365"
       },
+      {
+        name: "Lower-Face Contour Duo (Masseter Reduction + Jawline Tightening)",
+        description: "One appointment, two goals: relieve teeth-grinding and refine your jawline symmetry.",
+        duration: "1h\u2003\u2022\u20032 services",
+        price: "£520",
+        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1640076&share&pId=2507365"
+      },
     ]
   },
   {
@@ -222,6 +229,19 @@ const treatmentCategories: TreatmentCategory[] = [
         price: "£300",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421256&share&pId=2507365"
       },
+    ]
+  },
+  {
+    category: "Bio-Voluminisation (Regenerate & Volumise)",
+    description: "Bio-voluminisation treatments to restore and enhance facial volume, reducing the appearance of wrinkles and improving skin texture.",
+    treatments: [
+      {
+        name: "Sculptra",
+        description: "A regenerative biostimulant that works deep within the skin to restore facial volume and support structure by stimulating natural collagen production. Unlike dermal fillers, Sculptra enhances your own tissue over time - resulting in gradual, long-lasting improvement in firmness, definition, and youthful contours. Recommended course: 2-3 sessions, spaced 4-6 weeks apart.",
+        duration: "1h",
+        price: "£550",
+        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?eid=4557161&oiid=sv%3A23698477&share&pId=2507365"
+      }
     ]
   },
 ];
@@ -421,7 +441,14 @@ export default function Treatments() {
                       >
                         <div className="flex-1 pr-8 sm:w-[70%]">
                           <div className="font-semibold text-lg mb-2">{treatment.name}</div>
-                          <div className="text-muted-foreground text-sm">{treatment.description}</div>
+                          <div className="text-muted-foreground text-sm">
+                            {treatment.description.split('\n').map((line, idx) => (
+                              <span key={idx}>
+                                {line}
+                                {idx !== treatment.description.split('\n').length - 1 && <br />}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                         <div className="flex flex-col justify-center items-end sm:w-[30%] mt-4 sm:mt-0">
                           <span className="text-primary font-medium mb-3 text-sm">
@@ -469,7 +496,14 @@ export default function Treatments() {
                       >
                         <div className="flex-1 pr-8 sm:w-[70%]">
                           <div className="font-semibold text-lg mb-2">{treatment.name}</div>
-                          <div className="text-muted-foreground text-sm">{treatment.description}</div>
+                          <div className="text-muted-foreground text-sm">
+                            {treatment.description.split('\n').map((line, idx) => (
+                              <span key={idx}>
+                                {line}
+                                {idx !== treatment.description.split('\n').length - 1 && <br />}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                         <div className="flex flex-col justify-center items-end sm:w-[30%] mt-4 sm:mt-0">
                           <span className="text-primary font-medium mb-3 text-sm">
