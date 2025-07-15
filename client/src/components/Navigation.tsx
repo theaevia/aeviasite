@@ -13,11 +13,14 @@ import logoBlack from "@assets/logos/logo-black-transparent.webp";
 import logoGold from "@assets/logos/logo-gold-transparent.webp";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
+import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 
 export default function Navigation() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  // Add state for mobile Treatments menu
+  const [isTreatmentsOpen, setIsTreatmentsOpen] = useState(false);
 
   const isActive = (path: string) => {
     if (path === "/" && location === "/") return true;
@@ -98,14 +101,50 @@ export default function Navigation() {
                 Consultation
               </span>
             </Link>
-            <Link href="/treatments">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                Treatments
-              </span>
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
+                  )}
+                >
+                  Treatments <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/treatments">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 font-semibold hover:text-primary">
+                    All Treatments
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/treatments#anti-wrinkle">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Anti‑Wrinkle
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/treatments#skin-boosters">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Skin Boosters
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/treatments#polynucleotides">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Polynucleotides
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/treatments#microneedling-peels">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Microneedling & Peels
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/treatments#bio-voluminisation">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Bio-Volumisation
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span
@@ -123,7 +162,7 @@ export default function Navigation() {
                 <Link href="/team">
                   <DropdownMenuItem
                     onSelect={handleLinkClick}
-                    className="hover:bg-primary/10 focus:bg-primary/10"
+                    className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
                   >
                     Our Team
                   </DropdownMenuItem>
@@ -131,7 +170,7 @@ export default function Navigation() {
                 <Link href="/clinic">
                   <DropdownMenuItem
                     onSelect={handleLinkClick}
-                    className="hover:bg-primary/10 focus:bg-primary/10"
+                    className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
                   >
                     Our Clinic
                   </DropdownMenuItem>
@@ -214,14 +253,63 @@ export default function Navigation() {
                   Consultation
                 </span>
               </Link>
-              <Link href="/treatments">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Treatments
-                </span>
-              </Link>
+              <button
+                onClick={() => setIsTreatmentsOpen(!isTreatmentsOpen)}
+                className={cn(
+                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  isActive("/treatments") && "text-primary font-semibold"
+                )}
+              >
+                <span>Treatments</span>
+                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isTreatmentsOpen && "rotate-180")} />
+              </button>
+              {isTreatmentsOpen && (
+                <div className="ml-4 flex flex-col space-y-2">
+                  <Link href="/treatments">
+                    <span
+                      onClick={handleLinkClick}
+                      className={cn(
+                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary",
+                        isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
+                      )}
+                    >
+                      All Treatments
+                    </span>
+                  </Link>
+                  <div className="px-2 pt-2 pb-1 text-xs text-muted-foreground font-semibold uppercase tracking-wide">SKIN</div>
+                  <Link href="/treatments#anti-wrinkle-treatments-smooth-refine">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                      Anti‑Wrinkle
+                    </span>
+                  </Link>
+                  <Link href="/treatments#skin-boosters-hydration-glow">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                      Skin Boosters
+                    </span>
+                  </Link>
+                  <Link href="/treatments#polynucleotides-skin-repair-regeneration">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                      Polynucleotides
+                    </span>
+                  </Link>
+                  <Link href="/treatments#microneedling-collagen-induction">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                      Microneedling & Peels
+                    </span>
+                  </Link>
+                  <Link href="/treatments#bio-voluminisation-regenerate-volumise">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                      Bio-Volumisation
+                    </span>
+                  </Link>
+                  <div className="px-2 pt-2 pb-1 text-xs text-muted-foreground font-semibold uppercase tracking-wide">MIND</div>
+                  <Link href="/treatments#performance-transformative-coaching">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1">
+                      Coaching
+                    </span>
+                  </Link>
+                </div>
+              )}
               <button
                 onClick={() => setIsAboutOpen(!isAboutOpen)}
                 className={cn(
@@ -238,7 +326,7 @@ export default function Navigation() {
                     <span
                       onClick={handleLinkClick}
                       className={cn(
-                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/team") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
@@ -249,7 +337,7 @@ export default function Navigation() {
                     <span
                       onClick={handleLinkClick}
                       className={cn(
-                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
