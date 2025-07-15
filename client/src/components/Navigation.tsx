@@ -269,7 +269,7 @@ export default function Navigation() {
                     <span
                       onClick={handleLinkClick}
                       className={cn(
-                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary",
+                        "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
@@ -278,33 +278,33 @@ export default function Navigation() {
                   </Link>
                   <div className="px-2 pt-2 pb-1 text-xs text-muted-foreground font-semibold uppercase tracking-wide">SKIN</div>
                   <Link href="/treatments#anti-wrinkle-treatments-smooth-refine">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Anti‑Wrinkle
                     </span>
                   </Link>
                   <Link href="/treatments#skin-boosters-hydration-glow">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Skin Boosters
                     </span>
                   </Link>
                   <Link href="/treatments#polynucleotides-skin-repair-regeneration">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Polynucleotides
                     </span>
                   </Link>
                   <Link href="/treatments#microneedling-collagen-induction">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Microneedling & Peels
                     </span>
                   </Link>
                   <Link href="/treatments#bio-voluminisation-regenerate-volumise">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Bio-Volumisation
                     </span>
                   </Link>
                   <div className="px-2 pt-2 pb-1 text-xs text-muted-foreground font-semibold uppercase tracking-wide">MIND</div>
                   <Link href="/treatments#performance-transformative-coaching">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1">
                       Coaching
                     </span>
                   </Link>
