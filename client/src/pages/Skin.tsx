@@ -30,7 +30,7 @@ export default function Skin() {
                   Doctor-led treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
                 </p>
                 <BookingButton href="/consultations?type=skin" variant="skin" className="w-full sm:w-auto">
-                  Book The Aevia Skin Consultation
+                  Book Your Aevia Skin Consultation
                 </BookingButton>
               </div>
               <div className="order-1 lg:order-2 w-full">
@@ -122,7 +122,7 @@ export default function Skin() {
                     <ul className="space-y-2 text-foreground/70">
                       <li className="flex items-center">
                         <Gift className="h-4 w-4 text-primary mr-3" />
-                        Complimentary (usually £30, now complimentary for first-time clients)
+                        FREE (usually £30, now complimentary for first-time clients)
                       </li>
                       <li className="flex items-center">
                         <Camera className="h-4 w-4 text-primary mr-3" />
@@ -218,7 +218,7 @@ export default function Skin() {
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="text-xl font-serif font-semibold mb-4 text-center">Consultation</h3>
                 <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">Complimentary</span>
+                  <span className="text-2xl font-bold text-primary">Free</span>
                   <p className="text-sm text-foreground/70">Usually £30</p>
                 </div>
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -284,7 +284,7 @@ export default function Skin() {
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="text-xl font-serif font-semibold mb-4 text-center">Anti-Wrinkle</h3>
                 <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">From £120</span>
+                  <span className="text-2xl font-bold text-primary">From £160</span>
                   <p className="text-sm text-foreground/70">Per treatment area</p>
                 </div>
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -319,9 +319,9 @@ export default function Skin() {
         <section className="py-20 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
-            <p className="text-lg text-foreground/70 mb-8">Book The Aevia Skin Consultation - fee fully redeemable against your first treatment</p>
+            <p className="text-lg text-foreground/70 mb-8">Book your FREE Aevia Skin Consultation</p>
             <BookingButton href="/consultations?type=skin" variant="skin" className="w-full sm:w-auto">
-              Book The Aevia Skin Consultation
+              Book Your Aevia Skin Consultation
             </BookingButton>
           </div>
         </section>

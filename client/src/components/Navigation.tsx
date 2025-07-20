@@ -326,7 +326,7 @@ export default function Navigation() {
                     <span
                       onClick={handleLinkClick}
                       className={cn(
-                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary",
+                        "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/team") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
@@ -337,7 +337,7 @@ export default function Navigation() {
                     <span
                       onClick={handleLinkClick}
                       className={cn(
-                        "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1 hover:text-primary",
+                        "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
