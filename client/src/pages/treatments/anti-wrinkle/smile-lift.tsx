@@ -7,6 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 
 import smileLiftDiagram from "@assets/diagrams/smile-lift-1.png";
+import smileHero from "@assets/treatment_images/dao.jpg";
 
 export default function SmileLiftPage() {
   return (
@@ -55,11 +56,11 @@ export default function SmileLiftPage() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet="/hero_images/smile-lift-example.webp"
-                      type="image/webp"
+                      srcSet={smileHero}
+                      type="image/jpeg"
                     />
                     <img
-                      src="/hero_images/smile-lift-example.webp"
+                      src={smileHero}
                       alt="Smile Lift treatment example"
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"

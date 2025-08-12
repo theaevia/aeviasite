@@ -2,16 +2,32 @@ import TreatmentLayout from "@/components/TreatmentLayout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { IconBadge } from "@/components/IconBadge";
-import { Leaf, ShieldCheck, Star } from "lucide-react";
+import { Leaf, ShieldCheck, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 
 // Assets
 import antiWrinkleDiagram from "@assets/diagrams/anti-wrinkle-1.png";
 import antiWrinkleHero from "@assets/treatment_images/anti-wrinkle-hero.jpg"
+import foreheadBeforeAfter from "@assets/before_afters/forehead.png";
+import frownBeforeAfter from "@assets/before_afters/frown.png";
 
 
 export default function AntiWrinklePage() {
+  const [baIndex, setBaIndex] = useState(0);
+  const baItems = [
+    {
+      src: foreheadBeforeAfter,
+      alt: "Anti-wrinkle forehead treatment before and after",
+      caption: "Forehead lines softened two weeks after treatment.",
+    },
+    {
+      src: frownBeforeAfter,
+      alt: "Anti-wrinkle frown lines treatment before and after",
+      caption: "Frown lines softened two weeks after treatment.",
+    },
+  ];
   const antiWrinkleCategory = treatmentCategories.find(cat => cat.slug === "anti-wrinkle");
   const oneAreaTreatment = antiWrinkleCategory?.treatments.find(t => t.name.includes("One Area"));
 
@@ -82,20 +98,17 @@ export default function AntiWrinklePage() {
             </div>
           </div>
         </section>
-        
+
         {/* Benefits Section */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[75%]">
                 <picture>
-                  <source
-                    srcSet="/hero_images/royalty-free-skin-botox1.webp"
-                    type="image/webp"
-                  />
+                  <source srcSet={baItems[baIndex].src} type="image/png" />
                   <img
-                    src="/hero_images/royalty-free-skin-botox1.webp"
-                    alt="Anti-wrinkle treatment benefits example"
+                    src={baItems[baIndex].src}
+                    alt={baItems[baIndex].alt}
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
                     width="1600"
@@ -103,8 +116,29 @@ export default function AntiWrinklePage() {
                     sizes="(max-width: 1024px) 100vw, 1600px"
                   />
                 </picture>
+                {/* Arrows */}
+                {baItems.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Previous"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full p-1.5 shadow bg-white/80 hover:bg-white"
+                      onClick={() => setBaIndex((i) => (i - 1 + baItems.length) % baItems.length)}
+                    >
+                      <ChevronLeft className="w-4 h-4 text-accent" />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Next"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1.5 shadow bg-white/80 hover:bg-white"
+                      onClick={() => setBaIndex((i) => (i + 1) % baItems.length)}
+                    >
+                      <ChevronRight className="w-4 h-4 text-accent" />
+                    </button>
+                  </>
+                )}
               </div>
-              <p className="text-muted-foreground text-center text-sm mt-4">"The doctors were very knowledgeable & took their time in explaining my treatment and aftercare. No bruising, I didn’t really feel a thing!"</p>
+              <p className="text-muted-foreground text-center text-sm mt-4">{baItems[baIndex].caption}</p>
             </div>
             <div className="order-1 md:order-2">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Anti-Wrinkle at Aevia Skin?</h2>

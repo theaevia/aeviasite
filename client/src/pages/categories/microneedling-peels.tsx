@@ -3,6 +3,7 @@ import SEO from "@/components/SEO";
 import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
+import { getTreatmentImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 export default function MicroneedlingPeelsCategoryPage() {
   const microneedlingCategory = treatmentCategories.find(cat => cat.slug === "microneedling");
@@ -48,6 +49,7 @@ export default function MicroneedlingPeelsCategoryPage() {
                 price={treatment.price}
                 duration={treatment.duration}
                 image={treatment.image}
+                imageObjectPosition={getTreatmentImageObjectPosition(treatment)}
               />
             ))}
           </div>

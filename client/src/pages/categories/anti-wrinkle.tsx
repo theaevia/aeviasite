@@ -3,7 +3,7 @@ import SEO from "@/components/SEO";
 import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
-import { getTreatmentImageClassName } from "@/lib/treatmentImageUtils";
+import { getTreatmentImageClassName, getTreatmentImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 const CATEGORY_SLUG = "anti-wrinkle";
 
@@ -13,9 +13,20 @@ export default function AntiWrinkleCategoryPage() {
 
   const areaSlug = "anti-wrinkle";
   const oneAreaTreatment = category.treatments.find(t => t.name.includes("One Area"));
-  const otherTreatments = category.treatments.filter(t =>
-    t.slug !== areaSlug
-  );
+  const otherTreatments = category.treatments.filter(t => t.slug !== areaSlug);
+  // Enforce explicit order after the 'Forehead, Frown or Crow's Feet' card
+  const desiredOrder = [
+    'jawline-slimming',
+    'neck-lift',
+    'lower-face-contour-duo',
+    'smile-lift',
+    'sweat-control',
+  ];
+  const orderIndex = (slug: string) => {
+    const idx = desiredOrder.indexOf(slug);
+    return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
+  };
+  const adjustedTreatments = otherTreatments.slice().sort((a, b) => orderIndex(a.slug) - orderIndex(b.slug));
 
   if (!oneAreaTreatment) return null; // Added null check for safety
 
@@ -42,8 +53,16 @@ export default function AntiWrinkleCategoryPage() {
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="flex justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            <TreatmentCard name="Forehead, Frown or Crow's Feet" slug={areaSlug} price={`From ${oneAreaTreatment.price}`} duration={oneAreaTreatment.duration} image={oneAreaTreatment.image} imageClassName={getTreatmentImageClassName(oneAreaTreatment)} />
-            {otherTreatments.map((treatment) => {
+            <TreatmentCard 
+              name="Forehead, Frown or Crow's Feet" 
+              slug={areaSlug} 
+              price={`From ${oneAreaTreatment.price}`} 
+              duration={oneAreaTreatment.duration} 
+              image={oneAreaTreatment.image} 
+              imageClassName={getTreatmentImageClassName(oneAreaTreatment)}
+              imageObjectPosition={getTreatmentImageObjectPosition(oneAreaTreatment)}
+            />
+            {adjustedTreatments.map((treatment) => {
               let displayName = treatment.name;
               let displaySubtitle = undefined;
 
@@ -74,6 +93,7 @@ export default function AntiWrinkleCategoryPage() {
                   subtitle={displaySubtitle}
                   image={treatment.image}
                   imageClassName={getTreatmentImageClassName(treatment)}
+                  imageObjectPosition={getTreatmentImageObjectPosition(treatment)}
                 />
               );
             })}

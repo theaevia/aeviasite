@@ -1,7 +1,10 @@
 // Assets
 import antiWrinkleHero from "@assets/treatment_images/anti-wrinkle-hero.jpg"
 import jawSlimHero from "@assets/treatment_images/jaw-slim-hero.png"
-import lowerFaceHero from "@assets/treatment_images/lower-face.jpg"
+import lowerFaceHero from "@assets/treatment_images/lower-face-2.jpg"
+import neckHero from "@assets/treatment_images/neck-2.png"
+import sweatHero from "@assets/treatment_images/armpit-2.png"
+import smileHero from "@assets/treatment_images/dao.jpg"
 
 // Types
 export interface Treatment {
@@ -149,7 +152,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£120",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418524&share&pId=2507365",
         slug: "smile-lift",
-        image: "/hero_images/smile-lift-example.webp"
+        image: smileHero
       },
       {
         name: "Neck Lift",
@@ -158,7 +161,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£270",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23160548&share&pId=2507365",
         slug: "neck-lift",
-        image: "/hero_images/neck-lift-example.webp"
+        image: neckHero
       },
       {
         name: "Sweat Control",
@@ -168,7 +171,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£350",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418468&share&pId=2507365",
         slug: "sweat-control",
-        image: "/hero_images/sweat-control-example.webp"
+        image: sweatHero
       },
       {
         name: "Lower-Face Contour Duo (Masseter Reduction + Jawline Tightening)",

@@ -6,6 +6,7 @@ import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 import neckLiftDiagram from "@assets/diagrams/platysmal-bands-1.png";
+import neckHero from "@assets/treatment_images/neck-2.png";
 
 export default function NeckLiftPage() {
   return (
@@ -53,12 +54,9 @@ export default function NeckLiftPage() {
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
                   <picture>
-                    <source
-                      srcSet="/hero_images/neck-lift-example.webp"
-                      type="image/webp"
-                    />
+                    <source srcSet={neckHero} type="image/jpeg" />
                     <img
-                      src="/hero_images/neck-lift-example.webp"
+                      src={neckHero}
                       alt="Nefertiti Neck Lift treatment example"
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"

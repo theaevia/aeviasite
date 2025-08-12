@@ -2,7 +2,7 @@ import SEO from "@/components/SEO";
 import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
-import { getTreatmentImageClassName } from "@/lib/treatmentImageUtils";
+import { getTreatmentImageClassName, getTreatmentImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 const CATEGORY_SLUG = "skin-boosters";
 
@@ -42,6 +42,7 @@ export default function SkinBoostersCategoryPage() {
                 duration={treatment.duration} 
                 image={treatment.image}
                 imageClassName={getTreatmentImageClassName(treatment)}
+                imageObjectPosition={getTreatmentImageObjectPosition(treatment)}
                 subtitle={treatment.subtitle}
               />
             ))}

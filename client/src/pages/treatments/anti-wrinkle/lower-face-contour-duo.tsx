@@ -6,7 +6,7 @@ import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 import lowerFaceContourDuoDiagram from "@assets/diagrams/lower-face-1.png";
-import lowerFaceHero from "@assets/treatment_images/lower-face.jpg"
+import lowerFaceHero from "@assets/treatment_images/lower-face-2.jpg"
 
 export default function LowerFaceContourDuoPage() {
   return (

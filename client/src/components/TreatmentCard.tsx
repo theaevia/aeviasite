@@ -7,30 +7,55 @@ interface TreatmentCardProps {
   slug: string;
   price: string;
   duration: string;
-  subtitle?: string; // Add optional subtitle prop
+  subtitle?: string;
   image?: string;
-  imageClassName?: string; // Add optional imageClassName prop
+  imageClassName?: string;
+  /** e.g. "center", "50% 35%", "top", "center 30%" */
+  imageObjectPosition?: string;
 }
 
-export default function TreatmentCard({ name, slug, price, duration, subtitle, image, imageClassName }: TreatmentCardProps) {
+export default function TreatmentCard({
+  name,
+  slug,
+  price,
+  duration,
+  subtitle,
+  image,
+  imageClassName,
+  imageObjectPosition = "50% 50%",
+}: TreatmentCardProps) {
   return (
     <Link href={`/treatments/${slug}`}>
-      <a className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group h-full flex flex-col min-h-[350px] min-w-[293.34px]">
+      <a className="bg-white rounded-2xl shadow-lg transition-shadow overflow-hidden h-full flex flex-col min-h-[350px] min-w-[293.34px]">
         <div className="relative w-full aspect-[4/3] overflow-hidden">
-          {image && <img src={image} alt={name} className={cn(
-            "object-cover transition-transform duration-300 will-change-transform",
-            imageClassName
+          {image ? (
+            <img
+              src={image}
+              alt={name}
+              loading="lazy"
+              decoding="async"
+              className={cn(
+                "absolute inset-0 w-full h-full object-cover",
+                imageClassName
+              )}
+              style={{ objectPosition: imageObjectPosition }}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-muted" />
           )}
-          style={{ transformOrigin: "center center" }}
-          />}
         </div>
+
         <div className="p-6 flex-grow flex flex-col items-center justify-center">
-          <h3 className="text-lg font-serif font-bold text-primary group-hover:underline text-center">
+          <h3 className="text-lg font-serif font-bold text-primary text-center">
             {name}
           </h3>
-          {subtitle && <p className="text-xs text-primary group-hover:underline text-center">{subtitle}</p>}
+          {subtitle && (
+            <p className="text-xs text-primary text-center">
+              {subtitle}
+            </p>
+          )}
           <p className="text-xs text-muted-foreground mt-2 text-center">
-            {price} &bull; {duration}
+            {price} • {duration}
           </p>
         </div>
       </a>
