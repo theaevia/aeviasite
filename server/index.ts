@@ -22,6 +22,13 @@ const VALID_ROUTES = [
   '/journal',
   '/consultations',
   '/treatments',
+  // Category routes
+  '/categories/anti-wrinkle',
+  '/categories/skin-boosters',
+  '/categories/microneedling-peels',
+  '/categories/polynucleotides',
+  '/categories/bio-voluminisation',
+  '/categories/consultation',
 ];
 
 // Security middleware

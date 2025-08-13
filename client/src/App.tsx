@@ -39,11 +39,7 @@ import TreatmentPage from "@/pages/treatments/[slug]";
 
 // Category Page Imports
 import AntiWrinkleCategory from "@/pages/categories/anti-wrinkle";
-import SkinBoostersCategory from "@/pages/categories/skin-boosters";
-import MicroneedlingCategory from "@/pages/categories/microneedling-peels";
-import BioVoluminisationCategory from "@/pages/categories/bio-voluminisation";
-import PolynucleotidesCategory from "@/pages/categories/polynucleotides";
-import ConsultationCategory from "@/pages/categories/consultation";
+import UnderDevelopmentCategory from "@/pages/categories/UnderDevelopment";
 
 function Router() {
   return (
@@ -56,13 +52,13 @@ function Router() {
         <Route path="/clinic" component={Clinic} />
         <Route path="/journal" component={JournalPlaceholder} />
         <Route path="/consultations" component={Consultations} />
-        {/* Category static pages */}
+        {/* Category static pages (only Anti-Wrinkle live; others temporarily show coming soon) */}
         <Route path="/categories/anti-wrinkle" component={AntiWrinkleCategory} />
-        <Route path="/categories/skin-boosters" component={SkinBoostersCategory} />
-        <Route path="/categories/microneedling-peels" component={MicroneedlingCategory} />
-        <Route path="/categories/bio-voluminisation" component={BioVoluminisationCategory} />
-        <Route path="/categories/polynucleotides" component={PolynucleotidesCategory} />
-        <Route path="/categories/consultation" component={ConsultationCategory} />
+        <Route path="/categories/skin-boosters" component={UnderDevelopmentCategory} />
+        <Route path="/categories/microneedling-peels" component={UnderDevelopmentCategory} />
+        <Route path="/categories/bio-voluminisation" component={UnderDevelopmentCategory} />
+        <Route path="/categories/polynucleotides" component={UnderDevelopmentCategory} />
+        <Route path="/categories/consultation" component={UnderDevelopmentCategory} />
         {/* Treatments and fallback */}
         <Route path="/treatments/anti-wrinkle" component={AntiWrinklePage} />
         <Route path="/treatments/jawline-slimming" component={JawlineSlimmingPage} />
