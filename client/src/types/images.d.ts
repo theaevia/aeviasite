@@ -1,5 +1,5 @@
 declare module '*.jpg' {
-  const content: string;
+const content: string;
   export default content;
 }
 

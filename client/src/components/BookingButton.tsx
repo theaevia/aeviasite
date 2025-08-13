@@ -1,22 +1,22 @@
 import { Link } from "wouter";
-import React from "react";
+import * as React from "react";
 
 interface BookingButtonProps {
   href: string;
   children: React.ReactNode;
-  variant?: "skin" | "mind";
+  variant?: "primary" | "secondary";
   className?: string;
 }
 
-export function BookingButton({ href, children, variant = "skin", className = "" }: BookingButtonProps) {
+export function BookingButton({ href, children, variant = "primary", className = "" }: BookingButtonProps) {
   const base =
-    "block px-6 py-3 rounded-xl font-medium text-base smooth-transition shadow-lg border-2 border-primary transition-colors transition-shadow hover:shadow-xl " +
+    "block px-6 py-3 rounded-xl font-medium text-base text-center smooth-transition shadow-lg border-2 border-primary transition-colors transition-shadow hover:shadow-xl " +
     className;
-  const skin =
+  const primary =
     "bg-primary text-primary-foreground hover:bg-white hover:text-primary hover:border-primary border-primary";
-  const mind =
+  const secondary =
     "bg-white text-primary hover:bg-primary hover:text-primary-foreground border-primary";
-  const classes = `${base} ${variant === "skin" ? skin : mind}`;
+  const classes = `${base} ${variant === "primary" ? primary : secondary}`;
 
   // If external link, use <a>
   if (/^https?:\/\//.test(href)) {

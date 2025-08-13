@@ -1,5 +1,5 @@
 import 'dotenv/config';
-const PORT = Number(process.env.PORT ?? 3000);
+const DEFAULT_PORT = Number(process.env.PORT ?? 3000);
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
@@ -7,12 +7,13 @@ import helmet from "helmet";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import net from "net";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
-const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${PORT}`;
+const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${DEFAULT_PORT}`;
 const VALID_ROUTES = [
   '/',
   '/skin',
@@ -21,6 +22,13 @@ const VALID_ROUTES = [
   '/journal',
   '/consultations',
   '/treatments',
+  // Category routes
+  '/categories/anti-wrinkle',
+  '/categories/skin-boosters',
+  '/categories/microneedling-peels',
+  '/categories/polynucleotides',
+  '/categories/bio-voluminisation',
+  '/categories/consultation',
 ];
 
 // Security middleware
@@ -135,6 +143,26 @@ app.post('/api/csp-report', express.json({ type: 'application/csp-report' }), (r
   res.status(204).end();
 });
 
+async function findAvailablePort(startPort: number, maxTries = 20): Promise<number> {
+  function check(port: number): Promise<boolean> {
+    return new Promise((resolve) => {
+      const tester = net.createServer()
+        .once('error', () => resolve(false))
+        .once('listening', () => tester.close(() => resolve(true)))
+        .listen({ port, host: '0.0.0.0' });
+    });
+  }
+
+  let port = startPort;
+  for (let i = 0; i < maxTries; i++) {
+    // eslint-disable-next-line no-await-in-loop
+    const ok = await check(port);
+    if (ok) return port;
+    port += 1;
+  }
+  return startPort; // fallback to requested if none free
+}
+
 (async () => {
   try {
     const server = await registerRoutes(app);
@@ -226,12 +254,40 @@ app.post('/api/csp-report', express.json({ type: 'application/csp-report' }), (r
       });
     }
 
+    // Determine port (auto-shift in dev if taken)
+    const desiredPort = DEFAULT_PORT;
+    const port = !isProd ? await findAvailablePort(desiredPort) : desiredPort;
+    if (!isProd && port !== desiredPort) {
+      log(`Port ${desiredPort} in use. Using ${port} instead.`);
+    }
+
+    // Helpful listener error handling
+    server.on('error', (err: any) => {
+      if (err && (err.code === 'EADDRINUSE' || err.errno === -48)) {
+        log(`Port ${port} is already in use. Did a previous dev server not exit?`, "error");
+        process.exit(1);
+      }
+      throw err;
+    });
+
     server.listen({
-      port: PORT,
+      port,
       host: "0.0.0.0",
     }, () => {
-      log(`Server running on port ${PORT}`);
+      log(`Server running on port ${port}`);
     });
+
+    // Graceful shutdown to free the port on exit
+    const shutdown = (signal: string) => {
+      log(`Received ${signal}. Shutting down…`);
+      server.close(() => {
+        log('HTTP server closed');
+        process.exit(0);
+      });
+    };
+
+    process.on('SIGINT', () => shutdown('SIGINT'));
+    process.on('SIGTERM', () => shutdown('SIGTERM'));
 
   } catch (error) {
     log(`Failed to start server: ${error}`, "error");

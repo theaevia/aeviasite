@@ -5,6 +5,9 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'nav': '1120px',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -90,6 +93,14 @@ export default {
       scale: {
         102: '1.02',
         104: '1.04',
+      },
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1.5rem', // 24 px on xs
+        sm: '1.5rem',
+        lg: '2rem',       // 32 px ≥ 1024 px
       },
     },
   },

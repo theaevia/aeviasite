@@ -15,6 +15,10 @@ import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
 import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 
+// Add slugify helper (same as in CategoryPage)
+const slugify = (str: string) =>
+  str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 export default function Navigation() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -68,7 +72,7 @@ export default function Navigation() {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 justify-self-center">
+          <div className="hidden nav:flex items-center space-x-8 justify-self-center">
             <Link href="/">
               <span onClick={handleLinkClick} className={cn(
                 "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
@@ -118,27 +122,27 @@ export default function Navigation() {
                     All Treatments
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/treatments#anti-wrinkle">
+                <Link href="/categories/anti-wrinkle">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Anti‑Wrinkle
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/treatments#skin-boosters">
+                <Link href="/categories/skin-boosters">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Skin Boosters
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/treatments#polynucleotides">
+                <Link href="/categories/polynucleotides">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Polynucleotides
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/treatments#microneedling-peels">
+                <Link href="/categories/microneedling-peels">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Microneedling & Peels
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/treatments#bio-voluminisation">
+                <Link href="/categories/bio-voluminisation">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Bio-Volumisation
                   </DropdownMenuItem>
@@ -188,7 +192,7 @@ export default function Navigation() {
           </div>
           
           {/* Right side icons */}
-          <div className="justify-self-end hidden md:flex items-center space-x-6">
+          <div className="justify-self-end hidden nav:flex items-center space-x-6">
             <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <Instagram className="h-5 w-5" strokeWidth={3} />
             </a>
@@ -206,7 +210,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden col-span-2 justify-self-end">
+          <div className="nav:hidden col-span-2 justify-self-end">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-foreground hover:text-primary smooth-transition"
@@ -219,7 +223,7 @@ export default function Navigation() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-100">
+          <div className="nav:hidden mt-4 pb-4 border-t border-gray-100">
             <div className="flex flex-col space-y-4 pt-4">
               <Link href="/">
                 <span onClick={handleLinkClick} className={cn(
@@ -276,36 +280,29 @@ export default function Navigation() {
                       All Treatments
                     </span>
                   </Link>
-                  <div className="px-2 pt-2 pb-1 text-xs text-muted-foreground font-semibold uppercase tracking-wide">SKIN</div>
-                  <Link href="/treatments#anti-wrinkle-treatments-smooth-refine">
+                  <Link href="/categories/anti-wrinkle">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Anti‑Wrinkle
                     </span>
                   </Link>
-                  <Link href="/treatments#skin-boosters-hydration-glow">
+                  <Link href="/categories/skin-boosters">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Skin Boosters
                     </span>
                   </Link>
-                  <Link href="/treatments#polynucleotides-skin-repair-regeneration">
+                  <Link href="/categories/polynucleotides">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Polynucleotides
                     </span>
                   </Link>
-                  <Link href="/treatments#microneedling-collagen-induction">
+                  <Link href="/categories/microneedling-peels">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Microneedling & Peels
                     </span>
                   </Link>
-                  <Link href="/treatments#bio-voluminisation-regenerate-volumise">
+                  <Link href="/categories/bio-voluminisation">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Bio-Volumisation
-                    </span>
-                  </Link>
-                  <div className="px-2 pt-2 pb-1 text-xs text-muted-foreground font-semibold uppercase tracking-wide">MIND</div>
-                  <Link href="/treatments#performance-transformative-coaching">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1">
-                      Coaching
                     </span>
                   </Link>
                 </div>

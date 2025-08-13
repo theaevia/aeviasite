@@ -218,7 +218,7 @@ export default function Treatments() {
                         </div>
                         <div className="flex flex-col justify-center items-end sm:w-[30%] mt-4 sm:mt-0">
                           <span className="text-primary font-medium mb-3 text-sm">
-                            {treatment.price} · {treatment.duration}
+                            {treatment.price} · {treatment.duration}{treatment.slug === 'lower-face-contour-duo' ? ' · 2 services' : ''}
                           </span>
                           <Button
                             variant="ghost"
@@ -277,7 +277,7 @@ export default function Treatments() {
                         </div>
                         <div className="flex flex-col justify-center items-end sm:w-[30%] mt-4 sm:mt-0">
                           <span className="text-primary font-medium mb-3 text-sm">
-                            {treatment.price} · {treatment.duration}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {treatment.price} • {treatment.duration}{treatment.slug === 'lower-face-contour-duo' ? ' • 2 services' : ''}
                           </span>
                           <Button
                             variant="ghost"

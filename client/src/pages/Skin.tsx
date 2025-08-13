@@ -29,7 +29,7 @@ export default function Skin() {
                 <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
                   Doctor-led treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
                 </p>
-                <BookingButton href="/consultations?type=skin" variant="skin" className="w-full sm:w-auto">
+                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full sm:w-auto">
                   Book Your Aevia Skin Consultation
                 </BookingButton>
               </div>
@@ -188,7 +188,7 @@ export default function Skin() {
               <div className="text-center">
                 <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
                 <p className="text-foreground/70 mb-6">Start with a virtual consultation</p>
-                <BookingButton href="/consultations?type=skin" variant="skin" className="w-full">
+                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
                   Book Virtual Consultation
                 </BookingButton>
               </div>
@@ -197,7 +197,7 @@ export default function Skin() {
                 <h3 className="text-xl font-serif font-semibold mb-4">Returning Clients</h3>
                 <p className="text-foreground/70 mb-6">Book treatments directly</p>
                 <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" target="_blank" rel="noopener noreferrer" className="w-full block">
-                  <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" variant="skin" className="w-full">
+                  <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" variant="primary" className="w-full">
                     Book Treatments
                   </BookingButton>
                 </a>
@@ -320,7 +320,7 @@ export default function Skin() {
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
             <p className="text-lg text-foreground/70 mb-8">Book your FREE Aevia Skin Consultation</p>
-            <BookingButton href="/consultations?type=skin" variant="skin" className="w-full sm:w-auto">
+            <BookingButton href="/consultations?type=skin" variant="primary" className="w-full sm:w-auto">
               Book Your Aevia Skin Consultation
             </BookingButton>
           </div>
