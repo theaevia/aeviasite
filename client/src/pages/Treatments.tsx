@@ -192,7 +192,7 @@ export default function Treatments() {
             {treatmentCategories
               .filter(cat => cat.category !== "Performance & Transformative Coaching")
               .map((cat) => (
-                <div key={cat.category} className="mb-12">
+                <div key={cat.category} id={cat.slug} style={{ scrollMarginTop: topGap }} className="mb-12">
                   <h2 className="text-2xl font-semibold mb-2 text-center sm:text-left">{cat.category}</h2>
                   {cat.description && <p className="mb-6 text-muted-foreground text-center sm:text-left">{cat.description}</p>}
                   <div className="divide-y divide-gray-200 bg-white rounded-lg">
