@@ -1,29 +1,26 @@
-import SEO from "@/components/SEO";
-import { BookingButton } from "@/components/BookingButton";
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
+import { useLocation } from 'wouter';
 
 export default function UnderDevelopmentCategory() {
-  return (
-    <>
-      <SEO title="Aevia Skin | Category In Development" description="This category page is under development. View all treatments and pricing on the Treatments page." />
-      <Helmet>
-        <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
-      <section className="hero-gradient py-12 lg:py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
-            This page is under development
-          </h1>
-          <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-            We’re putting the finishing touches on this category. In the meantime, you can view all available treatments and pricing.
-          </p>
-          <div className="flex justify-center">
-            <BookingButton href="/treatments" variant="primary">
-              View Treatments & Pricing
-            </BookingButton>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+  const [path, navigate] = useLocation();
+
+  useEffect(() => {
+    // Map the category path to the Treatments anchor slug
+    // e.g. /categories/skin-boosters -> #skin-boosters
+    const toSlug = (p: string): string => {
+      if (p.includes('/categories/skin-boosters')) return 'skin-boosters';
+      if (p.includes('/categories/polynucleotides')) return 'polynucleotides';
+      if (p.includes('/categories/microneedling-peels')) return 'microneedling';
+      if (p.includes('/categories/bio-voluminisation')) return 'bio-voluminisation';
+      if (p.includes('/categories/consultation')) return 'skin-consultation';
+      return '';
+    };
+
+    const slug = toSlug(path);
+    // Fallback to base treatments page if unknown
+    const target = slug ? `/treatments#${slug}` : '/treatments';
+    navigate(target, { replace: true });
+  }, [path, navigate]);
+
+  return null;
 }

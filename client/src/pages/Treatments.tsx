@@ -64,6 +64,40 @@ export default function Treatments() {
     window.open(bookingUrl, "_blank");
   };
 
+  // Scroll to category when arriving via hash (e.g. /treatments#skin-boosters)
+  useEffect(() => {
+    const scrollFromHash = () => {
+      const raw = window.location.hash || '';
+      if (!raw) return;
+      const slug = decodeURIComponent(raw.replace('#', ''));
+      const el = document.getElementById(slug);
+      if (!el) return;
+
+      const headerH = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue("--header-h")
+      ) || 80;
+      const navH = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue("--nav-h")
+      ) || 56;
+      const visualLift = navH / 2;
+
+      const yOffset = -(headerH + navH - visualLift);
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
+      // Most categories are under the SKIN section
+      setActiveSection('skin');
+    };
+
+    // Run after initial layout
+    const id = window.setTimeout(scrollFromHash, 0);
+    window.addEventListener('hashchange', scrollFromHash);
+    return () => {
+      clearTimeout(id);
+      window.removeEventListener('hashchange', scrollFromHash);
+    };
+  }, []);
+
   // Step 4: Use both variables for smooth scroll
   const scrollToSection = (section: 'skin' | 'mind') => {
     const el = document.getElementById(section);
@@ -192,7 +226,7 @@ export default function Treatments() {
             {treatmentCategories
               .filter(cat => cat.category !== "Performance & Transformative Coaching")
               .map((cat) => (
-                <div key={cat.category} className="mb-12">
+                <div key={cat.category} id={cat.slug} style={{ scrollMarginTop: topGap }} className="mb-12">
                   <h2 className="text-2xl font-semibold mb-2 text-center sm:text-left">{cat.category}</h2>
                   {cat.description && <p className="mb-6 text-muted-foreground text-center sm:text-left">{cat.description}</p>}
                   <div className="divide-y divide-gray-200 bg-white rounded-lg">
