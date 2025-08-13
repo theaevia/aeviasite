@@ -85,30 +85,10 @@ export default function ProfhiloPage() {
         
         {/* Benefits Section */}
         <section className="w-full bg-secondary py-12 md:py-16">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
-            <div className="flex flex-col items-center order-2 md:order-1">
-              <div className="relative w-full pb-[75%]">
-                <picture>
-                  <source
-                    srcSet="/hero_images/royalty-free-skin-botox2.webp"
-                    type="image/webp"
-                  />
-                  <img
-                    src="/hero_images/royalty-free-skin-botox2.webp"
-                    alt="Profhilo treatment benefits example"
-                    className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
-                    loading="lazy"
-                    width="1600"
-                    height="1200"
-                    sizes="(max-width: 1024px) 100vw, 1600px"
-                  />
-                </picture>
-              </div>
-              <p className="text-muted-foreground text-center text-sm mt-4">"My skin feels so much more hydrated and firm. I've had so many compliments on my glow!"</p>
-            </div>
-            <div className="order-1 md:order-2">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Profhilo® at Aevia Skin?</h2>
-              <div className="space-y-4">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 gap-12 items-center justify-items-center px-6">
+            <div className="order-1 mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Why Choose Profhilo® at Aevia Skin?</h2>
+              <div className="space-y-4 text-center">
                 <div className="mb-4">
                   <span className="font-semibold text-primary">Deep Hydration:</span>
                   <p className="text-base text-foreground/80 mb-0">Provides intense hydration from within, improving skin texture and tone.</p>

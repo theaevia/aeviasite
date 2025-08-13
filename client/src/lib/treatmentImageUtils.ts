@@ -29,7 +29,7 @@ export function getTreatmentImageObjectPosition(treatment: Treatment): string {
     case 'sweat-control':
       return '50% 50%'; // center a touch lower for underarm
     case 'smile-lift':
-      return '50% 40%';
+      return '5% 40%';
     default:
       return '50% 50%';
   }

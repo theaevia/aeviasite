@@ -9,6 +9,7 @@ import { treatmentCategories } from "@/data/treatments";
 
 // Assets
 import eyeRejuvenationHero from "@assets/hero_images/royalty-free-skin2.webp";
+import underEyeBeforeAfter from "@assets/before_afters/under-eye-placeholder.jpg";
 
 export default function EyeRejuvenationPage() {
   const polynucleotidesCategory = treatmentCategories.find(cat => cat.slug === "polynucleotides");
@@ -88,12 +89,9 @@ export default function EyeRejuvenationPage() {
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[75%]">
                 <picture>
-                  <source
-                    srcSet="/hero_images/royalty-free-skin3.webp"
-                    type="image/webp"
-                  />
+                  <source srcSet={underEyeBeforeAfter} type="image/jpeg" />
                   <img
-                    src="/hero_images/royalty-free-skin3.webp"
+                    src={underEyeBeforeAfter}
                     alt="Eye Rejuvenation benefits example"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"

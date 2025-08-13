@@ -7,7 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "concurrently \"PORT=3000 tsx server/index.ts\" \"vite --port 5000\"",
+    "dev": "PORT=3000 tsx server/index.ts",
     "build": "NODE_ENV=production vite build --config vite.config.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node --enable-source-maps dist/index.js",
     "check": "tsc",

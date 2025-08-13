@@ -8,6 +8,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 // Assets
 import masseterDiagram from "@assets/diagrams/masseter-1.png";
 import jawSlimHero from "@assets/treatment_images/jaw-slim-hero.png"
+import jawlineBeforeAfter from "@assets/before_afters/jawline-placeholder.jpg";
 
 
 export default function JawlineSlimmingPage() {
@@ -81,11 +82,21 @@ export default function JawlineSlimmingPage() {
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
             <div className="flex flex-col items-center order-2 md:order-1">
-              {/* Placeholder for a before/after or testimonial image */}
-              <div className="w-full h-64 bg-accent/30 rounded-2xl flex items-center justify-center mb-4">
-                <span className="text-muted-foreground text-lg">Before/After or Testimonial Image</span>
+              <div className="relative w-full pb-[75%]">
+                <picture>
+                  <source srcSet={jawlineBeforeAfter} type="image/jpeg" />
+                  <img
+                    src={jawlineBeforeAfter}
+                    alt="Jawline slimming treatment before and after"
+                    className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
+                    loading="lazy"
+                    width="1600"
+                    height="1200"
+                    sizes="(max-width: 1024px) 100vw, 1600px"
+                  />
+                </picture>
               </div>
-              <p className="text-muted-foreground text-center text-sm">"Jawline slimming has given me so much confidence and relieved my jaw pain. Highly recommend!"</p>
+              <p className="text-muted-foreground text-center text-sm mt-4">Jawline slimming.</p>
             </div>
             <div className="order-1 md:order-2">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Jawline Slimming at Aevia Skin?</h2>

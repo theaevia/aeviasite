@@ -7,6 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 import neckLiftDiagram from "@assets/diagrams/platysmal-bands-1.png";
 import neckHero from "@assets/treatment_images/neck-2.png";
+import neckLiftBeforeAfter from "@assets/before_afters/neck-lift-placeholder.png";
 
 export default function NeckLiftPage() {
   return (
@@ -78,13 +79,10 @@ export default function NeckLiftPage() {
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[75%]">
                 <picture>
-                  <source
-                    srcSet="/hero_images/royalty-free-skin-botox3.webp"
-                    type="image/webp"
-                  />
+                  <source srcSet={neckLiftBeforeAfter} type="image/webp" />
                   <img
-                    src="/hero_images/royalty-free-skin-botox3.webp"
-                    alt="Neck Lift benefits example"
+                    src={neckLiftBeforeAfter}
+                    alt="Neck lift (Nefertiti) before and after"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
                     width="1600"
@@ -93,7 +91,7 @@ export default function NeckLiftPage() {
                   />
                 </picture>
               </div>
-              <p className="text-muted-foreground text-center text-sm mt-4">"This treatment has significantly improved my jawline and neck appearance!"</p>
+              <p className="text-muted-foreground text-center text-sm mt-4">The Nefertiti Neck Lift procedure.</p>
             </div>
             <div className="order-1 md:order-2">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Neck Lift at Aevia Skin?</h2>

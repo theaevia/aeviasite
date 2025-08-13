@@ -7,6 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 import lowerFaceContourDuoDiagram from "@assets/diagrams/lower-face-1.png";
 import lowerFaceHero from "@assets/treatment_images/lower-face-2.jpg"
+import lowerFaceDuoBeforeAfter from "@assets/before_afters/lower-face-duo-placeholder.jpg";
 
 export default function LowerFaceContourDuoPage() {
   return (
@@ -82,13 +83,10 @@ export default function LowerFaceContourDuoPage() {
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[75%]">
                 <picture>
-                  <source
-                    srcSet="/hero_images/royalty-free-skin1.webp"
-                    type="image/webp"
-                  />
+                  <source srcSet={lowerFaceDuoBeforeAfter} type="image/jpeg" />
                   <img
-                    src="/hero_images/royalty-free-skin1.webp"
-                    alt="Lower-Face Contour Duo benefits example"
+                    src={lowerFaceDuoBeforeAfter}
+                    alt="Lower-Face Contour Duo before and after"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
                     width="1600"
@@ -97,7 +95,7 @@ export default function LowerFaceContourDuoPage() {
                   />
                 </picture>
               </div>
-              <p className="text-muted-foreground text-center text-sm mt-4">"This duo treatment is amazing! My jawline is so much more defined and I no longer grind my teeth."</p>
+              <p className="text-muted-foreground text-center text-sm mt-4">Jawline and neck slimming</p>
             </div>
             <div className="order-1 md:order-2">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Lower-Face Contour Duo at Aevia Skin?</h2>
