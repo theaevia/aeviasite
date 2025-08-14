@@ -57,13 +57,13 @@ export default function NeckLiftPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`${neckHero.replace('-640w.webp','-320w.avif')} 320w, ${neckHero.replace('-640w.webp','-640w.avif')} 640w`}
-                      sizes="(max-width: 1024px) 100vw, 640px"
+                      srcSet={`${neckHero.replace('-640w.webp','-320w.avif')} 320w, ${neckHero.replace('-640w.webp','-640w.avif')} 640w, ${neckHero.replace('-640w.webp','-1280w.avif')} 1280w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`${neckHero.replace('-640w.webp','-320w.webp')} 320w, ${neckHero.replace('-640w.webp','-640w.webp')} 640w`}
-                      sizes="(max-width: 1024px) 100vw, 640px"
+                      srcSet={`${neckHero.replace('-640w.webp','-320w.webp')} 320w, ${neckHero.replace('-640w.webp','-640w.webp')} 640w, ${neckHero.replace('-640w.webp','-1280w.webp')} 1280w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
                       src={neckHero}
@@ -71,8 +71,8 @@ export default function NeckLiftPage() {
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       fetchPriority="high"
-                      width={640}
-                      height={480}
+                      width={1280}
+                      height={960}
                     />
                   </picture>
                 </div>

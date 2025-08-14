@@ -56,8 +56,14 @@ export default function SmileLiftPage() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={smileHero}
-                      type="image/jpeg"
+                      type="image/avif"
+                      srcSet={`${smileHero.replace('-640w.webp','-320w.avif')} 320w, ${smileHero.replace('-640w.webp','-640w.avif')} 640w, ${smileHero.replace('-640w.webp','-1280w.avif')} 1280w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={`${smileHero.replace('-640w.webp','-320w.webp')} 320w, ${smileHero.replace('-640w.webp','-640w.webp')} 640w, ${smileHero.replace('-640w.webp','-1280w.webp')} 1280w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
                       src={smileHero}
@@ -65,9 +71,8 @@ export default function SmileLiftPage() {
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       fetchPriority="high"
-                      width="1600"
-                      height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      width={1280}
+                      height={960}
                     />
                   </picture>
                 </div>

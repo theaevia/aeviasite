@@ -8,7 +8,8 @@ const SRC_DIR = 'client/assets/treatment_images';
 const OUT_DIR = 'client/public/assets/treatment_images';
 
 // Target widths for responsive cards (covers ~1x/2x DPR for ~320px cards)
-const WIDTHS = [320, 640];
+// Include a larger desktop variant for hero clarity
+const WIDTHS = [320, 640, 1280];
 
 // Images to optimize (basename without extension -> list of acceptable source extensions to try)
 const FILES = [
@@ -42,16 +43,16 @@ async function optimizeOne(srcPath: string, baseName: string) {
     const webpOut = path.join(OUT_DIR, `${baseName}-${width}w.webp`);
     const avifOut = path.join(OUT_DIR, `${baseName}-${width}w.avif`);
 
-    // Create WebP
+    // Create WebP (slightly higher quality to preserve detail)
     await sharp(srcPath)
       .resize({ width, withoutEnlargement: true })
-      .webp({ quality: 70 })
+      .webp({ quality: 78, effort: 5, nearLossless: false })
       .toFile(webpOut);
 
-    // Create AVIF
+    // Create AVIF (excellent compression at moderate quality)
     await sharp(srcPath)
       .resize({ width, withoutEnlargement: true })
-      .avif({ quality: 45 })
+      .avif({ quality: 50, effort: 4 })
       .toFile(avifOut);
 
     console.log(`Generated ${path.basename(webpOut)} and ${path.basename(avifOut)}`);
