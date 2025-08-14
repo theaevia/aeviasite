@@ -7,7 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 
 import smileLiftDiagram from "@assets/diagrams/smile-lift-1.png";
-import smileHero from "@assets/treatment_images/dao.jpg";
+const smileHero = "/assets/treatment_images/dao-640w.webp";
 
 export default function SmileLiftPage() {
   return (

@@ -7,7 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 
 import sweatControlDiagram from "@assets/diagrams/sweat-control-1.png";
-import sweatHero from "@assets/treatment_images/armpit-2.png";
+const sweatHero = "/assets/treatment_images/armpit-2-640w.webp";
 
 export default function SweatControlPage() {
   return (
@@ -55,16 +55,24 @@ export default function SweatControlPage() {
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
                   <picture>
-                    <source srcSet={sweatHero} type="image/jpeg" />
+                    <source
+                      type="image/avif"
+                      srcSet={`${sweatHero.replace('-640w.webp','-320w.avif')} 320w, ${sweatHero.replace('-640w.webp','-640w.avif')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={`${sweatHero.replace('-640w.webp','-320w.webp')} 320w, ${sweatHero.replace('-640w.webp','-640w.webp')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
                     <img
                       src={sweatHero}
                       alt="Sweat Control treatment example"
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       fetchPriority="high"
-                      width="1600"
-                      height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      width={640}
+                      height={480}
                     />
                   </picture>
                 </div>

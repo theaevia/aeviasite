@@ -1,10 +1,11 @@
-// Assets
-import antiWrinkleHero from "@assets/treatment_images/anti-wrinkle-hero.jpg"
-import jawSlimHero from "@assets/treatment_images/jaw-slim-hero.png"
-import lowerFaceHero from "@assets/treatment_images/lower-face-2.jpg"
-import neckHero from "@assets/treatment_images/neck-2.png"
-import sweatHero from "@assets/treatment_images/armpit-2.png"
-import smileHero from "@assets/treatment_images/dao.jpg"
+// Assets (optimized public variants for responsive delivery)
+// Use 640w WebP as fallback; <picture> in cards will pick AVIF/WebP 320w/640w
+const antiWrinkleHero = "/assets/treatment_images/anti-wrinkle-hero-640w.webp";
+const lowerFaceHero = "/assets/treatment_images/lower-face-2-640w.webp";
+const neckHero = "/assets/treatment_images/neck-2-640w.webp";
+const sweatHero = "/assets/treatment_images/armpit-2-640w.webp";
+const smileHero = "/assets/treatment_images/dao-640w.webp";
+const jawSlimHero = "/assets/treatment_images/jaw-slim-hero-640w.webp";
 
 // Types
 export interface Treatment {

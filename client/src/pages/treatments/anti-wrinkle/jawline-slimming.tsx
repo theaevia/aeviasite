@@ -7,7 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 // Assets
 import masseterDiagram from "@assets/diagrams/masseter-1.png";
-import jawSlimHero from "@assets/treatment_images/jaw-slim-hero.png"
+const jawSlimHero = "/assets/treatment_images/jaw-slim-hero-640w.webp";
 import jawlineBeforeAfter from "@assets/before_afters/jawline-placeholder.jpg";
 
 
@@ -58,8 +58,14 @@ export default function JawlineSlimmingPage() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={jawSlimHero}
+                      type="image/avif"
+                      srcSet={`${jawSlimHero.replace('-640w.webp','-320w.avif')} 320w, ${jawSlimHero.replace('-640w.webp','-640w.avif')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
+                    <source
                       type="image/webp"
+                      srcSet={`${jawSlimHero.replace('-640w.webp','-320w.webp')} 320w, ${jawSlimHero.replace('-640w.webp','-640w.webp')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
                     />
                     <img
                       src={jawSlimHero}
@@ -67,9 +73,8 @@ export default function JawlineSlimmingPage() {
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       fetchPriority="high"
-                      width="1600"
-                      height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      width={640}
+                      height={480}
                     />
                   </picture>
                 </div>

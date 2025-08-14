@@ -6,7 +6,7 @@ import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 import neckLiftDiagram from "@assets/diagrams/platysmal-bands-1.png";
-import neckHero from "@assets/treatment_images/neck-2.png";
+const neckHero = "/assets/treatment_images/neck-2-640w.webp";
 import neckLiftBeforeAfter from "@assets/before_afters/neck-lift-placeholder.png";
 
 export default function NeckLiftPage() {
@@ -55,16 +55,24 @@ export default function NeckLiftPage() {
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
                   <picture>
-                    <source srcSet={neckHero} type="image/jpeg" />
+                    <source
+                      type="image/avif"
+                      srcSet={`${neckHero.replace('-640w.webp','-320w.avif')} 320w, ${neckHero.replace('-640w.webp','-640w.avif')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={`${neckHero.replace('-640w.webp','-320w.webp')} 320w, ${neckHero.replace('-640w.webp','-640w.webp')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
                     <img
                       src={neckHero}
                       alt="Nefertiti Neck Lift treatment example"
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       fetchPriority="high"
-                      width="1600"
-                      height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      width={640}
+                      height={480}
                     />
                   </picture>
                 </div>

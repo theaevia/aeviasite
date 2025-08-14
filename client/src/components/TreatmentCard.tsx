@@ -29,17 +29,46 @@ export default function TreatmentCard({
       <a className="bg-white rounded-2xl shadow-lg transition-shadow overflow-hidden h-full flex flex-col min-h-[350px] min-w-[293.34px]">
         <div className="relative w-full aspect-[4/3] overflow-hidden">
           {image ? (
-            <img
-              src={image}
-              alt={name}
-              loading="lazy"
-              decoding="async"
-              className={cn(
-                "absolute inset-0 w-full h-full object-cover",
-                imageClassName
-              )}
-              style={{ objectPosition: imageObjectPosition }}
-            />
+            // If the provided image follows our optimized public naming, render responsive sources
+            /\/assets\/treatment_images\/.+-640w\.webp$/.test(image) ? (
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet={image.replace("-640w.webp", "-320w.avif") + " 320w, " + image.replace("-640w.webp", "-640w.avif") + " 640w"}
+                  sizes="(max-width: 768px) 100vw, 320px"
+                />
+                <source
+                  type="image/webp"
+                  srcSet={image.replace("-640w.webp", "-320w.webp") + " 320w, " + image.replace("-640w.webp", "-640w.webp") + " 640w"}
+                  sizes="(max-width: 768px) 100vw, 320px"
+                />
+                <img
+                  src={image}
+                  alt={name}
+                  loading="lazy"
+                  decoding="async"
+                  width={640}
+                  height={480}
+                  className={cn(
+                    "absolute inset-0 w-full h-full object-cover",
+                    imageClassName
+                  )}
+                  style={{ objectPosition: imageObjectPosition }}
+                />
+              </picture>
+            ) : (
+              <img
+                src={image}
+                alt={name}
+                loading="lazy"
+                decoding="async"
+                className={cn(
+                  "absolute inset-0 w-full h-full object-cover",
+                  imageClassName
+                )}
+                style={{ objectPosition: imageObjectPosition }}
+              />
+            )
           ) : (
             <div className="absolute inset-0 bg-muted" />
           )}

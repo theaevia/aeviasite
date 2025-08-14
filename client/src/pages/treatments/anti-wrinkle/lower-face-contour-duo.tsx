@@ -6,7 +6,7 @@ import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 import lowerFaceContourDuoDiagram from "@assets/diagrams/lower-face-1.png";
-import lowerFaceHero from "@assets/treatment_images/lower-face-2.jpg"
+const lowerFaceHero = "/assets/treatment_images/lower-face-2-640w.webp";
 import lowerFaceDuoBeforeAfter from "@assets/before_afters/lower-face-duo-placeholder.jpg";
 
 export default function LowerFaceContourDuoPage() {
@@ -56,8 +56,14 @@ export default function LowerFaceContourDuoPage() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={lowerFaceHero}
+                      type="image/avif"
+                      srcSet={`${lowerFaceHero.replace('-640w.webp','-320w.avif')} 320w, ${lowerFaceHero.replace('-640w.webp','-640w.avif')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
+                    <source
                       type="image/webp"
+                      srcSet={`${lowerFaceHero.replace('-640w.webp','-320w.webp')} 320w, ${lowerFaceHero.replace('-640w.webp','-640w.webp')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
                     />
                     <img
                       src={lowerFaceHero}
@@ -65,9 +71,8 @@ export default function LowerFaceContourDuoPage() {
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       fetchPriority="high"
-                      width="1600"
-                      height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      width={640}
+                      height={480}
                     />
                   </picture>
                 </div>

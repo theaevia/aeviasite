@@ -9,7 +9,7 @@ import { treatmentCategories } from "@/data/treatments";
 
 // Assets
 import antiWrinkleDiagram from "@assets/diagrams/anti-wrinkle-1.png";
-import antiWrinkleHero from "@assets/treatment_images/anti-wrinkle-hero.jpg"
+const antiWrinkleHero = "/assets/treatment_images/anti-wrinkle-hero-640w.webp";
 import foreheadBeforeAfter from "@assets/before_afters/forehead.png";
 import frownBeforeAfter from "@assets/before_afters/frown.png";
 
@@ -79,8 +79,14 @@ export default function AntiWrinklePage() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={antiWrinkleHero}
+                      type="image/avif"
+                      srcSet={`${antiWrinkleHero.replace('-640w.webp','-320w.avif')} 320w, ${antiWrinkleHero.replace('-640w.webp','-640w.avif')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
+                    <source
                       type="image/webp"
+                      srcSet={`${antiWrinkleHero.replace('-640w.webp','-320w.webp')} 320w, ${antiWrinkleHero.replace('-640w.webp','-640w.webp')} 640w`}
+                      sizes="(max-width: 1024px) 100vw, 640px"
                     />
                     <img
                       src={antiWrinkleHero}
@@ -88,9 +94,8 @@ export default function AntiWrinklePage() {
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       fetchPriority="high"
-                      width="1600"
-                      height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      width={640}
+                      height={480}
                     />
                   </picture>
                 </div>
