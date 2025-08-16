@@ -8,22 +8,21 @@ import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 
 // Assets
-import antiWrinkleDiagram from "@assets/diagrams/anti-wrinkle-1.png";
+const antiWrinkleDiagram = "/assets/diagrams/anti-wrinkle-1-640w.webp";
 const antiWrinkleHero = "/assets/treatment_images/anti-wrinkle-hero-640w.webp";
-import foreheadBeforeAfter from "@assets/before_afters/forehead.png";
-import frownBeforeAfter from "@assets/before_afters/frown.png";
+// Use optimized public before/after variants
 
 
 export default function AntiWrinklePage() {
   const [baIndex, setBaIndex] = useState(0);
   const baItems = [
     {
-      src: foreheadBeforeAfter,
+      src: "/assets/before_afters/forehead-640w.webp",
       alt: "Anti-wrinkle forehead treatment before and after",
       caption: "Forehead lines softened two weeks after treatment.",
     },
     {
-      src: frownBeforeAfter,
+      src: "/assets/before_afters/frown-640w.webp",
       alt: "Anti-wrinkle frown lines treatment before and after",
       caption: "Frown lines softened two weeks after treatment.",
     },
@@ -110,15 +109,23 @@ export default function AntiWrinklePage() {
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[75%]">
                 <picture>
-                  <source srcSet={baItems[baIndex].src} type="image/png" />
+                  <source
+                    type="image/avif"
+                    srcSet={`${baItems[baIndex].src.replace('-640w.webp','-640w.avif')} 640w, ${baItems[baIndex].src.replace('-640w.webp','-1280w.avif')} 1280w`}
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`${baItems[baIndex].src.replace('-640w.webp','-640w.webp')} 640w, ${baItems[baIndex].src.replace('-640w.webp','-1280w.webp')} 1280w`}
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
                   <img
                     src={baItems[baIndex].src}
                     alt={baItems[baIndex].alt}
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
-                    width="1600"
-                    height="1200"
-                    sizes="(max-width: 1024px) 100vw, 1600px"
+                    width={640}
+                    height={480}
                   />
                 </picture>
                 {/* Arrows */}
@@ -185,14 +192,26 @@ export default function AntiWrinklePage() {
               </p>
             </div>
             <div className="order-2 md:order-2 flex flex-col items-center">
-              <img
-                src={antiWrinkleDiagram}
-                alt="Anti-wrinkle treatment diagram"
-                width="600"
-                height="800"
-                loading="lazy"
-                className="w-full h-auto"
-              />
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet={`${antiWrinkleDiagram.replace('-640w.webp','-640w.avif')} 640w, ${antiWrinkleDiagram.replace('-640w.webp','-1280w.avif')} 1280w`}
+                  sizes="(max-width: 640px) 100vw, 640px"
+                />
+                <source
+                  type="image/webp"
+                  srcSet={`${antiWrinkleDiagram.replace('-640w.webp','-640w.webp')} 640w, ${antiWrinkleDiagram.replace('-640w.webp','-1280w.webp')} 1280w`}
+                  sizes="(max-width: 640px) 100vw, 640px"
+                />
+                <img
+                  src={antiWrinkleDiagram}
+                  alt="Anti-wrinkle treatment diagram"
+                  loading="lazy"
+                  width={640}
+                  height={480}
+                  className="w-full h-auto"
+                />
+              </picture>
               <p className="text-muted-foreground text-sm mt-2">Forehead, frown and crow's feet lines</p>
             </div>
           </div>
