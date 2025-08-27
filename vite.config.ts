@@ -7,21 +7,11 @@ import type { ConfigEnv, UserConfig } from 'vite';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig(async ({ command }: ConfigEnv): Promise<UserConfig> => {
-  // Only load Replit plugins in `vite dev`
-  const replitPlugins: any[] = [];
-  if (command === "serve" && process.env.REPL_ID) {
-    const runtimeErrorOverlay = (
-      await import("@replit/vite-plugin-runtime-error-modal")
-    ).default;
-    const { cartographer } = await import("@replit/vite-plugin-cartographer");
-    replitPlugins.push(runtimeErrorOverlay(), cartographer());
-  }
-
+export default defineConfig(async (_env: ConfigEnv): Promise<UserConfig> => {
   return {
     root: path.resolve(__dirname, "client"),
     publicDir: path.resolve(__dirname, "client/public"),
-    plugins: [react(), svgr(), ...replitPlugins],
+    plugins: [react(), svgr()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'client/src'),
