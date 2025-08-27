@@ -61,15 +61,13 @@ app.use(helmet({
         "'self'",
         "'unsafe-inline'", // Required for GTM and inline scripts
         "https://www.googletagmanager.com",
-        "https://assets.calendly.com",
-        ...(isProd ? [] : ["https://replit.com"]) // Only include Replit in development
+        "https://assets.calendly.com"
       ],
       "script-src-elem": [
         "'self'",
         "'unsafe-inline'", // Required for GTM and inline scripts
         "https://www.googletagmanager.com",
-        "https://assets.calendly.com",
-        ...(isProd ? [] : ["https://replit.com"]) // Only include Replit in development
+        "https://assets.calendly.com"
       ],
       "script-src-attr": ["'unsafe-inline'"],
       "style-src": [
