@@ -78,9 +78,6 @@ export default function AntiWrinkleCategoryPage() {
               } else if (treatment.slug === 'neck-lift') {
                 displayName = 'Neck Lift';
                 displaySubtitle = 'Nefertiti';
-              } else if (treatment.slug === 'neck-lift') {
-                displayName = 'Neck Lift';
-                displaySubtitle = 'Nefertiti';
               }
 
               return (
