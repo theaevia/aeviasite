@@ -167,3 +167,18 @@
     height: 50px;
   }
 }
+
+/* Page-specific overrides */
+.privacy-article h2,
+.privacy-article h3 {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Privacy page link color override */
+.privacy-links a,
+.privacy-links a:visited,
+.privacy-links a:hover,
+.privacy-links a:active {
+  color: hsl(var(--primary)) !important;
+  text-decoration-color: hsl(var(--primary));
+}

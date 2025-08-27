@@ -17,6 +17,8 @@ import JournalPlaceholder from "@/pages/JournalPlaceholder";
 import Consultations from "@/pages/Consultations";
 import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
 
 // Treatment Page Imports
 import AntiWrinklePage from "@/pages/treatments/anti-wrinkle/anti-wrinkle";
@@ -52,6 +54,8 @@ function Router() {
         <Route path="/clinic" component={Clinic} />
         <Route path="/journal" component={JournalPlaceholder} />
         <Route path="/consultations" component={Consultations} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
         {/* Category static pages (only Anti-Wrinkle live; others temporarily show coming soon) */}
         <Route path="/categories/anti-wrinkle" component={AntiWrinkleCategory} />
         <Route path="/categories/skin-boosters" component={UnderDevelopmentCategory} />

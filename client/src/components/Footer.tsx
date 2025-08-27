@@ -54,7 +54,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary smooth-transition">Privacy Policy</a>
+                <Link href="/privacy" className="hover:text-primary smooth-transition">
+                  Privacy & Cookies
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-primary smooth-transition">
+                  Terms & Conditions
+                </Link>
               </li>
             </ul>
           </div>
