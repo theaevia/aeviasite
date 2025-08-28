@@ -10,6 +10,7 @@ import { treatmentCategories } from "@/data/treatments";
 // Assets
 import eyeRejuvenationHero from "@assets/hero_images/royalty-free-skin2.webp";
 import underEyeBeforeAfter from "@assets/before_afters/under-eye-placeholder.jpg";
+import underEyeDiagram from "@assets/diagrams/under-eye-1.png";
 
 export default function EyeRejuvenationPage() {
   const polynucleotidesCategory = treatmentCategories.find(cat => cat.slug === "polynucleotides");
@@ -144,14 +145,14 @@ export default function EyeRejuvenationPage() {
             </div>
             <div className="order-2 md:order-2 flex flex-col items-center">
               <img
-                src="/assets/diagrams/eye-rejuvenation-diagram.png"
-                alt="Eye Rejuvenation treatment diagram"
+                src={underEyeDiagram}
+                alt="Polynucleotides under-eye diagram"
                 width="600"
                 height="800"
                 loading="lazy"
                 className="w-full h-auto"
               />
-              <p className="text-muted-foreground text-sm mt-2">Plinest Eye injection technique</p>
+              <p className="text-muted-foreground text-sm mt-2">Plinest Eye on the under-eyes</p>
             </div>
           </div>
         </section>

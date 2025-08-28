@@ -89,6 +89,7 @@ export default function Footer() {
           </div>
         </div>
         
+
         <div className="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
           <p>&copy; 2024 The Aevia. All rights reserved.</p>
         </div>

@@ -149,29 +149,31 @@ export default function Layout({ children }: LayoutProps) {
     script.text = JSON.stringify(organizationSchema);
     document.head.appendChild(script);
 
-    // Header height logic
-    const setHeaderHeight = () => {
-      const header = document.querySelector('nav.fixed') as HTMLElement;
-      if (!header) return;
-      document.documentElement.style.setProperty(
-        '--header-h',
-        `${header.offsetHeight}px`
-      );
+    // Header/Footer height logic
+    const setLayoutHeights = () => {
+      const header = document.querySelector('nav.fixed') as HTMLElement | null;
+      const footer = document.querySelector('footer') as HTMLElement | null;
+      if (header) {
+        document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+      }
+      if (footer) {
+        document.documentElement.style.setProperty('--footer-h', `${footer.offsetHeight}px`);
+      }
     };
 
-    setHeaderHeight();
-    window.addEventListener('resize', setHeaderHeight);
+    setLayoutHeights();
+    window.addEventListener('resize', setLayoutHeights);
     
     return () => {
-      window.removeEventListener('resize', setHeaderHeight);
+      window.removeEventListener('resize', setLayoutHeights);
       document.head.removeChild(script);
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main className="pt-[var(--header-h,80px)]">
+      <main className="pt-[var(--header-h,80px)] flex-1">
         {children}
       </main>
       <Footer />

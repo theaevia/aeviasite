@@ -143,6 +143,8 @@ export default function Home() {
           </div>
         </section>
 
+        
+
         {/* Dual Offer Introduction */}
         <section className="py-12 md:py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
@@ -150,14 +152,14 @@ export default function Home() {
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Difference</h2>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
 The Aevia offers two distinct, doctor-led services:&nbsp;
-<span className="font-semibold text-accent inline">
+<span className="font-semibold text-primary inline">
   Medical&nbsp;Aesthetics
 </span>{" "}
 for natural, science-backed skin rejuvenation, and&nbsp;
-<span className="font-semibold text-accent inline sm:hidden">
+<span className="font-semibold text-primary inline sm:hidden">
   Performance&nbsp;Coaching
 </span>
-<span className="font-semibold text-accent hidden sm:inline">
+<span className="font-semibold text-primary hidden sm:inline">
   Performance&nbsp;and&nbsp;Transformative&nbsp;Coaching
 </span>{" "}
 for professionals seeking clarity, confidence, and agency. Whether you're
