@@ -32,6 +32,7 @@ export default function Navigation() {
   const [isSkinOpen, setIsSkinOpen] = useState(false);
   const [isMindOpen, setIsMindOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [isConsultOpen, setIsConsultOpen] = useState(false);
 
   const isActive = (path: string) => {
     if (path === "/" && location === "/") return true;
@@ -103,7 +104,7 @@ export default function Navigation() {
                 </Link>
                 <DropdownMenuSeparator />
                 <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>Anti‑Wrinkle</DropdownMenuSubTrigger>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Anti‑Wrinkle</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/jawline-slimming">
                       <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Masseter (Jawline Slimming)</DropdownMenuItem>
@@ -120,7 +121,7 @@ export default function Navigation() {
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>Skin Boosters</DropdownMenuSubTrigger>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Skin Boosters</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/profhilo">
                       <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Profhilo®</DropdownMenuItem>
@@ -131,7 +132,7 @@ export default function Navigation() {
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>Polynucleotides</DropdownMenuSubTrigger>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Polynucleotides</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/full-face-regeneration">
                       <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Full Face (Plinest)</DropdownMenuItem>
@@ -252,13 +253,13 @@ export default function Navigation() {
                 </Link>
                 <DropdownMenuItem disabled>FAQs</DropdownMenuItem>
                 <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>Policies</DropdownMenuSubTrigger>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Policies</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/privacy">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Privacy Policy</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Privacy Policy</DropdownMenuItem>
                     </Link>
                     <Link href="/terms">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Terms & Conditions</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Terms & Conditions</DropdownMenuItem>
                     </Link>
                     <DropdownMenuItem disabled>Cancellation Policy</DropdownMenuItem>
                   </DropdownMenuSubContent>
@@ -398,16 +399,16 @@ export default function Navigation() {
                 </div>
               )}
               <button
-                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                onClick={() => setIsConsultOpen(!isConsultOpen)}
                 className={cn(
                   "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
                   (isActive("/consultations/skin") || isActive("/consultations/mind")) && "text-primary font-semibold"
                 )}
               >
                 <span>Consult</span>
-                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isResourcesOpen && "rotate-180")} />
+                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isConsultOpen && "rotate-180")} />
               </button>
-              {isResourcesOpen && (
+              {isConsultOpen && (
                 <div className="ml-4 flex flex-col space-y-2">
                   <Link href="/consultations/skin">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin</span>
