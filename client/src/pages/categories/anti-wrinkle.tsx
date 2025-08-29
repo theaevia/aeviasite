@@ -3,7 +3,7 @@ import SEO from "@/components/SEO";
 import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
-import { getTreatmentImageClassName, getTreatmentImageObjectPosition } from "@/lib/treatmentImageUtils";
+import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
 
 const CATEGORY_SLUG = "anti-wrinkle";
 
@@ -42,7 +42,7 @@ export default function AntiWrinkleCategoryPage() {
             Soften expression lines while preserving natural movement - with subtle, doctor-performed injectables tailored to your features.
           </p>
           <div className="flex flex-col items-center w-full sm:w-auto">
-            <BookingButton href="/consultations?type=skin" variant="primary" className="w-full sm:w-auto">
+            <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
               Start Virtual Consultation
             </BookingButton>
             <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>
@@ -59,8 +59,8 @@ export default function AntiWrinkleCategoryPage() {
               price={`From ${oneAreaTreatment.price}`} 
               duration={oneAreaTreatment.duration} 
               image={oneAreaTreatment.image} 
-              imageClassName={getTreatmentImageClassName(oneAreaTreatment)}
-              imageObjectPosition={getTreatmentImageObjectPosition(oneAreaTreatment)}
+              imageClassName={getThumbnailClassName(oneAreaTreatment)}
+              imageObjectPosition={getThumbnailObjectPosition(oneAreaTreatment)}
             />
             {adjustedTreatments.map((treatment) => {
               let displayName = treatment.name;
@@ -89,8 +89,8 @@ export default function AntiWrinkleCategoryPage() {
                   duration={treatment.slug === 'lower-face-contour-duo' ? '1h' : treatment.duration}
                   subtitle={displaySubtitle}
                   image={treatment.image}
-                  imageClassName={getTreatmentImageClassName(treatment)}
-                  imageObjectPosition={getTreatmentImageObjectPosition(treatment)}
+                  imageClassName={getThumbnailClassName(treatment)}
+                  imageObjectPosition={getThumbnailObjectPosition(treatment)}
                 />
               );
             })}
