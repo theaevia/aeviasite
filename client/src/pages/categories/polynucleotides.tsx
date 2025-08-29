@@ -33,7 +33,7 @@ export default function PolynucleotidesCategoryPage() {
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="flex justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {category.treatments.map((treatment) => (
+            {category.treatments.map((treatment, index) => (
               <TreatmentCard 
                 key={treatment.name} 
                 name={treatment.name} 
@@ -44,6 +44,7 @@ export default function PolynucleotidesCategoryPage() {
                 imageClassName={getThumbnailClassName(treatment)}
                 imageObjectPosition={getThumbnailObjectPosition(treatment)}
                 subtitle={treatment.subtitle}
+                priority={index < 3}
               />
             ))}
             </div>

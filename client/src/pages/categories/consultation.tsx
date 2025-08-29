@@ -34,7 +34,7 @@ export default function ConsultationCategoryPage() {
           <div className="flex justify-center">
             <div className="flex justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {category.treatments.map((treatment) => (
+            {category.treatments.map((treatment, index) => (
               <TreatmentCard 
                 key={treatment.name}
                 name={treatment.name}
@@ -44,6 +44,7 @@ export default function ConsultationCategoryPage() {
                 image={treatment.image}
                 imageClassName={getThumbnailClassName(treatment)}
                 imageObjectPosition={getThumbnailObjectPosition(treatment)}
+                priority={index < 3}
               />
             ))}
             </div>

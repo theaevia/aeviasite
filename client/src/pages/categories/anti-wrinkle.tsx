@@ -61,8 +61,9 @@ export default function AntiWrinkleCategoryPage() {
               image={oneAreaTreatment.image} 
               imageClassName={getThumbnailClassName(oneAreaTreatment)}
               imageObjectPosition={getThumbnailObjectPosition(oneAreaTreatment)}
+              priority
             />
-            {adjustedTreatments.map((treatment) => {
+            {adjustedTreatments.map((treatment, index) => {
               let displayName = treatment.name;
               let displaySubtitle = undefined;
 
@@ -91,6 +92,7 @@ export default function AntiWrinkleCategoryPage() {
                   image={treatment.image}
                   imageClassName={getThumbnailClassName(treatment)}
                   imageObjectPosition={getThumbnailObjectPosition(treatment)}
+                  priority={index < 2}
                 />
               );
             })}
