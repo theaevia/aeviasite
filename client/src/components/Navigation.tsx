@@ -128,14 +128,20 @@ export default function Navigation() {
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
+                <Link href="/skin">
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 font-semibold hover:text-primary">
+                    Overview
+                  </DropdownMenuItem>
+                </Link>
                 <Link href="/treatments">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 font-semibold hover:text-primary">
-                    Overview (All Treatments)
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    All Treatments & Prices
                   </DropdownMenuItem>
                 </Link>
                 <Link href="/treatments#signature-offers">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Signature Offers
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    <span>Signature Offers</span>
+                    <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured</span>
                   </DropdownMenuItem>
                 </Link>
                 <DropdownMenuSeparator />
@@ -361,23 +367,28 @@ export default function Navigation() {
               </button>
               {isSkinOpen && (
                 <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/treatments">
+                  <Link href="/skin">
                     <span
                       onClick={() => { setActiveMenu('skin'); handleLinkClick(); }}
                       className={cn(
                         "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                        isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
+                        isActive("/skin") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
-                      Overview (All Treatments)
+                      Overview
                     </span>
                   </Link>
-                  <Link href="/treatments#signature-offers">
-                    <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-medium px-2 py-1 hover:text-primary">Signature Offers</span>
+                  <Link href="/treatments">
+                    <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-medium px-2 py-1 hover:text-primary">All Treatments & Prices</span>
                   </Link>
-                  {/* Separator 1: after Overview */}
+                  <Link href="/treatments#signature-offers">
+                    <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="flex items-center gap-2 justify-between px-2 py-1 text-sm hover:text-primary">
+                      <span className="font-medium">Signature Offers</span>
+                      <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured</span>
+                    </span>
+                  </Link>
+                  {/* Separator 1: after Signature Offers */}
                   <div className="my-1 border-t border-muted" />
-                  {/* Signature Offers */}
 
 
                   {/* Anti‑Wrinkle collapsible */}
