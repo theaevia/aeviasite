@@ -168,10 +168,10 @@ export default function Navigation() {
                 <Link href="/categories/microneedling-peels">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Microneedling & Peels</DropdownMenuItem>
                 </Link>
+                <DropdownMenuSeparator />
                 <Link href="/gallery">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Results (Gallery)</DropdownMenuItem>
                 </Link>
-                <DropdownMenuSeparator />
                 <DropdownMenuItem disabled>Packages / Memberships (soon)</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -224,14 +224,7 @@ export default function Navigation() {
                 </Link>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Link href="/gallery">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                Gallery
-              </span>
-            </Link>
+            {/* Top-level Gallery removed on desktop; kept under Skin */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span
@@ -409,7 +402,12 @@ export default function Navigation() {
                   )}
                   {/* Bio‑Volumisation collapsible */}
                   <button
-                    onClick={() => setIsSkinBoostersHeadOpen(false) || setIsSkinPnoOpen(false) || setIsSkinAntiOpen(false) || setIsSkinBioOpen(!isSkinBioOpen)}
+                    onClick={() => {
+                      setIsSkinBoostersHeadOpen(false);
+                      setIsSkinPnoOpen(false);
+                      setIsSkinAntiOpen(false);
+                      setIsSkinBioOpen(!isSkinBioOpen);
+                    }}
                     className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
                   >
                     <span>Bio‑Volumisation</span>
@@ -426,7 +424,7 @@ export default function Navigation() {
                   <Link href="/gallery">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Results (Gallery)</span>
                   </Link>
-                  <span className="block text-sm text-muted-foreground px-2 pt-2">Packages / Memberships (soon)</span>
+                  <span className="block text-sm text-muted-foreground px-2 py-1">Packages / Memberships (soon)</span>
                 </div>
               )}
               <button
