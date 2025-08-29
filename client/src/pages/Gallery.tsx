@@ -1,9 +1,6 @@
 import SEO from "@/components/SEO";
 
 // Local before/after assets
-import jawlineBeforeAfter from "@assets/before_afters/jawline-placeholder.jpg";
-import neckLiftBeforeAfter from "@assets/before_afters/neck-lift-placeholder.png";
-import lowerFaceDuoBeforeAfter from "@assets/before_afters/lower-face-duo-placeholder.jpg";
 import underEyeBeforeAfter from "@assets/before_afters/under-eye-1.png";
 
 interface GalleryItem {
@@ -30,27 +27,6 @@ const items: GalleryItem[] = [
     kind: "publicWebP",
   },
   {
-    id: "jawline",
-    title: "Jawline Slimming",
-    caption: "Jawline Slimming — before and after.",
-    src: jawlineBeforeAfter,
-    kind: "imported",
-  },
-  {
-    id: "necklift",
-    title: "Nefertiti Neck Lift",
-    caption: "Neck Lift — before and after.",
-    src: neckLiftBeforeAfter,
-    kind: "importedPng",
-  },
-  {
-    id: "lowerfaceduo",
-    title: "Lower‑Face Contour Duo",
-    caption: "Lower‑Face Contour Duo — before and after.",
-    src: lowerFaceDuoBeforeAfter,
-    kind: "imported",
-  },
-  {
     id: "undereye",
     title: "Under‑Eye Polynucleotides",
     caption: "Under‑Eye Polynucleotides — before and after.",
@@ -67,7 +43,7 @@ export default function GalleryPage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">Results Gallery</h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-            A selection of before & after results from treatments performed at Aevia Skin. Individual results may vary.
+            A selection of before & after results from treatments performed at Aevia Skin. Only real cases are shown here — no placeholders. Individual results may vary.
           </p>
         </div>
       </section>
@@ -124,4 +100,3 @@ export default function GalleryPage() {
     </>
   );
 }
-
