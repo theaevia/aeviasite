@@ -9,6 +9,7 @@ import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 // Assets
+import skinBoosterDiagram from "@assets/diagrams/skin-booster-1.png";
 
 export default function FullFaceRegenerationPage() {
   const polynucleotidesCategory = treatmentCategories.find(cat => cat.slug === "polynucleotides");
@@ -132,7 +133,7 @@ export default function FullFaceRegenerationPage() {
             </div>
             <div className="order-2 md:order-2 flex flex-col items-center">
               <img
-                src="/assets/diagrams/full-face-regeneration-diagram.png"
+                src={skinBoosterDiagram}
                 alt="Full Face Regeneration treatment diagram"
                 width="600"
                 height="800"
