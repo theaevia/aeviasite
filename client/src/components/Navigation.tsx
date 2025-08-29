@@ -82,45 +82,6 @@ export default function Navigation() {
           
           {/* Desktop Navigation */}
           <div className="hidden nav:flex items-center space-x-8 justify-self-center">
-            <Link href="/skin">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/skin") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                Skin
-              </span>
-            </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <span
-                  className={cn(
-                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isActive("/mind") || isActive("/consultations/mind")
-                      ? "text-primary font-semibold"
-                      : "text-foreground"
-                  )}
-                >
-                  Mind <ChevronDown className="ml-1 h-4 w-4" />
-                </span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <Link href="/mind">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Overview
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/consultations/mind">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    1:1 Coaching / Clarity Session
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/mind">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Programmes
-                  </DropdownMenuItem>
-                </Link>
-              </DropdownMenuContent>
-            </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span
@@ -145,16 +106,16 @@ export default function Navigation() {
                   <DropdownMenuSubTrigger>Anti‑Wrinkle</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/jawline-slimming">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Masseter (Jawline Slimming)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Masseter (Jawline Slimming)</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/smile-lift">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Smile Lift (DAO)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Smile Lift (DAO)</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/neck-lift">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Neck Lift (Nefertiti)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Neck Lift (Nefertiti)</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/sweat-control">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Sweat Control (Underarms)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sweat Control (Underarms)</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
@@ -162,10 +123,10 @@ export default function Navigation() {
                   <DropdownMenuSubTrigger>Skin Boosters</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/profhilo">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Profhilo®</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Profhilo®</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/sunekos">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Sunekos</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sunekos</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
@@ -173,17 +134,70 @@ export default function Navigation() {
                   <DropdownMenuSubTrigger>Polynucleotides</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/full-face-regeneration">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Full Face (Plinest)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Full Face (Plinest)</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/eye-rejuvenation">
-                      <DropdownMenuItem onSelect={handleLinkClick}>Eye (Plinest Eye)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Eye (Plinest Eye)</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem disabled>Packages / Memberships (soon)</DropdownMenuItem>
                 <Link href="/gallery">
-                  <DropdownMenuItem onSelect={handleLinkClick}>Results (Gallery)</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Results (Gallery)</DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isActive("/mind") || isActive("/consultations/mind")
+                      ? "text-primary font-semibold"
+                      : "text-foreground"
+                  )}
+                >
+                  Mind <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Overview
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/consultations/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Discovery Call
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Programmes
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isActive("/consultations/skin") || isActive("/consultations/mind")
+                      ? "text-primary font-semibold"
+                      : "text-foreground"
+                  )}
+                >
+                  Consult <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/consultations/skin">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin</DropdownMenuItem>
+                </Link>
+                <Link href="/consultations/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind</DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -289,37 +303,6 @@ export default function Navigation() {
           <div className="nav:hidden mt-4 pb-4 border-t border-gray-100">
             <div className="flex flex-col space-y-4 pt-4">
               {/* Home removed; logo links home */}
-              <Link href="/skin">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/skin") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Skin
-                </span>
-              </Link>
-              <button
-                onClick={() => setIsMindOpen(!isMindOpen)}
-                className={cn(
-                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  (isActive("/mind") || isActive("/consultations/mind")) && "text-primary font-semibold"
-                )}
-              >
-                <span>Mind</span>
-                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isMindOpen && "rotate-180")} />
-              </button>
-              {isMindOpen && (
-                <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/mind">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
-                  </Link>
-                  <Link href="/consultations/mind">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">1:1 Coaching / Clarity Session</span>
-                  </Link>
-                  <Link href="/mind">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Programmes</span>
-                  </Link>
-                </div>
-              )}
               <button
                 onClick={() => setIsSkinOpen(!isSkinOpen)}
                 className={cn(
@@ -388,6 +371,49 @@ export default function Navigation() {
                   </Link>
                   <Link href="/gallery">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Results (Gallery)</span>
+                  </Link>
+                </div>
+              )}
+              <button
+                onClick={() => setIsMindOpen(!isMindOpen)}
+                className={cn(
+                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  (isActive("/mind") || isActive("/consultations/mind")) && "text-primary font-semibold"
+                )}
+              >
+                <span>Mind</span>
+                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isMindOpen && "rotate-180")} />
+              </button>
+              {isMindOpen && (
+                <div className="ml-4 flex flex-col space-y-2">
+                  <Link href="/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
+                  </Link>
+                  <Link href="/consultations/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
+                  </Link>
+                  <Link href="/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Programmes</span>
+                  </Link>
+                </div>
+              )}
+              <button
+                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                className={cn(
+                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  (isActive("/consultations/skin") || isActive("/consultations/mind")) && "text-primary font-semibold"
+                )}
+              >
+                <span>Consult</span>
+                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isResourcesOpen && "rotate-180")} />
+              </button>
+              {isResourcesOpen && (
+                <div className="ml-4 flex flex-col space-y-2">
+                  <Link href="/consultations/skin">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin</span>
+                  </Link>
+                  <Link href="/consultations/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind</span>
                   </Link>
                 </div>
               )}
