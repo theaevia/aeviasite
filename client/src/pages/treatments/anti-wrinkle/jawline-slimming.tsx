@@ -7,8 +7,8 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 // Assets
 import masseterDiagram from "@assets/diagrams/masseter-1.png";
-const jawSlimHero = "/assets/treatment_images/jaw-slim-hero-640w.webp";
 import jawlineBeforeAfter from "@assets/before_afters/jawline-placeholder.jpg";
+import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 
 export default function JawlineSlimmingPage() {
@@ -59,18 +59,19 @@ export default function JawlineSlimmingPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`${jawSlimHero.replace('-640w.webp','-320w.avif')} 320w, ${jawSlimHero.replace('-640w.webp','-640w.avif')} 640w, ${jawSlimHero.replace('-640w.webp','-1280w.avif')} 1280w`}
+                      srcSet={`/assets/treatment_images/model-1-320w.avif 320w, /assets/treatment_images/model-1-640w.avif 640w, /assets/treatment_images/model-1-1280w.avif 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`${jawSlimHero.replace('-640w.webp','-320w.webp')} 320w, ${jawSlimHero.replace('-640w.webp','-640w.webp')} 640w, ${jawSlimHero.replace('-640w.webp','-1280w.webp')} 1280w`}
+                      srcSet={`/assets/treatment_images/model-1-320w.webp 320w, /assets/treatment_images/model-1-640w.webp 640w, /assets/treatment_images/model-1-1280w.webp 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
-                      src={jawSlimHero}
+                      src="/assets/treatment_images/model-1-640w.webp"
                       alt="Jawline Slimming treatment example"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
+                      className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('jawline-slimming')}`}
+                      style={{ objectPosition: getHeroImageObjectPosition('jawline-slimming') }}
                       loading="eager"
                       fetchPriority="high"
                       width={1280}
@@ -101,7 +102,7 @@ export default function JawlineSlimmingPage() {
                   />
                 </picture>
               </div>
-              <p className="text-muted-foreground text-center text-sm mt-4">Jawline slimming.</p>
+              <p className="text-muted-foreground text-center text-sm mt-4">Jawline slimming</p>
             </div>
             <div className="order-1 md:order-2">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Jawline Slimming at Aevia Skin?</h2>
@@ -261,7 +262,7 @@ export default function JawlineSlimmingPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Jawline Slimming consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>

@@ -10,6 +10,12 @@ const heroImages = [
         quality: 80
     },
     {
+        input: 'client/assets/hero_images/sculptra.webp',
+        output: 'client/assets/hero_images/sculptra-800w.webp',
+        width: 800,
+        quality: 80
+    },
+    {
         input: 'client/assets/hero_images/aevia-clinic2.webp',
         output: 'client/assets/hero_images/aevia-clinic2-800w.webp',
         width: 800,

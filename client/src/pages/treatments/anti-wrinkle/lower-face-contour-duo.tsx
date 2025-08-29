@@ -8,6 +8,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 import lowerFaceContourDuoDiagram from "@assets/diagrams/lower-face-1.png";
 const lowerFaceHero = "/assets/treatment_images/lower-face-2-640w.webp";
 import lowerFaceDuoBeforeAfter from "@assets/before_afters/lower-face-duo-placeholder.jpg";
+import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 export default function LowerFaceContourDuoPage() {
   return (
@@ -68,7 +69,8 @@ export default function LowerFaceContourDuoPage() {
                     <img
                       src={lowerFaceHero}
                       alt="Lower-Face Contour Duo treatment example"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
+                      className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('lower-face-contour-duo')}`}
+                      style={{ objectPosition: getHeroImageObjectPosition('lower-face-contour-duo') }}
                       loading="eager"
                       fetchPriority="high"
                       width={1280}
@@ -243,7 +245,7 @@ export default function LowerFaceContourDuoPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Lower-Face Contour Duo consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>

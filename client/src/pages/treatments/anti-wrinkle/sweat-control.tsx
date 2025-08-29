@@ -8,6 +8,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 import sweatControlDiagram from "@assets/diagrams/sweat-control-1.png";
 const sweatHero = "/assets/treatment_images/armpit-2-640w.webp";
+import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 export default function SweatControlPage() {
   return (
@@ -68,7 +69,8 @@ export default function SweatControlPage() {
                     <img
                       src={sweatHero}
                       alt="Sweat Control treatment example"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
+                      className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('sweat-control')}`}
+                      style={{ objectPosition: getHeroImageObjectPosition('sweat-control') }}
                       loading="eager"
                       fetchPriority="high"
                       width={1280}
@@ -224,7 +226,7 @@ export default function SweatControlPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Sweat Control consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>

@@ -33,8 +33,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/consultations" className="hover:text-primary smooth-transition">
-                  Consultations
+                <Link href="/consultations/skin" className="hover:text-primary smooth-transition">
+                  Skin Consultation
+                </Link>
+              </li>
+              <li>
+                <Link href="/consultations/mind" className="hover:text-primary smooth-transition">
+                  Mind Discovery Call
                 </Link>
               </li>
             </ul>

@@ -129,12 +129,12 @@ export default function Home() {
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
                 <div className="w-full sm:w-64">
-                  <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                  <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                     Book Skin Consultation
                   </BookingButton>
                 </div>
                 <div className="w-full sm:w-64">
-                  <BookingButton href="/consultations?type=mind" variant="secondary" className="w-full">
+                  <BookingButton href="/consultations/mind" variant="secondary" className="w-full">
                     Book Mind Discovery Call
                   </BookingButton>
                 </div>
@@ -372,12 +372,12 @@ transformation.
             <p className="text-lg text-foreground/70 mb-8">Based in Kings Cross, London</p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
               <div className="w-full sm:w-64">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                   Book Skin Consultation
                 </BookingButton>
               </div>
               <div className="w-full sm:w-64">
-                <BookingButton href="/consultations?type=mind" variant="secondary" className="w-full">
+                <BookingButton href="/consultations/mind" variant="secondary" className="w-full">
                   Book Mind Discovery Call
                 </BookingButton>
               </div>

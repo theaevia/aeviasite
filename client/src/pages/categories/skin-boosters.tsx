@@ -2,7 +2,7 @@ import SEO from "@/components/SEO";
 import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
-import { getTreatmentImageClassName, getTreatmentImageObjectPosition } from "@/lib/treatmentImageUtils";
+import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
 
 const CATEGORY_SLUG = "skin-boosters";
 
@@ -22,7 +22,7 @@ export default function SkinBoostersCategoryPage() {
                 Advanced injectables to improve skin hydration, firmness, and radiance.
               </p>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full sm:w-auto">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
                   Start Virtual Consultation
                 </BookingButton>
                 <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>
@@ -41,8 +41,8 @@ export default function SkinBoostersCategoryPage() {
                 price={treatment.price} 
                 duration={treatment.duration} 
                 image={treatment.image}
-                imageClassName={getTreatmentImageClassName(treatment)}
-                imageObjectPosition={getTreatmentImageObjectPosition(treatment)}
+                imageClassName={getThumbnailClassName(treatment)}
+                imageObjectPosition={getThumbnailObjectPosition(treatment)}
                 subtitle={treatment.subtitle}
               />
             ))}

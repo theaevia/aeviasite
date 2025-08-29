@@ -5,7 +5,7 @@ const lowerFaceHero = "/assets/treatment_images/lower-face-2-640w.webp";
 const neckHero = "/assets/treatment_images/neck-2-640w.webp";
 const sweatHero = "/assets/treatment_images/armpit-2-640w.webp";
 const smileHero = "/assets/treatment_images/dao-640w.webp";
-const jawSlimHero = "/assets/treatment_images/jaw-slim-hero-640w.webp";
+const jawSlimHero = "/assets/treatment_images/model-1-640w.webp";
 
 // Types
 export interface Treatment {
@@ -198,7 +198,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£300",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421064&share&pId=2507365",
         slug: "profhilo",
-        image: "/hero_images/profhilo-example.webp"
+        image: "/assets/treatment_images/profhilo-640w.webp"
       },
       {
         name: "Sunekos",
@@ -208,7 +208,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£250",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421090&share&pId=2507365",
         slug: "sunekos",
-        image: "/hero_images/sunekos-example.webp"
+        image: "/assets/treatment_images/model-2-640w.webp"
       },
     ]
   },
@@ -225,7 +225,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£250",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421332&share&pId=2507365",
         slug: "eye-rejuvenation",
-        image: "/hero_images/eye-rejuvenation-example.webp"
+        image: "/assets/treatment_images/under-eye-1-640w.webp"
       },
       {
         name: "Full Face Regeneration",
@@ -235,7 +235,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£300",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421256&share&pId=2507365",
         slug: "full-face-regeneration",
-        image: "/hero_images/full-face-regeneration-example.webp"
+        image: "/assets/treatment_images/polynucleotides-1-640w.webp"
       },
     ]
   },
@@ -310,7 +310,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£550",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?eid=4557161&oiid=sv%3A23698477&share&pId=2507365",
         slug: "sculptra",
-        image: "/hero_images/sculptra-example.webp"
+        image: "/assets/treatment_images/sculptra-640w.webp"
       }
     ]
   },

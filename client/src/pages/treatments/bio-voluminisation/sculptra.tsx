@@ -5,10 +5,14 @@ import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
+import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 // Assets
-import sculptraHero from "@assets/hero_images/royalty-free-skin-botox1.webp";
-import sculptraDiagram from "@assets/diagrams/lower-face-1.png"; // Using a generic diagram for now
+import sculptraHeroJpg from "@assets/hero_images/sculptra.jpg";
+import sculptraHeroJpg800 from "@assets/hero_images/sculptra-800w.jpg";
+import sculptraHeroWebp from "@assets/hero_images/sculptra.webp";
+import sculptraHeroWebp800 from "@assets/hero_images/sculptra-800w.webp";
+// Removed injection sites diagram per request
 
 export default function SculptraPage() {
   const bioVoluminisationCategory = treatmentCategories.find(cat => cat.slug === "bio-voluminisation");
@@ -62,13 +66,15 @@ export default function SculptraPage() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={sculptraHero}
+                      srcSet={`${sculptraHeroWebp800} 800w, ${sculptraHeroWebp} 1600w`}
                       type="image/webp"
                     />
                     <img
-                      src={sculptraHero}
+                      src={sculptraHeroJpg}
+                      srcSet={`${sculptraHeroJpg800} 800w, ${sculptraHeroJpg} 1600w`}
                       alt="Sculptra treatment example"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
+                      className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('sculptra')}`}
+                      style={{ objectPosition: getHeroImageObjectPosition('sculptra') }}
                       loading="eager"
                       fetchPriority="high"
                       width="1600"
@@ -82,58 +88,44 @@ export default function SculptraPage() {
           </div>
         </section>
         
-        {/* Benefits Section */}
-        <section className="w-full bg-secondary py-12 md:py-16">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 gap-12 items-center justify-items-center px-6">
-            <div className="order-1 mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Why Choose Sculptra® at Aevia Skin?</h2>
-              <div className="space-y-4 text-center">
-                <div className="mb-4">
-                  <span className="font-semibold text-primary">Natural Collagen Stimulation:</span>
-                  <p className="text-base text-foreground/80 mb-0">Stimulates your body's own collagen production for natural-looking results.</p>
+        {/* Why Choose + Understanding (side-by-side on desktop) */}
+        <section className="w-full bg-white py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-start">
+            {/* Why Choose */}
+            <div className="bg-secondary rounded-2xl p-8">
+              <h2 className="text-2xl lg:text-3xl font-serif font-bold mb-4 text-black">Why Choose Sculptra® at Aevia Skin?</h2>
+              <div className="space-y-4">
+                <div>
+                  <span className="font-semibold text-primary">Natural Collagen Stimulation</span>
+                  <p className="text-base text-foreground/80 mb-0">Stimulates your body's own collagen production for natural‑looking results.</p>
                 </div>
-                <div className="mb-4">
-                  <span className="font-semibold text-primary">Gradual & Long-Lasting:</span>
+                <div>
+                  <span className="font-semibold text-primary">Gradual & Long‑Lasting</span>
                   <p className="text-base text-foreground/80 mb-0">Results appear gradually and can last for up to two years or more.</p>
                 </div>
-                <div className="mb-4">
-                  <span className="font-semibold text-primary">Restores Volume:</span>
-                  <p className="text-base text-foreground/80 mb-0">Addresses the root cause of facial ageing by restoring lost volume and improving skin quality.</p>
+                <div>
+                  <span className="font-semibold text-primary">Restores Volume</span>
+                  <p className="text-base text-foreground/80 mb-0">Addresses the cause of facial ageing by restoring lost volume and improving skin quality.</p>
                 </div>
-                <div className="mb-4">
-                  <span className="font-semibold text-primary">Subtle Rejuvenation:</span>
-                  <p className="text-base text-foreground/80 mb-0">Achieve a refreshed and youthful appearance without looking overfilled.</p>
+                <div>
+                  <span className="font-semibold text-primary">Subtle Rejuvenation</span>
+                  <p className="text-base text-foreground/80 mb-0">Achieve a refreshed, youthful appearance without looking overfilled.</p>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Understanding Sculptra® Treatment Section */}
-        <section className="w-full bg-white py-12 md:py-16">
-          <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-1 md:order-1">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Understanding Sculptra® Treatment</h2>
+            {/* Understanding */}
+            <div className="bg-white rounded-2xl p-8 border border-[#e0ddd9]">
+              <h2 className="text-2xl lg:text-3xl font-serif font-bold mb-4 text-black">Understanding Sculptra® Treatment</h2>
               <p className="text-base text-foreground/80 mb-4">
-                Sculptra® is an FDA-approved injectable that helps gradually replace lost collagen. It contains poly-L-lactic acid (PLLA), a biocompatible synthetic substance that stimulates your skin's natural collagen production.
+                Sculptra® is an <span className="font-semibold text-primary">FDA‑approved</span> injectable that helps gradually replace lost collagen. It contains <span className="font-semibold text-primary">poly‑L‑lactic acid (PLLA)</span>, a biocompatible synthetic substance that stimulates your skin's natural <span className="font-semibold">collagen production</span>.
               </p>
               <p className="text-base text-foreground/80 mb-4">
-                Unlike traditional dermal fillers that provide immediate volume, Sculptra® works by stimulating your body's own collagen, leading to a gradual and natural-looking increase in skin thickness and volume over several months.
+                Unlike traditional fillers that provide immediate volume, Sculptra® works by stimulating your body's own collagen, leading to a <span className="font-semibold">gradual, natural‑looking</span> increase in skin thickness and volume over several months.
               </p>
               <p className="text-base text-foreground/80">
-                A typical treatment regimen consists of 2-3 sessions, spaced 4-6 weeks apart. Results can last for up to two years or more, making it a long-lasting solution for facial rejuvenation.
+                A typical regimen consists of <span className="font-semibold">2–3 sessions</span>, spaced <span className="font-semibold">4–6 weeks</span> apart. Results can last for <span className="font-semibold">up to two years or more</span>, making it a long‑lasting option for facial rejuvenation.
               </p>
-            </div>
-            <div className="order-2 md:order-2 flex flex-col items-center">
-              <img
-                src={sculptraDiagram}
-                alt="Sculptra treatment diagram"
-                width="600"
-                height="800"
-                loading="lazy"
-                className="w-full h-auto"
-              />
-              <p className="text-muted-foreground text-sm mt-2">Sculptra injection areas</p>
             </div>
           </div>
         </section>
@@ -247,7 +239,7 @@ export default function SculptraPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Sculptra® consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>

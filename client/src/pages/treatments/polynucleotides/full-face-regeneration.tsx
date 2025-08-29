@@ -6,9 +6,9 @@ import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
+import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 // Assets
-import fullFaceRegenerationHero from "@assets/hero_images/royalty-free-skin4.webp";
 
 export default function FullFaceRegenerationPage() {
   const polynucleotidesCategory = treatmentCategories.find(cat => cat.slug === "polynucleotides");
@@ -62,18 +62,24 @@ export default function FullFaceRegenerationPage() {
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={fullFaceRegenerationHero}
+                      type="image/avif"
+                      srcSet={`/assets/treatment_images/polynucleotides-1-320w.avif 320w, /assets/treatment_images/polynucleotides-1-640w.avif 640w, /assets/treatment_images/polynucleotides-1-1280w.avif 1280w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
+                    />
+                    <source
                       type="image/webp"
+                      srcSet={`/assets/treatment_images/polynucleotides-1-320w.webp 320w, /assets/treatment_images/polynucleotides-1-640w.webp 640w, /assets/treatment_images/polynucleotides-1-1280w.webp 1280w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
-                      src={fullFaceRegenerationHero}
+                      src="/assets/treatment_images/polynucleotides-1-640w.webp"
                       alt="Full Face Regeneration treatment example"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
+                      className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('full-face-regeneration')}`}
+                      style={{ objectPosition: getHeroImageObjectPosition('full-face-regeneration') }}
                       loading="eager"
                       fetchPriority="high"
-                      width="1600"
-                      height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      width={1280}
+                      height={960}
                     />
                   </picture>
                 </div>
@@ -248,7 +254,7 @@ export default function FullFaceRegenerationPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Full Face Regeneration consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>

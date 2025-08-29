@@ -225,6 +225,21 @@ export default function Treatments() {
             </div>
             {treatmentCategories
               .filter(cat => cat.category !== "Performance & Transformative Coaching")
+              .sort((a, b) => {
+                // Ensure Bio-Voluminisation appears before Microneedling & Clinical Peels
+                const order: Record<string, number> = {
+                  'skin-consultation': 5,
+                  'anti-wrinkle': 10,
+                  'skin-boosters': 20,
+                  'polynucleotides': 30,
+                  'bio-voluminisation': 40,
+                  'microneedling': 50,
+                  'clinical-peels': 60,
+                };
+                const ai = order[a.slug] ?? 1000;
+                const bi = order[b.slug] ?? 1000;
+                return ai - bi;
+              })
               .map((cat) => (
                 <div key={cat.category} id={cat.slug} style={{ scrollMarginTop: topGap }} className="mb-12">
                   <h2 className="text-2xl font-semibold mb-2 text-center sm:text-left">{cat.category}</h2>

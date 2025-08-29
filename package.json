@@ -13,7 +13,8 @@
     "check": "tsc",
     "db:push": "drizzle-kit push",
     "convert-webp": "tsx convert-to-webp.ts",
-    "optimize-hero-images": "tsx scripts/optimize-hero-images.ts"
+    "optimize-hero-images": "tsx scripts/optimize-hero-images.ts",
+    "generate-variants": "node scripts/generate-treatment-variants.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -6,6 +6,7 @@ import { Leaf, ShieldCheck, Star, ChevronLeft, ChevronRight } from "lucide-react
 import { useState } from "react";
 import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
+import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 // Assets
 const antiWrinkleDiagram = "/assets/diagrams/anti-wrinkle-1-640w.webp";
@@ -90,7 +91,8 @@ export default function AntiWrinklePage() {
                     <img
                       src={antiWrinkleHero}
                       alt="Anti-wrinkle treatment example"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
+                      className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('anti-wrinkle')}`}
+                      style={{ objectPosition: getHeroImageObjectPosition('anti-wrinkle') }}
                       loading="eager"
                       fetchPriority="high"
                       width={1280}
@@ -336,7 +338,7 @@ export default function AntiWrinklePage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your anti-wrinkle consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/consultations?type=skin" variant="primary" className="w-full">
+                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>

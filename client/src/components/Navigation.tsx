@@ -23,6 +23,7 @@ export default function Navigation() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isConsultationsOpen, setIsConsultationsOpen] = useState(false);
   // Add state for mobile Treatments menu
   const [isTreatmentsOpen, setIsTreatmentsOpen] = useState(false);
 
@@ -42,6 +43,7 @@ export default function Navigation() {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setIsAboutOpen(false);
+    setIsConsultationsOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
@@ -97,14 +99,32 @@ export default function Navigation() {
                 Mind
               </span>
             </Link>
-            <Link href="/consultations">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                Consultation
-              </span>
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isActive("/consultations/skin") || isActive("/consultations/mind")
+                      ? "text-primary font-semibold"
+                      : "text-foreground"
+                  )}
+                >
+                  Consultation <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/consultations/skin">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Skin
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/consultations/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Mind
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span
@@ -137,14 +157,14 @@ export default function Navigation() {
                     Polynucleotides
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/categories/microneedling-peels">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Microneedling & Peels
-                  </DropdownMenuItem>
-                </Link>
                 <Link href="/categories/bio-voluminisation">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Bio-Volumisation
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/categories/microneedling-peels">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Microneedling & Peels
                   </DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
@@ -202,7 +222,7 @@ export default function Navigation() {
             <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <FaGoogle className="h-4 w-4 fill-current" />
             </a>
-            <Link href="/consultations">
+            <Link href="/consultations/skin">
               <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                 Book Now
               </Button>
@@ -249,14 +269,30 @@ export default function Navigation() {
                   Mind
                 </span>
               </Link>
-              <Link href="/consultations">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/consultations") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Consultation
-                </span>
-              </Link>
+              <button
+                onClick={() => setIsConsultationsOpen(!isConsultationsOpen)}
+                className={cn(
+                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  (isActive("/consultations/skin") || isActive("/consultations/mind")) && "text-primary font-semibold"
+                )}
+              >
+                <span>Consultation</span>
+                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isConsultationsOpen && "rotate-180")} />
+              </button>
+              {isConsultationsOpen && (
+                <div className="ml-4 flex flex-col space-y-2">
+                  <Link href="/consultations/skin">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
+                      Skin
+                    </span>
+                  </Link>
+                  <Link href="/consultations/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
+                      Mind
+                    </span>
+                  </Link>
+                </div>
+              )}
               <button
                 onClick={() => setIsTreatmentsOpen(!isTreatmentsOpen)}
                 className={cn(
@@ -295,14 +331,14 @@ export default function Navigation() {
                       Polynucleotides
                     </span>
                   </Link>
-                  <Link href="/categories/microneedling-peels">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Microneedling & Peels
-                    </span>
-                  </Link>
                   <Link href="/categories/bio-voluminisation">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Bio-Volumisation
+                    </span>
+                  </Link>
+                  <Link href="/categories/microneedling-peels">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
+                      Microneedling & Peels
                     </span>
                   </Link>
                 </div>
@@ -362,7 +398,7 @@ export default function Navigation() {
                 <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                   <FaGoogle className="h-4 w-4 fill-current" />
                 </a>
-                <Link href="/consultations">
+                <Link href="/consultations/skin">
                   <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                     Book Now
                   </Button>

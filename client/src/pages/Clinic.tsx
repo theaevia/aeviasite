@@ -64,11 +64,18 @@ export default function Clinic() {
                 </div>
                 <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
                   <h3 className="text-xl font-serif font-semibold mb-4">Book a Consultation</h3>
-                  <Link href="/consultations">
-                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
-                      Book Now
-                    </Button>
-                  </Link>
+                  <div className="grid grid-cols-1 gap-3">
+                    <Link href="/consultations/skin">
+                      <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
+                        Skin Consultation
+                      </Button>
+                    </Link>
+                    <Link href="/consultations/mind">
+                      <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white shadow-sm">
+                        Mind Discovery Call
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

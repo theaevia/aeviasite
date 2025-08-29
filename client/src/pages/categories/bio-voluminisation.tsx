@@ -2,6 +2,7 @@ import SEO from "@/components/SEO";
 import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
+import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
 
 const CATEGORY_SLUG = "bio-voluminisation";
 
@@ -21,7 +22,7 @@ export default function BioVoluminisationCategoryPage() {
             Restore and enhance facial volume, reducing the appearance of wrinkles and improving skin texture.
           </p>
           <div className="flex flex-col items-center w-full sm:w-auto">
-            <BookingButton href="/consultations?type=skin" variant="primary" className="w-full sm:w-auto">
+            <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
               Start Virtual Consultation
             </BookingButton>
             <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>
@@ -34,7 +35,16 @@ export default function BioVoluminisationCategoryPage() {
             <div className="flex justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {category.treatments.map((treatment) => (
-              <TreatmentCard key={treatment.name} name={treatment.name} slug={treatment.slug} price={treatment.price} duration={treatment.duration} />
+              <TreatmentCard 
+                key={treatment.name} 
+                name={treatment.name} 
+                slug={treatment.slug} 
+                price={treatment.price} 
+                duration={treatment.duration}
+                image={treatment.image}
+                imageClassName={getThumbnailClassName(treatment)}
+                imageObjectPosition={getThumbnailObjectPosition(treatment)}
+              />
             ))}
             </div>
           </div>
