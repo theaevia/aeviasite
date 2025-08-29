@@ -9,7 +9,7 @@ import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 // Assets
-import underEyeBeforeAfter from "@assets/before_afters/under-eye-placeholder.jpg";
+import underEyeBeforeAfter from "@assets/before_afters/under-eye-1.png";
 import underEyeDiagram from "@assets/diagrams/under-eye-1.png";
 
 export default function EyeRejuvenationPage() {
@@ -96,10 +96,10 @@ export default function EyeRejuvenationPage() {
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[75%]">
                 <picture>
-                  <source srcSet={underEyeBeforeAfter} type="image/jpeg" />
+                  <source srcSet={underEyeBeforeAfter} type="image/png" />
                   <img
                     src={underEyeBeforeAfter}
-                    alt="Eye Rejuvenation benefits example"
+                    alt="Under-eye polynucleotides before and after"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
                     width="1600"
