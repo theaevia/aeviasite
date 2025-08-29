@@ -19,7 +19,7 @@ export default function CancellationPolicyPage() {
           </p>
           <h2>Appointment cancellations</h2>
           <p>
-            Please give at least 48 hours’ notice to cancel or reschedule. If you cancel or reschedule less than 48 hours before your appointment and we have already incurred non‑refundable room/equipment charges that cannot reasonably be recovered, we reserve the right to charge you an amount equal to the actual, reasonable cost incurred (for example: third‑party room hire, agency or clinician call‑out fee).
+            Please give at least 48 hours’ notice to cancel or reschedule. If you cancel or reschedule less than 48 hours before your appointment and we have already incurred non‑refundable room/equipment charges that cannot reasonably be recovered, we reserve the right to charge you an amount equal to the actual, reasonable cost incurred (for example: clinic room hire or clinician call‑out fee).
           </p>
           <h2>Less than 24 hours’ notice</h2>
           <p>We may charge 50% of the appointment fee or retain your deposit.</p>
@@ -29,7 +29,7 @@ export default function CancellationPolicyPage() {
           </p>
           <h2>Extenuating circumstances</h2>
           <p>
-            If you experience an emergency, please let us know as soon as possible; we will act reasonably.
+            If you experience an emergency, please let us know as soon as possible; we'll be happy to act reasonably. We're available by phone and WhatsApp. 
           </p>
         </div>
       </section>
