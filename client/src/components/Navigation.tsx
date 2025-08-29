@@ -209,6 +209,14 @@ export default function Navigation() {
                 Journal
               </span>
             </Link>
+            <Link href="/gallery">
+              <span onClick={handleLinkClick} className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
+                isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
+              )}>
+                Gallery
+              </span>
+            </Link>
           </div>
           
           {/* Right side icons */}
@@ -385,6 +393,14 @@ export default function Navigation() {
                   isActive("/journal") ? "text-primary font-semibold" : "text-foreground"
                 )}>
                   Journal
+                </span>
+              </Link>
+              <Link href="/gallery">
+                <span onClick={handleLinkClick} className={cn(
+                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
+                )}>
+                  Gallery
                 </span>
               </Link>
               
