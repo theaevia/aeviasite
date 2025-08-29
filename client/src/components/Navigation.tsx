@@ -46,6 +46,26 @@ export default function Navigation() {
     return false;
   };
 
+  // Disambiguate which top-level menu to highlight when multiple match (e.g. Mind vs Consult)
+  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'consult' | 'about' | 'resources'>(null);
+  const matches = (paths: string[]) => paths.some((p) => isActive(p));
+  const flags = {
+    skin: matches(["/treatments", "/categories/", "/gallery"]),
+    mind: matches(["/mind", "/consultations/mind"]),
+    consult: matches(["/consultations/skin", "/consultations/mind"]),
+    about: matches(["/team", "/clinic"]),
+    resources: matches(["/journal", "/privacy", "/terms", "/cancellation"]),
+  } as const;
+  const keys: Array<keyof typeof flags> = ["skin", "mind", "consult", "about", "resources"];
+  const matchingKeys = keys.filter((k) => flags[k]);
+  const preferredKey = activeMenu && flags[activeMenu] ? activeMenu : matchingKeys[0] || null;
+  const isHighlighted = (key: keyof typeof flags) => flags[key] && preferredKey === key;
+
+  const onNavSelect = (key: 'skin' | 'mind' | 'consult' | 'about' | 'resources') => {
+    setActiveMenu(key);
+    handleLinkClick();
+  };
+
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
     setIsAboutOpen(false);
@@ -100,10 +120,9 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isActive("/treatments") || isActive("/gallery")
-                      ? "text-primary font-semibold"
-                      : "text-foreground"
+                    isHighlighted('skin') ? "text-primary font-semibold" : "text-foreground"
                   )}
+                  onClick={() => setActiveMenu('skin')}
                 >
                   Skin <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
@@ -124,19 +143,19 @@ export default function Navigation() {
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Anti‑Wrinkle</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/anti-wrinkle">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Forehead, Frown & Crow's Feet</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Forehead, Frown & Crow's Feet</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/jawline-slimming">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Masseter (Jawline Slimming)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Jawline Slimming</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/smile-lift">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Smile Lift (DAO)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Smile Lift</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/neck-lift">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Neck Lift (Nefertiti)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Neck Lift</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/sweat-control">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sweat Control (Underarms)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sweat Control</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
@@ -144,10 +163,10 @@ export default function Navigation() {
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Skin Boosters</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/profhilo">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Profhilo®</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Profhilo®</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/sunekos">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sunekos</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sunekos</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
@@ -155,10 +174,10 @@ export default function Navigation() {
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Polynucleotides</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/full-face-regeneration">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Full Face (Plinest)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Full Face (Plinest)</DropdownMenuItem>
                     </Link>
                     <Link href="/treatments/eye-rejuvenation">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Eye (Plinest Eye)</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Eye (Plinest Eye)</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
@@ -166,16 +185,16 @@ export default function Navigation() {
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Bio‑Volumisation</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/treatments/sculptra">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sculptra</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sculptra</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <Link href="/categories/microneedling-peels">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Microneedling & Peels</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Microneedling & Peels</DropdownMenuItem>
                 </Link>
                 <DropdownMenuSeparator />
                 <Link href="/gallery">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Results (Gallery)</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Results (Gallery)</DropdownMenuItem>
                 </Link>
                 <DropdownMenuItem disabled>Packages / Memberships (soon)</DropdownMenuItem>
               </DropdownMenuContent>
@@ -185,22 +204,21 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isActive("/mind") || isActive("/consultations/mind")
-                      ? "text-primary font-semibold"
-                      : "text-foreground"
+                    isHighlighted('mind') ? "text-primary font-semibold" : "text-foreground"
                   )}
+                  onClick={() => setActiveMenu('mind')}
                 >
                   Mind <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <Link href="/mind">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Overview
                   </DropdownMenuItem>
                 </Link>
                 <Link href="/consultations/mind">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Discovery Call
                   </DropdownMenuItem>
                 </Link>
@@ -212,20 +230,19 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isActive("/consultations/skin") || isActive("/consultations/mind")
-                      ? "text-primary font-semibold"
-                      : "text-foreground"
+                    isHighlighted('consult') ? "text-primary font-semibold" : "text-foreground"
                   )}
+                  onClick={() => setActiveMenu('consult')}
                 >
                   Consult <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <Link href="/consultations/skin">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin</DropdownMenuItem>
                 </Link>
                 <Link href="/consultations/mind">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind</DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -235,18 +252,17 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isActive("/team") || isActive("/clinic")
-                      ? "text-primary font-semibold"
-                      : "text-foreground"
+                    isHighlighted('about') ? "text-primary font-semibold" : "text-foreground"
                   )}
+                  onClick={() => setActiveMenu('about')}
                 >
                   About <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <Link href="/team">
+                  <Link href="/team">
                   <DropdownMenuItem
-                    onSelect={handleLinkClick}
+                    onSelect={() => onNavSelect('about')}
                     className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
                   >
                     Our Team
@@ -254,7 +270,7 @@ export default function Navigation() {
                 </Link>
                 <Link href="/clinic">
                   <DropdownMenuItem
-                    onSelect={handleLinkClick}
+                    onSelect={() => onNavSelect('about')}
                     className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
                   >
                     Our Clinic
@@ -267,30 +283,29 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isActive("/journal") || isActive("/privacy") || isActive("/terms")
-                      ? "text-primary font-semibold"
-                      : "text-foreground"
+                    isHighlighted('resources') ? "text-primary font-semibold" : "text-foreground"
                   )}
+                  onClick={() => setActiveMenu('resources')}
                 >
                   Resources <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <Link href="/journal">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Journal</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Journal</DropdownMenuItem>
                 </Link>
                 <DropdownMenuItem disabled>FAQs</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Policies</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
                     <Link href="/privacy">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Privacy Policy</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Privacy Policy</DropdownMenuItem>
                     </Link>
                     <Link href="/terms">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Terms & Conditions</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Terms & Conditions</DropdownMenuItem>
                     </Link>
                     <Link href="/cancellation">
-                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Cancellation Policy</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Cancellation Policy</DropdownMenuItem>
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
@@ -338,7 +353,7 @@ export default function Navigation() {
                 onClick={() => setIsSkinOpen(!isSkinOpen)}
                 className={cn(
                   "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  (isActive("/treatments") || isActive("/gallery")) && "text-primary font-semibold"
+                  isHighlighted('skin') && "text-primary font-semibold"
                 )}
               >
                 <span>Skin</span>
@@ -348,7 +363,7 @@ export default function Navigation() {
                 <div className="ml-4 flex flex-col space-y-2">
                   <Link href="/treatments">
                     <span
-                      onClick={handleLinkClick}
+                      onClick={() => { setActiveMenu('skin'); handleLinkClick(); }}
                       className={cn(
                         "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
@@ -357,12 +372,13 @@ export default function Navigation() {
                       Overview (All Treatments)
                     </span>
                   </Link>
+                  <Link href="/treatments#signature-offers">
+                    <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-medium px-2 py-1 hover:text-primary">Signature Offers</span>
+                  </Link>
                   {/* Separator 1: after Overview */}
                   <div className="my-1 border-t border-muted" />
                   {/* Signature Offers */}
-                  <Link href="/treatments#signature-offers">
-                    <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Signature Offers</span>
-                  </Link>
+
 
                   {/* Anti‑Wrinkle collapsible */}
                   <button
@@ -375,10 +391,10 @@ export default function Navigation() {
                   {isSkinAntiOpen && (
                     <div className="ml-4 flex flex-col">
                       <Link href="/treatments/anti-wrinkle"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Forehead, Frown & Crow's Feet</span></Link>
-                      <Link href="/treatments/jawline-slimming"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Masseter (Jawline Slimming)</span></Link>
-                      <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift (DAO)</span></Link>
-                      <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift (Nefertiti)</span></Link>
-                      <Link href="/treatments/sweat-control"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sweat Control (Underarms)</span></Link>
+                      <Link href="/treatments/jawline-slimming"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Jawline Slimming</span></Link>
+                      <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift</span></Link>
+                      <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift</span></Link>
+                      <Link href="/treatments/sweat-control"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sweat Control</span></Link>
                     </div>
                   )}
 
@@ -437,23 +453,23 @@ export default function Navigation() {
                   <span className="block text-sm text-muted-foreground px-2 py-1">Packages / Memberships (soon)</span>
                 </div>
               )}
-              <button
-                onClick={() => setIsMindOpen(!isMindOpen)}
-                className={cn(
-                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  (isActive("/mind") || isActive("/consultations/mind")) && "text-primary font-semibold"
-                )}
-              >
+                  <button
+                    onClick={() => setIsMindOpen(!isMindOpen)}
+                    className={cn(
+                      "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                      isHighlighted('mind') && "text-primary font-semibold"
+                    )}
+                  >
                 <span>Mind</span>
                 <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isMindOpen && "rotate-180")} />
               </button>
               {isMindOpen && (
                 <div className="ml-4 flex flex-col space-y-2">
                   <Link href="/mind">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
+                    <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
                   </Link>
                   <Link href="/consultations/mind">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
+                    <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
                   </Link>
                   {/* Programmes removed per request */}
                 </div>
@@ -462,7 +478,7 @@ export default function Navigation() {
                 onClick={() => setIsConsultOpen(!isConsultOpen)}
                 className={cn(
                   "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  (isActive("/consultations/skin") || isActive("/consultations/mind")) && "text-primary font-semibold"
+                  isHighlighted('consult') && "text-primary font-semibold"
                 )}
               >
                 <span>Consult</span>
@@ -471,10 +487,10 @@ export default function Navigation() {
               {isConsultOpen && (
                 <div className="ml-4 flex flex-col space-y-2">
                   <Link href="/consultations/skin">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin</span>
+                    <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin</span>
                   </Link>
                   <Link href="/consultations/mind">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind</span>
+                    <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind</span>
                   </Link>
                 </div>
               )}
@@ -490,7 +506,7 @@ export default function Navigation() {
                 onClick={() => setIsAboutOpen(!isAboutOpen)}
                 className={cn(
                   "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  (isActive("/team") || isActive("/clinic")) && "text-primary font-semibold"
+                  isHighlighted('about') && "text-primary font-semibold"
                 )}
               >
                 <span>About</span>
@@ -500,7 +516,7 @@ export default function Navigation() {
                 <div className="ml-4 flex flex-col space-y-2">
                   <Link href="/team">
                     <span
-                      onClick={handleLinkClick}
+                      onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
                       className={cn(
                         "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/team") ? "text-primary font-semibold" : "text-foreground"
@@ -511,7 +527,7 @@ export default function Navigation() {
                   </Link>
                   <Link href="/clinic">
                     <span
-                      onClick={handleLinkClick}
+                      onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
                       className={cn(
                         "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
                         isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
@@ -527,7 +543,7 @@ export default function Navigation() {
                 onClick={() => setIsResourcesOpen(!isResourcesOpen)}
                 className={cn(
                   "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  (isActive("/journal") || isActive("/privacy") || isActive("/terms")) && "text-primary font-semibold"
+                  isHighlighted('resources') && "text-primary font-semibold"
                 )}
               >
                 <span>Resources</span>
@@ -536,7 +552,7 @@ export default function Navigation() {
               {isResourcesOpen && (
                 <div className="ml-4 flex flex-col space-y-2">
                   <Link href="/journal">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
+                    <span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Journal
                     </span>
                   </Link>
@@ -550,9 +566,9 @@ export default function Navigation() {
                   </button>
                   {isPoliciesOpen && (
                     <div className="ml-4 flex flex-col">
-                      <Link href="/privacy"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Privacy Policy</span></Link>
-                      <Link href="/terms"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Terms & Conditions</span></Link>
-                      <Link href="/cancellation"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Cancellation Policy</span></Link>
+                      <Link href="/privacy"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Privacy Policy</span></Link>
+                      <Link href="/terms"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Terms & Conditions</span></Link>
+                      <Link href="/cancellation"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Cancellation Policy</span></Link>
                     </div>
                   )}
                   <span className="block text-sm text-muted-foreground px-2 py-1">Aftercare Guides</span>
