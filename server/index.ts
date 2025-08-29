@@ -202,7 +202,7 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
           if (filePath.endsWith('.html')) {
             res.setHeader('Cache-Control', 'no-cache');
           } else {
-            res.setHeader('Cache-Control', 'public, max-age=31536000');
+            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
           }
         }
       }));

@@ -12,6 +12,8 @@ interface TreatmentCardProps {
   imageClassName?: string;
   /** e.g. "center", "50% 35%", "top", "center 30%" */
   imageObjectPosition?: string;
+  /** If true, load eagerly with high fetch priority */
+  priority?: boolean;
 }
 
 export default function TreatmentCard({
@@ -23,6 +25,7 @@ export default function TreatmentCard({
   image,
   imageClassName,
   imageObjectPosition = "50% 50%",
+  priority = false,
 }: TreatmentCardProps) {
   return (
     <Link href={`/treatments/${slug}`}>
@@ -35,18 +38,19 @@ export default function TreatmentCard({
                 <source
                   type="image/avif"
                   srcSet={image.replace("-640w.webp", "-320w.avif") + " 320w, " + image.replace("-640w.webp", "-640w.avif") + " 640w"}
-                  sizes="(max-width: 768px) 100vw, 320px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <source
                   type="image/webp"
                   srcSet={image.replace("-640w.webp", "-320w.webp") + " 320w, " + image.replace("-640w.webp", "-640w.webp") + " 640w"}
-                  sizes="(max-width: 768px) 100vw, 320px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <img
                   src={image}
                   alt={name}
-                  loading="lazy"
-                  decoding="async"
+                  loading={priority ? "eager" : "lazy"}
+                  fetchPriority={priority ? "high" : "auto"}
+                  decoding={priority ? "sync" : "async"}
                   width={640}
                   height={480}
                   className={cn(
@@ -60,8 +64,9 @@ export default function TreatmentCard({
               <img
                 src={image}
                 alt={name}
-                loading="lazy"
-                decoding="async"
+                loading={priority ? "eager" : "lazy"}
+                fetchPriority={priority ? "high" : "auto"}
+                decoding={priority ? "sync" : "async"}
                 className={cn(
                   "absolute inset-0 w-full h-full object-cover",
                   imageClassName
