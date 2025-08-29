@@ -89,6 +89,8 @@ export function getHeroImageObjectPosition(slug: string): string {
       return '100% 50%';
     case 'eye-rejuvenation':
       return '50% 20%';
+    case 'smile-lift':
+      return '5% 40%';
     default:
       return '50% 50%';
   }
@@ -99,6 +101,8 @@ export function getHeroImageClassName(slug: string): string {
     // Example overrides (uncomment and tweak as needed):
     // case 'sculptra':
     //   return 'transform-gpu scale-[1.08]';
+    case 'smile-lift':
+      return 'transform-gpu scale-[1.1]';
     default:
       return '';
   }
