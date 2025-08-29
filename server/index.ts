@@ -22,6 +22,8 @@ const VALID_ROUTES = [
   '/journal',
   '/consultations',
   '/treatments',
+  '/gallery',
+  '/cancellation',
   // Category routes
   '/categories/anti-wrinkle',
   '/categories/skin-boosters',

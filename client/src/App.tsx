@@ -14,12 +14,14 @@ import Mind from "@/pages/Mind";
 import Team from "@/pages/Team";
 import Clinic from "@/pages/Clinic";
 import JournalPlaceholder from "@/pages/JournalPlaceholder";
+import Gallery from "@/pages/Gallery";
 import SkinConsultationPage from "@/pages/consultations/skin";
 import MindConsultationPage from "@/pages/consultations/mind";
 import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import CancellationPolicyPage from "@/pages/Cancellation";
 
 // Treatment Page Imports
 import AntiWrinklePage from "@/pages/treatments/anti-wrinkle/anti-wrinkle";
@@ -58,11 +60,13 @@ function Router() {
         <Route path="/team" component={Team} />
         <Route path="/clinic" component={Clinic} />
         <Route path="/journal" component={JournalPlaceholder} />
+        <Route path="/gallery" component={Gallery} />
         <Route path="/consultations/skin" component={SkinConsultationPage} />
         <Route path="/consultations/mind" component={MindConsultationPage} />
         <Route path="/consultations" component={SkinConsultationPage} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
+        <Route path="/cancellation" component={CancellationPolicyPage} />
         {/* Category static pages */}
         <Route path="/categories/anti-wrinkle" component={AntiWrinkleCategory} />
         <Route path="/categories/skin-boosters" component={SkinBoostersCategory} />

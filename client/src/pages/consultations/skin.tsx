@@ -55,7 +55,7 @@ export default function SkinConsultationPage() {
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <a href="#book" onClick={scrollToBook} className="block px-6 py-3 rounded-xl font-medium text-base text-center smooth-transition shadow-lg border-2 border-primary bg-primary text-primary-foreground hover:bg-white hover:text-primary hover:border-primary">
-                Book Now
+                Book Skin Consultation
               </a>
             </div>
           </div>
@@ -171,7 +171,7 @@ function StickyBookCta() {
         href="#book"
         className="pointer-events-auto px-5 py-3 rounded-full font-medium text-sm shadow-lg border-2 border-primary bg-primary text-primary-foreground hover:bg-white hover:text-primary smooth-transition"
       >
-        Select a day
+        Book Skin Consultation
       </a>
     </div>
   );
