@@ -37,6 +37,7 @@ export default function Navigation() {
   const [isSkinAntiOpen, setIsSkinAntiOpen] = useState(false);
   const [isSkinBoostersHeadOpen, setIsSkinBoostersHeadOpen] = useState(false);
   const [isSkinPnoOpen, setIsSkinPnoOpen] = useState(false);
+  const [isSkinBioOpen, setIsSkinBioOpen] = useState(false);
   const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
 
   const isActive = (path: string) => {
@@ -61,6 +62,7 @@ export default function Navigation() {
     setIsSkinAntiOpen(false);
     setIsSkinBoostersHeadOpen(false);
     setIsSkinPnoOpen(false);
+    setIsSkinBioOpen(false);
     setIsPoliciesOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
@@ -155,9 +157,14 @@ export default function Navigation() {
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
-                <Link href="/categories/bio-voluminisation">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Bio-Volumisation</DropdownMenuItem>
-                </Link>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Bio‑Volumisation</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/sculptra">
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sculptra</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
                 <Link href="/categories/microneedling-peels">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Microneedling & Peels</DropdownMenuItem>
                 </Link>
@@ -217,6 +224,14 @@ export default function Navigation() {
                 </Link>
               </DropdownMenuContent>
             </DropdownMenu>
+            <Link href="/gallery">
+              <span onClick={handleLinkClick} className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
+                isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
+              )}>
+                Gallery
+              </span>
+            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span
@@ -392,10 +407,19 @@ export default function Navigation() {
                       <Link href="/treatments/eye-rejuvenation"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Eye (Plinest Eye)</span></Link>
                     </div>
                   )}
-
-                  <Link href="/categories/bio-voluminisation">
-                    <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Bio-Volumisation</span>
-                  </Link>
+                  {/* Bio‑Volumisation collapsible */}
+                  <button
+                    onClick={() => setIsSkinBoostersHeadOpen(false) || setIsSkinPnoOpen(false) || setIsSkinAntiOpen(false) || setIsSkinBioOpen(!isSkinBioOpen)}
+                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+                  >
+                    <span>Bio‑Volumisation</span>
+                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBioOpen && "rotate-180")} />
+                  </button>
+                  {isSkinBioOpen && (
+                    <div className="ml-4 flex flex-col">
+                      <Link href="/treatments/sculptra"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sculptra</span></Link>
+                    </div>
+                  )}
                   <Link href="/categories/microneedling-peels">
                     <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Microneedling & Peels</span>
                   </Link>
@@ -446,6 +470,14 @@ export default function Navigation() {
                   </Link>
                 </div>
               )}
+              <Link href="/gallery">
+                <span onClick={handleLinkClick} className={cn(
+                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
+                )}>
+                  Gallery
+                </span>
+              </Link>
               <button
                 onClick={() => setIsAboutOpen(!isAboutOpen)}
                 className={cn(
