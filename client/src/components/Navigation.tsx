@@ -33,6 +33,10 @@ export default function Navigation() {
   const [isMindOpen, setIsMindOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isConsultOpen, setIsConsultOpen] = useState(false);
+  // Mobile Skin sub-sections
+  const [isSkinAntiOpen, setIsSkinAntiOpen] = useState(false);
+  const [isSkinBoostersHeadOpen, setIsSkinBoostersHeadOpen] = useState(false);
+  const [isSkinPnoOpen, setIsSkinPnoOpen] = useState(false);
 
   const isActive = (path: string) => {
     if (path === "/" && location === "/") return true;
@@ -52,6 +56,10 @@ export default function Navigation() {
     setIsAboutOpen(false);
     setIsSkinOpen(false);
     setIsResourcesOpen(false);
+    setIsConsultOpen(false);
+    setIsSkinAntiOpen(false);
+    setIsSkinBoostersHeadOpen(false);
+    setIsSkinPnoOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
@@ -324,52 +332,67 @@ export default function Navigation() {
                         isActive("/treatments") ? "text-primary font-semibold" : "text-foreground"
                       )}
                     >
-                      Treatments
+                      Overview (All Treatments)
                     </span>
                   </Link>
-                  <Link href="/gallery">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Gallery
-                    </span>
-                  </Link>
-                  <span className="block text-xs uppercase tracking-wide text-muted-foreground px-2 pt-2">Anti‑Wrinkle</span>
-                  <Link href="/treatments/jawline-slimming">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Masseter (Jawline Slimming)</span>
-                  </Link>
-                  <Link href="/treatments/smile-lift">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Smile Lift (DAO)</span>
-                  </Link>
-                  <Link href="/treatments/neck-lift">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Neck Lift (Nefertiti)</span>
-                  </Link>
-                  <Link href="/treatments/sweat-control">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Sweat Control (Underarms)</span>
-                  </Link>
-                  <span className="block text-xs uppercase tracking-wide text-muted-foreground px-2 pt-2">Skin Boosters</span>
-                  <Link href="/treatments/profhilo">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Profhilo®</span>
-                  </Link>
-                  <Link href="/treatments/sunekos">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Sunekos</span>
-                  </Link>
-                  <span className="block text-xs uppercase tracking-wide text-muted-foreground px-2 pt-2">Polynucleotides</span>
-                  <Link href="/treatments/full-face-regeneration">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Full Face (Plinest)</span>
-                  </Link>
-                  <Link href="/treatments/eye-rejuvenation">
-                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Eye (Plinest Eye)</span>
-                  </Link>
+
+                  {/* Anti‑Wrinkle collapsible */}
+                  <button
+                    onClick={() => setIsSkinAntiOpen(!isSkinAntiOpen)}
+                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+                  >
+                    <span>Anti‑Wrinkle</span>
+                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinAntiOpen && "rotate-180")} />
+                  </button>
+                  {isSkinAntiOpen && (
+                    <div className="ml-4 flex flex-col">
+                      <Link href="/treatments/jawline-slimming"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Masseter (Jawline Slimming)</span></Link>
+                      <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift (DAO)</span></Link>
+                      <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift (Nefertiti)</span></Link>
+                      <Link href="/treatments/sweat-control"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sweat Control (Underarms)</span></Link>
+                    </div>
+                  )}
+
+                  {/* Skin Boosters collapsible */}
+                  <button
+                    onClick={() => setIsSkinBoostersHeadOpen(!isSkinBoostersHeadOpen)}
+                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+                  >
+                    <span>Skin Boosters</span>
+                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBoostersHeadOpen && "rotate-180")} />
+                  </button>
+                  {isSkinBoostersHeadOpen && (
+                    <div className="ml-4 flex flex-col">
+                      <Link href="/treatments/profhilo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Profhilo®</span></Link>
+                      <Link href="/treatments/sunekos"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sunekos</span></Link>
+                    </div>
+                  )}
+
+                  {/* Polynucleotides collapsible */}
+                  <button
+                    onClick={() => setIsSkinPnoOpen(!isSkinPnoOpen)}
+                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+                  >
+                    <span>Polynucleotides</span>
+                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinPnoOpen && "rotate-180")} />
+                  </button>
+                  {isSkinPnoOpen && (
+                    <div className="ml-4 flex flex-col">
+                      <Link href="/treatments/full-face-regeneration"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Full Face (Plinest)</span></Link>
+                      <Link href="/treatments/eye-rejuvenation"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Eye (Plinest Eye)</span></Link>
+                    </div>
+                  )}
+
                   <span className="block text-sm text-muted-foreground px-2 pt-2">Packages / Memberships (soon)</span>
+
+                  {/* Optional additional categories to mirror desktop extra items */}
                   <Link href="/categories/bio-voluminisation">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Bio-Volumisation
-                    </span>
+                    <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Bio-Volumisation</span>
                   </Link>
                   <Link href="/categories/microneedling-peels">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Microneedling & Peels
-                    </span>
+                    <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Microneedling & Peels</span>
                   </Link>
+
                   <Link href="/gallery">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Results (Gallery)</span>
                   </Link>
