@@ -6,6 +6,11 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
@@ -25,6 +30,7 @@ export default function Navigation() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   // Mobile submenu states
   const [isSkinOpen, setIsSkinOpen] = useState(false);
+  const [isMindOpen, setIsMindOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
 
   const isActive = (path: string) => {
@@ -84,14 +90,37 @@ export default function Navigation() {
                 Skin
               </span>
             </Link>
-            <Link href="/mind">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/mind") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                Mind
-              </span>
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isActive("/mind") || isActive("/consultations/mind")
+                      ? "text-primary font-semibold"
+                      : "text-foreground"
+                  )}
+                >
+                  Mind <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Overview
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/consultations/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    1:1 Coaching / Clarity Session
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/mind">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Programmes
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span
@@ -108,38 +137,53 @@ export default function Navigation() {
               <DropdownMenuContent align="start">
                 <Link href="/treatments">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 font-semibold hover:text-primary">
-                    Treatments
+                    Overview (All Treatments)
                   </DropdownMenuItem>
                 </Link>
+                <DropdownMenuSeparator />
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>Anti‑Wrinkle</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/jawline-slimming">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Masseter (Jawline Slimming)</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/smile-lift">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Smile Lift (DAO)</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/neck-lift">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Neck Lift (Nefertiti)</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/sweat-control">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Sweat Control (Underarms)</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>Skin Boosters</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/profhilo">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Profhilo®</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/sunekos">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Sunekos</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>Polynucleotides</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/full-face-regeneration">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Full Face (Plinest)</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/eye-rejuvenation">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Eye (Plinest Eye)</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem disabled>Packages / Memberships (soon)</DropdownMenuItem>
                 <Link href="/gallery">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Gallery
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/categories/anti-wrinkle">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Anti‑Wrinkle
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/categories/skin-boosters">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Skin Boosters
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/categories/polynucleotides">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Polynucleotides
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/categories/bio-voluminisation">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Bio-Volumisation
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/categories/microneedling-peels">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Microneedling & Peels
-                  </DropdownMenuItem>
+                  <DropdownMenuItem onSelect={handleLinkClick}>Results (Gallery)</DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -190,30 +234,24 @@ export default function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <Link href="/journal">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Journal
-                  </DropdownMenuItem>
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Journal</DropdownMenuItem>
                 </Link>
-                <Link href="/privacy">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Privacy Policy
-                  </DropdownMenuItem>
-                </Link>
-                <Link href="/terms">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Terms & Conditions
-                  </DropdownMenuItem>
-                </Link>
+                <DropdownMenuItem disabled>FAQs</DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>Policies</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/privacy">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Privacy Policy</DropdownMenuItem>
+                    </Link>
+                    <Link href="/terms">
+                      <DropdownMenuItem onSelect={handleLinkClick}>Terms & Conditions</DropdownMenuItem>
+                    </Link>
+                    <DropdownMenuItem disabled>Cancellation Policy</DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuItem disabled>Aftercare Guides</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Link href="/gallery">
-              <span onClick={handleLinkClick} className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
-              )}>
-                Gallery
-              </span>
-            </Link>
           </div>
           
           {/* Right side icons */}
@@ -250,14 +288,7 @@ export default function Navigation() {
         {isMobileMenuOpen && (
           <div className="nav:hidden mt-4 pb-4 border-t border-gray-100">
             <div className="flex flex-col space-y-4 pt-4">
-              <Link href="/">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Home
-                </span>
-              </Link>
+              {/* Home removed; logo links home */}
               <Link href="/skin">
                 <span onClick={handleLinkClick} className={cn(
                   "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
@@ -266,14 +297,29 @@ export default function Navigation() {
                   Skin
                 </span>
               </Link>
-              <Link href="/mind">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/mind") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Mind
-                </span>
-              </Link>
+              <button
+                onClick={() => setIsMindOpen(!isMindOpen)}
+                className={cn(
+                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+                  (isActive("/mind") || isActive("/consultations/mind")) && "text-primary font-semibold"
+                )}
+              >
+                <span>Mind</span>
+                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isMindOpen && "rotate-180")} />
+              </button>
+              {isMindOpen && (
+                <div className="ml-4 flex flex-col space-y-2">
+                  <Link href="/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
+                  </Link>
+                  <Link href="/consultations/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">1:1 Coaching / Clarity Session</span>
+                  </Link>
+                  <Link href="/mind">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Programmes</span>
+                  </Link>
+                </div>
+              )}
               <button
                 onClick={() => setIsSkinOpen(!isSkinOpen)}
                 className={cn(
@@ -302,21 +348,34 @@ export default function Navigation() {
                       Gallery
                     </span>
                   </Link>
-                  <Link href="/categories/anti-wrinkle">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Anti‑Wrinkle
-                    </span>
+                  <span className="block text-xs uppercase tracking-wide text-muted-foreground px-2 pt-2">Anti‑Wrinkle</span>
+                  <Link href="/treatments/jawline-slimming">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Masseter (Jawline Slimming)</span>
                   </Link>
-                  <Link href="/categories/skin-boosters">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Skin Boosters
-                    </span>
+                  <Link href="/treatments/smile-lift">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Smile Lift (DAO)</span>
                   </Link>
-                  <Link href="/categories/polynucleotides">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Polynucleotides
-                    </span>
+                  <Link href="/treatments/neck-lift">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Neck Lift (Nefertiti)</span>
                   </Link>
+                  <Link href="/treatments/sweat-control">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Sweat Control (Underarms)</span>
+                  </Link>
+                  <span className="block text-xs uppercase tracking-wide text-muted-foreground px-2 pt-2">Skin Boosters</span>
+                  <Link href="/treatments/profhilo">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Profhilo®</span>
+                  </Link>
+                  <Link href="/treatments/sunekos">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Sunekos</span>
+                  </Link>
+                  <span className="block text-xs uppercase tracking-wide text-muted-foreground px-2 pt-2">Polynucleotides</span>
+                  <Link href="/treatments/full-face-regeneration">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Full Face (Plinest)</span>
+                  </Link>
+                  <Link href="/treatments/eye-rejuvenation">
+                    <span onClick={handleLinkClick} className="ml-4 block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Eye (Plinest Eye)</span>
+                  </Link>
+                  <span className="block text-sm text-muted-foreground px-2 pt-2">Packages / Memberships (soon)</span>
                   <Link href="/categories/bio-voluminisation">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Bio-Volumisation
@@ -326,6 +385,9 @@ export default function Navigation() {
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Microneedling & Peels
                     </span>
+                  </Link>
+                  <Link href="/gallery">
+                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Results (Gallery)</span>
                   </Link>
                 </div>
               )}
@@ -363,6 +425,7 @@ export default function Navigation() {
                       Our Clinic
                     </span>
                   </Link>
+                  <span className="block text-sm text-muted-foreground px-2 py-1">Ethos</span>
                 </div>
               )}
               <button
@@ -382,6 +445,7 @@ export default function Navigation() {
                       Journal
                     </span>
                   </Link>
+                  <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
                   <Link href="/privacy">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                       Privacy Policy
@@ -392,16 +456,10 @@ export default function Navigation() {
                       Terms & Conditions
                     </span>
                   </Link>
+                  <span className="block text-sm text-muted-foreground px-2 py-1">Cancellation Policy</span>
+                  <span className="block text-sm text-muted-foreground px-2 py-1">Aftercare Guides</span>
                 </div>
               )}
-              <Link href="/gallery">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Gallery
-                </span>
-              </Link>
               
               <div className="flex items-center space-x-6 pt-4">
                 <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
