@@ -37,6 +37,7 @@ export default function Navigation() {
   const [isSkinAntiOpen, setIsSkinAntiOpen] = useState(false);
   const [isSkinBoostersHeadOpen, setIsSkinBoostersHeadOpen] = useState(false);
   const [isSkinPnoOpen, setIsSkinPnoOpen] = useState(false);
+  const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
 
   const isActive = (path: string) => {
     if (path === "/" && location === "/") return true;
@@ -60,6 +61,7 @@ export default function Navigation() {
     setIsSkinAntiOpen(false);
     setIsSkinBoostersHeadOpen(false);
     setIsSkinPnoOpen(false);
+    setIsPoliciesOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
@@ -114,6 +116,9 @@ export default function Navigation() {
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Anti‑Wrinkle</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent>
+                    <Link href="/treatments/anti-wrinkle">
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Forehead, Frown & Crow's Feet</DropdownMenuItem>
+                    </Link>
                     <Link href="/treatments/jawline-slimming">
                       <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Masseter (Jawline Slimming)</DropdownMenuItem>
                     </Link>
@@ -150,11 +155,17 @@ export default function Navigation() {
                     </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem disabled>Packages / Memberships (soon)</DropdownMenuItem>
+                <Link href="/categories/bio-voluminisation">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Bio-Volumisation</DropdownMenuItem>
+                </Link>
+                <Link href="/categories/microneedling-peels">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Microneedling & Peels</DropdownMenuItem>
+                </Link>
                 <Link href="/gallery">
                   <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Results (Gallery)</DropdownMenuItem>
                 </Link>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem disabled>Packages / Memberships (soon)</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <DropdownMenu>
@@ -181,11 +192,7 @@ export default function Navigation() {
                     Discovery Call
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/mind">
-                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Programmes
-                  </DropdownMenuItem>
-                </Link>
+                {/* Programmes removed per request */}
               </DropdownMenuContent>
             </DropdownMenu>
             <DropdownMenu>
@@ -269,7 +276,9 @@ export default function Navigation() {
                     <Link href="/terms">
                       <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Terms & Conditions</DropdownMenuItem>
                     </Link>
-                    <DropdownMenuItem disabled>Cancellation Policy</DropdownMenuItem>
+                    <Link href="/cancellation">
+                      <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Cancellation Policy</DropdownMenuItem>
+                    </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuItem disabled>Aftercare Guides</DropdownMenuItem>
@@ -346,6 +355,7 @@ export default function Navigation() {
                   </button>
                   {isSkinAntiOpen && (
                     <div className="ml-4 flex flex-col">
+                      <Link href="/treatments/anti-wrinkle"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Forehead, Frown & Crow's Feet</span></Link>
                       <Link href="/treatments/jawline-slimming"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Masseter (Jawline Slimming)</span></Link>
                       <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift (DAO)</span></Link>
                       <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift (Nefertiti)</span></Link>
@@ -383,19 +393,16 @@ export default function Navigation() {
                     </div>
                   )}
 
-                  <span className="block text-sm text-muted-foreground px-2 pt-2">Packages / Memberships (soon)</span>
-
-                  {/* Optional additional categories to mirror desktop extra items */}
                   <Link href="/categories/bio-voluminisation">
                     <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Bio-Volumisation</span>
                   </Link>
                   <Link href="/categories/microneedling-peels">
                     <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Microneedling & Peels</span>
                   </Link>
-
                   <Link href="/gallery">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Results (Gallery)</span>
                   </Link>
+                  <span className="block text-sm text-muted-foreground px-2 pt-2">Packages / Memberships (soon)</span>
                 </div>
               )}
               <button
@@ -416,9 +423,7 @@ export default function Navigation() {
                   <Link href="/consultations/mind">
                     <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
                   </Link>
-                  <Link href="/mind">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Programmes</span>
-                  </Link>
+                  {/* Programmes removed per request */}
                 </div>
               )}
               <button
@@ -475,7 +480,7 @@ export default function Navigation() {
                       Our Clinic
                     </span>
                   </Link>
-                  <span className="block text-sm text-muted-foreground px-2 py-1">Ethos</span>
+                  {/* Ethos removed per request */}
                 </div>
               )}
               <button
@@ -496,17 +501,20 @@ export default function Navigation() {
                     </span>
                   </Link>
                   <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
-                  <Link href="/privacy">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Privacy Policy
-                    </span>
-                  </Link>
-                  <Link href="/terms">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Terms & Conditions
-                    </span>
-                  </Link>
-                  <span className="block text-sm text-muted-foreground px-2 py-1">Cancellation Policy</span>
+                  <button
+                    onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
+                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+                  >
+                    <span>Policies</span>
+                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isPoliciesOpen && "rotate-180")} />
+                  </button>
+                  {isPoliciesOpen && (
+                    <div className="ml-4 flex flex-col">
+                      <Link href="/privacy"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Privacy Policy</span></Link>
+                      <Link href="/terms"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Terms & Conditions</span></Link>
+                      <Link href="/cancellation"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Cancellation Policy</span></Link>
+                    </div>
+                  )}
                   <span className="block text-sm text-muted-foreground px-2 py-1">Aftercare Guides</span>
                 </div>
               )}

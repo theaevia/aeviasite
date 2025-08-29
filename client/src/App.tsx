@@ -21,6 +21,7 @@ import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import CancellationPolicyPage from "@/pages/Cancellation";
 
 // Treatment Page Imports
 import AntiWrinklePage from "@/pages/treatments/anti-wrinkle/anti-wrinkle";
@@ -65,6 +66,7 @@ function Router() {
         <Route path="/consultations" component={SkinConsultationPage} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
+        <Route path="/cancellation" component={CancellationPolicyPage} />
         {/* Category static pages */}
         <Route path="/categories/anti-wrinkle" component={AntiWrinkleCategory} />
         <Route path="/categories/skin-boosters" component={SkinBoostersCategory} />
