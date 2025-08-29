@@ -103,3 +103,10 @@ export function getHeroImageClassName(slug: string): string {
       return '';
   }
 }
+
+// Backwards-compatible aliases for prior helper names used in category pages
+// These ensure builds using older import names still succeed.
+export {
+  getThumbnailClassName as getTreatmentImageClassName,
+  getThumbnailObjectPosition as getTreatmentImageObjectPosition,
+};
