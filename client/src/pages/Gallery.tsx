@@ -1,4 +1,5 @@
 import SEO from "@/components/SEO";
+import { Link } from "wouter";
 
 // Local before/after assets
 import underEyeBeforeAfter from "@assets/before_afters/under-eye-1.png";
@@ -9,6 +10,7 @@ interface GalleryItem {
   caption: string;
   src: string;
   kind: "publicWebP" | "imported" | "importedPng";
+  href: string;
 }
 
 const items: GalleryItem[] = [
@@ -18,6 +20,7 @@ const items: GalleryItem[] = [
     caption: "Forehead lines softened two weeks after treatment.",
     src: "/assets/before_afters/forehead-640w.webp",
     kind: "publicWebP",
+    href: "/treatments/anti-wrinkle",
   },
   {
     id: "frown",
@@ -25,6 +28,7 @@ const items: GalleryItem[] = [
     caption: "Frown lines softened two weeks after treatment.",
     src: "/assets/before_afters/frown-640w.webp",
     kind: "publicWebP",
+    href: "/treatments/anti-wrinkle",
   },
   {
     id: "undereye",
@@ -32,6 +36,7 @@ const items: GalleryItem[] = [
     caption: "Under‑Eye Polynucleotides — before and after.",
     src: underEyeBeforeAfter,
     kind: "importedPng",
+    href: "/treatments/eye-rejuvenation",
   },
 ];
 
@@ -43,7 +48,7 @@ export default function GalleryPage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">Results Gallery</h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-            A selection of before & after results from treatments performed at Aevia Skin. Only real cases are shown here — no placeholders. Individual results may vary.
+            A selection of before & after results from treatments performed at Aevia Skin. Individual results may vary.
           </p>
         </div>
       </section>
@@ -89,7 +94,11 @@ export default function GalleryPage() {
                   )}
                 </div>
                 <figcaption className="p-4">
-                  <div className="text-base font-serif font-semibold text-center text-primary">{item.title}</div>
+                  <Link href={item.href}>
+                    <span className="block text-base font-serif font-semibold text-center text-primary hover:underline cursor-pointer">
+                      {item.title}
+                    </span>
+                  </Link>
                   <p className="text-sm text-muted-foreground text-center mt-1">{item.caption}</p>
                 </figcaption>
               </figure>
