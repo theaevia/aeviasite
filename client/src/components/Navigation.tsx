@@ -114,6 +114,11 @@ export default function Navigation() {
                     Overview (All Treatments)
                   </DropdownMenuItem>
                 </Link>
+                <Link href="/treatments#signature-offers">
+                  <DropdownMenuItem onSelect={handleLinkClick} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Signature Offers
+                  </DropdownMenuItem>
+                </Link>
                 <DropdownMenuSeparator />
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Anti‑Wrinkle</DropdownMenuSubTrigger>
@@ -352,6 +357,12 @@ export default function Navigation() {
                       Overview (All Treatments)
                     </span>
                   </Link>
+                  {/* Separator 1: after Overview */}
+                  <div className="my-1 border-t border-muted" />
+                  {/* Signature Offers */}
+                  <Link href="/treatments#signature-offers">
+                    <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Signature Offers</span>
+                  </Link>
 
                   {/* Anti‑Wrinkle collapsible */}
                   <button
@@ -421,9 +432,8 @@ export default function Navigation() {
                   <Link href="/categories/microneedling-peels">
                     <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Microneedling & Peels</span>
                   </Link>
-                  <Link href="/gallery">
-                    <span onClick={handleLinkClick} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Results (Gallery)</span>
-                  </Link>
+                  {/* Separator 2: before Packages */}
+                  <div className="my-1 border-t border-muted" />
                   <span className="block text-sm text-muted-foreground px-2 py-1">Packages / Memberships (soon)</span>
                 </div>
               )}

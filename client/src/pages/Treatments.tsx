@@ -175,7 +175,7 @@ export default function Treatments() {
           </nav>
 
           {/* Signature Offers Section */}
-          <div className="mb-20">
+          <div id="signature-offers" className="mb-20" style={{ scrollMarginTop: topGap }}>
             <div className="text-center mb-10">
               <h2 className="text-4xl lg:text-5xl font-bold font-serif mb-3 tracking-wider text-primary">Signature Offers</h2>
               <p className="text-lg text-muted-foreground">Our most popular treatments to refresh, restore, and revitalise</p>
