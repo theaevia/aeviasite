@@ -259,20 +259,16 @@ export default function Navigation() {
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
                 </Link>
                 <a
-    href={"https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b/booking?menu=true&pId=2507365&dppub=true&employeeId=4557161&cartId=654d2935-3aa6-487a-a780-52809c0b0c38"}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Book a treatment"
-    onClick={() => onNavSelect('consult')}
-    className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
-  >
-    <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Treatments</DropdownMenuItem>
-  </a>
-                
-
-
-
-              </DropdownMenuContent>
+                  href={"https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b/booking?menu=true&pId=2507365&dppub=true&employeeId=4557161&cartId=654d2935-3aa6-487a-a780-52809c0b0c38"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Book a treatment"
+                  onClick={() => onNavSelect('consult')}
+                  className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
+                >
+                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Treatments</DropdownMenuItem>
+                </a>
+            </DropdownMenuContent>
             </DropdownMenu>
             {/* Top-level Gallery removed on desktop; kept under Skin */}
             <DropdownMenu>
@@ -397,7 +393,7 @@ export default function Navigation() {
                 onClick={() => { setActiveMenu('skin'); handleLinkClick(); }}
                 className={cn(
                   "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                  isActive("/skin") ? "text-primary font-semibold" : "text-foreground"
+                  isActive("/skin") ? "text-primary font-bold" : "text-foreground font-bold"
                 )}
               >
                 Overview
@@ -506,7 +502,7 @@ export default function Navigation() {
         {isMindOpen && (
           <div className="ml-4 flex flex-col space-y-2">
             <Link href="/mind">
-              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-bold smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
             </Link>
             <Link href="/consultations/mind">
               <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
@@ -522,17 +518,27 @@ export default function Navigation() {
             isHighlighted('consult') && "text-primary font-semibold"
           )}
         >
-          <span>Consult</span>
+          <span>Book</span>
           <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isConsultOpen && "rotate-180")} />
         </button>
         {isConsultOpen && (
           <div className="ml-4 flex flex-col space-y-2">
             <Link href="/consultations/skin">
-              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin</span>
+              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Consultation</span>
             </Link>
             <Link href="/consultations/mind">
-              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind</span>
+              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind Consultation</span>
             </Link>
+            <a
+                  href={"https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b/booking?menu=true&pId=2507365&dppub=true&employeeId=4557161&cartId=654d2935-3aa6-487a-a780-52809c0b0c38"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Book a treatment"
+                  onClick={() => onNavSelect('consult')}
+                  className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
+                >
+                   <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Treatments</span>
+                </a>
           </div>
         )}
 

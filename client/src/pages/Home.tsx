@@ -233,7 +233,7 @@ transformation.
                 subtitle="Medical Aesthetics"
                 description="Science-backed, regenerative approaches that restore your skin's natural quality. Results that feel like you, only fresher."
                 image={skinModel4}
-                features={["The Aevia Skin Consultation", "Polynucleotides", "Skin Boosters", "Anti-wrinkle Injections"]}
+                features={["The Aevia Skin Consultation", "Polynucleotides", "Skin Boosters", "Anti-Wrinkle Injections"]}
                 ctaText="Learn More About Skin Treatments"
                 onCtaClick={() => window.location.href = "/skin"}
                 imagePositionTop={false}

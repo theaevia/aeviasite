@@ -102,7 +102,7 @@ export default function MindConsultationPage() {
               <h3 className="text-xl font-serif font-semibold mb-3">Why choose Aevia</h3>
               <ul className="space-y-2 text-foreground/80 text-sm">
                 <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>GMC-registered doctors</span></li>
-                <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>Clinic in Kings Cross, London</span></li>
+                <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>Certified coaches</span></li>
               </ul>
             </div>
             {/* FAQs */}
@@ -111,9 +111,9 @@ export default function MindConsultationPage() {
                 <AccordionTrigger>FAQs</AccordionTrigger>
                 <AccordionContent>
                   <div className="text-foreground/80 space-y-3 text-sm">
-                    <p><strong>Is it really free?</strong> Yes — your discovery call is complimentary.</p>
+                    <p><strong>Is it really free?</strong> Yes - your discovery call is complimentary.</p>
                     <p><strong>How long is it?</strong> About 30 minutes.</p>
-                    <p><strong>Where are you located?</strong> Kings Cross, London.</p>
+                    <p><strong>Where are you located?</strong> Initial discovery call takes place virtually, with any further meetings at a bespoke London location that can be agreed upon at time of booking.</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
