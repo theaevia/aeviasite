@@ -360,260 +360,271 @@ export default function Navigation() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="nav:hidden mt-4 pb-4 border-t border-gray-100">
-            <div className="flex flex-col space-y-4 pt-4">
-              {/* Home removed; logo links home */}
-              <button
-                onClick={() => setIsSkinOpen(!isSkinOpen)}
+  // Keep page fixed as you already have. This makes ONLY the menu scrollable.
+  <div className="nav:hidden mt-4 border-t border-gray-100" id="mobile-menu">
+    {/* Constrain height to viewport minus header; adjust 80/88 to your header height */}
+    <div className="max-h-[calc(100dvh-88px)] overflow-y-auto">
+      <div className="flex flex-col space-y-4 pt-4 px-6 pb-6">
+        {/* Home removed; logo links home */}
+        <button
+          onClick={() => setIsSkinOpen(!isSkinOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('skin') && "text-primary font-semibold"
+          )}
+        >
+          <span>Skin</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinOpen && "rotate-180")} />
+        </button>
+        {isSkinOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/skin">
+              <span
+                onClick={() => { setActiveMenu('skin'); handleLinkClick(); }}
                 className={cn(
-                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isHighlighted('skin') && "text-primary font-semibold"
+                  "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                  isActive("/skin") ? "text-primary font-semibold" : "text-foreground"
                 )}
               >
-                <span>Skin</span>
-                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinOpen && "rotate-180")} />
-              </button>
-              {isSkinOpen && (
-                <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/skin">
-                    <span
-                      onClick={() => { setActiveMenu('skin'); handleLinkClick(); }}
-                      className={cn(
-                        "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                        isActive("/skin") ? "text-primary font-semibold" : "text-foreground"
-                      )}
-                    >
-                      Overview
-                    </span>
-                  </Link>
-                  <Link href="/treatments">
-                    <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-medium px-2 py-1 hover:text-primary">All Treatments & Prices</span>
-                  </Link>
-                  <Link href="/treatments#signature-offers">
-                    <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="flex items-center gap-2 justify-between px-2 py-1 text-sm hover:text-primary">
-                      <span className="font-medium">Signature Offers</span>
-                      <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured</span>
-                    </span>
-                  </Link>
-                  {/* Separator 1: after Signature Offers */}
-                  <div className="my-1 border-t border-muted" />
+                Overview
+              </span>
+            </Link>
+            <Link href="/treatments">
+              <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-medium px-2 py-1 hover:text-primary">All Treatments & Prices</span>
+            </Link>
+            <Link href="/treatments#signature-offers">
+              <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="flex items-center gap-2 justify-between px-2 py-1 text-sm hover:text-primary">
+                <span className="font-medium">Signature Offers</span>
+                <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured</span>
+              </span>
+            </Link>
+            {/* Separator 1: after Signature Offers */}
+            <div className="my-1 border-t border-muted" />
 
-
-                  {/* Anti‑Wrinkle collapsible */}
-                  <button
-                    onClick={() => setIsSkinAntiOpen(!isSkinAntiOpen)}
-                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
-                  >
-                    <span>Anti‑Wrinkle</span>
-                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinAntiOpen && "rotate-180")} />
-                  </button>
-                  {isSkinAntiOpen && (
-                    <div className="ml-4 flex flex-col">
-                      <Link href="/treatments/anti-wrinkle"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Forehead, Frown & Crow's Feet</span></Link>
-                      <Link href="/treatments/jawline-slimming"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Jawline Slimming</span></Link>
-                      <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift</span></Link>
-                      <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift</span></Link>
-                      <Link href="/treatments/sweat-control"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sweat Control</span></Link>
-                      <Link href="/treatments/lower-face-contour-duo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Lower Face Contour Duo</span></Link>
-                    </div>
-                  )}
-
-                  {/* Skin Boosters collapsible */}
-                  <button
-                    onClick={() => setIsSkinBoostersHeadOpen(!isSkinBoostersHeadOpen)}
-                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
-                  >
-                    <span>Skin Boosters</span>
-                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBoostersHeadOpen && "rotate-180")} />
-                  </button>
-                  {isSkinBoostersHeadOpen && (
-                    <div className="ml-4 flex flex-col">
-                      <Link href="/treatments/profhilo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Profhilo®</span></Link>
-                      <Link href="/treatments/sunekos"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sunekos</span></Link>
-                    </div>
-                  )}
-
-                  {/* Polynucleotides collapsible */}
-                  <button
-                    onClick={() => setIsSkinPnoOpen(!isSkinPnoOpen)}
-                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
-                  >
-                    <span>Polynucleotides</span>
-                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinPnoOpen && "rotate-180")} />
-                  </button>
-                  {isSkinPnoOpen && (
-                    <div className="ml-4 flex flex-col">
-                      <Link href="/treatments/full-face-regeneration"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Full Face (Plinest)</span></Link>
-                      <Link href="/treatments/eye-rejuvenation"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Eye (Plinest Eye)</span></Link>
-                    </div>
-                  )}
-                  {/* Bio‑Volumisation collapsible */}
-                  <button
-                    onClick={() => {
-                      setIsSkinBoostersHeadOpen(false);
-                      setIsSkinPnoOpen(false);
-                      setIsSkinAntiOpen(false);
-                      setIsSkinBioOpen(!isSkinBioOpen);
-                    }}
-                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
-                  >
-                    <span>Bio‑Volumisation</span>
-                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBioOpen && "rotate-180")} />
-                  </button>
-                  {isSkinBioOpen && (
-                    <div className="ml-4 flex flex-col">
-                      <Link href="/treatments/sculptra"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sculptra</span></Link>
-                    </div>
-                  )}
-                  <Link href="/categories/microneedling-peels">
-                    <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Microneedling & Peels</span>
-                  </Link>
-                  {/* Separator 2: before Packages */}
-                  <div className="my-1 border-t border-muted" />
-                  <span className="block text-sm text-muted-foreground px-2 py-1">Packages / Memberships (soon)</span>
-                </div>
-              )}
-                  <button
-                    onClick={() => setIsMindOpen(!isMindOpen)}
-                    className={cn(
-                      "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                      isHighlighted('mind') && "text-primary font-semibold"
-                    )}
-                  >
-                <span>Mind</span>
-                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isMindOpen && "rotate-180")} />
-              </button>
-              {isMindOpen && (
-                <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/mind">
-                    <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
-                  </Link>
-                  <Link href="/consultations/mind">
-                    <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
-                  </Link>
-                  {/* Programmes removed per request */}
-                </div>
-              )}
-              <button
-                onClick={() => setIsConsultOpen(!isConsultOpen)}
-                className={cn(
-                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isHighlighted('consult') && "text-primary font-semibold"
-                )}
-              >
-                <span>Consult</span>
-                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isConsultOpen && "rotate-180")} />
-              </button>
-              {isConsultOpen && (
-                <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/consultations/skin">
-                    <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin</span>
-                  </Link>
-                  <Link href="/consultations/mind">
-                    <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind</span>
-                  </Link>
-                </div>
-              )}
-              <Link href="/gallery">
-                <span onClick={handleLinkClick} className={cn(
-                  "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
-                )}>
-                  Gallery
-                </span>
-              </Link>
-              <button
-                onClick={() => setIsAboutOpen(!isAboutOpen)}
-                className={cn(
-                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isHighlighted('about') && "text-primary font-semibold"
-                )}
-              >
-                <span>About</span>
-                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isAboutOpen && "rotate-180")} />
-              </button>
-              {isAboutOpen && (
-                <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/team">
-                    <span
-                      onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
-                      className={cn(
-                        "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                        isActive("/team") ? "text-primary font-semibold" : "text-foreground"
-                      )}
-                    >
-                      Our Team
-                    </span>
-                  </Link>
-                  <Link href="/clinic">
-                    <span
-                      onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
-                      className={cn(
-                        "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                        isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
-                      )}
-                    >
-                      Our Clinic
-                    </span>
-                  </Link>
-                  {/* Ethos removed per request */}
-                </div>
-              )}
-              <button
-                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-                className={cn(
-                  "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-                  isHighlighted('resources') && "text-primary font-semibold"
-                )}
-              >
-                <span>Resources</span>
-                <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isResourcesOpen && "rotate-180")} />
-              </button>
-              {isResourcesOpen && (
-                <div className="ml-4 flex flex-col space-y-2">
-                  <Link href="/journal">
-                    <span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                      Journal
-                    </span>
-                  </Link>
-                  <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
-                  <button
-                    onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
-                    className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
-                  >
-                    <span>Policies</span>
-                    <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isPoliciesOpen && "rotate-180")} />
-                  </button>
-                  {isPoliciesOpen && (
-                    <div className="ml-4 flex flex-col">
-                      <Link href="/privacy"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Privacy Policy</span></Link>
-                      <Link href="/terms"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Terms & Conditions</span></Link>
-                      <Link href="/cancellation"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Cancellation Policy</span></Link>
-                    </div>
-                  )}
-                  <span className="block text-sm text-muted-foreground px-2 py-1">Aftercare Guides</span>
-                </div>
-              )}
-              
-              <div className="flex items-center space-x-6 pt-4">
-                <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-                  <Instagram className="h-5 w-5" strokeWidth={2.5} />
-                </a>
-                <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-                  <TikTokIcon className="h-5 w-5" />
-                </a>
-                <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-                  <FaGoogle className="h-4 w-4 fill-current" />
-                </a>
-                <Link href="/consultations/skin">
-                  <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
-                    Book Now
-                  </Button>
-                </Link>
+            {/* Anti‑Wrinkle collapsible */}
+            <button
+              onClick={() => setIsSkinAntiOpen(!isSkinAntiOpen)}
+              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+            >
+              <span>Anti‑Wrinkle</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinAntiOpen && "rotate-180")} />
+            </button>
+            {isSkinAntiOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/anti-wrinkle"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Forehead, Frown & Crow's Feet</span></Link>
+                <Link href="/treatments/jawline-slimming"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Jawline Slimming</span></Link>
+                <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift</span></Link>
+                <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift</span></Link>
+                <Link href="/treatments/sweat-control"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sweat Control</span></Link>
+                <Link href="/treatments/lower-face-contour-duo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Lower Face Contour Duo</span></Link>
               </div>
-            </div>
+            )}
+
+            {/* Skin Boosters collapsible */}
+            <button
+              onClick={() => setIsSkinBoostersHeadOpen(!isSkinBoostersHeadOpen)}
+              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+            >
+              <span>Skin Boosters</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBoostersHeadOpen && "rotate-180")} />
+            </button>
+            {isSkinBoostersHeadOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/profhilo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Profhilo®</span></Link>
+                <Link href="/treatments/sunekos"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sunekos</span></Link>
+              </div>
+            )}
+
+            {/* Polynucleotides collapsible */}
+            <button
+              onClick={() => setIsSkinPnoOpen(!isSkinPnoOpen)}
+              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+            >
+              <span>Polynucleotides</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinPnoOpen && "rotate-180")} />
+            </button>
+            {isSkinPnoOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/full-face-regeneration"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Full Face (Plinest)</span></Link>
+                <Link href="/treatments/eye-rejuvenation"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Eye (Plinest Eye)</span></Link>
+              </div>
+            )}
+
+            {/* Bio‑Volumisation collapsible */}
+            <button
+              onClick={() => {
+                setIsSkinBoostersHeadOpen(false);
+                setIsSkinPnoOpen(false);
+                setIsSkinAntiOpen(false);
+                setIsSkinBioOpen(!isSkinBioOpen);
+              }}
+              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+            >
+              <span>Bio‑Volumisation</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBioOpen && "rotate-180")} />
+            </button>
+            {isSkinBioOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/sculptra"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sculptra</span></Link>
+              </div>
+            )}
+
+            <Link href="/categories/microneedling-peels">
+              <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Microneedling & Peels</span>
+            </Link>
+
+            {/* Separator 2: before Packages */}
+            <div className="my-1 border-t border-muted" />
+            <span className="block text-sm text-muted-foreground px-2 py-1">Packages / Memberships (soon)</span>
           </div>
         )}
+
+        <button
+          onClick={() => setIsMindOpen(!isMindOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('mind') && "text-primary font-semibold"
+          )}
+        >
+          <span>Mind</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isMindOpen && "rotate-180")} />
+        </button>
+        {isMindOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/mind">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
+            </Link>
+            <Link href="/consultations/mind">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
+            </Link>
+            {/* Programmes removed per request */}
+          </div>
+        )}
+
+        <button
+          onClick={() => setIsConsultOpen(!isConsultOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('consult') && "text-primary font-semibold"
+          )}
+        >
+          <span>Consult</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isConsultOpen && "rotate-180")} />
+        </button>
+        {isConsultOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/consultations/skin">
+              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin</span>
+            </Link>
+            <Link href="/consultations/mind">
+              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind</span>
+            </Link>
+          </div>
+        )}
+
+        <Link href="/gallery">
+          <span onClick={handleLinkClick} className={cn(
+            "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
+          )}>
+            Gallery
+          </span>
+        </Link>
+
+        <button
+          onClick={() => setIsAboutOpen(!isAboutOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('about') && "text-primary font-semibold"
+          )}
+        >
+          <span>About</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isAboutOpen && "rotate-180")} />
+        </button>
+        {isAboutOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/team">
+              <span
+                onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
+                className={cn(
+                  "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                  isActive("/team") ? "text-primary font-semibold" : "text-foreground"
+                )}
+              >
+                Our Team
+              </span>
+            </Link>
+            <Link href="/clinic">
+              <span
+                onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
+                className={cn(
+                  "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                  isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
+                )}
+              >
+                Our Clinic
+              </span>
+            </Link>
+            {/* Ethos removed per request */}
+          </div>
+        )}
+
+        <button
+          onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('resources') && "text-primary font-semibold"
+          )}
+        >
+          <span>Resources</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isResourcesOpen && "rotate-180")} />
+        </button>
+        {isResourcesOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/journal">
+              <span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
+                Journal
+              </span>
+            </Link>
+            <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
+            <button
+              onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
+              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+            >
+              <span>Policies</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isPoliciesOpen && "rotate-180")} />
+            </button>
+            {isPoliciesOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/privacy"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Privacy Policy</span></Link>
+                <Link href="/terms"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Terms & Conditions</span></Link>
+                <Link href="/cancellation"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Cancellation Policy</span></Link>
+              </div>
+            )}
+            <span className="block text-sm text-muted-foreground px-2 py-1">Aftercare Guides</span>
+          </div>
+        )}
+
+        <div className="flex items-center space-x-6 pt-4">
+          <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <Instagram className="h-5 w-5" strokeWidth={2.5} />
+          </a>
+          <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <TikTokIcon className="h-5 w-5" />
+          </a>
+          <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+            <FaGoogle className="h-4 w-4 fill-current" />
+          </a>
+          <Link href="/consultations/skin">
+            <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
+              Book Now
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
       </div>
     </nav>
   );
