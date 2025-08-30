@@ -1,3 +1,4 @@
+// MobileStickyBookingBar.tsx
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -10,16 +11,16 @@ type Mode = "new" | "returning";
 /**
  * Scroll-revealed Mobile Sticky Bar
  * - Mobile only (<= 767px)
- * - Progressively reveals between APPEAR_START..APPEAR_END as user scrolls
- * - Dismissible (sessionStorage)
- * - Persists mode (localStorage)
- * - Offsets WhatsApp FAB by just a few pixels above the visible portion of the bar
+ * - Exposes:
+ *    --sticky-bottom-offset (px) for FAB clearance
+ *    --sticky-reveal-progress (0..1) for any listeners (e.g. WhatsApp FAB)
+ * - Adds an always-available "Show again" pill after hide (mobile only)
  */
 export default function MobileStickyBookingBar() {
-  // CONFIG: tune how far the user must scroll for reveal
+  // CONFIG
   const APPEAR_START = 220; // px from top where reveal starts
   const APPEAR_END = 420;   // px where bar is fully revealed
-  const GAP = 50;            // px gap between bar and WhatsApp FAB
+  const GAP = 50;           // px between bar and WhatsApp FAB
 
   const [mode, setMode] = useState<Mode>("new");
   const [dismissed, setDismissed] = useState(false);
@@ -32,6 +33,8 @@ export default function MobileStickyBookingBar() {
 
   const setOffset = (px: number) =>
     document.documentElement.style.setProperty("--sticky-bottom-offset", `${px}px`);
+  const setReveal = (p: number) =>
+    document.documentElement.style.setProperty("--sticky-reveal-progress", `${Math.max(0, Math.min(1, p))}`);
 
   // Load persisted states
   useEffect(() => {
@@ -50,8 +53,9 @@ export default function MobileStickyBookingBar() {
       const matches = "matches" in e ? e.matches : mq.matches;
       setIsMobile(!!matches);
       if (!matches) {
-        // desktop → ensure everything resets
+        // desktop reset
         setOffset(0);
+        setReveal(0);
       }
     };
 
@@ -67,7 +71,7 @@ export default function MobileStickyBookingBar() {
     };
   }, []);
 
-  // Scroll-driven progress (0..1) with rAF to keep it smooth
+  // Scroll-driven progress (0..1), push to CSS var for consumers
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -82,7 +86,9 @@ export default function MobileStickyBookingBar() {
     };
 
     const update = () => {
-      setProgress(calcProgress());
+      const p = calcProgress();
+      setProgress(p);
+      setReveal(p);
       ticking = false;
     };
 
@@ -93,13 +99,15 @@ export default function MobileStickyBookingBar() {
     };
 
     // initial
-    setProgress(calcProgress());
+    update();
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true }); // recalc on orientation change
+    window.addEventListener("resize", onScroll, { passive: true }); // orientation
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      setReveal(0);
     };
   }, [isMobile, dismissed, APPEAR_START, APPEAR_END]);
 
@@ -153,16 +161,21 @@ export default function MobileStickyBookingBar() {
     };
   }, [isMobile, dismissed, progress]);
 
-  // Dismissed chip (only after reveal begins)
-  if (dismissed && isMobile && progress > 0) {
+  // --- Always show the "Show again" pill on mobile once dismissed ---
+  if (dismissed && isMobile) {
     return (
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-        <div className="mx-auto w-fit rounded-full shadow-md border border-muted-foreground/10 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 px-3 py-1.5">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-60 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pointer-events-none">
+        <div className="mx-auto w-fit rounded-full shadow-md border border-muted-foreground/10 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 px-3 py-1.5 pointer-events-auto">
           <button
             type="button"
             onClick={() => {
               sessionStorage.removeItem("aevia-sticky-hidden");
               setDismissed(false);
+              // Immediately expose current reveal (so FAB can react)
+              const current = parseFloat(
+                getComputedStyle(document.documentElement).getPropertyValue("--sticky-reveal-progress")
+              );
+              setReveal(Number.isFinite(current) ? current : 0);
             }}
             className="inline-flex items-center gap-1 text-sm text-primary hover:opacity-90"
           >
@@ -175,7 +188,12 @@ export default function MobileStickyBookingBar() {
   }
 
   // Don’t mount at all on desktop or when nothing is visible
-  if (!isMobile || progress <= 0 || dismissed) return null;
+  if (!isMobile || progress <= 0) {
+    // keep CSS vars sane
+    setReveal(0);
+    setOffset(0);
+    return null;
+  }
 
   // Map progress to transform/opacity; keep it interactive once > ~30% visible
   const translateY = (1 - progress) * 100; // 100% (off) → 0% (on)
@@ -190,7 +208,7 @@ export default function MobileStickyBookingBar() {
         style={{
           transform: `translateY(${translateY}%)`,
           opacity,
-          transition: "transform 0s, opacity 0s", // animation driven by scroll, not time
+          transition: "transform 0s, opacity 0s", // scroll-linked
           pointerEvents: interactive ? "auto" : "none",
         }}
         aria-hidden={!interactive}
@@ -202,6 +220,8 @@ export default function MobileStickyBookingBar() {
           onClick={() => {
             sessionStorage.setItem("aevia-sticky-hidden", "1");
             setDismissed(true);
+            setReveal(0);
+            setOffset(0);
           }}
           className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/90 border border-muted-foreground/20 shadow hover:bg-white"
         >

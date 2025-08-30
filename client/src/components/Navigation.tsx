@@ -248,16 +248,30 @@ export default function Navigation() {
                   )}
                   onClick={() => setActiveMenu('consult')}
                 >
-                  Consult <ChevronDown className="ml-1 h-4 w-4" />
+                  Book <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <Link href="/consultations/skin">
-                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin Consultation</DropdownMenuItem>
                 </Link>
                 <Link href="/consultations/mind">
-                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
                 </Link>
+                <a
+    href={"https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b/booking?menu=true&pId=2507365&dppub=true&employeeId=4557161&cartId=654d2935-3aa6-487a-a780-52809c0b0c38"}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Book a treatment"
+    onClick={() => onNavSelect('consult')}
+    className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
+  >
+    <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Treatments</DropdownMenuItem>
+  </a>
+                
+
+
+
               </DropdownMenuContent>
             </DropdownMenu>
             {/* Top-level Gallery removed on desktop; kept under Skin */}

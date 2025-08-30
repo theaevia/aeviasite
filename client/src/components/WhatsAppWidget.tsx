@@ -1,6 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+// WhatsAppWidget.tsx
+// Mobile-only FAB that:
+// - Reads --sticky-reveal-progress and --sticky-bottom-offset from <html>
+// - Uses a tiny rAF-based lerp so it feels compositor-smooth on iOS
+// - Stays in the corner when the sticky bar is absent (no opacity changes)
+
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function WhatsAppWidget() {
+  // ----- Config -----
+  const LERP = 0.28; // 0..1 (higher = snappier)
+
+  // ----- Static URL -----
   const phoneNumber = "+447448012556";
   const message = "Hi Aevia, I'd like to make an enquiry";
   const whatsappUrl = useMemo(
@@ -8,24 +18,22 @@ export default function WhatsAppWidget() {
     [phoneNumber, message]
   );
 
-  // Match the sticky bar’s reveal window (same as your sticky)
-  const APPEAR_START = 220; // px where reveal starts
-  const APPEAR_END = 420;   // px where reveal ends
-
+  // ----- State/refs -----
   const [isMobile, setIsMobile] = useState<boolean>(() =>
     typeof window !== "undefined" ? window.matchMedia("(max-width: 767px)").matches : false
   );
-  const [progress, setProgress] = useState(0); // 0..1
-  const [active, setActive] = useState(false); // only animate when sticky is present
+  const targetProgressRef = useRef(1);   // target (0..1)
+  const currentProgressRef = useRef(1);  // smoothed (0..1)
+  const rafRef = useRef<number | null>(null);
 
-  // Helper: read current sticky offset (set by MobileStickyBookingBar)
-  const getStickyOffset = () => {
-    if (typeof window === "undefined") return 0;
-    const v = getComputedStyle(document.documentElement)
-      .getPropertyValue("--sticky-bottom-offset")
-      .trim();
-    const n = parseFloat(v);
-    return Number.isFinite(n) ? n : 0;
+  // Helper: read CSS vars written by the sticky bar
+  const readStickyVars = () => {
+    if (typeof window === "undefined") return { offset: 0, progress: 0 };
+    const styles = getComputedStyle(document.documentElement);
+    const off = parseFloat(styles.getPropertyValue("--sticky-bottom-offset").trim()) || 0;
+    const p = parseFloat(styles.getPropertyValue("--sticky-reveal-progress").trim());
+    const progress = Number.isFinite(p) ? Math.max(0, Math.min(1, p)) : 0;
+    return { offset: off, progress };
   };
 
   // Track mobile breakpoint
@@ -36,16 +44,17 @@ export default function WhatsAppWidget() {
       const matches = "matches" in e ? e.matches : mq.matches;
       setIsMobile(!!matches);
       if (!matches) {
-        // Desktop: ensure no animation + default position
-        setActive(false);
-        setProgress(1);
-        // Also reset translate via inline style next render by keeping progress=1
+        // desktop: snap to original position
+        targetProgressRef.current = 1;
+        currentProgressRef.current = 1;
+        document.documentElement.style.setProperty("--fab-translate", "0%");
       }
     };
     onChange(mq);
     if ("addEventListener" in mq) mq.addEventListener("change", onChange as any);
     // @ts-ignore older Safari
     else if ("addListener" in mq) mq.addListener(onChange);
+
     return () => {
       if ("removeEventListener" in mq) mq.removeEventListener("change", onChange as any);
       // @ts-ignore older Safari
@@ -53,59 +62,74 @@ export default function WhatsAppWidget() {
     };
   }, []);
 
-  // Scroll-driven reveal, but only if sticky is present
+  // Compute the *target* progress from sticky progress (only when sticky present on mobile)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     let ticking = false;
     const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
 
-    const computeProgress = () => {
-      const y = window.scrollY;
-      const p = (y - APPEAR_START) / (APPEAR_END - APPEAR_START);
-      return clamp(p, 0, 1);
+    const computeTarget = () => {
+      if (!isMobile) return 1; // corner position
+      const { offset, progress } = readStickyVars();
+      const stickyPresent = offset > 0 || progress > 0;
+      if (!stickyPresent) return 1; // corner when sticky absent
+      // Use the sticky bar's progress directly (0..1)
+      return clamp(progress, 0, 1);
     };
 
     const update = () => {
-      const stickyOffset = getStickyOffset();
-      const stickyPresent = isMobile && stickyOffset > 0;
-
-      setActive(stickyPresent);
-
-      // If sticky not present, keep FAB at original position (no translate)
-      if (!stickyPresent) {
-        setProgress(1); // translate 0%
-      } else {
-        setProgress(computeProgress());
-      }
+      targetProgressRef.current = computeTarget();
       ticking = false;
     };
 
-    // initial
-    update();
-
-    const onScroll = () => {
+    const onChange = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(update);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    // Also watch root style mutations (sticky writes CSS var on <html>)
-    const mo = new MutationObserver(onScroll);
+    // initial
+    update();
+
+    // Drive updates from scroll/resize + CSS var changes
+    window.addEventListener("scroll", onChange, { passive: true });
+    window.addEventListener("resize", onChange, { passive: true });
+    const mo = new MutationObserver(onChange);
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ["style"] });
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", onChange);
+      window.removeEventListener("resize", onChange);
       mo.disconnect();
     };
-  }, [isMobile, APPEAR_START, APPEAR_END]);
+  }, [isMobile]);
 
-  // Map progress -> translate. No opacity changes (always 1).
-  // If not active (sticky absent), translate becomes 0% because progress=1.
-  const translate = active ? `${(1 - progress) * 120}%` : "0%";
+  // rAF-driven smoothing loop → writes --fab-translate as a %
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const step = () => {
+      const cur = currentProgressRef.current;
+      const tgt = targetProgressRef.current;
+      const next = cur + (tgt - cur) * LERP;
+
+      currentProgressRef.current = next;
+
+      // Convert sticky progress (0..1) to our slide: 120% offscreen → 0% onscreen
+      const translate = (1 - next) * 120; // %
+      document.documentElement.style.setProperty("--fab-translate", `${translate}%`);
+
+      rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      // Reset on unmount
+      document.documentElement.style.setProperty("--fab-translate", "0%");
+    };
+  }, [LERP]);
 
   return (
     <a
@@ -114,20 +138,7 @@ export default function WhatsAppWidget() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      style={
-        isMobile
-          ? ({
-              ["--fab-translate" as any]: translate,
-              opacity: 1,
-              pointerEvents: "auto",
-            } as React.CSSProperties)
-          : ({
-              // Desktop: ensure original position (no translate)
-              ["--fab-translate" as any]: "0%",
-              opacity: 1,
-              pointerEvents: "auto",
-            } as React.CSSProperties)
-      }
+      style={{ opacity: 1, pointerEvents: "auto" }} // never fade, always clickable
     >
       <svg
         width="24"
