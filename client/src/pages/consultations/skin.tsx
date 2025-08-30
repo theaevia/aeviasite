@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { Leaf, Clock, Gift, Calendar, Check } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -123,8 +123,7 @@ export default function SkinConsultationPage() {
           </div>
         </section>
 
-        {/* Sticky CTA (mobile) */}
-        <StickyBookCta />
+        {/* Sticky CTA removed */}
       </div>
     </>
   );
@@ -152,27 +151,4 @@ function AccordionCard({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-function StickyBookCta() {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const target = document.getElementById("book");
-    if (!target) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setShow(!entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-  if (!show) return null;
-  return (
-    <div className="md:hidden fixed bottom-4 left-0 right-0 z-50 flex justify-center pointer-events-none">
-      <a
-        href="#book"
-        className="pointer-events-auto px-5 py-3 rounded-full font-medium text-sm shadow-lg border-2 border-primary bg-primary text-primary-foreground hover:bg-white hover:text-primary smooth-transition"
-      >
-        Book Skin Consultation
-      </a>
-    </div>
-  );
-}
+// Sticky CTA removed

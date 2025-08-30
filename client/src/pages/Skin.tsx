@@ -8,6 +8,7 @@ import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
 import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
 import skinModel2Image800 from "@assets/hero_images/skin-model-2-800w.webp";
 import SEO from "@/components/SEO";
+import { signatureOffers } from "@/data/signatureOffers";
 
 export default function Skin() {
   return (
@@ -26,12 +27,23 @@ export default function Skin() {
                 <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
                   Aevia Skin: <span className="text-primary">Regenerative Aesthetics</span>
                 </h1>
-                <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
-                  Doctor-led treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
+                {/* Trust bar */}
+                <p className="text-sm md:text-base text-foreground/70 mb-4">
+                  Doctor-led • King’s Cross • Subtle, natural results
                 </p>
-                <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
-                  Book Your Aevia Skin Consultation
-                </BookingButton>
+                <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
+                  Non-invasive skin treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
+                </p>
+                <div className="w-full sm:w-auto text-center">
+                  <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
+                    Book Consultation
+                  </BookingButton>
+                  <div className="mt-3 text-sm text-center">
+                    <Link href="/treatments#skin" className="text-primary/80 hover:text-primary underline underline-offset-4">
+                      View all treatments & prices
+                    </Link>
+                  </div>
+                </div>
               </div>
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
@@ -57,6 +69,51 @@ export default function Skin() {
           </div>
         </section>
 
+        {/* Signature Offers - surfaced high */}
+        <section className="py-12 md:py-20 bg-secondary">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold font-serif mb-3 tracking-wider text-primary">Signature Offers</h2>
+              <p className="text-lg text-muted-foreground">Our most-booked combinations for natural, lasting results.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {signatureOffers.map((offer) => {
+                const [mainTitle, subtitle] = offer.name.split('\n');
+                const isAntiWrinkle = offer.name.toLowerCase().includes('anti-wrinkle');
+                const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
+                const onCtaClick = () => {
+                  if (isAntiWrinkle) {
+                    window.location.href = '/consultations/skin';
+                  } else if (offer.bookingUrl !== '#') {
+                    window.open(offer.bookingUrl, '_blank');
+                  }
+                };
+                return (
+                  <div key={offer.name} className="bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+                    <div className="flex-1 flex flex-col items-center">
+                      <h3 className="text-2xl font-serif font-bold mb-1">{mainTitle}</h3>
+                      {subtitle && <p className="text-base text-foreground/60 font-normal mb-2">{subtitle}</p>}
+                      <span className="text-primary font-bold text-2xl mb-1">{offer.price}</span>
+                      <p className="text-foreground/70 mb-4">{offer.description}</p>
+                      <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3">
+                        {offer.features.map(feature => (
+                          <li key={feature} className="relative pl-6 leading-relaxed">
+                            <Check className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <hr className="border-t border-[#e0ddd9] my-4 w-3/4 mx-auto" />
+                      <div className="text-xs text-muted-foreground">Normally {offer.normalPrice}. A medical consultation is required before any prescription treatment.</div>
+                    </div>
+                    <Button onClick={onCtaClick} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4">{ctaText}</Button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* Treatments */}
         <section className="py-20 bg-accent/30">
           <div className="max-w-6xl mx-auto px-6">
@@ -66,23 +123,29 @@ export default function Skin() {
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl">
+              <Link href="/categories/polynucleotides" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Dna className="text-primary text-4xl mx-auto mb-4" />
-                <h3 className="text-xl font-serif font-semibold mb-3">Polynucleotides</h3>
-                <p className="text-foreground/70 text-sm">DNA-based therapy that stimulates natural skin regeneration and hydration</p>
-              </div>
+                <h3 className="text-xl font-serif font-semibold mb-1">Polynucleotides</h3>
+                <p className="text-primary font-medium mb-2">From £250</p>
+                <p className="text-foreground/70 text-sm mb-3">DNA-based therapy that stimulates natural skin regeneration and hydration</p>
+                <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
+              </Link>
               
-              <div className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl">
+              <Link href="/categories/skin-boosters" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Droplet className="text-primary text-4xl mx-auto mb-4" />
-                <h3 className="text-xl font-serif font-semibold mb-3">Skin Boosters</h3>
-                <p className="text-foreground/70 text-sm">Hyaluronic acid injections for deep hydration and improved skin quality</p>
-              </div>
+                <h3 className="text-xl font-serif font-semibold mb-1">Skin Boosters</h3>
+                <p className="text-primary font-medium mb-2">From £250</p>
+                <p className="text-foreground/70 text-sm mb-3">Hyaluronic acid injections for deep hydration and improved skin quality</p>
+                <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
+              </Link>
               
-              <div className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl">
+              <Link href="/categories/anti-wrinkle" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Sparkles className="text-primary text-4xl mx-auto mb-4" />
-                <h3 className="text-xl font-serif font-semibold mb-3">Anti-Wrinkle Injections</h3>
-                <p className="text-foreground/70 text-sm">Precision muscle relaxation for natural-looking wrinkle reduction</p>
-              </div>
+                <h3 className="text-xl font-serif font-semibold mb-1">Anti-Wrinkle Injections</h3>
+                <p className="text-primary font-medium mb-2">From £160</p>
+                <p className="text-foreground/70 text-sm mb-3">Precision muscle relaxation for natural-looking wrinkle reduction</p>
+                <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
+              </Link>
             </div>
           </div>
         </section>
@@ -98,8 +161,8 @@ export default function Skin() {
                   A comprehensive virtual clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or anti-wrinkle injections.
                 </p>
                 
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div className="text-left">
+                <div className="grid md:grid-cols-2 gap-6 mb-6 text-left">
+                  <div>
                     <h4 className="font-semibold text-foreground mb-3">Perfect for:</h4>
                     <ul className="space-y-2 text-foreground/70">
                       <li className="flex items-center">
@@ -117,19 +180,24 @@ export default function Skin() {
                     </ul>
                   </div>
                   
-                  <div className="text-left">
+                  <div>
                     <h4 className="font-semibold text-foreground mb-3">Pricing:</h4>
                     <ul className="space-y-2 text-foreground/70">
-                      <li className="flex items-center">
-                        <Gift className="h-4 w-4 text-primary mr-3" />
-                        FREE (usually £30, now complimentary for first-time clients)
+                      <li className="grid grid-cols-[20px_1fr] gap-3 items-start">
+                        <Gift className="h-5 w-5 text-primary" />
+                        <span>Free (usually £30, now complimentary for first-time clients)</span>
                       </li>
-                      <li className="flex items-center">
-                        <Camera className="h-4 w-4 text-primary mr-3" />
-                        Virtual consultation
+                      <li className="grid grid-cols-[20px_1fr] gap-3 items-start">
+                        <Camera className="h-5 w-5 text-primary" />
+                        <span>Virtual consultation</span>
                       </li>
                     </ul>
                   </div>
+                </div>
+                <div className="text-center">
+                  <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
+                    Book Your Consultation
+                  </BookingButton>
                 </div>
               </div>
             </div>
@@ -172,151 +240,34 @@ export default function Skin() {
           </div>
         </section>
 
-        {/* How Booking Works */}
-        <section className="py-20 bg-white">
+        {/* Booking Decision (binary) */}
+        <section className="py-20 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-8">How does booking work at The Aevia?</h2>
-            <div className="bg-accent/20 rounded-2xl p-8 mb-12">
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                All new clients start with a virtual consultation, which lets us assess your needs before scheduling treatment. You'll then be invited to book your in-clinic session.
-                <br /><br />
-                <strong>Already know what you want?</strong> Returning clients can book directly.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="text-center">
-                <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
-                <p className="text-foreground/70 mb-6">Start with a virtual consultation</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-2">How should I book?</h2>
+            <p className="text-foreground/70 mb-8">We guide first-timers to the right plan. Returning clients can book specific treatments directly.</p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-accent/20 rounded-2xl p-6">
+                <h3 className="text-xl font-serif font-semibold mb-2">New to Aevia?</h3>
+                <p className="text-sm text-foreground/70 mb-4">Start with a consultation.</p>
                 <BookingButton href="/consultations/skin" variant="primary" className="w-full">
-                  Book Virtual Consultation
+                  Book Consultation
                 </BookingButton>
               </div>
-              
-              <div className="text-center">
-                <h3 className="text-xl font-serif font-semibold mb-4">Returning Clients</h3>
-                <p className="text-foreground/70 mb-6">Book treatments directly</p>
-                <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" target="_blank" rel="noopener noreferrer" className="w-full block">
-                  <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" variant="primary" className="w-full">
-                    Book Treatments
-                  </BookingButton>
-                </a>
+              <div className="bg-accent/20 rounded-2xl p-6">
+                <h3 className="text-xl font-serif font-semibold mb-2">Returning client?</h3>
+                <p className="text-sm text-foreground/70 mb-4">Book a specific treatment.</p>
+                <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" variant="primary" className="w-full">
+                  Book Treatment
+                </BookingButton>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="py-20 bg-accent/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Treatment Fees</h2>
-              <p className="text-lg text-foreground/70">Transparent pricing for all our regenerative treatments</p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Consultation</h3>
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">Free</span>
-                  <p className="text-sm text-foreground/70">Usually £30</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    20-minute virtual session
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Facial mapping
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Personalised treatment plan
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Polynucleotides</h3>
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">From £250</span>
-                  <p className="text-sm text-foreground/70">Per treatment</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    DNA-based regeneration
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Natural skin healing
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Long-lasting results
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Skin Boosters</h3>
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">From £250</span>
-                  <p className="text-sm text-foreground/70">Per treatment</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Deep hydration
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Improved skin quality
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Natural glow
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Anti-Wrinkle</h3>
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">From £160</span>
-                  <p className="text-sm text-foreground/70">Per treatment area</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Muscle relaxation
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Natural-looking results
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Quick, minimally invasive
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="text-center mt-12">
-              <p className="text-sm text-foreground/60">
-                Final pricing will be confirmed during your consultation based on your individual treatment plan.
-              </p>
-              <Button asChild className="mt-6">
-                <a href="/treatments">More information</a>
-              </Button>
-            </div>
-          </div>
-        </section>
+        {/* Removed Treatment Fees section per request */}
 
         {/* CTA */}
-        <section className="py-20 bg-secondary">
+        <section className="py-20 bg-accent/30">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
             <p className="text-lg text-foreground/70 mb-8">Book your FREE Aevia Skin Consultation</p>

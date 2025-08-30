@@ -2,6 +2,7 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { useEffect } from "react";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import MobileStickyBookingBar from "@/components/MobileStickyBookingBar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -176,7 +177,14 @@ export default function Layout({ children }: LayoutProps) {
       <main className="pt-[var(--header-h,80px)] flex-1">
         {children}
       </main>
+      {/* Social proof strip */}
+      <div className="w-full bg-white border-t border-muted-foreground/10 py-2">
+        <div className="max-w-6xl mx-auto px-4 text-center text-sm text-primary font-medium">
+          ★★★★★ Google • GMC-registered • Fully insured
+        </div>
+      </div>
       <Footer />
+      <MobileStickyBookingBar />
       <WhatsAppWidget />
     </div>
   );

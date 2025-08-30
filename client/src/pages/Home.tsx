@@ -80,6 +80,15 @@ export default function Home() {
 
   const renderOfferCard = (offer: any, index: number) => {
     const [mainTitle, subtitle] = offer.name.split('\n');
+    const isAntiWrinkle = offer.name.toLowerCase().includes('anti-wrinkle');
+    const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
+    const onCtaClick = () => {
+      if (isAntiWrinkle) {
+        window.location.href = '/consultations/skin';
+      } else {
+        handleSignatureOfferBook(offer.bookingUrl);
+      }
+    };
     return (
       <div key={offer.name} className="bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
         <div className="flex-1 flex flex-col items-center">
@@ -99,10 +108,10 @@ export default function Home() {
           <div className="text-xs text-muted-foreground">Normally {offer.normalPrice}. A medical consultation is required before any prescription treatment.</div>
         </div>
         <Button 
-          onClick={() => handleSignatureOfferBook(offer.bookingUrl)}
+          onClick={onCtaClick}
           className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
         >
-          {offer.ctaText}
+          {ctaText}
         </Button>
       </div>
     );
@@ -124,13 +133,17 @@ export default function Home() {
                 Doctor-Led Transformation for{" "}
                 <span className="text-primary">Skin and Mind</span>
               </h1>
+              {/* Trust bar */}
+              <p className="text-sm md:text-base text-foreground/70 mb-6">
+                Doctor-led • King’s Cross • Subtle, natural results
+              </p>
               <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
               Medical aesthetics and performance coaching for those who value natural, regenerative and long-lasting results. Based in <span className="font-bold text-primary">Kings Cross, London</span>.
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
-                <div className="w-full sm:w-64">
+                <div className="w-full sm:w-64 text-center">
                   <BookingButton href="/consultations/skin" variant="primary" className="w-full">
-                    Book Skin Consultation
+                    Book Consultation
                   </BookingButton>
                 </div>
                 <div className="w-full sm:w-64">
@@ -138,6 +151,11 @@ export default function Home() {
                     Book Mind Discovery Call
                   </BookingButton>
                 </div>
+              </div>
+              <div className="mt-3 text-sm text-center">
+                <Link href="/treatments#skin" className="text-primary/80 hover:text-primary underline underline-offset-4">
+                  View all treatments & prices
+                </Link>
               </div>
             </div>
           </div>
@@ -242,7 +260,7 @@ transformation.
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-8 md:mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold font-serif mb-3 tracking-wider text-primary">Signature Offers</h2>
-              <p className="text-lg text-muted-foreground">Our most popular treatments to refresh, restore, and revitalise</p>
+              <p className="text-lg text-muted-foreground">Our most-booked combinations for natural, lasting results.</p>
             </div>
             
             {/* Desktop Grid Layout */}

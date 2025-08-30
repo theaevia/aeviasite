@@ -163,6 +163,9 @@ export default function Navigation() {
                     <Link href="/treatments/sweat-control">
                       <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sweat Control</DropdownMenuItem>
                     </Link>
+                    <Link href="/treatments/lower-face-contour-duo">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Lower Face Contour Duo</DropdownMenuItem>
+                    </Link>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSub>
@@ -406,6 +409,7 @@ export default function Navigation() {
                       <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift</span></Link>
                       <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift</span></Link>
                       <Link href="/treatments/sweat-control"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sweat Control</span></Link>
+                      <Link href="/treatments/lower-face-contour-duo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Lower Face Contour Duo</span></Link>
                     </div>
                   )}
 

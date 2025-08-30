@@ -178,11 +178,13 @@ export default function Treatments() {
           <div id="signature-offers" className="mb-20" style={{ scrollMarginTop: topGap }}>
             <div className="text-center mb-10">
               <h2 className="text-4xl lg:text-5xl font-bold font-serif mb-3 tracking-wider text-primary">Signature Offers</h2>
-              <p className="text-lg text-muted-foreground">Our most popular treatments to refresh, restore, and revitalise</p>
+              <p className="text-lg text-muted-foreground">Our most-booked combinations for natural, lasting results.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {signatureOffers.map((offer) => {
                 const [mainTitle, subtitle] = offer.name.split('\n');
+                const isAntiWrinkle = offer.name.toLowerCase().includes('anti-wrinkle');
+                const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
                 return (
                   <div key={offer.name} className={`bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 ${signatureOffers.length === 3 ? 'lg:col-span-1' : ''}`}>
                     <div className="flex-1 flex flex-col items-center">
@@ -202,10 +204,16 @@ export default function Treatments() {
                       <div className="text-xs text-muted-foreground">Normally {offer.normalPrice}. A medical consultation is required before any prescription treatment.</div>
                     </div>
                     <Button 
-                      onClick={() => handleSignatureOfferBook(offer.bookingUrl)}
+                      onClick={() => {
+                        if (isAntiWrinkle) {
+                          window.location.href = '/consultations/skin';
+                        } else if (offer.bookingUrl !== '#') {
+                          handleSignatureOfferBook(offer.bookingUrl)
+                        }
+                      }}
                       className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
                     >
-                      {offer.ctaText}
+                      {ctaText}
                     </Button>
                   </div>
                 );
@@ -271,14 +279,20 @@ export default function Treatments() {
                           </span>
                           <Button
                             variant="ghost"
-                            onClick={() => handleBookNow(treatment)}
+                            onClick={() => {
+                              if (cat.category === "Anti-Wrinkle Treatments (Smooth & Refine)") {
+                                window.location.href = '/consultations/skin';
+                              } else {
+                                handleBookNow(treatment)
+                              }
+                            }}
                             className="text-primary border border-primary hover:bg-primary/10 text-sm px-3 py-1 rounded-full"
                           >
-                            {cat.category === "Anti-Wrinkle Treatments (Smooth & Refine)" || 
-                             cat.category === "Skin Boosters (Hydration & Glow)" || 
-                             cat.category === "Polynucleotides (Skin Repair & Regeneration)" 
-                             ? "Book Treatment" 
-                             : "Book Consultation"}
+                            {cat.category === "Anti-Wrinkle Treatments (Smooth & Refine)" 
+                              ? "Book Consultation" 
+                              : (cat.category === "Skin Boosters (Hydration & Glow)" || cat.category === "Polynucleotides (Skin Repair & Regeneration)" 
+                                ? "Book Treatment" 
+                                : "Book Consultation")}
                           </Button>
                         </div>
                       </div>
