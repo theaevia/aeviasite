@@ -87,6 +87,11 @@ export default function Navigation() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
+  useEffect(() => {
+    // simplest & robust enough
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+  }, [isMobileMenuOpen]);
+
   return (
     <nav className="fixed top-0 w-full z-50 glass-effect border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 py-4">

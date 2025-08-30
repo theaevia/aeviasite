@@ -1,9 +1,111 @@
-import React from 'react';
+import { useEffect, useMemo, useState } from "react";
 
 export default function WhatsAppWidget() {
   const phoneNumber = "+447448012556";
   const message = "Hi Aevia, I'd like to make an enquiry";
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\s/g, '')}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = useMemo(
+    () => `https://wa.me/${phoneNumber.replace(/\s/g, "")}?text=${encodeURIComponent(message)}`,
+    [phoneNumber, message]
+  );
+
+  // Match the sticky bar’s reveal window (same as your sticky)
+  const APPEAR_START = 220; // px where reveal starts
+  const APPEAR_END = 420;   // px where reveal ends
+
+  const [isMobile, setIsMobile] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 767px)").matches : false
+  );
+  const [progress, setProgress] = useState(0); // 0..1
+  const [active, setActive] = useState(false); // only animate when sticky is present
+
+  // Helper: read current sticky offset (set by MobileStickyBookingBar)
+  const getStickyOffset = () => {
+    if (typeof window === "undefined") return 0;
+    const v = getComputedStyle(document.documentElement)
+      .getPropertyValue("--sticky-bottom-offset")
+      .trim();
+    const n = parseFloat(v);
+    return Number.isFinite(n) ? n : 0;
+  };
+
+  // Track mobile breakpoint
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(max-width: 767px)");
+    const onChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      const matches = "matches" in e ? e.matches : mq.matches;
+      setIsMobile(!!matches);
+      if (!matches) {
+        // Desktop: ensure no animation + default position
+        setActive(false);
+        setProgress(1);
+        // Also reset translate via inline style next render by keeping progress=1
+      }
+    };
+    onChange(mq);
+    if ("addEventListener" in mq) mq.addEventListener("change", onChange as any);
+    // @ts-ignore older Safari
+    else if ("addListener" in mq) mq.addListener(onChange);
+    return () => {
+      if ("removeEventListener" in mq) mq.removeEventListener("change", onChange as any);
+      // @ts-ignore older Safari
+      else if ("removeListener" in mq) mq.removeListener(onChange);
+    };
+  }, []);
+
+  // Scroll-driven reveal, but only if sticky is present
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let ticking = false;
+    const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
+
+    const computeProgress = () => {
+      const y = window.scrollY;
+      const p = (y - APPEAR_START) / (APPEAR_END - APPEAR_START);
+      return clamp(p, 0, 1);
+    };
+
+    const update = () => {
+      const stickyOffset = getStickyOffset();
+      const stickyPresent = isMobile && stickyOffset > 0;
+
+      setActive(stickyPresent);
+
+      // If sticky not present, keep FAB at original position (no translate)
+      if (!stickyPresent) {
+        setProgress(1); // translate 0%
+      } else {
+        setProgress(computeProgress());
+      }
+      ticking = false;
+    };
+
+    // initial
+    update();
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    // Also watch root style mutations (sticky writes CSS var on <html>)
+    const mo = new MutationObserver(onScroll);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["style"] });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      mo.disconnect();
+    };
+  }, [isMobile, APPEAR_START, APPEAR_END]);
+
+  // Map progress -> translate. No opacity changes (always 1).
+  // If not active (sticky absent), translate becomes 0% because progress=1.
+  const translate = active ? `${(1 - progress) * 120}%` : "0%";
 
   return (
     <a
@@ -12,6 +114,20 @@ export default function WhatsAppWidget() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
+      style={
+        isMobile
+          ? ({
+              ["--fab-translate" as any]: translate,
+              opacity: 1,
+              pointerEvents: "auto",
+            } as React.CSSProperties)
+          : ({
+              // Desktop: ensure original position (no translate)
+              ["--fab-translate" as any]: "0%",
+              opacity: 1,
+              pointerEvents: "auto",
+            } as React.CSSProperties)
+      }
     >
       <svg
         width="24"
@@ -24,4 +140,4 @@ export default function WhatsAppWidget() {
       </svg>
     </a>
   );
-} 
+}
