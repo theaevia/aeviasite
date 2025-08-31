@@ -38,7 +38,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A 30-minute call to explore your goals, challenges, and whether we're the right fit to work together.",
         duration: "30min",
         price: "Complimentary",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2606786&eid=4557161&oiid=sv%3A22711298&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=GCC3YKLK465XLBFKMST26IXV",
         slug: "discovery-call",
         image: "https://placehold.co/600x400"
       },
@@ -47,7 +47,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A 60-minute analytic deep dive to understand your goals, obstacles, and systems. You'll receive a written summary with an implementation strategy. The £250 fee is credited if you continue into a coaching programme.",
         duration: "1h",
         price: "£250",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2606786&eid=4557161&oiid=sv%3A23067524&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/MSQRJ3E3FMVF25P4P2RVX6MH",
         slug: "clarity-strategy-session",
         image: "https://placehold.co/600x400"
       },
@@ -56,7 +56,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A focused 6-session coaching programme over 8 weeks to sharpen your mindset, build momentum, and shift your approach to performance. Includes tools and support between sessions. (Split payment of 2 x £675 available).",
         duration: "1h (per session)",
         price: "£1,350",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2606786&eid=4557161&oiid=sv%3A22711336&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=EWO2ZNUMY3K3NX7DWE6R3BIV",
         slug: "momentum-6",
         image: "https://placehold.co/600x400"
       },
@@ -65,7 +65,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A deep 12-session journey over 3 months to rewire mindset, strengthen identity, and improve performance across work and life. For clients ready to commit to rich internal growth. (Split payment of 3 x £950 available).",
         duration: "1h (per session)",
         price: "£2,450",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2606786&eid=4557161&oiid=sv%3A22711383&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=LGKQHJZFMGCCEJB2N3C4ZJ36",
         slug: "transformation-12",
         image: "https://placehold.co/600x400"
       },
@@ -115,7 +115,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Choose one area to target. Designed to reduce lines while maintaining natural expression.",
         duration: "30min",
         price: "£160",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418601&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/ON4GV5WYYWPY4SQDAJUTO6KC",
         slug: "anti-wrinkle",
         image: antiWrinkleHero
       },
@@ -124,7 +124,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Choose two areas to target. Designed to reduce lines while maintaining natural expression.",
         duration: "45min",
         price: "£220",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418602&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/ON4GV5WYYWPY4SQDAJUTO6KC",
         slug: "anti-wrinkle",
         image: antiWrinkleHero
       },
@@ -133,7 +133,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Choose three areas to target. Designed to reduce lines while maintaining natural expression.",
         duration: "45min",
         price: "£260",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418603&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/ON4GV5WYYWPY4SQDAJUTO6KC",
         slug: "anti-wrinkle",
         image: antiWrinkleHero
       },
@@ -142,7 +142,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Anti-wrinkle injections to relax the masseter muscles, helping slim the lower face and reduce jaw tension. Great when paired with a Nefertiti Neck Lift to sculpt the jaw.",
         duration: "45min",
         price: "£300",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22417788&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/OVJ7CCR56PAS5U6UXCOESIKG",
         slug: "jawline-slimming",
         image: jawSlimHero
       },
@@ -151,7 +151,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Subtle lift to corners of the mouth to soften downturned smile lines.",
         duration: "30min",
         price: "£120",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418524&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/UHWQSUZOAETSA4MYBHWGU3QR",
         slug: "smile-lift",
         image: smileHero
       },
@@ -160,17 +160,17 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Defined jawline and smoother neck contours using targeted lower-face injections - without surgery. A great addition to Masseter Reduction for ultimate jaw slimming.",
         duration: "45min",
         price: "£270",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23160548&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/WL6KSZX75GUXV2IPZD5DVN3B",
         slug: "neck-lift",
         image: neckHero
       },
       {
         name: "Sweat Control",
         subtitle: "Underarm treatment",
-        description: "Underarm treatment to reduce excessive sweating for up to 9 months.",
+        description: "Underarm & palms treatment to reduce excessive sweating for up to 9 months.",
         duration: "1h",
         price: "£350",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418468&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/WKPVKNLVYWDO5QXYASJBRDG3",
         slug: "sweat-control",
         image: sweatHero
       },
@@ -179,7 +179,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "One appointment, two goals: relieve teeth-grinding and refine your jawline symmetry.",
         duration: "1h",
         price: "£520",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1640076&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=TJODL43UWGBSOXFWHP4BRWGA",
         slug: "lower-face-contour-duo",
         image: lowerFaceHero
       },
@@ -196,7 +196,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Remodels skin quality using hyaluronic acid spread across key zones, improving skin elasticity, collagen production and firmness. Best for dehydrated, crepey or ageing skin.",
         duration: "45min",
         price: "£300",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421064&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=QHKI7JHEM3A65CJ4GTNYJTSW",
         slug: "profhilo",
         image: "/assets/treatment_images/profhilo-640w.webp"
       },
@@ -206,7 +206,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Stimulates collagen and elastin production using amino acids and HA. Ideal for dull or tired-looking skin.",
         duration: "45min",
         price: "£250",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421090&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=OGM54Y3R44JDMBBSKD6WVHWJ",
         slug: "sunekos",
         image: "/assets/treatment_images/model-2-640w.webp"
       },
@@ -223,7 +223,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Targets under-eye hollowness, texture and dark circles with regenerative polynucleotides.",
         duration: "45min",
         price: "£250",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421332&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/PR5TPFISQ5TS5XKK3MUTMZLD",
         slug: "eye-rejuvenation",
         image: "/assets/treatment_images/under-eye-1-640w.webp"
       },
@@ -233,7 +233,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "DNA-based injectable to improve skin density, elasticity and hydration. Suitable for early signs of ageing or post-inflammatory texture issues.",
         duration: "45min",
         price: "£300",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22421256&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=2ZKXKHXJRQCJ34V74F7QTHHU",
         slug: "full-face-regeneration",
         image: "/assets/treatment_images/polynucleotides-1-640w.webp"
       },
@@ -308,7 +308,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A regenerative biostimulant that works deep within the skin to restore facial volume and support structure by stimulating natural collagen production. Unlike dermal fillers, Sculptra enhances your own tissue over time - resulting in gradual, long-lasting improvement in firmness, definition, and youthful contours. Recommended course: 2-3 sessions, spaced 4-6 weeks apart.",
         duration: "1h",
         price: "£550",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?eid=4557161&oiid=sv%3A23698477&share&pId=2507365",
+        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=5YRBIUCURJZQ3NMDACZMXCUW",
         slug: "sculptra",
         image: "/assets/treatment_images/sculptra-640w.webp"
       }

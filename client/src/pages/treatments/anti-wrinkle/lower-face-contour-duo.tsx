@@ -32,7 +32,7 @@ export default function LowerFaceContourDuoPage() {
                   <span>1h</span>
                 </div>
                 <BookingButton
-                  href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1640076&share&pId=2507365"
+                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=TJODL43UWGBSOXFWHP4BRWGA"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -169,7 +169,7 @@ export default function LowerFaceContourDuoPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£520</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <BookingButton
-                  href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1640076&share&pId=2507365"
+                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=TJODL43UWGBSOXFWHP4BRWGA"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -251,7 +251,7 @@ export default function LowerFaceContourDuoPage() {
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1640076&share&pId=2507365" variant="secondary" className="w-full">
+                <BookingButton href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=TJODL43UWGBSOXFWHP4BRWGA" variant="secondary" className="w-full">
                   Book Lower-Face Contour Duo Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

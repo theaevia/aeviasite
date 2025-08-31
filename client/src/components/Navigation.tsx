@@ -259,7 +259,7 @@ export default function Navigation() {
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
                 </Link>
                 <a
-                  href={"https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b/booking?menu=true&pId=2507365&dppub=true&employeeId=4557161&cartId=654d2935-3aa6-487a-a780-52809c0b0c38"}
+                  href={"http://the-aevia.square.site/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Book a treatment"
@@ -530,7 +530,7 @@ export default function Navigation() {
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind Consultation</span>
             </Link>
             <a
-                  href={"https://www.fresha.com/a/aevia-skin-london-260-pentonville-road-poy5rw3b/booking?menu=true&pId=2507365&dppub=true&employeeId=4557161&cartId=654d2935-3aa6-487a-a780-52809c0b0c38"}
+                  href={"http://the-aevia.square.site/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Book a treatment"

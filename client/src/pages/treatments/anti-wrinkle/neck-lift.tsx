@@ -32,7 +32,7 @@ export default function NeckLiftPage() {
                   <span>45 mins</span>
                 </div>
                 <BookingButton
-                  href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23160548&share&pId=2507365"
+                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=WL6KSZX75GUXV2IPZD5DVN3B"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -168,7 +168,7 @@ export default function NeckLiftPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£270</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23160548&share&pId=2507365" target="_blank" rel="noopener noreferrer">Book Neck Lift</a>
+                  <a href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/WL6KSZX75GUXV2IPZD5DVN3B" target="_blank" rel="noopener noreferrer">Book Neck Lift</a>
                 </Button>
               </div>
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -181,7 +181,7 @@ export default function NeckLiftPage() {
                 <p className="text-sm font-semibold text-green-600 mb-2">Save £50</p>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1640076&share&pId=2507365" target="_blank" rel="noopener noreferrer">Book Lower-Face Contour Duo</a>
+                  <a href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=TJODL43UWGBSOXFWHP4BRWGA" target="_blank" rel="noopener noreferrer">Book Lower-Face Contour Duo</a>
                 </Button>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function NeckLiftPage() {
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23160548&share&pId=2507365" variant="secondary" className="w-full">
+                <BookingButton href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/WL6KSZX75GUXV2IPZD5DVN3B" variant="secondary" className="w-full">
                   Book Neck Lift Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

@@ -24,7 +24,7 @@ export default function SweatControlPage() {
                   Sweat Control
                 </h1>
                 <p className="text-xl text-foreground/80 mb-4">
-                  Underarm treatment to reduce excessive sweating for up to 9 months.
+                  Underarm and palms treatment to reduce excessive sweating for up to 9 months.
                 </p>
                 <div className="flex items-center text-lg text-foreground/80 mb-6">
                   <span>£350</span>
@@ -32,7 +32,7 @@ export default function SweatControlPage() {
                   <span>1h</span>
                 </div>
                 <BookingButton
-                  href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418468&share&pId=2507365"
+                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=WKPVKNLVYWDO5QXYASJBRDG3"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -150,7 +150,7 @@ export default function SweatControlPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£350</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <BookingButton
-                  href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418468&share&pId=2507365"
+                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=WKPVKNLVYWDO5QXYASJBRDG3"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -232,7 +232,7 @@ export default function SweatControlPage() {
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418468&share&pId=2507365" variant="secondary" className="w-full">
+                <BookingButton href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=WKPVKNLVYWDO5QXYASJBRDG3" variant="secondary" className="w-full">
                   Book Sweat Control Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

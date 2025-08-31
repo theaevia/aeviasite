@@ -54,7 +54,7 @@ export default function AntiWrinklePage() {
                   <span>30 mins</span>
                 </div>
                 <BookingButton
-                  href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418601&share&pId=2507365"
+                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=ON4GV5WYYWPY4SQDAJUTO6KC"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -231,7 +231,7 @@ export default function AntiWrinklePage() {
                 <span className="text-2xl font-bold text-primary mb-1">£160</span>
                 <span className="text-muted-foreground text-sm mb-4">30min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418601&share&pId=2507365" target="_blank" rel="noopener noreferrer">Book One Area</a>
+                  <a href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=ON4GV5WYYWPY4SQDAJUTO6KC" target="_blank" rel="noopener noreferrer">Book One Area</a>
                 </Button>
               </div>
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -240,7 +240,7 @@ export default function AntiWrinklePage() {
                 <span className="text-2xl font-bold text-primary mb-1">£220</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418602&share&pId=2507365" target="_blank" rel="noopener noreferrer">Book Two Areas</a>
+                  <a href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=ON4GV5WYYWPY4SQDAJUTO6KC" target="_blank" rel="noopener noreferrer">Book Two Areas</a>
                 </Button>
               </div>
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -249,7 +249,7 @@ export default function AntiWrinklePage() {
                 <span className="text-2xl font-bold text-primary mb-1">£260</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418603&share&pId=2507365" target="_blank" rel="noopener noreferrer">Book Three Areas</a>
+                  <a href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=ON4GV5WYYWPY4SQDAJUTO6KC" target="_blank" rel="noopener noreferrer">Book Three Areas</a>
                 </Button>
               </div>
             </div>
@@ -344,7 +344,7 @@ export default function AntiWrinklePage() {
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A22418601&share&pId=2507365" variant="secondary" className="w-full">
+                <BookingButton href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=ON4GV5WYYWPY4SQDAJUTO6KC" variant="secondary" className="w-full">
                   Book Anti-Wrinkle Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

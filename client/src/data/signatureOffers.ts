@@ -20,7 +20,7 @@ export const signatureOffers: SignatureOffer[] = [
       "One appointment, one seamless price",
     ],
     normalPrice: "£580",
-    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1627420&share&pId=2507365",
+    bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/DHNAE4YPX7TJ2TYXHJX5NWFH",
     ctaText: "Book My Wrinkle Reset"
   },
   {
@@ -34,7 +34,7 @@ export const signatureOffers: SignatureOffer[] = [
       "Second session recommended in 4 weeks for optimal results"
     ],
     normalPrice: "£550",
-    bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=p%3A1638856&share&pId=2507365",
+    bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/27TAWF7EQYSCHM6EB6ZIU463",
     ctaText: "Book My Glow Revival"
   },
   {

@@ -69,7 +69,7 @@ export default function Terms() {
 
               <h2>4) Consultations, bookings & deposits</h2>
               <ul>
-                <li><strong>Booking system:</strong> Appointments are managed via our scheduling partners (e.g., Fresha for clinic bookings, Calendly for virtual consultations). Separate platform terms may also apply.</li>
+                <li><strong>Booking system:</strong> Appointments are managed via our scheduling partners (e.g., Square Appointments for clinic bookings, Calendly for virtual consultations). Separate platform terms may also apply.</li>
                 <li><strong>Consultation fees (typical):</strong> free virtual; £50 in‑clinic. If you proceed to treatment within the stated period, we redeem this fee against your first treatment (details confirmed at booking).</li>
                 <li><strong>Pre‑treatment review:</strong> We may require forms, photos, ID verification, or additional medical information in advance. Please complete these promptly; failure may lead to rescheduling or cancellation.</li>
                 <li><strong>Deposits:</strong> Some services may require a deposit at the time of booking. Deposits are generally applied to your treatment on the day. If you are clinically unsuitable, the consultation fee covers the professional assessment; any separate treatment deposit will be refunded.</li>

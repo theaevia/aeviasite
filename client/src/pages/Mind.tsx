@@ -241,7 +241,7 @@ export default function Mind() {
               <div className="text-center">
                 <h3 className="text-xl font-serif font-semibold mb-4">Returning Clients</h3>
                 <p className="text-foreground/70 mb-6">Book coaching sessions directly</p>
-                <BookingButton href="https://www.fresha.com/a/the-aevia-mind-london-260-pentonville-road-pigze91v" variant="primary" className="w-full">
+                <BookingButton href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?buttonTextColor=000000&color=c5a87a&locale=en-GB&team_member_id=TMMiuAoPXbKHy-j8" variant="primary" className="w-full">
                   Book Coaching Sessions
                 </BookingButton>
               </div>

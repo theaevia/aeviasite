@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-const FRESHA_SERVICES_URL =
-  "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365";
+const SQUARE_SERVICES_URL =
+  "http://the-aevia.square.site/";
 
 type Mode = "new" | "returning";
 
@@ -273,7 +273,7 @@ export default function MobileStickyBookingBar() {
           </Link>
         ) : (
           <a
-            href={FRESHA_SERVICES_URL}
+            href={SQUARE_SERVICES_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-medium border-2 border-primary hover:bg-white hover:text-primary smooth-transition"

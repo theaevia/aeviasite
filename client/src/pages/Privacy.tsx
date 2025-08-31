@@ -59,7 +59,7 @@ export default function Privacy() {
               <p>Name, email, phone, postal address, marketing preferences, age confirmation (18+).</p>
 
               <h3>b) Bookings, payments & transactions</h3>
-              <p>Appointment history, services booked, payment status and references (we do not store full card numbers). In‑clinic payments may be processed via Fresha; online consults may be scheduled via Calendly.</p>
+              <p>Appointment history, services booked, payment status and references (we do not store full card numbers). In‑clinic payments may be processed via Square Appointments; online consults may be scheduled via Calendly.</p>
 
               <h3>c) Communications</h3>
               <p>Emails, contact forms, WhatsApp messages/check‑ins, consultation correspondence, and related metadata.</p>
@@ -148,7 +148,7 @@ export default function Privacy() {
               <p>We use providers under data‑processing agreements. They act on our instructions and implement safeguards. Some also act as independent controllers for their own purposes — see their notices.</p>
               <h3>Core processors</h3>
               <ul>
-                <li><strong>Fresha</strong> – bookings, payments, notifications (clinic)</li>
+                <li><strong>Square</strong> – bookings, payments, notifications (clinic)</li>
                 <li><strong>Calendly</strong> – scheduling virtual consultations</li>
                 <li><strong>Mailchimp (Intuit)</strong> – email marketing & subscriber management</li>
                 <li><strong>Jotform</strong> – intake forms and questionnaires</li>

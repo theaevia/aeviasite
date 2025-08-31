@@ -256,7 +256,7 @@ export default function Skin() {
               <div className="bg-accent/20 rounded-2xl p-6">
                 <h3 className="text-xl font-serif font-semibold mb-2">Returning client?</h3>
                 <p className="text-sm text-foreground/70 mb-4">Book a specific treatment.</p>
-                <BookingButton href="https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&share&pId=2507365" variant="primary" className="w-full">
+                <BookingButton href="https://the-aevia.square.site/" variant="primary" className="w-full">
                   Book Treatment
                 </BookingButton>
               </div>
