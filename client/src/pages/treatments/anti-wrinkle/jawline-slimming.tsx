@@ -7,7 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 // Assets
 import masseterDiagram from "@assets/diagrams/masseter-1.png";
-import jawlineBeforeAfter from "@assets/before_afters/jawline-placeholder.jpg";
+import jawlineBeforeAfter from "@assets/before_afters/masseter-1.png";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 
@@ -88,7 +88,7 @@ export default function JawlineSlimmingPage() {
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
             <div className="flex flex-col items-center order-2 md:order-1">
-              <div className="relative w-full pb-[75%]">
+              <div className="relative w-full pb-[100%]">
                 <picture>
                   <source srcSet={jawlineBeforeAfter} type="image/jpeg" />
                   <img
@@ -102,7 +102,7 @@ export default function JawlineSlimmingPage() {
                   />
                 </picture>
               </div>
-              <p className="text-muted-foreground text-center text-sm mt-4">Jawline slimming</p>
+              <p className="text-muted-foreground text-center text-sm mt-4">Jawline Slimming - before and after</p>
             </div>
             <div className="order-1 md:order-2">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Jawline Slimming at Aevia Skin?</h2>

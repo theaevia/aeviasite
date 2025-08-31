@@ -33,10 +33,18 @@ const items: GalleryItem[] = [
   {
     id: "undereye",
     title: "Under‑Eye Polynucleotides",
-    caption: "Under‑Eye Polynucleotides — before and after.",
+    caption: "Under‑Eye Polynucleotides - before and after.",
     src: underEyeBeforeAfter,
     kind: "importedPng",
     href: "/treatments/eye-rejuvenation",
+  },
+  {
+    id: "masseter",
+    title: "Jawline Slimming",
+    caption: "Jawline slimming from masseter reduction treatment.",
+    src: "/assets/before_afters/masseter-1.png",
+    kind: "importedPng",
+    href: "/treatments/jawline-slimming",
   },
 ];
 
