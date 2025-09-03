@@ -1,25 +1,24 @@
 import { useEffect } from "react";
+import Cal, { getCalApi } from "@calcom/embed-react";
 import { Link } from "wouter";
 import { Brain, Clock, Gift, Target, Check } from "lucide-react";
 import SEO from "@/components/SEO";
 
 export default function MindConsultationPage() {
   useEffect(() => {
-    // Calendly CSS
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://assets.calendly.com/assets/external/widget.css";
-    document.head.appendChild(link);
-
-    // Calendly script
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-      document.head.removeChild(link);
-    };
+    (async function () {
+      const cal = await getCalApi({ namespace: "aevia-mind" });
+      const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+      cal("ui", {
+        theme: "light",
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#C5A87A" },
+          dark: { "cal-brand": "#fafafa" },
+        },
+        hideEventTypeDetails: isMobile ? true : false,
+        layout: "month_view",
+      });
+    })();
   }, []);
 
   const scrollToBook = (e?: React.MouseEvent) => {
@@ -59,18 +58,19 @@ export default function MindConsultationPage() {
             </div>
           </div>
         </section>
-        {/* Calendly first */}
+        {/* Booking */}
         <section id="book" className="scroll-mt-24 pt-8 pb-4 md:pt-12 md:pb-6 bg-white">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="bg-white rounded-2xl p-6 border-2 border-primary shadow-sm">
+            <div className="bg-white rounded-2xl p-3 md:p-4 lg:p-3 border-2 border-primary shadow-sm">
               <h3 className="font-semibold mb-1">Schedule Your Discovery Call</h3>
               <p className="text-xs text-foreground/60 mb-4">Takes ~30 seconds.</p>
-              <div className="w-full">
-                <div
-                  className="calendly-inline-widget"
-                  data-url="https://calendly.com/theaevia/aevia-skin-consultation-clone?hide_event_type_details=1&hide_gdpr_banner=1&text_color=2d2d2d&primary_color=c5a87a"
-                  style={{ minWidth: "0", width: "100%", height: "720px" }}
-                ></div>
+              <div className="w-full h-[70vh] lg:h-[640px] overflow-auto">
+                <Cal
+                  namespace="aevia-mind"
+                  calLink="the-aevia/aevia-mind"
+                  style={{ width: "100%", height: "100%" }}
+                  config={{ layout: "month_view", theme: "light" }}
+                />
               </div>
             </div>
           </div>

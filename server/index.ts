@@ -42,19 +42,28 @@ app.use(helmet({
       "img-src": ["'self'", "data:", "https:", "blob:"],
       "frame-src": [
         "'self'",
+        // Calendly (legacy) and Cal.com (current)
         "https://calendly.com",
         "https://www.calendly.com",
         "https://assets.calendly.com",
+        "https://cal.com",
+        "https://app.cal.com",
+        "https://*.cal.com",
         "https://www.googletagmanager.com",
         "https://www.google.com",
         "https://*.google.com"
       ],
       "connect-src": [
         "'self'",
+        // Calendly (legacy) and Cal.com (current)
         "https://calendly.com",
         "https://www.calendly.com",
         "https://assets.calendly.com",
         "https://api.calendly.com",
+        "https://cal.com",
+        "https://app.cal.com",
+        "https://api.cal.com",
+        "https://*.cal.com",
         "https://www.googletagmanager.com",
         "https://www.google-analytics.com",
         "https://region1.google-analytics.com" // Required for GA4
@@ -63,25 +72,37 @@ app.use(helmet({
         "'self'",
         "'unsafe-inline'", // Required for GTM and inline scripts
         "https://www.googletagmanager.com",
-        "https://assets.calendly.com"
+        "https://assets.calendly.com",
+        // Cal.com embed script
+        "https://app.cal.com",
+        "https://cal.com",
+        "https://*.cal.com"
       ],
       "script-src-elem": [
         "'self'",
         "'unsafe-inline'", // Required for GTM and inline scripts
         "https://www.googletagmanager.com",
-        "https://assets.calendly.com"
+        "https://assets.calendly.com",
+        // Cal.com embed script
+        "https://app.cal.com",
+        "https://cal.com",
+        "https://*.cal.com"
       ],
       "script-src-attr": ["'unsafe-inline'"],
       "style-src": [
         "'self'",
         "'unsafe-inline'", // Required for dynamic styles
         "https://assets.calendly.com",
+        // In case Cal.com serves styles
+        "https://app.cal.com",
         "https://fonts.googleapis.com" // Explicitly allow Google Fonts stylesheets
       ],
       "style-src-elem": [
         "'self'",
         "'unsafe-inline'", // Required for dynamic styles
         "https://assets.calendly.com",
+        // In case Cal.com serves styles
+        "https://app.cal.com",
         "https://fonts.googleapis.com" // Explicitly allow Google Fonts stylesheets
       ],
       "font-src": [
