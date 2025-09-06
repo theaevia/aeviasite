@@ -174,7 +174,7 @@ export default function Privacy() {
               </ul>
               <p>When data is no longer needed, we delete or anonymise it. Backups are segregated until overwritten.</p>
 
-              <h2>7) Cookies and similar technologies</h2>
+              <h2 id="cookies">7) Cookies and similar technologies</h2>
               <p>We use essential cookies for security and basic functions and, with your consent, non‑essential cookies for analytics/advertising. Manage preferences via our Cookie Banner and Cookie Policy (explains categories, providers, and retention). Browser settings may also block cookies; essential features may be affected.</p>
               <p><strong>Do‑Not‑Track:</strong> there is no common DNT standard; we do not currently respond to DNT signals.</p>
 

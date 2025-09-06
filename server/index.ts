@@ -39,7 +39,12 @@ app.use(helmet({
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
       "default-src": ["'self'"],
-      "img-src": ["'self'", "data:", "https:", "blob:"],
+      "img-src": [
+        "'self'",
+        "data:",
+        "https:",
+        "blob:"
+      ],
       "frame-src": [
         "'self'",
         // Calendly (legacy) and Cal.com (current)
