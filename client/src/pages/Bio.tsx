@@ -150,7 +150,7 @@ export default function BioPage() {
                   </div>
                   <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
                     <li>Best if you’re ready to proceed</li>
-                    <li>10–15 min virtual or in-clinic</li>
+                    <li>20 min virtual or in-clinic</li>
                     <li>Doctor-led, bespoke plan & pricing</li>
                     <li>Priority booking for treatment</li>
                   </ul>
