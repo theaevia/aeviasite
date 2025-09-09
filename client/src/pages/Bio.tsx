@@ -68,6 +68,10 @@ export default function BioPage() {
   const secondaryHref = intent === "consult" ? quizHref : consultHref;
   const secondaryLabel = intent === "consult" ? "Prefer guidance? Take the 60-sec quiz" : "Already decided? Book a free consult";
 
+  const isConsultPrimary = intent === "consult";
+  const heroMain = isConsultPrimary ? "Book a free consult" : "60-sec Skin Plan";
+  const heroSub = isConsultPrimary ? "or get your 60-sec Skin Plan" : "or book a free consult";
+
   const concerns = useMemo(
     () => [
       { label: "Frown lines", href: "/treatments/anti-wrinkle" },
@@ -93,8 +97,8 @@ export default function BioPage() {
         <section className="bg-secondary">
           <div className="max-w-4xl mx-auto px-4 py-5 sm:py-12">
             <h1 className="text-4xl md:text-4xl lg:text-5xl font-serif font-bold leading-snug text-balance text-center">
-              60-sec Skin Plan
-              <span className="block text-xl md:text-3xl lg:text-4xl">or book a free consult</span>
+              {heroMain}
+              <span className="block text-xl md:text-3xl lg:text-4xl">{heroSub}</span>
             </h1>
             <p className="mt-3 text-foreground/80 text-center max-w-3xl mx-auto">
               We’ll guide you to suitable options like anti-wrinkle treatment, skin boosters, or polynucleotides - tailored to your goals.
@@ -132,45 +136,91 @@ export default function BioPage() {
         {/* 3) Path cards */}
         <section>
           <div className="max-w-3xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Card A — Quiz */}
-            <a
-              href={quizHref}
-              onClick={() => {
-                track("cta_click", { cta: "quiz", placement: "cards" });
-                track("quiz_start", { placement: "cards" });
-              }}
-              className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-semibold">Quiz</h3>
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Recommended</span>
-              </div>
-              <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
-                <li>Perfect if you’re new or undecided</li>
-                <li>Personalised guidance in under a minute</li>
-                <li>See if anti-wrinkle, boosters or polynucleotides suit you</li>
-                <li>Results via email (save & compare)</li>
-              </ul>
-              <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
-            </a>
+            {isConsultPrimary ? (
+              <>
+                {/* Card A — Consult (Recommended) */}
+                <a
+                  href={consultHref}
+                  onClick={() => track("cta_click", { cta: "consult", placement: "cards" })}
+                  className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-semibold">Consult</h3>
+                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Recommended</span>
+                  </div>
+                  <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
+                    <li>Best if you’re ready to proceed</li>
+                    <li>10–15 min virtual or in-clinic</li>
+                    <li>Doctor-led, bespoke plan & pricing</li>
+                    <li>Priority booking for treatment</li>
+                  </ul>
+                  <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
+                </a>
 
-            {/* Card B — Consult */}
-            <a
-              href={consultHref}
-              onClick={() => track("cta_click", { cta: "consult", placement: "cards" })}
-              className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-semibold">Consult</h3>
-              </div>
-              <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
-                <li>Best if you’re ready to proceed</li>
-                <li>10–15 min virtual or in-clinic</li>
-                <li>Doctor-led, bespoke plan & pricing</li>
-                <li>Priority booking for treatment</li>
-              </ul>
-              <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
-            </a>
+                {/* Card B — Quiz */}
+                <a
+                  href={quizHref}
+                  onClick={() => {
+                    track("cta_click", { cta: "quiz", placement: "cards" });
+                    track("quiz_start", { placement: "cards" });
+                  }}
+                  className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-semibold">Quiz</h3>
+                  </div>
+                  <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
+                    <li>Perfect if you’re new or undecided</li>
+                    <li>Personalised guidance in under a minute</li>
+                    <li>See if anti-wrinkle, boosters or polynucleotides suit you</li>
+                    <li>Results via email (save & compare)</li>
+                  </ul>
+                  <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
+                </a>
+              </>
+            ) : (
+              <>
+                {/* Card A — Quiz (Recommended) */}
+                <a
+                  href={quizHref}
+                  onClick={() => {
+                    track("cta_click", { cta: "quiz", placement: "cards" });
+                    track("quiz_start", { placement: "cards" });
+                  }}
+                  className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-semibold">Quiz</h3>
+                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Recommended</span>
+                  </div>
+                  <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
+                    <li>Perfect if you’re new or undecided</li>
+                    <li>Personalised guidance in under a minute</li>
+                    <li>See if anti-wrinkle, boosters or polynucleotides suit you</li>
+                    <li>Results via email (save & compare)</li>
+                  </ul>
+                  <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
+                </a>
+
+                {/* Card B — Consult */}
+                <a
+                  href={consultHref}
+                  onClick={() => track("cta_click", { cta: "consult", placement: "cards" })}
+                  className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-semibold">Consult</h3>
+                  </div>
+                  <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
+                    <li>Best if you’re ready to proceed</li>
+                    <li>10–15 min virtual or in-clinic</li>
+                    <li>Doctor-led, bespoke plan & pricing</li>
+                    <li>Priority booking for treatment</li>
+                  </ul>
+                  <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
+                </a>
+              </>
+            )}
           </div>
         </section>
 
