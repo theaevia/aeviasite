@@ -87,7 +87,7 @@ export default function BioPage() {
   return (
     <>
       <SEO
-        title="The Aevia — TikTok Bio"
+        title="The Aevia — 60-sec Skin Plan & Free Doctor-Led Consult"
         description="Doctor-led, discreet studio in King’s Cross. Start with a 60‑sec Skin Plan or book a free consult. Natural, evidence-based results."
       />
 
@@ -304,7 +304,7 @@ export default function BioPage() {
         <section className="mt-6 mb-24 px-4">
           <div className="max-w-3xl mx-auto">
             <p className="text-xs text-muted-foreground leading-relaxed">
-              General information only. A medical consultation is required to assess suitability prior to any treatment. Botulinum toxin is a prescription-only medicine; this page does not advertise POMs and uses ASA-compliant terminology such as “anti-wrinkle treatment.”
+              General information only. A medical consultation is required to assess suitability prior to any treatment. Botulinum toxin is a prescription-only medicine; this page does not advertise POMs.”
             </p>
           </div>
         </section>
