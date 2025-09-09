@@ -21,9 +21,15 @@ const VALID_ROUTES = [
   '/team',
   '/journal',
   '/consultations',
+  '/consultations/skin',
+  '/consultations/mind',
   '/treatments',
   '/gallery',
   '/cancellation',
+  // Bio and quiz routes
+  '/bio',
+  '/tiktok',
+  '/quiz',
   // Category routes
   '/categories/anti-wrinkle',
   '/categories/skin-boosters',
@@ -126,6 +132,34 @@ app.use(helmet({
 }));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
+
+// Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
+app.use((req, res, next) => {
+  const pathname = req.path.toLowerCase();
+  if ((pathname === '/bio' || pathname === '/tiktok') && !('utm_source' in req.query)) {
+    const referer = String(req.headers.referer || '').toLowerCase();
+    const ua = String(req.headers['user-agent'] || '').toLowerCase();
+    const fromTiktok = referer.includes('tiktok') || ua.includes('tiktok');
+    const fromInstagram = referer.includes('instagram') || ua.includes('instagram');
+    const url = new URL(req.originalUrl, BASE_URL);
+
+    if (fromTiktok) {
+      url.searchParams.set('utm_source', 'tiktok');
+      url.searchParams.set('utm_medium', 'bio');
+      url.searchParams.set('utm_campaign', 'profile');
+      return res.redirect(302, url.pathname + url.search);
+    }
+    if (fromInstagram) {
+      url.searchParams.set('utm_source', 'instagram');
+      url.searchParams.set('utm_medium', 'bio');
+      url.searchParams.set('utm_campaign', 'profile');
+      // For Instagram, make Consult primary
+      url.searchParams.set('intent', 'consult');
+      return res.redirect(302, url.pathname + url.search);
+    }
+  }
+  next();
+});
 
 // Health check endpoint
 app.get('/api/health', (_req: Request, res: Response) => {
