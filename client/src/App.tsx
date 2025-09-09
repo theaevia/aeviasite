@@ -22,6 +22,8 @@ import NotFound from "@/pages/not-found";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
 import CancellationPolicyPage from "@/pages/Cancellation";
+import BioPage from "@/pages/Bio";
+import QuizPlaceholder from "@/pages/Quiz";
 
 // Treatment Page Imports
 import AntiWrinklePage from "@/pages/treatments/anti-wrinkle/anti-wrinkle";
@@ -64,6 +66,10 @@ function Router() {
         <Route path="/consultations/skin" component={SkinConsultationPage} />
         <Route path="/consultations/mind" component={MindConsultationPage} />
         <Route path="/consultations" component={SkinConsultationPage} />
+        {/* TikTok Bio and Quiz */}
+        <Route path="/bio" component={BioPage} />
+        <Route path="/tiktok" component={BioPage} />
+        <Route path="/quiz" component={QuizPlaceholder} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
         <Route path="/cancellation" component={CancellationPolicyPage} />

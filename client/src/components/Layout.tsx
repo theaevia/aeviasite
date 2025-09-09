@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import { useEffect } from "react";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import MobileStickyBookingBar from "@/components/MobileStickyBookingBar";
+import { useLocation } from "wouter";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -143,6 +144,8 @@ const organizationSchema = {
 };
 
 export default function Layout({ children }: LayoutProps) {
+  const [location] = useLocation();
+  const isBioRoute = location.startsWith("/bio") || location.startsWith("/tiktok");
   useEffect(() => {
     // Add JSON-LD script
     const script = document.createElement('script');
@@ -174,18 +177,20 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main className="pt-[var(--header-h,80px)] flex-1">
-        {children}
-      </main>
-      {/* Social proof strip */}
-      <div className="w-full bg-white border-t border-muted-foreground/10 py-2">
-        <div className="max-w-6xl mx-auto px-4 text-center text-sm text-primary font-medium">
-          ★★★★★ Google • GMC-registered • Fully insured
-        </div>
-      </div>
-      <Footer />
-      <MobileStickyBookingBar />
-      <WhatsAppWidget />
+      <main className="pt-[var(--header-h,80px)] flex-1">{children}</main>
+      {!isBioRoute && (
+        <>
+          {/* Social proof strip */}
+          <div className="w-full bg-white border-t border-muted-foreground/10 py-2">
+            <div className="max-w-6xl mx-auto px-4 text-center text-sm text-primary font-medium">
+              ★★★★★ Google • GMC-registered • Fully insured
+            </div>
+          </div>
+          <Footer />
+          <MobileStickyBookingBar />
+          <WhatsAppWidget />
+        </>
+      )}
     </div>
   );
 }
