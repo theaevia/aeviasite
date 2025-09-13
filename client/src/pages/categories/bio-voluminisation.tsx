@@ -22,7 +22,7 @@ export default function BioVoluminisationCategoryPage() {
             Restore and enhance facial volume, reducing the appearance of wrinkles and improving skin texture.
           </p>
           <div className="flex flex-col items-center w-full sm:w-auto">
-            <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
+            <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full sm:w-auto">
               Start Virtual Consultation
             </BookingButton>
             <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>

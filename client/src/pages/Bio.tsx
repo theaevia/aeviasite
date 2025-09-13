@@ -56,12 +56,8 @@ export default function BioPage() {
   }, [utmSource, utmMedium]);
 
   const consultHref = useMemo(() => {
-    const u = new URL(window.location.origin + "/consultations");
-    u.searchParams.set("utm_source", utmSource);
-    u.searchParams.set("utm_medium", utmMedium);
-    u.searchParams.set("utm_campaign", "book");
-    return u.pathname + u.search;
-  }, [utmSource, utmMedium]);
+    return "https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H";
+  }, []);
 
   const primaryHref = intent === "consult" ? consultHref : quizHref;
   const primaryLabel = intent === "consult" ? "Book a free consult" : "Get your 60-sec Skin Plan";

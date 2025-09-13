@@ -252,9 +252,13 @@ export default function Navigation() {
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <Link href="/consultations/skin">
+                <a
+                  href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin Consultation</DropdownMenuItem>
-                </Link>
+                </a>
                 <Link href="/consultations/mind">
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
                 </Link>
@@ -349,11 +353,11 @@ export default function Navigation() {
             <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <FaGoogle className="h-4 w-4 fill-current" />
             </a>
-            <Link href="/consultations/skin">
+            <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer">
               <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                 Book Now
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -523,9 +527,9 @@ export default function Navigation() {
         </button>
         {isConsultOpen && (
           <div className="ml-4 flex flex-col space-y-2">
-            <Link href="/consultations/skin">
+            <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Consultation</span>
-            </Link>
+            </a>
             <Link href="/consultations/mind">
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind Consultation</span>
             </Link>
@@ -635,11 +639,11 @@ export default function Navigation() {
           <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
             <FaGoogle className="h-4 w-4 fill-current" />
           </a>
-          <Link href="/consultations/skin">
+          <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer">
             <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
               Book Now
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

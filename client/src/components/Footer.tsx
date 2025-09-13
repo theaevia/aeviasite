@@ -33,9 +33,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/consultations/skin" className="hover:text-primary smooth-transition">
+                <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Skin Consultation
-                </Link>
+                </a>
               </li>
               <li>
                 <Link href="/consultations/mind" className="hover:text-primary smooth-transition">

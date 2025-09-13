@@ -264,13 +264,15 @@ export default function MobileStickyBookingBar() {
 
         {/* Primary action */}
         {mode === "new" ? (
-          <Link
-            href="/consultations/skin"
+          <a
+            href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-medium border-2 border-primary hover:bg-white hover:text-primary smooth-transition"
             aria-label="Book a skin consultation"
           >
             Book Consultation
-          </Link>
+          </a>
         ) : (
           <a
             href={SQUARE_SERVICES_URL}

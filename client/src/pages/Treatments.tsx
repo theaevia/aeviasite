@@ -204,7 +204,7 @@ export default function Treatments() {
                       onClick={() =>
                         hasBooking
                           ? handleSignatureOfferBook(offer.bookingUrl)
-                          : (window.location.href = "/consultations/skin")
+                          : (window.location.href = "https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H")
                       }
                       className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
                     >
@@ -266,7 +266,7 @@ export default function Treatments() {
 
                         const onClick = () => {
                           if (isSkinConsultationsCategory || !hasBooking) {
-                            window.location.href = "/consultations/skin";
+                            window.location.href = "https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H";
                           } else {
                             handleBookNow(treatment);
                           }

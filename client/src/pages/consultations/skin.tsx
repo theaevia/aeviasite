@@ -1,24 +1,22 @@
 import { useEffect } from "react";
-import Cal, { getCalApi } from "@calcom/embed-react";
 import { Link } from "wouter";
 import { Leaf, Clock, Gift, Calendar, Check } from "lucide-react";
 import SEO from "@/components/SEO";
 
 export default function SkinConsultationPage() {
+  // Inject Square Appointments embed script
   useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({ namespace: "aevia-skin" });
-      const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
-      cal("ui", {
-        theme: "light",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#C5A87A" },
-          dark: { "cal-brand": "#fafafa" },
-        },
-        hideEventTypeDetails: isMobile ? true : false,
-        layout: "month_view",
-      });
-    })();
+    const container = document.getElementById('square-appointments-embed');
+    if (!container) return;
+    // Clear previous if any
+    container.innerHTML = '';
+    const script = document.createElement('script');
+    script.src = 'https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H.js';
+    script.async = true;
+    container.appendChild(script);
+    return () => {
+      container.innerHTML = '';
+    };
   }, []);
 
   // Smooth scroll to Calendly
@@ -53,7 +51,12 @@ export default function SkinConsultationPage() {
               </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
-              <a href="#book" onClick={scrollToBook} className="block px-6 py-3 rounded-xl font-medium text-base text-center smooth-transition shadow-lg border-2 border-primary bg-primary text-primary-foreground hover:bg-white hover:text-primary hover:border-primary">
+              <a
+                href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-6 py-3 rounded-xl font-medium text-base text-center smooth-transition shadow-lg border-2 border-primary bg-primary text-primary-foreground hover:bg-white hover:text-primary hover:border-primary"
+              >
                 Book Skin Consultation
               </a>
             </div>
@@ -65,14 +68,8 @@ export default function SkinConsultationPage() {
             <div className="bg-white rounded-2xl p-3 md:p-4 lg:p-3 border-2 border-primary shadow-sm">
               <h3 className="font-semibold mb-1">Book Your Skin Consultation</h3>
               <p className="text-xs text-foreground/60 mb-4">Takes ~30 seconds.</p>
-              <div className="w-full h-[70vh] lg:h-[640px] overflow-auto">
-                <Cal
-                  namespace="aevia-skin"
-                  calLink="the-aevia/aevia-skin"
-                  style={{ width: "100%", height: "100%" }}
-                  config={{ layout: "month_view", theme: "light" }}
-                />
-              </div>
+              {/* Square embed mounts here */}
+              <div id="square-appointments-embed" className="w-full min-h-[640px]" />
             </div>
           </div>
         </section>

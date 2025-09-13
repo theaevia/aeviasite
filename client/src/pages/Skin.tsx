@@ -35,7 +35,7 @@ export default function Skin() {
                   Non-invasive skin treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
                 </p>
                 <div className="w-full sm:w-auto text-center">
-                  <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
+                  <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full sm:w-auto">
                     Book Consultation
                   </BookingButton>
                   <div className="mt-3 text-sm text-center">
@@ -83,7 +83,7 @@ export default function Skin() {
                 const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
                 const onCtaClick = () => {
                   if (isAntiWrinkle) {
-                    window.location.href = '/consultations/skin';
+                    window.location.href = 'https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H';
                   } else if (offer.bookingUrl !== '#') {
                     window.open(offer.bookingUrl, '_blank');
                   }
@@ -195,7 +195,7 @@ export default function Skin() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
+                  <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full sm:w-auto">
                     Book Your Consultation
                   </BookingButton>
                 </div>
@@ -249,7 +249,7 @@ export default function Skin() {
               <div className="bg-accent/20 rounded-2xl p-6">
                 <h3 className="text-xl font-serif font-semibold mb-2">New to Aevia?</h3>
                 <p className="text-sm text-foreground/70 mb-4">Start with a consultation.</p>
-                <BookingButton href="/consultations/skin" variant="primary" className="w-full">
+                <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full">
                   Book Consultation
                 </BookingButton>
               </div>
@@ -271,7 +271,7 @@ export default function Skin() {
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
             <p className="text-lg text-foreground/70 mb-8">Book your FREE Aevia Skin Consultation</p>
-            <BookingButton href="/consultations/skin" variant="primary" className="w-full sm:w-auto">
+            <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full sm:w-auto">
               Book Your Aevia Skin Consultation
             </BookingButton>
           </div>
