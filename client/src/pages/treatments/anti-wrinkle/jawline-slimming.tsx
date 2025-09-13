@@ -7,7 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 
 // Assets
 import masseterDiagram from "@assets/diagrams/masseter-1.png";
-import jawlineBeforeAfter from "@assets/before_afters/masseter-1.png";
+// Optimised before/after variants served from public assets
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 
@@ -90,15 +90,23 @@ export default function JawlineSlimmingPage() {
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[100%]">
                 <picture>
-                  <source srcSet={jawlineBeforeAfter} type="image/jpeg" />
+                  <source
+                    type="image/avif"
+                    srcSet={`/assets/before_afters/masseter-1-640w.avif 640w, /assets/before_afters/masseter-1-1280w.avif 1280w`}
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`/assets/before_afters/masseter-1-640w.webp 640w, /assets/before_afters/masseter-1-1280w.webp 1280w`}
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
                   <img
-                    src={jawlineBeforeAfter}
+                    src="/assets/before_afters/masseter-1-640w.webp"
                     alt="Jawline slimming treatment before and after"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
-                    width="1600"
-                    height="1200"
-                    sizes="(max-width: 1024px) 100vw, 1600px"
+                    width={640}
+                    height={640}
                   />
                 </picture>
               </div>

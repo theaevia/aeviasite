@@ -9,7 +9,7 @@ import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 
 // Assets
-import underEyeBeforeAfter from "@assets/before_afters/under-eye-1.png";
+// Optimised before/after variants served from public assets
 import underEyeDiagram from "@assets/diagrams/under-eye-1.png";
 
 export default function EyeRejuvenationPage() {
@@ -96,15 +96,23 @@ export default function EyeRejuvenationPage() {
             <div className="flex flex-col items-center order-2 md:order-1">
               <div className="relative w-full pb-[75%]">
                 <picture>
-                  <source srcSet={underEyeBeforeAfter} type="image/png" />
+                  <source
+                    type="image/avif"
+                    srcSet={`/assets/before_afters/under-eye-1-640w.avif 640w, /assets/before_afters/under-eye-1-1280w.avif 1280w`}
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`/assets/before_afters/under-eye-1-640w.webp 640w, /assets/before_afters/under-eye-1-1280w.webp 1280w`}
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
                   <img
-                    src={underEyeBeforeAfter}
+                    src="/assets/before_afters/under-eye-1-640w.webp"
                     alt="Under-eye polynucleotides before and after"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
-                    width="1600"
-                    height="1200"
-                    sizes="(max-width: 1024px) 100vw, 1600px"
+                    width={640}
+                    height={480}
                   />
                 </picture>
               </div>
