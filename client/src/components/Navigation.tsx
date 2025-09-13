@@ -1,4 +1,4 @@
-import { Link, useLocation } from "wouter";
+import { Link as RouterLink, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Instagram, Menu, X, User, ChevronDown } from "lucide-react";
 import {
@@ -25,6 +25,30 @@ const slugify = (str: string) =>
   str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 export default function Navigation() {
+  // Prefer full page reloads when rendered inside the Journal (Astro) app
+  // This avoids SPA-only navigation on static Journal pages.
+  const isJournalApp = typeof window !== 'undefined' && window.location.pathname.startsWith('/journal');
+
+  // Smart Link that uses wouter in SPA, <a> in Journal
+  // Keep the name `Link` so existing usages below continue to work.
+  const Link = (props: {
+    href: string;
+    children: React.ReactNode;
+  } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const { href, children, ...rest } = props;
+    if (isJournalApp) {
+      return (
+        <a href={href} {...rest}>
+          {children}
+        </a>
+      );
+    }
+    return (
+      <RouterLink href={href} {...rest}>
+        {children}
+      </RouterLink>
+    );
+  };
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
