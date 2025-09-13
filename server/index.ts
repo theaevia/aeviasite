@@ -8,12 +8,14 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 import net from "net";
+import crypto from "crypto";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
 const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${DEFAULT_PORT}`;
+const OAUTH_BASE_URL = process.env.OAUTH_BASE_URL || BASE_URL;
 const VALID_ROUTES = [
   '/',
   '/skin',
@@ -83,7 +85,10 @@ app.use(helmet({
         "https://book.squareup.com",
         "https://www.googletagmanager.com",
         "https://www.google-analytics.com",
-        "https://region1.google-analytics.com" // Required for GA4
+        "https://region1.google-analytics.com", // Required for GA4
+        // Git-based CMS (Decap) GitHub API
+        "https://api.github.com",
+        "https://github.com"
       ],
       "script-src": [
         "'self'",
@@ -95,7 +100,9 @@ app.use(helmet({
         "https://cal.com",
         "https://*.cal.com",
         // Square Appointments embed
-        "https://app.squareup.com"
+        "https://app.squareup.com",
+        // Decap CMS from unpkg
+        "https://unpkg.com"
       ],
       "script-src-elem": [
         "'self'",
@@ -107,7 +114,9 @@ app.use(helmet({
         "https://cal.com",
         "https://*.cal.com",
         // Square Appointments embed
-        "https://app.squareup.com"
+        "https://app.squareup.com",
+        // Decap CMS from unpkg
+        "https://unpkg.com"
       ],
       "script-src-attr": ["'unsafe-inline'"],
       "style-src": [
@@ -116,7 +125,9 @@ app.use(helmet({
         "https://assets.calendly.com",
         // In case Cal.com serves styles
         "https://app.cal.com",
-        "https://fonts.googleapis.com" // Explicitly allow Google Fonts stylesheets
+        "https://fonts.googleapis.com", // Explicitly allow Google Fonts stylesheets
+        // Decap CMS styles
+        "https://unpkg.com"
       ],
       "style-src-elem": [
         "'self'",
@@ -124,7 +135,9 @@ app.use(helmet({
         "https://assets.calendly.com",
         // In case Cal.com serves styles
         "https://app.cal.com",
-        "https://fonts.googleapis.com" // Explicitly allow Google Fonts stylesheets
+        "https://fonts.googleapis.com", // Explicitly allow Google Fonts stylesheets
+        // Decap CMS styles
+        "https://unpkg.com"
       ],
       "font-src": [
         "'self'",
@@ -142,6 +155,93 @@ app.use(helmet({
 }));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
+
+// --- Decap CMS GitHub OAuth proxy ---
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '';
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || '';
+const GITHUB_SCOPES = process.env.GITHUB_SCOPES || (process.env.REPO_PRIVATE ? 'repo' : 'public_repo');
+
+function setStateCookie(res: Response, state: string) {
+  const attrs = [
+    `oauth_state=${state}`,
+    'Path=/journal/admin',
+    'HttpOnly',
+    'SameSite=Lax',
+  ];
+  if (isProd) attrs.push('Secure');
+  res.setHeader('Set-Cookie', attrs.join('; '));
+}
+
+function readCookie(req: Request, name: string): string | undefined {
+  const raw = req.headers.cookie || '';
+  const cookies = raw.split(';').map((c) => c.trim());
+  for (const c of cookies) {
+    const [k, v] = c.split('=');
+    if (k === name) return decodeURIComponent(v || '');
+  }
+  return undefined;
+}
+
+app.get('/journal/admin/auth', (req: Request, res: Response) => {
+  if (!GITHUB_CLIENT_ID) {
+    return res.status(500).send('GitHub OAuth not configured');
+  }
+  const state = crypto.randomBytes(16).toString('hex');
+  setStateCookie(res, state);
+  const redirectUri = `${OAUTH_BASE_URL}/journal/admin/callback`;
+  const url = new URL('https://github.com/login/oauth/authorize');
+  url.searchParams.set('client_id', GITHUB_CLIENT_ID);
+  url.searchParams.set('redirect_uri', redirectUri);
+  url.searchParams.set('scope', GITHUB_SCOPES);
+  url.searchParams.set('state', state);
+  res.redirect(url.toString());
+});
+
+app.get('/journal/admin/callback', async (req: Request, res: Response) => {
+  try {
+    const code = String(req.query.code || '');
+    const state = String(req.query.state || '');
+    const cookieState = readCookie(req, 'oauth_state') || '';
+    if (!code || !state || state !== cookieState) {
+      return res.status(400).send('Invalid OAuth state');
+    }
+    if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
+      return res.status(500).send('GitHub OAuth not configured');
+    }
+    const redirectUri = `${OAUTH_BASE_URL}/journal/admin/callback`;
+    const tokenResp = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        client_id: GITHUB_CLIENT_ID,
+        client_secret: GITHUB_CLIENT_SECRET,
+        code,
+        redirect_uri: redirectUri,
+      }),
+    });
+    const tokenJson: any = await tokenResp.json();
+    const accessToken = tokenJson.access_token;
+    if (!accessToken) {
+      return res.status(400).send(`OAuth exchange failed: ${JSON.stringify(tokenJson)}`);
+    }
+    // Return a small HTML page that posts the token back to Decap popup
+    const html = `<!doctype html><html><body><script>(function(){
+      function send(){
+        var msg = { token: ${JSON.stringify(accessToken)} };
+        (window.opener || window.parent).postMessage(msg, '*');
+        window.close();
+      }
+      send();
+    })();</script></body></html>`;
+    res.setHeader('Content-Type', 'text/html');
+    res.send(html);
+  } catch (err: any) {
+    res.status(500).send('OAuth error');
+  }
+});
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
 app.use((req, res, next) => {
@@ -248,6 +348,20 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
     if (!isProd) {
       await setupVite(app, server);
     } else {
+      // Serve static Astro Journal under /journal if built
+      const journalPath = path.join(__dirname, 'journal');
+      if (fs.existsSync(journalPath)) {
+        app.use('/journal', express.static(journalPath, {
+          index: 'index.html',
+          setHeaders: (res, filePath) => {
+            if (filePath.endsWith('.html')) {
+              res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
+            } else {
+              res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+            }
+          }
+        }));
+      }
       // Handle case sensitivity and index.html variations
       app.use((req, res, next) => {
         const { pathname, search } = new URL(req.originalUrl, 'http://dummy');
