@@ -1,0 +1,93 @@
+# Update the repo value to your GitHub org/repo
+backend:
+  name: github
+  repo: theaevia/aeviasite
+  branch: main
+  # OAuth proxy on your Express server
+  base_url: https://www.theaevia.co.uk
+  auth_endpoint: /journal/admin/auth
+
+publish_mode: editorial_workflow
+media_folder: apps/journal/public/images
+public_folder: /journal/images
+logo_url: https://www.theaevia.co.uk/aevia-logo.png
+
+collections:
+  - name: posts
+    label: Posts
+    folder: apps/journal/src/content/posts
+    create: true
+    extension: mdx
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Dek, name: dek, widget: text, required: false }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Updated, name: updated, widget: datetime, format: "YYYY-MM-DD", required: false }
+      - { label: Status, name: status, widget: select, options: [draft, published], default: published }
+      - label: Authors
+        name: authors
+        widget: relation
+        collection: authors
+        search_fields: [name]
+        value_field: slug
+        display_fields: [name]
+        multiple: true
+      - label: Categories
+        name: categories
+        widget: relation
+        collection: categories
+        search_fields: [label, slug]
+        value_field: slug
+        display_fields: [label]
+        multiple: true
+      - { label: Tags, name: tags, widget: list, required: false }
+      - label: Hero
+        name: hero
+        widget: object
+        required: false
+        fields:
+          - { label: Image, name: src, widget: image }
+          - { label: Alt, name: alt, widget: string }
+      - { label: Open Graph Image, name: og_image, widget: image, required: false }
+      - { label: Reviewed By, name: reviewed_by, widget: string, required: false }
+      - { label: Disclaimer, name: disclaimer, widget: text, required: false }
+      - { label: Reading Time (min), name: reading_time, widget: number, required: false }
+      - { label: Canonical URL, name: canonical, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: authors
+    label: Authors
+    folder: apps/journal/src/content/authors
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    fields:
+      - { label: Slug, name: slug, widget: string }
+      - { label: Name, name: name, widget: string }
+      - { label: Credentials, name: credentials, widget: string, required: false }
+      - { label: Role, name: role, widget: string, required: false }
+      - { label: Avatar, name: avatar, widget: image, required: false }
+      - { label: Bio, name: bio, widget: text, required: false }
+      - label: Links
+        name: links
+        widget: object
+        required: false
+        fields:
+          - { label: Website, name: website, widget: string, required: false }
+          - { label: Instagram, name: instagram, widget: string, required: false }
+          - { label: LinkedIn, name: linkedin, widget: string, required: false }
+
+  - name: categories
+    label: Categories
+    folder: apps/journal/src/content/categories
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    fields:
+      - { label: Slug, name: slug, widget: string }
+      - { label: Label, name: label, widget: string }
+      - { label: Description, name: description, widget: text, required: false }
