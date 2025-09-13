@@ -227,14 +227,17 @@ app.get('/journal/admin/callback', async (req: Request, res: Response) => {
     if (!accessToken) {
       return res.status(400).send(`OAuth exchange failed: ${JSON.stringify(tokenJson)}`);
     }
-    // Return a small HTML page that posts the token back to Decap popup
+    // Return a small HTML page that posts the token back to Decap popup.
+    // Decap expects a message shaped like:
+    //   'authorization:github:success:' + JSON.stringify({ token })
+    // Ref: Netlify/Decap OAuth provider convention
     const html = `<!doctype html><html><body><script>(function(){
-      function send(){
-        var msg = { token: ${JSON.stringify(accessToken)} };
+      try {
+        var payload = { token: ${JSON.stringify(accessToken)} };
+        var msg = 'authorization:github:success:' + JSON.stringify(payload);
         (window.opener || window.parent).postMessage(msg, '*');
-        window.close();
-      }
-      send();
+      } catch(e) {}
+      setTimeout(function(){ window.close(); }, 50);
     })();</script></body></html>`;
     res.setHeader('Content-Type', 'text/html');
     res.send(html);
