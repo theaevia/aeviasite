@@ -55,9 +55,23 @@ export default function SkinConsultationPage() {
                 href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-6 py-3 rounded-xl font-medium text-base text-center smooth-transition shadow-lg border-2 border-primary bg-primary text-primary-foreground hover:bg-white hover:text-primary hover:border-primary"
+                style={{
+                  backgroundColor: '#006aff',
+                  color: 'white',
+                  height: 40,
+                  textTransform: 'uppercase',
+                  fontFamily: "'Square Market', 'helvetica neue', helvetica, arial, sans-serif",
+                  letterSpacing: '1px',
+                  lineHeight: '38px',
+                  padding: '0 28px',
+                  borderRadius: '3px',
+                  fontWeight: 500,
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  display: 'inline-block',
+                }}
               >
-                Book Skin Consultation
+                Book an appointment
               </a>
             </div>
           </div>
