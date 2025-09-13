@@ -7,8 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Aevia Journal CMS</title>
   </head>
-  <body>
+<body>
+    <script>
+      (function(){
+        try {
+          var params = new URLSearchParams(location.search);
+          if (!params.get('config')) {
+            var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+            var cfg = isLocal ? '/journal/admin/config.dev.yml' : '/journal/admin/config.yml';
+            params.set('config', cfg);
+            var newUrl = location.pathname + '?' + params.toString();
+            location.replace(newUrl);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
   </body>
 </html>
-
