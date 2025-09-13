@@ -7,21 +7,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Aevia Journal CMS</title>
   </head>
-<body>
+  <body>
     <script>
+      // Prefer dev config automatically, but also support manual init in dev to avoid misconfig
       (function(){
         try {
-          var params = new URLSearchParams(location.search);
-          if (!params.get('config')) {
-            var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-            var cfg = isLocal ? '/journal/admin/config.dev.yml' : '/journal/admin/config.yml';
-            params.set('config', cfg);
-            var newUrl = location.pathname + '?' + params.toString();
-            location.replace(newUrl);
+          var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+          if (!isLocal) {
+            var params = new URLSearchParams(location.search);
+            if (!params.get('config')) {
+              params.set('config', '/journal/admin/config.yml');
+              var newUrl = location.pathname + '?' + params.toString();
+              history.replaceState(null, '', newUrl);
+            }
+          } else {
+            // In dev, force manual init after script load to guarantee correct base_url
+            window.CMS_MANUAL_INIT = true;
           }
         } catch (e) {}
       })();
     </script>
     <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
+    <script>
+      (function(){
+        var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        if (!isLocal) return; // prod uses file config
+        if (!window.CMS) return;
+        try {
+          // Manual init with dev settings (mirrors config.dev.yml)
+          window.CMS.init({
+            config: {
+              backend: {
+                name: 'github',
+                repo: 'theaevia/aeviasite',
+                branch: 'main',
+                base_url: 'http://localhost:3000',
+                auth_endpoint: '/journal/admin/auth'
+              },
+              publish_mode: 'editorial_workflow',
+              media_folder: 'apps/journal/public/images',
+              public_folder: '/journal/images',
+              logo_url: 'https://www.theaevia.co.uk/aevia-logo.png',
+              collections: [
+                {
+                  name: 'posts',
+                  label: 'Posts',
+                  folder: 'apps/journal/src/content/posts',
+                  create: true,
+                  extension: 'mdx',
+                  format: 'frontmatter',
+                  slug: '{{slug}}',
+                  fields: [
+                    { label: 'Title', name: 'title', widget: 'string' },
+                    { label: 'Dek', name: 'dek', widget: 'text', required: false },
+                    { label: 'Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' },
+                    { label: 'Updated', name: 'updated', widget: 'datetime', format: 'YYYY-MM-DD', required: false },
+                    { label: 'Status', name: 'status', widget: 'select', options: ['draft','published'], default: 'published' },
+                    {
+                      label: 'Authors', name: 'authors', widget: 'relation', collection: 'authors',
+                      search_fields: ['name'], value_field: 'slug', display_fields: ['name'], multiple: true
+                    },
+                    {
+                      label: 'Categories', name: 'categories', widget: 'relation', collection: 'categories',
+                      search_fields: ['label','slug'], value_field: 'slug', display_fields: ['label'], multiple: true
+                    },
+                    { label: 'Tags', name: 'tags', widget: 'list', required: false },
+                    {
+                      label: 'Hero', name: 'hero', widget: 'object', required: false,
+                      fields: [
+                        { label: 'Image', name: 'src', widget: 'image' },
+                        { label: 'Alt', name: 'alt', widget: 'string' }
+                      ]
+                    },
+                    { label: 'Open Graph Image', name: 'og_image', widget: 'image', required: false },
+                    { label: 'Reviewed By', name: 'reviewed_by', widget: 'string', required: false },
+                    { label: 'Disclaimer', name: 'disclaimer', widget: 'text', required: false },
+                    { label: 'Reading Time (min)', name: 'reading_time', widget: 'number', required: false },
+                    { label: 'Canonical URL', name: 'canonical', widget: 'string', required: false },
+                    { label: 'Body', name: 'body', widget: 'markdown' }
+                  ]
+                },
+                {
+                  name: 'authors', label: 'Authors', folder: 'apps/journal/src/content/authors', create: true, extension: 'json', format: 'json', slug: '{{slug}}',
+                  fields: [
+                    { label: 'Slug', name: 'slug', widget: 'string' },
+                    { label: 'Name', name: 'name', widget: 'string' },
+                    { label: 'Credentials', name: 'credentials', widget: 'string', required: false },
+                    { label: 'Role', name: 'role', widget: 'string', required: false },
+                    { label: 'Avatar', name: 'avatar', widget: 'image', required: false },
+                    { label: 'Bio', name: 'bio', widget: 'text', required: false },
+                    { label: 'Links', name: 'links', widget: 'object', required: false, fields: [
+                      { label: 'Website', name: 'website', widget: 'string', required: false },
+                      { label: 'Instagram', name: 'instagram', widget: 'string', required: false },
+                      { label: 'LinkedIn', name: 'linkedin', widget: 'string', required: false }
+                    ]}
+                  ]
+                },
+                {
+                  name: 'categories', label: 'Categories', folder: 'apps/journal/src/content/categories', create: true, extension: 'json', format: 'json', slug: '{{slug}}',
+                  fields: [
+                    { label: 'Slug', name: 'slug', widget: 'string' },
+                    { label: 'Label', name: 'label', widget: 'string' },
+                    { label: 'Description', name: 'description', widget: 'text', required: false }
+                  ]
+                }
+              ]
+            }
+          });
+        } catch (e) {
+          console.error('CMS manual init failed', e);
+        }
+      })();
+    </script>
   </body>
 </html>
