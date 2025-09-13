@@ -1,9 +1,7 @@
 import SEO from "@/components/SEO";
 import { Link } from "wouter";
 
-// Local before/after assets
-import underEyeBeforeAfter from "@assets/before_afters/under-eye-1.png";
-import masseterBeforeAfter from "@assets/before_afters/masseter-1.png";
+// Prefer pre-generated, optimized public assets (AVIF/WebP) for thumbnails
 
 
 interface GalleryItem {
@@ -36,16 +34,16 @@ const items: GalleryItem[] = [
     id: "undereye",
     title: "Under‑Eye Polynucleotides",
     caption: "Under‑Eye Polynucleotide treatment - before and after.",
-    src: underEyeBeforeAfter,
-    kind: "importedPng",
+    src: "/assets/before_afters/under-eye-1-640w.webp",
+    kind: "publicWebP",
     href: "/treatments/eye-rejuvenation",
   },
   {
     id: "masseter",
     title: "Jawline Slimming",
     caption: "Jawline slimming from masseter reduction treatment.",
-    src: masseterBeforeAfter,
-    kind: "importedPng",
+    src: "/assets/before_afters/masseter-1-640w.webp",
+    kind: "publicWebP",
     href: "/treatments/jawline-slimming",
   },
 ];
