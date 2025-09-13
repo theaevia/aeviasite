@@ -5,15 +5,14 @@
 # Everyone listed here must have write access to this repo for CODEOWNERS to take effect.
 
 # Default owners for everything
-* @teeokh
+* @theaevia/aevia-editors
 
 # Journal content requires medical/editorial review
-/apps/journal/src/content/** @teeokh
+/apps/journal/src/content/** @theaevia/aevia-editors
 
 # Journal app (Astro)
-/apps/journal/** @teeokh
+/apps/journal/** @theaevia/aevia-editors
 
 # Server and client (optional: adjust per team)
-/server/** @teeokh
-/client/** @teeokh
-
+/server/** @theaevia/aevia-editors
+/client/** @theaevia/aevia-editors
