@@ -1,0 +1,19 @@
+# CODEOWNERS — controls default reviewers and required approvals
+# Docs: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Replace @teeokh with your GitHub user(s) or an org team, e.g. @theaevia/medical-editors
+# Everyone listed here must have write access to this repo for CODEOWNERS to take effect.
+
+# Default owners for everything
+* @teeokh
+
+# Journal content requires medical/editorial review
+/apps/journal/src/content/** @teeokh
+
+# Journal app (Astro)
+/apps/journal/** @teeokh
+
+# Server and client (optional: adjust per team)
+/server/** @teeokh
+/client/** @teeokh
+
