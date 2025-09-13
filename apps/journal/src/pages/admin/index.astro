@@ -126,5 +126,20 @@
         start();
       })();
     </script>
+    <script>
+      // Optional debug: add ?debug=1 to log OAuth messages
+      (function(){
+        try {
+          var params = new URLSearchParams(location.search);
+          if (params.get('debug')) {
+            window.addEventListener('message', function(e){
+              if (typeof e.data === 'string' && e.data.indexOf('authorization:github:') === 0) {
+                console.log('[CMS OAuth message]', e.origin, e.data.slice(0, 64) + '…');
+              }
+            });
+          }
+        } catch(e) {}
+      })();
+    </script>
   </body>
 </html>
