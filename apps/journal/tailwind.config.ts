@@ -2,7 +2,13 @@ import type { Config } from 'tailwindcss';
 
 export default {
   darkMode: ['class'],
-  content: ['./src/**/*.{astro,js,jsx,ts,tsx,md,mdx}'],
+  content: [
+    './src/**/*.{astro,js,jsx,ts,tsx,md,mdx}',
+    // Include SPA components so Tailwind picks classes used by the shared header
+    '../../client/src/**/*.{ts,tsx,js,jsx}',
+    '../../client/src/**/*.css',
+    '../../shared/**/*.{ts,tsx,js,jsx}',
+  ],
   theme: {
     extend: {
       screens: {
@@ -91,4 +97,3 @@ export default {
   },
   plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 } satisfies Config;
-
