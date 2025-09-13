@@ -62,6 +62,7 @@ app.use(helmet({
         "https://*.cal.com",
         // Square Appointments embed
         "https://app.squareup.com",
+        "https://book.squareup.com",
         "https://www.googletagmanager.com",
         "https://www.google.com",
         "https://*.google.com"
@@ -79,6 +80,7 @@ app.use(helmet({
         "https://*.cal.com",
         // Square Appointments
         "https://app.squareup.com",
+        "https://book.squareup.com",
         "https://www.googletagmanager.com",
         "https://www.google-analytics.com",
         "https://region1.google-analytics.com" // Required for GA4
