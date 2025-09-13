@@ -31,8 +31,38 @@ const { title = 'Aevia Journal', description = 'Doctor-led aesthetics & longevit
     </noscript>
   </head>
   <body class="bg-background text-foreground">
-    <div class="container max-w-4xl py-10">
+    <!-- Header -->
+    <header class="sticky top-0 z-30 border-b border-border/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <div class="container max-w-6xl flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-xl font-serif">
+          <span class="inline-block h-2 w-2 rounded-full bg-primary"></span>
+          <span class="tracking-tight">Aevia</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm text-foreground/80">
+          <a class="hover:text-foreground smooth-transition" href="/treatments">Treatments</a>
+          <a class="hover:text-foreground smooth-transition" href="/skin">Skin</a>
+          <a class="hover:text-foreground smooth-transition" href="/mind">Mind</a>
+          <a class="text-foreground font-medium" href="/journal">Journal</a>
+        </nav>
+        <a href="/consultations" class="hidden md:inline-flex rounded-full bg-primary px-4 py-2 text-white text-sm hover:bg-primary/90 smooth-transition">Book</a>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <main class="container max-w-6xl py-10">
       <slot />
-    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-8 border-t border-border/70">
+      <div class="container max-w-6xl py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <p class="text-sm text-foreground/60">© {new Date().getFullYear()} Aevia. All rights reserved.</p>
+        <nav class="flex items-center gap-4 text-sm text-foreground/70">
+          <a href="/consultations" class="hover:text-foreground">Consultations</a>
+          <a href="/treatments" class="hover:text-foreground">Treatments</a>
+          <a href="/journal" class="hover:text-foreground">Journal</a>
+        </nav>
+      </div>
+    </footer>
   </body>
 </html>

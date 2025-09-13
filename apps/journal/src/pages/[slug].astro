@@ -36,35 +36,65 @@ const { Content } = await post.render();
 ---
 <BaseLayout title={title} description={description} ogImage={og}>
   <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-  <article class="space-y-6">
-    <header class="space-y-2">
-      <h1 class="text-4xl font-serif font-bold">{title}</h1>
-      {description && <p class="text-foreground/70">{description}</p>}
-      <p class="text-sm text-foreground/60">
-        {authorObjs.map((a) => (
-          <>
-            {a.avatar && (
-              <img src={a.avatar} alt={a.name} width="28" height="28" style="border-radius:50%;vertical-align:middle;margin-right:8px;" />
-            )}
-            <a class="underline underline-offset-2 hover:text-primary" href={`/journal/author/${a.slug}`}>{a.name}</a>{a.credentials ? `, ${a.credentials}` : ''}&nbsp;&middot;&nbsp;
-          </>
+
+  <article class="space-y-8">
+    <!-- Hero -->
+    {post.data.hero?.src && (
+      <figure class="rounded-2xl overflow-hidden border border-border">
+        <img src={post.data.hero.src} alt={post.data.hero.alt} class="w-full h-[320px] md:h-[420px] object-cover" />
+      </figure>
+    )}
+
+    <!-- Title & Meta -->
+    <header class="space-y-4">
+      <div class="chip-group">
+        {(post.data.categories || []).map((slug) => (
+          <a class="chip chip--primary" href={`/journal/category/${slug}`}>{slug}</a>
         ))}
+      </div>
+      <h1 class="text-4xl md:text-5xl font-serif font-bold leading-tight">{title}</h1>
+      {description && <p class="text-lg text-foreground/70">{description}</p>}
+      <div class="flex items-center gap-4 text-sm text-foreground/70 flex-wrap">
+        {authorObjs.map((a) => (
+          <a class="inline-flex items-center gap-2 hover:text-foreground" href={`/journal/author/${a.slug}`}>
+            {a.avatar && <img src={a.avatar} alt={a.name} width="28" height="28" class="rounded-full" />}
+            <span>{a.name}{a.credentials ? `, ${a.credentials}` : ''}</span>
+          </a>
+        ))}
+        <span>·</span>
         <time datetime={datePublished}>{new Date(datePublished).toLocaleDateString('en-GB')}</time>
-      </p>
+        {post.data.reading_time && <><span>·</span><span>{post.data.reading_time} min read</span></>}
+      </div>
     </header>
 
     <ShareBar client:load title={title} />
 
-    <section class="prose prose-neutral max-w-none">
+    <!-- Article content -->
+    <section class="prose max-w-none">
       <Content />
     </section>
 
+    {post.data.tags?.length ? (
+      <div class="chip-group pt-2">
+        {post.data.tags.map((t) => (<span class="chip">#{t}</span>))}
+      </div>
+    ) : null}
+
     {post.data.disclaimer && (
-      <aside class="text-sm text-foreground/70 border-l-4 border-primary pl-4"><strong>Disclaimer:</strong> {post.data.disclaimer}</aside>
+      <aside class="text-sm text-foreground/70 border-l-4 border-primary/60 pl-4"><strong>Disclaimer:</strong> {post.data.disclaimer}</aside>
     )}
   </article>
 
-  <nav class="mt-8">
-    <a class="inline-block rounded-md bg-primary text-white px-4 py-2 hover:bg-primary/90 smooth-transition" href="/consultations">Book a medical consultation</a>
-  </nav>
+  <!-- CTA -->
+  <div class="mt-12 rounded-2xl border border-border bg-secondary p-6 md:p-8">
+    <div class="md:flex md:items-center md:justify-between gap-6">
+      <div>
+        <h3 class="text-2xl font-serif font-semibold">Prefer tailored guidance?</h3>
+        <p class="text-foreground/70 mt-1">Book a medical consultation to discuss your goals and the safest path forward.</p>
+      </div>
+      <div class="mt-4 md:mt-0">
+        <a class="inline-flex rounded-full bg-primary px-5 py-2.5 text-white hover:bg-primary/90 smooth-transition" href="/consultations">Book a consultation</a>
+      </div>
+    </div>
+  </div>
 </BaseLayout>

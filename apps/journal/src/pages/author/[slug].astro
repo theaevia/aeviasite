@@ -19,17 +19,28 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 ---
 <BaseLayout title={`Articles by ${author.name}`} description={author.bio}>
-  <main>
-    <h1>Articles by {author.name}</h1>
-    {author.bio && <p>{author.bio}</p>}
-    <div>
+  <main class="space-y-8">
+    <header class="flex items-start gap-4">
+      {author.avatar && <img src={author.avatar} alt={author.name} width="64" height="64" class="rounded-full border border-border" />}
+      <div>
+        <h1 class="text-3xl md:text-4xl font-serif font-bold">{author.name}</h1>
+        {author.credentials && <p class="text-foreground/70">{author.credentials}</p>}
+        {author.bio && <p class="text-foreground/70 mt-1 max-w-2xl">{author.bio}</p>}
+      </div>
+    </header>
+
+    <div class="grid gap-8 md:grid-cols-2">
       {posts.map((p) => (
-        <article>
-          <a href={`/journal/${p.slug}`}>
-            {p.data.hero?.src && <img src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" />}
-            <h2>{p.data.title}</h2>
-            {p.data.dek && <p>{p.data.dek}</p>}
-            <small>{new Date(p.data.date).toLocaleDateString('en-GB')}</small>
+        <article class="card p-6">
+          <a href={`/journal/${p.slug}`} class="block">
+            {p.data.hero?.src && (
+              <div class="card-bleed">
+                <img src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" class="w-full h-56 object-cover" />
+              </div>
+            )}
+            <h2 class="text-2xl font-serif font-semibold">{p.data.title}</h2>
+            {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
+            <small class="block mt-3 text-sm text-foreground/60">{new Date(p.data.date).toLocaleDateString('en-GB')}</small>
           </a>
         </article>
       ))}

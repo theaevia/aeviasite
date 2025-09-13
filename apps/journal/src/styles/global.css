@@ -50,3 +50,35 @@
   text-decoration-color: hsl(var(--primary));
 }
 
+/* Utilities */
+.smooth-transition { @apply transition-all duration-200 ease-out; }
+
+/* Rich prose styling */
+.prose {
+  @apply prose-neutral prose-headings:font-serif prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl lg:prose-lg;
+}
+.prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+  @apply border-l-4 border-primary/40 pl-4 italic text-foreground/80;
+}
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  @apply text-sm bg-secondary px-1.5 py-0.5 rounded-md text-foreground/80;
+}
+.prose :where(hr):not(:where([class~="not-prose"] *)) {
+  @apply my-10 border-border;
+}
+
+/* Card */
+.card {
+  @apply rounded-xl border border-border bg-white shadow-none hover:shadow-sm smooth-transition;
+}
+.card-bleed {
+  @apply -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-xl md:-mx-6;
+}
+.eyebrow {
+  @apply text-xs uppercase tracking-wider text-foreground/60;
+}
+.chip {
+  @apply inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs text-foreground/80 hover:bg-secondary/70 smooth-transition;
+}
+.chip--primary { @apply border-transparent bg-primary/10 text-foreground hover:bg-primary/20; }
+.chip-group { @apply flex flex-wrap gap-2; }
