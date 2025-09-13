@@ -10,9 +10,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..', '..');
 
+const base = process.env.JOURNAL_BASE || '/journal';
+
 export default defineConfig({
   site: 'https://www.theaevia.co.uk',
-  base: '/journal',
+  base,
   output: 'static',
   integrations: [react(), sitemap(), mdx(), tailwind({ config: './tailwind.config.ts' })],
   vite: {
