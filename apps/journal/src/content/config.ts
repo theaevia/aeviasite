@@ -1,0 +1,51 @@
+import { defineCollection, z } from 'astro:content';
+
+const posts = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    dek: z.string().optional(),
+    date: z.string(),
+    updated: z.string().optional(),
+    status: z.enum(['draft', 'published']).default('published'),
+    authors: z.array(z.string()).min(1),
+    categories: z.array(z.string()).min(1),
+    tags: z.array(z.string()).optional(),
+    hero: z.object({ src: z.string(), alt: z.string() }).optional(),
+    og_image: z.string().optional(),
+    reviewed_by: z.string().optional(),
+    disclaimer: z.string().optional(),
+    reading_time: z.number().optional(),
+    canonical: z.string().url().optional(),
+  }),
+});
+
+const authors = defineCollection({
+  type: 'data',
+  schema: z.object({
+    slug: z.string(),
+    name: z.string(),
+    credentials: z.string().optional(),
+    role: z.string().optional(),
+    avatar: z.string().optional(),
+    bio: z.string().optional(),
+    links: z
+      .object({
+        website: z.string().optional(),
+        instagram: z.string().optional(),
+        linkedin: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
+
+const categories = defineCollection({
+  type: 'data',
+  schema: z.object({
+    slug: z.string(),
+    label: z.string(),
+    description: z.string().optional(),
+  }),
+});
+
+export const collections = { posts, authors, categories };

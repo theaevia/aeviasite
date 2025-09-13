@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const authors = await getCollection('authors');
+  return authors.map((a) => ({ params: { slug: a.data.slug } }));
+}
+
+const { slug } = Astro.params;
+const authors = await getCollection('authors');
+const author = authors.find((a) => a.data.slug === slug)?.data;
+if (!author) {
+  throw Astro.redirect('/journal');
+}
+
+const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
+  .filter((p) => p.data.authors.includes(slug))
+  .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+---
+<BaseLayout title={`Articles by ${author.name}`} description={author.bio}>
+  <main>
+    <h1>Articles by {author.name}</h1>
+    {author.bio && <p>{author.bio}</p>}
+    <div>
+      {posts.map((p) => (
+        <article>
+          <a href={`/journal/${p.slug}`}>
+            {p.data.hero?.src && <img src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" />}
+            <h2>{p.data.title}</h2>
+            {p.data.dek && <p>{p.data.dek}</p>}
+            <small>{new Date(p.data.date).toLocaleDateString('en-GB')}</small>
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%; /* #FFFFFF */
+  --foreground: 0 0% 17%; /* #2D2D2D */
+  --muted: 43 10% 96%; /* #F9F8F6 */
+  --muted-foreground: 25 5% 45%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 17%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 17%;
+  --border: 20 6% 90%;
+  --input: 20 6% 90%;
+  --primary: 36 35% 62%; /* #C5A87A */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 43 14% 97%; /* #FAFAF8 */
+  --secondary-foreground: 0 0% 17%;
+  --accent: 95 16% 89%; /* #E2E8E3 */
+  --accent-foreground: 0 0% 17%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 60 9% 98%;
+  --ring: 36 35% 40%;
+  --radius: 0.75rem;
+  --chart-1: 36 35% 40%;
+  --chart-2: 95 16% 89%;
+  --chart-3: 43 14% 97%;
+  --chart-4: 25 5% 45%;
+  --chart-5: 0 0% 17%;
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 0 0% 17%;
+  --sidebar-primary: 36 35% 40%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 43 14% 97%;
+  --sidebar-accent-foreground: 0 0% 17%;
+  --sidebar-border: 20 6% 90%;
+  --sidebar-ring: 36 35% 62%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+}
+
+/* Typography tweaks for MDX content */
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  color: hsl(var(--primary));
+  text-decoration-color: hsl(var(--primary));
+}
+

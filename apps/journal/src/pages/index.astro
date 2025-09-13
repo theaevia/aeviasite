@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
+  .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+---
+<BaseLayout title="Aevia Journal" description="Evidence-based aesthetics, longevity & mindset.">
+  <main class="space-y-8">
+    <header>
+      <h1 class="text-4xl font-serif font-bold">Aevia Journal</h1>
+      <p class="text-foreground/70 mt-2">Doctor-led insights on skin, longevity, and performance.</p>
+    </header>
+    <div class="grid gap-8">
+      {posts.map((p) => (
+        <article class="rounded-xl border border-border p-6 bg-white hover:shadow-sm smooth-transition">
+          <a class="block" href={`/journal/${p.slug}`}>
+            {p.data.hero?.src && (
+              <img class="w-full h-auto rounded-lg mb-4" src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" />
+            )}
+            <h2 class="text-2xl font-serif font-semibold text-foreground">{p.data.title}</h2>
+            {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
+            <small class="block mt-3 text-sm text-foreground/60">{new Date(p.data.date).toLocaleDateString('en-GB')}</small>
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

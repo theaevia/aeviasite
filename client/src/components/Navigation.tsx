@@ -319,9 +319,9 @@ export default function Navigation() {
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <Link href="/journal">
+                <a href="/journal">
                   <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Journal</DropdownMenuItem>
-                </Link>
+                </a>
                 <DropdownMenuItem disabled>FAQs</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Policies</DropdownMenuSubTrigger>
@@ -605,11 +605,11 @@ export default function Navigation() {
         </button>
         {isResourcesOpen && (
           <div className="ml-4 flex flex-col space-y-2">
-            <Link href="/journal">
+            <a href="/journal">
               <span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                 Journal
               </span>
-            </Link>
+            </a>
             <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
             <button
               onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}

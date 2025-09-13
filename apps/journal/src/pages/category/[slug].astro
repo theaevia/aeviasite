@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const categories = await getCollection('categories');
+  return categories.map((c) => ({ params: { slug: c.data.slug } }));
+}
+
+const { slug } = Astro.params;
+const categories = await getCollection('categories');
+const category = categories.find((c) => c.data.slug === slug)?.data;
+if (!category) {
+  throw Astro.redirect('/journal');
+}
+
+const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
+  .filter((p) => p.data.categories.includes(slug))
+  .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+---
+<BaseLayout title={`${category.label} · Aevia Journal`} description={category.description}>
+  <main>
+    <h1>{category.label}</h1>
+    {category.description && <p>{category.description}</p>}
+    <div>
+      {posts.map((p) => (
+        <article>
+          <a href={`/journal/${p.slug}`}>
+            {p.data.hero?.src && <img src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" />}
+            <h2>{p.data.title}</h2>
+            {p.data.dek && <p>{p.data.dek}</p>}
+            <small>{new Date(p.data.date).toLocaleDateString('en-GB')}</small>
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

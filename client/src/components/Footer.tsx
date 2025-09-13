@@ -54,9 +54,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/journal" className="hover:text-primary smooth-transition">
+                <a href="/journal" className="hover:text-primary smooth-transition">
                   Journal
-                </Link>
+                </a>
               </li>
               <li>
                 <Link href="/privacy" className="hover:text-primary smooth-transition">
