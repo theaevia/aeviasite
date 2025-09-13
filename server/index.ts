@@ -41,219 +41,138 @@ const VALID_ROUTES = [
   '/categories/consultation',
 ];
 
-// Security middleware
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-      "default-src": ["'self'"],
-      "img-src": [
-        "'self'",
-        "data:",
-        "https:",
-        "blob:"
-      ],
-      "frame-src": [
-        "'self'",
-        // Calendly (legacy) and Cal.com (current)
-        "https://calendly.com",
-        "https://www.calendly.com",
-        "https://assets.calendly.com",
-        "https://cal.com",
-        "https://app.cal.com",
-        "https://*.cal.com",
-        // Square Appointments embed
-        "https://app.squareup.com",
-        "https://book.squareup.com",
-        "https://www.googletagmanager.com",
-        "https://www.google.com",
-        "https://*.google.com"
-      ],
-      "connect-src": [
-        "'self'",
-        // Calendly (legacy) and Cal.com (current)
-        "https://calendly.com",
-        "https://www.calendly.com",
-        "https://assets.calendly.com",
-        "https://api.calendly.com",
-        "https://cal.com",
-        "https://app.cal.com",
-        "https://api.cal.com",
-        "https://*.cal.com",
-        // Square Appointments
-        "https://app.squareup.com",
-        "https://book.squareup.com",
-        "https://www.googletagmanager.com",
-        "https://www.google-analytics.com",
-        "https://region1.google-analytics.com", // Required for GA4
-        // Git-based CMS (Decap) GitHub API
-        "https://api.github.com",
-        "https://github.com"
-      ],
-      "script-src": [
-        "'self'",
-        "'unsafe-inline'", // Required for GTM and inline scripts
-        "https://www.googletagmanager.com",
-        "https://assets.calendly.com",
-        // Cal.com embed script
-        "https://app.cal.com",
-        "https://cal.com",
-        "https://*.cal.com",
-        // Square Appointments embed
-        "https://app.squareup.com",
-        // Decap CMS from unpkg
-        "https://unpkg.com"
-      ],
-      "script-src-elem": [
-        "'self'",
-        "'unsafe-inline'", // Required for GTM and inline scripts
-        "https://www.googletagmanager.com",
-        "https://assets.calendly.com",
-        // Cal.com embed script
-        "https://app.cal.com",
-        "https://cal.com",
-        "https://*.cal.com",
-        // Square Appointments embed
-        "https://app.squareup.com",
-        // Decap CMS from unpkg
-        "https://unpkg.com"
-      ],
-      "script-src-attr": ["'unsafe-inline'"],
-      "style-src": [
-        "'self'",
-        "'unsafe-inline'", // Required for dynamic styles
-        "https://assets.calendly.com",
-        // In case Cal.com serves styles
-        "https://app.cal.com",
-        "https://fonts.googleapis.com", // Explicitly allow Google Fonts stylesheets
-        // Decap CMS styles
-        "https://unpkg.com"
-      ],
-      "style-src-elem": [
-        "'self'",
-        "'unsafe-inline'", // Required for dynamic styles
-        "https://assets.calendly.com",
-        // In case Cal.com serves styles
-        "https://app.cal.com",
-        "https://fonts.googleapis.com", // Explicitly allow Google Fonts stylesheets
-        // Decap CMS styles
-        "https://unpkg.com"
-      ],
-      "font-src": [
-        "'self'",
-        "https://fonts.gstatic.com"
-      ],
-      "frame-ancestors": ["'none'"], // Prevents site from being embedded in iframes
-      "form-action": ["'self'"], // Restricts form submissions to same origin
-      "base-uri": ["'self'"], // Restricts base tag to same origin
-      "object-src": ["'none'"], // Prevents object/embed/applet tags
-      "upgrade-insecure-requests": null, // Upgrades HTTP to HTTPS (boolean directive)
-      "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [], // CSP violation reporting in production
-    },
-    reportOnly: false, // Set to true to test CSP without blocking
-  },
-}));
+// Security middleware (non-CSP headers)
+app.use(helmet({ contentSecurityPolicy: false }));
 
-// Relax CSP specifically for Decap CMS admin to allow 'unsafe-eval'.
-// Some CMS dependencies rely on dynamic function evaluation.
-app.use('/journal/admin', helmet({
-  contentSecurityPolicy: {
-    directives: {
-      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-      "default-src": ["'self'"],
-      "img-src": [
-        "'self'",
-        "data:",
-        "https:",
-        "blob:"
-      ],
-      "frame-src": [
-        "'self'",
-        "https://calendly.com",
-        "https://www.calendly.com",
-        "https://assets.calendly.com",
-        "https://cal.com",
-        "https://app.cal.com",
-        "https://*.cal.com",
-        "https://app.squareup.com",
-        "https://book.squareup.com",
-        "https://www.googletagmanager.com",
-        "https://www.google.com",
-        "https://*.google.com"
-      ],
-      "connect-src": [
-        "'self'",
-        "https://calendly.com",
-        "https://www.calendly.com",
-        "https://assets.calendly.com",
-        "https://api.calendly.com",
-        "https://cal.com",
-        "https://app.cal.com",
-        "https://api.cal.com",
-        "https://*.cal.com",
-        "https://app.squareup.com",
-        "https://book.squareup.com",
-        "https://www.googletagmanager.com",
-        "https://www.google-analytics.com",
-        "https://region1.google-analytics.com",
-        "https://api.github.com",
-        "https://github.com"
-      ],
-      "script-src": [
-        "'self'",
-        "'unsafe-inline'",
-        "'unsafe-eval'",
-        "https://www.googletagmanager.com",
-        "https://assets.calendly.com",
-        "https://app.cal.com",
-        "https://cal.com",
-        "https://*.cal.com",
-        "https://app.squareup.com",
-        "https://unpkg.com"
-      ],
-      "script-src-elem": [
-        "'self'",
-        "'unsafe-inline'",
-        "'unsafe-eval'",
-        "https://www.googletagmanager.com",
-        "https://assets.calendly.com",
-        "https://app.cal.com",
-        "https://cal.com",
-        "https://*.cal.com",
-        "https://app.squareup.com",
-        "https://unpkg.com"
-      ],
-      "script-src-attr": ["'unsafe-inline'"],
-      "style-src": [
-        "'self'",
-        "'unsafe-inline'",
-        "https://assets.calendly.com",
-        "https://app.cal.com",
-        "https://fonts.googleapis.com",
-        "https://unpkg.com"
-      ],
-      "style-src-elem": [
-        "'self'",
-        "'unsafe-inline'",
-        "https://assets.calendly.com",
-        "https://app.cal.com",
-        "https://fonts.googleapis.com",
-        "https://unpkg.com"
-      ],
-      "font-src": [
-        "'self'",
-        "https://fonts.gstatic.com"
-      ],
-      "frame-ancestors": ["'none'"],
-      "form-action": ["'self'"],
-      "base-uri": ["'self'"],
-      "object-src": ["'none'"],
-      "upgrade-insecure-requests": null,
-      "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [],
-    },
-    reportOnly: false,
-  }
-}));
+// CSP policies as single header to avoid multi-CSP intersection issues
+type CspDirectives = Record<string, Array<string> | null>;
+const cspGlobal: CspDirectives = {
+  "default-src": ["'self'"],
+  "img-src": ["'self'", "data:", "https:", "blob:"],
+  "frame-src": [
+    "'self'",
+    "https://calendly.com",
+    "https://www.calendly.com",
+    "https://assets.calendly.com",
+    "https://cal.com",
+    "https://app.cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://book.squareup.com",
+    "https://www.googletagmanager.com",
+    "https://www.google.com",
+    "https://*.google.com",
+  ],
+  "connect-src": [
+    "'self'",
+    "https://calendly.com",
+    "https://www.calendly.com",
+    "https://assets.calendly.com",
+    "https://api.calendly.com",
+    "https://cal.com",
+    "https://app.cal.com",
+    "https://api.cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://book.squareup.com",
+    "https://www.googletagmanager.com",
+    "https://www.google-analytics.com",
+    "https://region1.google-analytics.com",
+    "https://api.github.com",
+    "https://github.com",
+  ],
+  "script-src": [
+    "'self'",
+    "'unsafe-inline'",
+    "https://www.googletagmanager.com",
+    "https://assets.calendly.com",
+    "https://app.cal.com",
+    "https://cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://unpkg.com",
+  ],
+  "script-src-elem": [
+    "'self'",
+    "'unsafe-inline'",
+    "https://www.googletagmanager.com",
+    "https://assets.calendly.com",
+    "https://app.cal.com",
+    "https://cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://unpkg.com",
+  ],
+  "script-src-attr": ["'unsafe-inline'"],
+  "style-src": [
+    "'self'",
+    "'unsafe-inline'",
+    "https://assets.calendly.com",
+    "https://app.cal.com",
+    "https://fonts.googleapis.com",
+    "https://unpkg.com",
+  ],
+  "style-src-elem": [
+    "'self'",
+    "'unsafe-inline'",
+    "https://assets.calendly.com",
+    "https://app.cal.com",
+    "https://fonts.googleapis.com",
+    "https://unpkg.com",
+  ],
+  "font-src": ["'self'", "https://fonts.gstatic.com"],
+  "frame-ancestors": ["'none'"],
+  "form-action": ["'self'"],
+  "base-uri": ["'self'"],
+  "object-src": ["'none'"],
+  "upgrade-insecure-requests": null,
+  "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [],
+};
+
+const cspAdmin: CspDirectives = {
+  ...cspGlobal,
+  "script-src": [
+    "'self'",
+    "'unsafe-inline'",
+    "'unsafe-eval'",
+    "https://www.googletagmanager.com",
+    "https://assets.calendly.com",
+    "https://app.cal.com",
+    "https://cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://unpkg.com",
+  ],
+  "script-src-elem": [
+    "'self'",
+    "'unsafe-inline'",
+    "'unsafe-eval'",
+    "https://www.googletagmanager.com",
+    "https://assets.calendly.com",
+    "https://app.cal.com",
+    "https://cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://unpkg.com",
+  ],
+};
+
+function directivesToHeader(d: CspDirectives): string {
+  return Object.entries(d)
+    .map(([k, v]) => {
+      if (v === null) return k;
+      if (Array.isArray(v)) return `${k} ${v.join(' ')}`;
+      return `${k} ${String(v)}`;
+    })
+    .join('; ');
+}
+
+app.use((req, res, next) => {
+  const isAdmin = req.path.startsWith('/journal/admin');
+  const header = directivesToHeader(isAdmin ? cspAdmin : cspGlobal);
+  res.setHeader('Content-Security-Policy', header);
+  next();
+});
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
