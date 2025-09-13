@@ -45,7 +45,9 @@ const ID_URL = import.meta.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
     <!-- 3) Initialize Netlify Identity after it becomes available -->
     <script is:inline define:vars={{ ID_URL }}>
       (function initIdentity(){
-        var ID = ID_URL;
+        // Allow override via query param for quick testing: ?identity=https://<site>.netlify.app/.netlify/identity
+        var params = new URLSearchParams(location.search);
+        var ID = params.get('identity') || params.get('identity_url') || ID_URL;
         function ready(){
           try {
             if (!window.netlifyIdentity) { setTimeout(ready, 100); return; }
