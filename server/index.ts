@@ -8,14 +8,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 import net from "net";
-import crypto from "crypto";
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
 const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${DEFAULT_PORT}`;
-const OAUTH_BASE_URL = process.env.OAUTH_BASE_URL || BASE_URL;
 const VALID_ROUTES = [
   '/',
   '/skin',
@@ -135,6 +134,7 @@ const cspAdmin: CspDirectives = {
     "'self'",
     "'unsafe-inline'",
     "'unsafe-eval'",
+    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
@@ -147,6 +147,7 @@ const cspAdmin: CspDirectives = {
     "'self'",
     "'unsafe-inline'",
     "'unsafe-eval'",
+    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
@@ -154,6 +155,43 @@ const cspAdmin: CspDirectives = {
     "https://*.cal.com",
     "https://app.squareup.com",
     "https://unpkg.com",
+  ],
+  "frame-src": [
+    "'self'",
+    "https://identity.netlify.com",
+    "https://*.netlify.app",
+    "https://calendly.com",
+    "https://www.calendly.com",
+    "https://assets.calendly.com",
+    "https://cal.com",
+    "https://app.cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://book.squareup.com",
+    "https://www.googletagmanager.com",
+    "https://www.google.com",
+    "https://*.google.com",
+  ],
+  "connect-src": [
+    "'self'",
+    "https://identity.netlify.com",
+    "https://api.netlify.com",
+    "https://*.netlify.app",
+    "https://calendly.com",
+    "https://www.calendly.com",
+    "https://assets.calendly.com",
+    "https://api.calendly.com",
+    "https://cal.com",
+    "https://app.cal.com",
+    "https://api.cal.com",
+    "https://*.cal.com",
+    "https://app.squareup.com",
+    "https://book.squareup.com",
+    "https://www.googletagmanager.com",
+    "https://www.google-analytics.com",
+    "https://region1.google-analytics.com",
+    "https://api.github.com",
+    "https://github.com",
   ],
 };
 
@@ -175,97 +213,6 @@ app.use((req, res, next) => {
 });
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
-
-// --- Decap CMS GitHub OAuth proxy ---
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '';
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || '';
-const GITHUB_SCOPES = process.env.GITHUB_SCOPES || (process.env.REPO_PRIVATE ? 'repo' : 'public_repo');
-
-function setStateCookie(res: Response, state: string) {
-  const attrs = [
-    `oauth_state=${state}`,
-    'Path=/journal/admin',
-    'HttpOnly',
-    'SameSite=Lax',
-  ];
-  if (isProd) attrs.push('Secure');
-  res.setHeader('Set-Cookie', attrs.join('; '));
-}
-
-function readCookie(req: Request, name: string): string | undefined {
-  const raw = req.headers.cookie || '';
-  const cookies = raw.split(';').map((c) => c.trim());
-  for (const c of cookies) {
-    const [k, v] = c.split('=');
-    if (k === name) return decodeURIComponent(v || '');
-  }
-  return undefined;
-}
-
-app.get('/journal/admin/auth', (req: Request, res: Response) => {
-  if (!GITHUB_CLIENT_ID) {
-    return res.status(500).send('GitHub OAuth not configured');
-  }
-  const state = crypto.randomBytes(16).toString('hex');
-  setStateCookie(res, state);
-  const redirectUri = `${OAUTH_BASE_URL}/journal/admin/callback`;
-  const url = new URL('https://github.com/login/oauth/authorize');
-  url.searchParams.set('client_id', GITHUB_CLIENT_ID);
-  url.searchParams.set('redirect_uri', redirectUri);
-  url.searchParams.set('scope', GITHUB_SCOPES);
-  url.searchParams.set('state', state);
-  res.redirect(url.toString());
-});
-
-app.get('/journal/admin/callback', async (req: Request, res: Response) => {
-  try {
-    const code = String(req.query.code || '');
-    const state = String(req.query.state || '');
-    const cookieState = readCookie(req, 'oauth_state') || '';
-    if (!code || !state || state !== cookieState) {
-      return res.status(400).send('Invalid OAuth state');
-    }
-    if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
-      return res.status(500).send('GitHub OAuth not configured');
-    }
-    const redirectUri = `${OAUTH_BASE_URL}/journal/admin/callback`;
-    const tokenResp = await fetch('https://github.com/login/oauth/access_token', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        client_id: GITHUB_CLIENT_ID,
-        client_secret: GITHUB_CLIENT_SECRET,
-        code,
-        redirect_uri: redirectUri,
-      }),
-    });
-    const tokenJson: any = await tokenResp.json();
-    const accessToken = tokenJson.access_token;
-    if (!accessToken) {
-      return res.status(400).send(`OAuth exchange failed: ${JSON.stringify(tokenJson)}`);
-    }
-    // Return a small HTML page that posts the token back to Decap popup.
-    // Decap expects a message shaped like:
-    //   'authorization:github:success:' + JSON.stringify({ token })
-    // Ref: Netlify/Decap OAuth provider convention
-    const html = `<!doctype html><html><body><script>(function(){
-      try {
-        var payload = { token: ${JSON.stringify(accessToken)} };
-        var msg = 'authorization:github:success:' + JSON.stringify(payload);
-        var origin = window.location.origin;
-        (window.opener || window.parent).postMessage(msg, origin);
-      } catch(e) {}
-      setTimeout(function(){ window.close(); }, 50);
-    })();</script></body></html>`;
-    res.setHeader('Content-Type', 'text/html');
-    res.send(html);
-  } catch (err: any) {
-    res.status(500).send('OAuth error');
-  }
-});
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
 app.use((req, res, next) => {

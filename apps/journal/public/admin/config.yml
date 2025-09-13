@@ -1,11 +1,7 @@
 # Update the repo value to your GitHub org/repo
 backend:
-  name: github
-  repo: theaevia/aeviasite
+  name: git-gateway
   branch: main
-  # OAuth proxy on your Express server
-  base_url: https://www.theaevia.co.uk
-  auth_endpoint: /journal/admin/auth
 
 publish_mode: editorial_workflow
 media_folder: apps/journal/public/images

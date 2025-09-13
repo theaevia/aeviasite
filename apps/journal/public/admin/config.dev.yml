@@ -1,10 +1,6 @@
 backend:
-  name: github
-  repo: theaevia/aeviasite
+  name: git-gateway
   branch: main
-  # Local dev OAuth proxy on Express dev server
-  base_url: http://localhost:3000
-  auth_endpoint: /journal/admin/auth
 
 publish_mode: editorial_workflow
 media_folder: apps/journal/public/images

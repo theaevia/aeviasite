@@ -9,26 +9,24 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 - Install deps:
   - `npm ci`
   - `cd apps/journal && npm install`
-- Set dev env in a root `.env` (gitignored):
-  - `GITHUB_CLIENT_ID=...` (Dev GitHub OAuth App)
-  - `GITHUB_CLIENT_SECRET=...`
-  - Optional: `OAUTH_BASE_URL=http://localhost:3000` (or your tunnel URL)
+- Optional: set Netlify Identity URL for local admin login via Netlify:
+  - `PUBLIC_NETLIFY_IDENTITY_URL=https://<your-site>.netlify.app/.netlify/identity`
 - Run servers:
   - API/SPA server: `npm run dev` (http://localhost:3000)
   - Journal dev: `npm run dev:journal` (http://localhost:4321/journal)
 - CMS (Dev):
   - Open: `http://localhost:4321/journal/admin/?config=/journal/admin/config.dev.yml`
+  - If using Netlify Identity, the login dialog is provided by Netlify.
 
 
 ## Production (Railway)
 
 - Env vars:
-  - `GITHUB_CLIENT_ID` (Prod GitHub OAuth App)
-  - `GITHUB_CLIENT_SECRET`
-  - Optional: `GITHUB_SCOPES=public_repo` (or `repo` if the repo is private)
+  - Optional: `PUBLIC_NETLIFY_IDENTITY_URL=https://<your-site>.netlify.app/.netlify/identity`
 - Build command: `npm ci && npm run build`
 - Start command: `npm start`
 - The Express server serves the SPA and the Journal (`/journal`) statically.
+  - Decap CMS uses Netlify Identity + Git Gateway for authentication.
 
 
 ## Authoring Flow (Decap CMS)
@@ -84,4 +82,3 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 
 - Slugs are filename‑based; do not add a `slug` field in frontmatter (Astro reserves it).
 - The Journal uses the site’s fonts/colors/spacing; if you want the exact SPA header & footer, we can embed React components in Astro.
-
