@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Navigation from '@/components/Navigation';
 const { title = 'Aevia Journal', description = 'Doctor-led aesthetics & longevity journal', ogImage } = Astro.props;
 ---
 <html lang="en">
@@ -31,63 +32,11 @@ const { title = 'Aevia Journal', description = 'Doctor-led aesthetics & longevit
     </noscript>
   </head>
   <body class="bg-background text-foreground">
-    <!-- Header: match main site structure (simplified, no dropdowns) -->
-    <header class="fixed top-0 left-0 right-0 z-40 border-b border-gray-100 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-3 items-center h-16">
-          <!-- Brand -->
-          <div class="justify-self-start">
-            <a href="/" class="cursor-pointer group relative smooth-transition flex-shrink-0 text-xl font-serif tracking-tight text-foreground">
-              The Aevia
-            </a>
-          </div>
-
-          <!-- Desktop Navigation (top-level items only) -->
-          <nav class="hidden nav:flex items-center justify-center gap-8">
-            <a href="/skin" class="text-sm font-medium hover:text-primary smooth-transition">Skin</a>
-            <a href="/mind" class="text-sm font-medium hover:text-primary smooth-transition">Mind</a>
-            <a href="/consultations" class="text-sm font-medium hover:text-primary smooth-transition">Consult</a>
-            <a href="/team" class="text-sm font-medium hover:text-primary smooth-transition">About</a>
-            <a href="/journal" class="text-sm font-medium text-foreground">Resources</a>
-          </nav>
-
-          <!-- Actions -->
-          <div class="justify-self-end flex items-center gap-3">
-            <a href="/consultations" class="hidden md:inline-flex rounded-full bg-primary px-4 py-2 text-white text-sm hover:bg-primary/90 smooth-transition">Book</a>
-            <button type="button" id="journal-mobile-toggle" class="nav:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-white text-foreground smooth-transition hover:bg-secondary" aria-label="Open menu">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M3.75 6.75A.75.75 0 0 1 4.5 6h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm0 5.25c0-.414.336-.75.75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm.75 4.5a.75.75 0 0 0 0 1.5h15a.75.75 0 0 0 0-1.5h-15Z" clip-rule="evenodd" /></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile menu -->
-      <div id="journal-mobile-menu" hidden class="border-t border-gray-100 bg-white">
-        <div class="px-6 py-4 flex flex-col gap-4 text-base">
-          <a href="/skin" class="hover:text-primary smooth-transition">Skin</a>
-          <a href="/mind" class="hover:text-primary smooth-transition">Mind</a>
-          <a href="/consultations" class="hover:text-primary smooth-transition">Consult</a>
-          <a href="/team" class="hover:text-primary smooth-transition">About</a>
-          <a href="/journal" class="hover:text-primary smooth-transition">Resources</a>
-          <a href="/consultations" class="inline-flex rounded-full bg-primary px-4 py-2 text-white text-sm hover:bg-primary/90 smooth-transition w-max">Book</a>
-        </div>
-      </div>
-      <script is:inline>
-        (function(){
-          const btn = document.getElementById('journal-mobile-toggle');
-          const menu = document.getElementById('journal-mobile-menu');
-          if (!btn || !menu) return;
-          btn.addEventListener('click', () => {
-            const wasHidden = menu.hasAttribute('hidden');
-            if (wasHidden) { menu.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }
-            else { menu.setAttribute('hidden',''); document.body.style.overflow = ''; }
-          });
-        })();
-      </script>
-    </header>
+    <!-- Header: use the exact React Navigation component from the SPA -->
+    <Navigation client:only="react" />
 
     <!-- Page content -->
-    <main class="container max-w-6xl py-10 mt-16">
+    <main class="container max-w-6xl py-10 mt-20">
       <slot />
     </main>
 

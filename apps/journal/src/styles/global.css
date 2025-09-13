@@ -52,6 +52,7 @@
 
 /* Utilities */
 .smooth-transition { @apply transition-all duration-200 ease-out; }
+.glass-effect { backdrop-filter: blur(10px); background: rgba(255,255,255,0.9); }
 
 /* Rich prose styling */
 .prose {
