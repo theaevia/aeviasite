@@ -9,12 +9,17 @@
   </head>
   <body>
     <script>
-      // Ensure the file-config URL param is present in prod & dev
+      // Ensure the file-config URL param is present in prod & dev.
+      // Compute base prefix dynamically so this works on both
+      // - main domain (mounted at /journal) and
+      // - Netlify site (mounted at /)
       (function(){
         try {
           var params = new URLSearchParams(location.search);
           if (!params.get('config')) {
-            params.set('config', '/journal/admin/config.yml');
+            var base = location.pathname.split('/admin')[0] || '';
+            var cfg = base + '/admin/config.yml';
+            params.set('config', cfg);
             var newUrl = location.pathname + '?' + params.toString();
             history.replaceState(null, '', newUrl);
           }
