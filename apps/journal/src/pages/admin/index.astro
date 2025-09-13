@@ -9,51 +9,57 @@
   </head>
   <body>
     <script>
-      // Prefer dev config automatically, but also support manual init in dev to avoid misconfig
+      // Decide dev/prod and set manual init for dev
       (function(){
         try {
-          var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-          if (!isLocal) {
+          var host = location.hostname;
+          var port = location.port;
+          var proto = location.protocol;
+          var isLocal = (
+            proto === 'http:' ||
+            host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local') ||
+            port === '4321' || port === '5173' || port === '3000'
+          );
+          if (isLocal) {
+            window.CMS_MANUAL_INIT = true;
+            window.__AEVIA_DEV__ = true;
+          } else {
             var params = new URLSearchParams(location.search);
             if (!params.get('config')) {
               params.set('config', '/journal/admin/config.yml');
               var newUrl = location.pathname + '?' + params.toString();
               history.replaceState(null, '', newUrl);
             }
-          } else {
-            // In dev, force manual init after script load to guarantee correct base_url
-            window.CMS_MANUAL_INIT = true;
           }
         } catch (e) {}
       })();
     </script>
     <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
     <script>
-      (function(){
-        var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-        if (!isLocal) return; // prod uses file config
-        if (!window.CMS) return;
-        try {
-          // Manual init with dev settings (mirrors config.dev.yml)
-          window.CMS.init({
-            config: {
-              backend: {
-                name: 'github',
-                repo: 'theaevia/aeviasite',
-                branch: 'main',
-                base_url: 'http://localhost:3000',
-                auth_endpoint: '/journal/admin/auth'
-              },
-              publish_mode: 'editorial_workflow',
-              media_folder: 'apps/journal/public/images',
-              public_folder: '/journal/images',
-              logo_url: 'https://www.theaevia.co.uk/aevia-logo.png',
-              collections: [
-                {
-                  name: 'posts',
-                  label: 'Posts',
-                  folder: 'apps/journal/src/content/posts',
-                  create: true,
+      (function initCMS(){
+        if (!window.__AEVIA_DEV__) return; // prod uses file config
+        function start(){
+          if (!window.CMS) { setTimeout(start, 50); return; }
+          try {
+            window.CMS.init({
+              config: {
+                backend: {
+                  name: 'github',
+                  repo: 'theaevia/aeviasite',
+                  branch: 'main',
+                  base_url: 'http://localhost:3000',
+                  auth_endpoint: '/journal/admin/auth'
+                },
+                publish_mode: 'editorial_workflow',
+                media_folder: 'apps/journal/public/images',
+                public_folder: '/journal/images',
+                logo_url: 'https://www.theaevia.co.uk/aevia-logo.png',
+                collections: [
+                  {
+                    name: 'posts',
+                    label: 'Posts',
+                    folder: 'apps/journal/src/content/posts',
+                    create: true,
                   extension: 'mdx',
                   format: 'frontmatter',
                   slug: '{{slug}}',
@@ -111,12 +117,13 @@
                     { label: 'Description', name: 'description', widget: 'text', required: false }
                   ]
                 }
-              ]
-            }
-          });
-        } catch (e) {
-          console.error('CMS manual init failed', e);
+                ]
+              }
+            });
+            console.log('[CMS] Dev init with base_url=http://localhost:3000');
+          } catch (e) { console.error('CMS manual init failed', e); }
         }
+        start();
       })();
     </script>
   </body>
