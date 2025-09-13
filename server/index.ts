@@ -153,6 +153,107 @@ app.use(helmet({
     reportOnly: false, // Set to true to test CSP without blocking
   },
 }));
+
+// Relax CSP specifically for Decap CMS admin to allow 'unsafe-eval'.
+// Some CMS dependencies rely on dynamic function evaluation.
+app.use('/journal/admin', helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "default-src": ["'self'"],
+      "img-src": [
+        "'self'",
+        "data:",
+        "https:",
+        "blob:"
+      ],
+      "frame-src": [
+        "'self'",
+        "https://calendly.com",
+        "https://www.calendly.com",
+        "https://assets.calendly.com",
+        "https://cal.com",
+        "https://app.cal.com",
+        "https://*.cal.com",
+        "https://app.squareup.com",
+        "https://book.squareup.com",
+        "https://www.googletagmanager.com",
+        "https://www.google.com",
+        "https://*.google.com"
+      ],
+      "connect-src": [
+        "'self'",
+        "https://calendly.com",
+        "https://www.calendly.com",
+        "https://assets.calendly.com",
+        "https://api.calendly.com",
+        "https://cal.com",
+        "https://app.cal.com",
+        "https://api.cal.com",
+        "https://*.cal.com",
+        "https://app.squareup.com",
+        "https://book.squareup.com",
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com",
+        "https://region1.google-analytics.com",
+        "https://api.github.com",
+        "https://github.com"
+      ],
+      "script-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "'unsafe-eval'",
+        "https://www.googletagmanager.com",
+        "https://assets.calendly.com",
+        "https://app.cal.com",
+        "https://cal.com",
+        "https://*.cal.com",
+        "https://app.squareup.com",
+        "https://unpkg.com"
+      ],
+      "script-src-elem": [
+        "'self'",
+        "'unsafe-inline'",
+        "'unsafe-eval'",
+        "https://www.googletagmanager.com",
+        "https://assets.calendly.com",
+        "https://app.cal.com",
+        "https://cal.com",
+        "https://*.cal.com",
+        "https://app.squareup.com",
+        "https://unpkg.com"
+      ],
+      "script-src-attr": ["'unsafe-inline'"],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://assets.calendly.com",
+        "https://app.cal.com",
+        "https://fonts.googleapis.com",
+        "https://unpkg.com"
+      ],
+      "style-src-elem": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://assets.calendly.com",
+        "https://app.cal.com",
+        "https://fonts.googleapis.com",
+        "https://unpkg.com"
+      ],
+      "font-src": [
+        "'self'",
+        "https://fonts.gstatic.com"
+      ],
+      "frame-ancestors": ["'none'"],
+      "form-action": ["'self'"],
+      "base-uri": ["'self'"],
+      "object-src": ["'none'"],
+      "upgrade-insecure-requests": null,
+      "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [],
+    },
+    reportOnly: false,
+  }
+}));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
