@@ -13,6 +13,9 @@ const { post } = Astro.props;
 const authorsMap = Object.fromEntries(
   (await getCollection('authors')).map((a) => [a.data.slug, a.data])
 );
+const categoryMap = Object.fromEntries(
+  (await getCollection('categories')).map((c) => [c.data.slug, c.data.label])
+);
 
 const title = post.data.title;
 const description = post.data.dek ?? '';
@@ -49,7 +52,7 @@ const { Content } = await post.render();
     <header class="space-y-4">
       <div class="chip-group">
         {(post.data.categories || []).map((slug) => (
-          <a class="chip chip--primary" href={`/journal/category/${slug}`}>{slug}</a>
+          <a class="chip chip--primary" href={`/journal/category/${slug}`}>{categoryMap[slug] || slug}</a>
         ))}
       </div>
       <h1 class="text-4xl md:text-5xl font-serif font-bold leading-tight">{title}</h1>
