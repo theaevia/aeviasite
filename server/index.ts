@@ -336,7 +336,8 @@ app.get('/journal/admin/callback', async (req: Request, res: Response) => {
       try {
         var payload = { token: ${JSON.stringify(accessToken)} };
         var msg = 'authorization:github:success:' + JSON.stringify(payload);
-        (window.opener || window.parent).postMessage(msg, '*');
+        var origin = window.location.origin;
+        (window.opener || window.parent).postMessage(msg, origin);
       } catch(e) {}
       setTimeout(function(){ window.close(); }, 50);
     })();</script></body></html>`;
