@@ -16,6 +16,9 @@ const app = express();
 const isProd = process.env.NODE_ENV === 'production';
 const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${DEFAULT_PORT}`;
 const NETLIFY_IDENTITY_URL = process.env.PUBLIC_NETLIFY_IDENTITY_URL || process.env.NETLIFY_IDENTITY_URL || '';
+const NETLIFY_SITE_ORIGIN = (() => {
+  try { return NETLIFY_IDENTITY_URL ? new URL(NETLIFY_IDENTITY_URL).origin : ''; } catch { return ''; }
+})();
 const VALID_ROUTES = [
   '/',
   '/skin',
@@ -314,6 +317,43 @@ app.get('/identity-config.js', (_req: Request, res: Response) => {
   res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
   res.setHeader('Cache-Control', 'no-cache');
   res.send(body);
+});
+
+// Proxy Netlify Git Gateway for main domain (delete/publish endpoints)
+app.all('/.netlify/git/*', async (req: Request, res: Response) => {
+  try {
+    if (!NETLIFY_SITE_ORIGIN) return res.status(404).send('Git Gateway not configured');
+    const suffix = req.originalUrl.replace(/^\/\.netlify\/git/, '/.netlify/git');
+    const url = new URL(NETLIFY_SITE_ORIGIN + suffix);
+
+    const headers: Record<string, string> = {};
+    ['content-type', 'authorization', 'cookie', 'if-none-match', 'if-match'].forEach((h) => {
+      const v = req.headers[h];
+      if (typeof v === 'string') headers[h] = v;
+    });
+
+    const method = req.method.toUpperCase();
+    let body: any = undefined;
+    if (!['GET', 'HEAD'].includes(method)) {
+      body = req.body;
+      if (headers['content-type']?.includes('application/json') && typeof body !== 'string') {
+        body = JSON.stringify(body);
+      }
+    }
+
+    const upstream = await fetch(url.toString(), { method, headers, body, redirect: 'manual' as any });
+    res.status(upstream.status);
+    const passHeaders = ['content-type', 'cache-control', 'etag', 'last-modified', 'set-cookie', 'location'];
+    passHeaders.forEach((h) => {
+      const v = upstream.headers.get(h);
+      if (v) res.setHeader(h, v);
+    });
+    if (upstream.status >= 300 && upstream.status < 400) return res.end();
+    const text = await upstream.text();
+    return res.send(text);
+  } catch (e) {
+    return res.status(502).send('Git Gateway proxy error');
+  }
 });
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
