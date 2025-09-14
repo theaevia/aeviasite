@@ -153,6 +153,7 @@ const cspAdmin: CspDirectives = {
     "https://*.cal.com",
     "https://app.squareup.com",
     "https://unpkg.com",
+    "https://app.tina.io",
   ],
   "script-src-elem": [
     "'self'",
@@ -166,6 +167,7 @@ const cspAdmin: CspDirectives = {
     "https://*.cal.com",
     "https://app.squareup.com",
     "https://unpkg.com",
+    "https://app.tina.io",
   ],
   "frame-src": [
     "'self'",
@@ -182,6 +184,7 @@ const cspAdmin: CspDirectives = {
     "https://www.googletagmanager.com",
     "https://www.google.com",
     "https://*.google.com",
+    "https://app.tina.io",
   ],
   "connect-src": [
     "'self'",
@@ -203,6 +206,8 @@ const cspAdmin: CspDirectives = {
     "https://region1.google-analytics.com",
     "https://api.github.com",
     "https://github.com",
+    "https://app.tina.io",
+    "https://content.tinajs.io",
   ],
 };
 
