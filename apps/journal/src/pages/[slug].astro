@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ShareBar from '../components/ShareBar.jsx';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -69,8 +68,6 @@ const { Content } = await post.render();
         {post.data.reading_time && <><span>·</span><span>{post.data.reading_time} min read</span></>}
       </div>
     </header>
-
-    <ShareBar client:load title={title} />
 
     <!-- Article content -->
     <section class="prose max-w-none">
