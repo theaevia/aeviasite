@@ -5,8 +5,9 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string(),
     dek: z.string().optional(),
-    date: z.string(),
-    updated: z.string().optional(),
+    // Accept either YAML-parsed Date objects or strings from CMS
+    date: z.union([z.string(), z.date()]),
+    updated: z.union([z.string(), z.date()]).optional(),
     status: z.enum(['draft', 'published']).default('published'),
     authors: z.array(z.string()).min(1),
     categories: z.array(z.string()).min(1),
