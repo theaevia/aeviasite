@@ -1,24 +1,18 @@
+// tina/config.ts
 import { defineConfig } from "tinacms";
-
-// Monorepo-aware Tina config. This builds the admin UI into
-// apps/journal/public/admin so Astro will copy it to dist at build time.
-export default defineConfig({
+var config_default = defineConfig({
   clientId: process.env.PUBLIC_TINA_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
-  branch:
-    process.env.TINA_BRANCH ||
-    process.env.VERCEL_GIT_COMMIT_REF ||
-    process.env.GITHUB_REF_NAME ||
-    "main",
+  branch: process.env.TINA_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.GITHUB_REF_NAME || "main",
   build: {
     publicFolder: "public",
-    outputFolder: "admin",
+    outputFolder: "admin"
   },
   media: {
     tina: {
       publicFolder: "public",
-      mediaRoot: "images",
-    },
+      mediaRoot: "images"
+    }
   },
   schema: {
     collections: [
@@ -29,7 +23,7 @@ export default defineConfig({
         format: "mdx",
         frontmatterFormat: "yaml",
         ui: {
-          router: ({ document }) => `/journal/${document._sys.filename}`,
+          router: ({ document }) => `/journal/${document._sys.filename}`
         },
         fields: [
           { type: "string", name: "title", label: "Title", required: true },
@@ -40,21 +34,21 @@ export default defineConfig({
             type: "string",
             name: "status",
             label: "Status",
-            options: ["draft", "published"],
+            options: ["draft", "published"]
           },
           {
             type: "reference",
             name: "authors",
             label: "Authors",
             collections: ["authors"],
-            list: true,
+            list: true
           },
           {
             type: "reference",
             name: "categories",
             label: "Categories",
             collections: ["categories"],
-            list: true,
+            list: true
           },
           { type: "string", name: "tags", label: "Tags", list: true },
           {
@@ -63,16 +57,16 @@ export default defineConfig({
             label: "Hero",
             fields: [
               { type: "image", name: "src", label: "Image" },
-              { type: "string", name: "alt", label: "Alt" },
-            ],
+              { type: "string", name: "alt", label: "Alt" }
+            ]
           },
           { type: "image", name: "og_image", label: "Open Graph Image" },
           { type: "string", name: "reviewed_by", label: "Reviewed By" },
           { type: "string", name: "disclaimer", label: "Disclaimer", ui: { component: "textarea" } },
           { type: "number", name: "reading_time", label: "Reading Time (min)" },
           { type: "string", name: "canonical", label: "Canonical URL" },
-          { type: "rich-text", name: "body", label: "Body", isBody: true },
-        ],
+          { type: "rich-text", name: "body", label: "Body", isBody: true }
+        ]
       },
       {
         name: "authors",
@@ -93,10 +87,10 @@ export default defineConfig({
             fields: [
               { type: "string", name: "website", label: "Website" },
               { type: "string", name: "instagram", label: "Instagram" },
-              { type: "string", name: "linkedin", label: "LinkedIn" },
-            ],
-          },
-        ],
+              { type: "string", name: "linkedin", label: "LinkedIn" }
+            ]
+          }
+        ]
       },
       {
         name: "categories",
@@ -106,9 +100,12 @@ export default defineConfig({
         fields: [
           { type: "string", name: "slug", label: "Slug", required: true },
           { type: "string", name: "label", label: "Label", required: true },
-          { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
-        ],
-      },
-    ],
-  },
+          { type: "string", name: "description", label: "Description", ui: { component: "textarea" } }
+        ]
+      }
+    ]
+  }
 });
+export {
+  config_default as default
+};
