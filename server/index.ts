@@ -50,6 +50,7 @@ const cspGlobal: CspDirectives = {
   "img-src": ["'self'", "data:", "https:", "blob:"],
   "frame-src": [
     "'self'",
+    "https://identity.netlify.com",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -64,6 +65,8 @@ const cspGlobal: CspDirectives = {
   ],
   "connect-src": [
     "'self'",
+    "https://identity.netlify.com",
+    "https://api.netlify.com",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -83,6 +86,7 @@ const cspGlobal: CspDirectives = {
   "script-src": [
     "'self'",
     "'unsafe-inline'",
+    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
@@ -94,6 +98,7 @@ const cspGlobal: CspDirectives = {
   "script-src-elem": [
     "'self'",
     "'unsafe-inline'",
+    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
