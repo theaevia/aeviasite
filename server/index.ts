@@ -222,6 +222,28 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
+// Proxy Netlify Identity settings for sites not hosted on Netlify
+app.get('/.netlify/identity/settings', async (_req: Request, res: Response) => {
+  try {
+    const upstreamBase = process.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
+    if (!upstreamBase) {
+      return res.status(404).send('Identity not configured');
+    }
+    const url = new URL(upstreamBase.replace(/\/$/, '') + '/settings');
+    const upstream = await fetch(url.toString(), { headers: { 'accept': 'application/json' } });
+    const text = await upstream.text();
+    res.status(upstream.status);
+    const passHeaders = ['content-type', 'cache-control', 'etag', 'last-modified'];
+    passHeaders.forEach((h) => {
+      const v = upstream.headers.get(h);
+      if (v) res.setHeader(h, v);
+    });
+    res.send(text);
+  } catch (e) {
+    res.status(502).send('Failed to load Identity settings');
+  }
+});
+
 // Provide Identity API URL to client when hosted off Netlify
 app.get('/identity-config.js', (_req: Request, res: Response) => {
   const body = `window.NETLIFY_IDENTITY_URL = ${JSON.stringify(NETLIFY_IDENTITY_URL)};`;
