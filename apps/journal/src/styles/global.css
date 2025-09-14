@@ -71,6 +71,16 @@
 .prose :where(figure figcaption):not(:where([class~="not-prose"] *)) {
   @apply text-sm text-foreground/60 mt-2;
 }
+
+/* Figure component sizing & alignment */
+.fig { @apply my-6; }
+.fig img { @apply w-full h-auto rounded-xl border border-border; }
+.fig--small { max-width: 28rem; margin-left: auto; margin-right: auto; }
+.fig--normal { max-width: 48rem; margin-left: auto; margin-right: auto; }
+.fig--wide { max-width: 72rem; margin-left: auto; margin-right: auto; }
+.fig--full { max-width: none; }
+.fig--left { margin-left: 0; }
+.fig--center { margin-left: auto; margin-right: auto; }
 .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
   @apply border-l-4 border-primary/40 pl-4 italic text-foreground/80;
 }

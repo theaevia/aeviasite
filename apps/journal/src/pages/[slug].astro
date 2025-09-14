@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Figure from '../components/Figure.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -71,7 +72,7 @@ const { Content } = await post.render();
 
     <!-- Article content -->
     <section class="prose max-w-none">
-      <Content />
+      <Content components={{ Figure }} />
     </section>
 
     {post.data.tags?.length ? (
