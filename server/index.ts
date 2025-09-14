@@ -244,6 +244,70 @@ app.get('/.netlify/identity/settings', async (_req: Request, res: Response) => {
   }
 });
 
+// Redirect authorize endpoint to upstream Identity host to preserve cookies and OAuth flow
+app.get('/.netlify/identity/authorize', (req: Request, res: Response) => {
+  const upstreamBase = process.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
+  if (!upstreamBase) return res.status(404).send('Identity not configured');
+  const url = new URL(upstreamBase.replace(/\/$/, '') + '/authorize');
+  // Copy query string (?provider=github&...)
+  for (const [k, v] of Object.entries(req.query)) {
+    if (Array.isArray(v)) v.forEach((vv) => url.searchParams.append(k, String(vv)));
+    else if (v != null) url.searchParams.set(k, String(v));
+  }
+  return res.redirect(302, url.toString());
+});
+
+// Generic proxy for other Identity endpoints (token, user, logout, etc.)
+app.all('/.netlify/identity/*', async (req: Request, res: Response) => {
+  // Avoid double-handling specific routes defined above
+  const subpath = req.path.replace(/^\.netlify\/identity\/?/, '')
+    .replace(/^\/.netlify\/identity\/?/, '');
+  if (subpath === 'settings' || subpath === 'authorize') return res.status(404).end();
+
+  try {
+    const upstreamBase = process.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
+    if (!upstreamBase) return res.status(404).send('Identity not configured');
+    const suffix = req.originalUrl.replace(/^\/\.netlify\/identity/, '');
+    const url = new URL(upstreamBase.replace(/\/$/, '') + suffix);
+
+    const headers: Record<string, string> = {};
+    // Forward selected headers
+    ['content-type', 'authorization' , 'cookie'].forEach((h) => {
+      const v = req.headers[h];
+      if (typeof v === 'string') headers[h] = v;
+    });
+
+    const method = req.method.toUpperCase();
+    let body: any = undefined;
+    if (!['GET', 'HEAD'].includes(method)) {
+      body = req.body;
+      if (headers['content-type']?.includes('application/json') && typeof body !== 'string') {
+        body = JSON.stringify(body);
+      }
+    }
+
+    const upstream = await fetch(url.toString(), { method, headers, body });
+
+    // Copy status and selected headers back to client
+    res.status(upstream.status);
+    const passHeaders = ['content-type', 'cache-control', 'etag', 'last-modified', 'set-cookie', 'location'];
+    passHeaders.forEach((h) => {
+      const v = upstream.headers.get(h);
+      if (v) res.setHeader(h, v);
+    });
+
+    if (upstream.status >= 300 && upstream.status < 400) {
+      // Let redirects propagate
+      return res.end();
+    }
+
+    const text = await upstream.text();
+    return res.send(text);
+  } catch (e) {
+    return res.status(502).send('Identity proxy error');
+  }
+});
+
 // Provide Identity API URL to client when hosted off Netlify
 app.get('/identity-config.js', (_req: Request, res: Response) => {
   const body = `window.NETLIFY_IDENTITY_URL = ${JSON.stringify(NETLIFY_IDENTITY_URL)};`;
