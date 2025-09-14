@@ -15,6 +15,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
 const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${DEFAULT_PORT}`;
+const NETLIFY_IDENTITY_URL = process.env.PUBLIC_NETLIFY_IDENTITY_URL || process.env.NETLIFY_IDENTITY_URL || '';
 const VALID_ROUTES = [
   '/',
   '/skin',
@@ -51,6 +52,7 @@ const cspGlobal: CspDirectives = {
   "frame-src": [
     "'self'",
     "https://identity.netlify.com",
+    "https://*.netlify.app",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -67,6 +69,7 @@ const cspGlobal: CspDirectives = {
     "'self'",
     "https://identity.netlify.com",
     "https://api.netlify.com",
+    "https://*.netlify.app",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -218,6 +221,14 @@ app.use((req, res, next) => {
 });
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
+
+// Provide Identity API URL to client when hosted off Netlify
+app.get('/identity-config.js', (_req: Request, res: Response) => {
+  const body = `window.NETLIFY_IDENTITY_URL = ${JSON.stringify(NETLIFY_IDENTITY_URL)};`;
+  res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.send(body);
+});
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
 app.use((req, res, next) => {

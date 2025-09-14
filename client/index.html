@@ -61,7 +61,8 @@
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     
-    <!-- Netlify Identity Widget (required for Decap CMS auth) -->
+    <!-- Netlify Identity: config + widget -->
+    <script src="/identity-config.js"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
@@ -72,17 +73,26 @@
     
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- Redirect back to the CMS after successful login -->
+    <!-- Initialize Identity (when hosted off Netlify) and redirect back to CMS after login -->
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/journal/admin/";
-            });
-          }
-        });
-      }
+      (function initAndRedirect(){
+        function ready(){
+          if (!window.netlifyIdentity) { return void setTimeout(ready, 100); }
+          try {
+            var url = window.NETLIFY_IDENTITY_URL;
+            if (url) window.netlifyIdentity.init({ APIUrl: url });
+            else window.netlifyIdentity.init();
+          } catch(e) {}
+          window.netlifyIdentity.on("init", (user) => {
+            if (!user) {
+              window.netlifyIdentity.on("login", () => {
+                document.location.href = "/journal/admin/";
+              });
+            }
+          });
+        }
+        ready();
+      })();
     </script>
   </body>
 </html>

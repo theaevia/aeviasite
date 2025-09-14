@@ -5,13 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Content Manager</title>
-    <!-- Netlify Identity Widget (site-wide registration requires this here) -->
+    <!-- Provide Identity API URL when hosted off Netlify -->
+    <script src="/identity-config.js"></script>
+    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- Initialize Netlify Identity (required when not hosted on Netlify) -->
+    <script>
+      (function initIdentity(){
+        function ready(){
+          if (!window.netlifyIdentity) { return void setTimeout(ready, 100); }
+          try {
+            var url = window.NETLIFY_IDENTITY_URL;
+            if (url) window.netlifyIdentity.init({ APIUrl: url });
+            else window.netlifyIdentity.init();
+          } catch(e) {}
+        }
+        ready();
+      })();
+    </script>
   </body>
   
 </html>
-
