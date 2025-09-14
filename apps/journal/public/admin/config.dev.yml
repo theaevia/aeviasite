@@ -12,6 +12,7 @@ collections:
     label: Posts
     folder: apps/journal/src/content/posts
     create: true
+    delete: true
     extension: mdx
     format: frontmatter
     slug: "{{slug}}"
@@ -69,6 +70,7 @@ collections:
     label: Authors
     folder: apps/journal/src/content/authors
     create: true
+    delete: true
     extension: json
     format: json
     slug: "{{slug}}"
@@ -92,6 +94,7 @@ collections:
     label: Categories
     folder: apps/journal/src/content/categories
     create: true
+    delete: true
     extension: json
     format: json
     slug: "{{slug}}"
