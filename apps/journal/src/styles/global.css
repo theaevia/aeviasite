@@ -57,7 +57,8 @@
 /* Rich prose styling */
 .prose {
   @apply prose-neutral prose-headings:font-serif prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl lg:prose-lg;
-  @apply prose-p:leading-relaxed prose-p:my-5 prose-li:my-1.5 prose-ol:my-5 prose-ul:my-5;
+  /* Tighter body rhythm */
+  @apply prose-p:leading-normal prose-p:my-3 prose-li:my-1 prose-ol:my-3 prose-ul:my-3;
 }
 .prose :where(p):not(:where([class~="not-prose"] *)) {
   hyphens: auto;
@@ -73,7 +74,7 @@
 }
 
 /* Figure component sizing & alignment */
-.fig { @apply my-6; }
+.fig { @apply my-4; }
 .fig img { @apply w-full h-auto rounded-xl border border-border; }
 .fig--small { max-width: 28rem; margin-left: auto; margin-right: auto; }
 .fig--normal { max-width: 48rem; margin-left: auto; margin-right: auto; }
@@ -88,7 +89,12 @@
   @apply text-sm bg-secondary px-1.5 py-0.5 rounded-md text-foreground/80;
 }
 .prose :where(hr):not(:where([class~="not-prose"] *)) {
-  @apply my-10 border-border;
+  @apply my-6 border-border;
+}
+
+/* Tighter heading spacing */
+.prose :where(h1,h2,h3,h4):not(:where([class~="not-prose"] *)) {
+  @apply mt-6 mb-2;
 }
 
 /* Card */
