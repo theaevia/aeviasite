@@ -18,8 +18,21 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Dek, name: dek, widget: text, required: false }
-      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD" }
-      - { label: Updated, name: updated, widget: datetime, format: "YYYY-MM-DD", required: false }
+      - label: Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+        picker_utc: true
+      - label: Updated
+        name: updated
+        widget: datetime
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+        picker_utc: true
+        required: false
       - { label: Status, name: status, widget: select, options: [draft, published], default: published }
       - label: Authors
         name: authors
