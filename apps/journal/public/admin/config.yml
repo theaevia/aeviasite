@@ -3,7 +3,8 @@ backend:
   name: git-gateway
   branch: main
 
-publish_mode: editorial_workflow
+# Directly publish to the main branch (no PR workflow)
+publish_mode: simple
 media_folder: apps/journal/public/images
 public_folder: /journal/images
 logo_url: https://www.theaevia.co.uk/aevia-logo.png
