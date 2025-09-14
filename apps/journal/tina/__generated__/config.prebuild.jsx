@@ -1,107 +1,48 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
+var branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "main";
 var config_default = defineConfig({
-  clientId: process.env.TINA_PUBLIC_CLIENT_ID || "",
-  token: process.env.TINA_TOKEN || "",
-  branch: process.env.TINA_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.GITHUB_REF_NAME || "main",
+  branch,
+  // Get this from tina.io
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
+  // Get this from tina.io
+  token: process.env.TINA_TOKEN,
   build: {
-    publicFolder: "public",
-    outputFolder: "admin"
+    outputFolder: "admin",
+    publicFolder: "public"
   },
   media: {
     tina: {
-      publicFolder: "public",
-      mediaRoot: "images"
+      mediaRoot: "",
+      publicFolder: "public"
     }
   },
+  // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
     collections: [
       {
-        name: "posts",
+        name: "post",
         label: "Posts",
-        path: "apps/journal/src/content/posts",
-        format: "mdx",
-        frontmatterFormat: "yaml",
-        ui: {
-          router: ({ document }) => `/journal/${document._sys.filename}`
-        },
+        path: "content/posts",
         fields: [
-          { type: "string", name: "title", label: "Title", required: true },
-          { type: "string", name: "dek", label: "Dek" },
-          { type: "datetime", name: "date", label: "Date" },
-          { type: "datetime", name: "updated", label: "Updated" },
           {
             type: "string",
-            name: "status",
-            label: "Status",
-            options: ["draft", "published"]
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true
           },
           {
-            type: "reference",
-            name: "authors",
-            label: "Authors",
-            collections: ["authors"],
-            list: true
-          },
-          {
-            type: "reference",
-            name: "categories",
-            label: "Categories",
-            collections: ["categories"],
-            list: true
-          },
-          { type: "string", name: "tags", label: "Tags", list: true },
-          {
-            type: "object",
-            name: "hero",
-            label: "Hero",
-            fields: [
-              { type: "image", name: "src", label: "Image" },
-              { type: "string", name: "alt", label: "Alt" }
-            ]
-          },
-          { type: "image", name: "og_image", label: "Open Graph Image" },
-          { type: "string", name: "reviewed_by", label: "Reviewed By" },
-          { type: "string", name: "disclaimer", label: "Disclaimer", ui: { component: "textarea" } },
-          { type: "number", name: "reading_time", label: "Reading Time (min)" },
-          { type: "string", name: "canonical", label: "Canonical URL" },
-          { type: "rich-text", name: "body", label: "Body", isBody: true }
-        ]
-      },
-      {
-        name: "authors",
-        label: "Authors",
-        path: "apps/journal/src/content/authors",
-        format: "json",
-        fields: [
-          { type: "string", name: "slug", label: "Slug", required: true },
-          { type: "string", name: "name", label: "Name", required: true },
-          { type: "string", name: "credentials", label: "Credentials" },
-          { type: "string", name: "role", label: "Role" },
-          { type: "image", name: "avatar", label: "Avatar" },
-          { type: "string", name: "bio", label: "Bio", ui: { component: "textarea" } },
-          {
-            type: "object",
-            name: "links",
-            label: "Links",
-            fields: [
-              { type: "string", name: "website", label: "Website" },
-              { type: "string", name: "instagram", label: "Instagram" },
-              { type: "string", name: "linkedin", label: "LinkedIn" }
-            ]
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true
           }
-        ]
-      },
-      {
-        name: "categories",
-        label: "Categories",
-        path: "apps/journal/src/content/categories",
-        format: "json",
-        fields: [
-          { type: "string", name: "slug", label: "Slug", required: true },
-          { type: "string", name: "label", label: "Label", required: true },
-          { type: "string", name: "description", label: "Description", ui: { component: "textarea" } }
-        ]
+        ],
+        ui: {
+          // This is an DEMO router. You can remove this to fit your site
+          router: ({ document }) => `/demo/blog/${document._sys.filename}`
+        }
       }
     ]
   }
