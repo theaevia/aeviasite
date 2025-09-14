@@ -159,12 +159,24 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"the-aevia-mind-protocol.mdx": {
+	id: "the-aevia-mind-protocol.mdx";
+  slug: "the-aevia-mind-protocol";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 };
 
 	};
 
 	type DataEntryMap = {
 		"authors": {
+"map-name-dr-manu-sidhu-credentials-mbbs-bsc-role-performance-and-transformative-coach-avatar-journal-images-manu-pic-bngidp3q-webp-slug-manu-sidhu": {
+	id: "map-name-dr-manu-sidhu-credentials-mbbs-bsc-role-performance-and-transformative-coach-avatar-journal-images-manu-pic-bngidp3q-webp-slug-manu-sidhu";
+  collection: "authors";
+  data: InferEntrySchema<"authors">
+};
 "terrell-okhiria": {
 	id: "terrell-okhiria";
   collection: "authors";

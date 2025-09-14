@@ -3,7 +3,7 @@ import { defineConfig } from "tinacms";
 // Monorepo-aware Tina config. This builds the admin UI into
 // apps/journal/public/admin so Astro will copy it to dist at build time.
 export default defineConfig({
-  clientId: process.env.PUBLIC_TINA_CLIENT_ID || "",
+  clientId: process.env.TINA_PUBLIC_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
   branch:
     process.env.TINA_BRANCH ||

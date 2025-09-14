@@ -1,7 +1,7 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
 var config_default = defineConfig({
-  clientId: process.env.PUBLIC_TINA_CLIENT_ID || "",
+  clientId: process.env.TINA_PUBLIC_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
   branch: process.env.TINA_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.GITHUB_REF_NAME || "main",
   build: {
