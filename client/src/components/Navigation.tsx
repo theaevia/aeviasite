@@ -125,14 +125,14 @@ export default function Navigation() {
             <Link href="/">
               <div onClick={handleLinkClick} className="cursor-pointer group relative smooth-transition flex-shrink-0">
                 <img
-                  src={isJournalApp ? "/journal/public/assets/logos/logo-black-transparent.webp" : (logoBlack as unknown as string)}
+                  src={isJournalApp ? "/journal/assets/logos/logo-black-transparent.webp" : (logoBlack as unknown as string)}
                   alt="The Aevia"
                   width="916"
                   height="500"
                   className="h-16 w-auto group-hover:opacity-0 smooth-transition"
                 />
                 <img
-                  src={isJournalApp ? "/journal/public/assets/logos/logo-gold-transparent.webp" : (logoGold as unknown as string)}
+                  src={isJournalApp ? "/journal/assets/logos/logo-gold-transparent.webp" : (logoGold as unknown as string)}
                   alt="The Aevia"
                   width="916"
                   height="500"
