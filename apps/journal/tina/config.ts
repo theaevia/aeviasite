@@ -11,12 +11,12 @@ export default defineConfig({
     process.env.GITHUB_REF_NAME ||
     "main",
   build: {
-    publicFolder: "apps/journal/public",
+    publicFolder: "public",
     outputFolder: "admin",
   },
   media: {
     tina: {
-      publicFolder: "apps/journal/public",
+      publicFolder: "public",
       mediaRoot: "images",
     },
   },
@@ -112,4 +112,3 @@ export default defineConfig({
     ],
   },
 });
-
