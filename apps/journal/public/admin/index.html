@@ -9,15 +9,11 @@
     <script src="/identity-config.js"></script>
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- Initialize Netlify Identity (required when not hosted on Netlify) -->
+    <!-- Initialize Netlify Identity BEFORE Decap CMS loads -->
     <script>
       (function initIdentity(){
         function ready(){
-          if (!window.netlifyIdentity) { return void setTimeout(ready, 100); }
+          if (!window.netlifyIdentity) { return void setTimeout(ready, 50); }
           try {
             var url = window.NETLIFY_IDENTITY_URL;
             if (url) window.netlifyIdentity.init({ APIUrl: url });
@@ -27,6 +23,10 @@
         ready();
       })();
     </script>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
   
 </html>
