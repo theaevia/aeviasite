@@ -159,6 +159,7 @@ const cspAdmin: CspDirectives = {
   "frame-src": [
     "'self'",
     "https://identity.netlify.com",
+    "https://api.netlify.com",
     "https://*.netlify.app",
     "https://calendly.com",
     "https://www.calendly.com",

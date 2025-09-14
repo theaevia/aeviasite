@@ -12,7 +12,7 @@ const ID_URL = import.meta.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
     <!-- Point Decap CMS at the YAML config explicitly (works at /admin and /journal/admin) -->
     <link href="../config.yml" type="text/yaml" rel="cms-config-url" />
 
-    <!-- Load Decap CMS & Netlify Identity as classic scripts (avoid ESM/CORS) -->
+    <!-- Load Decap CMS as classic script (avoid ESM/CORS) -->
     <script is:inline>
       (function loadExternal(){
         var head = document.head || document.getElementsByTagName('head')[0];
@@ -24,30 +24,8 @@ const ID_URL = import.meta.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
         }
         // Decap CMS
         add('https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js');
-        // Netlify Identity widget
-        add('https://identity.netlify.com/v1/netlify-identity-widget.js');
       })();
     </script>
-
-    <!-- 3) Initialize Netlify Identity after it becomes available -->
-    <script is:inline define:vars={{ ID_URL }}>
-      (function initIdentity(){
-        // Allow override via query param for quick testing: ?identity=https://<site>.netlify.app/.netlify/identity
-        var params = new URLSearchParams(location.search);
-        var ID = params.get('identity') || params.get('identity_url') || ID_URL;
-        function ready(){
-          try {
-            if (!window.netlifyIdentity) { setTimeout(ready, 100); return; }
-            if (ID) window.netlifyIdentity.init({ APIUrl: ID });
-            else window.netlifyIdentity.init();
-            window.netlifyIdentity.on('login', function(){ window.location.reload(); });
-            window.netlifyIdentity.on('logout', function(){ window.location.reload(); });
-          } catch (e) { /* no-op */ }
-        }
-        ready();
-      })();
-    </script>
-
-    <!-- Debug removed for GitHub OAuth; Netlify Identity has its own devtools -->
+    <!-- Using GitHub backend with Netlify OAuth; no Identity init needed -->
   </body>
 </html>
