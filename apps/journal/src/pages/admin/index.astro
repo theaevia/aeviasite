@@ -9,23 +9,10 @@ const ID_URL = import.meta.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
     <title>Aevia Journal CMS</title>
   </head>
   <body>
-    <!-- 1) Ensure the ?config= param is set BEFORE loading CMS -->
-    <script is:inline>
-      (function(){
-        try {
-          var params = new URLSearchParams(location.search);
-          if (!params.get('config')) {
-            var base = location.pathname.split('/admin')[0] || '';
-            var cfg = base + '/config.yml';
-            params.set('config', cfg);
-            var newUrl = location.pathname + '?' + params.toString();
-            history.replaceState(null, '', newUrl);
-          }
-        } catch (e) { /* no-op */ }
-      })();
-    </script>
+    <!-- Point Decap CMS at the YAML config explicitly (works at /admin and /journal/admin) -->
+    <link href="../config.yml" type="text/yaml" rel="cms-config-url" />
 
-    <!-- 2) Load Decap CMS & Netlify Identity as classic scripts (avoid ESM/CORS) -->
+    <!-- Load Decap CMS & Netlify Identity as classic scripts (avoid ESM/CORS) -->
     <script is:inline>
       (function loadExternal(){
         var head = document.head || document.getElementsByTagName('head')[0];
