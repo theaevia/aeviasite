@@ -15,10 +15,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
 const BASE_URL = isProd ? 'https://www.theaevia.co.uk' : `http://localhost:${DEFAULT_PORT}`;
-const NETLIFY_IDENTITY_URL = process.env.PUBLIC_NETLIFY_IDENTITY_URL || process.env.NETLIFY_IDENTITY_URL || '';
-const NETLIFY_SITE_ORIGIN = (() => {
-  try { return NETLIFY_IDENTITY_URL ? new URL(NETLIFY_IDENTITY_URL).origin : ''; } catch { return ''; }
-})();
 const VALID_ROUTES = [
   '/',
   '/skin',
@@ -54,8 +50,6 @@ const cspGlobal: CspDirectives = {
   "img-src": ["'self'", "data:", "https:", "blob:"],
   "frame-src": [
     "'self'",
-    "https://identity.netlify.com",
-    "https://*.netlify.app",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -70,9 +64,6 @@ const cspGlobal: CspDirectives = {
   ],
   "connect-src": [
     "'self'",
-    "https://identity.netlify.com",
-    "https://api.netlify.com",
-    "https://*.netlify.app",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -92,7 +83,6 @@ const cspGlobal: CspDirectives = {
   "script-src": [
     "'self'",
     "'unsafe-inline'",
-    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
@@ -104,7 +94,6 @@ const cspGlobal: CspDirectives = {
   "script-src-elem": [
     "'self'",
     "'unsafe-inline'",
-    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
@@ -145,7 +134,6 @@ const cspAdmin: CspDirectives = {
     "'self'",
     "'unsafe-inline'",
     "'unsafe-eval'",
-    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
@@ -159,7 +147,6 @@ const cspAdmin: CspDirectives = {
     "'self'",
     "'unsafe-inline'",
     "'unsafe-eval'",
-    "https://identity.netlify.com",
     "https://www.googletagmanager.com",
     "https://assets.calendly.com",
     "https://app.cal.com",
@@ -171,8 +158,6 @@ const cspAdmin: CspDirectives = {
   ],
   "frame-src": [
     "'self'",
-    "https://identity.netlify.com",
-    "https://*.netlify.app",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -188,9 +173,6 @@ const cspAdmin: CspDirectives = {
   ],
   "connect-src": [
     "'self'",
-    "https://identity.netlify.com",
-    "https://api.netlify.com",
-    "https://*.netlify.app",
     "https://calendly.com",
     "https://www.calendly.com",
     "https://assets.calendly.com",
@@ -231,135 +213,8 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
 // Proxy Netlify Identity settings for sites not hosted on Netlify
-app.get('/.netlify/identity/settings', async (_req: Request, res: Response) => {
-  try {
-    const upstreamBase = process.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
-    if (!upstreamBase) {
-      return res.status(404).send('Identity not configured');
-    }
-    const url = new URL(upstreamBase.replace(/\/$/, '') + '/settings');
-    const upstream = await fetch(url.toString(), { headers: { 'accept': 'application/json' } });
-    const text = await upstream.text();
-    res.status(upstream.status);
-    const passHeaders = ['content-type', 'cache-control', 'etag', 'last-modified'];
-    passHeaders.forEach((h) => {
-      const v = upstream.headers.get(h);
-      if (v) res.setHeader(h, v);
-    });
-    res.send(text);
-  } catch (e) {
-    res.status(502).send('Failed to load Identity settings');
-  }
-});
-
-// Redirect authorize endpoint to upstream Identity host to preserve cookies and OAuth flow
-app.get('/.netlify/identity/authorize', (req: Request, res: Response) => {
-  const upstreamBase = process.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
-  if (!upstreamBase) return res.status(404).send('Identity not configured');
-  const url = new URL(upstreamBase.replace(/\/$/, '') + '/authorize');
-  // Copy query string (?provider=github&...)
-  for (const [k, v] of Object.entries(req.query)) {
-    if (Array.isArray(v)) v.forEach((vv) => url.searchParams.append(k, String(vv)));
-    else if (v != null) url.searchParams.set(k, String(v));
-  }
-  return res.redirect(302, url.toString());
-});
-
-// Generic proxy for other Identity endpoints (token, user, logout, etc.)
-app.all('/.netlify/identity/*', async (req: Request, res: Response) => {
-  // Avoid double-handling specific routes defined above
-  const subpath = req.path.replace(/^\.netlify\/identity\/?/, '')
-    .replace(/^\/.netlify\/identity\/?/, '');
-  if (subpath === 'settings' || subpath === 'authorize') return res.status(404).end();
-
-  try {
-    const upstreamBase = process.env.PUBLIC_NETLIFY_IDENTITY_URL || '';
-    if (!upstreamBase) return res.status(404).send('Identity not configured');
-    const suffix = req.originalUrl.replace(/^\/\.netlify\/identity/, '');
-    const url = new URL(upstreamBase.replace(/\/$/, '') + suffix);
-
-    const headers: Record<string, string> = {};
-    // Forward selected headers
-    ['content-type', 'authorization' , 'cookie'].forEach((h) => {
-      const v = req.headers[h];
-      if (typeof v === 'string') headers[h] = v;
-    });
-
-    const method = req.method.toUpperCase();
-    let body: any = undefined;
-    if (!['GET', 'HEAD'].includes(method)) {
-      body = req.body;
-      if (headers['content-type']?.includes('application/json') && typeof body !== 'string') {
-        body = JSON.stringify(body);
-      }
-    }
-
-    const upstream = await fetch(url.toString(), { method, headers, body });
-
-    // Copy status and selected headers back to client
-    res.status(upstream.status);
-    const passHeaders = ['content-type', 'cache-control', 'etag', 'last-modified', 'set-cookie', 'location'];
-    passHeaders.forEach((h) => {
-      const v = upstream.headers.get(h);
-      if (v) res.setHeader(h, v);
-    });
-
-    if (upstream.status >= 300 && upstream.status < 400) {
-      // Let redirects propagate
-      return res.end();
-    }
-
-    const text = await upstream.text();
-    return res.send(text);
-  } catch (e) {
-    return res.status(502).send('Identity proxy error');
-  }
-});
-
-// Provide Identity API URL to client when hosted off Netlify
-app.get('/identity-config.js', (_req: Request, res: Response) => {
-  const body = `window.NETLIFY_IDENTITY_URL = ${JSON.stringify(NETLIFY_IDENTITY_URL)};`;
-  res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.send(body);
-});
-
-// Proxy Netlify Git Gateway for main domain (delete/publish endpoints)
-app.all('/.netlify/git/*', async (req: Request, res: Response) => {
-  try {
-    if (!NETLIFY_SITE_ORIGIN) return res.status(404).send('Git Gateway not configured');
-    const suffix = req.originalUrl.replace(/^\/\.netlify\/git/, '/.netlify/git');
-    const url = new URL(NETLIFY_SITE_ORIGIN + suffix);
-
-    const headers: Record<string, string> = {};
-    ['content-type', 'authorization', 'cookie', 'if-none-match', 'if-match'].forEach((h) => {
-      const v = req.headers[h];
-      if (typeof v === 'string') headers[h] = v;
-    });
-
-    const method = req.method.toUpperCase();
-    let body: any = undefined;
-    if (!['GET', 'HEAD'].includes(method)) {
-      body = req.body;
-      if (headers['content-type']?.includes('application/json') && typeof body !== 'string') {
-        body = JSON.stringify(body);
-      }
-    }
-
-    const upstream = await fetch(url.toString(), { method, headers, body, redirect: 'manual' as any });
-    res.status(upstream.status);
-    const passHeaders = ['content-type', 'cache-control', 'etag', 'last-modified', 'set-cookie', 'location'];
-    passHeaders.forEach((h) => {
-      const v = upstream.headers.get(h);
-      if (v) res.setHeader(h, v);
-    });
-    if (upstream.status >= 300 && upstream.status < 400) return res.end();
-    const text = await upstream.text();
-    return res.send(text);
-  } catch (e) {
-    return res.status(502).send('Git Gateway proxy error');
-  }
-});
+// Netlify Identity and Git Gateway proxies have been removed after
+// migrating to TinaCMS (Tina Cloud) for journal authoring.
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
 app.use((req, res, next) => {

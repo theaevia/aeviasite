@@ -1,6 +1,6 @@
 # Aevia Site — Journal + CMS
 
-This repo contains the main SPA (Vite + React + Wouter), the Express server, and an Astro sub‑app that powers the SEO‑friendly Journal with a Git‑based CMS (Decap).
+This repo contains the main SPA (Vite + React + Wouter), the Express server, and an Astro sub‑app that powers the SEO‑friendly Journal with a Git‑based CMS (TinaCMS).
 
 
 ## Quick Start (Local)
@@ -9,27 +9,28 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 - Install deps:
   - `npm ci`
   - `cd apps/journal && npm install`
-- Optional: set Netlify Identity URL for local admin login via Netlify:
-  - `PUBLIC_NETLIFY_IDENTITY_URL=https://<your-site>.netlify.app/.netlify/identity`
+- Optional: Tina Cloud env vars for local admin:
+  - `TINA_PUBLIC_CLIENT_ID=...`
+  - `TINA_TOKEN=...`
 - Run servers:
   - API/SPA server: `npm run dev` (http://localhost:3000)
   - Journal dev: `npm run dev:journal` (http://localhost:4321/journal)
 - CMS (Dev):
-  - Open: `http://localhost:4321/journal/admin/?config=/journal/admin/config.dev.yml`
-  - If using Netlify Identity, the login dialog is provided by Netlify.
+  - Run `cd apps/journal && npm run dev` to serve Astro with the static admin under `/journal/admin`.
+  - Tina uses Git-backed editing; use Tina Cloud credentials to log in.
 
 
 ## Production (Railway)
 
 - Env vars:
-  - Optional: `PUBLIC_NETLIFY_IDENTITY_URL=https://<your-site>.netlify.app/.netlify/identity`
+  - `TINA_PUBLIC_CLIENT_ID` and `TINA_TOKEN` (from Tina Cloud)
 - Build command: `npm ci && npm run build`
 - Start command: `npm start`
 - The Express server serves the SPA and the Journal (`/journal`) statically.
-  - Decap CMS uses Netlify Identity + Git Gateway for authentication.
+  - TinaCMS uses Tina Cloud for authentication; content is committed to Git.
 
 
-## Authoring Flow (Decap CMS)
+## Authoring Flow (TinaCMS)
 
 - CMS URL: `/journal/admin` (prod) or local dev URL above.
 - First time: create at least one Author (name, credentials, avatar) and Category (slug, label).
@@ -53,7 +54,7 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 
 - SPA: Vite + React + Wouter
 - Journal: Astro (static) + Tailwind + MDX + Sitemap + RSS
-- CMS: Decap (GitHub backend) served at `/journal/admin`
+- CMS: TinaCMS (Git-backed) served at `/journal/admin`
 - Server: Express (serves SPA and mounts `/journal` from build)
 
 
