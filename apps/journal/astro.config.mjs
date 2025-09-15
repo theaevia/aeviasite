@@ -32,7 +32,21 @@ export default defineConfig({
     server: {
       fs: {
         allow: [repoRoot, __dirname]
-      }
+      },
+      // In local dev, proxy the Tina admin so `/journal/admin` works
+      proxy: process.env.TINA_PUBLIC_IS_LOCAL
+        ? {
+            '/journal/admin': {
+              target: 'http://localhost:4001',
+              changeOrigin: true,
+              rewrite: (p) => p.replace(/^\/journal/, ''),
+            },
+            '/admin': {
+              target: 'http://localhost:4001',
+              changeOrigin: true,
+            },
+          }
+        : undefined,
     }
   }
 });
