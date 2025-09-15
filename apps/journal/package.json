@@ -5,8 +5,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
-    "prebuild": "node ./scripts/build-tina.mjs",
-    "build": "astro build",
+    "build": "tinacms build && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -16,17 +15,17 @@
     "@astrojs/sitemap": "^3.2.2",
     "@astrojs/tailwind": "^5.1.0",
     "@tailwindcss/typography": "^0.5.15",
-    "@tinacms/cli": "^1.5.9",
     "astro": "^4.16.6",
     "graphql": "^16.9.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
-    "tinacms": "^1.6.7"
+    "tinacms": "^2.8.3"
   },
   "devDependencies": {
-    "@types/node": "^20.19.14",
+    "@tinacms/cli": "^1.10.3",
+    "@types/node": "^20.19.15",
     "autoprefixer": "^10.4.20",
     "vite-plugin-svgr": "^4.3.0"
   }
