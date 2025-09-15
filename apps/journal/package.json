@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
     "prebuild": "node ./scripts/build-tina.mjs",
-    "build": "tinacms build && astro build",
+    "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
