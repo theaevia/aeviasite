@@ -1,6 +1,6 @@
-# Aevia Site — Journal + CMS
+# Aevia Site — Journal
 
-This repo contains the main SPA (Vite + React + Wouter), the Express server, and an Astro sub‑app that powers the SEO‑friendly Journal with a Git‑based CMS (TinaCMS).
+This repo contains the main SPA (Vite + React + Wouter), the Express server, and an Astro sub‑app that powers the SEO‑friendly Journal. A CMS can be configured separately (previously TinaCMS).
 
 
 ## Quick Start (Local)
@@ -9,37 +9,16 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 - Install deps:
   - `npm ci`
   - `cd apps/journal && npm install`
-- Optional: Tina Cloud env vars for local admin:
-  - `TINA_PUBLIC_CLIENT_ID=...`
-  - `TINA_TOKEN=...`
 - Run servers:
   - API/SPA server: `npm run dev` (http://localhost:3000)
   - Journal dev: `npm run dev:journal` (http://localhost:4321/journal)
-- CMS (Dev):
-  - Run `cd apps/journal && npm run dev` to serve Astro with the static admin under `/journal/admin`.
-  - Tina uses Git-backed editing; use Tina Cloud credentials to log in.
 
 
 ## Production (Railway)
 
-- Env vars:
-  - `TINA_PUBLIC_CLIENT_ID` and `TINA_TOKEN` (from Tina Cloud)
 - Build command: `npm ci && npm run build`
 - Start command: `npm start`
 - The Express server serves the SPA and the Journal (`/journal`) statically.
-  - TinaCMS uses Tina Cloud for authentication; content is committed to Git.
-
-
-## Authoring Flow (TinaCMS)
-
-- CMS URL: `/journal/admin` (prod) or local dev URL above.
-- First time: create at least one Author (name, credentials, avatar) and Category (slug, label).
-- New post:
-  - Fill required fields: title, date, status, authors, categories.
-  - Optional: dek, tags, hero image (src+alt), og_image, reviewed_by, disclaimer, reading_time, canonical.
-  - Body in Markdown/MDX.
-  - Upload images via the media picker; they are stored in `apps/journal/public/images` and referenced as `/journal/images/...`.
-  - Save → Create PR (editorial_workflow) → code owners review → merge → live.
 
 
 ## Content Structure
@@ -54,7 +33,7 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 
 - SPA: Vite + React + Wouter
 - Journal: Astro (static) + Tailwind + MDX + Sitemap + RSS
-- CMS: TinaCMS (Git-backed) served at `/journal/admin`
+- CMS: not configured (set up your preferred headless CMS when ready)
 - Server: Express (serves SPA and mounts `/journal` from build)
 
 

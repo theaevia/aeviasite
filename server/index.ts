@@ -128,71 +128,6 @@ const cspGlobal: CspDirectives = {
   "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [],
 };
 
-const cspAdmin: CspDirectives = {
-  ...cspGlobal,
-  "script-src": [
-    "'self'",
-    "'unsafe-inline'",
-    "'unsafe-eval'",
-    "https://www.googletagmanager.com",
-    "https://assets.calendly.com",
-    "https://app.cal.com",
-    "https://cal.com",
-    "https://*.cal.com",
-    "https://app.squareup.com",
-    "https://unpkg.com",
-    "https://app.tina.io",
-  ],
-  "script-src-elem": [
-    "'self'",
-    "'unsafe-inline'",
-    "'unsafe-eval'",
-    "https://www.googletagmanager.com",
-    "https://assets.calendly.com",
-    "https://app.cal.com",
-    "https://cal.com",
-    "https://*.cal.com",
-    "https://app.squareup.com",
-    "https://unpkg.com",
-    "https://app.tina.io",
-  ],
-  "frame-src": [
-    "'self'",
-    "https://calendly.com",
-    "https://www.calendly.com",
-    "https://assets.calendly.com",
-    "https://cal.com",
-    "https://app.cal.com",
-    "https://*.cal.com",
-    "https://app.squareup.com",
-    "https://book.squareup.com",
-    "https://www.googletagmanager.com",
-    "https://www.google.com",
-    "https://*.google.com",
-    "https://app.tina.io",
-  ],
-  "connect-src": [
-    "'self'",
-    "https://calendly.com",
-    "https://www.calendly.com",
-    "https://assets.calendly.com",
-    "https://api.calendly.com",
-    "https://cal.com",
-    "https://app.cal.com",
-    "https://api.cal.com",
-    "https://*.cal.com",
-    "https://app.squareup.com",
-    "https://book.squareup.com",
-    "https://www.googletagmanager.com",
-    "https://www.google-analytics.com",
-    "https://region1.google-analytics.com",
-    "https://api.github.com",
-    "https://github.com",
-    "https://app.tina.io",
-    "https://content.tinajs.io",
-  ],
-};
-
 function directivesToHeader(d: CspDirectives): string {
   return Object.entries(d)
     .map(([k, v]) => {
@@ -204,17 +139,12 @@ function directivesToHeader(d: CspDirectives): string {
 }
 
 app.use((req, res, next) => {
-  const isAdmin = req.path.startsWith('/journal/admin');
-  const header = directivesToHeader(isAdmin ? cspAdmin : cspGlobal);
+  const header = directivesToHeader(cspGlobal);
   res.setHeader('Content-Security-Policy', header);
   next();
 });
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
-
-// Proxy Netlify Identity settings for sites not hosted on Netlify
-// Netlify Identity and Git Gateway proxies have been removed after
-// migrating to TinaCMS (Tina Cloud) for journal authoring.
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
 app.use((req, res, next) => {
