@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
-    "build": "tinacms build && astro build",
+    "prebuild": "node ./scripts/build-tina.mjs",
+    "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
