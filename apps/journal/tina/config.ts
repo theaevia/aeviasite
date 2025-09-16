@@ -19,6 +19,7 @@ export default defineConfig({
   build: {
     outputFolder: "admin",
     publicFolder: "public",
+    basePath: "journal",
   },
   media: {
     tina: {
