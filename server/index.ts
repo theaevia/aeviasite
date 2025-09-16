@@ -41,7 +41,9 @@ const VALID_ROUTES = [
 ];
 
 // Security middleware (non-CSP headers)
-app.use(helmet({ contentSecurityPolicy: false }));
+app.use(helmet({ contentSecurityPolicy: false, 
+  crossOriginOpenerPolicy: false,
+  crossOriginEmbedderPolicy: false,}));
 
 // CSP policies as single header to avoid multi-CSP intersection issues
 // --- CSP helpers ---
@@ -164,15 +166,31 @@ const cspTinaAdditions: CspDirectives = {
   "img-src": ["blob:"],    // already present globally, but safe to include
 };
 
-// Single middleware that picks CSP per-route
+// ✅ One global CSP for everything *except* the Tina admin
 app.use((req, res, next) => {
-  const isTinaAdmin = req.path.startsWith('/journal/admin');
-  const header = directivesToHeader(
-    isTinaAdmin ? mergeCsp(cspGlobal, cspTinaAdditions) : cspGlobal
-  );
-  res.setHeader('Content-Security-Policy', header);
+  if (req.path.startsWith('/journal/admin')) return next();
+  res.setHeader('Content-Security-Policy', directivesToHeader(cspGlobal));
   next();
 });
+
+// ✅ One admin CSP just for Tina
+const ADMIN_CSP =
+  "default-src 'self'; " +
+  "connect-src 'self' https://identity.tinajs.io https://content.tinajs.io https://app.tina.io; " +
+  "frame-src https://app.tina.io; " +
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+  "img-src 'self' data: blob:; " +
+  "font-src 'self' data: https://fonts.gstatic.com;";
+
+app.use('/journal/admin', (req, res, next) => {
+  res.setHeader('Content-Security-Policy', ADMIN_CSP);
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+  res.setHeader('Cross-Origin-Embedder-Policy', 'unsafe-none');
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+  next();
+});
+
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
 app.use((req, res, next) => {
