@@ -1,0 +1,560 @@
+[drwxr-xr-x         832 Sep 16 18:47]  .
+├── [-rw-r--r--        8196 Aug 27 22:56]  ./.DS_Store
+├── [drwxr-xr-x         128 Sep 13 19:39]  ./.github
+│   ├── [-rw-r--r--         735 Sep 13 19:39]  ./.github/CODEOWNERS
+│   └── [drwxr-xr-x          96 Sep 13 19:39]  ./.github/workflows
+│       └── [-rw-r--r--         581 Sep 13 19:39]  ./.github/workflows/ci.yml
+├── [-rw-r--r--         114 Jun 14 00:08]  ./.gitignore
+├── [drwxr-xr-x          96 Aug 27 13:41]  ./.vercel
+│   └── [-rw-r--r--          88 May 31 23:27]  ./.vercel/project.json
+├── [drwxr-xr-x          96 Sep 13 16:21]  ./apps
+│   └── [drwxr-xr-x         544 Sep 16 16:50]  ./apps/journal
+│       ├── [drwxr-xr-x         192 Sep 13 19:39]  ./apps/journal/.astro
+│       │   ├── [drwxr-xr-x          96 Sep 13 19:39]  ./apps/journal/.astro/astro
+│       │   │   └── [-rw-r--r--        6172 Sep 16 18:35]  ./apps/journal/.astro/astro/content.d.ts
+│       │   ├── [drwxr-xr-x         128 Sep 13 19:39]  ./apps/journal/.astro/collections
+│       │   │   ├── [-rw-r--r--        1045 Sep 16 18:35]  ./apps/journal/.astro/collections/authors.schema.json
+│       │   │   └── [-rw-r--r--         532 Sep 16 18:35]  ./apps/journal/.astro/collections/categories.schema.json
+│       │   ├── [-rw-r--r--          58 Sep 13 19:39]  ./apps/journal/.astro/settings.json
+│       │   └── [-rw-r--r--          82 Sep 16 18:35]  ./apps/journal/.astro/types.d.ts
+│       ├── [-rw-r--r--         110 Sep 16 16:50]  ./apps/journal/.env
+│       ├── [-rw-r--r--          17 Sep 15 00:29]  ./apps/journal/.gitignore
+│       ├── [-rw-r--r--        1217 Sep 15 23:34]  ./apps/journal/astro.config.mjs
+│       ├── [drwxr-xr-x          96 Sep 15 00:28]  ./apps/journal/content
+│       │   └── [drwxr-xr-x          96 Sep 15 00:28]  ./apps/journal/content/posts
+│       │       └── [-rw-r--r--        1003 Sep 15 23:40]  ./apps/journal/content/posts/hello-world.md
+│       ├── [-rw-r--r--         865 Sep 15 23:53]  ./apps/journal/package.json
+│       ├── [-rw-r--r--          81 Sep 14 23:25]  ./apps/journal/postcss.config.js
+│       ├── [drwxr-xr-x         160 Sep 15 00:30]  ./apps/journal/public
+│       │   ├── [drwxr-xr-x         160 Sep 16 18:35]  ./apps/journal/public/admin
+│       │   │   ├── [-rw-r--r--          18 Sep 16 18:35]  ./apps/journal/public/admin/.gitignore
+│       │   │   ├── [drwxr-xr-x        1152 Sep 16 18:35]  ./apps/journal/public/admin/assets
+│       │   │   │   ├── [-rw-r--r--        2744 Sep 16 18:35]  ./apps/journal/public/admin/assets/brace-fold.es-f2e3735d.js
+│       │   │   │   ├── [-rw-r--r--        4279 Sep 16 18:35]  ./apps/journal/public/admin/assets/closebrackets.es-e969742b.js
+│       │   │   │   ├── [-rw-r--r--         579 Sep 16 18:35]  ./apps/journal/public/admin/assets/codemirror.es-52e8b92d.js
+│       │   │   │   ├── [-rw-r--r--      183578 Sep 16 18:35]  ./apps/journal/public/admin/assets/codemirror.es2-5884f31a.js
+│       │   │   │   ├── [-rw-r--r--        4634 Sep 16 18:35]  ./apps/journal/public/admin/assets/comment.es-39699bae.js
+│       │   │   │   ├── [-rw-r--r--         610 Sep 16 18:35]  ./apps/journal/public/admin/assets/dialog.es-dffe62e7.js
+│       │   │   │   ├── [-rw-r--r--        2509 Sep 16 18:35]  ./apps/journal/public/admin/assets/dialog.es2-02b3b4e7.js
+│       │   │   │   ├── [-rw-r--r--        5922 Sep 16 18:35]  ./apps/journal/public/admin/assets/foldgutter.es-b6cee46a.js
+│       │   │   │   ├── [-rw-r--r--         230 Sep 16 18:35]  ./apps/journal/public/admin/assets/forEachState.es-b2033c2b.js
+│       │   │   │   ├── [-rw-r--r--         731 Sep 16 18:35]  ./apps/journal/public/admin/assets/hint.es-f326f13b.js
+│       │   │   │   ├── [-rw-r--r--        3159 Sep 16 18:35]  ./apps/journal/public/admin/assets/hint.es2-1dd259aa.js
+│       │   │   │   ├── [-rw-r--r--     6581970 Sep 16 18:35]  ./apps/journal/public/admin/assets/index-530a6cd1.js
+│       │   │   │   ├── [-rw-r--r--      500731 Sep 16 18:35]  ./apps/journal/public/admin/assets/index-cf1c94fc.css
+│       │   │   │   ├── [-rw-r--r--       20113 Sep 16 18:35]  ./apps/journal/public/admin/assets/index-d882d6b8.js
+│       │   │   │   ├── [-rw-r--r--        2609 Sep 16 18:35]  ./apps/journal/public/admin/assets/info-addon.es-c9b2027b.js
+│       │   │   │   ├── [-rw-r--r--        3752 Sep 16 18:35]  ./apps/journal/public/admin/assets/info.es-4c8a142e.js
+│       │   │   │   ├── [-rw-r--r--       20320 Sep 16 18:35]  ./apps/journal/public/admin/assets/javascript.es-3c6957c5.js
+│       │   │   │   ├── [-rw-r--r--        1731 Sep 16 18:35]  ./apps/journal/public/admin/assets/jump-to-line.es-d901ea33.js
+│       │   │   │   ├── [-rw-r--r--        2921 Sep 16 18:35]  ./apps/journal/public/admin/assets/jump.es-bf4d8a4b.js
+│       │   │   │   ├── [-rw-r--r--        5930 Sep 16 18:35]  ./apps/journal/public/admin/assets/lint.es-fe7166bb.js
+│       │   │   │   ├── [-rw-r--r--         611 Sep 16 18:35]  ./apps/journal/public/admin/assets/lint.es2-c3ce4308.js
+│       │   │   │   ├── [-rw-r--r--        4768 Sep 16 18:35]  ./apps/journal/public/admin/assets/lint.es3-fafd10cd.js
+│       │   │   │   ├── [-rw-r--r--         617 Sep 16 18:35]  ./apps/journal/public/admin/assets/matchbrackets.es-97d2e827.js
+│       │   │   │   ├── [-rw-r--r--        3354 Sep 16 18:35]  ./apps/journal/public/admin/assets/matchbrackets.es2-f53f57e6.js
+│       │   │   │   ├── [-rw-r--r--         326 Sep 16 18:35]  ./apps/journal/public/admin/assets/mode-indent.es-057a4f6a.js
+│       │   │   │   ├── [-rw-r--r--         600 Sep 16 18:35]  ./apps/journal/public/admin/assets/mode.es-80ae5918.js
+│       │   │   │   ├── [-rw-r--r--        1562 Sep 16 18:35]  ./apps/journal/public/admin/assets/mode.es2-8b12c7fb.js
+│       │   │   │   ├── [-rw-r--r--        1367 Sep 16 18:35]  ./apps/journal/public/admin/assets/mode.es3-57c25bcb.js
+│       │   │   │   ├── [-rw-r--r--       48291 Sep 16 18:35]  ./apps/journal/public/admin/assets/SchemaReference.es-ade95897.js
+│       │   │   │   ├── [-rw-r--r--        6776 Sep 16 18:35]  ./apps/journal/public/admin/assets/search.es-1c15f5ea.js
+│       │   │   │   ├── [-rw-r--r--         616 Sep 16 18:35]  ./apps/journal/public/admin/assets/searchcursor.es-b1a352a2.js
+│       │   │   │   ├── [-rw-r--r--        5800 Sep 16 18:35]  ./apps/journal/public/admin/assets/searchcursor.es2-cbfe7cae.js
+│       │   │   │   ├── [-rw-r--r--       11543 Sep 16 18:35]  ./apps/journal/public/admin/assets/show-hint.es-b981493e.js
+│       │   │   │   └── [-rw-r--r--       16115 Sep 16 18:35]  ./apps/journal/public/admin/assets/sublime.es-e2a3eb60.js
+│       │   │   └── [-rw-r--r--        2301 Sep 16 18:35]  ./apps/journal/public/admin/index.html
+│       │   ├── [drwxr-xr-x          96 Sep 14 22:03]  ./apps/journal/public/assets
+│       │   │   └── [drwxr-xr-x         128 Sep 14 22:04]  ./apps/journal/public/assets/logos
+│       │   │       ├── [-rw-r--r--        5196 Sep 14 22:04]  ./apps/journal/public/assets/logos/logo-black-transparent.webp
+│       │   │       └── [-rw-r--r--        7932 Sep 14 22:04]  ./apps/journal/public/assets/logos/logo-gold-transparent.webp
+│       │   └── [drwxr-xr-x         224 Sep 14 21:45]  ./apps/journal/public/images
+│       │       ├── [-rw-r--r--     5079409 Sep 14 21:05]  ./apps/journal/public/images/10.png
+│       │       ├── [-rw-r--r--       10626 Sep 14 20:22]  ./apps/journal/public/images/2.png
+│       │       ├── [-rw-r--r--       10610 Sep 14 20:22]  ./apps/journal/public/images/logo-landscape-gold.png
+│       │       ├── [-rw-r--r--       45778 Sep 14 21:45]  ./apps/journal/public/images/manu-pic.bngidp3q.webp
+│       │       └── [-rw-r--r--       34816 Sep 14 20:50]  ./apps/journal/public/images/terrell-pic3.ctwqtb0c.webp
+│       ├── [drwxr-xr-x          96 Sep 15 23:53]  ./apps/journal/scripts
+│       │   └── [-rwxr-xr-x        1396 Sep 16 16:51]  ./apps/journal/scripts/build-tina.mjs
+│       ├── [drwxr-xr-x         256 Sep 13 19:39]  ./apps/journal/src
+│       │   ├── [drwxr-xr-x         128 Sep 14 21:13]  ./apps/journal/src/components
+│       │   │   ├── [-rw-r--r--         398 Sep 14 21:13]  ./apps/journal/src/components/Figure.astro
+│       │   │   └── [-rw-r--r--         780 Sep 13 19:39]  ./apps/journal/src/components/ShareBar.jsx
+│       │   ├── [drwxr-xr-x         224 Sep 14 20:22]  ./apps/journal/src/content
+│       │   │   ├── [drwxr-xr-x         128 Sep 14 22:02]  ./apps/journal/src/content/authors
+│       │   │   │   ├── [-rw-r--r--         188 Sep 14 21:45]  ./apps/journal/src/content/authors/map-name-dr-manu-sidhu-credentials-mbbs-bsc-role-performance-and-transformative-coach-avatar-journal-images-manu-pic-bngidp3q-webp-slug-manu-sidhu.json
+│       │   │   │   └── [-rw-r--r--         323 Sep 14 22:02]  ./apps/journal/src/content/authors/terrell-okhiria.json
+│       │   │   ├── [drwxr-xr-x         160 Sep 13 19:39]  ./apps/journal/src/content/categories
+│       │   │   │   ├── [-rw-r--r--          92 Sep 13 19:39]  ./apps/journal/src/content/categories/longevity.json
+│       │   │   │   ├── [-rw-r--r--          90 Sep 13 19:39]  ./apps/journal/src/content/categories/mind.json
+│       │   │   │   └── [-rw-r--r--          91 Sep 13 19:39]  ./apps/journal/src/content/categories/skin.json
+│       │   │   ├── [-rw-r--r--        1498 Sep 14 20:22]  ./apps/journal/src/content/config.ts
+│       │   │   ├── [drwxr-xr-x          96 Sep 13 19:39]  ./apps/journal/src/content/images
+│       │   │   │   └── [-rw-r--r--           1 Sep 13 19:39]  ./apps/journal/src/content/images/.gitkeep
+│       │   │   └── [drwxr-xr-x         128 Sep 14 21:45]  ./apps/journal/src/content/posts
+│       │   │       ├── [-rw-r--r--         568 Sep 14 20:22]  ./apps/journal/src/content/posts/2025-09-13-longevity-bloodwork-basics.mdx
+│       │   │       └── [-rw-r--r--        3220 Sep 14 21:45]  ./apps/journal/src/content/posts/the-aevia-mind-protocol.mdx
+│       │   ├── [-rw-r--r--          45 Sep 13 19:39]  ./apps/journal/src/env.d.ts
+│       │   ├── [drwxr-xr-x          96 Sep 13 19:39]  ./apps/journal/src/layouts
+│       │   │   └── [-rw-r--r--        2255 Sep 13 21:33]  ./apps/journal/src/layouts/BaseLayout.astro
+│       │   ├── [drwxr-xr-x         256 Sep 15 23:54]  ./apps/journal/src/pages
+│       │   │   ├── [-rw-r--r--        4011 Sep 14 21:45]  ./apps/journal/src/pages/[slug].astro
+│       │   │   ├── [drwxr-xr-x          64 Sep 14 19:07]  ./apps/journal/src/pages/admin
+│       │   │   ├── [drwxr-xr-x          96 Sep 13 19:39]  ./apps/journal/src/pages/author
+│       │   │   │   └── [-rw-r--r--        1988 Sep 13 19:55]  ./apps/journal/src/pages/author/[slug].astro
+│       │   │   ├── [drwxr-xr-x          96 Sep 13 19:39]  ./apps/journal/src/pages/category
+│       │   │   │   └── [-rw-r--r--        1808 Sep 13 19:55]  ./apps/journal/src/pages/category/[slug].astro
+│       │   │   ├── [-rw-r--r--        2113 Sep 13 19:55]  ./apps/journal/src/pages/index.astro
+│       │   │   └── [-rw-r--r--         573 Sep 13 19:39]  ./apps/journal/src/pages/rss.xml.js
+│       │   └── [drwxr-xr-x          96 Sep 14 21:45]  ./apps/journal/src/styles
+│       │       └── [-rw-r--r--        3831 Sep 14 21:45]  ./apps/journal/src/styles/global.css
+│       ├── [-rw-r--r--        3126 Sep 13 22:17]  ./apps/journal/tailwind.config.ts
+│       ├── [drwxr-xr-x         192 Sep 16 16:58]  ./apps/journal/tina
+│       │   ├── [drwxr-xr-x         384 Sep 16 16:58]  ./apps/journal/tina/__generated__
+│       │   │   ├── [-rw-r--r--       22006 Sep 16 18:34]  ./apps/journal/tina/__generated__/_graphql.json
+│       │   │   ├── [-rw-r--r--         526 Sep 16 18:34]  ./apps/journal/tina/__generated__/_lookup.json
+│       │   │   ├── [-rw-r--r--         593 Sep 16 18:34]  ./apps/journal/tina/__generated__/_schema.json
+│       │   │   ├── [-rw-r--r--         437 Sep 16 18:34]  ./apps/journal/tina/__generated__/client.ts
+│       │   │   ├── [-rw-r--r--        1366 Sep 16 18:34]  ./apps/journal/tina/__generated__/config.prebuild.jsx
+│       │   │   ├── [-rw-r--r--          59 Sep 16 18:34]  ./apps/journal/tina/__generated__/frags.gql
+│       │   │   ├── [-rw-r--r--         961 Sep 16 18:34]  ./apps/journal/tina/__generated__/queries.gql
+│       │   │   ├── [-rw-r--r--        3176 Sep 16 18:34]  ./apps/journal/tina/__generated__/schema.gql
+│       │   │   ├── [-rw-r--r--           2 Sep 16 18:34]  ./apps/journal/tina/__generated__/static-media.json
+│       │   │   └── [-rw-r--r--       13079 Sep 16 18:34]  ./apps/journal/tina/__generated__/types.ts
+│       │   ├── [-rw-r--r--          13 Sep 15 23:41]  ./apps/journal/tina/.gitignore
+│       │   ├── [-rw-r--r--        1401 Sep 16 17:39]  ./apps/journal/tina/config.ts
+│       │   └── [-rw-r--r--       23157 Sep 16 17:47]  ./apps/journal/tina/tina-lock.json
+│       └── [-rw-r--r--         149 Sep 15 23:53]  ./apps/journal/tsconfig.json
+├── [drwxr-xr-x         320 Aug 27 15:31]  ./client
+│   ├── [-rw-r--r--        6148 Aug 27 20:58]  ./client/.DS_Store
+│   ├── [-rw-r--r--         120 Sep 16 16:50]  ./client/.env
+│   ├── [drwxr-xr-x         352 Jul 25 18:36]  ./client/assets
+│   │   ├── [-rw-r--r--       10244 Aug 29 20:58]  ./client/assets/.DS_Store
+│   │   ├── [drwxr-xr-x         224 Jun  6 01:15]  ./client/assets/about_pics
+│   │   │   ├── [-rw-r--r--       45778 Jun  6 01:15]  ./client/assets/about_pics/manu-pic.webp
+│   │   │   ├── [-rw-r--r--      197668 Jun  6 01:15]  ./client/assets/about_pics/renee-pic.webp
+│   │   │   ├── [-rw-r--r--      487222 Jun  6 01:15]  ./client/assets/about_pics/terrell-pic.webp
+│   │   │   ├── [-rw-r--r--       83014 Jun  6 01:15]  ./client/assets/about_pics/terrell-pic2.webp
+│   │   │   └── [-rw-r--r--       34816 Jun  6 01:15]  ./client/assets/about_pics/terrell-pic3.webp
+│   │   ├── [drwxr-xr-x         384 Aug 31 21:49]  ./client/assets/before_afters
+│   │   │   ├── [-rw-r--r--        6148 Aug 13 14:32]  ./client/assets/before_afters/.DS_Store
+│   │   │   ├── [-rw-r--r--     4498285 Aug 13 11:39]  ./client/assets/before_afters/forehead.png
+│   │   │   ├── [-rw-r--r--     5122503 Aug 13 11:39]  ./client/assets/before_afters/frown.png
+│   │   │   ├── [-rw-r--r--       49748 Aug 13 11:39]  ./client/assets/before_afters/jawline-placeholder.jpg
+│   │   │   ├── [-rw-r--r--       71016 Aug 31 20:08]  ./client/assets/before_afters/jawline-slimming-1.jpg
+│   │   │   ├── [-rw-r--r--      999971 Aug 13 11:39]  ./client/assets/before_afters/lower-face-duo-placeholder.jpg
+│   │   │   ├── [-rw-r--r--     1539046 Aug 31 21:48]  ./client/assets/before_afters/masseter-1.png
+│   │   │   ├── [-rw-r--r--      293421 Aug 13 11:39]  ./client/assets/before_afters/neck-lift-placeholder.png
+│   │   │   ├── [-rw-r--r--     7312748 Aug 29 21:54]  ./client/assets/before_afters/under-eye-1.png
+│   │   │   └── [-rw-r--r--      101605 Aug 13 11:39]  ./client/assets/before_afters/under-eye-placeholder.jpg
+│   │   ├── [drwxr-xr-x         352 Aug 27 20:59]  ./client/assets/diagrams
+│   │   │   ├── [-rw-r--r--        6148 Jul 25 16:50]  ./client/assets/diagrams/.DS_Store
+│   │   │   ├── [-rw-r--r--     1522441 Aug 13 11:39]  ./client/assets/diagrams/anti-wrinkle-1.png
+│   │   │   ├── [-rw-r--r--     1514086 Aug 13 11:39]  ./client/assets/diagrams/lower-face-1.png
+│   │   │   ├── [-rw-r--r--     1510153 Aug 13 11:39]  ./client/assets/diagrams/masseter-1.png
+│   │   │   ├── [-rw-r--r--      407477 Aug 13 11:39]  ./client/assets/diagrams/platysmal-bands-1.png
+│   │   │   ├── [-rw-r--r--     1190969 Aug 13 11:39]  ./client/assets/diagrams/skin-booster-1.png
+│   │   │   ├── [-rw-r--r--      300071 Aug 13 11:39]  ./client/assets/diagrams/smile-lift-1.png
+│   │   │   ├── [-rw-r--r--     1407315 Aug 13 11:39]  ./client/assets/diagrams/sweat-control-1.png
+│   │   │   └── [-rw-r--r--     1533924 Aug 27 20:58]  ./client/assets/diagrams/under-eye-1.png
+│   │   ├── [drwxr-xr-x        1184 Aug 29 20:49]  ./client/assets/hero_images
+│   │   │   ├── [-rw-r--r--       10244 Aug 29 20:58]  ./client/assets/hero_images/.DS_Store
+│   │   │   ├── [-rw-r--r--      492430 Jun  6 01:15]  ./client/assets/hero_images/aevia-clinic.webp
+│   │   │   ├── [-rw-r--r--       22316 Jun  6 01:59]  ./client/assets/hero_images/aevia-clinic2-800w.webp
+│   │   │   ├── [-rw-r--r--      324710 Jun  6 01:15]  ./client/assets/hero_images/aevia-clinic2.webp
+│   │   │   ├── [-rw-r--r--       23512 Jun  6 01:59]  ./client/assets/hero_images/aevia-clinic3-800w.webp
+│   │   │   ├── [-rw-r--r--      461974 Jun  6 01:15]  ./client/assets/hero_images/aevia-clinic3.webp
+│   │   │   ├── [-rw-r--r--      271610 Aug 29 20:20]  ./client/assets/hero_images/jawline-slimming-2.jpg
+│   │   │   ├── [-rw-r--r--       32774 Aug 29 20:26]  ./client/assets/hero_images/jawline-slimming-3.webp
+│   │   │   ├── [-rw-r--r--     1994930 Aug 29 20:35]  ./client/assets/hero_images/jawline-slimming-4.png
+│   │   │   ├── [-rw-r--r--      193111 Aug 29 20:03]  ./client/assets/hero_images/jawline-slimming.jpg
+│   │   │   ├── [-rw-r--r--       46122 Jun  6 01:15]  ./client/assets/hero_images/mind-coaching-stairs.webp
+│   │   │   ├── [-rw-r--r--       12264 Jun  6 01:59]  ./client/assets/hero_images/mind-coaching-water-800w.webp
+│   │   │   ├── [-rw-r--r--       32266 Jun  6 01:15]  ./client/assets/hero_images/mind-coaching-water.webp
+│   │   │   ├── [-rw-r--r--       15936 Jun  6 01:59]  ./client/assets/hero_images/mind-hero-800w.webp
+│   │   │   ├── [-rw-r--r--       41232 Jun  6 01:15]  ./client/assets/hero_images/mind-hero.webp
+│   │   │   ├── [-rw-r--r--       86152 Aug 29 20:47]  ./client/assets/hero_images/model-1.webp
+│   │   │   ├── [-rw-r--r--      148984 Aug 29 20:49]  ./client/assets/hero_images/model-2.webp
+│   │   │   ├── [-rw-r--r--      237901 Aug 29 20:12]  ./client/assets/hero_images/polynucleotides-1.jpg
+│   │   │   ├── [-rw-r--r--       87910 Aug 29 20:01]  ./client/assets/hero_images/profhilo.jpg
+│   │   │   ├── [-rw-r--r--     1166376 Jun 10 19:55]  ./client/assets/hero_images/royalty-free-skin-botox1.webp
+│   │   │   ├── [-rw-r--r--     1152638 Jun 10 19:55]  ./client/assets/hero_images/royalty-free-skin-botox2.webp
+│   │   │   ├── [-rw-r--r--      685132 Jun 10 19:55]  ./client/assets/hero_images/royalty-free-skin1.webp
+│   │   │   ├── [-rw-r--r--      889962 Jun 10 19:55]  ./client/assets/hero_images/royalty-free-skin2.webp
+│   │   │   ├── [-rw-r--r--     1104664 Jun 10 19:55]  ./client/assets/hero_images/royalty-free-skin3.webp
+│   │   │   ├── [-rw-r--r--      962264 Jun 10 19:55]  ./client/assets/hero_images/royalty-free-skin4.webp
+│   │   │   ├── [-rw-r--r--       39828 Aug 28 21:17]  ./client/assets/hero_images/sculptra-800w.jpg
+│   │   │   ├── [-rw-r--r--       19968 Aug 28 21:17]  ./client/assets/hero_images/sculptra-800w.webp
+│   │   │   ├── [-rw-r--r--       80714 Aug 28 20:33]  ./client/assets/hero_images/sculptra.jpg
+│   │   │   ├── [-rw-r--r--       98728 Aug 28 21:17]  ./client/assets/hero_images/sculptra.webp
+│   │   │   ├── [-rw-r--r--       65294 Jun  6 01:15]  ./client/assets/hero_images/Skin Clinic GPT.webp
+│   │   │   ├── [-rw-r--r--       14040 Jun  6 01:59]  ./client/assets/hero_images/skin-model-2-800w.webp
+│   │   │   ├── [-rw-r--r--       40434 Jun  6 01:15]  ./client/assets/hero_images/skin-model-2.webp
+│   │   │   ├── [-rw-r--r--       23690 Jun  6 01:59]  ./client/assets/hero_images/skin-model-800w.webp
+│   │   │   ├── [-rw-r--r--       94320 Jun  6 01:15]  ./client/assets/hero_images/skin-model.webp
+│   │   │   └── [-rw-r--r--       65263 Aug 29 20:28]  ./client/assets/hero_images/under-eye-1.jpg
+│   │   ├── [drwxr-xr-x         288 Jul  2 21:20]  ./client/assets/logos
+│   │   │   ├── [-rw-r--r--       10784 Jul  2 21:14]  ./client/assets/logos/aevia-favicon.ico
+│   │   │   ├── [-rw-r--r--       15652 Jul  2 21:13]  ./client/assets/logos/aevia-favicon.png
+│   │   │   ├── [-rw-r--r--        7110 Jul  2 21:20]  ./client/assets/logos/aevia-favicon.webp
+│   │   │   ├── [-rw-r--r--        5196 Jun  6 01:15]  ./client/assets/logos/logo-black-transparent.webp
+│   │   │   ├── [-rw-r--r--        9948 Jun  6 01:15]  ./client/assets/logos/logo-black-white.webp
+│   │   │   ├── [-rw-r--r--        7932 Jun  6 01:15]  ./client/assets/logos/logo-gold-transparent.webp
+│   │   │   └── [-rw-r--r--        6606 Jun 10 16:38]  ./client/assets/logos/logo-gold.webp
+│   │   ├── [drwxr-xr-x         160 Jun  2 17:16]  ./client/assets/svgs
+│   │   │   ├── [-rw-r--r--        1846 Jun  2 17:18]  ./client/assets/svgs/tiktok-fill-svgrepo-com.svg
+│   │   │   ├── [-rw-r--r--        1151 Jun  2 17:18]  ./client/assets/svgs/tiktok-outline-svgrepo-com.svg
+│   │   │   └── [-rw-r--r--         525 Jun  2 17:18]  ./client/assets/svgs/tiktok-svgrepo-com.svg
+│   │   ├── [-rw-------        8112 Jun  2 12:09]  ./client/assets/The Aevia Landing Page Design Prompt.md
+│   │   └── [drwxr-xr-x         672 Aug 13 11:39]  ./client/assets/treatment_images
+│   │       ├── [-rw-r--r--        6148 Aug 16 14:45]  ./client/assets/treatment_images/.DS_Store
+│   │       ├── [-rw-r--r--     1723143 Aug 13 11:39]  ./client/assets/treatment_images/anti-wrinkle-hero.jpg
+│   │       ├── [-rw-r--r--    10504092 Aug 13 11:39]  ./client/assets/treatment_images/armpit-1-new.jpg
+│   │       ├── [-rw-r--r--       43663 Aug 13 11:39]  ./client/assets/treatment_images/armpit-1.jpg
+│   │       ├── [-rw-r--r--     3183939 Aug 13 11:39]  ./client/assets/treatment_images/armpit-2.jpg
+│   │       ├── [-rw-r--r--     2331411 Aug 13 11:39]  ./client/assets/treatment_images/armpit-2.png
+│   │       ├── [-rw-r--r--      102326 Aug 13 11:39]  ./client/assets/treatment_images/armpit.jpg
+│   │       ├── [-rw-r--r--       96371 Aug 13 11:39]  ./client/assets/treatment_images/dao.jpg
+│   │       ├── [-rw-r--r--    27398773 Aug 13 11:39]  ./client/assets/treatment_images/jaw-slim-hero.png
+│   │       ├── [-rw-r--r--     2878290 Aug 13 11:39]  ./client/assets/treatment_images/jaw-slim-new.png
+│   │       ├── [-rw-r--r--     2896377 Aug 13 11:39]  ./client/assets/treatment_images/lower-face-2-new.png
+│   │       ├── [-rw-r--r--     3014753 Aug 13 11:39]  ./client/assets/treatment_images/lower-face-2.jpg
+│   │       ├── [-rw-r--r--     7100951 Aug 13 11:39]  ./client/assets/treatment_images/lower-face-new.jpg
+│   │       ├── [-rw-r--r--      730716 Aug 13 11:39]  ./client/assets/treatment_images/lower-face.jpg
+│   │       ├── [-rw-r--r--       57616 Aug 13 11:39]  ./client/assets/treatment_images/masseter-botox.webp
+│   │       ├── [-rw-r--r--     9652671 Aug 13 11:39]  ./client/assets/treatment_images/neck-2-new.png
+│   │       ├── [-rw-r--r--      525657 Aug 13 11:39]  ./client/assets/treatment_images/neck-2.png
+│   │       ├── [-rw-r--r--       71122 Aug 13 11:39]  ./client/assets/treatment_images/neck.jpg
+│   │       └── [-rw-r--r--     1067023 Aug 13 11:39]  ./client/assets/treatment_images/skin-boosters-hero.jpg
+│   ├── [-rw-r--r--        3736 Sep 15 23:35]  ./client/index.html
+│   ├── [drwxr-xr-x         320 Sep 13 19:39]  ./client/public
+│   │   ├── [-rw-r--r--       16558 Jun  6 01:15]  ./client/public/aevia-logo.png
+│   │   ├── [-rw-r--r--       17714 Jun  6 01:15]  ./client/public/aevia-mind.png
+│   │   ├── [-rw-r--r--       17966 Jun  6 01:15]  ./client/public/aevia-skin.png
+│   │   ├── [drwxr-xr-x         192 Aug 27 19:17]  ./client/public/assets
+│   │   │   ├── [drwxr-xr-x        1088 Sep 13 13:29]  ./client/public/assets/before_afters
+│   │   │   │   ├── [-rw-r--r--       41878 Aug 14 22:49]  ./client/public/assets/before_afters/forehead-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       75378 Aug 14 22:49]  ./client/public/assets/before_afters/forehead-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       14152 Aug 14 22:49]  ./client/public/assets/before_afters/forehead-640w.avif
+│   │   │   │   ├── [-rw-r--r--       23822 Aug 14 22:49]  ./client/public/assets/before_afters/forehead-640w.webp
+│   │   │   │   ├── [-rw-r--r--       59433 Aug 14 22:49]  ./client/public/assets/before_afters/frown-1280w.avif
+│   │   │   │   ├── [-rw-r--r--      103904 Aug 14 22:49]  ./client/public/assets/before_afters/frown-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       16065 Aug 14 22:49]  ./client/public/assets/before_afters/frown-640w.avif
+│   │   │   │   ├── [-rw-r--r--       27972 Aug 14 22:49]  ./client/public/assets/before_afters/frown-640w.webp
+│   │   │   │   ├── [-rw-r--r--        8794 Aug 14 22:49]  ./client/public/assets/before_afters/jawline-placeholder-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       20294 Aug 14 22:49]  ./client/public/assets/before_afters/jawline-placeholder-1280w.webp
+│   │   │   │   ├── [-rw-r--r--        4408 Aug 14 22:49]  ./client/public/assets/before_afters/jawline-placeholder-640w.avif
+│   │   │   │   ├── [-rw-r--r--        9002 Aug 14 22:49]  ./client/public/assets/before_afters/jawline-placeholder-640w.webp
+│   │   │   │   ├── [-rw-r--r--       28064 Aug 14 22:49]  ./client/public/assets/before_afters/lower-face-duo-placeholder-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       56230 Aug 14 22:49]  ./client/public/assets/before_afters/lower-face-duo-placeholder-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       13042 Aug 14 22:49]  ./client/public/assets/before_afters/lower-face-duo-placeholder-640w.avif
+│   │   │   │   ├── [-rw-r--r--       23822 Aug 14 22:49]  ./client/public/assets/before_afters/lower-face-duo-placeholder-640w.webp
+│   │   │   │   ├── [-rw-r--r--       38361 Sep 13 13:29]  ./client/public/assets/before_afters/masseter-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       52618 Sep 13 13:29]  ./client/public/assets/before_afters/masseter-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       20396 Sep 13 13:29]  ./client/public/assets/before_afters/masseter-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       27026 Sep 13 13:29]  ./client/public/assets/before_afters/masseter-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--        6761 Aug 14 22:49]  ./client/public/assets/before_afters/neck-lift-placeholder-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       11092 Aug 14 22:49]  ./client/public/assets/before_afters/neck-lift-placeholder-1280w.webp
+│   │   │   │   ├── [-rw-r--r--        6761 Aug 14 22:49]  ./client/public/assets/before_afters/neck-lift-placeholder-640w.avif
+│   │   │   │   ├── [-rw-r--r--       11092 Aug 14 22:49]  ./client/public/assets/before_afters/neck-lift-placeholder-640w.webp
+│   │   │   │   ├── [-rw-r--r--      183429 Sep 13 13:29]  ./client/public/assets/before_afters/under-eye-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--      216516 Sep 13 13:29]  ./client/public/assets/before_afters/under-eye-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       57709 Sep 13 13:29]  ./client/public/assets/before_afters/under-eye-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       65430 Sep 13 13:29]  ./client/public/assets/before_afters/under-eye-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--       24199 Aug 14 22:49]  ./client/public/assets/before_afters/under-eye-placeholder-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       54700 Aug 14 22:49]  ./client/public/assets/before_afters/under-eye-placeholder-1280w.webp
+│   │   │   │   ├── [-rw-r--r--        7893 Aug 14 22:49]  ./client/public/assets/before_afters/under-eye-placeholder-640w.avif
+│   │   │   │   └── [-rw-r--r--       14836 Aug 14 22:49]  ./client/public/assets/before_afters/under-eye-placeholder-640w.webp
+│   │   │   ├── [drwxr-xr-x         960 Aug 14 22:49]  ./client/public/assets/diagrams
+│   │   │   │   ├── [-rw-r--r--       22927 Aug 14 22:49]  ./client/public/assets/diagrams/anti-wrinkle-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       85538 Aug 14 22:49]  ./client/public/assets/diagrams/anti-wrinkle-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       24238 Aug 14 22:49]  ./client/public/assets/diagrams/anti-wrinkle-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       54976 Aug 14 22:49]  ./client/public/assets/diagrams/anti-wrinkle-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--       22723 Aug 14 22:49]  ./client/public/assets/diagrams/lower-face-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       73834 Aug 14 22:49]  ./client/public/assets/diagrams/lower-face-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       26242 Aug 14 22:49]  ./client/public/assets/diagrams/lower-face-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       55348 Aug 14 22:49]  ./client/public/assets/diagrams/lower-face-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--       18442 Aug 14 22:49]  ./client/public/assets/diagrams/masseter-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       66936 Aug 14 22:49]  ./client/public/assets/diagrams/masseter-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       19156 Aug 14 22:49]  ./client/public/assets/diagrams/masseter-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       43380 Aug 14 22:49]  ./client/public/assets/diagrams/masseter-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--       45384 Aug 14 22:49]  ./client/public/assets/diagrams/platysmal-bands-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--      134524 Aug 14 22:49]  ./client/public/assets/diagrams/platysmal-bands-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       31146 Aug 14 22:49]  ./client/public/assets/diagrams/platysmal-bands-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       76630 Aug 14 22:49]  ./client/public/assets/diagrams/platysmal-bands-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--       10895 Aug 14 22:49]  ./client/public/assets/diagrams/skin-booster-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       20518 Aug 14 22:49]  ./client/public/assets/diagrams/skin-booster-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--        6177 Aug 14 22:49]  ./client/public/assets/diagrams/skin-booster-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       10790 Aug 14 22:49]  ./client/public/assets/diagrams/skin-booster-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--       22833 Aug 14 22:49]  ./client/public/assets/diagrams/smile-lift-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       71552 Aug 14 22:49]  ./client/public/assets/diagrams/smile-lift-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--       17272 Aug 14 22:49]  ./client/public/assets/diagrams/smile-lift-1-640w.avif
+│   │   │   │   ├── [-rw-r--r--       48308 Aug 14 22:49]  ./client/public/assets/diagrams/smile-lift-1-640w.webp
+│   │   │   │   ├── [-rw-r--r--       10959 Aug 14 22:49]  ./client/public/assets/diagrams/sweat-control-1-1280w.avif
+│   │   │   │   ├── [-rw-r--r--       33868 Aug 14 22:49]  ./client/public/assets/diagrams/sweat-control-1-1280w.webp
+│   │   │   │   ├── [-rw-r--r--        7746 Aug 14 22:49]  ./client/public/assets/diagrams/sweat-control-1-640w.avif
+│   │   │   │   └── [-rw-r--r--       20234 Aug 14 22:49]  ./client/public/assets/diagrams/sweat-control-1-640w.webp
+│   │   │   ├── [drwxr-xr-x          64 Aug 27 20:51]  ./client/public/assets/insurance
+│   │   │   └── [drwxr-xr-x        3072 Aug 29 20:55]  ./client/public/assets/treatment_images
+│   │   │       ├── [-rw-r--r--       89581 Aug 14 22:13]  ./client/public/assets/treatment_images/anti-wrinkle-hero-1280w.avif
+│   │   │       ├── [-rw-r--r--      166864 Aug 14 22:13]  ./client/public/assets/treatment_images/anti-wrinkle-hero-1280w.webp
+│   │   │       ├── [-rw-r--r--        4932 Aug 14 22:13]  ./client/public/assets/treatment_images/anti-wrinkle-hero-320w.avif
+│   │   │       ├── [-rw-r--r--        9100 Aug 14 22:13]  ./client/public/assets/treatment_images/anti-wrinkle-hero-320w.webp
+│   │   │       ├── [-rw-r--r--       18264 Aug 14 22:13]  ./client/public/assets/treatment_images/anti-wrinkle-hero-640w.avif
+│   │   │       ├── [-rw-r--r--       37238 Aug 14 22:13]  ./client/public/assets/treatment_images/anti-wrinkle-hero-640w.webp
+│   │   │       ├── [-rw-r--r--       14037 Aug 14 22:13]  ./client/public/assets/treatment_images/armpit-2-1280w.avif
+│   │   │       ├── [-rw-r--r--       38752 Aug 14 22:13]  ./client/public/assets/treatment_images/armpit-2-1280w.webp
+│   │   │       ├── [-rw-r--r--        3355 Aug 14 22:13]  ./client/public/assets/treatment_images/armpit-2-320w.avif
+│   │   │       ├── [-rw-r--r--        5884 Aug 14 22:13]  ./client/public/assets/treatment_images/armpit-2-320w.webp
+│   │   │       ├── [-rw-r--r--        6587 Aug 14 22:13]  ./client/public/assets/treatment_images/armpit-2-640w.avif
+│   │   │       ├── [-rw-r--r--       14304 Aug 14 22:13]  ./client/public/assets/treatment_images/armpit-2-640w.webp
+│   │   │       ├── [-rw-r--r--       23927 Aug 14 22:13]  ./client/public/assets/treatment_images/dao-1280w.avif
+│   │   │       ├── [-rw-r--r--       55190 Aug 14 22:13]  ./client/public/assets/treatment_images/dao-1280w.webp
+│   │   │       ├── [-rw-r--r--        2935 Aug 14 22:13]  ./client/public/assets/treatment_images/dao-320w.avif
+│   │   │       ├── [-rw-r--r--        5170 Aug 14 22:13]  ./client/public/assets/treatment_images/dao-320w.webp
+│   │   │       ├── [-rw-r--r--        7849 Aug 14 22:13]  ./client/public/assets/treatment_images/dao-640w.avif
+│   │   │       ├── [-rw-r--r--       16202 Aug 14 22:13]  ./client/public/assets/treatment_images/dao-640w.webp
+│   │   │       ├── [-rw-r--r--       27038 Aug 14 22:13]  ./client/public/assets/treatment_images/jaw-slim-hero-1280w.avif
+│   │   │       ├── [-rw-r--r--       52646 Aug 14 22:13]  ./client/public/assets/treatment_images/jaw-slim-hero-1280w.webp
+│   │   │       ├── [-rw-r--r--        3185 Aug 14 22:13]  ./client/public/assets/treatment_images/jaw-slim-hero-320w.avif
+│   │   │       ├── [-rw-r--r--        4784 Aug 14 22:13]  ./client/public/assets/treatment_images/jaw-slim-hero-320w.webp
+│   │   │       ├── [-rw-r--r--        8307 Aug 14 22:13]  ./client/public/assets/treatment_images/jaw-slim-hero-640w.avif
+│   │   │       ├── [-rw-r--r--       14932 Aug 14 22:13]  ./client/public/assets/treatment_images/jaw-slim-hero-640w.webp
+│   │   │       ├── [-rw-r--r--       17284 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-1280w.avif
+│   │   │       ├── [-rw-r--r--       25650 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-1280w.webp
+│   │   │       ├── [-rw-r--r--       68245 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-2-1280w.avif
+│   │   │       ├── [-rw-r--r--       85416 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-2-1280w.webp
+│   │   │       ├── [-rw-r--r--        5435 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-2-320w.avif
+│   │   │       ├── [-rw-r--r--        6380 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-2-320w.webp
+│   │   │       ├── [-rw-r--r--       13809 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-2-640w.avif
+│   │   │       ├── [-rw-r--r--       18246 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-2-640w.webp
+│   │   │       ├── [-rw-r--r--       24726 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-3-1280w.avif
+│   │   │       ├── [-rw-r--r--       29996 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-3-1280w.webp
+│   │   │       ├── [-rw-r--r--        2705 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-3-320w.avif
+│   │   │       ├── [-rw-r--r--        3038 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-3-320w.webp
+│   │   │       ├── [-rw-r--r--        6397 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-3-640w.avif
+│   │   │       ├── [-rw-r--r--        7648 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-3-640w.webp
+│   │   │       ├── [-rw-r--r--        3255 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-320w.avif
+│   │   │       ├── [-rw-r--r--        3608 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-320w.webp
+│   │   │       ├── [-rw-r--r--       18856 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-4-1280w.avif
+│   │   │       ├── [-rw-r--r--       27494 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-4-1280w.webp
+│   │   │       ├── [-rw-r--r--        3443 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-4-320w.avif
+│   │   │       ├── [-rw-r--r--        3678 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-4-320w.webp
+│   │   │       ├── [-rw-r--r--        7767 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-4-640w.avif
+│   │   │       ├── [-rw-r--r--        9594 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-4-640w.webp
+│   │   │       ├── [-rw-r--r--        6891 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-640w.avif
+│   │   │       ├── [-rw-r--r--        8704 Aug 29 20:55]  ./client/public/assets/treatment_images/jawline-slimming-640w.webp
+│   │   │       ├── [-rw-r--r--       18056 Aug 14 22:13]  ./client/public/assets/treatment_images/lower-face-2-1280w.avif
+│   │   │       ├── [-rw-r--r--       38576 Aug 14 22:13]  ./client/public/assets/treatment_images/lower-face-2-1280w.webp
+│   │   │       ├── [-rw-r--r--        3852 Aug 14 22:13]  ./client/public/assets/treatment_images/lower-face-2-320w.avif
+│   │   │       ├── [-rw-r--r--        5568 Aug 14 22:13]  ./client/public/assets/treatment_images/lower-face-2-320w.webp
+│   │   │       ├── [-rw-r--r--        7780 Aug 14 22:13]  ./client/public/assets/treatment_images/lower-face-2-640w.avif
+│   │   │       ├── [-rw-r--r--       13528 Aug 14 22:13]  ./client/public/assets/treatment_images/lower-face-2-640w.webp
+│   │   │       ├── [-rw-r--r--       33389 Aug 29 20:55]  ./client/public/assets/treatment_images/model-1-1280w.avif
+│   │   │       ├── [-rw-r--r--       37008 Aug 29 20:55]  ./client/public/assets/treatment_images/model-1-1280w.webp
+│   │   │       ├── [-rw-r--r--        3622 Aug 29 20:55]  ./client/public/assets/treatment_images/model-1-320w.avif
+│   │   │       ├── [-rw-r--r--        4060 Aug 29 20:55]  ./client/public/assets/treatment_images/model-1-320w.webp
+│   │   │       ├── [-rw-r--r--        8121 Aug 29 20:55]  ./client/public/assets/treatment_images/model-1-640w.avif
+│   │   │       ├── [-rw-r--r--       10932 Aug 29 20:55]  ./client/public/assets/treatment_images/model-1-640w.webp
+│   │   │       ├── [-rw-r--r--       45802 Aug 29 20:55]  ./client/public/assets/treatment_images/model-2-1280w.avif
+│   │   │       ├── [-rw-r--r--       55950 Aug 29 20:55]  ./client/public/assets/treatment_images/model-2-1280w.webp
+│   │   │       ├── [-rw-r--r--        3052 Aug 29 20:55]  ./client/public/assets/treatment_images/model-2-320w.avif
+│   │   │       ├── [-rw-r--r--        3810 Aug 29 20:55]  ./client/public/assets/treatment_images/model-2-320w.webp
+│   │   │       ├── [-rw-r--r--        9531 Aug 29 20:55]  ./client/public/assets/treatment_images/model-2-640w.avif
+│   │   │       ├── [-rw-r--r--       13202 Aug 29 20:55]  ./client/public/assets/treatment_images/model-2-640w.webp
+│   │   │       ├── [-rw-r--r--        6967 Aug 14 22:13]  ./client/public/assets/treatment_images/neck-2-1280w.avif
+│   │   │       ├── [-rw-r--r--       16682 Aug 14 22:13]  ./client/public/assets/treatment_images/neck-2-1280w.webp
+│   │   │       ├── [-rw-r--r--        1870 Aug 14 22:13]  ./client/public/assets/treatment_images/neck-2-320w.avif
+│   │   │       ├── [-rw-r--r--        3102 Aug 14 22:13]  ./client/public/assets/treatment_images/neck-2-320w.webp
+│   │   │       ├── [-rw-r--r--        3692 Aug 14 22:13]  ./client/public/assets/treatment_images/neck-2-640w.avif
+│   │   │       ├── [-rw-r--r--        8282 Aug 14 22:13]  ./client/public/assets/treatment_images/neck-2-640w.webp
+│   │   │       ├── [-rw-r--r--       28109 Aug 29 20:55]  ./client/public/assets/treatment_images/polynucleotides-1-1280w.avif
+│   │   │       ├── [-rw-r--r--       40194 Aug 29 20:55]  ./client/public/assets/treatment_images/polynucleotides-1-1280w.webp
+│   │   │       ├── [-rw-r--r--        4418 Aug 29 20:55]  ./client/public/assets/treatment_images/polynucleotides-1-320w.avif
+│   │   │       ├── [-rw-r--r--        4842 Aug 29 20:55]  ./client/public/assets/treatment_images/polynucleotides-1-320w.webp
+│   │   │       ├── [-rw-r--r--        9476 Aug 29 20:55]  ./client/public/assets/treatment_images/polynucleotides-1-640w.avif
+│   │   │       ├── [-rw-r--r--       12840 Aug 29 20:55]  ./client/public/assets/treatment_images/polynucleotides-1-640w.webp
+│   │   │       ├── [-rw-r--r--       47889 Aug 29 20:55]  ./client/public/assets/treatment_images/profhilo-1280w.avif
+│   │   │       ├── [-rw-r--r--       57900 Aug 29 20:55]  ./client/public/assets/treatment_images/profhilo-1280w.webp
+│   │   │       ├── [-rw-r--r--        5715 Aug 29 20:55]  ./client/public/assets/treatment_images/profhilo-320w.avif
+│   │   │       ├── [-rw-r--r--        6058 Aug 29 20:55]  ./client/public/assets/treatment_images/profhilo-320w.webp
+│   │   │       ├── [-rw-r--r--       14680 Aug 29 20:55]  ./client/public/assets/treatment_images/profhilo-640w.avif
+│   │   │       ├── [-rw-r--r--       17866 Aug 29 20:55]  ./client/public/assets/treatment_images/profhilo-640w.webp
+│   │   │       ├── [-rw-r--r--        2418 Aug 28 21:21]  ./client/public/assets/treatment_images/sculptra-320w.avif
+│   │   │       ├── [-rw-r--r--        4438 Aug 28 21:21]  ./client/public/assets/treatment_images/sculptra-320w.webp
+│   │   │       ├── [-rw-r--r--        5907 Aug 28 21:21]  ./client/public/assets/treatment_images/sculptra-640w.avif
+│   │   │       ├── [-rw-r--r--       13860 Aug 28 21:21]  ./client/public/assets/treatment_images/sculptra-640w.webp
+│   │   │       ├── [-rw-r--r--       46104 Aug 29 20:55]  ./client/public/assets/treatment_images/under-eye-1-1280w.avif
+│   │   │       ├── [-rw-r--r--       55516 Aug 29 20:55]  ./client/public/assets/treatment_images/under-eye-1-1280w.webp
+│   │   │       ├── [-rw-r--r--        8066 Aug 29 20:55]  ./client/public/assets/treatment_images/under-eye-1-320w.avif
+│   │   │       ├── [-rw-r--r--       10478 Aug 29 20:55]  ./client/public/assets/treatment_images/under-eye-1-320w.webp
+│   │   │       ├── [-rw-r--r--       33759 Aug 29 20:55]  ./client/public/assets/treatment_images/under-eye-1-640w.avif
+│   │   │       └── [-rw-r--r--       42394 Aug 29 20:55]  ./client/public/assets/treatment_images/under-eye-1-640w.webp
+│   │   ├── [-rw-r--r--       16558 Jun  5 01:02]  ./client/public/favicon.ico
+│   │   ├── [-rw-r--r--         131 Sep 13 19:39]  ./client/public/robots.txt
+│   │   ├── [-rw-r--r--         278 Sep 13 19:39]  ./client/public/sitemap_index.xml
+│   │   └── [-rw-r--r--        1482 Jun 13 23:47]  ./client/public/sitemap.xml
+│   ├── [drwxr-xr-x         384 Sep  9 23:10]  ./client/src
+│   │   ├── [-rw-r--r--        6389 Sep  9 23:10]  ./client/src/App.tsx
+│   │   ├── [drwxr-xr-x         512 Sep 14 22:02]  ./client/src/components
+│   │   │   ├── [-rw-r--r--        1154 Aug 27 17:42]  ./client/src/components/BookingButton.tsx
+│   │   │   ├── [-rw-r--r--        4219 Sep 13 19:39]  ./client/src/components/Footer.tsx
+│   │   │   ├── [-rw-r--r--         365 Aug 27 17:42]  ./client/src/components/IconBadge.tsx
+│   │   │   ├── [-rw-r--r--        6338 Sep  9 23:10]  ./client/src/components/Layout.tsx
+│   │   │   ├── [-rw-r--r--         682 Jun 14 16:37]  ./client/src/components/Map.tsx
+│   │   │   ├── [-rw-r--r--       10059 Sep 13 12:15]  ./client/src/components/MobileStickyBookingBar.tsx
+│   │   │   ├── [-rw-r--r--       36911 Sep 14 22:30]  ./client/src/components/Navigation.tsx
+│   │   │   ├── [-rw-r--r--        2239 Aug 27 17:42]  ./client/src/components/SEO.tsx
+│   │   │   ├── [-rw-r--r--        1711 Aug 27 17:42]  ./client/src/components/ServiceCard.tsx
+│   │   │   ├── [-rw-r--r--        1711 Aug 27 17:42]  ./client/src/components/TestimonialCard.tsx
+│   │   │   ├── [-rw-r--r--        3364 Aug 29 21:54]  ./client/src/components/TreatmentCard.tsx
+│   │   │   ├── [-rw-r--r--         929 Aug 27 17:42]  ./client/src/components/TreatmentLayout.tsx
+│   │   │   ├── [drwxr-xr-x        1568 Aug 30 00:14]  ./client/src/components/ui
+│   │   │   │   ├── [-rw-r--r--        1993 Aug 29 19:50]  ./client/src/components/ui/accordion.tsx
+│   │   │   │   ├── [-rw-r--r--        4420 Aug 27 17:42]  ./client/src/components/ui/alert-dialog.tsx
+│   │   │   │   ├── [-rw-r--r--        1584 Aug 27 17:42]  ./client/src/components/ui/alert.tsx
+│   │   │   │   ├── [-rw-r--r--         140 Aug 27 17:42]  ./client/src/components/ui/aspect-ratio.tsx
+│   │   │   │   ├── [-rw-r--r--        1419 Aug 27 17:42]  ./client/src/components/ui/avatar.tsx
+│   │   │   │   ├── [-rw-r--r--        1128 Aug 27 17:42]  ./client/src/components/ui/badge.tsx
+│   │   │   │   ├── [-rw-r--r--        2712 Aug 27 17:42]  ./client/src/components/ui/breadcrumb.tsx
+│   │   │   │   ├── [-rw-r--r--        1889 Aug 30 00:14]  ./client/src/components/ui/button.tsx
+│   │   │   │   ├── [-rw-r--r--        2695 Aug 27 17:42]  ./client/src/components/ui/calendar.tsx
+│   │   │   │   ├── [-rw-r--r--        1858 Aug 27 17:42]  ./client/src/components/ui/card.tsx
+│   │   │   │   ├── [-rw-r--r--        6210 Aug 27 17:42]  ./client/src/components/ui/carousel.tsx
+│   │   │   │   ├── [-rw-r--r--       10481 Aug 27 17:42]  ./client/src/components/ui/chart.tsx
+│   │   │   │   ├── [-rw-r--r--        1056 Aug 27 17:42]  ./client/src/components/ui/checkbox.tsx
+│   │   │   │   ├── [-rw-r--r--         329 Aug 27 17:42]  ./client/src/components/ui/collapsible.tsx
+│   │   │   │   ├── [-rw-r--r--        4885 Aug 27 17:42]  ./client/src/components/ui/command.tsx
+│   │   │   │   ├── [-rw-r--r--        7428 Aug 27 17:42]  ./client/src/components/ui/context-menu.tsx
+│   │   │   │   ├── [-rw-r--r--        3848 Aug 27 17:42]  ./client/src/components/ui/dialog.tsx
+│   │   │   │   ├── [-rw-r--r--        3021 Aug 27 17:42]  ./client/src/components/ui/drawer.tsx
+│   │   │   │   ├── [-rw-r--r--        7609 Aug 27 17:42]  ./client/src/components/ui/dropdown-menu.tsx
+│   │   │   │   ├── [-rw-r--r--        4120 Aug 27 17:42]  ./client/src/components/ui/form.tsx
+│   │   │   │   ├── [-rw-r--r--        1251 Aug 27 17:42]  ./client/src/components/ui/hover-card.tsx
+│   │   │   │   ├── [-rw-r--r--        2154 Aug 27 17:42]  ./client/src/components/ui/input-otp.tsx
+│   │   │   │   ├── [-rw-r--r--         791 Aug 27 17:42]  ./client/src/components/ui/input.tsx
+│   │   │   │   ├── [-rw-r--r--         710 Aug 27 17:42]  ./client/src/components/ui/label.tsx
+│   │   │   │   ├── [-rw-r--r--        8605 Aug 27 17:42]  ./client/src/components/ui/menubar.tsx
+│   │   │   │   ├── [-rw-r--r--        5128 Aug 27 17:42]  ./client/src/components/ui/navigation-menu.tsx
+│   │   │   │   ├── [-rw-r--r--        2751 Aug 27 17:42]  ./client/src/components/ui/pagination.tsx
+│   │   │   │   ├── [-rw-r--r--        1280 Aug 27 17:42]  ./client/src/components/ui/popover.tsx
+│   │   │   │   ├── [-rw-r--r--         791 Aug 27 17:42]  ./client/src/components/ui/progress.tsx
+│   │   │   │   ├── [-rw-r--r--        1467 Aug 27 17:42]  ./client/src/components/ui/radio-group.tsx
+│   │   │   │   ├── [-rw-r--r--        1723 Aug 27 17:42]  ./client/src/components/ui/resizable.tsx
+│   │   │   │   ├── [-rw-r--r--        1642 Aug 27 17:42]  ./client/src/components/ui/scroll-area.tsx
+│   │   │   │   ├── [-rw-r--r--        5742 Aug 27 17:42]  ./client/src/components/ui/select.tsx
+│   │   │   │   ├── [-rw-r--r--         756 Aug 27 17:42]  ./client/src/components/ui/separator.tsx
+│   │   │   │   ├── [-rw-r--r--        4281 Aug 27 17:42]  ./client/src/components/ui/sheet.tsx
+│   │   │   │   ├── [-rw-r--r--       23567 Aug 27 17:42]  ./client/src/components/ui/sidebar.tsx
+│   │   │   │   ├── [-rw-r--r--         261 Aug 27 17:42]  ./client/src/components/ui/skeleton.tsx
+│   │   │   │   ├── [-rw-r--r--        1077 Aug 27 17:42]  ./client/src/components/ui/slider.tsx
+│   │   │   │   ├── [-rw-r--r--        1139 Aug 27 17:42]  ./client/src/components/ui/switch.tsx
+│   │   │   │   ├── [-rw-r--r--        2765 Aug 27 17:42]  ./client/src/components/ui/table.tsx
+│   │   │   │   ├── [-rw-r--r--        1883 Aug 27 17:42]  ./client/src/components/ui/tabs.tsx
+│   │   │   │   ├── [-rw-r--r--         689 Aug 27 17:42]  ./client/src/components/ui/textarea.tsx
+│   │   │   │   ├── [-rw-r--r--        4845 Aug 27 17:42]  ./client/src/components/ui/toast.tsx
+│   │   │   │   ├── [-rw-r--r--         772 Aug 27 17:42]  ./client/src/components/ui/toaster.tsx
+│   │   │   │   ├── [-rw-r--r--        1753 Aug 27 17:42]  ./client/src/components/ui/toggle-group.tsx
+│   │   │   │   ├── [-rw-r--r--        1527 Aug 27 17:42]  ./client/src/components/ui/toggle.tsx
+│   │   │   │   └── [-rw-r--r--        1209 Aug 27 17:42]  ./client/src/components/ui/tooltip.tsx
+│   │   │   └── [-rw-r--r--        6420 Aug 30 02:11]  ./client/src/components/WhatsAppWidget.tsx
+│   │   ├── [drwxr-xr-x         160 Aug 27 12:39]  ./client/src/data
+│   │   │   ├── [-rw-r--r--        2244 Aug 31 16:14]  ./client/src/data/signatureOffers.ts
+│   │   │   ├── [-rw-r--r--        1279 Jun 30 23:49]  ./client/src/data/testimonials.ts
+│   │   │   └── [-rw-r--r--       15798 Aug 31 16:18]  ./client/src/data/treatments.ts
+│   │   ├── [drwxr-xr-x         128 Aug 27 17:42]  ./client/src/hooks
+│   │   │   ├── [-rw-r--r--         565 Aug 27 17:42]  ./client/src/hooks/use-mobile.tsx
+│   │   │   └── [-rw-r--r--        3895 Aug 27 17:42]  ./client/src/hooks/use-toast.ts
+│   │   ├── [-rw-r--r--        4286 Aug 30 01:37]  ./client/src/index.css
+│   │   ├── [drwxr-xr-x         160 Aug 27 17:42]  ./client/src/lib
+│   │   │   ├── [-rw-r--r--        1376 Aug 27 17:42]  ./client/src/lib/queryClient.ts
+│   │   │   ├── [-rw-r--r--        3816 Aug 29 21:17]  ./client/src/lib/treatmentImageUtils.ts
+│   │   │   └── [-rw-r--r--         166 Aug 27 17:42]  ./client/src/lib/utils.ts
+│   │   ├── [-rw-r--r--         157 Aug 27 17:42]  ./client/src/main.tsx
+│   │   ├── [drwxr-xr-x         672 Sep  9 23:10]  ./client/src/pages
+│   │   │   ├── [-rw-r--r--       16358 Sep 13 12:11]  ./client/src/pages/Bio.tsx
+│   │   │   ├── [-rw-r--r--        4785 Aug 31 22:04]  ./client/src/pages/Bookings.tsx
+│   │   │   ├── [-rw-r--r--        2368 Aug 30 00:14]  ./client/src/pages/Cancellation.tsx
+│   │   │   ├── [drwxr-xr-x         288 Aug 29 21:54]  ./client/src/pages/categories
+│   │   │   │   ├── [-rw-r--r--        4571 Sep 13 12:12]  ./client/src/pages/categories/anti-wrinkle.tsx
+│   │   │   │   ├── [-rw-r--r--        2471 Sep 13 12:13]  ./client/src/pages/categories/bio-voluminisation.tsx
+│   │   │   │   ├── [-rw-r--r--        2478 Sep 13 12:13]  ./client/src/pages/categories/consultation.tsx
+│   │   │   │   ├── [-rw-r--r--        1566 Aug 27 17:59]  ./client/src/pages/categories/microneedling-peels.tsx
+│   │   │   │   ├── [-rw-r--r--        2456 Sep 13 12:13]  ./client/src/pages/categories/polynucleotides.tsx
+│   │   │   │   ├── [-rw-r--r--        2461 Sep 13 12:13]  ./client/src/pages/categories/skin-boosters.tsx
+│   │   │   │   └── [-rw-r--r--        1002 Aug 27 17:42]  ./client/src/pages/categories/UnderDevelopment.tsx
+│   │   │   ├── [-rw-r--r--        4184 Sep 13 12:12]  ./client/src/pages/Clinic.tsx
+│   │   │   ├── [drwxr-xr-x         128 Aug 30 00:14]  ./client/src/pages/consultations
+│   │   │   │   ├── [-rw-r--r--        7583 Sep  3 15:36]  ./client/src/pages/consultations/mind.tsx
+│   │   │   │   └── [-rw-r--r--        8084 Sep 13 13:13]  ./client/src/pages/consultations/skin.tsx
+│   │   │   ├── [-rw-r--r--        4443 Sep 13 22:21]  ./client/src/pages/Gallery.tsx
+│   │   │   ├── [-rw-r--r--       21439 Sep 13 12:16]  ./client/src/pages/Home.tsx
+│   │   │   ├── [-rw-r--r--         752 Aug 27 17:42]  ./client/src/pages/JournalPlaceholder.tsx
+│   │   │   ├── [-rw-r--r--       19376 Aug 31 16:23]  ./client/src/pages/Mind.tsx
+│   │   │   ├── [-rw-r--r--         692 Aug 27 17:42]  ./client/src/pages/not-found.tsx
+│   │   │   ├── [-rw-r--r--       15877 Sep  4 18:38]  ./client/src/pages/Privacy.tsx
+│   │   │   ├── [-rw-r--r--        1069 Sep  9 23:10]  ./client/src/pages/Quiz.tsx
+│   │   │   ├── [-rw-r--r--        5810 Aug 27 17:42]  ./client/src/pages/Reviews.tsx
+│   │   │   ├── [-rw-r--r--       16610 Sep 13 12:12]  ./client/src/pages/Skin.tsx
+│   │   │   ├── [-rw-r--r--        9214 Aug 27 20:50]  ./client/src/pages/Team.tsx
+│   │   │   ├── [-rw-r--r--       16244 Aug 31 16:24]  ./client/src/pages/Terms.tsx
+│   │   │   ├── [drwxr-xr-x         288 Aug 27 17:42]  ./client/src/pages/treatments
+│   │   │   │   ├── [-rw-r--r--        1708 Aug 27 17:42]  ./client/src/pages/treatments/[slug].tsx
+│   │   │   │   ├── [drwxr-xr-x         256 Aug 27 17:42]  ./client/src/pages/treatments/anti-wrinkle
+│   │   │   │   │   ├── [-rw-r--r--       23012 Sep 13 12:18]  ./client/src/pages/treatments/anti-wrinkle/anti-wrinkle.tsx
+│   │   │   │   │   ├── [-rw-r--r--       18441 Sep 13 13:30]  ./client/src/pages/treatments/anti-wrinkle/jawline-slimming.tsx
+│   │   │   │   │   ├── [-rw-r--r--       17013 Sep 13 12:15]  ./client/src/pages/treatments/anti-wrinkle/lower-face-contour-duo.tsx
+│   │   │   │   │   ├── [-rw-r--r--       17674 Sep 13 12:15]  ./client/src/pages/treatments/anti-wrinkle/neck-lift.tsx
+│   │   │   │   │   ├── [-rw-r--r--       15556 Sep 13 12:15]  ./client/src/pages/treatments/anti-wrinkle/smile-lift.tsx
+│   │   │   │   │   └── [-rw-r--r--       15946 Sep 13 12:15]  ./client/src/pages/treatments/anti-wrinkle/sweat-control.tsx
+│   │   │   │   ├── [drwxr-xr-x          96 Aug 27 17:42]  ./client/src/pages/treatments/bio-voluminisation
+│   │   │   │   │   └── [-rw-r--r--       16893 Sep 13 12:14]  ./client/src/pages/treatments/bio-voluminisation/sculptra.tsx
+│   │   │   │   ├── [drwxr-xr-x         192 Aug 27 17:42]  ./client/src/pages/treatments/clinical-peels
+│   │   │   │   │   ├── [-rw-r--r--        1171 Sep 13 12:14]  ./client/src/pages/treatments/clinical-peels/glycolic-peel.tsx
+│   │   │   │   │   ├── [-rw-r--r--        1208 Sep 13 12:14]  ./client/src/pages/treatments/clinical-peels/lactic-acid-peel.tsx
+│   │   │   │   │   ├── [-rw-r--r--        1199 Sep 13 12:14]  ./client/src/pages/treatments/clinical-peels/salicylic-peel.tsx
+│   │   │   │   │   └── [-rw-r--r--        1164 Sep 13 12:14]  ./client/src/pages/treatments/clinical-peels/tca-peel.tsx
+│   │   │   │   ├── [drwxr-xr-x          96 Aug 27 17:42]  ./client/src/pages/treatments/microneedling
+│   │   │   │   │   └── [-rw-r--r--        1194 Sep 13 12:14]  ./client/src/pages/treatments/microneedling/microneedling.tsx
+│   │   │   │   ├── [drwxr-xr-x         128 Aug 29 21:54]  ./client/src/pages/treatments/polynucleotides
+│   │   │   │   │   ├── [-rw-r--r--       18646 Sep 13 13:29]  ./client/src/pages/treatments/polynucleotides/eye-rejuvenation.tsx
+│   │   │   │   │   └── [-rw-r--r--       17455 Sep 13 12:13]  ./client/src/pages/treatments/polynucleotides/full-face-regeneration.tsx
+│   │   │   │   └── [drwxr-xr-x         128 Aug 27 17:42]  ./client/src/pages/treatments/skin-boosters
+│   │   │   │       ├── [-rw-r--r--       17439 Sep 13 12:13]  ./client/src/pages/treatments/skin-boosters/profhilo.tsx
+│   │   │   │       └── [-rw-r--r--       17307 Sep 13 12:13]  ./client/src/pages/treatments/skin-boosters/sunekos.tsx
+│   │   │   └── [-rw-r--r--       17565 Sep 13 12:12]  ./client/src/pages/Treatments.tsx
+│   │   ├── [-rw-r--r--         246 Aug  9 13:51]  ./client/src/svg.d.ts
+│   │   └── [drwxr-xr-x          96 Aug 13 11:39]  ./client/src/types
+│   │       └── [-rw-r--r--         386 Aug 13 11:39]  ./client/src/types/images.d.ts
+│   ├── [-rw-r--r--         149 Jul 25 19:09]  ./client/tsconfig.json
+│   └── [-rw-r--r--         421 Aug  9 13:51]  ./client/vite.config.ts
+├── [-rw-r--r--         459 May 30 16:21]  ./components.json
+├── [-rw-r--r--        2025 Jun  2 21:35]  ./convert-to-webp.ts
+├── [-rw-r--r--         325 May 30 16:21]  ./drizzle.config.ts
+├── [-rw-r--r--     1084456 Sep 15 23:41]  ./package-lock.json
+├── [-rw-r--r--        4655 Sep 16 18:41]  ./package.json
+├── [-rw-r--r--          80 May 30 16:21]  ./postcss.config.js
+├── [-rw-r--r--           0 Sep 16 18:50]  ./project-tree.txt
+├── [-rw-r--r--         154 Jun  1 22:58]  ./railway.toml
+├── [-rw-r--r--        2056 Sep 15 23:35]  ./README.md
+├── [drwxr-xr-x         288 Sep 13 13:29]  ./scripts
+│   ├── [-rw-r--r--        1319 Sep 13 13:29]  ./scripts/generate-before-after-variants.cjs
+│   ├── [-rw-r--r--        2824 Aug 29 20:55]  ./scripts/generate-treatment-variants.cjs
+│   ├── [-rw-r--r--        1434 Aug 29 20:55]  ./scripts/generate-treatment-variants.ts
+│   ├── [-rw-r--r--        2383 Aug 28 21:51]  ./scripts/optimize-hero-images.ts
+│   ├── [-rw-r--r--        1688 Aug 14 22:31]  ./scripts/optimize-static-images.ts
+│   ├── [-rw-r--r--        2326 Aug 14 22:12]  ./scripts/optimize-treatment-images.ts
+│   └── [-rw-r--r--        8803 Aug 27 17:38]  ./scripts/reorder-imports.ts
+├── [drwxr-xr-x         224 Sep 14 23:25]  ./server
+│   ├── [-rw-r--r--         483 Aug 27 17:42]  ./server/db.ts
+│   ├── [-rw-r--r--       11998 Sep 15 23:35]  ./server/index.ts
+│   ├── [-rw-r--r--         473 Aug 27 17:42]  ./server/routes.ts
+│   ├── [-rw-r--r--        1012 Aug 27 17:42]  ./server/storage.ts
+│   └── [-rw-r--r--        3022 Aug 27 17:42]  ./server/vite.ts
+├── [drwxr-xr-x          96 Aug 27 17:42]  ./shared
+│   └── [-rw-r--r--         533 Aug 27 17:42]  ./shared/schema.ts
+├── [-rw-r--r--        3135 Aug 13 11:39]  ./tailwind.config.ts
+├── [-rw-r--r--         694 Jun  2 21:35]  ./tsconfig.json
+└── [-rw-r--r--        1913 Aug 27 15:31]  ./vite.config.ts
+
+68 directories, 490 files
