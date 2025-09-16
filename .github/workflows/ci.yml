@@ -18,18 +18,27 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          # If you ever add per-package lockfiles, list them here:
+          # cache-dependency-path: |
+          #   package-lock.json
 
-      - name: Install root deps
-        run: npm ci
+      - name: Install (root + workspaces)
+        run: npm ci --workspaces --include-workspace-root
 
-      - name: Install journal deps
+      # Optional: quick sanity check that CI can resolve 'wouter'
+      - name: Sanity check deps
         run: |
-          cd apps/journal
-          npm ci
+          echo "dep:" && node -p "require('./package.json').dependencies.wouter || 'missing'"
+          echo "lock has wouter? " && node -p "Object.keys(require('./package-lock.json').packages).includes('node_modules/wouter') ? 'yes' : 'no'"
+          node -p "require.resolve('wouter/package.json')"
 
       - name: Type check
         run: npm run check --silent || true
 
       - name: Build
+        env:
+          # Tina envs (from repo Settings → Secrets and variables → Actions)
+          TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+          NODE_ENV: production
         run: npm run build
-
