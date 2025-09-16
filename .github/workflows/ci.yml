@@ -30,7 +30,8 @@ jobs:
         run: |
           echo "dep:" && node -p "require('./package.json').dependencies.wouter || 'missing'"
           echo "lock has wouter? " && node -p "Object.keys(require('./package-lock.json').packages).includes('node_modules/wouter') ? 'yes' : 'no'"
-          node -p "require.resolve('wouter/package.json')"
+          node -p "require.resolve('wouter')" >/dev/null
+
 
       - name: Type check
         run: npm run check --silent || true
