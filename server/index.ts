@@ -41,32 +41,10 @@ const VALID_ROUTES = [
 ];
 
 // Security middleware (non-CSP headers)
-app.use(helmet({ contentSecurityPolicy: false, 
-  crossOriginOpenerPolicy: false,
-  crossOriginEmbedderPolicy: false,}));
+app.use(helmet({ contentSecurityPolicy: false }));
 
 // CSP policies as single header to avoid multi-CSP intersection issues
-// --- CSP helpers ---
 type CspDirectives = Record<string, Array<string> | null>;
-
-function directivesToHeader(d: CspDirectives): string {
-  return Object.entries(d)
-    .map(([k, v]) => (v === null ? k : `${k} ${v.join(' ')}`))
-    .join('; ');
-}
-
-function mergeCsp(base: CspDirectives, add: CspDirectives): CspDirectives {
-  const out: CspDirectives = JSON.parse(JSON.stringify(base));
-  for (const [k, v] of Object.entries(add)) {
-    if (v === null) { out[k] = null; continue; }
-    const curr = new Set(out[k] ?? []);
-    v.forEach(x => curr.add(x));
-    out[k] = Array.from(curr);
-  }
-  return out;
-}
-
-// --- Global (tight) CSP ---
 const cspGlobal: CspDirectives = {
   "default-src": ["'self'"],
   "img-src": ["'self'", "data:", "https:", "blob:"],
@@ -141,7 +119,7 @@ const cspGlobal: CspDirectives = {
     "https://fonts.googleapis.com",
     "https://unpkg.com",
   ],
-  "font-src": ["'self'", "https://fonts.gstatic.com"], // (we'll add data: for admin)
+  "font-src": ["'self'", "https://fonts.gstatic.com"],
   "frame-ancestors": ["'none'"],
   "form-action": ["'self'"],
   "base-uri": ["'self'"],
@@ -150,47 +128,23 @@ const cspGlobal: CspDirectives = {
   "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [],
 };
 
-// --- Tina-specific relaxations for /journal/admin ---
-const cspTinaAdditions: CspDirectives = {
-  "connect-src": [
-    "https://identity.tinajs.io",
-    "https://content.tinajs.io",
-    "https://app.tina.io",
-  ],
-  "frame-src": [
-    "https://app.tina.io",
-  ],
-  // optional but commonly helpful:
-  // "script-src": ["'unsafe-eval'"],
-  "font-src": ["data:"],   // allow data: fonts for admin bundle
-  "img-src": ["blob:"],    // already present globally, but safe to include
-};
+function directivesToHeader(d: CspDirectives): string {
+  return Object.entries(d)
+    .map(([k, v]) => {
+      if (v === null) return k;
+      if (Array.isArray(v)) return `${k} ${v.join(' ')}`;
+      return `${k} ${String(v)}`;
+    })
+    .join('; ');
+}
 
-// ✅ One global CSP for everything *except* the Tina admin
 app.use((req, res, next) => {
-  if (req.path.startsWith('/journal/admin')) return next();
-  res.setHeader('Content-Security-Policy', directivesToHeader(cspGlobal));
+  const header = directivesToHeader(cspGlobal);
+  res.setHeader('Content-Security-Policy', header);
   next();
 });
-
-// ✅ One admin CSP just for Tina
-const ADMIN_CSP =
-  "default-src 'self'; " +
-  "connect-src 'self' https://identity.tinajs.io https://content.tinajs.io https://app.tina.io; " +
-  "frame-src https://app.tina.io; " +
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-  "img-src 'self' data: blob:; " +
-  "font-src 'self' data: https://fonts.gstatic.com;";
-
-app.use('/journal/admin', (req, res, next) => {
-  res.setHeader('Content-Security-Policy', ADMIN_CSP);
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
-  res.setHeader('Cross-Origin-Embedder-Policy', 'unsafe-none');
-  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
-  next();
-});
-
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
 // Auto-UTM redirect for bio/tiktok when arriving from TikTok or Instagram
 app.use((req, res, next) => {

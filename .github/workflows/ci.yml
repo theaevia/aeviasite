@@ -38,8 +38,5 @@ jobs:
 
       - name: Build
         env:
-          # Tina envs (from repo Settings → Secrets and variables → Actions)
-          TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
-          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           NODE_ENV: production
         run: npm run build
