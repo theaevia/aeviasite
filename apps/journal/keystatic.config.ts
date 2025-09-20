@@ -6,12 +6,10 @@ const publicPath = isProd ? '/journal/images/' : '/images/';
 
 export default config({
   storage: {
-    kind: 'github',
-    repo: {
-      owner: 'theaevia',
-      name: 'aeviasite',
-    },
-    pathPrefix: 'apps/journal',
+    kind: 'cloud',
+  },
+  cloud: {
+    project: 'aevia-editors/aeviajournal',
   },
 
   collections: {
