@@ -11,7 +11,6 @@ export default config({
       owner: 'theaevia',
       name: 'aeviasite',
     },
-    branch: process.env.KEYSTATIC_GITHUB_BRANCH || 'main',
     pathPrefix: 'apps/journal',
   },
 
