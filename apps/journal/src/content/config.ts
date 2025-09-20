@@ -12,7 +12,7 @@ const posts = defineCollection({
     authors: z.array(z.string()).min(1),
     categories: z.array(z.string()).min(1),
     tags: z.array(z.string()).optional(),
-    hero: z.object({ src: z.string(), alt: z.string() }).optional(),
+    hero: z.object({ src: z.string().optional(), alt: z.string().optional() }).optional(),
     og_image: z.string().optional(),
     reviewed_by: z.string().optional(),
     disclaimer: z.string().optional(),

@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Figure from '../components/Figure.astro';
 import { getCollection } from 'astro:content';
+import { withBase } from '../utils/withBase';
+import { resolveMediaPath } from '../utils/media';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => data.status === 'published');
@@ -10,19 +12,35 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
-const authorsMap = Object.fromEntries(
-  (await getCollection('authors')).map((a) => [a.data.slug, a.data])
-);
+const authorEntries = await getCollection('authors');
+const authorsMap = Object.fromEntries(authorEntries.map((a) => [a.data.slug, a.data]));
 const categoryMap = Object.fromEntries(
   (await getCollection('categories')).map((c) => [c.data.slug, c.data.label])
 );
 
 const title = post.data.title;
 const description = post.data.dek ?? '';
-const og = post.data.og_image ?? post.data.hero?.src;
+
+// Make OG absolute + base-aware if it’s a local path
+const heroSrc = resolveMediaPath(post.data.hero?.src);
+const heroUrl = heroSrc && heroSrc.startsWith('/') ? withBase(heroSrc) : heroSrc;
+const ogCandidate = resolveMediaPath(post.data.og_image ?? post.data.hero?.src);
+const ogImage =
+  ogCandidate && ogCandidate.startsWith('/')
+    ? new URL(withBase(ogCandidate), Astro.site).toString()
+    : ogCandidate ?? undefined;
+
 const datePublished = post.data.date;
 const dateModified = post.data.updated ?? datePublished;
-const authorObjs = post.data.authors.map((s) => authorsMap[s]).filter(Boolean);
+const authorRefs = post.data.authors
+  .map((slug) => {
+    const data = authorsMap[slug];
+    if (!data) return null;
+    const avatarSrc = resolveMediaPath(data.avatar);
+    const avatarUrl = avatarSrc && avatarSrc.startsWith('/') ? withBase(avatarSrc) : avatarSrc;
+    return { slug, data, avatarUrl };
+  })
+  .filter(Boolean);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -30,21 +48,27 @@ const jsonLd = {
   headline: title,
   datePublished,
   dateModified,
-  author: authorObjs.map((a) => ({ '@type': 'Person', name: a.name, jobTitle: a.credentials })),
-  image: og,
+  author: authorRefs.map(({ data: a }) => ({ '@type': 'Person', name: a.name, jobTitle: a.credentials })),
+  image: ogImage,
   publisher: { '@type': 'Organization', name: 'The Aevia Group LTD' },
   mainEntityOfPage: Astro.url.href,
 };
+
 const { Content } = await post.render();
 ---
-<BaseLayout title={title} description={description} ogImage={og}>
+<BaseLayout title={title} description={description} ogImage={ogImage}>
   <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
   <article class="space-y-6">
     <!-- Hero -->
-    {post.data.hero?.src && (
+    {heroUrl && (
       <figure class="rounded-2xl overflow-hidden border border-border">
-        <img src={post.data.hero.src} alt={post.data.hero.alt} class="w-full h-[320px] md:h-[420px] object-cover" />
+        <img
+          src={heroUrl}
+          alt={post.data.hero?.alt || post.data.title}
+          class="w-full h-[320px] md:h-[420px] object-cover"
+          loading="lazy"
+        />
       </figure>
     )}
 
@@ -52,21 +76,39 @@ const { Content } = await post.render();
     <header class="space-y-3">
       <div class="chip-group">
         {(post.data.categories || []).map((slug) => (
-          <a class="chip chip--primary" href={`/journal/category/${slug}`}>{categoryMap[slug] || slug}</a>
+          <a class="chip chip--primary" href={withBase(`/category/${String(slug)}`)}>
+            {categoryMap[slug] || slug}
+          </a>
         ))}
       </div>
+
       <h1 class="text-4xl md:text-5xl font-serif font-bold leading-tight">{title}</h1>
       {description && <p class="text-lg text-foreground/70">{description}</p>}
+
       <div class="flex items-center gap-4 text-sm text-foreground/70 flex-wrap">
-        {authorObjs.map((a) => (
-          <a class="inline-flex items-center gap-2 hover:text-foreground" href={`/journal/author/${a.slug}`}>
-            {a.avatar && <img src={a.avatar} alt={a.name} width="28" height="28" class="rounded-full" />}
-            <span>{a.name}{a.credentials ? `, ${a.credentials}` : ''}</span>
+        {authorRefs.map(({ slug, data: author, avatarUrl }) => (
+          <a class="inline-flex items-center gap-2 hover:text-foreground" href={withBase(`/author/${slug}`)}>
+            {avatarUrl && (
+              <img
+                src={avatarUrl}
+                alt={author.name}
+                width="28"
+                height="28"
+                class="w-7 h-7 rounded-full object-cover aspect-square"
+                loading="lazy"
+              />
+            )}
+            <span>{author.name}{author.credentials ? `, ${author.credentials}` : ''}</span>
           </a>
         ))}
         <span>·</span>
-        <time datetime={datePublished}>{new Date(datePublished).toLocaleDateString('en-GB')}</time>
-        {post.data.reading_time && <><span>·</span><span>{post.data.reading_time} min read</span></>}
+        <time datetime={datePublished}>{new Date(datePublished as any).toLocaleDateString('en-GB')}</time>
+        {post.data.reading_time && (
+          <>
+            <span>·</span>
+            <span>{post.data.reading_time} min read</span>
+          </>
+        )}
       </div>
     </header>
 
@@ -77,12 +119,14 @@ const { Content } = await post.render();
 
     {post.data.tags?.length ? (
       <div class="chip-group pt-2">
-        {post.data.tags.map((t) => (<span class="chip">#{t}</span>))}
+        {post.data.tags.map((t) => <span class="chip">#{t}</span>)}
       </div>
     ) : null}
 
     {post.data.disclaimer && (
-      <aside class="text-sm text-foreground/70 border-l-4 border-primary/60 pl-4"><strong>Disclaimer:</strong> {post.data.disclaimer}</aside>
+      <aside class="text-sm text-foreground/70 border-l-4 border-primary/60 pl-4">
+        <strong>Disclaimer:</strong> {post.data.disclaimer}
+      </aside>
     )}
   </article>
 
@@ -94,7 +138,10 @@ const { Content } = await post.render();
         <p class="text-foreground/70 mt-1">Book a medical consultation to discuss your goals and the safest path forward.</p>
       </div>
       <div class="mt-4 md:mt-0">
-        <a class="inline-flex rounded-full bg-primary px-5 py-2.5 text-white hover:bg-primary/90 smooth-transition" href="/consultations">Book a consultation</a>
+        <!-- Main-site link: not base-prefixed -->
+        <a class="inline-flex rounded-full bg-primary px-5 py-2.5 text-white hover:bg-primary/90 smooth-transition" href="/consultations">
+          Book a consultation
+        </a>
       </div>
     </div>
   </div>

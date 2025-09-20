@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { withBase } from '../../utils/withBase';
+import { resolveMediaPath } from '../../utils/media';
 
 export async function getStaticPaths() {
   const categories = await getCollection('categories');
@@ -8,38 +10,63 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
+
 const categories = await getCollection('categories');
 const category = categories.find((c) => c.data.slug === slug)?.data;
+
 if (!category) {
-  throw Astro.redirect('/journal');
+  throw Astro.redirect(withBase('/')); // journal app root; becomes /journal/ in prod
 }
 
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
-  .filter((p) => p.data.categories.includes(slug))
+  .filter((p) => (p.data.categories || []).includes(slug as string))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 ---
+
 <BaseLayout title={`${category.label} · Aevia Journal`} description={category.description}>
   <main class="space-y-6">
     <header>
       <p class="eyebrow">Category</p>
       <h1 class="text-3xl md:text-4xl font-serif font-bold">{category.label}</h1>
-      {category.description && <p class="text-foreground/70 mt-1 max-w-2xl">{category.description}</p>}
+      {category.description && (
+        <p class="text-foreground/70 mt-1 max-w-2xl">{category.description}</p>
+      )}
     </header>
+
     <div class="grid gap-8 md:grid-cols-2">
-      {posts.map((p) => (
-        <article class="card p-6">
-          <a href={`/journal/${p.slug}`} class="block">
-            {p.data.hero?.src && (
-              <div class="card-bleed">
-                <img src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" class="w-full h-56 object-cover" />
-              </div>
-            )}
-            <h2 class="text-2xl font-serif font-semibold">{p.data.title}</h2>
-            {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
-            <small class="block mt-3 text-sm text-foreground/60">{new Date(p.data.date).toLocaleDateString('en-GB')}</small>
-          </a>
-        </article>
-      ))}
+      {posts.map((p) => {
+        const normalizedId = p.id.split('\\').join('/');
+        const fallbackSlug = normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
+        const entrySlug = typeof p.slug === 'string' && p.slug ? p.slug : fallbackSlug;
+        const heroSrc = resolveMediaPath(p.data.hero?.src);
+        const heroUrl =
+          heroSrc && heroSrc.startsWith('/')
+            ? withBase(heroSrc) // base-aware only for local paths
+            : heroSrc;
+
+        return (
+          <article class="card p-6">
+            <a href={withBase(`/${entrySlug}`)} class="block">
+              {heroUrl && (
+                <div class="card-bleed">
+                  <img
+                    src={heroUrl}
+                    alt={p.data.hero?.alt || p.data.title}
+                    loading="lazy"
+                    class="w-full h-56 object-cover"
+                  />
+                </div>
+              )}
+
+              <h2 class="text-2xl font-serif font-semibold">{p.data.title}</h2>
+              {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
+              <small class="block mt-3 text-sm text-foreground/60">
+                {new Date(p.data.date as any).toLocaleDateString('en-GB')}
+              </small>
+            </a>
+          </article>
+        );
+      })}
     </div>
   </main>
 </BaseLayout>

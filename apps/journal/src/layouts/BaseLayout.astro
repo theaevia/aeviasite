@@ -1,7 +1,21 @@
 ---
 import '../styles/global.css';
 import Navigation from '@/components/Navigation';
-const { title = 'Aevia Journal', description = 'Doctor-led aesthetics & longevity journal', ogImage } = Astro.props;
+import { withBase } from '../utils/withBase';
+
+const {
+  title = 'Aevia Journal',
+  description = 'Doctor-led aesthetics & longevity journal',
+  ogImage
+} = Astro.props;
+
+// If ogImage is a local path ("/images/..."), make it absolute + base-aware
+const ogImageAbsolute =
+  typeof ogImage === 'string'
+    ? (ogImage.startsWith('/')
+        ? new URL(withBase(ogImage), Astro.site).toString()
+        : ogImage)
+    : undefined;
 ---
 <html lang="en">
   <head>
@@ -9,12 +23,13 @@ const { title = 'Aevia Journal', description = 'Doctor-led aesthetics & longevit
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={Astro.url.href} />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImageAbsolute && <meta property="og:image" content={ogImageAbsolute} />}
     <meta name="twitter:card" content="summary_large_image" />
-    
+
     <!-- Fonts to match SPA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +47,7 @@ const { title = 'Aevia Journal', description = 'Doctor-led aesthetics & longevit
     </noscript>
   </head>
   <body class="bg-background text-foreground">
-    <!-- Header: use the exact React Navigation component from the SPA -->
+    <!-- Header: SPA Navigation (be mindful of hardcoded '/journal' links in dev) -->
     <Navigation client:only="react" />
 
     <!-- Page content -->
@@ -45,9 +60,12 @@ const { title = 'Aevia Journal', description = 'Doctor-led aesthetics & longevit
       <div class="container max-w-6xl py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <p class="text-sm text-foreground/60">© {new Date().getFullYear()} Aevia. All rights reserved.</p>
         <nav class="flex items-center gap-4 text-sm text-foreground/70">
+          <!-- Main-site links: DO NOT withBase -->
           <a href="/consultations" class="hover:text-foreground">Consultations</a>
           <a href="/treatments" class="hover:text-foreground">Treatments</a>
-          <a href="/journal" class="hover:text-foreground">Journal</a>
+
+          <!-- Journal app root: base-aware so it becomes /journal/ in prod -->
+          <a href={withBase('/')} class="hover:text-foreground">Journal</a>
         </nav>
       </div>
     </footer>

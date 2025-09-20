@@ -1,48 +1,76 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { withBase } from '../utils/withBase';
+import { resolveMediaPath } from '../utils/media';
 
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+
 const categories = await getCollection('categories');
 const categoryMap = Object.fromEntries(categories.map((c) => [c.data.slug, c.data.label]));
 ---
+
 <BaseLayout title="Aevia Journal" description="Evidence-based aesthetics, longevity & mindset.">
   <main class="space-y-10">
     <header class="space-y-4">
       <p class="eyebrow">Aevia Journal</p>
       <h1 class="text-4xl md:text-5xl font-serif font-bold">Doctor-led insights on skin, longevity, and performance.</h1>
+
+      <!-- Category pills -->
       <div class="chip-group mt-2">
-        <a class="chip" href="/journal">All</a>
+        <!-- This page itself (root of the journal app). In prod it becomes /journal/ -->
+        <a class="chip" href={withBase('/')}>All</a>
+
         {categories.map((c) => (
-          <a class="chip" href={`/journal/category/${c.data.slug}`}>{c.data.label}</a>
+          <a class="chip" href={withBase(`/category/${c.data.slug}`)}>{c.data.label}</a>
         ))}
       </div>
     </header>
 
     <div class="grid gap-8 md:grid-cols-2">
-      {posts.map((p) => (
-        <article class="card p-6">
-          <a class="block" href={`/journal/${p.slug}`}>
-            {p.data.hero?.src && (
-              <div class="card-bleed">
-                <img class="w-full h-56 md:h-56 object-cover" src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" />
+      {posts.map((p) => {
+        const normalizedId = p.id.split('\\').join('/');
+        const fallbackSlug = normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
+        const slug = typeof p.slug === 'string' && p.slug ? p.slug : fallbackSlug;
+        // Safely base-prefix only local (root-relative) image paths
+        const heroSrc = resolveMediaPath(p.data.hero?.src);
+        const heroUrl = heroSrc && heroSrc.startsWith('/')
+          ? withBase(heroSrc)
+          : heroSrc;
+
+        return (
+          <article class="card p-6">
+            <!-- Post detail lives at /{slug} inside the journal app -->
+            <a class="block" href={withBase(`/${slug}`)}>
+              {heroUrl && (
+                <div class="card-bleed">
+                  <img
+                    class="w-full h-56 md:h-56 object-cover"
+                    src={heroUrl}
+                    alt={p.data.hero?.alt || p.data.title}
+                    loading="lazy"
+                  />
+                </div>
+              )}
+
+              <div class="chip-group mb-2">
+                {(p.data.categories || []).slice(0, 2).map((slug) => (
+                  <span class="chip chip--primary">{categoryMap[slug] || slug}</span>
+                ))}
               </div>
-            )}
-            <div class="chip-group mb-2">
-              {(p.data.categories || []).slice(0,2).map((slug) => (
-                <span class="chip chip--primary">{categoryMap[slug] || slug}</span>
-              ))}
-            </div>
-            <h2 class="text-2xl font-serif font-semibold text-foreground">{p.data.title}</h2>
-            {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
-            <div class="mt-4 flex items-center justify-between text-sm text-foreground/60">
-              <span>{new Date(p.data.date).toLocaleDateString('en-GB')}</span>
-              {p.data.reading_time && <span>{p.data.reading_time} min</span>}
-            </div>
-          </a>
-        </article>
-      ))}
+
+              <h2 class="text-2xl font-serif font-semibold text-foreground">{p.data.title}</h2>
+              {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
+
+              <div class="mt-4 flex items-center justify-between text-sm text-foreground/60">
+                <span>{new Date(p.data.date as any).toLocaleDateString('en-GB')}</span>
+                {p.data.reading_time && <span>{p.data.reading_time} min</span>}
+              </div>
+            </a>
+          </article>
+        );
+      })}
     </div>
   </main>
 </BaseLayout>

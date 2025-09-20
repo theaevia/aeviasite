@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { withBase } from '../../utils/withBase';
+import { resolveMediaPath } from '../../utils/media';
 
 export async function getStaticPaths() {
   const authors = await getCollection('authors');
@@ -8,21 +10,38 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
+
 const authors = await getCollection('authors');
-const author = authors.find((a) => a.data.slug === slug)?.data;
-if (!author) {
-  throw Astro.redirect('/journal');
+const authorEntry = authors.find((a) => a.data.slug === slug);
+
+if (!authorEntry) {
+  throw Astro.redirect(withBase('/')); // journal app root; becomes /journal/ in prod
 }
 
+const author = authorEntry.data;
+const avatarSrc = resolveMediaPath(author.avatar);
+const avatarUrl = avatarSrc && avatarSrc.startsWith('/') ? withBase(avatarSrc) : avatarSrc;
+
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
-  .filter((p) => p.data.authors.includes(slug))
+  .filter((p) => (p.data.authors || []).includes(slug as string))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 ---
+
 <BaseLayout title={`Articles by ${author.name}`} description={author.bio}>
   <main class="space-y-8">
     <header class="flex items-start gap-4">
-      {author.avatar && <img src={author.avatar} alt={author.name} width="64" height="64" class="rounded-full border border-border" />}
+      {avatarUrl && (
+        <img
+          src={avatarUrl}
+          alt={author.name}
+          width="64"
+          height="64"
+          class="w-16 h-16 rounded-full object-cover aspect-square border border-border"
+          loading="lazy"
+        />
+      )}
       <div>
+        <p class="eyebrow">Author</p>
         <h1 class="text-3xl md:text-4xl font-serif font-bold">{author.name}</h1>
         {author.credentials && <p class="text-foreground/70">{author.credentials}</p>}
         {author.bio && <p class="text-foreground/70 mt-1 max-w-2xl">{author.bio}</p>}
@@ -30,20 +49,38 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
     </header>
 
     <div class="grid gap-8 md:grid-cols-2">
-      {posts.map((p) => (
-        <article class="card p-6">
-          <a href={`/journal/${p.slug}`} class="block">
-            {p.data.hero?.src && (
-              <div class="card-bleed">
-                <img src={p.data.hero.src} alt={p.data.hero.alt} loading="lazy" class="w-full h-56 object-cover" />
-              </div>
-            )}
-            <h2 class="text-2xl font-serif font-semibold">{p.data.title}</h2>
-            {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
-            <small class="block mt-3 text-sm text-foreground/60">{new Date(p.data.date).toLocaleDateString('en-GB')}</small>
-          </a>
-        </article>
-      ))}
+      {posts.map((p) => {
+        const normalizedId = p.id.split('\\').join('/');
+        const fallbackSlug = normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
+        const entrySlug = typeof p.slug === 'string' && p.slug ? p.slug : fallbackSlug;
+        const heroSrc = resolveMediaPath(p.data.hero?.src);
+        const heroUrl =
+          heroSrc && heroSrc.startsWith('/')
+            ? withBase(heroSrc)   // base-aware only for local paths
+            : heroSrc;
+
+        return (
+          <article class="card p-6">
+            <a href={withBase(`/${entrySlug}`)} class="block">
+              {heroUrl && (
+                <div class="card-bleed">
+                  <img
+                    src={heroUrl}
+                    alt={p.data.hero?.alt || p.data.title}
+                    loading="lazy"
+                    class="w-full h-56 object-cover"
+                  />
+                </div>
+              )}
+              <h2 class="text-2xl font-serif font-semibold">{p.data.title}</h2>
+              {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
+              <small class="block mt-3 text-sm text-foreground/60">
+                {new Date(p.data.date as any).toLocaleDateString('en-GB')}
+              </small>
+            </a>
+          </article>
+        );
+      })}
     </div>
   </main>
 </BaseLayout>
