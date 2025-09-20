@@ -5,12 +5,15 @@ const isProd = process.env.NODE_ENV === 'production';
 const publicPath = isProd ? '/journal/images/' : '/images/';
 
 export default config({
-  storage: { kind: 'github', 
+  storage: {
+    kind: 'github',
     repo: {
       owner: 'theaevia',
       name: 'aeviasite',
     },
-   },
+    branch: process.env.KEYSTATIC_GITHUB_BRANCH || 'main',
+    pathPrefix: 'apps/journal',
+  },
 
   collections: {
     // 1) Posts (MDX content + frontmatter in the same .mdx file)
