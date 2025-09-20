@@ -40,28 +40,32 @@ export default config({
         // Let editors pick real authors & categories from the other collections
         authors: fields.array(
           fields.relationship({ label: 'Author', collection: 'authors' }),
-          { label: 'Authors', itemLabel: ({ value }) => value ?? 'Author', validation: { length: { min: 1 } },
-        }
+          {
+            label: 'Authors',
+            itemLabel: ({ value }) => value ?? 'Author',
+            validation: { length: { min: 1 } },
+          }
         ),
         categories: fields.array(
           fields.relationship({ label: 'Category', collection: 'categories' }),
-          { label: 'Categories', itemLabel: ({ value }) => value ?? 'Category', validation: { length: { min: 1 } },
-        }
+          {
+            label: 'Categories',
+            itemLabel: ({ value }) => value ?? 'Category',
+            validation: { length: { min: 1 } },
+          }
         ),
-
-    hero: fields.object(
+        hero: fields.object(
           {
             src: fields.image({
               label: 'Hero image',
               directory: 'public/images', // saved to apps/journal/public/images
-              publicPath,      // value written to content (e.g. "/images/foo.jpg")
+              publicPath, // value written to content (e.g. "/images/foo.jpg")
               validation: { isRequired: false },
             }),
-            alt: fields.text({ label: 'Alt text', validation: { isRequired: false }  }),
+            alt: fields.text({ label: 'Alt text', validation: { isRequired: false } }),
           },
           { label: 'Hero' } // make the whole object optional
         ),
-
 
         reading_time: fields.integer({
           label: 'Reading time (minutes)',
