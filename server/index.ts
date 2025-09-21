@@ -256,7 +256,7 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
       if (fs.existsSync(journalPath)) {
         app.use('/journal', express.static(journalPath, {
           index: 'index.html',
-          // redirect: false,
+          redirect: false,
           setHeaders: (res, filePath) => {
             if (filePath.endsWith('.html')) {
               res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
