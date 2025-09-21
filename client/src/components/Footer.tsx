@@ -3,6 +3,7 @@ import { Instagram } from "lucide-react";
 import logoBlack from "@assets/logos/logo-black-transparent.webp";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { journalUrl } from "@/lib/journal";
+import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 export default function Footer() {
   return (
@@ -34,14 +35,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Skin Consultation
                 </a>
               </li>
               <li>
-                <Link href="/consultations/mind" className="hover:text-primary smooth-transition">
+                <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Mind Discovery Call
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -55,7 +56,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href={journalUrl('/')} className="hover:text-primary smooth-transition">
+                <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Journal
                 </a>
               </li>

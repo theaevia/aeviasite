@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
+import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
 import SEO from "@/components/SEO";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
@@ -147,7 +148,7 @@ export default function Home() {
                   </BookingButton>
                 </div>
                 <div className="w-full sm:w-64">
-                  <BookingButton href="/consultations/mind" variant="secondary" className="w-full">
+                  <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full">
                     Book Mind Discovery Call
                   </BookingButton>
                 </div>
@@ -395,7 +396,7 @@ transformation.
                 </BookingButton>
               </div>
               <div className="w-full sm:w-64">
-                <BookingButton href="/consultations/mind" variant="secondary" className="w-full">
+                <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full">
                   Book Mind Discovery Call
                 </BookingButton>
               </div>

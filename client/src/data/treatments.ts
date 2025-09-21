@@ -1,3 +1,5 @@
+import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
+
 // Assets (optimized public variants for responsive delivery)
 // Use 640w WebP as fallback; <picture> in cards will pick AVIF/WebP 320w/640w
 const antiWrinkleHero = "/assets/treatment_images/anti-wrinkle-hero-640w.webp";
@@ -38,7 +40,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A 30-minute call to explore your goals, challenges, and whether we're the right fit to work together.",
         duration: "30min",
         price: "Complimentary",
-        bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=GCC3YKLK465XLBFKMST26IXV",
+        bookingUrl: MIND_DISCOVERY_URL,
         slug: "discovery-call",
         image: "https://placehold.co/600x400"
       },

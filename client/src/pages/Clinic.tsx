@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 import SEO from "@/components/SEO";
 import Map from "@/components/Map";
 
@@ -65,16 +65,16 @@ export default function Clinic() {
                 <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
                   <h3 className="text-xl font-serif font-semibold mb-4">Book a Consultation</h3>
                   <div className="grid grid-cols-1 gap-3">
-                    <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer">
+                    <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
                       <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                         Skin Consultation
                       </Button>
                     </a>
-                    <Link href="/consultations/mind">
+                    <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer">
                       <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white shadow-sm">
                         Mind Discovery Call
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>

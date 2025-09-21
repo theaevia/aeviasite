@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Figure from '../components/Figure.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../utils/withBase';
-import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { resolveMediaPath } from '../utils/media';
 
 const { slug } = Astro.params;
@@ -81,6 +80,11 @@ const authorRefs = (post.data.authors || [])
     return { slug: aSlug, data, avatarUrl };
   })
   .filter(Boolean) as Array<{ slug: string; data: any; avatarUrl?: string }>;
+
+const defaultConsultationUrl = 'https://book.squareup.com/appointments/flwwunfdy1hm72/location/L1TKSRMBS3N9H/services';
+const mindConsultationUrl = 'https://book.squareup.com/appointments/sveent13urj63l/location/L1TKSRMBS3N9H/services';
+const isMindCategory = (post.data.categories || []).some((value: any) => relationSlug(value) === 'mind');
+const consultationUrl = isMindCategory ? mindConsultationUrl : defaultConsultationUrl;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -182,8 +186,7 @@ const { Content } = await post.render();
         <p class="text-foreground/70 mt-1">Book a medical consultation to discuss your goals and the safest path forward.</p>
       </div>
       <div class="mt-4 md:mt-0">
-        <!-- Main-site link: not base-prefixed -->
-        <a class="inline-flex rounded-full bg-primary px-5 py-2.5 text-white hover:bg-primary/90 smooth-transition" href={mainSiteUrl('/consultations')}>
+        <a class="inline-flex rounded-full bg-primary px-5 py-2.5 text-white hover:bg-primary/90 smooth-transition" href={consultationUrl} rel="noopener" target="_blank">
           Book a consultation
         </a>
       </div>

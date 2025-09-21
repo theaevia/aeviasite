@@ -4,8 +4,10 @@ import Navigation from '@/components/Navigation';
 import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
 
+const DEFAULT_CONSULTATION_URL = 'https://book.squareup.com/appointments/flwwunfdy1hm72/location/L1TKSRMBS3N9H/services';
+
 const {
-  title = 'Aevia Journal',
+  title = 'The Aevia Journal',
   description = 'Doctor-led aesthetics & longevity journal',
   ogImage
 } = Astro.props;
@@ -64,11 +66,10 @@ const ogImageAbsolute =
         <p class="text-sm text-foreground/60">© {new Date().getFullYear()} Aevia. All rights reserved.</p>
         <nav class="flex items-center gap-4 text-sm text-foreground/70">
           <!-- Main-site links: DO NOT withBase -->
-          <a href={mainSiteUrl('/consultations')} class="hover:text-foreground">Consultations</a>
+          <a href={DEFAULT_CONSULTATION_URL} class="hover:text-foreground" rel="noopener" target="_blank">Consultations</a>
           <a href={mainSiteUrl('/treatments')} class="hover:text-foreground">Treatments</a>
 
-          <!-- Journal app root: base-aware so it becomes /journal/ in prod -->
-          <a href={withBase('/')} class="hover:text-foreground">Journal</a>
+          <a href="https://journal.theaevia.co.uk" class="hover:text-foreground" rel="noopener" target="_blank">Journal</a>
         </nav>
       </div>
     </footer>

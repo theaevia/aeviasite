@@ -20,6 +20,7 @@ import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
 import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 import { journalUrl } from "@/lib/journal";
+import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 // Add slugify helper (same as in CategoryPage)
 const slugify = (str: string) =>
@@ -303,11 +304,15 @@ export default function Navigation() {
                     Overview
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/consultations/mind">
+                <a
+                  href={MIND_DISCOVERY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     Discovery Call
                   </DropdownMenuItem>
-                </Link>
+                </a>
                 {/* Programmes removed per request */}
               </DropdownMenuContent>
             </DropdownMenu>
@@ -325,15 +330,19 @@ export default function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <a
-                  href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H"
+                  href={SKIN_CONSULTATION_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin Consultation</DropdownMenuItem>
                 </a>
-                <Link href="/consultations/mind">
+                <a
+                  href={MIND_DISCOVERY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
-                </Link>
+                </a>
                 <a
                   href={"http://the-aevia.square.site/"}
                   target="_blank"
@@ -391,9 +400,9 @@ export default function Navigation() {
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <Link href="/journal">
+                <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer">
                   <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Journal</DropdownMenuItem>
-                </Link>
+                </a>
                 <DropdownMenuItem disabled>FAQs</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Policies</DropdownMenuSubTrigger>
@@ -425,7 +434,7 @@ export default function Navigation() {
             <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <FaGoogle className="h-4 w-4 fill-current" />
             </a>
-            <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer">
+            <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
               <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                 Book Now
               </Button>
@@ -580,9 +589,9 @@ export default function Navigation() {
             <Link href="/mind">
               <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-bold smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
             </Link>
-            <Link href="/consultations/mind">
+            <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
-            </Link>
+            </a>
             {/* Programmes removed per request */}
           </div>
         )}
@@ -599,12 +608,12 @@ export default function Navigation() {
         </button>
         {isConsultOpen && (
           <div className="ml-4 flex flex-col space-y-2">
-            <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer">
+            <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Consultation</span>
             </a>
-            <Link href="/consultations/mind">
+            <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind Consultation</span>
-            </Link>
+            </a>
             <a
                   href={"http://the-aevia.square.site/"}
                   target="_blank"
@@ -677,11 +686,11 @@ export default function Navigation() {
         </button>
         {isResourcesOpen && (
           <div className="ml-4 flex flex-col space-y-2">
-            <Link href="/journal">
+            <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                 Journal
               </span>
-            </Link>
+            </a>
             <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
             <button
               onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
@@ -711,7 +720,7 @@ export default function Navigation() {
           <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
             <FaGoogle className="h-4 w-4 fill-current" />
           </a>
-          <a href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" target="_blank" rel="noopener noreferrer">
+          <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
             <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
               Book Now
             </Button>
