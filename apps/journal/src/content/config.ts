@@ -4,6 +4,10 @@ const posts = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    slug: z.union([
+      z.string(),
+      z.object({ name: z.string().optional(), slug: z.string() })
+    ]).optional(),
     dek: z.string().optional(),
     // Accept either YAML-parsed Date objects or strings from CMS
     date: z.union([z.string(), z.date()]),

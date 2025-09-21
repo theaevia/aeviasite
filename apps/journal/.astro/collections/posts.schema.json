@@ -7,6 +7,28 @@
         "title": {
           "type": "string"
         },
+        "slug": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slug"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
         "dek": {
           "type": "string"
         },

@@ -4,18 +4,30 @@ import { getCollection } from 'astro:content';
 import { withBase } from '../utils/withBase';
 import { resolveMediaPath } from '../utils/media';
 
+const slugOf = (entry: any): string => {
+  const ds = entry?.data?.slug;
+  if (typeof ds === 'string' && ds.trim()) return ds.trim();
+  if (ds && typeof ds === 'object' && typeof ds.slug === 'string' && ds.slug) return ds.slug;
+  if (typeof entry?.slug === 'string' && entry.slug) return entry.slug;
+  const normalizedId = String(entry?.id ?? '').replace(/\\/g, '/');
+  const base = normalizedId.split('/').pop() ?? '';
+  return base.split('.').slice(0, -1).join('.');
+};
+
+const relationSlug = (value: any): string => {
+  if (typeof value === 'string' && value) return value;
+  if (value && typeof value === 'object') {
+    if (typeof value.slug === 'string' && value.slug) return value.slug;
+    if (typeof value.id === 'string' && value.id) return value.id;
+  }
+  return '';
+};
+
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
-const normaliseDataEntrySlug = (entry: any): string => {
-  const rawId = typeof entry.id === 'string' ? entry.id : String(entry.id ?? '');
-  const normalized = rawId.replace(/\\/g, '/');
-  const lastSegment = normalized.split('/').pop() ?? '';
-  return lastSegment.replace(/\.[^.]+$/, '');
-};
-
 const categories = (await getCollection('categories'))
-  .map((entry) => ({ slug: normaliseDataEntrySlug(entry), data: entry.data }))
+  .map((entry) => ({ slug: slugOf(entry), data: entry.data }))
   .filter((entry) => entry.slug && entry.data);
 
 const categoryMap = Object.fromEntries(categories.map((c) => [c.slug, c.data.label]));
@@ -40,9 +52,7 @@ const categoryMap = Object.fromEntries(categories.map((c) => [c.slug, c.data.lab
 
     <div class="grid gap-8 md:grid-cols-2">
       {posts.map((p) => {
-        const normalizedId = p.id.split('\\').join('/');
-        const fallbackSlug = normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
-        const slug = typeof p.slug === 'string' && p.slug ? p.slug : fallbackSlug;
+        const slug = slugOf(p);
         // Safely base-prefix only local (root-relative) image paths
         const heroSrc = resolveMediaPath(p.data.hero?.src);
         const heroUrl = heroSrc && heroSrc.startsWith('/')
@@ -65,9 +75,13 @@ const categoryMap = Object.fromEntries(categories.map((c) => [c.slug, c.data.lab
               )}
 
               <div class="chip-group mb-2">
-                {(p.data.categories || []).slice(0, 2).map((slug) => (
-                  <span class="chip chip--primary">{categoryMap[slug] || slug}</span>
-                ))}
+                {(p.data.categories || [])
+                  .slice(0, 2)
+                  .map((value) => {
+                    const slug = relationSlug(value);
+                    if (!slug) return null;
+                    return <span class="chip chip--primary">{categoryMap[slug] || slug}</span>;
+                  })}
               </div>
 
               <h2 class="text-2xl font-serif font-semibold text-foreground">{p.data.title}</h2>
