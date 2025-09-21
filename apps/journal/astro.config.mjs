@@ -20,7 +20,7 @@ export default defineConfig({
   site: 'https://www.theaevia.co.uk',
   base,
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  adapter: node({ mode: 'middleware' }),
   integrations: [react(), sitemap(), mdx(), tailwind({ config: './tailwind.config.ts' }), markdoc(), keystatic()],
   vite: {
     plugins: [svgr()],
