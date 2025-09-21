@@ -7,7 +7,6 @@ const publicPath = isProd ? '/journal/images/' : '/images/';
 export default config({
   storage: {
     kind: 'cloud',
-    pathPrefix: 'apps/journal',
   },
   cloud: { project: 'aevia-editors/aeviajournal' },
   collections: {
