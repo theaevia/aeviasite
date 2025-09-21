@@ -8,14 +8,25 @@ import path from 'node:path';
 import keystatic from '@keystatic/astro';
 import { fileURLToPath } from 'node:url';
 import markdoc from '@astrojs/markdoc';
-import node from '@astrojs/node';
 import vercel from '@astrojs/vercel';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..', '..');
 
-const isProd = process.env.NODE_ENV === 'production';
-const base = isProd ? '/journal' : '';
+/**
+ * Default to serving the Journal from the domain root (e.g. journal.theaevia.co.uk).
+ * Set JOURNAL_BASE_PATH or PUBLIC_JOURNAL_BASE if you need to host under a
+ * subdirectory again (such as /journal when embedded in the main site build).
+ */
+const normalizeBase = (value) => {
+  if (!value || value === '/') return '';
+  const trimmed = value.replace(/^\/+|\/+$/g, '');
+  return trimmed ? `/${trimmed}` : '';
+};
+
+const envBase = normalizeBase(process.env.JOURNAL_BASE_PATH ?? process.env.PUBLIC_JOURNAL_BASE ?? '');
+const defaultBase = normalizeBase(process.env.JOURNAL_DEFAULT_BASE ?? '');
+const base = envBase !== '' ? envBase : defaultBase;
 
 export default defineConfig({
   site: 'https://journal.theaevia.co.uk',
