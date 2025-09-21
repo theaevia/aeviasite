@@ -5,13 +5,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const publicPath = isProd ? '/journal/images/' : '/images/';
 
 export default config({
-  storage: { kind: 'github', 
-    repo: {
-      owner: 'theaevia',
-      name: 'aeviasite',
-    },
-   },
-
+  storage: { kind: 'cloud' }, 
+  cloud: {project: 'aevia-editors/aeviajournal' },
   collections: {
     // 1) Posts (MDX content + frontmatter in the same .mdx file)
     posts: collection({
