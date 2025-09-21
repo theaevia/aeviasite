@@ -8,7 +8,7 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
 const categories = await getCollection('categories');
-const categoryMap = Object.fromEntries(categories.map((c) => [c.data.slug, c.data.label]));
+const categoryMap = Object.fromEntries(categories.map((c) => [c.slug, c.data.label]));
 ---
 
 <BaseLayout title="Aevia Journal" description="Evidence-based aesthetics, longevity & mindset.">
@@ -23,7 +23,7 @@ const categoryMap = Object.fromEntries(categories.map((c) => [c.data.slug, c.dat
         <a class="chip" href={withBase('/')}>All</a>
 
         {categories.map((c) => (
-          <a class="chip" href={withBase(`/category/${c.data.slug}`)}>{c.data.label}</a>
+          <a class="chip" href={withBase(`/category/${c.slug}`)}>{c.data.label}</a>
         ))}
       </div>
     </header>

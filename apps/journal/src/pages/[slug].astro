@@ -16,7 +16,7 @@ const { post } = Astro.props;
 const authorEntries = await getCollection('authors');
 const authorsMap = Object.fromEntries(authorEntries.map((a) => [a.slug, a.data]));
 const categoryMap = Object.fromEntries(
-  (await getCollection('categories')).map((c) => [c.data.slug, c.data.label])
+  (await getCollection('categories')).map((c) => [c.slug, c.data.label])
 );
 
 const title = post.data.title;
