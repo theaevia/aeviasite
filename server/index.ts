@@ -266,7 +266,7 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
               maxAge: '1y',
               immutable: true,
             }));
-          }
+          } 
 
           app.use('/journal', (req, res, next) => journalHandler(req, res, next));
         } catch (error) {
