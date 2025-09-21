@@ -6,12 +6,22 @@ import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { resolveMediaPath } from '../utils/media';
 
-export async function getStaticPaths() {
-  const posts = await getCollection('posts', ({ data }) => data.status === 'published');
-  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
-}
+const { slug } = Astro.params;
 
-const { post } = Astro.props;
+// helper to normalise any entry's slug
+const getEntrySlug = (entry: any): string => {
+  const s = typeof entry.slug === 'string' ? entry.slug : entry?.slug?.slug;
+  if (s) return String(s);
+  const normalizedId = String(entry.id ?? '').replace(/\\/g, '/');
+  return normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
+};
+
+const allPosts = await getCollection('posts', ({ data }) => data.status === 'published');
+const post = allPosts.find((p) => getEntrySlug(p) === slug);
+if (!post) {
+  // soft 404 or redirect home
+  throw Astro.redirect(withBase('/'));
+}
 
 const authorEntries = await getCollection('authors');
 const authorsMap = Object.fromEntries(authorEntries.map((a) => [a.slug, a.data]));
@@ -22,7 +32,6 @@ const categoryMap = Object.fromEntries(
 const title = post.data.title;
 const description = post.data.dek ?? '';
 
-// Make OG absolute + base-aware if it’s a local path
 const heroSrc = resolveMediaPath(post.data.hero?.src);
 const heroUrl = heroSrc && heroSrc.startsWith('/') ? withBase(heroSrc) : heroSrc;
 const ogCandidate = resolveMediaPath(post.data.og_image ?? post.data.hero?.src);
@@ -33,15 +42,16 @@ const ogImage =
 
 const datePublished = post.data.date;
 const dateModified = post.data.updated ?? datePublished;
-const authorRefs = post.data.authors
-  .map((slug) => {
-    const data = authorsMap[slug];
+
+const authorRefs = (post.data.authors || [])
+  .map((aSlug: string) => {
+    const data = authorsMap[aSlug];
     if (!data) return null;
     const avatarSrc = resolveMediaPath(data.avatar);
     const avatarUrl = avatarSrc && avatarSrc.startsWith('/') ? withBase(avatarSrc) : avatarSrc;
-    return { slug, data, avatarUrl };
+    return { slug: aSlug, data, avatarUrl };
   })
-  .filter(Boolean);
+  .filter(Boolean) as Array<{ slug: string; data: any; avatarUrl?: string }>;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -57,93 +67,3 @@ const jsonLd = {
 
 const { Content } = await post.render();
 ---
-<BaseLayout title={title} description={description} ogImage={ogImage}>
-  <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-
-  <article class="space-y-6">
-    <!-- Hero -->
-    {heroUrl && (
-      <figure class="rounded-2xl overflow-hidden border border-border">
-        <img
-          src={heroUrl}
-          alt={post.data.hero?.alt || post.data.title}
-          class="w-full h-[320px] md:h-[420px] object-cover"
-          loading="lazy"
-        />
-      </figure>
-    )}
-
-    <!-- Title & Meta -->
-    <header class="space-y-3">
-      <div class="chip-group">
-        {(post.data.categories || []).map((slug) => (
-          <a class="chip chip--primary" href={withBase(`/category/${String(slug)}`)}>
-            {categoryMap[slug] || slug}
-          </a>
-        ))}
-      </div>
-
-      <h1 class="text-4xl md:text-5xl font-serif font-bold leading-tight">{title}</h1>
-      {description && <p class="text-lg text-foreground/70">{description}</p>}
-
-      <div class="flex items-center gap-4 text-sm text-foreground/70 flex-wrap">
-        {authorRefs.map(({ slug, data: author, avatarUrl }) => (
-          <a class="inline-flex items-center gap-2 hover:text-foreground" href={withBase(`/author/${slug}`)}>
-            {avatarUrl && (
-              <img
-                src={avatarUrl}
-                alt={author.name}
-                width="28"
-                height="28"
-                class="w-7 h-7 rounded-full object-cover aspect-square"
-                loading="lazy"
-              />
-            )}
-            <span>{author.name}{author.credentials ? `, ${author.credentials}` : ''}</span>
-          </a>
-        ))}
-        <span>·</span>
-        <time datetime={datePublished}>{new Date(datePublished as any).toLocaleDateString('en-GB')}</time>
-        {post.data.reading_time && (
-          <>
-            <span>·</span>
-            <span>{post.data.reading_time} min read</span>
-          </>
-        )}
-      </div>
-    </header>
-
-    <!-- Article content -->
-    <section class="prose max-w-none">
-      <Content components={{ Figure }} />
-    </section>
-
-    {post.data.tags?.length ? (
-      <div class="chip-group pt-2">
-        {post.data.tags.map((t) => <span class="chip">#{t}</span>)}
-      </div>
-    ) : null}
-
-    {post.data.disclaimer && (
-      <aside class="text-sm text-foreground/70 border-l-4 border-primary/60 pl-4">
-        <strong>Disclaimer:</strong> {post.data.disclaimer}
-      </aside>
-    )}
-  </article>
-
-  <!-- CTA -->
-  <div class="mt-12 rounded-2xl border border-border bg-secondary p-6 md:p-8">
-    <div class="md:flex md:items-center md:justify-between gap-6">
-      <div>
-        <h3 class="text-2xl font-serif font-semibold">Prefer tailored guidance?</h3>
-        <p class="text-foreground/70 mt-1">Book a medical consultation to discuss your goals and the safest path forward.</p>
-      </div>
-      <div class="mt-4 md:mt-0">
-        <!-- Main-site link: not base-prefixed -->
-        <a class="inline-flex rounded-full bg-primary px-5 py-2.5 text-white hover:bg-primary/90 smooth-transition" href={mainSiteUrl('/consultations')}>
-          Book a consultation
-        </a>
-      </div>
-    </div>
-  </div>
-</BaseLayout>

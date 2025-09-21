@@ -4,18 +4,13 @@ import { getCollection } from 'astro:content';
 import { withBase } from '../../utils/withBase';
 import { resolveMediaPath } from '../../utils/media';
 
-export async function getStaticPaths() {
-  const authors = await getCollection('authors');
-  return authors.map((a) => ({ params: { slug: a.slug } }));
-}
-
 const { slug } = Astro.params;
 
 const authors = await getCollection('authors');
 const authorEntry = authors.find((a) => a.slug === slug);
 
 if (!authorEntry) {
-  throw Astro.redirect(withBase('/')); // journal app root; becomes /journal/ in prod
+  throw Astro.redirect(withBase('/'));
 }
 
 const author = authorEntry.data;
@@ -23,10 +18,17 @@ const avatarSrc = resolveMediaPath(author.avatar);
 const avatarUrl = avatarSrc && avatarSrc.startsWith('/') ? withBase(avatarSrc) : avatarSrc;
 
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
-  .filter((p) => (p.data.authors || []).includes(slug as string))
+  .filter((p) => Array.isArray(p.data.authors) && p.data.authors.includes(String(slug)))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
----
 
+const getEntrySlug = (entry: any): string => {
+  if (typeof entry.slug === 'string' && entry.slug) return entry.slug;
+  if (entry?.slug?.slug) return String(entry.slug.slug);
+  const normalizedId = String(entry.id ?? '').replace(/\\/g, '/');
+  const base = normalizedId.split('/').pop() ?? '';
+  return base.split('.').slice(0, -1).join('.');
+};
+---
 <BaseLayout title={`Articles by ${author.name}`} description={author.bio}>
   <main class="space-y-8">
     <header class="flex items-start gap-4">
@@ -50,14 +52,9 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
 
     <div class="grid gap-8 md:grid-cols-2">
       {posts.map((p) => {
-        const normalizedId = p.id.split('\\').join('/');
-        const fallbackSlug = normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
-        const entrySlug = typeof p.slug === 'string' && p.slug ? p.slug : fallbackSlug;
+        const entrySlug = getEntrySlug(p);
         const heroSrc = resolveMediaPath(p.data.hero?.src);
-        const heroUrl =
-          heroSrc && heroSrc.startsWith('/')
-            ? withBase(heroSrc)   // base-aware only for local paths
-            : heroSrc;
+        const heroUrl = heroSrc && heroSrc.startsWith('/') ? withBase(heroSrc) : heroSrc;
 
         return (
           <article class="card p-6">

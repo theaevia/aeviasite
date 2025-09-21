@@ -4,45 +4,36 @@ import { getCollection } from 'astro:content';
 import { withBase } from '../../utils/withBase';
 import { resolveMediaPath } from '../../utils/media';
 
-export async function getStaticPaths() {
-  const categories = await getCollection('categories');
-  return categories.map((c) => ({ params: { slug: c.slug } }));
-}
-
 const { slug } = Astro.params;
 
 const categories = await getCollection('categories');
-const category = categories.find((c) => c.slug === slug)?.data;
+const category = categories.find((c) => c.slug === slug);
 
 if (!category) {
-  throw Astro.redirect(withBase('/')); // journal app root; becomes /journal/ in prod
+  throw Astro.redirect(withBase('/'));
 }
 
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
-  .filter((p) => (p.data.categories || []).includes(slug as string))
+  .filter((p) => Array.isArray(p.data.categories) && p.data.categories.includes(String(slug)))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
----
 
-<BaseLayout title={`${category.label} · Aevia Journal`} description={category.description}>
-  <main class="space-y-6">
-    <header>
-      <p class="eyebrow">Category</p>
-      <h1 class="text-3xl md:text-4xl font-serif font-bold">{category.label}</h1>
-      {category.description && (
-        <p class="text-foreground/70 mt-1 max-w-2xl">{category.description}</p>
-      )}
-    </header>
+const getEntrySlug = (entry: any): string => {
+  if (typeof entry.slug === 'string' && entry.slug) return entry.slug;
+  if (entry?.slug?.slug) return String(entry.slug.slug);
+  const normalizedId = String(entry.id ?? '').replace(/\\/g, '/');
+  const base = normalizedId.split('/').pop() ?? '';
+  return base.split('.').slice(0, -1).join('.');
+};
+---
+<BaseLayout title={category.data.label} description={category.data.description}>
+  <main class="space-y-8">
+    <h1 class="text-3xl md:text-4xl font-serif font-bold">{category.data.label}</h1>
 
     <div class="grid gap-8 md:grid-cols-2">
       {posts.map((p) => {
-        const normalizedId = p.id.split('\\').join('/');
-        const fallbackSlug = normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
-        const entrySlug = typeof p.slug === 'string' && p.slug ? p.slug : fallbackSlug;
+        const entrySlug = getEntrySlug(p);
         const heroSrc = resolveMediaPath(p.data.hero?.src);
-        const heroUrl =
-          heroSrc && heroSrc.startsWith('/')
-            ? withBase(heroSrc) // base-aware only for local paths
-            : heroSrc;
+        const heroUrl = heroSrc && heroSrc.startsWith('/') ? withBase(heroSrc) : heroSrc;
 
         return (
           <article class="card p-6">
@@ -57,7 +48,6 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
                   />
                 </div>
               )}
-
               <h2 class="text-2xl font-serif font-semibold">{p.data.title}</h2>
               {p.data.dek && <p class="mt-2 text-foreground/80">{p.data.dek}</p>}
               <small class="block mt-3 text-sm text-foreground/60">
