@@ -63,7 +63,6 @@ const categoryMap = Object.fromEntries(categories.map((entry) => {
     <div class="grid gap-8 md:grid-cols-2">
       {posts.map((p) => {
         const slug = slugOf(p);
-        // Safely base-prefix only local (root-relative) image paths
         const heroSrc = resolveMediaPath(p.data.hero?.src);
         const heroUrl = heroSrc && heroSrc.startsWith('/')
           ? withBase(heroSrc)

@@ -1,15 +1,73 @@
 // apps/journal/keystatic.config.ts
 import { config, fields, collection } from '@keystatic/core';
+import { block } from '@keystatic/core/content-components';
+import React from 'react';
 
-const isProd = process.env.NODE_ENV === 'production';
-const publicPath = '/images/'
+const postsDirectory = 'src/assets/journal/posts';
+const postsPublicPath = '/images/posts';
+const authorsDirectory = 'src/assets/journal/authors';
+const authorsPublicPath = '/images/authors';
+
+const figureSizeOptions = [
+  { label: 'Thumbnail (widths: 320, 480, 640)', value: 'thumb' },
+  { label: 'Content (widths: 640, 960, 1280)', value: 'content' },
+  { label: 'Wide (widths: 960, 1280, 1600)', value: 'wide' },
+  { label: 'Full (widths: 1280, 1600, 2048)', value: 'full' },
+] as const;
+
+const figureComponent = block({
+  label: 'Figure',
+  schema: {
+    src: fields.image({
+      label: 'Image',
+      directory: postsDirectory,
+      publicPath: postsPublicPath,
+      validation: { isRequired: true },
+    }),
+    alt: fields.text({ label: 'Alt text', validation: { isRequired: false } }),
+    size: fields.select({
+      label: 'Display size',
+      description: 'Controls the rendered width preset.',
+      options: figureSizeOptions,
+      defaultValue: 'content',
+    }),
+    caption: fields.text({ label: 'Caption', multiline: true, validation: { isRequired: false } }),
+    align: fields.select({
+      label: 'Alignment',
+      options: [
+        { label: 'Center', value: 'center' },
+        { label: 'Left', value: 'left' },
+      ],
+      defaultValue: 'center',
+    }),
+  },
+  ContentView: ({ value }) =>
+    React.createElement(
+      'figure',
+      {
+        style: {
+          border: '1px solid rgba(0,0,0,0.1)',
+          borderRadius: '12px',
+          padding: '8px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '6px',
+        },
+      },
+      React.createElement('strong', null, value.alt || 'Figure'),
+      value.caption ? React.createElement('span', { style: { fontSize: '12px', color: '#666' } }, value.caption) : null,
+      React.createElement(
+        'code',
+        { style: { fontSize: '11px', color: '#444' } },
+        `size: ${value.size ?? 'content'}, align: ${value.align ?? 'center'}`
+      )
+    ),
+});
 
 export default config({
   storage: {
-    kind: 'cloud',
-    pathPrefix: 'apps/journal',
+    kind: 'local',
   },
-  cloud: { project: 'aevia-editors/aeviajournal' },
   collections: {
     posts: collection({
       label: 'Posts',
@@ -66,8 +124,8 @@ export default config({
           {
             src: fields.image({
               label: 'Hero image',
-              directory: 'public/images',
-              publicPath,
+              directory: postsDirectory,
+              publicPath: postsPublicPath,
               validation: { isRequired: false },
             }),
             alt: fields.text({ label: 'Alt text', validation: { isRequired: false } }),
@@ -82,9 +140,12 @@ export default config({
           label: 'Content',
           options: {
             image: {
-              directory: 'public/images',
-              publicPath,
+              directory: postsDirectory,
+              publicPath: postsPublicPath,
             },
+          },
+          components: {
+            Figure: figureComponent,
           },
         }),
       },
@@ -101,8 +162,8 @@ export default config({
         role: fields.text({ label: 'Role', validation: { isRequired: false } }),
         avatar: fields.image({
           label: 'Avatar',
-          directory: 'public/images',
-          publicPath,
+          directory: authorsDirectory,
+          publicPath: authorsPublicPath,
           validation: { isRequired: false },
         }),
         bio: fields.text({ label: 'Bio', multiline: true, validation: { isRequired: false } }),

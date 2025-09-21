@@ -111,7 +111,7 @@ const { Content } = await post.render();
           src={heroUrl}
           alt={post.data.hero?.alt || post.data.title}
           class="w-full h-[320px] md:h-[420px] object-cover"
-          loading="lazy"
+          loading="eager"
         />
       </figure>
     )}

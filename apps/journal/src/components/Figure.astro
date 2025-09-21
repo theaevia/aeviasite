@@ -1,18 +1,92 @@
 ---
-export interface Props {
-  src: string;
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { resolveImageModule, resolveMediaPath } from '../utils/media';
+import { withBase } from '../utils/withBase';
+
+export type FigurePreset = 'thumb' | 'content' | 'wide' | 'full';
+export type LegacySize = 'small' | 'normal';
+export type Size = FigurePreset | LegacySize;
+
+type Props = {
+  src: string | { src: string };
   alt?: string;
   caption?: string;
-  size?: 'small' | 'normal' | 'wide' | 'full';
+  size?: Size;
   align?: 'left' | 'center';
-}
-const { src, alt = '', caption, size = 'normal', align = 'center' } = Astro.props as Props;
-const base = import.meta.env.BASE_URL;
-const url = src?.startsWith('http') ? src : `${base}${src.replace(/^\//,'')}`;
----
-<figure class={`fig fig--${size} fig--${align}`}>
-  <img src={src} alt={alt} />
-  {caption && <figcaption>{caption}</figcaption>}
-  
-</figure>
+  class?: string;
+  figureClass?: string;
+  loading?: 'eager' | 'lazy';
+};
 
+const {
+  src,
+  alt = '',
+  caption,
+  size = 'normal',
+  align = 'center',
+  class: klass = '',
+  figureClass = '',
+  loading = 'lazy',
+} = Astro.props as Props;
+
+const presetMap: Record<Size, FigurePreset> = {
+  thumb: 'thumb',
+  content: 'content',
+  wide: 'wide',
+  full: 'full',
+  small: 'thumb',
+  normal: 'content',
+};
+
+const figureSizeClassMap: Record<FigurePreset, LegacySize | 'wide' | 'full'> = {
+  thumb: 'small',
+  content: 'normal',
+  wide: 'wide',
+  full: 'full',
+};
+
+const widthPresets: Record<FigurePreset, number[]> = {
+  thumb: [320, 480, 640],
+  content: [640, 960, 1280],
+  wide: [960, 1280, 1600],
+  full: [1280, 1600, 2048],
+};
+
+const sizesAttribute: Record<FigurePreset, string> = {
+  thumb: '(max-width: 640px) 100vw, 640px',
+  content: '(max-width: 960px) 100vw, 960px',
+  wide: '(max-width: 1280px) 100vw, 1280px',
+  full: '(max-width: 2048px) 100vw, 2048px',
+};
+
+const resolvedPreset = presetMap[size] ?? 'content';
+const figureSize = figureSizeClassMap[resolvedPreset] ?? 'normal';
+const widths = widthPresets[resolvedPreset] ?? widthPresets.content;
+const sizesAttr = sizesAttribute[resolvedPreset] ?? sizesAttribute.content;
+
+const module: ImageMetadata | undefined = resolveImageModule(src);
+const fallbackSrc = resolveMediaPath(src);
+const fallbackUrl = fallbackSrc ? withBase(fallbackSrc) : undefined;
+const figureClasses = [`fig`, `fig--${figureSize}`, `fig--${align}`];
+if (figureClass) {
+  figureClasses.push(figureClass);
+}
+---
+{(module || fallbackUrl) && (
+  <figure class={figureClasses.join(' ')}>
+    {module ? (
+      <Image
+        src={module}
+        alt={alt}
+        widths={widths}
+        sizes={sizesAttr}
+        class={klass}
+        loading={loading}
+      />
+    ) : fallbackUrl ? (
+      <img src={fallbackUrl} alt={alt} loading={loading} class={klass} />
+    ) : null}
+    {caption && <figcaption>{caption}</figcaption>}
+  </figure>
+)}
