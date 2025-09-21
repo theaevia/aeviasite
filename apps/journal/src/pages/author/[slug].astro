@@ -6,13 +6,13 @@ import { resolveMediaPath } from '../../utils/media';
 
 export async function getStaticPaths() {
   const authors = await getCollection('authors');
-  return authors.map((a) => ({ params: { slug: a.data.slug } }));
+  return authors.map((a) => ({ params: { slug: a.slug } }));
 }
 
 const { slug } = Astro.params;
 
 const authors = await getCollection('authors');
-const authorEntry = authors.find((a) => a.data.slug === slug);
+const authorEntry = authors.find((a) => a.slug === slug);
 
 if (!authorEntry) {
   throw Astro.redirect(withBase('/')); // journal app root; becomes /journal/ in prod

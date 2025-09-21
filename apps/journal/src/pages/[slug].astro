@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const authorEntries = await getCollection('authors');
-const authorsMap = Object.fromEntries(authorEntries.map((a) => [a.data.slug, a.data]));
+const authorsMap = Object.fromEntries(authorEntries.map((a) => [a.slug, a.data]));
 const categoryMap = Object.fromEntries(
   (await getCollection('categories')).map((c) => [c.data.slug, c.data.label])
 );

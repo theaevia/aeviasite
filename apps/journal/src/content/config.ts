@@ -24,7 +24,6 @@ const posts = defineCollection({
 const authors = defineCollection({
   type: 'data',
   schema: z.object({
-    slug: z.string(),
     name: z.string(),
     credentials: z.string().optional(),
     role: z.string().optional(),
