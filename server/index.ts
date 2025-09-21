@@ -269,7 +269,8 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
           }
 
           app.use('/api/keystatic', (req, res, next) => {
-            req.url = `/journal${req.url}`;
+            const originalUrl = req.url;
+            req.url = `/api/keystatic${originalUrl}`;
             return journalHandler(req, res, next);
           });
 
