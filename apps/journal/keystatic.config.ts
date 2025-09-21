@@ -2,11 +2,12 @@
 import { config, fields, collection } from '@keystatic/core';
 
 const isProd = process.env.NODE_ENV === 'production';
-const publicPath = isProd ? '/journal/images/' : '/images/';
+const publicPath = '/images/'
 
 export default config({
   storage: {
     kind: 'cloud',
+    pathPrefix: 'apps/journal',
   },
   cloud: { project: 'aevia-editors/aeviajournal' },
   collections: {
