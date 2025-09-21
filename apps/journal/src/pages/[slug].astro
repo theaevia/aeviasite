@@ -24,9 +24,17 @@ if (!post) {
 }
 
 const authorEntries = await getCollection('authors');
-const authorsMap = Object.fromEntries(authorEntries.map((a) => [a.slug, a.data]));
+const authorsMap = Object.fromEntries(
+  authorEntries
+    .filter((entry) => entry?.slug && entry?.data)
+    .map((entry) => [entry.slug, entry.data])
+);
+
+const categoryEntries = await getCollection('categories');
 const categoryMap = Object.fromEntries(
-  (await getCollection('categories')).map((c) => [c.slug, c.data.label])
+  categoryEntries
+    .filter((entry) => entry?.slug && entry?.data)
+    .map((entry) => [entry.slug, entry.data.label])
 );
 
 const title = post.data.title;

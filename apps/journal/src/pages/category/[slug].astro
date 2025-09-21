@@ -6,8 +6,11 @@ import { resolveMediaPath } from '../../utils/media';
 
 const { slug } = Astro.params;
 
-const categories = await getCollection('categories');
-const category = categories.find((c) => c.slug === slug);
+const categories = (await getCollection('categories')).filter(
+  (entry) => entry?.slug && entry?.data
+);
+
+const category = categories.find((entry) => entry.slug === slug);
 
 if (!category) {
   throw Astro.redirect(withBase('/'));
