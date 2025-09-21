@@ -18,14 +18,21 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.text({ label: 'Title' }),
-        slug: fields.text({
-          label: 'Slug',
-          validation: {
-            pattern: {
-              regex: /^[a-z0-9-]+$/,
-              message: 'Use lowercase letters, numbers and dashes only',
+        slug: fields.slug({
+          name: {
+            label: 'Slug source',
+            description: 'Used to generate the URL slug; defaults to the post title.',
+          },
+          slug: {
+            label: 'Slug',
+            description: 'Lowercase, numbers and dashes only. This becomes the URL segment.',
+            validation: {
+              length: { min: 1 },
+              pattern: {
+                regex: /^[a-z0-9-]+$/,
+                message: 'Use lowercase letters, numbers and dashes only',
+              },
             },
-            isRequired: true,
           },
         }),
         dek: fields.text({ label: 'Dek', multiline: true, validation: { isRequired: false } }),
