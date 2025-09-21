@@ -6,9 +6,16 @@ import { resolveMediaPath } from '../../utils/media';
 
 const { slug } = Astro.params;
 
-const authors = (await getCollection('authors')).filter(
-  (entry) => entry?.slug && entry?.data
-);
+const normaliseDataEntrySlug = (entry: any): string => {
+  const rawId = typeof entry.id === 'string' ? entry.id : String(entry.id ?? '');
+  const normalized = rawId.replace(/\\/g, '/');
+  const lastSegment = normalized.split('/').pop() ?? '';
+  return lastSegment.replace(/\.[^.]+$/, '');
+};
+
+const authors = (await getCollection('authors'))
+  .map((entry) => ({ slug: normaliseDataEntrySlug(entry), data: entry.data }))
+  .filter((entry) => entry.slug && entry.data);
 
 const authorEntry = authors.find((entry) => entry.slug === slug);
 

@@ -16,6 +16,13 @@ const getEntrySlug = (entry: any): string => {
   return normalizedId.split('/').pop()?.split('.').slice(0, -1).join('.') ?? '';
 };
 
+const getDataEntrySlug = (entry: any): string => {
+  const rawId = typeof entry.id === 'string' ? entry.id : String(entry.id ?? '');
+  const normalized = rawId.replace(/\\/g, '/');
+  const lastSegment = normalized.split('/').pop() ?? '';
+  return lastSegment.replace(/\.[^.]+$/, '');
+};
+
 const allPosts = await getCollection('posts', ({ data }) => data.status === 'published');
 const post = allPosts.find((p) => getEntrySlug(p) === slug);
 if (!post) {
@@ -26,14 +33,16 @@ if (!post) {
 const authorEntries = await getCollection('authors');
 const authorsMap = Object.fromEntries(
   authorEntries
-    .filter((entry) => entry?.slug && entry?.data)
+    .map((entry) => ({ slug: getDataEntrySlug(entry), data: entry.data }))
+    .filter((entry) => entry.slug && entry.data)
     .map((entry) => [entry.slug, entry.data])
 );
 
 const categoryEntries = await getCollection('categories');
 const categoryMap = Object.fromEntries(
   categoryEntries
-    .filter((entry) => entry?.slug && entry?.data)
+    .map((entry) => ({ slug: getDataEntrySlug(entry), data: entry.data }))
+    .filter((entry) => entry.slug && entry.data?.label)
     .map((entry) => [entry.slug, entry.data.label])
 );
 

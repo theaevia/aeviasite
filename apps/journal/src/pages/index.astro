@@ -7,7 +7,17 @@ import { resolveMediaPath } from '../utils/media';
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
-const categories = await getCollection('categories');
+const normaliseDataEntrySlug = (entry: any): string => {
+  const rawId = typeof entry.id === 'string' ? entry.id : String(entry.id ?? '');
+  const normalized = rawId.replace(/\\/g, '/');
+  const lastSegment = normalized.split('/').pop() ?? '';
+  return lastSegment.replace(/\.[^.]+$/, '');
+};
+
+const categories = (await getCollection('categories'))
+  .map((entry) => ({ slug: normaliseDataEntrySlug(entry), data: entry.data }))
+  .filter((entry) => entry.slug && entry.data);
+
 const categoryMap = Object.fromEntries(categories.map((c) => [c.slug, c.data.label]));
 ---
 
