@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Instagram } from "lucide-react";
 import logoBlack from "@assets/logos/logo-black-transparent.webp";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
+import { journalUrl } from "@/lib/journal";
 
 export default function Footer() {
   return (
@@ -54,7 +55,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="/journal" className="hover:text-primary smooth-transition">
+                <a href={journalUrl('/')} className="hover:text-primary smooth-transition">
                   Journal
                 </a>
               </li>

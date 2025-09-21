@@ -2,8 +2,8 @@ const rawBase = import.meta.env.BASE_URL ?? '/';
 const base = rawBase === '/' ? '' : rawBase.replace(/\/$/, '');
 
 /**
- * Prefixes a path with the configured Astro base path.
- * Ensures generated URLs stay valid in both dev ("/") and prod ("/journal").
+ * Prefixes a path with the configured Astro base path so links work whether the
+ * Journal sits at the domain root or under a subdirectory.
  */
 export function withBase(input: unknown): string {
   if (input == null || input === '') {

@@ -19,15 +19,52 @@ import logoGold from "@assets/logos/logo-gold-transparent.webp";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
 import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
+import { journalUrl } from "@/lib/journal";
 
 // Add slugify helper (same as in CategoryPage)
 const slugify = (str: string) =>
   str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
+const buildUrl = (origin: string | undefined, path: string) => {
+  if (!origin) return path;
+  const cleanedOrigin = origin.replace(/\/$/, "");
+  const cleanedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${cleanedOrigin}${cleanedPath}`;
+};
+
 export default function Navigation() {
+  const rawJournalBase = (import.meta.env["PUBLIC_JOURNAL_BASE"] ?? import.meta.env.BASE_URL ?? "/") as string;
+  const journalBase = rawJournalBase === "/" ? "" : rawJournalBase.replace(/\/$/, "");
+  const mainSiteOriginEnv = (import.meta.env["PUBLIC_MAIN_SITE_ORIGIN"] ?? "https://theaevia.co.uk") as string;
+  const mainSiteOrigin = mainSiteOriginEnv ? mainSiteOriginEnv.replace(/\/$/, "") : undefined;
+
+  const externalHrefPattern = /^(?:[a-z]+:|#)/i;
+  const resolveHrefForJournal = (href: string) => {
+    if (!href || externalHrefPattern.test(href)) {
+      return href;
+    }
+    if (href.startsWith('/journal')) {
+      const suffix = href.slice('/journal'.length);
+      if (journalBase) {
+        return suffix ? `${journalBase}${suffix}` : journalBase;
+      }
+      return suffix || '/';
+    }
+    return buildUrl(mainSiteOrigin, href);
+  };
+
+  const resolveJournalOriginHref = (href: string) => {
+    if (!href) return journalUrl('/');
+    return journalUrl(href);
+  };
+
   // Prefer full page reloads when rendered inside the Journal (Astro) app
   // This avoids SPA-only navigation on static Journal pages.
-  const isJournalApp = typeof window !== 'undefined' && window.location.pathname.startsWith('/journal');
+  const isJournalApp = typeof window !== 'undefined' && (
+    import.meta.env.DEV ||
+    (journalBase ? window.location.pathname.startsWith(journalBase) : window.location.pathname.startsWith('/journal')) ||
+    window.location.hostname.includes('journal')
+  );
 
   // Smart Link that uses wouter in SPA, <a> in Journal
   // Keep the name `Link` so existing usages below continue to work.
@@ -36,9 +73,17 @@ export default function Navigation() {
     children: React.ReactNode;
   } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const { href, children, ...rest } = props;
+    const resolvedHref = isJournalApp ? resolveHrefForJournal(href) : href;
     if (isJournalApp) {
       return (
-        <a href={href} {...rest}>
+        <a href={resolvedHref} {...rest}>
+          {children}
+        </a>
+      );
+    }
+    if (href.startsWith('/journal')) {
+      return (
+        <a href={resolveJournalOriginHref(href)} {...rest}>
           {children}
         </a>
       );
@@ -63,6 +108,9 @@ export default function Navigation() {
   const [isSkinPnoOpen, setIsSkinPnoOpen] = useState(false);
   const [isSkinBioOpen, setIsSkinBioOpen] = useState(false);
   const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
+
+  const journalLogoBlackSrc = resolveHrefForJournal('/journal/assets/logos/logo-black-transparent.webp');
+  const journalLogoGoldSrc = resolveHrefForJournal('/journal/assets/logos/logo-gold-transparent.webp');
 
   const isActive = (path: string) => {
     if (path === "/" && location === "/") return true;
@@ -125,14 +173,14 @@ export default function Navigation() {
             <Link href="/">
               <div onClick={handleLinkClick} className="cursor-pointer group relative smooth-transition flex-shrink-0">
                 <img
-                  src={isJournalApp ? "/journal/assets/logos/logo-black-transparent.webp" : (logoBlack as unknown as string)}
+                  src={isJournalApp ? journalLogoBlackSrc : (logoBlack as unknown as string)}
                   alt="The Aevia"
                   width="916"
                   height="500"
                   className="h-16 w-auto group-hover:opacity-0 smooth-transition"
                 />
                 <img
-                  src={isJournalApp ? "/journal/assets/logos/logo-gold-transparent.webp" : (logoGold as unknown as string)}
+                  src={isJournalApp ? journalLogoGoldSrc : (logoGold as unknown as string)}
                   alt="The Aevia"
                   width="916"
                   height="500"
@@ -343,9 +391,9 @@ export default function Navigation() {
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <a href="/journal">
+                <Link href="/journal">
                   <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Journal</DropdownMenuItem>
-                </a>
+                </Link>
                 <DropdownMenuItem disabled>FAQs</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Policies</DropdownMenuSubTrigger>
@@ -629,11 +677,11 @@ export default function Navigation() {
         </button>
         {isResourcesOpen && (
           <div className="ml-4 flex flex-col space-y-2">
-            <a href="/journal">
+            <Link href="/journal">
               <span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
                 Journal
               </span>
-            </a>
+            </Link>
             <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
             <button
               onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}

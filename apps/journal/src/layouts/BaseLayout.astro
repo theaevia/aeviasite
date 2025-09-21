@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navigation from '@/components/Navigation';
 import { withBase } from '../utils/withBase';
+import { mainSiteUrl } from '../utils/mainSiteUrl';
 
 const {
   title = 'Aevia Journal',
@@ -61,8 +62,8 @@ const ogImageAbsolute =
         <p class="text-sm text-foreground/60">© {new Date().getFullYear()} Aevia. All rights reserved.</p>
         <nav class="flex items-center gap-4 text-sm text-foreground/70">
           <!-- Main-site links: DO NOT withBase -->
-          <a href="/consultations" class="hover:text-foreground">Consultations</a>
-          <a href="/treatments" class="hover:text-foreground">Treatments</a>
+          <a href={mainSiteUrl('/consultations')} class="hover:text-foreground">Consultations</a>
+          <a href={mainSiteUrl('/treatments')} class="hover:text-foreground">Treatments</a>
 
           <!-- Journal app root: base-aware so it becomes /journal/ in prod -->
           <a href={withBase('/')} class="hover:text-foreground">Journal</a>
