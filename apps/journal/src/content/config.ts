@@ -46,7 +46,7 @@ const authors = defineCollection({
 const categories = defineCollection({
   type: 'data',
   schema: z.object({
-    label: z.string(),
+    label: z.string().optional(),
     description: z.string().optional(),
   }),
 });

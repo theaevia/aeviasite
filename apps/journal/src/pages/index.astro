@@ -11,14 +11,21 @@ const slugOf = (entry: any): string => {
   if (typeof entry?.slug === 'string' && entry.slug) return entry.slug;
   const normalizedId = String(entry?.id ?? '').replace(/\\/g, '/');
   const base = normalizedId.split('/').pop() ?? '';
-  return base.split('.').slice(0, -1).join('.');
+  if (base.includes('.')) {
+    const withoutExtension = base.split('.').slice(0, -1).join('.');
+    if (withoutExtension) return withoutExtension;
+  }
+  return base;
 };
 
 const relationSlug = (value: any): string => {
-  if (typeof value === 'string' && value) return value;
+  if (typeof value === 'string') return value.trim();
   if (value && typeof value === 'object') {
-    if (typeof value.slug === 'string' && value.slug) return value.slug;
-    if (typeof value.id === 'string' && value.id) return value.id;
+    const candidates = ['slug', 'value', 'id', '_id', 'key', 'ref', '_ref', 'path', 'filepath', 'file', 'name'];
+    for (const k of candidates) {
+      const v = (value as any)[k];
+      if (typeof v === 'string' && v.trim()) return v.trim();
+    }
   }
   return '';
 };
@@ -26,11 +33,11 @@ const relationSlug = (value: any): string => {
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
   .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
-const categories = (await getCollection('categories'))
-  .map((entry) => ({ slug: slugOf(entry), data: entry.data }))
-  .filter((entry) => entry.slug && entry.data);
-
-const categoryMap = Object.fromEntries(categories.map((c) => [c.slug, c.data.label]));
+const categories = await getCollection('categories');
+const categoryMap = Object.fromEntries(categories.map((entry) => {
+  const entrySlug = slugOf(entry);
+  return [entrySlug, entry.data?.label ?? entrySlug];
+}));
 ---
 
 <BaseLayout title="Aevia Journal" description="Evidence-based aesthetics, longevity & mindset.">
@@ -44,9 +51,12 @@ const categoryMap = Object.fromEntries(categories.map((c) => [c.slug, c.data.lab
         <!-- This page itself (root of the journal app). In prod it becomes /journal/ -->
         <a class="chip" href={withBase('/')}>All</a>
 
-        {categories.map((c) => (
-          <a class="chip" href={withBase(`/category/${c.slug}`)}>{c.data.label}</a>
-        ))}
+        {categories.map((entry) => {
+          const categorySlug = slugOf(entry);
+          return (
+            <a class="chip" href={withBase(`/category/${categorySlug}`)}>{entry.data?.label ?? categorySlug}</a>
+          );
+        })}
       </div>
     </header>
 
