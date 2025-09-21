@@ -19,7 +19,7 @@ const base = isProd ? '/journal' : '';
 export default defineConfig({
   site: 'https://www.theaevia.co.uk',
   base,
-  output: 'static',
+  output: 'server',
   adapter: node({ mode: 'standalone' }),
   integrations: [react(), sitemap(), mdx(), tailwind({ config: './tailwind.config.ts' }), markdoc(), keystatic()],
   vite: {
