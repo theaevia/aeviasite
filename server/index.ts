@@ -2,10 +2,10 @@ import 'dotenv/config';
 const DEFAULT_PORT = Number(process.env.PORT ?? 3000);
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import { setupVite, log } from "./vite";
 import helmet from "helmet";
 import path from "path";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 import fs from "fs";
 import net from "net";
 
@@ -251,19 +251,35 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
     if (!isProd) {
       await setupVite(app, server);
     } else {
-      // Serve static Astro Journal under /journal if built
-      const journalPath = path.join(__dirname, 'journal');
-      if (fs.existsSync(journalPath)) {
-        app.use('/journal', express.static(journalPath, {
-          index: 'index.html',
-          setHeaders: (res, filePath) => {
-            if (filePath.endsWith('.html')) {
-              res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
-            } else {
-              res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-            }
+      // Mount Astro journal SSR handler instead of serving static files
+      const journalDist = path.join(__dirname, 'journal');
+      const journalEntry = path.join(journalDist, 'server', 'entry.mjs');
+
+      if (fs.existsSync(journalEntry)) {
+        try {
+          const entryUrl = pathToFileURL(journalEntry).href;
+          const { handler: journalHandler } = await import(entryUrl);
+
+          const journalClientDir = path.join(journalDist, 'client');
+          if (fs.existsSync(journalClientDir)) {
+            app.use('/journal', express.static(journalClientDir, {
+              maxAge: '1y',
+              immutable: true,
+            }));
           }
-        }));
+
+          app.use('/api/keystatic', (req, res, next) => {
+            const originalUrl = req.url;
+            req.url = `/api/keystatic${originalUrl}`;
+            return journalHandler(req, res, next);
+          });
+
+          app.use('/journal', (req, res, next) => journalHandler(req, res, next));
+        } catch (error) {
+          log(`Failed to load journal SSR handler: ${error instanceof Error ? error.message : String(error)}`, 'warn');
+        }
+      } else {
+        log('Journal build artifacts missing; skipping SSR mount', 'warn');
       }
       // Handle case sensitivity and index.html variations
       app.use((req, res, next) => {
@@ -301,16 +317,20 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
         maxAge: '1y'
       }));
 
-      // Handle trailing slashes
+      // Handle trailing slashes outside the journal app
       app.use((req, res, next) => {
         const url = req.url;
-        // Remove trailing slash except for root
-        if (url.length > 1 && url.endsWith('/')) {
-          return res.redirect(301, url.slice(0, -1));
+        const lowerUrl = url.toLowerCase();
+
+        if (lowerUrl === '/journal' || lowerUrl.startsWith('/journal/')) {
+          return next();
         }
-        // Add trailing slash to root
+
+        if (url.length > 1 && url.endsWith('/')) {
+          return res.redirect(308, url.slice(0, -1));
+        }
         if (url === '') {
-          return res.redirect(301, '/');
+          return res.redirect(308, '/');
         }
         next();
       });
