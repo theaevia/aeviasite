@@ -119,7 +119,7 @@ export default function About() {
                   <h2 className="text-3xl font-serif font-bold mb-4">Dr. Manu Sidhu</h2>
                   <p className="text-lg text-primary mb-4">Medical Doctor & Performance Coach</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
-                  Dr. Manu Okhiria is a medical doctor and certified performance coach with an MBBS and a BSc from Imperial College London. He brings a deep understanding of brain science and human behaviour to his work, helping professionals and high-performers unlock clarity, consistency, and long-term growth. With a special interest in mindset and mental wellbeing, Manu blends clinical insight with evidence-based coaching to guide lasting behavioural transformation. He is the author of The Mind Explored, host of the MindTech podcast, and a clinical advisor to the wellbeing platform Pareful.
+                  Dr. Manu Sidhu is a medical doctor and certified performance coach with an MBBS and a BSc from Imperial College London. He brings a deep understanding of brain science and human behaviour to his work, helping professionals and high-performers unlock clarity, consistency, and long-term growth. With a special interest in mindset and mental wellbeing, Manu blends clinical insight with evidence-based coaching to guide lasting behavioural transformation. He is the author of The Mind Explored, host of the MindTech podcast, and a clinical advisor to the wellbeing platform Pareful.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-foreground/70">
