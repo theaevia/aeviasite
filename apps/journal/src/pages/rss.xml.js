@@ -6,7 +6,7 @@ export async function GET(context) {
     .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
   return rss({
-    title: 'Aevia Journal',
+    title: 'The Aevia Journal',
     description: 'Doctor-led aesthetics & longevity.',
     site: context.site,
     items: posts.map((p) => {
