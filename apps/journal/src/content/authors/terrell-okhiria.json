@@ -1,7 +1,10 @@
 {
-  "name": "Terrell",
-  "credentials": "Dr MBBS",
-  "role": "Dr",
+  "name": "Terrell Okhiria",
+  "credentials": "MBBS, BSc",
+  "role": "GP Trainee, Aesthetic Doctor",
   "avatar": "/images/authors/terrell-okhiria/avatar.webp",
-  "links": {}
+  "bio": "Dr. Terrell Okhiria is a medical doctor and GP trainee based in North Central London. He holds an MBBS and intercalated BSc from Imperial College London and is certified in advanced aesthetic medicine. With a strong foundation in clinical medicine and a deep understanding of skin physiology, he specialises in regenerative, science-led treatments that support long-term skin health and natural rejuvenation.",
+  "links": {
+    "website": "https://www.theaevia.co.uk/team"
+  }
 }
