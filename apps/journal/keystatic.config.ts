@@ -66,8 +66,10 @@ const figureComponent = block({
 
 export default config({
   storage: {
-    kind: 'local',
+    kind: 'cloud',
+    pathPrefix: 'apps/journal',
   },
+  cloud: { project: 'aevia-editors/aeviajournal' },
   collections: {
     posts: collection({
       label: 'Posts',
