@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const SQUARE_SERVICES_URL =
-  "http://the-aevia.square.site/";
+  "/go/square_site";
 
 type Mode = "new" | "returning";
 

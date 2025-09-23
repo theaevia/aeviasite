@@ -41,6 +41,7 @@ const DEST: Record<string, string> = {
   clarity_strategy_session: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/MSQRJ3E3FMVF25P4P2RVX6MH",
   momentum_6: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?service_id=EWO2ZNUMY3K3NX7DWE6R3BIV",
   transformation_12: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?service_id=LGKQHJZFMGCCEJB2N3C4ZJ36",
+  square_site: "https://the-aevia.square.site/",
 };
 
 go.get('/go/:slug', (req, res) => {

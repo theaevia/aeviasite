@@ -344,7 +344,7 @@ export default function Navigation() {
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
                 </a>
                 <a
-                  href={"http://the-aevia.square.site/"}
+                  href={"/go/square_site"}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Book a treatment"
@@ -615,7 +615,7 @@ export default function Navigation() {
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind Consultation</span>
             </a>
             <a
-                  href={"http://the-aevia.square.site/"}
+                  href={"/go/square_site"}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Book a treatment"
