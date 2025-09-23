@@ -22,7 +22,7 @@ export default function SkinBoostersCategoryPage() {
                 Advanced injectables to improve skin hydration, firmness, and radiance.
               </p>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full sm:w-auto">
+                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">
                   Start Virtual Consultation
                 </BookingButton>
                 <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>

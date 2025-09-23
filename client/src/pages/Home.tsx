@@ -85,7 +85,7 @@ export default function Home() {
     const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
     const onCtaClick = () => {
       if (isAntiWrinkle) {
-        window.location.href = 'https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H';
+        window.location.href = '/go/skin_consultations';
       } else {
         handleSignatureOfferBook(offer.bookingUrl);
       }
@@ -143,8 +143,8 @@ export default function Home() {
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
                 <div className="w-full sm:w-64 text-center">
-                  <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full">
-                    Book Consultation
+                  <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                    Book Skin Consultation
                   </BookingButton>
                 </div>
                 <div className="w-full sm:w-64">
@@ -391,7 +391,7 @@ transformation.
             <p className="text-lg text-foreground/70 mb-8">Based in Kings Cross, London</p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
               <div className="w-full sm:w-64">
-                <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full">
+                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
                   Book Skin Consultation
                 </BookingButton>
               </div>

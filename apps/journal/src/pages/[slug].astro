@@ -81,8 +81,8 @@ const authorRefs = (post.data.authors || [])
   })
   .filter(Boolean) as Array<{ slug: string; data: any; avatarUrl?: string }>;
 
-const defaultConsultationUrl = 'https://book.squareup.com/appointments/flwwunfdy1hm72/location/L1TKSRMBS3N9H/services';
-const mindConsultationUrl = 'https://book.squareup.com/appointments/sveent13urj63l/location/L1TKSRMBS3N9H/services';
+const defaultConsultationUrl = withBase('/go/skin_consultations');
+const mindConsultationUrl = withBase('/go/mind_consultation');
 const isMindCategory = (post.data.categories || []).some((value: any) => relationSlug(value) === 'mind');
 const consultationUrl = isMindCategory ? mindConsultationUrl : defaultConsultationUrl;
 

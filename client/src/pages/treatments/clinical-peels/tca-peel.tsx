@@ -16,7 +16,7 @@ export default function TCAPeelComingSoonPage() {
           <p className="text-2xl font-bold text-primary mb-8">
             Coming Soon to Aevia Skin!
           </p>
-          <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full sm:w-auto">
+          <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">
             Book a Consultation to Learn More
           </BookingButton>
         </div>

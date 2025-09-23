@@ -20,7 +20,7 @@ export const signatureOffers: SignatureOffer[] = [
       "One appointment, one seamless price",
     ],
     normalPrice: "£580",
-    bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/DHNAE4YPX7TJ2TYXHJX5NWFH",
+    bookingUrl: "/go/wrinkle_reset",
     ctaText: "Book My Wrinkle Reset"
   },
   {
@@ -34,7 +34,7 @@ export const signatureOffers: SignatureOffer[] = [
       "Second session recommended in 4 weeks for optimal results"
     ],
     normalPrice: "£550",
-    bookingUrl: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/27TAWF7EQYSCHM6EB6ZIU463",
+    bookingUrl: "/go/glow_revival",
     ctaText: "Book My Glow Revival"
   },
   {

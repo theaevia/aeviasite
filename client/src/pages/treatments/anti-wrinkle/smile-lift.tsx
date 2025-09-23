@@ -32,7 +32,7 @@ export default function SmileLiftPage() {
                   <span>30 mins</span>
                 </div>
                 <BookingButton
-                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/UHWQSUZOAETSA4MYBHWGU3QR"
+                  href="/go/dao"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -182,7 +182,7 @@ export default function SmileLiftPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£120</span>
                 <span className="text-muted-foreground text-sm mb-4">30min</span>
                 <BookingButton
-                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/UHWQSUZOAETSA4MYBHWGU3QR"
+                  href="/go/dao"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -227,13 +227,13 @@ export default function SmileLiftPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Smile Lift consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full">
+                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/UHWQSUZOAETSA4MYBHWGU3QR" variant="secondary" className="w-full">
+                <BookingButton href="/go/dao" variant="secondary" className="w-full">
                   Book Smile Lift Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

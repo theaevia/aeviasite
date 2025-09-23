@@ -56,7 +56,7 @@ export default function BioPage() {
   }, [utmSource, utmMedium]);
 
   const consultHref = useMemo(() => {
-    return "https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H";
+    return "/go/skin_consultations";
   }, []);
 
   const primaryHref = intent === "consult" ? consultHref : quizHref;

@@ -33,7 +33,7 @@ export default function JawlineSlimmingPage() {
                   <span>45 mins</span>
                 </div>
                 <BookingButton
-                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=OVJ7CCR56PAS5U6UXCOESIKG"
+                  href="/go/masseter"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -208,7 +208,7 @@ export default function JawlineSlimmingPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£300</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <BookingButton
-                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=OVJ7CCR56PAS5U6UXCOESIKG"
+                  href="/go/masseter"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -225,7 +225,7 @@ export default function JawlineSlimmingPage() {
                 <p className="text-sm font-semibold text-green-600 mb-2">Save £50</p>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <BookingButton
-                  href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?buttonTextColor=000000&color=c5a87a&locale=en-GB&service_id=TJODL43UWGBSOXFWHP4BRWGA"
+                  href="/go/contour_duo"
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -270,13 +270,13 @@ export default function JawlineSlimmingPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Jawline Slimming consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H" variant="primary" className="w-full">
+                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/OVJ7CCR56PAS5U6UXCOESIKG" variant="secondary" className="w-full">
+                <BookingButton href="/go/masseter" variant="secondary" className="w-full">
                   Book Jawline Slimming Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

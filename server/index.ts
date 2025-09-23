@@ -3,6 +3,7 @@ const DEFAULT_PORT = Number(process.env.PORT ?? 3000);
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, log } from "./vite";
+import { go } from "./routes/go";
 import helmet from "helmet";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
@@ -239,6 +240,7 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
 (async () => {
   try {
     const server = await registerRoutes(app);
+    app.use(go);
 
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       const status = err.status || err.statusCode || 500;

@@ -52,7 +52,7 @@ export default function SkinConsultationPage() {
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <a
-                href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H"
+                href="/go/skin_consultations"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

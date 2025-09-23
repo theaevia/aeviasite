@@ -265,7 +265,7 @@ export default function MobileStickyBookingBar() {
         {/* Primary action */}
         {mode === "new" ? (
           <a
-            href="https://app.squareup.com/appointments/buyer/widget/flwwunfdy1hm72/L1TKSRMBS3N9H"
+            href="/go/skin_consultations"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-medium border-2 border-primary hover:bg-white hover:text-primary smooth-transition"
