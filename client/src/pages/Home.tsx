@@ -15,6 +15,7 @@ import Map from "@/components/Map";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import { signatureOffers } from "@/data/signatureOffers";
 import { testimonials } from "@/data/testimonials";
+import { clinicOpeningHours } from "@/data/openingHours";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -432,9 +433,14 @@ transformation.
                 </div>
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-xl font-serif font-semibold mb-4">Opening Hours</h3>
-                  <p className="text-foreground/70">
-                    Daily: 12:00 PM - 7:00 PM
-                  </p>
+                  <div className="space-y-2 text-foreground/70 text-sm md:text-base">
+                    {clinicOpeningHours.map(({ day, hours }) => (
+                      <div key={day} className="flex items-center justify-between">
+                        <span className="font-medium">{day}</span>
+                        <span>{hours}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-xl font-serif font-semibold mb-4">Contact</h3>

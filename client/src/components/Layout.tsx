@@ -71,7 +71,10 @@ const organizationSchema = {
         "longitude": "-0.11996394395828247"
       },
       "openingHours": [
-        "Mo,Tu,We,Th,Fr 10:00-18:00"
+        "Tu 13:00-18:00",
+        "We 10:00-18:00",
+        "Sa 10:00-18:00",
+        "Su 10:00-18:00"
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -122,7 +125,10 @@ const organizationSchema = {
         "longitude": "-0.11996394395828247"
       },
       "openingHours": [
-        "Mo,Tu,We,Th,Fr 10:00-18:00"
+        "Tu 13:00-18:00",
+        "We 10:00-18:00",
+        "Sa 10:00-18:00",
+        "Su 10:00-18:00"
       ],
       "founder": {
         "@type": "Person",
