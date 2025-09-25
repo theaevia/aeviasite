@@ -280,18 +280,32 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
       // Mount Astro journal SSR handler instead of serving static files
       const journalDist = path.join(__dirname, 'journal');
       const journalEntry = path.join(journalDist, 'server', 'entry.mjs');
+      const journalClientDir = path.join(journalDist, 'client');
 
       if (fs.existsSync(journalEntry)) {
         try {
           const entryUrl = pathToFileURL(journalEntry).href;
           const { handler: journalHandler } = await import(entryUrl);
 
-          const journalClientDir = path.join(journalDist, 'client');
           if (fs.existsSync(journalClientDir)) {
             app.use('/journal', express.static(journalClientDir, {
               maxAge: '1y',
               immutable: true,
             }));
+
+            const serveJournalSitemap = (fileName: string) => (req: Request, res: Response, next: NextFunction) => {
+              const host = String(req.headers.host || '');
+              if (!host.includes('journal.')) return next();
+
+              const filePath = path.join(journalClientDir, fileName);
+              if (!fs.existsSync(filePath)) return next();
+
+              res.type('application/xml');
+              return res.sendFile(filePath);
+            };
+
+            app.get('/sitemap-index.xml', serveJournalSitemap('sitemap-index.xml'));
+            app.get('/sitemap-0.xml', serveJournalSitemap('sitemap-0.xml'));
           }
 
           app.use('/api/keystatic', (req, res, next) => {
