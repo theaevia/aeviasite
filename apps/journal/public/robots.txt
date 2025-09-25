@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://journal.theaevia.co.uk/sitemap-index.xml
