@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
-import mindHeroImage from "@assets/hero_images/mind-hero-new2.jpeg";
-import mindHeroImage800 from "@assets/hero_images/mind-hero-800w.webp";
-import leadershipImage from "@assets/hero_images/mind-leadership-hero2.png";
-import sportsImage from "@assets/hero_images/mind-sports-hero2.jpeg";
-import careerImage from "@assets/hero_images/mind-career-hero1.png";
+import mindHeroImage from "@assets/hero_images/mind-hero-new2.webp";
+import mindHeroImage800 from "@assets/hero_images/mind-hero-new2-800w.webp";
+import leadershipImage from "@assets/hero_images/mind-leadership-hero2.webp";
+import sportsImage from "@assets/hero_images/mind-sports-hero2.webp";
+import careerImage from "@assets/hero_images/mind-career-hero3.webp";
 import manuPortrait from "@assets/about_pics/manu-pic.webp";
 import SEO from "@/components/SEO";
 
