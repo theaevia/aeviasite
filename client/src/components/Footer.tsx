@@ -48,13 +48,8 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">About</h4>
+            <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li>
-                <Link href="/team" className="hover:text-primary smooth-transition">
-                  Our Team
-                </Link>
-              </li>
               <li>
                 <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Journal
@@ -68,6 +63,11 @@ export default function Footer() {
               <li>
                 <Link href="/terms" className="hover:text-primary smooth-transition">
                   Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link href="/cancellation" className="hover:text-primary smooth-transition">
+                  Cancellation Policy
                 </Link>
               </li>
             </ul>

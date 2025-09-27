@@ -1,14 +1,159 @@
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Rocket, Lightbulb, Brain, Swords, Check } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
-import { IconBadge } from "@/components/IconBadge";
-import mindHeroImage from "@assets/hero_images/mind-hero.webp";
+import mindHeroImage from "@assets/hero_images/mind-hero-new2.jpeg";
 import mindHeroImage800 from "@assets/hero_images/mind-hero-800w.webp";
+import leadershipImage from "@assets/hero_images/mind-leadership-hero2.png";
+import sportsImage from "@assets/hero_images/mind-sports-hero2.jpeg";
+import careerImage from "@assets/hero_images/mind-career-hero1.png";
+import manuPortrait from "@assets/about_pics/manu-pic.webp";
 import SEO from "@/components/SEO";
 
+const competitiveEdgeCards = [
+  {
+    title: "Leadership",
+    bullets: [
+      "Trust your inner voice",
+      "Remove your blockers",
+      "Build the stamina to inspire others",
+    ],
+    image: leadershipImage,
+    alt: "A leader reflecting during a coaching session",
+  },
+  {
+    title: "Sports",
+    bullets: [
+      "Eliminate distractions",
+      "Grow through mistakes",
+      "Stay composed under pressure",
+    ],
+    image: sportsImage,
+    alt: "An athlete preparing for a performance",
+  },
+  {
+    title: "Career",
+    bullets: [
+      "Become impossible to ignore",
+      "Be recognised for your value",
+      "Increase your earning potential",
+    ],
+    image: careerImage,
+    alt: "A professional focused on strategy and growth",
+  },
+];
+
+const testimonialItems = [
+  {
+    quote:
+      "Manu notices what's telling on the surface and encourages me to think about what's happening deeper - where true transformation is found.",
+    name: "Gabriel",
+    role: "International Footballer",
+  },
+  {
+    quote: "Every session with Manu refocuses my mind on the most impactful action I can take now.",
+    name: "Daniel",
+    role: "Head of Product",
+  },
+  {
+    quote: "Manu helps me find the courage to see things how they are, and move towards how I want things to be.",
+    name: "Emma",
+    role: "CEO of FinTech Startup",
+  },
+];
+
+const journeySteps = [
+  {
+    title: "Clarify what matters",
+    description: "Prioritise the goals that will take you to the next level.",
+  },
+  {
+    title: "Become aware of what's holding you back",
+    description: "Discover what's driving you and decide what you want to do about it.",
+  },
+  {
+    title: "Implement the strategies for sustainable change",
+    description:
+      "Experiment with peak performance techniques, behavioural science frameworks, and psychological tools to do what you do best, repeatedly.",
+  },
+  {
+    title: "Translate thinking into action",
+    description: "Execute a results-driven plan with accountability to stick to your goals.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What is coaching?",
+    answer: (
+      <>
+        Coaching is a thinking partnership that brings about change through self-inquiry, clarity, and accountability. Read the 2-minute article on
+        {' '}
+        <a href="/journal/what-is-coaching" className="text-primary underline underline-offset-4 hover:text-primary/80">
+          What is Coaching?
+        </a>
+        {' '}here.
+      </>
+    ),
+  },
+  {
+    question: "Why do I need a coach?",
+    answer:
+      "Athletes, artists, and high-achievers in all aspects of life have one thing in common: they have coaches. They know that having someone in their corner to constructively challenge them and unleash what makes them great is a competitive advantage. They can course correct more quickly, think more clearly, and re-focus on the actions that will bring them greater results and personal fulfilment.",
+  },
+  {
+    question: "How fast will I see results?",
+    answer:
+      "Transformative coaching at Aevia Mind is designed to help you create lasting change by generating transformation at your core, which shapes your development and leads to improvements in your outcomes. This type of change is deep, long-term, and sustainable, and therefore takes time and depends upon your commitment. However, many clients report experiencing transformational changes within the first few sessions.",
+  },
+  {
+    question: "How much time does coaching require?",
+    answer:
+      "Our coaching is designed to fit into your life when it will energise you. Dr Manu Sidhu will work with you to create a schedule that aligns with your goals. Each session you invest in can return more time and energy in the long run by helping you become more efficient and effective.",
+  },
+  {
+    question: "Can I get a preview of what coaching is like before committing?",
+    answer:
+      "Yes - at Aevia Mind, every first session is free. This gives you the opportunity to experience the value of coaching before making a longer-term commitment.",
+  },
+  {
+    question: "What qualifications do coaches need?",
+    answer:
+      "Coaching is currently an unregulated industry, which means there are plenty of coaches who lack any formal training. Dr Manu Sidhu has trained as a doctor and worked in mental health services in the UK and Australia, providing a rich understanding into the nature of the mind. He is also training at the Animas Centre for Coaching to finish his Accredited Diploma in Transformative Coaching, a course fully accredited by the International Coaching Federation (ICF), European Mentoring and Coaching Council (EMCC), and Association for Coaching (AC).",
+  },
+  {
+    question: "How can I tell if I need coaching or therapy?",
+    answer:
+      "Choose coaching when you're functioning day-to-day and want clearer direction, better performance, and future-focused progress. Choose therapy when your mental health, emotional symptoms, or past issues are disrupting daily functioning. If in doubt, consult a licensed psychologist, psychiatrist, or healthcare service. If you're in crisis or struggling to stay safe, seek urgent help now (UK: call 999 for immediate danger, 111 for urgent advice, or Samaritans 116 123).",
+  },
+  {
+    question: "Can I have coaching while I am having therapy?",
+    answer:
+      "Yes - if you're functioning but psychological blocks slow your coaching progress, therapy can address the underlying issues while coaching continues on agreed goals and habits. Many clients benefit from doing both in parallel with clear boundaries in place from the beginning.",
+  },
+];
+
 export default function Mind() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const totalTestimonials = testimonialItems.length;
+  const autoplayDelay = 8000;
+
+  const goToNextTestimonial = useCallback(
+    () => setActiveTestimonial((prev) => (prev + 1) % totalTestimonials),
+    [totalTestimonials],
+  );
+
+  const goToPreviousTestimonial = useCallback(
+    () => setActiveTestimonial((prev) => (prev - 1 + totalTestimonials) % totalTestimonials),
+    [totalTestimonials],
+  );
+
+  useEffect(() => {
+    const interval = setInterval(goToNextTestimonial, autoplayDelay);
+
+    return () => clearInterval(interval);
+  }, [goToNextTestimonial]);
+
   return (
     <>
       <SEO 
@@ -22,15 +167,30 @@ export default function Mind() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
-                  Aevia Mind: <span className="text-primary">Performance and Transformative Coaching</span>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
+                  <span className="block">Aevia Mind:</span>
+                  <span className="text-primary">Performance Coaching for the Ambitious</span>
                 </h1>
-                <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
-                  Transformative coaching for professionals who demand excellence in every aspect of their performance and life.
+                <p className="mb-4 text-[clamp(0.95rem,0.85rem+0.3vw,1.125rem)] leading-[1.4] font-sans text-foreground tracking-[0.01em]">
+                  <span className="font-semibold text-[#B89A6A]">Think</span> with clarity,
+                  <br className="sm:hidden" />
+                  <span className="font-semibold text-[#B89A6A]"> Perform</span> with consistency.
                 </p>
-                <BookingButton href={MIND_DISCOVERY_URL} variant="primary" className="w-full sm:w-auto">
-                  Book Discovery Call
-                </BookingButton>
+                <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
+                  Clear the path from where you are to where you want to be - and build the mindset, systems, and support to get there.
+                </p>
+                <div className="flex flex-col items-stretch gap-3 w-full max-w-md">
+                  <span className="text-lg text-foreground/80 text-center lg:text-left italic">
+                    Every first session is free.
+                  </span>
+                  <BookingButton
+                    href={MIND_DISCOVERY_URL}
+                    variant="primary"
+                    className="self-center sm:self-start px-6 py-2 text-base"
+                  >
+                    Book Yours
+                  </BookingButton>
+                </div>
               </div>
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
@@ -57,192 +217,193 @@ export default function Mind() {
           </div>
         </section>
 
-        {/* Coaching Areas */}
+        {/* Competitive Edge */}
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Transform Your Performance</h2>
-              <p className="text-lg text-foreground/70 max-w-3xl mx-auto">Evidence-based coaching methodologies designed for high-achieving professionals</p>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold">A Competitive Edge in Every Arena</h2>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div className="flex items-start group">
-                  <IconBadge className="mr-4">
-                    <Rocket className="h-7 w-7 stroke-[1.6]" />
-                  </IconBadge>
-                  <div>
-                    <h3 className="text-xl font-serif font-semibold mb-2">Performance Optimization</h3>
-                    <p className="text-foreground/70">Unlock your peak performance potential through scientifically-backed coaching methodologies.</p>
+            <div className="grid gap-8 md:grid-cols-3">
+              {competitiveEdgeCards.map((edge) => (
+                <article
+                  key={edge.title}
+                  className="group h-full rounded-3xl overflow-hidden shadow-xl bg-white border border-foreground/10 flex flex-col"
+                >
+                  <div className="relative h-64 w-full overflow-hidden">
+                    <img
+                      src={edge.image}
+                      alt={edge.alt}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                   </div>
-                </div>
-                
-                <div className="flex items-start group">
-                  <IconBadge className="mr-4">
-                    <Lightbulb className="h-7 w-7 stroke-[1.6]" />
-                  </IconBadge>
-                  <div>
-                    <h3 className="text-xl font-serif font-semibold mb-2">Decision-Making Clarity</h3>
-                    <p className="text-foreground/70">Develop frameworks for making high-stakes decisions with confidence and precision in complex environments.</p>
+                  <div className="p-8 flex flex-col gap-4">
+                    <h3 className="text-2xl font-serif font-semibold">{edge.title}</h3>
+                    <ul className="list-disc space-y-2 pl-5 text-base text-foreground/70 leading-relaxed marker:text-primary">
+                      {edge.bullets.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Coach Bio */}
+        <section className="py-20 bg-muted">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl shadow-xl">
+                <img
+                  src={manuPortrait}
+                  alt="Dr Manu Sidhu"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
               </div>
-              
-              <div className="space-y-8">
-                <div className="flex items-start group">
-                  <IconBadge className="mr-4">
-                    <Brain className="h-7 w-7 stroke-[1.6]" />
-                  </IconBadge>
-                  <div>
-                    <h3 className="text-xl font-serif font-semibold mb-2">Mindset Transformation</h3>
-                    <p className="text-foreground/70">Rewire limiting beliefs and develop a high-agency mindset that drives exceptional results and sustained success.</p>
-                  </div>
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-3xl lg:text-4xl font-serif font-bold">Led by Dr Manu Sidhu</h2>
+                  <p className="text-lg text-primary font-semibold mt-2">Founder, Doctor, and Performance Coach</p>
                 </div>
-                
-                <div className="flex items-start group">
-                  <IconBadge className="mr-4">
-                    <Swords className="h-7 w-7 stroke-[1.6]" />
-                  </IconBadge>
-                  <div>
-                    <h3 className="text-xl font-serif font-semibold mb-2">Strategic Life Planning</h3>
-                    <p className="text-foreground/70">Create comprehensive life strategies that align your professional ambitions with personal fulfillment and values.</p>
-                  </div>
+                <div className="space-y-5 text-lg text-foreground/80 leading-relaxed">
+                  <p>
+                    Manu works across the full spectrum of flourishing: from helping patients recover from mental illness to coaching peak performers striving for mastery.
+                  </p>
+                  <p>
+                    At Aevia Mind, Manu brings together his expertise in mental fitness, peak performance science, and human flourishing to help his clients discover and achieve their most important goals.
+                  </p>
+                  <p>
+                    Trained in Transformative Coaching, Manu catalyses shifts at the level of identity - so new habits are not forced; they become a natural expression of who you are becoming. This leads to improvements in the competencies you need to perform at your best, over and over again.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Coaching Packages */}
-        <section className="py-20 bg-accent/20">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Coaching Packages</h2>
-              <p className="text-lg text-foreground/70">Choose the level of support that matches your transformation goals</p>
+        {/* Testimonials */}
+        <section className="py-20 bg-white">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold">Testimonials</h2>
             </div>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-serif font-bold mb-4">Discovery</h3>
-                <p className="text-foreground/70 mb-6">Perfect for those starting their transformation journey</p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>1-hour initial consultation</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Personalized action plan</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Follow-up email support</span>
-                  </li>
-                </ul>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-2xl font-bold">£250</span>
-                  <span className="text-foreground/70">One-time</span>
-                </div>
-                <BookingButton href={MIND_DISCOVERY_URL} variant="primary" className="w-full">
-                  Book Now
-                </BookingButton>
+            <div className="relative mx-auto max-w-3xl" aria-live="polite">
+              <div className="relative min-h-[240px]">
+                {testimonialItems.map((testimonial, index) => {
+                  const isActive = index === activeTestimonial;
+                  return (
+                    <blockquote
+                      key={testimonial.name}
+                      className={`rounded-3xl bg-muted/50 px-8 py-10 text-center transition-all duration-500 ease-in-out ${
+                        isActive
+                          ? 'opacity-100 translate-y-0 relative'
+                          : 'pointer-events-none opacity-0 absolute inset-0 -translate-y-4'
+                      }`}
+                    >
+                      <p className="text-xl lg:text-2xl font-serif leading-relaxed text-foreground/80">
+                        “{testimonial.quote}”
+                      </p>
+                      <footer className="mt-6 text-sm uppercase tracking-wide text-foreground/60">
+                        {testimonial.name} · {testimonial.role}
+                      </footer>
+                    </blockquote>
+                  );
+                })}
               </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-primary">
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
-                  Most Popular
-                </div>
-                <h3 className="text-2xl font-serif font-bold mb-4">Transform</h3>
-                <p className="text-foreground/70 mb-6">Comprehensive coaching for lasting change</p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>6 bi-weekly sessions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Personalized coaching plan</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Email support between sessions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Resource library access</span>
-                  </li>
-                </ul>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-2xl font-bold">£1,500</span>
-                  <span className="text-foreground/70">3 months</span>
-                </div>
-                <BookingButton href={MIND_DISCOVERY_URL} variant="primary" className="w-full">
-                  Book Now
-                </BookingButton>
+              <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 pointer-events-none">
+                <button
+                  type="button"
+                  onClick={goToPreviousTestimonial}
+                  className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-foreground shadow-lg hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary transition"
+                  aria-label="Show previous testimonial"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={goToNextTestimonial}
+                  className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-foreground shadow-lg hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary transition"
+                  aria-label="Show next testimonial"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
               </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-serif font-bold mb-4">Elite</h3>
-                <p className="text-foreground/70 mb-6">Intensive coaching for maximum impact</p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>12 weekly sessions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Customized coaching program</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Priority email & phone support</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Exclusive resource access</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <span>Quarterly strategy reviews</span>
-                  </li>
-                </ul>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-2xl font-bold">£3,000</span>
-                  <span className="text-foreground/70">6 months</span>
-                </div>
-                <BookingButton href={MIND_DISCOVERY_URL} variant="primary" className="w-full">
-                  Book Now
-                </BookingButton>
+              <div className="flex justify-center gap-3 mt-8">
+                {testimonialItems.map((_, index) => (
+                  <button
+                    key={`testimonial-${index}`}
+                    type="button"
+                    className={`h-2 w-8 rounded-full transition-colors duration-300 ${
+                      index === activeTestimonial ? 'bg-primary' : 'bg-foreground/20 hover:bg-foreground/40'
+                    }`}
+                    onClick={() => setActiveTestimonial(index)}
+                    aria-label={`Show testimonial ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* How Booking Works */}
+        {/* Transformation Journey */}
+        <section className="py-20 bg-muted">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold">
+                From breakthroughs in thinking to consistency in results
+              </h2>
+              <p className="text-lg text-foreground/70 mt-4">For you, your family, and the team you lead</p>
+            </div>
+            <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+              {journeySteps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="flex h-full flex-col gap-2 rounded-3xl border border-foreground/10 bg-white p-6 shadow-md"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-primary/30 bg-white text-base font-semibold leading-none text-primary">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="font-serif text-xl font-semibold leading-[1.3] text-foreground">
+                      {step.title}
+                    </h3>
+                  </div>
+                  <p className="text-base leading-[1.5] text-foreground/70 max-w-[65ch]">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Booking */}
         <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-8">How does booking work at The Aevia?</h2>
-            <div className="bg-accent/20 rounded-2xl p-8 mb-12">
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                All new clients start with a virtual consultation, which lets us assess your needs before scheduling treatment. You'll then be invited to book your in-clinic session.
-                <br /><br />
-                <strong>Already know what you want?</strong> Returning clients can book directly.
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold">How does booking work at Aevia Mind?</h2>
+              <p className="text-lg text-primary font-semibold">Every first session is free.</p>
+              <p className="text-lg text-foreground/70 leading-relaxed">
+                We'll dive deep into your current challenges and goals, provide actionable strategies to implement straight away, and decide if coaching is the right move.
+              </p>
+              <p className="text-lg text-foreground/70 leading-relaxed">
+                Experience the value of coaching before making a longer-term commitment to fulfilling your potential.
               </p>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="text-center">
-                <h3 className="text-xl font-serif font-semibold mb-4">New Clients</h3>
-                <p className="text-foreground/70 mb-6">Start with a discovery call</p>
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="rounded-3xl border border-foreground/10 bg-muted/40 p-8 text-center space-y-4">
+                <h3 className="text-2xl font-serif font-semibold">New Clients</h3>
+                <p className="text-foreground/70">Start with your first session free</p>
                 <BookingButton href={MIND_DISCOVERY_URL} variant="primary" className="w-full">
-                  Book Discovery Call
+                  Book First Session
                 </BookingButton>
               </div>
-              
-              <div className="text-center">
-                <h3 className="text-xl font-serif font-semibold mb-4">Returning Clients</h3>
-                <p className="text-foreground/70 mb-6">Book coaching sessions directly</p>
-                <BookingButton href="/go/mind_consultation" variant="primary" className="w-full">
+              <div className="rounded-3xl border border-foreground/10 bg-muted/40 p-8 text-center space-y-4">
+                <h3 className="text-2xl font-serif font-semibold">Returning Clients</h3>
+                <p className="text-foreground/70">Book your next coaching session</p>
+                <BookingButton href="/go/clarity_strategy_session" variant="primary" className="w-full">
                   Book Coaching Sessions
                 </BookingButton>
               </div>
@@ -250,128 +411,28 @@ export default function Mind() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="py-20 bg-accent/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Coaching Fees</h2>
-              <p className="text-lg text-foreground/70">Investment in your transformation and high-performance journey</p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Discovery Call</h3>
-                <div className="text-center mb-4">
-                  <span className="text-3xl font-bold text-primary">Free</span>
-                  <p className="text-sm text-foreground/70">Complimentary</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    30-minute virtual call
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Goal assessment
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Coaching plan overview
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Discovery Package</h3>
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">£750</span>
-                  <p className="text-sm text-foreground/70">3 sessions</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Performance assessment
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Action plan development
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Initial framework setup
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-lg ring-2 ring-primary">
-                <div className="text-center mb-4">
-                  <span className="bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium">Popular</span>
-                </div>
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Transformation</h3>
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">£2,400</span>
-                  <p className="text-sm text-foreground/70">12 sessions</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Weekly check-ins
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    personalised frameworks
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Performance tracking
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-serif font-semibold mb-4 text-center">Mastery</h3>
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">£4,500</span>
-                  <p className="text-sm text-foreground/70">24 sessions</p>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Unlimited messaging
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Emergency sessions
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-4 w-4 text-primary mr-2" />
-                    Leadership frameworks
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="text-center mt-12">
-              <p className="text-sm text-foreground/60">
-                Package selection will be discussed during your discovery call based on your specific goals and timeline.
-              </p>
-              <Link href="/treatments#mind">
-                <Button asChild className="mt-6">
-                  <span>More information</span>
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
+        {/* FAQs */}
         <section className="py-20 bg-muted">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Unlock Your Potential?</h2>
-            <p className="text-lg text-foreground/70 mb-8">Start with a complimentary discovery call to explore your transformation journey</p>
-            <BookingButton href={MIND_DISCOVERY_URL} variant="primary" className="w-full sm:w-auto">
-              Book Your Discovery Call
-            </BookingButton>
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold">FAQs</h2>
+            </div>
+            <div className="space-y-6">
+              {faqs.map((faq) => (
+                <details
+                  key={faq.question}
+                  className="group rounded-3xl border border-foreground/10 bg-white p-6 shadow-sm"
+                >
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-lg font-semibold font-serif text-foreground/90">
+                    {faq.question}
+                    <span className="text-foreground/40 transition-transform duration-300 group-open:rotate-45">+</span>
+                  </summary>
+                  <div className="mt-4 text-base leading-relaxed text-foreground/70">
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
       </div>

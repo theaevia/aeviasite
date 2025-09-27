@@ -101,14 +101,12 @@ export default function Navigation() {
   // Mobile submenu states
   const [isSkinOpen, setIsSkinOpen] = useState(false);
   const [isMindOpen, setIsMindOpen] = useState(false);
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isConsultOpen, setIsConsultOpen] = useState(false);
   // Mobile Skin sub-sections
   const [isSkinAntiOpen, setIsSkinAntiOpen] = useState(false);
   const [isSkinBoostersHeadOpen, setIsSkinBoostersHeadOpen] = useState(false);
   const [isSkinPnoOpen, setIsSkinPnoOpen] = useState(false);
   const [isSkinBioOpen, setIsSkinBioOpen] = useState(false);
-  const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
 
   const journalLogoBlackSrc = resolveHrefForJournal('/journal/assets/logos/logo-black-transparent.webp');
   const journalLogoGoldSrc = resolveHrefForJournal('/journal/assets/logos/logo-gold-transparent.webp');
@@ -120,21 +118,21 @@ export default function Navigation() {
   };
 
   // Disambiguate which top-level menu to highlight when multiple match (e.g. Mind vs Consult)
-  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'consult' | 'about' | 'resources'>(null);
+  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'consult' | 'about' | 'journal'>(null);
   const matches = (paths: string[]) => paths.some((p) => isActive(p));
   const flags = {
     skin: matches(["/treatments", "/categories/", "/gallery"]),
     mind: matches(["/mind", "/consultations/mind"]),
     consult: matches(["/consultations/skin", "/consultations/mind"]),
     about: matches(["/team", "/clinic"]),
-    resources: matches(["/journal", "/privacy", "/terms", "/cancellation"]),
+    journal: matches(["/journal"]),
   } as const;
-  const keys: Array<keyof typeof flags> = ["skin", "mind", "consult", "about", "resources"];
+  const keys: Array<keyof typeof flags> = ["skin", "mind", "consult", "about", "journal"];
   const matchingKeys = keys.filter((k) => flags[k]);
   const preferredKey = activeMenu && flags[activeMenu] ? activeMenu : matchingKeys[0] || null;
   const isHighlighted = (key: keyof typeof flags) => flags[key] && preferredKey === key;
 
-  const onNavSelect = (key: 'skin' | 'mind' | 'consult' | 'about' | 'resources') => {
+  const onNavSelect = (key: 'skin' | 'mind' | 'consult' | 'about') => {
     setActiveMenu(key);
     handleLinkClick();
   };
@@ -150,13 +148,11 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
     setIsAboutOpen(false);
     setIsSkinOpen(false);
-    setIsResourcesOpen(false);
     setIsConsultOpen(false);
     setIsSkinAntiOpen(false);
     setIsSkinBoostersHeadOpen(false);
     setIsSkinPnoOpen(false);
     setIsSkinBioOpen(false);
-    setIsPoliciesOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
@@ -387,40 +383,18 @@ export default function Navigation() {
                 </Link>
               </DropdownMenuContent>
             </DropdownMenu>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <span
-                  className={cn(
-                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isHighlighted('resources') ? "text-primary font-semibold" : "text-foreground"
-                  )}
-                  onClick={() => setActiveMenu('resources')}
-                >
-                  Resources <ChevronDown className="ml-1 h-4 w-4" />
-                </span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer">
-                  <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Journal</DropdownMenuItem>
-                </a>
-                <DropdownMenuItem disabled>FAQs</DropdownMenuItem>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Policies</DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent>
-                    <Link href="/privacy">
-                      <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Privacy Policy</DropdownMenuItem>
-                    </Link>
-                    <Link href="/terms">
-                      <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Terms & Conditions</DropdownMenuItem>
-                    </Link>
-                    <Link href="/cancellation">
-                      <DropdownMenuItem onSelect={() => onNavSelect('resources')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Cancellation Policy</DropdownMenuItem>
-                    </Link>
-                  </DropdownMenuSubContent>
-                </DropdownMenuSub>
-                <DropdownMenuItem disabled>Aftercare Guides</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <a
+              href={journalUrl('/')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
+                isHighlighted('journal') ? "text-primary font-semibold" : "text-foreground"
+              )}
+              onClick={() => setActiveMenu('journal')}
+            >
+              Journal
+            </a>
           </div>
           
           {/* Right side icons */}
@@ -674,41 +648,18 @@ export default function Navigation() {
           </div>
         )}
 
-        <button
-          onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+        <a
+          href={journalUrl('/')}
+          target="_blank"
+          rel="noopener noreferrer"
           className={cn(
-            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-            isHighlighted('resources') && "text-primary font-semibold"
+            "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+            isHighlighted('journal') && "text-primary font-semibold"
           )}
+          onClick={() => { setActiveMenu('journal'); handleLinkClick(); }}
         >
-          <span>Resources</span>
-          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isResourcesOpen && "rotate-180")} />
-        </button>
-        {isResourcesOpen && (
-          <div className="ml-4 flex flex-col space-y-2">
-            <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">
-                Journal
-              </span>
-            </a>
-            <span className="block text-sm text-muted-foreground px-2 py-1">FAQs</span>
-            <button
-              onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
-              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
-            >
-              <span>Policies</span>
-              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isPoliciesOpen && "rotate-180")} />
-            </button>
-            {isPoliciesOpen && (
-              <div className="ml-4 flex flex-col">
-                <Link href="/privacy"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Privacy Policy</span></Link>
-                <Link href="/terms"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Terms & Conditions</span></Link>
-                <Link href="/cancellation"><span onClick={() => { setActiveMenu('resources'); handleLinkClick(); }} className="block text-sm px-2 py-1 hover:text-primary">Cancellation Policy</span></Link>
-              </div>
-            )}
-            <span className="block text-sm text-muted-foreground px-2 py-1">Aftercare Guides</span>
-          </div>
-        )}
+          Journal
+        </a>
 
         <div className="flex items-center space-x-6 pt-4">
           <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
