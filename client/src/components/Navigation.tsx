@@ -96,6 +96,7 @@ export default function Navigation() {
     );
   };
   const [location] = useLocation();
+  const hideHeaderActions = location === '/glow-guide';
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   // Mobile submenu states
@@ -398,22 +399,24 @@ export default function Navigation() {
           </div>
           
           {/* Right side icons */}
-          <div className="justify-self-end hidden nav:flex items-center space-x-6">
-            <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-              <Instagram className="h-5 w-5" strokeWidth={3} />
-            </a>
-            <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-              <TikTokIcon className="h-5 w-5" />
-            </a>
-            <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-              <FaGoogle className="h-4 w-4 fill-current" />
-            </a>
-            <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
-              <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
-                Book Now
-              </Button>
-            </a>
-          </div>
+          {!hideHeaderActions && (
+            <div className="justify-self-end hidden nav:flex items-center space-x-6">
+              <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <Instagram className="h-5 w-5" strokeWidth={3} />
+              </a>
+              <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <TikTokIcon className="h-5 w-5" />
+              </a>
+              <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <FaGoogle className="h-4 w-4 fill-current" />
+              </a>
+              <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+                <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
+                  Book Now
+                </Button>
+              </a>
+            </div>
+          )}
 
           {/* Mobile menu button */}
           <div className="nav:hidden col-span-2 justify-self-end">
@@ -661,22 +664,24 @@ export default function Navigation() {
           Journal
         </a>
 
-        <div className="flex items-center space-x-6 pt-4">
-          <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-            <Instagram className="h-5 w-5" strokeWidth={2.5} />
-          </a>
-          <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-            <TikTokIcon className="h-5 w-5" />
-          </a>
-          <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
-            <FaGoogle className="h-4 w-4 fill-current" />
-          </a>
-          <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
-            <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
-              Book Now
-            </Button>
-          </a>
-        </div>
+        {!hideHeaderActions && (
+          <div className="flex items-center space-x-6 pt-4">
+            <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <Instagram className="h-5 w-5" strokeWidth={2.5} />
+            </a>
+            <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <TikTokIcon className="h-5 w-5" />
+            </a>
+            <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <FaGoogle className="h-4 w-4 fill-current" />
+            </a>
+            <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+              <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
+                Book Now
+              </Button>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   </div>
