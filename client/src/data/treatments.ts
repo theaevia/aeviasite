@@ -167,7 +167,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         image: neckHero
       },
       {
-        name: "Sweat Control",
+        name: "Sweat Reduction",
         subtitle: "Underarm treatment",
         description: "Underarm & palms treatment to reduce excessive sweating for up to 9 months.",
         duration: "1h",

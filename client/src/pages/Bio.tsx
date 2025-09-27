@@ -280,7 +280,7 @@ export default function BioPage() {
                 <AccordionTrigger>What treatments do you offer?</AccordionTrigger>
                 <AccordionContent>
                   <p className="text-sm text-foreground/80">
-                    Doctor-led anti-wrinkle treatment, jawline slimming, neck lift, sweat control, skin boosters (Profhilo®, Sunekos), and polynucleotides (Plinest Eye / Full Face).
+                    Doctor-led anti-wrinkle treatment, jawline slimming, neck lift, sweat reduction, skin boosters (Profhilo®, Sunekos), and polynucleotides (Plinest Eye / Full Face).
                   </p>
                 </AccordionContent>
               </AccordionItem>
