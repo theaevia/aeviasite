@@ -143,13 +143,13 @@ export default function Home() {
               Regenerative aesthetics and performance coaching for those who value industry-leading expertise and long-lasting results. Based in <span className="font-bold text-primary">Kings Cross, London</span>.
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
-                <div className="w-full sm:w-64 text-center">
-                  <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                <div className="w-full sm:w-72 text-center">
+                  <BookingButton href="/go/skin_consultations" variant="primary" className="w-full whitespace-nowrap">
                     Book Free Skin Consultation
                   </BookingButton>
                 </div>
-                <div className="w-full sm:w-64">
-                  <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full">
+                <div className="w-full sm:w-72">
+                  <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full whitespace-nowrap">
                     Book Free Coaching Session
                   </BookingButton>
                 </div>
@@ -387,13 +387,13 @@ for clarity, confidence, and consistency. Whether you're drawn to one or both, e
             <p className="text-lg text-foreground/70">Limited availability for our exclusive, doctor-led approach</p>
             <p className="text-lg text-foreground/70 mb-8">Based in Kings Cross, London</p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
-              <div className="w-full sm:w-64">
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+              <div className="w-full sm:w-72">
+                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full whitespace-nowrap">
                   Book Skin Consultation
                 </BookingButton>
               </div>
-              <div className="w-full sm:w-64">
-                <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full">
+              <div className="w-full sm:w-72">
+                <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full whitespace-nowrap">
                   Book Coaching Session
                 </BookingButton>
               </div>

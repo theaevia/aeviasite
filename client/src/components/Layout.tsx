@@ -153,7 +153,6 @@ const organizationSchema = {
 export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
   const isBioRoute = location.startsWith("/bio") || location.startsWith("/tiktok");
-  const isMindRoute = location.startsWith("/mind") || location.startsWith("/consultations/mind");
   useEffect(() => {
     // Add JSON-LD script
     const script = document.createElement('script');
@@ -238,13 +237,11 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {!isMindRoute && (
-        <Helmet prioritizeSeoTags>
-          <script>
-            {`(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account', '1767273');`}
-          </script>
-        </Helmet>
-      )}
+      <Helmet prioritizeSeoTags>
+        <script>
+          {`(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account', '1767273');`}
+        </script>
+      </Helmet>
       <Navigation />
       <main className="pt-[var(--header-h,80px)] flex-1">{children}</main>
       {!isBioRoute && (
