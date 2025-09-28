@@ -18,7 +18,7 @@ export default function Footer() {
               height="500"
               className="h-10 w-auto mb-4 filter invert"
             />
-            <p className="text-gray-300 text-sm">Doctor-led transformation for skin and mind</p>
+            <p className="text-gray-300 text-sm">Excellence and longevity in Skin and Mind</p>
           </div>
           
           <div>

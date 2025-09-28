@@ -433,6 +433,9 @@ export default function Mind() {
                 </details>
               ))}
             </div>
+            <div className="mt-12">
+              <div className="ml-embedded" data-form="sx5eR7" />
+            </div>
           </div>
         </section>
       </div>
