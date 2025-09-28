@@ -435,6 +435,12 @@ export default function Mind() {
             </div>
           </div>
         </section>
+
+        <section className="bg-white py-12">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="ml-embedded" data-form="sx5eR7" />
+          </div>
+        </section>
       </div>
     </>
   );
