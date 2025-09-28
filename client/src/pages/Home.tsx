@@ -202,7 +202,7 @@ transformation.
                     alt="Dr. Terrell, Dr. Renee, and Dr. Manu - The Aevia medical team"
                     className="rounded-2xl shadow-lg w-full max-w-2xl h-auto object-cover"
                     loading="eager"
-                    fetchPriority="high"
+                   
                     width="1600"
                     height="1200"
                     sizes="(max-width: 1024px) 100vw, 1600px"

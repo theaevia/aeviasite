@@ -72,7 +72,7 @@ export default function LowerFaceContourDuoPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('lower-face-contour-duo')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('lower-face-contour-duo') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

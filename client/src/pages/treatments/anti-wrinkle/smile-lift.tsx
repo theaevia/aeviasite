@@ -72,7 +72,7 @@ export default function SmileLiftPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('smile-lift')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('smile-lift') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

@@ -49,7 +49,7 @@ export default function TreatmentCard({
                   src={image}
                   alt={name}
                   loading={priority ? "eager" : "lazy"}
-                  fetchPriority={priority ? "high" : "auto"}
+                 
                   decoding={priority ? "sync" : "async"}
                   width={640}
                   height={480}
@@ -65,7 +65,7 @@ export default function TreatmentCard({
                 src={image}
                 alt={name}
                 loading={priority ? "eager" : "lazy"}
-                fetchPriority={priority ? "high" : "auto"}
+               
                 decoding={priority ? "sync" : "async"}
                 className={cn(
                   "absolute inset-0 w-full h-full object-cover",

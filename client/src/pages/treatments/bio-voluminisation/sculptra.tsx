@@ -76,7 +76,7 @@ export default function SculptraPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('sculptra')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('sculptra') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width="1600"
                       height="1200"
                       sizes="(max-width: 1024px) 100vw, 1600px"

@@ -72,7 +72,7 @@ export default function NeckLiftPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('neck-lift')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('neck-lift') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

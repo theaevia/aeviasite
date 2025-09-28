@@ -57,7 +57,7 @@ export default function Skin() {
                       alt="Aevia Skin clinic showcasing skin treatments"
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width="1600"
                       height="1200"
                       sizes="(max-width: 1024px) 100vw, 1600px"

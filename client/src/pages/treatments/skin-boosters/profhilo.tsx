@@ -79,7 +79,7 @@ export default function ProfhiloPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('profhilo')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('profhilo') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

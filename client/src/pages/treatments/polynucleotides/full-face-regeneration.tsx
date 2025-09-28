@@ -78,7 +78,7 @@ export default function FullFaceRegenerationPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('full-face-regeneration')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('full-face-regeneration') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

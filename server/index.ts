@@ -86,6 +86,7 @@ const cspGlobal: CspDirectives = {
     "https://www.googletagmanager.com",
     "https://www.google.com",
     "https://*.google.com",
+    "https://assets.mailerlite.com",
   ],
   "connect-src": [
     "'self'",
@@ -104,6 +105,7 @@ const cspGlobal: CspDirectives = {
     "https://region1.google-analytics.com",
     "https://api.github.com",
     "https://github.com",
+    "https://assets.mailerlite.com",
   ],
   "script-src": [
     "'self'",
@@ -115,6 +117,7 @@ const cspGlobal: CspDirectives = {
     "https://*.cal.com",
     "https://app.squareup.com",
     "https://unpkg.com",
+    "https://assets.mailerlite.com",
   ],
   "script-src-elem": [
     "'self'",
@@ -126,6 +129,7 @@ const cspGlobal: CspDirectives = {
     "https://*.cal.com",
     "https://app.squareup.com",
     "https://unpkg.com",
+    "https://assets.mailerlite.com",
   ],
   "script-src-attr": ["'unsafe-inline'"],
   "style-src": [
@@ -135,6 +139,7 @@ const cspGlobal: CspDirectives = {
     "https://app.cal.com",
     "https://fonts.googleapis.com",
     "https://unpkg.com",
+    "https://assets.mailerlite.com",
   ],
   "style-src-elem": [
     "'self'",
@@ -143,6 +148,7 @@ const cspGlobal: CspDirectives = {
     "https://app.cal.com",
     "https://fonts.googleapis.com",
     "https://unpkg.com",
+    "https://assets.mailerlite.com",
   ],
   "font-src": ["'self'", "https://fonts.gstatic.com"],
   "frame-ancestors": ["'none'"],

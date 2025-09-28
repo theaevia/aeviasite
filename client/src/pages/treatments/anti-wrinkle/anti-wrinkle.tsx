@@ -94,7 +94,7 @@ export default function AntiWrinklePage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('anti-wrinkle')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('anti-wrinkle') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

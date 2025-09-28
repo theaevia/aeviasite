@@ -78,7 +78,7 @@ export default function SunekosPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('sunekos')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('sunekos') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

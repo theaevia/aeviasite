@@ -72,7 +72,7 @@ export default function SweatControlPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('sweat-control')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('sweat-control') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

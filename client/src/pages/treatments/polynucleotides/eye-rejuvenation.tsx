@@ -79,7 +79,7 @@ export default function EyeRejuvenationPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('eye-rejuvenation')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('eye-rejuvenation') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />

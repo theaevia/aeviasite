@@ -73,7 +73,7 @@ export default function JawlineSlimmingPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('jawline-slimming')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('jawline-slimming') }}
                       loading="eager"
-                      fetchPriority="high"
+                     
                       width={1280}
                       height={960}
                     />
