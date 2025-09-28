@@ -144,7 +144,7 @@ const organizationSchema = {
         "provider": {
           "@type": "ProfessionalService",
           "name": "Aevia Mind"
-        }
+        } 
       }
     }
   ]
