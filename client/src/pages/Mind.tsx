@@ -74,7 +74,7 @@ const journeySteps = [
   {
     title: "Implement the strategies for sustainable change",
     description:
-      "Experiment with peak performance techniques, behavioural science frameworks, and psychological tools to do what you do best, repeatedly.",
+      "Experiment with peak performance techniques, frameworks, and systems to do what you do best, repeatedly.",
   },
   {
     title: "Translate thinking into action",
@@ -172,11 +172,11 @@ export default function Mind() {
                   <span className="text-primary">Performance Coaching for the Ambitious</span>
                 </h1>
                 <p className="mb-4 text-[clamp(0.95rem,0.85rem+0.3vw,1.125rem)] leading-[1.4] font-sans text-foreground tracking-[0.01em]">
-                  <span className="font-semibold text-[#B89A6A]">Think</span> with clarity,
+                  <span className="font-semibold text-[#B89A6A]">Think</span> with clarity.
                   <br className="sm:hidden" />
                   <span className="font-semibold text-[#B89A6A]"> Perform</span> with consistency.
                 </p>
-                <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
+                <p className="text-xl lg:text-lg text-foreground/70 mb-6 leading-relaxed">
                   Clear the path from where you are to where you want to be - and build the mindset, systems, and support to get there.
                 </p>
                 <div className="flex flex-col items-stretch gap-3 w-full max-w-md">
@@ -356,7 +356,7 @@ export default function Mind() {
               <h2 className="text-3xl lg:text-4xl font-serif font-bold">
                 From breakthroughs in thinking to consistency in results
               </h2>
-              <p className="text-lg text-foreground/70 mt-4">For you, your family, and the team you lead</p>
+              <p className="text-lg text-foreground/70 mt-4">For you, your family, and the team you lead.</p>
             </div>
             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
               {journeySteps.map((step, index) => (
@@ -364,8 +364,8 @@ export default function Mind() {
                   key={step.title}
                   className="flex h-full flex-col gap-2 rounded-3xl border border-foreground/10 bg-white p-6 shadow-md"
                 >
-                  <div className="flex items-start gap-3">
-                    <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-primary/30 bg-white text-base font-semibold leading-none text-primary">
+                  <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-4">
+                    <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-primary/30 bg-white text-base font-semibold leading-none text-primary lg:self-center">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <h3 className="font-serif text-xl font-semibold leading-[1.3] text-foreground">
@@ -432,9 +432,6 @@ export default function Mind() {
                   </div>
                 </details>
               ))}
-            </div>
-            <div className="mt-12">
-              <div className="ml-embedded" data-form="sx5eR7" />
             </div>
           </div>
         </section>

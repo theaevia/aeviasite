@@ -182,6 +182,60 @@ export default function Layout({ children }: LayoutProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const cleanupMailerlitePopups = () => {
+      const popupSelectors = [
+        'body > div[id^="mlb2-"]',
+        'body > div[id^="ml-"]',
+        'body > div[class*="ml-form-popup"]',
+        'body > div[class*="ml-iframe-popup"]',
+        'body > div[class*="ml-popup"]',
+        '.ml-form-overlay',
+        '.ml-popup-overlay',
+        '.ml-form-popover',
+        '.ml-underlay',
+        '.ml-iframe-overlay'
+      ];
+
+      popupSelectors.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((element) => {
+          if (element instanceof HTMLElement) {
+            element.remove();
+          }
+        });
+      });
+
+      const classesToClear = [
+        'ml-open',
+        'ml-active',
+        'ml-visible',
+        'ml-popup-open',
+        'ml-no-scroll',
+        'ml-body-overflow'
+      ];
+
+      classesToClear.forEach((cls) => {
+        document.body.classList.remove(cls);
+        document.documentElement.classList.remove(cls);
+      });
+
+      if (document.body.style.overflow === 'hidden') {
+        document.body.style.removeProperty('overflow');
+      }
+      if (document.documentElement.style.overflow === 'hidden') {
+        document.documentElement.style.removeProperty('overflow');
+      }
+    };
+
+    cleanupMailerlitePopups();
+
+    return () => {
+      cleanupMailerlitePopups();
+    };
+  }, [location]);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {!isMindRoute && (

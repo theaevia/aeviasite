@@ -9,7 +9,7 @@ import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
 import SEO from "@/components/SEO";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
-import mindCoachingStairs from "@assets/hero_images/mind-coaching-water.webp";
+import mindMonk from "@assets/hero_images/mind-monk.jpeg";
 import skinModel4 from "@assets/hero_images/royalty-free-skin4.webp";
 import Map from "@/components/Map";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
@@ -140,17 +140,17 @@ export default function Home() {
                 Doctor-led • King’s Cross • Subtle, natural results
               </p>
               <p className="text-lg lg:text-xl text-foreground/70 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Medical aesthetics and performance coaching for those who value natural, regenerative and long-lasting results. Based in <span className="font-bold text-primary">Kings Cross, London</span>.
+              Regenerative aesthetics and performance coaching for those who value industry-leading expertise and long-lasting results. Based in <span className="font-bold text-primary">Kings Cross, London</span>.
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
                 <div className="w-full sm:w-64 text-center">
                   <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
-                    Book Skin Consultation
+                    Book Free Skin Consultation
                   </BookingButton>
                 </div>
                 <div className="w-full sm:w-64">
                   <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full">
-                    Book Mind Discovery Call
+                    Book Free Coaching Session
                   </BookingButton>
                 </div>
               </div>
@@ -171,25 +171,21 @@ export default function Home() {
             <div className="text-center mb-8 md:mb-16">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Difference</h2>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-The Aevia offers two distinct, doctor-led services:&nbsp;
+              The Aevia offers two distinct services, both led by doctors:&nbsp;
 <span className="font-semibold text-primary inline">
-  Medical&nbsp;Aesthetics
+  Regenerative&nbsp;Aesthetics
 </span>{" "}
-for natural, science-backed skin rejuvenation, and&nbsp;
-<span className="font-semibold text-primary inline sm:hidden">
+for skin rejuvenation and longevity, and&nbsp;
+<span className="font-semibold text-primary inline">
   Performance&nbsp;Coaching
 </span>
-<span className="font-semibold text-primary hidden sm:inline">
-  Performance&nbsp;and&nbsp;Transformative&nbsp;Coaching
-</span>{" "}
-for professionals seeking clarity, confidence, and agency. Whether you're
-drawn to one or both, each path is designed to deliver focused, expert-led
-transformation.
+{" "}
+for clarity, confidence, and consistency. Whether you're drawn to one or both, each path is designed to deliver expert-led transformation.
 </p>
             </div>
             
             {/* Doctors Introduction */}
-            <div className="grid md:grid-cols-3 gap-8 mb-8 md:mb-16">
+            <div className="grid md:grid-cols-3 gap-6 mb-4 md:mb-4">
               <div className="md:col-span-3 flex justify-center mb-8 md:mb-12">
                 <picture>
                   <source
@@ -232,7 +228,7 @@ transformation.
             <div className="grid lg:grid-cols-2 gap-12">
               <ServiceCard
                 title="Aevia Skin"
-                subtitle="Medical Aesthetics"
+                subtitle="Regenerative Aesthetics"
                 description="Science-backed, regenerative approaches that restore your skin's natural quality. Results that feel like you, only fresher."
                 image={skinModel4}
                 features={["The Aevia Skin Consultation", "Polynucleotides", "Skin Boosters", "Anti-Wrinkle Injections"]}
@@ -244,14 +240,14 @@ transformation.
 
               <ServiceCard
                 title="Aevia Mind"
-                subtitle="Performance & Transformative Coaching"
-                description="Coaching designed for professionals ready to think sharper, act with confidence, and create meaningful change."
-                image={mindCoachingStairs}
-                features={["Performance optimization", "Decision-making clarity", "Transformative mindset shifts", "Strategic life planning"]}
-                ctaText="Explore Mind Coaching"
+                subtitle="Performance Coaching for the Ambitious"
+                description="A thinking partnership that brings about change through self-inquiry, peak performance strategies, and accountability."
+                image={mindMonk}
+                features={["Clarify what matters", "Become aware of what's holding you back", "Implement the strategies for sustainable change", "Execute a results-driven plan with accountability"]}
+                ctaText="Learn More About Coaching"
                 onCtaClick={() => window.location.href = "/mind"}
                 imagePositionTop={false}
-                objectPosition="center 40%"
+                objectPosition="center 0%"
               />
             </div>
           </div>
@@ -398,7 +394,7 @@ transformation.
               </div>
               <div className="w-full sm:w-64">
                 <BookingButton href={MIND_DISCOVERY_URL} variant="secondary" className="w-full">
-                  Book Mind Discovery Call
+                  Book Coaching Session
                 </BookingButton>
               </div>
             </div>
