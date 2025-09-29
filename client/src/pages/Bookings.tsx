@@ -32,7 +32,8 @@ export default function Bookings(): JSX.Element {
 
       // Give the widget a moment to inject its UI
       setTimeout(() => {
-        if (container && container.childElementCount === 0) {
+        const host = containerRef.current;
+        if (host && host.childElementCount === 0) {
           // If nothing injected after load, we'll attempt a retry with cache-bust once
           console.warn("[Square] script loaded but no DOM injected into container");
           setLastError("loaded-but-no-dom");
@@ -74,7 +75,8 @@ export default function Bookings(): JSX.Element {
         console.info("[Square] retry script loaded");
         setStatus("loaded");
         setTimeout(() => {
-          if (container && container.childElementCount === 0) {
+          const host = containerRef.current;
+          if (host && host.childElementCount === 0) {
             console.error("[Square] retry loaded but widget still did not inject DOM");
             setStatus("failed");
             setLastError("loaded-no-dom-after-retry");
@@ -87,7 +89,14 @@ export default function Bookings(): JSX.Element {
         setLastError("retry-failed");
       });
 
-      container.appendChild(retryScript);
+      const retryContainer = containerRef.current;
+      if (!retryContainer) {
+        console.error("[Square] retry aborted — container no longer in DOM");
+        setStatus("failed");
+        setLastError("missing-container-on-retry");
+        return;
+      }
+      retryContainer.appendChild(retryScript);
     }
 
     return () => {

@@ -11,14 +11,14 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
   - `cd apps/journal && npm install`
 - Run servers:
   - API/SPA server: `npm run dev` (http://localhost:3000)
-  - Journal dev: `npm run dev:journal` (http://localhost:4321/journal)
+  - Journal dev: `npm run dev:journal` (http://localhost:4321/)
 
 
 ## Production (Railway)
 
 - Build command: `npm ci && npm run build`
 - Start command: `npm start`
-- The Express server serves the SPA and the Journal (`/journal`) statically.
+- The Express server serves the SPA. Deploy the Journal separately (e.g. Vercel at https://journal.theaevia.co.uk).
 
 
 ## Content Structure
@@ -26,7 +26,7 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 - Posts (MDX): `apps/journal/src/content/posts/*.mdx`
 - Authors (JSON): `apps/journal/src/content/authors/*.json`
 - Categories (JSON): `apps/journal/src/content/categories/*.json`
-- Images (public): `apps/journal/public/images/...` (served at `/journal/images/...`)
+- Images (public): `apps/journal/public/images/...` (served at `https://journal.theaevia.co.uk/images/...`)
 
 
 ## Tech Overview
@@ -34,13 +34,13 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 - SPA: Vite + React + Wouter
 - Journal: Astro (static) + Tailwind + MDX + Sitemap + RSS
 - CMS: not configured (set up your preferred headless CMS when ready)
-- Server: Express (serves SPA and mounts `/journal` from build)
+- Server: Express (serves SPA only)
 
 
 ## SEO
 
-- Main sitemap index: `/sitemap_index.xml` (includes `/journal/sitemap-index.xml`)
-- Astro generates the Journal sitemap.
+- Main sitemap index: `/sitemap_index.xml`
+- Astro generates the Journal sitemap at `https://journal.theaevia.co.uk/sitemap-index.xml`.
 - Each article includes JSON‑LD Article metadata.
 
 

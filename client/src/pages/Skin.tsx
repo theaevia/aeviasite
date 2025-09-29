@@ -32,7 +32,7 @@ export default function Skin() {
                   Doctor-led • King’s Cross • Subtle, natural results
                 </p>
                 <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
-                  Non-invasive skin treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
+                  Non-invasive skin longevity treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
                 </p>
                 <div className="w-full sm:w-auto text-center">
                   <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">

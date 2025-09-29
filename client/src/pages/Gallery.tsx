@@ -1,52 +1,6 @@
 import SEO from "@/components/SEO";
 import { Link } from "wouter";
-
-// Prefer pre-generated, optimized public assets (AVIF/WebP) for thumbnails
-
-
-interface GalleryItem {
-  id: string;
-  title: string;
-  caption: string;
-  src: string;
-  kind: "publicWebP" | "imported" | "importedPng";
-  href: string;
-}
-
-const items: GalleryItem[] = [
-  {
-    id: "forehead",
-    title: "Anti‑Wrinkle — Forehead",
-    caption: "Forehead lines softened two weeks after treatment.",
-    src: "/assets/before_afters/forehead-640w.webp",
-    kind: "publicWebP",
-    href: "/treatments/anti-wrinkle",
-  },
-  {
-    id: "frown",
-    title: "Anti‑Wrinkle — Frown Lines",
-    caption: "Frown lines softened two weeks after treatment.",
-    src: "/assets/before_afters/frown-640w.webp",
-    kind: "publicWebP",
-    href: "/treatments/anti-wrinkle",
-  },
-  {
-    id: "undereye",
-    title: "Under‑Eye Polynucleotides",
-    caption: "Under‑Eye Polynucleotide treatment - before and after.",
-    src: "/assets/before_afters/under-eye-1-640w.webp",
-    kind: "publicWebP",
-    href: "/treatments/eye-rejuvenation",
-  },
-  {
-    id: "masseter",
-    title: "Jawline Slimming",
-    caption: "Jawline slimming from masseter reduction treatment.",
-    src: "/assets/before_afters/masseter-1-640w.webp",
-    kind: "publicWebP",
-    href: "/treatments/jawline-slimming",
-  },
-];
+import { galleryItems } from "@/data/galleryItems";
 
 export default function GalleryPage() {
   return (
@@ -63,7 +17,7 @@ export default function GalleryPage() {
       <section className="w-full bg-white py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {items.map((item) => (
+          {galleryItems.map((item) => (
   <Link
     href={item.href}
     key={item.id}
