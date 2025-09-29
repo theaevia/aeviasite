@@ -6,7 +6,7 @@ import { setupVite, log } from "./vite";
 import { go } from "./routes/go";
 import helmet from "helmet";
 import path from "path";
-import { fileURLToPath, pathToFileURL } from "url";
+import { fileURLToPath } from "url";
 import fs from "fs";
 import net from "net";
 
@@ -22,7 +22,6 @@ const VALID_ROUTES = [
   '/mind',
   '/team',
   '/clinic',
-  '/journal',
   '/treatments',
   '/treatments/anti-wrinkle',
   '/treatments/jawline-slimming',
@@ -283,50 +282,6 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
     if (!isProd) {
       await setupVite(app, server);
     } else {
-      // Mount Astro journal SSR handler instead of serving static files
-      const journalDist = path.join(__dirname, 'journal');
-      const journalEntry = path.join(journalDist, 'server', 'entry.mjs');
-      const journalClientDir = path.join(journalDist, 'client');
-
-      if (fs.existsSync(journalEntry)) {
-        try {
-          const entryUrl = pathToFileURL(journalEntry).href;
-          const { handler: journalHandler } = await import(entryUrl);
-
-          if (fs.existsSync(journalClientDir)) {
-            app.use('/journal', express.static(journalClientDir, {
-              maxAge: '1y',
-              immutable: true,
-            }));
-
-            const serveJournalSitemap = (fileName: string) => (req: Request, res: Response, next: NextFunction) => {
-              const host = String(req.headers.host || '');
-              if (!host.includes('journal.')) return next();
-
-              const filePath = path.join(journalClientDir, fileName);
-              if (!fs.existsSync(filePath)) return next();
-
-              res.type('application/xml');
-              return res.sendFile(filePath);
-            };
-
-            app.get('/sitemap-index.xml', serveJournalSitemap('sitemap-index.xml'));
-            app.get('/sitemap-0.xml', serveJournalSitemap('sitemap-0.xml'));
-          }
-
-          app.use('/api/keystatic', (req, res, next) => {
-            const originalUrl = req.url;
-            req.url = `/api/keystatic${originalUrl}`;
-            return journalHandler(req, res, next);
-          });
-
-          app.use('/journal', (req, res, next) => journalHandler(req, res, next));
-        } catch (error) {
-          log(`Failed to load journal SSR handler: ${error instanceof Error ? error.message : String(error)}`, 'warn');
-        }
-      } else {
-        log('Journal build artifacts missing; skipping SSR mount', 'warn');
-      }
       // Handle case sensitivity and index.html variations
       app.use((req, res, next) => {
         const { pathname, search } = new URL(req.originalUrl, 'http://dummy');
@@ -357,21 +312,15 @@ async function findAvailablePort(startPort: number, maxTries = 20): Promise<numb
           }
         }
       }));
-      
+
       // Serve assets from the assets directory
       app.use('/assets', express.static(path.join(__dirname, 'public/assets'), {
         maxAge: '1y'
       }));
 
-      // Handle trailing slashes outside the journal app
+      // Normalise trailing slashes
       app.use((req, res, next) => {
         const url = req.url;
-        const lowerUrl = url.toLowerCase();
-
-        if (lowerUrl === '/journal' || lowerUrl.startsWith('/journal/')) {
-          return next();
-        }
-
         if (url.length > 1 && url.endsWith('/')) {
           return res.redirect(308, url.slice(0, -1));
         }

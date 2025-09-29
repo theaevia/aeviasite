@@ -13,7 +13,6 @@ import Skin from "@/pages/Skin";
 import Mind from "@/pages/Mind";
 import Team from "@/pages/Team";
 import Clinic from "@/pages/Clinic";
-import JournalPlaceholder from "@/pages/JournalPlaceholder";
 import Gallery from "@/pages/Gallery";
 import GlowGuide from "@/pages/GlowGuide";
 import SkinConsultationPage from "@/pages/consultations/skin";
@@ -62,7 +61,6 @@ function Router() {
         <Route path="/mind" component={Mind} />
         <Route path="/team" component={Team} />
         <Route path="/clinic" component={Clinic} />
-        <Route path="/journal" component={JournalPlaceholder} />
         <Route path="/glow-guide" component={GlowGuide} />
         <Route path="/gallery" component={Gallery} />
         <Route path="/consultations/skin" component={SkinConsultationPage} />

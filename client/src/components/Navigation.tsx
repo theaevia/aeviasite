@@ -119,16 +119,15 @@ export default function Navigation() {
   };
 
   // Disambiguate which top-level menu to highlight when multiple match (e.g. Mind vs Consult)
-  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'consult' | 'about' | 'journal'>(null);
+  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'consult' | 'about'>(null);
   const matches = (paths: string[]) => paths.some((p) => isActive(p));
   const flags = {
     skin: matches(["/treatments", "/categories/", "/gallery"]),
     mind: matches(["/mind", "/consultations/mind"]),
     consult: matches(["/consultations/skin", "/consultations/mind"]),
     about: matches(["/team", "/clinic"]),
-    journal: matches(["/journal"]),
   } as const;
-  const keys: Array<keyof typeof flags> = ["skin", "mind", "consult", "about", "journal"];
+  const keys: Array<keyof typeof flags> = ["skin", "mind", "consult", "about"];
   const matchingKeys = keys.filter((k) => flags[k]);
   const preferredKey = activeMenu && flags[activeMenu] ? activeMenu : matchingKeys[0] || null;
   const isHighlighted = (key: keyof typeof flags) => flags[key] && preferredKey === key;
@@ -388,11 +387,7 @@ export default function Navigation() {
               href={journalUrl('/')}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "text-sm font-medium smooth-transition hover:text-primary cursor-pointer",
-                isHighlighted('journal') ? "text-primary font-semibold" : "text-foreground"
-              )}
-              onClick={() => setActiveMenu('journal')}
+            className="text-sm font-medium smooth-transition hover:text-primary cursor-pointer text-foreground"
             >
               Journal
             </a>
@@ -655,11 +650,8 @@ export default function Navigation() {
           href={journalUrl('/')}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-            isHighlighted('journal') && "text-primary font-semibold"
-          )}
-          onClick={() => { setActiveMenu('journal'); handleLinkClick(); }}
+          className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary text-foreground"
+          onClick={handleLinkClick}
         >
           Journal
         </a>

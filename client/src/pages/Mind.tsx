@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
+import { journalUrl } from "@/lib/journal";
 import mindHeroImage from "@assets/hero_images/mind-hero-new2.webp";
 import mindHeroImage800 from "@assets/hero_images/mind-hero-new2-800w.webp";
 import leadershipImage from "@assets/hero_images/mind-leadership-hero2.webp";
@@ -89,7 +90,12 @@ const faqs = [
       <>
         Coaching is a thinking partnership that brings about change through self-inquiry, clarity, and accountability. Read the 2-minute article on
         {' '}
-        <a href="/journal/what-is-coaching" className="text-primary underline underline-offset-4 hover:text-primary/80">
+        <a
+          href={journalUrl('/what-is-coaching')}
+          className="text-primary underline underline-offset-4 hover:text-primary/80"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           What is Coaching?
         </a>
         {' '}here.
@@ -186,7 +192,7 @@ export default function Mind() {
                   <BookingButton
                     href={MIND_DISCOVERY_URL}
                     variant="primary"
-                    className="self-center sm:self-start px-6 py-2 text-base"
+                    className="self-center sm:self-start px-6 py-2 text-base whitespace-nowrap md:min-w-[200px]"
                   >
                     Book Yours
                   </BookingButton>
