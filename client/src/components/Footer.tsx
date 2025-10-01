@@ -11,13 +11,15 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <img
-              src={logoBlack}
-              alt="The Aevia"
-              width="916"
-              height="500"
-              className="h-10 w-auto mb-4 filter invert"
-            />
+            <Link href="/" className="inline-block">
+              <img
+                src={logoBlack}
+                alt="The Aevia"
+                width="916"
+                height="500"
+                className="h-10 w-auto mb-4 filter invert"
+              />
+            </Link>
             <p className="text-gray-300 text-sm">Excellence and longevity in Skin and Mind</p>
           </div>
           

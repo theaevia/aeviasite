@@ -8,6 +8,8 @@ import { resolveMediaPath } from '../utils/media';
 import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
 
 const { slug } = Astro.params;
+const viewParam = Astro.url.searchParams.get('view');
+const minimalView = viewParam === 'minimal';
 
 const slugOf = (entry: any): string => {
   const ds = entry?.data?.slug;
@@ -85,6 +87,8 @@ const authorRefs = (post.data.authors || [])
 
 const defaultConsultationUrl = mainSiteUrl(SKIN_CONSULTATION_URL);
 const mindConsultationUrl = mainSiteUrl(MIND_DISCOVERY_URL);
+const mindExploredLanding = mainSiteUrl('/themindexplored');
+const journalHome = 'https://journal.theaevia.co.uk/';
 const isMindCategory = (post.data.categories || []).some((value: any) => relationSlug(value) === 'mind');
 const consultationUrl = isMindCategory ? mindConsultationUrl : defaultConsultationUrl;
 
@@ -101,11 +105,30 @@ const jsonLd = {
 };
 
 const { Content } = await post.render();
+
+const canonicalPrimary = post.data.canonical
+  ? post.data.canonical
+  : new URL(withBase(`/${slug}`), Astro.site).toString();
 ---
-<BaseLayout title={title} description={description} ogImage={ogImage}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  chromeless={minimalView}
+  canonicalUrl={canonicalPrimary}
+>
   <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
   <article class="space-y-6">
+    <div class="flex">
+      <a
+        class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-foreground hover:text-primary/80"
+        href={isMindCategory ? mindExploredLanding : journalHome}
+      >
+        {isMindCategory ? 'The Mind, Explored.' : 'THE AEVIA JOURNAL'}
+      </a>
+    </div>
+
     <!-- Hero -->
     {heroUrl && (
       <figure class="rounded-2xl overflow-hidden border border-border">

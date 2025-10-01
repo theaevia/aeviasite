@@ -153,6 +153,10 @@ const organizationSchema = {
 export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
   const isBioRoute = location.startsWith("/bio") || location.startsWith("/tiktok");
+  const isMindExploredRoute = location.startsWith("/themindexplored");
+  const hideNavigation = isBioRoute || isMindExploredRoute;
+  const showFooter = !isBioRoute;
+  const showFooterExtras = showFooter && !isMindExploredRoute;
   useEffect(() => {
     // Add JSON-LD script
     const script = document.createElement('script');
@@ -164,9 +168,7 @@ export default function Layout({ children }: LayoutProps) {
     const setLayoutHeights = () => {
       const header = document.querySelector('nav.fixed') as HTMLElement | null;
       const footer = document.querySelector('footer') as HTMLElement | null;
-      if (header) {
-        document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
-      }
+      document.documentElement.style.setProperty('--header-h', `${header?.offsetHeight ?? 0}px`);
       if (footer) {
         document.documentElement.style.setProperty('--footer-h', `${footer.offsetHeight}px`);
       }
@@ -242,17 +244,18 @@ export default function Layout({ children }: LayoutProps) {
           {`(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account', '1767273');`}
         </script>
       </Helmet>
-      <Navigation />
-      <main className="pt-[var(--header-h,80px)] flex-1">{children}</main>
-      {!isBioRoute && (
-        <>
-          {/* Social proof strip */}
-          <div className="w-full bg-white border-t border-muted-foreground/10 py-2">
-            <div className="max-w-6xl mx-auto px-4 text-center text-sm text-primary font-medium">
-              ★★★★★ Google • GMC-registered • Fully insured
-            </div>
+      {!hideNavigation && <Navigation />}
+      <main className={`${hideNavigation ? '' : 'pt-[var(--header-h,80px)]'} flex-1`}>{children}</main>
+      {showFooterExtras && (
+        <div className="w-full bg-white border-t border-muted-foreground/10 py-2">
+          <div className="max-w-6xl mx-auto px-4 text-center text-sm text-primary font-medium">
+            ★★★★★ Google • GMC-registered • Fully insured
           </div>
-          <Footer />
+        </div>
+      )}
+      {showFooter && <Footer />}
+      {showFooterExtras && (
+        <>
           <MobileStickyBookingBar />
           <WhatsAppWidget />
         </>

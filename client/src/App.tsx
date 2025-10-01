@@ -24,6 +24,7 @@ import Terms from "@/pages/Terms";
 import CancellationPolicyPage from "@/pages/Cancellation";
 import BioPage from "@/pages/Bio";
 import QuizPlaceholder from "@/pages/Quiz";
+import TheMindExplored from "@/pages/TheMindExplored";
 
 // Treatment Page Imports
 import AntiWrinklePage from "@/pages/treatments/anti-wrinkle/anti-wrinkle";
@@ -59,6 +60,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/skin" component={Skin} />
         <Route path="/mind" component={Mind} />
+        <Route path="/themindexplored" component={TheMindExplored} />
         <Route path="/team" component={Team} />
         <Route path="/clinic" component={Clinic} />
         <Route path="/glow-guide" component={GlowGuide} />

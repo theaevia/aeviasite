@@ -10,7 +10,9 @@ const DEFAULT_CONSULTATION_URL = mainSiteUrl(SKIN_CONSULTATION_URL);
 const {
   title = 'The Aevia Journal',
   description = 'Doctor-led aesthetics & longevity journal',
-  ogImage
+  ogImage,
+  chromeless = false,
+  canonicalUrl
 } = Astro.props;
 
 // If ogImage is a local path ("/images/..."), make it absolute + base-aware
@@ -20,6 +22,19 @@ const ogImageAbsolute =
         ? new URL(withBase(ogImage), Astro.site).toString()
         : ogImage)
     : undefined;
+
+const canonicalHref = (() => {
+  if (typeof canonicalUrl === 'string' && canonicalUrl.trim()) {
+    const value = canonicalUrl.trim();
+    if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(value)) {
+      return value;
+    }
+    return new URL(value, Astro.site).toString();
+  }
+  return Astro.url.href;
+})();
+
+const mainClass = chromeless ? 'container max-w-6xl py-10' : 'container max-w-6xl py-10 mt-20';
 ---
 <html lang="en">
   <head>
@@ -27,7 +42,7 @@ const ogImageAbsolute =
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={Astro.url.href} />
+    <link rel="canonical" href={canonicalHref} />
     <link rel="icon" href={withBase('/favicon.ico')} />
     <link rel="icon" type="image/png" href={withBase('/favicon.png')} />
 
@@ -57,12 +72,12 @@ const ogImageAbsolute =
       ml('account', '1767273');
     </script>
   </head>
-  <body class="bg-background text-foreground">
+  <body class={`bg-background text-foreground ${chromeless ? 'is-chromeless' : ''}`}>
     <!-- Header: SPA Navigation (be mindful of hardcoded '/journal' links in dev) -->
-    <Navigation client:only="react" />
+    {!chromeless && <Navigation client:only="react" />}
 
     <!-- Page content -->
-    <main class="container max-w-6xl py-10 mt-20">
+    <main class={mainClass}>
       <slot />
     </main>
 

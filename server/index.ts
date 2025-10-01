@@ -158,6 +158,22 @@ const cspGlobal: CspDirectives = {
   "report-uri": isProd ? ["https://www.theaevia.co.uk/api/csp-report"] : [],
 };
 
+const addDirectiveValue = (directive: string, value: string) => {
+  const current = cspGlobal[directive];
+  if (!Array.isArray(current)) return;
+  if (!current.includes(value)) {
+    current.push(value);
+  }
+};
+
+if (!isProd) {
+  const journalDevOrigin = 'http://localhost:4321';
+  const journalDevWs = 'ws://localhost:4321';
+  addDirectiveValue('connect-src', journalDevOrigin);
+  addDirectiveValue('connect-src', journalDevWs);
+  addDirectiveValue('img-src', journalDevOrigin);
+}
+
 function directivesToHeader(d: CspDirectives): string {
   return Object.entries(d)
     .map(([k, v]) => {
