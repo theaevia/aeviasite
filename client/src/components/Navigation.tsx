@@ -59,7 +59,7 @@ export default function Navigation() {
     return journalUrl(href);
   };
 
-  const mindExploredUrl = journalUrl('/mind-explored');
+  const mindExploredPath = '/themindexplored';
   const whatIsCoachingUrl = journalUrl('/what-is-coaching');
 
   // Prefer full page reloads when rendered inside the Journal (Astro) app
@@ -312,15 +312,11 @@ export default function Navigation() {
                     Coaching Offers
                   </DropdownMenuItem>
                 </a>
-                <a
-                  href={mindExploredUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={mindExploredPath}>
                   <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     The Mind, Explored
                   </DropdownMenuItem>
-                </a>
+                </Link>
                 <a
                   href={whatIsCoachingUrl}
                   target="_blank"
@@ -584,9 +580,9 @@ export default function Navigation() {
             <a href={MIND_OFFERS_URL} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
             </a>
-            <a href={mindExploredUrl} target="_blank" rel="noopener noreferrer">
+            <Link href={mindExploredPath}>
               <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">The Mind, Explored</span>
-            </a>
+            </Link>
             <a href={whatIsCoachingUrl} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">What is Coaching?</span>
             </a>
