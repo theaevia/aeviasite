@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
+import { DAO_SMILE_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 
 import smileLiftDiagram from "@assets/diagrams/smile-lift-1.png";
@@ -32,7 +33,7 @@ export default function SmileLiftPage() {
                   <span>30 mins</span>
                 </div>
                 <BookingButton
-                  href="/go/dao"
+                  href={DAO_SMILE_URL}
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -182,7 +183,7 @@ export default function SmileLiftPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£120</span>
                 <span className="text-muted-foreground text-sm mb-4">30min</span>
                 <BookingButton
-                  href="/go/dao"
+                  href={DAO_SMILE_URL}
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -227,13 +228,13 @@ export default function SmileLiftPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Smile Lift consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/dao" variant="secondary" className="w-full">
+                <BookingButton href={DAO_SMILE_URL} variant="secondary" className="w-full">
                   Book Smile Lift Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

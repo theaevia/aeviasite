@@ -1,4 +1,22 @@
-import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
+import {
+  CLARITY_STRATEGY_URL,
+  CONTOUR_DUO_URL,
+  DAO_SMILE_URL,
+  HYPERHIDROSIS_URL,
+  MASSETER_URL,
+  MIND_DISCOVERY_URL,
+  MOMENTUM_SIX_URL,
+  NEFERTITI_URL,
+  PNS_EYES_URL,
+  PNS_FACE_URL,
+  PROFHILO_URL,
+  SCULPTRA_URL,
+  SUNEKOS_URL,
+  THREE_AREAS_URL,
+  TRANSFORMATION_TWELVE_URL,
+  SKIN_VIRTUAL_URL,
+  SKIN_CLINIC_URL,
+} from "@/lib/bookingUrls";
 
 // Assets (optimized public variants for responsive delivery)
 // Use 640w WebP as fallback; <picture> in cards will pick AVIF/WebP 320w/640w
@@ -49,7 +67,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A 60-minute analytic deep dive to understand your goals, obstacles, and systems. You'll receive a written summary with an implementation strategy. The £250 fee is credited if you continue into a coaching programme.",
         duration: "1h",
         price: "£250",
-        bookingUrl: "/go/clarity_strategy_session",
+        bookingUrl: CLARITY_STRATEGY_URL,
         slug: "clarity-strategy-session",
         image: "https://placehold.co/600x400"
       },
@@ -58,7 +76,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A focused 6-session coaching programme over 8 weeks to sharpen your mindset, build momentum, and shift your approach to performance. Includes tools and support between sessions. (Split payment of 2 x £675 available).",
         duration: "1h (per session)",
         price: "£1,350",
-        bookingUrl: "/go/momentum_6",
+        bookingUrl: MOMENTUM_SIX_URL,
         slug: "momentum-6",
         image: "https://placehold.co/600x400"
       },
@@ -67,7 +85,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A deep 12-session journey over 3 months to rewire mindset, strengthen identity, and improve performance across work and life. For clients ready to commit to rich internal growth. (Split payment of 3 x £950 available).",
         duration: "1h (per session)",
         price: "£2,450",
-        bookingUrl: "/go/transformation_12",
+        bookingUrl: TRANSFORMATION_TWELVE_URL,
         slug: "transformation-12",
         image: "https://placehold.co/600x400"
       },
@@ -92,7 +110,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A full-face skin consultation for first-time clients. Includes clinical discussion, skin assessment and tailored treatment planning. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
         duration: "20min",
         price: "Complimentary",
-        bookingUrl: "https://calendly.com/theaevia/aevia-skin-consultation",
+        bookingUrl: SKIN_VIRTUAL_URL,
         slug: "virtual-consultation",
         image: "https://placehold.co/600x400"
       },
@@ -101,7 +119,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A full-face skin consultation for first-time clients. Includes clinical facial mapping and treatment planning. Option to proceed with treatment during same visit. *Consultation fee 100% redeemable against future treatments booked within 14 days.",
         duration: "20min",
         price: "£50",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2588602&eid=4557161&oiid=sv%3A23094023&share&pId=2507365",
+        bookingUrl: SKIN_CLINIC_URL,
         slug: "in-clinic-consultation",
         image: "https://placehold.co/600x400"
       },
@@ -117,7 +135,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Choose one area to target. Designed to reduce lines while maintaining natural expression.",
         duration: "30min",
         price: "£160",
-        bookingUrl: "/go/three_areas",
+        bookingUrl: THREE_AREAS_URL,
         slug: "anti-wrinkle",
         image: antiWrinkleHero
       },
@@ -126,7 +144,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Choose two areas to target. Designed to reduce lines while maintaining natural expression.",
         duration: "45min",
         price: "£220",
-        bookingUrl: "/go/three_areas",
+        bookingUrl: THREE_AREAS_URL,
         slug: "anti-wrinkle",
         image: antiWrinkleHero
       },
@@ -135,7 +153,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Choose three areas to target. Designed to reduce lines while maintaining natural expression.",
         duration: "45min",
         price: "£260",
-        bookingUrl: "/go/three_areas",
+        bookingUrl: THREE_AREAS_URL,
         slug: "anti-wrinkle",
         image: antiWrinkleHero
       },
@@ -144,7 +162,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Anti-wrinkle injections to relax the masseter muscles, helping slim the lower face and reduce jaw tension. Great when paired with a Nefertiti Neck Lift to sculpt the jaw.",
         duration: "45min",
         price: "£300",
-        bookingUrl: "/go/masseter",
+        bookingUrl: MASSETER_URL,
         slug: "jawline-slimming",
         image: jawSlimHero
       },
@@ -153,7 +171,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Subtle lift to corners of the mouth to soften downturned smile lines.",
         duration: "30min",
         price: "£120",
-        bookingUrl: "/go/dao",
+        bookingUrl: DAO_SMILE_URL,
         slug: "smile-lift",
         image: smileHero
       },
@@ -162,7 +180,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Defined jawline and smoother neck contours using targeted lower-face injections - without surgery. A great addition to Masseter Reduction for ultimate jaw slimming.",
         duration: "45min",
         price: "£270",
-        bookingUrl: "/go/nefertiti",
+        bookingUrl: NEFERTITI_URL,
         slug: "neck-lift",
         image: neckHero
       },
@@ -172,7 +190,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Underarm & palms treatment to reduce excessive sweating for up to 9 months.",
         duration: "1h",
         price: "£350",
-        bookingUrl: "/go/hyperhidrosis",
+        bookingUrl: HYPERHIDROSIS_URL,
         slug: "sweat-control",
         image: sweatHero
       },
@@ -181,7 +199,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "One appointment, two goals: relieve teeth-grinding and refine your jawline symmetry.",
         duration: "1h",
         price: "£520",
-        bookingUrl: "/go/contour_duo",
+        bookingUrl: CONTOUR_DUO_URL,
         slug: "lower-face-contour-duo",
         image: lowerFaceHero
       },
@@ -198,7 +216,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Remodels skin quality using hyaluronic acid spread across key zones, improving skin elasticity, collagen production and firmness. Best for dehydrated, crepey or ageing skin.",
         duration: "45min",
         price: "£300",
-        bookingUrl: "/go/profhilo",
+        bookingUrl: PROFHILO_URL,
         slug: "profhilo",
         image: "/assets/treatment_images/profhilo-640w.webp"
       },
@@ -208,7 +226,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Stimulates collagen and elastin production using amino acids and HA. Ideal for dull or tired-looking skin.",
         duration: "45min",
         price: "£250",
-        bookingUrl: "/go/sunekos",
+        bookingUrl: SUNEKOS_URL,
         slug: "sunekos",
         image: "/assets/treatment_images/model-2-640w.webp"
       },
@@ -225,7 +243,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Targets under-eye hollowness, texture and dark circles with regenerative polynucleotides.",
         duration: "45min",
         price: "£250",
-        bookingUrl: "/go/eyes_pns",
+        bookingUrl: PNS_EYES_URL,
         slug: "eye-rejuvenation",
         image: "/assets/treatment_images/under-eye-1-640w.webp"
       },
@@ -235,7 +253,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "DNA-based injectable to improve skin density, elasticity and hydration. Suitable for early signs of ageing or post-inflammatory texture issues.",
         duration: "45min",
         price: "£300",
-        bookingUrl: "/go/face_pns",
+        bookingUrl: PNS_FACE_URL,
         slug: "full-face-regeneration",
         image: "/assets/treatment_images/polynucleotides-1-640w.webp"
       },
@@ -310,7 +328,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "A regenerative biostimulant that works deep within the skin to restore facial volume and support structure by stimulating natural collagen production. Unlike dermal fillers, Sculptra enhances your own tissue over time - resulting in gradual, long-lasting improvement in firmness, definition, and youthful contours. Recommended course: 2-3 sessions, spaced 4-6 weeks apart.",
         duration: "1h",
         price: "£550",
-        bookingUrl: "/go/sculptra",
+        bookingUrl: SCULPTRA_URL,
         slug: "sculptra",
         image: "/assets/treatment_images/sculptra-640w.webp"
       }

@@ -1,5 +1,6 @@
 import SEO from "@/components/SEO";
 import { BookingButton } from "@/components/BookingButton";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 export default function MicroneedlingComingSoonPage() {
   return (
@@ -16,7 +17,7 @@ export default function MicroneedlingComingSoonPage() {
           <p className="text-2xl font-bold text-primary mb-8">
             Coming Soon to Aevia Skin!
           </p>
-          <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">
+          <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
             Book a Consultation to Learn More
           </BookingButton>
         </div>

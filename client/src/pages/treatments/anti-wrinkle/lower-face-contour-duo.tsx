@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
+import { CONTOUR_DUO_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 import lowerFaceContourDuoDiagram from "@assets/diagrams/lower-face-1.png";
 const lowerFaceHero = "/assets/treatment_images/lower-face-2-640w.webp";
@@ -32,7 +33,7 @@ export default function LowerFaceContourDuoPage() {
                   <span>1h</span>
                 </div>
                 <BookingButton
-                  href="/go/contour_duo"
+                  href={CONTOUR_DUO_URL}
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -169,7 +170,7 @@ export default function LowerFaceContourDuoPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£520</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <BookingButton
-                  href="/go/contour_duo"
+                  href={CONTOUR_DUO_URL}
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -245,13 +246,13 @@ export default function LowerFaceContourDuoPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Lower-Face Contour Duo consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/contour_duo" variant="secondary" className="w-full">
+                <BookingButton href={CONTOUR_DUO_URL} variant="secondary" className="w-full">
                   Book Lower-Face Contour Duo Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

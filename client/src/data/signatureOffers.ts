@@ -1,3 +1,5 @@
+import { GLOW_REVIVAL_URL, WRINKLE_RESET_URL } from "@/lib/bookingUrls";
+
 export interface SignatureOffer {
   name: string;
   price: string;
@@ -20,7 +22,7 @@ export const signatureOffers: SignatureOffer[] = [
       "One appointment, one seamless price",
     ],
     normalPrice: "£580",
-    bookingUrl: "/go/wrinkle_reset",
+    bookingUrl: WRINKLE_RESET_URL,
     ctaText: "Book My Wrinkle Reset"
   },
   {
@@ -34,7 +36,7 @@ export const signatureOffers: SignatureOffer[] = [
       "Second session recommended in 4 weeks for optimal results"
     ],
     normalPrice: "£550",
-    bookingUrl: "/go/glow_revival",
+    bookingUrl: GLOW_REVIVAL_URL,
     ctaText: "Book My Glow Revival"
   },
   {

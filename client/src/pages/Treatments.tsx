@@ -6,6 +6,7 @@ import { useLocation, Link } from "wouter";
 import SEO from "@/components/SEO";
 import { signatureOffers } from "@/data/signatureOffers";
 import { treatmentCategories, Treatment } from "@/data/treatments";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 export default function Treatments() {
   const [location] = useLocation();
@@ -204,7 +205,7 @@ export default function Treatments() {
                       onClick={() =>
                         hasBooking
                           ? handleSignatureOfferBook(offer.bookingUrl)
-                          : (window.location.href = "/go/skin_consultations")
+                          : (window.location.href = SKIN_CONSULTATION_URL)
                       }
                       className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
                     >
@@ -266,7 +267,7 @@ export default function Treatments() {
 
                         const onClick = () => {
                           if (isSkinConsultationsCategory || !hasBooking) {
-                            window.location.href = "/go/skin_consultations";
+                            window.location.href = SKIN_CONSULTATION_URL;
                           } else {
                             handleBookNow(treatment);
                           }

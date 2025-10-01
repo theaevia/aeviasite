@@ -3,6 +3,7 @@ import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
 import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 const CATEGORY_SLUG = "consultation";
 
@@ -22,7 +23,7 @@ export default function ConsultationCategoryPage() {
             Services to guide new clients through their skin treatment journey with us. Fee redeemable against first treatment.
           </p>
           <div className="flex flex-col items-center w-full sm:w-auto">
-            <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">
+            <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
               Start Virtual Consultation
             </BookingButton>
             <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>

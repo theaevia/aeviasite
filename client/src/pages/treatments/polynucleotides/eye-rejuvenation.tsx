@@ -7,6 +7,7 @@ import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 // Assets
 // Optimised before/after variants served from public assets
@@ -281,7 +282,7 @@ export default function EyeRejuvenationPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Eye Rejuvenation consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>

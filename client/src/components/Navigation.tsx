@@ -20,7 +20,7 @@ import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
 import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 import { journalUrl } from "@/lib/journal";
-import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 // Add slugify helper (same as in CategoryPage)
 const slugify = (str: string) =>
@@ -340,7 +340,7 @@ export default function Navigation() {
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
                 </a>
                 <a
-                  href={"/go/square_site"}
+                  href={SQUARE_SITE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Book a treatment"
@@ -587,7 +587,7 @@ export default function Navigation() {
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind Consultation</span>
             </a>
             <a
-                  href={"/go/square_site"}
+                  href={SQUARE_SITE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Book a treatment"

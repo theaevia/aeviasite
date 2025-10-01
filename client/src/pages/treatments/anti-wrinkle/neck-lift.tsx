@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
+import { CONTOUR_DUO_URL, NEFERTITI_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 import neckLiftDiagram from "@assets/diagrams/platysmal-bands-1.png";
 const neckHero = "/assets/treatment_images/neck-2-640w.webp";
@@ -32,7 +33,7 @@ export default function NeckLiftPage() {
                   <span>45 mins</span>
                 </div>
                 <BookingButton
-                  href="/go/nefertiti"
+                  href={NEFERTITI_URL}
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -168,7 +169,7 @@ export default function NeckLiftPage() {
                 <span className="text-2xl font-bold text-primary mb-1">£270</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="/go/nefertiti" target="_blank" rel="noopener noreferrer">Book Neck Lift</a>
+                  <a href={NEFERTITI_URL} target="_blank" rel="noopener noreferrer">Book Neck Lift</a>
                 </Button>
               </div>
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -181,7 +182,7 @@ export default function NeckLiftPage() {
                 <p className="text-sm font-semibold text-green-600 mb-2">Save £50</p>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="/go/contour_duo" target="_blank" rel="noopener noreferrer">Book Lower-Face Contour Duo</a>
+                  <a href={CONTOUR_DUO_URL} target="_blank" rel="noopener noreferrer">Book Lower-Face Contour Duo</a>
                 </Button>
               </div>
             </div>
@@ -257,13 +258,13 @@ export default function NeckLiftPage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your Neck Lift consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/nefertiti" variant="secondary" className="w-full">
+                <BookingButton href={NEFERTITI_URL} variant="secondary" className="w-full">
                   Book Neck Lift Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Clock, Check, Banknote, Gift, Camera } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
+import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 import skinHeroImage from "@assets/hero_images/royalty-free-skin3.webp";
 import skinModelImage from "@assets/hero_images/skin-model.webp";
 import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
@@ -35,7 +36,7 @@ export default function Skin() {
                   Non-invasive skin longevity treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
                 </p>
                 <div className="w-full sm:w-auto text-center">
-                  <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">
+                  <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
                     Book Consultation
                   </BookingButton>
                   <div className="mt-3 text-sm text-center">
@@ -83,7 +84,7 @@ export default function Skin() {
                 const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
                 const onCtaClick = () => {
                   if (isAntiWrinkle) {
-                    window.location.href = '/go/skin_consultations';
+                    window.location.href = SKIN_CONSULTATION_URL;
                   } else if (offer.bookingUrl !== '#') {
                     window.open(offer.bookingUrl, '_blank');
                   }
@@ -195,7 +196,7 @@ export default function Skin() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">
+                  <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
                     Book Your Consultation
                   </BookingButton>
                 </div>
@@ -249,14 +250,14 @@ export default function Skin() {
               <div className="bg-accent/20 rounded-2xl p-6">
                 <h3 className="text-xl font-serif font-semibold mb-2">New to Aevia?</h3>
                 <p className="text-sm text-foreground/70 mb-4">Start with a consultation.</p>
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
                   Book Consultation
                 </BookingButton>
               </div>
               <div className="bg-accent/20 rounded-2xl p-6">
                 <h3 className="text-xl font-serif font-semibold mb-2">Returning client?</h3>
                 <p className="text-sm text-foreground/70 mb-4">Book a specific treatment.</p>
-                <BookingButton href="/go/square_site" variant="primary" className="w-full">
+                <BookingButton href={SQUARE_SITE_URL} variant="primary" className="w-full">
                   Book Treatment
                 </BookingButton>
               </div>
@@ -271,7 +272,7 @@ export default function Skin() {
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
             <p className="text-lg text-foreground/70 mb-8">Book your FREE Aevia Skin Consultation</p>
-            <BookingButton href="/go/skin_consultations" variant="primary" className="w-full sm:w-auto">
+            <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
               Book Your Aevia Skin Consultation
             </BookingButton>
           </div>

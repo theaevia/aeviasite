@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { galleryItems } from "@/data/galleryItems";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 type Intent = "quiz" | "consult";
 
@@ -114,7 +115,7 @@ export default function BioPage() {
       utm_campaign: utmCampaign,
     });
     params.set("utm_source_platform", sourcePlatform);
-    return `/go/skin_consultations?${params.toString()}`;
+    return `${SKIN_CONSULTATION_URL}?${params.toString()}`;
   }, [utmMedium, utmCampaign, sourcePlatform]);
 
   const primaryHref = intent === "consult" ? consultHref : quizHref;

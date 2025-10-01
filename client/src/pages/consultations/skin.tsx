@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { Leaf, Clock, Gift, Calendar, Check } from "lucide-react";
 import SEO from "@/components/SEO";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 export default function SkinConsultationPage() {
   // Inject Square Appointments embed script
@@ -52,7 +53,7 @@ export default function SkinConsultationPage() {
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <a
-                href="/go/skin_consultations"
+                href={SKIN_CONSULTATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

@@ -2,9 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ChevronDown, ChevronUp } from "lucide-react";
-
-const SQUARE_SERVICES_URL =
-  "/go/square_site";
+import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 type Mode = "new" | "returning";
 
@@ -265,7 +263,7 @@ export default function MobileStickyBookingBar() {
         {/* Primary action */}
         {mode === "new" ? (
           <a
-            href="/go/skin_consultations"
+            href={SKIN_CONSULTATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-medium border-2 border-primary hover:bg-white hover:text-primary smooth-transition"
@@ -275,7 +273,7 @@ export default function MobileStickyBookingBar() {
           </a>
         ) : (
           <a
-            href={SQUARE_SERVICES_URL}
+            href={SQUARE_SITE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-medium border-2 border-primary hover:bg-white hover:text-primary smooth-transition"

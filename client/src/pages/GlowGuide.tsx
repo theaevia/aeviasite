@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { BookingButton } from "@/components/BookingButton";
 import SEO from "@/components/SEO";
+import { SKIN_VIRTUAL_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 const GLOW_GUIDE_URL = "/assets/pdfs/aevia-glow-guide.pdf";
-const CONSULTATION_URL = "/go/skin_virtual?utm_source=glow_guide&utm_medium=pdf&utm_campaign=glow_guide_sep25";
-const PACKAGES_URL = "/go/square_site?utm_source=glow_guide&utm_medium=pdf&utm_campaign=glow_guide_sep25";
+const CONSULTATION_URL = `${SKIN_VIRTUAL_URL}?utm_source=glow_guide&utm_medium=pdf&utm_campaign=glow_guide_sep25`;
+const PACKAGES_URL = `${SQUARE_SITE_URL}?utm_source=glow_guide&utm_medium=pdf&utm_campaign=glow_guide_sep25`;
 
 export default function GlowGuide() {
   useEffect(() => {

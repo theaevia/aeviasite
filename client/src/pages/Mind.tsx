@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
-import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
+import { CLARITY_STRATEGY_URL, MIND_DISCOVERY_URL, MOMENTUM_SIX_URL, TRANSFORMATION_TWELVE_URL } from "@/lib/bookingUrls";
 import { journalUrl } from "@/lib/journal";
 import mindHeroImage from "@assets/hero_images/mind-hero-new2.webp";
 import mindHeroImage800 from "@assets/hero_images/mind-hero-new2-800w.webp";
@@ -409,7 +409,7 @@ export default function Mind() {
               <div className="rounded-3xl border border-foreground/10 bg-muted/40 p-8 text-center space-y-4">
                 <h3 className="text-2xl font-serif font-semibold">Returning Clients</h3>
                 <p className="text-foreground/70">Book your next coaching session</p>
-                <BookingButton href="/go/clarity_strategy_session" variant="primary" className="w-full">
+                <BookingButton href={CLARITY_STRATEGY_URL} variant="primary" className="w-full">
                   Book Coaching Sessions
                 </BookingButton>
               </div>

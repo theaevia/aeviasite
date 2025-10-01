@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import TestimonialCard from "@/components/TestimonialCard";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
-import { MIND_DISCOVERY_URL } from "@/lib/bookingUrls";
+import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 import SEO from "@/components/SEO";
 import clinicImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
@@ -86,7 +86,7 @@ export default function Home() {
     const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
     const onCtaClick = () => {
       if (isAntiWrinkle) {
-        window.location.href = '/go/skin_consultations';
+        window.location.href = SKIN_CONSULTATION_URL;
       } else {
         handleSignatureOfferBook(offer.bookingUrl);
       }
@@ -144,7 +144,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
                 <div className="w-full sm:w-72 text-center">
-                  <BookingButton href="/go/skin_consultations" variant="primary" className="w-full whitespace-nowrap">
+                  <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full whitespace-nowrap">
                     Book Free Skin Consultation
                   </BookingButton>
                 </div>
@@ -388,7 +388,7 @@ for clarity, confidence, and consistency. Whether you're drawn to one or both, e
             <p className="text-lg text-foreground/70 mb-8">Based in Kings Cross, London</p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
               <div className="w-full sm:w-72">
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full whitespace-nowrap">
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full whitespace-nowrap">
                   Book Skin Consultation
                 </BookingButton>
               </div>

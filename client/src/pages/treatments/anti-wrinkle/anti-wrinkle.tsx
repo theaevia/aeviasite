@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
+import { SKIN_CONSULTATION_URL, THREE_AREAS_URL } from "@/lib/bookingUrls";
 
 // Assets
 const antiWrinkleDiagram = "/assets/diagrams/anti-wrinkle-1-640w.webp";
@@ -54,7 +55,7 @@ export default function AntiWrinklePage() {
                   <span>30 mins</span>
                 </div>
                 <BookingButton
-                  href="/go/three_areas"
+                  href={THREE_AREAS_URL}
                   variant="primary"
                   className="w-full sm:w-auto"
                 >
@@ -231,7 +232,7 @@ export default function AntiWrinklePage() {
                 <span className="text-2xl font-bold text-primary mb-1">£160</span>
                 <span className="text-muted-foreground text-sm mb-4">30min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="/go/three_areas" target="_blank" rel="noopener noreferrer">Book One Area</a>
+                  <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book One Area</a>
                 </Button>
               </div>
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -240,7 +241,7 @@ export default function AntiWrinklePage() {
                 <span className="text-2xl font-bold text-primary mb-1">£220</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="/go/three_areas" target="_blank" rel="noopener noreferrer">Book Two Areas</a>
+                  <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book Two Areas</a>
                 </Button>
               </div>
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -249,7 +250,7 @@ export default function AntiWrinklePage() {
                 <span className="text-2xl font-bold text-primary mb-1">£260</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="/go/three_areas" target="_blank" rel="noopener noreferrer">Book Three Areas</a>
+                  <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book Three Areas</a>
                 </Button>
               </div>
             </div>
@@ -338,13 +339,13 @@ export default function AntiWrinklePage() {
             <p className="text-base text-foreground/80 text-center mb-8">Book your anti-wrinkle consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/skin_consultations" variant="primary" className="w-full">
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
                   Book Aevia Skin Consultation
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href="/go/three_areas" variant="secondary" className="w-full">
+                <BookingButton href={THREE_AREAS_URL} variant="secondary" className="w-full">
                   Book Anti-Wrinkle Treatment
                 </BookingButton>
                 <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>

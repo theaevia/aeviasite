@@ -3,8 +3,9 @@ import '../styles/global.css';
 import Navigation from '@/components/Navigation';
 import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
+import { SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
 
-const DEFAULT_CONSULTATION_URL = withBase('/go/skin_consultations');
+const DEFAULT_CONSULTATION_URL = withBase(SKIN_CONSULTATION_URL);
 
 const {
   title = 'The Aevia Journal',
