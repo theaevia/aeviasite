@@ -105,6 +105,7 @@ const cspGlobal: CspDirectives = {
     "https://api.github.com",
     "https://github.com",
     "https://assets.mailerlite.com",
+    "https://journal.theaevia.co.uk/api/posts.json",
   ],
   "script-src": [
     "'self'",
@@ -117,6 +118,7 @@ const cspGlobal: CspDirectives = {
     "https://app.squareup.com",
     "https://unpkg.com",
     "https://assets.mailerlite.com",
+    "https://journal.theaevia.co.uk/api/posts.json",
   ],
   "script-src-elem": [
     "'self'",
@@ -129,6 +131,7 @@ const cspGlobal: CspDirectives = {
     "https://app.squareup.com",
     "https://unpkg.com",
     "https://assets.mailerlite.com",
+    "https://journal.theaevia.co.uk/api/posts.json",
   ],
   "script-src-attr": ["'unsafe-inline'"],
   "style-src": [
@@ -139,6 +142,7 @@ const cspGlobal: CspDirectives = {
     "https://fonts.googleapis.com",
     "https://unpkg.com",
     "https://assets.mailerlite.com",
+    "https://journal.theaevia.co.uk/api/posts.json",
   ],
   "style-src-elem": [
     "'self'",
@@ -148,6 +152,7 @@ const cspGlobal: CspDirectives = {
     "https://fonts.googleapis.com",
     "https://unpkg.com",
     "https://assets.mailerlite.com",
+    "https://journal.theaevia.co.uk/api/posts.json",
   ],
   "font-src": ["'self'", "https://fonts.gstatic.com"],
   "frame-ancestors": ["'none'"],
