@@ -7,4 +7,4 @@ export const GET: APIRoute = () =>
       'Content-Type': 'application/json',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
-  });
+  }); 
