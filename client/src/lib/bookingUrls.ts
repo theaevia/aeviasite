@@ -19,3 +19,4 @@ export const PNS_FACE_URL = '/go/face_pns';
 export const SCULPTRA_URL = '/go/sculptra';
 export const WRINKLE_RESET_URL = '/go/wrinkle_reset';
 export const GLOW_REVIVAL_URL = '/go/glow_revival';
+export const MIND_OFFERS_URL = '/go/mind_offers';

@@ -20,7 +20,7 @@ import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
 import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 import { journalUrl } from "@/lib/journal";
-import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import { MIND_DISCOVERY_URL, MIND_OFFERS_URL, SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 // Add slugify helper (same as in CategoryPage)
 const slugify = (str: string) =>
@@ -58,6 +58,9 @@ export default function Navigation() {
     if (!href) return journalUrl('/');
     return journalUrl(href);
   };
+
+  const mindExploredUrl = journalUrl('/mind-explored');
+  const whatIsCoachingUrl = journalUrl('/what-is-coaching');
 
   // Prefer full page reloads when rendered inside the Journal (Astro) app
   // This avoids SPA-only navigation on static Journal pages.
@@ -297,19 +300,36 @@ export default function Navigation() {
               <DropdownMenuContent align="start">
                 <Link href="/mind">
                   <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Overview
+                    Coaching Philosophy
                   </DropdownMenuItem>
                 </Link>
                 <a
-                  href={MIND_DISCOVERY_URL}
+                  href={MIND_OFFERS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
-                    Discovery Call
+                    Coaching Offers
                   </DropdownMenuItem>
                 </a>
-                {/* Programmes removed per request */}
+                <a
+                  href={mindExploredUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    The Mind, Explored
+                  </DropdownMenuItem>
+                </a>
+                <a
+                  href={whatIsCoachingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    What is Coaching?
+                  </DropdownMenuItem>
+                </a>
               </DropdownMenuContent>
             </DropdownMenu>
             <DropdownMenu>
@@ -333,13 +353,6 @@ export default function Navigation() {
                   <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin Consultation</DropdownMenuItem>
                 </a>
                 <a
-                  href={MIND_DISCOVERY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Mind Consultation</DropdownMenuItem>
-                </a>
-                <a
                   href={SQUARE_SITE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -347,9 +360,16 @@ export default function Navigation() {
                   onClick={() => onNavSelect('consult')}
                   className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
                 >
-                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Treatments</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin Treatments</DropdownMenuItem>
                 </a>
-            </DropdownMenuContent>
+                <a
+                  href={MIND_OFFERS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Coaching Offers</DropdownMenuItem>
+                </a>
+              </DropdownMenuContent>
             </DropdownMenu>
             {/* Top-level Gallery removed on desktop; kept under Skin */}
             <DropdownMenu>
@@ -405,7 +425,7 @@ export default function Navigation() {
               <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                 <FaGoogle className="h-4 w-4 fill-current" />
               </a>
-              <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+              <a href={SQUARE_SITE_URL} target="_blank" rel="noopener noreferrer">
                 <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                   Book Now
                 </Button>
@@ -559,12 +579,17 @@ export default function Navigation() {
         {isMindOpen && (
           <div className="ml-4 flex flex-col space-y-2">
             <Link href="/mind">
-              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-bold smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Overview</span>
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-bold smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Philosophy</span>
             </Link>
-            <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Discovery Call</span>
+            <a href={MIND_OFFERS_URL} target="_blank" rel="noopener noreferrer">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
             </a>
-            {/* Programmes removed per request */}
+            <a href={mindExploredUrl} target="_blank" rel="noopener noreferrer">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">The Mind, Explored</span>
+            </a>
+            <a href={whatIsCoachingUrl} target="_blank" rel="noopener noreferrer">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">What is Coaching?</span>
+            </a>
           </div>
         )}
 
@@ -583,19 +608,18 @@ export default function Navigation() {
             <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Consultation</span>
             </a>
-            <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Mind Consultation</span>
-            </a>
             <a
-                  href={SQUARE_SITE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Book a treatment"
-                  onClick={() => onNavSelect('consult')}
-                  className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
-                >
-                   <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Treatments</span>
-                </a>
+              href={SQUARE_SITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Book a treatment"
+              onClick={() => { setActiveMenu('consult'); handleLinkClick(); }}
+            >
+              <span className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Treatments</span>
+            </a>
+            <a href={MIND_OFFERS_URL} target="_blank" rel="noopener noreferrer">
+              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
+            </a>
           </div>
         )}
 
@@ -667,7 +691,7 @@ export default function Navigation() {
             <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
               <FaGoogle className="h-4 w-4 fill-current" />
             </a>
-            <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+            <a href={SQUARE_SITE_URL} target="_blank" rel="noopener noreferrer">
               <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                 Book Now
               </Button>

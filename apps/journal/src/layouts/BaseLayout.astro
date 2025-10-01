@@ -5,7 +5,7 @@ import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
 
-const DEFAULT_CONSULTATION_URL = withBase(SKIN_CONSULTATION_URL);
+const DEFAULT_CONSULTATION_URL = mainSiteUrl(SKIN_CONSULTATION_URL);
 
 const {
   title = 'The Aevia Journal',

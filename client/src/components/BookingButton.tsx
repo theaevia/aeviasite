@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 import * as React from "react";
 
 interface BookingButtonProps {
@@ -18,18 +17,15 @@ export function BookingButton({ href, children, variant = "primary", className =
     "bg-white text-primary hover:bg-primary hover:text-primary-foreground border-primary";
   const classes = `${base} ${variant === "primary" ? primary : secondary}`;
 
-  // If external link, use <a>
-  if (/^https?:\/\//.test(href)) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
-        {children}
-      </a>
-    );
-  }
-  // Otherwise, use <Link>
+  const isExternal = /^https?:\/\//.test(href);
+
   return (
-    <Link href={href} className={classes}>
+    <a
+      href={href}
+      className={classes}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
       {children}
-    </Link>
+    </a>
   );
-} 
+}

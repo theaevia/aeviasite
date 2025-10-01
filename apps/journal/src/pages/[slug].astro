@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Figure from '../components/Figure.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../utils/withBase';
+import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { resolveMediaPath } from '../utils/media';
 import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
 
@@ -82,8 +83,8 @@ const authorRefs = (post.data.authors || [])
   })
   .filter(Boolean) as Array<{ slug: string; data: any; avatarUrl?: string }>;
 
-const defaultConsultationUrl = withBase(SKIN_CONSULTATION_URL);
-const mindConsultationUrl = withBase(MIND_DISCOVERY_URL);
+const defaultConsultationUrl = mainSiteUrl(SKIN_CONSULTATION_URL);
+const mindConsultationUrl = mainSiteUrl(MIND_DISCOVERY_URL);
 const isMindCategory = (post.data.categories || []).some((value: any) => relationSlug(value) === 'mind');
 const consultationUrl = isMindCategory ? mindConsultationUrl : defaultConsultationUrl;
 
