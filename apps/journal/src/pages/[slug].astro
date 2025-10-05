@@ -95,6 +95,8 @@ const mindExploredLanding = mainSiteUrl('/themindexplored');
 const journalHome = 'https://journal.theaevia.co.uk/';
 const isMindCategory = (post.data.categories || []).some((value: any) => relationSlug(value) === 'mind');
 const consultationUrl = isMindCategory ? mindConsultationUrl : defaultConsultationUrl;
+const headingLabel = minimalView ? 'The Mind, Explored.' : 'The Aevia Journal';
+const headingHref = minimalView ? mindExploredLanding : journalHome;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -127,9 +129,9 @@ const canonicalPrimary = post.data.canonical
     <div class="flex">
       <a
         class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-foreground hover:text-primary/80"
-        href={isMindCategory ? mindExploredLanding : journalHome}
+        href={headingHref}
       >
-        {isMindCategory ? 'THE MIND, EXPLORED.' : 'THE AEVIA JOURNAL'}
+        {headingLabel}
       </a>
     </div>
 
