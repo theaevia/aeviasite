@@ -181,7 +181,7 @@ export default function EyeRejuvenationPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">One Session</h2>
                 <p className="text-foreground/70 mb-2 text-center">Single Plinest Eye treatment</p>
-                <span className="text-2xl font-bold text-primary mb-1">£250</span>
+                <span className="text-2xl font-normal text-primary mb-1">£250</span>
                 <div className="h-6 mb-2"></div>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
@@ -191,7 +191,7 @@ export default function EyeRejuvenationPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Course of Three</h2>
                 <p className="text-foreground/70 mb-2 text-center">Recommended initial course</p>
-                <span className="text-2xl font-bold text-primary">£650</span>
+                <span className="text-2xl font-normal text-primary">£650</span>
                 <p className="text-sm text-green-600 font-semibold mb-2">
                   <span style={{ textDecoration: 'line-through', color: '#999', marginRight: '8px' }}>£750</span> (Save £100)
                 </p>
@@ -212,27 +212,27 @@ export default function EyeRejuvenationPage() {
             </div>
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">A detailed consultation to assess your under-eye concerns and determine the best treatment plan for you.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Treatment Plan</h3>
                 <p className="text-sm text-foreground/70">A personalised treatment plan will be created, typically involving a course of 3-4 sessions.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">The Treatment</h3>
                 <p className="text-sm text-foreground/70">The treatment involves a series of small injections into the under-eye area.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Repeat Sessions</h3>
                 <p className="text-sm text-foreground/70">Sessions are spaced 2-3 weeks apart to achieve the best possible results.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">5</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">5</div>
                 <h3 className="font-semibold mb-2 text-center">Enjoy Brighter Eyes</h3>
                 <p className="text-sm text-foreground/70">Enjoy a brighter, more refreshed appearance. Maintenance sessions may be recommended.</p>
               </div>

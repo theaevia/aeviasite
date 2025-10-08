@@ -2,7 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('../assets/fonts/Halyard_Display_Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('../assets/fonts/Halyard_Display_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('../assets/fonts/Halyard_Display_Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('../assets/fonts/Halyard_Display_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.nav-halyard {
+  font-family: 'Halyard Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+}
+
+.nav-halyard .font-semibold {
+  font-weight: 500;
+}
+
+.nav-halyard .font-bold {
+  font-weight: 600;
+}
+
+.nav-halyard .text-sm {
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.4;
+}
+
 :root {
+  font-size: 18px;
   --header-h: 80px; /* Default header height, will be updated by JS */
   --background: 0 0% 100%; /* #FFFFFF */
   --foreground: 0 0% 17%; /* #2D2D2D */
@@ -48,11 +99,30 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Halyard Display', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.75;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+
+  h1.font-semibold,
+  h2.font-semibold,
+  h3.font-semibold,
+  h4.font-semibold,
+  h5.font-semibold,
+  h6.font-semibold,
+  h1.font-bold,
+  h2.font-bold,
+  h3.font-bold,
+  h4.font-bold,
+  h5.font-bold,
+  h6.font-bold {
+    font-weight: 700;
   }
 }
 
@@ -176,7 +246,8 @@
 /* Page-specific overrides */
 .privacy-article h2,
 .privacy-article h3 {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700 !important;
 }
 
 /* Privacy page link color override */

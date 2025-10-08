@@ -2,6 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('/fonts/Halyard_Display_Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('/fonts/Halyard_Display_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('/fonts/Halyard_Display_Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Halyard Display';
+  src: url('/fonts/Halyard_Display_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.nav-halyard {
+  font-family: 'Halyard Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+}
+
+.nav-halyard .font-semibold {
+  font-weight: 500;
+}
+
+.nav-halyard .font-bold {
+  font-weight: 600;
+}
+
+.nav-halyard .text-sm {
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.4;
+}
+
 :root {
   --background: 0 0% 100%; /* #FFFFFF */
   --foreground: 0 0% 17%; /* #2D2D2D */

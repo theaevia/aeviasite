@@ -166,7 +166,7 @@ export default function NeckLiftPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Neck Lift</h2>
                 <p className="text-foreground/70 mb-2 text-center">For a softer, tighter-looking neck.</p>
-                <span className="text-2xl font-bold text-primary mb-1">£270</span>
+                <span className="text-2xl font-normal text-primary mb-1">£270</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={NEFERTITI_URL} target="_blank" rel="noopener noreferrer">Book Neck Lift</a>
@@ -176,7 +176,7 @@ export default function NeckLiftPage() {
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Lower-Face Contour Duo</h2>
                 <p className="text-foreground/70 mb-2 text-center">Pair with Masseter Reduction</p>
                 <div className="flex items-baseline justify-center my-1">
-                  <span className="text-2xl font-bold text-primary">£520</span>
+                  <span className="text-2xl font-normal text-primary">£520</span>
                   <span className="text-xl font-medium text-gray-500 line-through ml-2">£570</span>
                 </div>
                 <p className="text-sm font-semibold text-green-600 mb-2">Save £50</p>
@@ -197,22 +197,22 @@ export default function NeckLiftPage() {
             </div>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">Evaluate your neck and jawline, and discuss your aesthetic goals.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Strategic Injections</h3>
                 <p className="text-sm text-foreground/70">Subtle muscle relaxant is precisely injected along the jawline and into neck bands.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">Gradual Improvement</h3>
                 <p className="text-sm text-foreground/70">Results become visible over 1-2 weeks as muscles relax and contours refine.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Follow-Up</h3>
                 <p className="text-sm text-foreground/70">A review appointment to ensure desired outcomes are achieved.</p>
               </div>

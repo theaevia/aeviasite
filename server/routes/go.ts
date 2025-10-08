@@ -5,7 +5,7 @@ export const go = Router();
 
 const DEST: Record<string, string> = {
   // Square Site
-  square_site: "https://the-aevia.square.site/",
+  square_site: "https://theaevia.square.site/",
   
   // Skin Consultations
   skin_consultations: "https://book.squareup.com/appointments/flwwunfdy1hm72/location/L1TKSRMBS3N9H/services",

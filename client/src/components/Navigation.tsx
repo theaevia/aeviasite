@@ -165,8 +165,8 @@ export default function Navigation() {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass-effect border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+    <nav className="fixed top-0 w-full z-50 glass-effect border-b border-gray-100 font-sans nav-halyard">
+      <div className="max-w-6xl mx-auto px-4 md:px-5 py-4">
         <div className="grid grid-cols-3 items-center">
           {/* Logo */}
           <div className="justify-self-start">
@@ -191,13 +191,13 @@ export default function Navigation() {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden nav:flex items-center space-x-8 justify-self-center">
+          <div className="hidden nav:flex items-center space-x-6 justify-self-center">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span
                   className={cn(
-                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isHighlighted('skin') ? "text-primary font-semibold" : "text-foreground"
+                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isHighlighted('skin') ? "text-primary" : "text-foreground"
                   )}
                   onClick={() => setActiveMenu('skin')}
                 >
@@ -289,8 +289,8 @@ export default function Navigation() {
               <DropdownMenuTrigger asChild>
                 <span
                   className={cn(
-                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isHighlighted('mind') ? "text-primary font-semibold" : "text-foreground"
+                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isHighlighted('mind') ? "text-primary" : "text-foreground"
                   )}
                   onClick={() => setActiveMenu('mind')}
                 >
@@ -332,8 +332,8 @@ export default function Navigation() {
               <DropdownMenuTrigger asChild>
                 <span
                   className={cn(
-                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isHighlighted('consult') ? "text-primary font-semibold" : "text-foreground"
+                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isHighlighted('consult') ? "text-primary" : "text-foreground"
                   )}
                   onClick={() => setActiveMenu('consult')}
                 >
@@ -372,8 +372,8 @@ export default function Navigation() {
               <DropdownMenuTrigger asChild>
                 <span
                   className={cn(
-                    "text-sm font-medium smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isHighlighted('about') ? "text-primary font-semibold" : "text-foreground"
+                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isHighlighted('about') ? "text-primary" : "text-foreground"
                   )}
                   onClick={() => setActiveMenu('about')}
                 >
@@ -403,7 +403,7 @@ export default function Navigation() {
               href={journalUrl('/')}
               target="_blank"
               rel="noopener noreferrer"
-            className="text-sm font-medium smooth-transition hover:text-primary cursor-pointer text-foreground"
+            className="text-sm font-normal smooth-transition hover:text-primary cursor-pointer text-foreground"
             >
               Journal
             </a>
@@ -411,7 +411,7 @@ export default function Navigation() {
           
           {/* Right side icons */}
           {!hideHeaderActions && (
-            <div className="justify-self-end hidden nav:flex items-center space-x-6">
+            <div className="justify-self-end hidden nav:flex items-center space-x-5">
               <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
                 <Instagram className="h-5 w-5" strokeWidth={3} />
               </a>
@@ -452,8 +452,8 @@ export default function Navigation() {
         <button
           onClick={() => setIsSkinOpen(!isSkinOpen)}
           className={cn(
-            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-            isHighlighted('skin') && "text-primary font-semibold"
+            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('skin') && "text-primary"
           )}
         >
           <span>Skin</span>
@@ -464,20 +464,20 @@ export default function Navigation() {
             <Link href="/skin">
               <span
                 onClick={() => { setActiveMenu('skin'); handleLinkClick(); }}
-                className={cn(
-                  "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                  isActive("/skin") ? "text-primary font-bold" : "text-foreground font-bold"
-                )}
+                  className={cn(
+                    "block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                    isActive("/skin") ? "text-primary font-semibold" : "text-foreground font-semibold"
+                  )}
               >
                 Overview
               </span>
             </Link>
             <Link href="/treatments">
-              <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-medium px-2 py-1 hover:text-primary">All Treatments & Prices</span>
+              <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-normal px-2 py-1 hover:text-primary">All Treatments & Prices</span>
             </Link>
             <Link href="/treatments#signature-offers">
               <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="flex items-center gap-2 justify-between px-2 py-1 text-sm hover:text-primary">
-                <span className="font-medium">Signature Offers</span>
+                <span className="font-normal">Signature Offers</span>
                 <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured</span>
               </span>
             </Link>
@@ -487,7 +487,7 @@ export default function Navigation() {
             {/* Anti‑Wrinkle collapsible */}
             <button
               onClick={() => setIsSkinAntiOpen(!isSkinAntiOpen)}
-              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
             >
               <span>Anti‑Wrinkle</span>
               <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinAntiOpen && "rotate-180")} />
@@ -506,7 +506,7 @@ export default function Navigation() {
             {/* Skin Boosters collapsible */}
             <button
               onClick={() => setIsSkinBoostersHeadOpen(!isSkinBoostersHeadOpen)}
-              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
             >
               <span>Skin Boosters</span>
               <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBoostersHeadOpen && "rotate-180")} />
@@ -521,7 +521,7 @@ export default function Navigation() {
             {/* Polynucleotides collapsible */}
             <button
               onClick={() => setIsSkinPnoOpen(!isSkinPnoOpen)}
-              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
             >
               <span>Polynucleotides</span>
               <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinPnoOpen && "rotate-180")} />
@@ -541,7 +541,7 @@ export default function Navigation() {
                 setIsSkinAntiOpen(false);
                 setIsSkinBioOpen(!isSkinBioOpen);
               }}
-              className="flex items-center justify-between w-full text-left text-sm font-medium px-2 py-1 hover:text-primary"
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
             >
               <span>Bio‑Volumisation</span>
               <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBioOpen && "rotate-180")} />
@@ -565,8 +565,8 @@ export default function Navigation() {
         <button
           onClick={() => setIsMindOpen(!isMindOpen)}
           className={cn(
-            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-            isHighlighted('mind') && "text-primary font-semibold"
+            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('mind') && "text-primary"
           )}
         >
           <span>Mind</span>
@@ -575,16 +575,16 @@ export default function Navigation() {
         {isMindOpen && (
           <div className="ml-4 flex flex-col space-y-2">
             <Link href="/mind">
-              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-bold smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Philosophy</span>
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Philosophy</span>
             </Link>
             <a href={MIND_OFFERS_URL} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
             </a>
             <Link href={mindExploredPath}>
-              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">The Mind, Explored</span>
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">The Mind, Explored</span>
             </Link>
             <a href={whatIsCoachingUrl} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">What is Coaching?</span>
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">What is Coaching?</span>
             </a>
           </div>
         )}
@@ -592,8 +592,8 @@ export default function Navigation() {
         <button
           onClick={() => setIsConsultOpen(!isConsultOpen)}
           className={cn(
-            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-            isHighlighted('consult') && "text-primary font-semibold"
+            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('consult') && "text-primary"
           )}
         >
           <span>Book</span>
@@ -602,7 +602,7 @@ export default function Navigation() {
         {isConsultOpen && (
           <div className="ml-4 flex flex-col space-y-2">
             <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Consultation</span>
+              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Consultation</span>
             </a>
             <a
               href={SQUARE_SITE_URL}
@@ -611,18 +611,18 @@ export default function Navigation() {
               aria-label="Book a treatment"
               onClick={() => { setActiveMenu('consult'); handleLinkClick(); }}
             >
-              <span className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Treatments</span>
+              <span className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Treatments</span>
             </a>
             <a href={MIND_OFFERS_URL} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
+              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
             </a>
           </div>
         )}
 
         <Link href="/gallery">
           <span onClick={handleLinkClick} className={cn(
-            "block text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-            isActive("/gallery") ? "text-primary font-semibold" : "text-foreground"
+            "block text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isActive("/gallery") ? "text-primary" : "text-foreground"
           )}>
             Gallery
           </span>
@@ -631,8 +631,8 @@ export default function Navigation() {
         <button
           onClick={() => setIsAboutOpen(!isAboutOpen)}
           className={cn(
-            "flex items-center justify-between w-full text-left text-sm font-medium smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-            isHighlighted('about') && "text-primary font-semibold"
+            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('about') && "text-primary"
           )}
         >
           <span>About</span>
@@ -644,8 +644,8 @@ export default function Navigation() {
               <span
                 onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
                 className={cn(
-                  "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                  isActive("/team") ? "text-primary font-semibold" : "text-foreground"
+                  "block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                  isActive("/team") ? "text-primary" : "text-foreground"
                 )}
               >
                 Our Team
@@ -655,8 +655,8 @@ export default function Navigation() {
               <span
                 onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
                 className={cn(
-                  "block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
-                  isActive("/clinic") ? "text-primary font-semibold" : "text-foreground"
+                  "block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                  isActive("/clinic") ? "text-primary" : "text-foreground"
                 )}
               >
                 Our Clinic
@@ -670,7 +670,7 @@ export default function Navigation() {
           href={journalUrl('/')}
           target="_blank"
           rel="noopener noreferrer"
-          className="block text-sm font-medium smooth-transition cursor-pointer px-2 py-1 hover:text-primary text-foreground"
+          className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary text-foreground"
           onClick={handleLinkClick}
         >
           Journal

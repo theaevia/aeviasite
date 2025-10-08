@@ -116,13 +116,13 @@ export default function SweatControlPage() {
             <div className="order-1 md:order-1">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Understanding Sweat Reduction Treatment</h2>
               <p className="text-base text-foreground/80 mb-4">
-                Excessive sweating, or <span className="text-primary font-bold">hyperhidrosis</span>, is a common condition that can cause significant discomfort and embarrassment. While sweating is a natural bodily function to regulate temperature, hyperhidrosis involves <span className="text-primary font-bold">sweating beyond what is necessary for thermoregulation.</span>
+                Excessive sweating, or <span className="text-primary font-normal">hyperhidrosis</span>, is a common condition that can cause significant discomfort and embarrassment. While sweating is a natural bodily function to regulate temperature, hyperhidrosis involves <span className="text-primary font-normal">sweating beyond what is necessary for thermoregulation.</span>
               </p>
               <p className="text-base text-foreground/80 mb-4">
-                <span className="text-primary font-bold">Botulinum toxin injections are a highly effective treatment for hyperhidrosis</span>, particularly in the underarm area. The treatment works by <span className="text-primary font-bold">temporarily blocking the nerve signals that stimulate the sweat glands.</span> This significantly <span className="text-primary font-bold">reduces sweat production</span> in the treated area.
+                <span className="text-primary font-normal">Botulinum toxin injections are a highly effective treatment for hyperhidrosis</span>, particularly in the underarm area. The treatment works by <span className="text-primary font-normal">temporarily blocking the nerve signals that stimulate the sweat glands.</span> This significantly <span className="text-primary font-normal">reduces sweat production</span> in the treated area.
               </p>
               <p className="text-base text-foreground/80">
-                The procedure is <span className="text-primary font-bold">quick, typically taking about 30 minutes, with minimal discomfort.</span> Results usually become <span className="text-primary font-bold">noticeable within a week</span> and can <span className="text-primary font-bold">last for up to 9 months</span>, providing <span className="text-primary font-bold">long-lasting relief from excessive sweating.</span> It's a <span className="text-primary font-bold">safe and well-tolerated option</span> for those seeking to manage hyperhidrosis and improve their quality of life.
+                The procedure is <span className="text-primary font-normal">quick, typically taking about 30 minutes, with minimal discomfort.</span> Results usually become <span className="text-primary font-normal">noticeable within a week</span> and can <span className="text-primary font-normal">last for up to 9 months</span>, providing <span className="text-primary font-normal">long-lasting relief from excessive sweating.</span> It's a <span className="text-primary font-normal">safe and well-tolerated option</span> for those seeking to manage hyperhidrosis and improve their quality of life.
               </p>
             </div>
             <div className="order-2 md:order-2 flex flex-col items-center">
@@ -148,7 +148,7 @@ export default function SweatControlPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center max-w-sm w-full">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Sweat Reduction</h2>
                 <p className="text-foreground/70 mb-2 text-center">Underarms</p>
-                <span className="text-2xl font-bold text-primary mb-1">£350</span>
+                <span className="text-2xl font-normal text-primary mb-1">£350</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <BookingButton
                   href={HYPERHIDROSIS_URL}
@@ -170,22 +170,22 @@ export default function SweatControlPage() {
             </div>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">Discuss your concerns and medical history to confirm suitability.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Quick Injections</h3>
                 <p className="text-sm text-foreground/70">Multiple small injections into the underarm area. Minimal discomfort.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">Enjoy Dryness</h3>
                 <p className="text-sm text-foreground/70">Results typically appear within a week, providing long-lasting relief.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Rebook for a Refresh</h3>
                 <p className="text-sm text-foreground/70">Maintain your results with a repeat treatment every 6-9 months.</p>
               </div>

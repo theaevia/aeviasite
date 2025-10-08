@@ -66,7 +66,11 @@ export default {
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Halyard Display', 'sans-serif'],
+      },
+      fontWeight: {
+        semibold: '500',
+        bold: '400',
       },
       keyframes: {
         "accordion-down": {

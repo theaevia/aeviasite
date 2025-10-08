@@ -13,7 +13,7 @@ export default function TreatmentPage() {
   if (!treatment) {
     return (
       <TreatmentLayout>
-        <h1 className="text-3xl font-bold mb-4">Treatment Not Found</h1>
+        <h1 className="text-3xl font-serif font-bold mb-4">Treatment Not Found</h1>
         <p className="mb-6">Sorry, we couldn't find the treatment you're looking for.</p>
       </TreatmentLayout>
     );

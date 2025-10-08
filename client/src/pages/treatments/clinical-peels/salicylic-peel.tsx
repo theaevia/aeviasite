@@ -14,7 +14,7 @@ export default function SalicylicPeelComingSoonPage() {
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
             BHA peel ideal for oily, acne-prone skin, helping unclog pores and reduce breakouts, is coming soon to Aevia Skin.
           </p>
-          <p className="text-2xl font-bold text-primary mb-8">
+          <p className="text-2xl font-normal text-primary mb-8">
             Coming Soon to Aevia Skin!
           </p>
           <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">

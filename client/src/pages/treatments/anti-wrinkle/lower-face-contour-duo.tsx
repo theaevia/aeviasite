@@ -135,13 +135,13 @@ export default function LowerFaceContourDuoPage() {
             <div className="order-1 md:order-1">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Understanding Lower-Face Contour Duo Treatment</h2>
               <p className="text-base text-foreground/80 mb-4">
-                The Lower-Face Contour Duo combines two powerful treatments: <span className="text-primary font-bold">Masseter Reduction</span> and <span className="text-primary font-bold">Nefertiti Neck Lift</span>. Masseter Reduction targets the masseter muscles, which can become enlarged due to teeth grinding or genetics, leading to a square jawline. By relaxing these muscles, we achieve a slimmer, more V-shaped lower face and can alleviate jaw tension and teeth grinding.
+                The Lower-Face Contour Duo combines two powerful treatments: <span className="text-primary font-normal">Masseter Reduction</span> and <span className="text-primary font-normal">Nefertiti Neck Lift</span>. Masseter Reduction targets the masseter muscles, which can become enlarged due to teeth grinding or genetics, leading to a square jawline. By relaxing these muscles, we achieve a slimmer, more V-shaped lower face and can alleviate jaw tension and teeth grinding.
               </p>
               <p className="text-base text-foreground/80 mb-4">
                 The Nefertiti Neck Lift focuses on the platysma muscles in the neck. These muscles can pull down the jawline and create vertical bands, contributing to an aged appearance. By strategically injecting muscle relaxants into these muscles, we can create a smoother, more defined jawline and neck contour.
               </p>
               <p className="text-base text-foreground/80">
-                Together, these treatments work synergistically to create a more harmonious and youthful lower facial profile. The procedure is <span className="text-primary font-bold">minimally invasive, with little to no downtime</span>, and results typically last <span className="text-primary font-bold">4-6 months</span>. It's an ideal solution for those seeking comprehensive lower face rejuvenation without surgery.
+                Together, these treatments work synergistically to create a more harmonious and youthful lower facial profile. The procedure is <span className="text-primary font-normal">minimally invasive, with little to no downtime</span>, and results typically last <span className="text-primary font-normal">4-6 months</span>. It's an ideal solution for those seeking comprehensive lower face rejuvenation without surgery.
               </p>
             </div>
             <div className="order-2 md:order-2 flex flex-col items-center">
@@ -167,7 +167,7 @@ export default function LowerFaceContourDuoPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center max-w-sm w-full">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Lower-Face Contour Duo</h2>
                 <p className="text-foreground/70 mb-2 text-center">Masseter Reduction + Jawline Tightening</p>
-                <span className="text-2xl font-bold text-primary mb-1">£520</span>
+                <span className="text-2xl font-normal text-primary mb-1">£520</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <BookingButton
                   href={CONTOUR_DUO_URL}
@@ -189,22 +189,22 @@ export default function LowerFaceContourDuoPage() {
             </div>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">Discuss your concerns, assess your jawline, and create a tailored treatment plan.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Combined Injections</h3>
                 <p className="text-sm text-foreground/70">Precise injections for both masseter reduction and jawline tightening in one session.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">Gradual Transformation</h3>
                 <p className="text-sm text-foreground/70">Results unfold over several weeks, revealing a more refined lower face.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Review & Optimization</h3>
                 <p className="text-sm text-foreground/70">Follow-up appointment to ensure optimal results and satisfaction.</p>
               </div>

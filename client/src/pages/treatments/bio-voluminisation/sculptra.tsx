@@ -140,7 +140,7 @@ export default function SculptraPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">One Vial</h2>
                 <p className="text-foreground/70 mb-2 text-center">Single Sculptra® vial</p>
-                <span className="text-2xl font-bold text-primary mb-1">£550</span>
+                <span className="text-2xl font-normal text-primary mb-1">£550</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={sculptraTreatment.bookingUrl} target="_blank" rel="noopener noreferrer">Book One Vial</a>
@@ -149,7 +149,7 @@ export default function SculptraPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Course of Two Vials</h2>
                 <p className="text-foreground/70 mb-2 text-center">Recommended initial course</p>
-                <span className="text-2xl font-bold text-primary">£1000</span>
+                <span className="text-2xl font-normal text-primary">£1000</span>
                 <p className="text-sm text-green-600 font-semibold mb-2">
                   <span style={{ textDecoration: 'line-through', color: '#999', marginRight: '8px' }}>£1100</span> (Save £100)
                 </p>
@@ -170,27 +170,27 @@ export default function SculptraPage() {
             </div>
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">A detailed consultation to assess your facial concerns and determine if Sculptra® is right for you.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Treatment Sessions</h3>
                 <p className="text-sm text-foreground/70">Typically 2-3 sessions, spaced 4-6 weeks apart, are needed for optimal results.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">Gradual Rejuvenation</h3>
                 <p className="text-sm text-foreground/70">Collagen production is stimulated gradually, leading to natural-looking improvements over time.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Long-Lasting Results</h3>
                 <p className="text-sm text-foreground/70">Enjoy the benefits of increased collagen for up to two years or more.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">5</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">5</div>
                 <h3 className="font-semibold mb-2 text-center">Maintenance</h3>
                 <p className="text-sm text-foreground/70">Occasional touch-up treatments may be recommended to maintain your refreshed appearance.</p>
               </div>

@@ -143,13 +143,13 @@ export default function JawlineSlimmingPage() {
             <div className="order-1 md:order-1">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Understanding Jawline Slimming Treatment</h2>
               <p className="text-base text-foreground/80 mb-4">
-                The masseter is one of the powerful jaw muscles we use for chewing. When it becomes over active (from <span className="text-primary font-bold">stress-related clenching, teeth grinding, genetics</span>), it can enlarge, creating <span className="text-primary font-bold">jaw tension</span> and giving the face a <span className="text-primary font-bold">square outline.</span> 
+                The masseter is one of the powerful jaw muscles we use for chewing. When it becomes over active (from <span className="text-primary font-normal">stress-related clenching, teeth grinding, genetics</span>), it can enlarge, creating <span className="text-primary font-normal">jaw tension</span> and giving the face a <span className="text-primary font-normal">square outline.</span> 
               </p>
               <p className="text-base text-foreground/80 mb-4">
-                In clinic, our doctors administer a series of <span className="text-primary font-bold">muscle-relaxant injections</span> into this muscle. The injection temporarily blocks the nerve signals that tell the masseter to contract. Within 1-2 weeks, you'll notice <span className="text-primary font-bold">reduced clenching</span> and, over 8-10 weeks, <span className="text-primary font-bold">softer jaw contour</span> as the muscle de-bulks. Many patients also benefit from a reduction in <span className="text-primary font-bold">teeth grinding</span> and <span className="text-primary font-bold">headaches</span> as a result of this reduction in activity. 
+                In clinic, our doctors administer a series of <span className="text-primary font-normal">muscle-relaxant injections</span> into this muscle. The injection temporarily blocks the nerve signals that tell the masseter to contract. Within 1-2 weeks, you'll notice <span className="text-primary font-normal">reduced clenching</span> and, over 8-10 weeks, <span className="text-primary font-normal">softer jaw contour</span> as the muscle de-bulks. Many patients also benefit from a reduction in <span className="text-primary font-normal">teeth grinding</span> and <span className="text-primary font-normal">headaches</span> as a result of this reduction in activity. 
               </p>
               <p className="text-base text-foreground/80">
-                The procedure is <span className="text-primary font-bold">quick, minimally invasive, and requires no downtime.</span> The effects usually last between <span className="text-primary font-bold">4 to 6 months</span>, after which we recommend a repeat treatment to maintain the desired outcome. It's a safe and effective option for those seeking to <span className="text-primary font-bold">reduce jaw pain</span> & <span className="text-primary font-bold">refine their jawline</span> without surgical intervention.
+                The procedure is <span className="text-primary font-normal">quick, minimally invasive, and requires no downtime.</span> The effects usually last between <span className="text-primary font-normal">4 to 6 months</span>, after which we recommend a repeat treatment to maintain the desired outcome. It's a safe and effective option for those seeking to <span className="text-primary font-normal">reduce jaw pain</span> & <span className="text-primary font-normal">refine their jawline</span> without surgical intervention.
               </p>
             </div>
             <div className="order-2 md:order-2 flex flex-col items-center">
@@ -174,22 +174,22 @@ export default function JawlineSlimmingPage() {
             </div>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">Discuss your aesthetic goals and medical history to ensure suitability.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Targeted Injections</h3>
                 <p className="text-sm text-foreground/70">Precise injections into the masseter muscles to relax them.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">Gradual Results</h3>
                 <p className="text-sm text-foreground/70">Noticeable slimming and tension relief typically appear over 2-4 weeks.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Follow-Up</h3>
                 <p className="text-sm text-foreground/70">Complimentary review to assess results and address any concerns.</p>
               </div>
@@ -206,7 +206,7 @@ export default function JawlineSlimmingPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Jawline Slimming</h2>
                 <p className="text-foreground/70 mb-2 text-center">Masseter Reduction</p>
-                <span className="text-2xl font-bold text-primary mb-1">£300</span>
+                <span className="text-2xl font-normal text-primary mb-1">£300</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <BookingButton
                   href={MASSETER_URL}
@@ -220,7 +220,7 @@ export default function JawlineSlimmingPage() {
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Lower-Face Contour Duo</h2>
                 <p className="text-foreground/70 mb-2 text-center">Pair with a Nefertiti Neck Lift</p>
                 <div className="flex items-baseline justify-center my-1">
-                  <span className="text-2xl font-bold text-primary">£520</span>
+                  <span className="text-2xl font-normal text-primary">£520</span>
                   <span className="text-xl font-medium text-gray-500 line-through ml-2">£570</span>
                 </div>
                 <p className="text-sm font-semibold text-green-600 mb-2">Save £50</p>

@@ -117,13 +117,13 @@ export default function SmileLiftPage() {
             <div className="order-1 md:order-1">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Understanding Smile Lift Treatment</h2>
               <p className="text-base text-foreground/80 mb-4">
-                The Depressor Anguli Oris (DAO) muscles are <span className="text-primary font-bold">small muscles located at the corners of your mouth.</span> When these muscles are <span className="text-primary font-bold">overactive, they can pull the corners of the mouth downwards</span>, creating a perpetually sad or angry appearance, even when you're not feeling that way.
+                The Depressor Anguli Oris (DAO) muscles are <span className="text-primary font-normal">small muscles located at the corners of your mouth.</span> When these muscles are <span className="text-primary font-normal">overactive, they can pull the corners of the mouth downwards</span>, creating a perpetually sad or angry appearance, even when you're not feeling that way.
               </p>
               <p className="text-base text-foreground/80 mb-4">
-                Our Smile Lift treatment involves <span className="text-primary font-bold">precise injections of muscle relaxants into the DAO muscles.</span> By relaxing these muscles, their <span className="text-primary font-bold">downward pull is reduced, allowing the corners of the mouth to subtly lift.</span> This can <span className="text-primary font-bold">soften the appearance of marionette lines</span> and create a more positive and approachable expression.
+                Our Smile Lift treatment involves <span className="text-primary font-normal">precise injections of muscle relaxants into the DAO muscles.</span> By relaxing these muscles, their <span className="text-primary font-normal">downward pull is reduced, allowing the corners of the mouth to subtly lift.</span> This can <span className="text-primary font-normal">soften the appearance of marionette lines</span> and create a more positive and approachable expression.
               </p>
               <p className="text-base text-foreground/80">
-                The procedure is <span className="text-primary font-bold">quick, minimally invasive, and requires no downtime.</span> Results typically become <span className="text-primary font-bold">noticeable within a few days</span> and <span className="text-primary font-bold">last between 3 to 4 months.</span> It's a popular option for those seeking a <span className="text-primary font-bold">non-surgical way to rejuvenate their lower face</span> and achieve a more cheerful appearance.
+                The procedure is <span className="text-primary font-normal">quick, minimally invasive, and requires no downtime.</span> Results typically become <span className="text-primary font-normal">noticeable within a few days</span> and <span className="text-primary font-normal">last between 3 to 4 months.</span> It's a popular option for those seeking a <span className="text-primary font-normal">non-surgical way to rejuvenate their lower face</span> and achieve a more cheerful appearance.
               </p>
             </div>
             <div className="order-2 md:order-2 flex flex-col items-center">
@@ -148,22 +148,22 @@ export default function SmileLiftPage() {
             </div>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">Assess your facial anatomy and discuss desired outcomes.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Precise Injections</h3>
                 <p className="text-sm text-foreground/70">Small injections into the DAO muscles to relax them.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">Subtle Enhancement</h3>
                 <p className="text-sm text-foreground/70">Results gradually appear over a few days, revealing an uplifted smile.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Review</h3>
                 <p className="text-sm text-foreground/70">Follow-up to ensure optimal results and satisfaction.</p>
               </div>
@@ -180,7 +180,7 @@ export default function SmileLiftPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center max-w-sm w-full">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Smile Lift</h2>
                 <p className="text-foreground/70 mb-2 text-center">DAO Treatment</p>
-                <span className="text-2xl font-bold text-primary mb-1">£120</span>
+                <span className="text-2xl font-normal text-primary mb-1">£120</span>
                 <span className="text-muted-foreground text-sm mb-4">30min</span>
                 <BookingButton
                   href={DAO_SMILE_URL}

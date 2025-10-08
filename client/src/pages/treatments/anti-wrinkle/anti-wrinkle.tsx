@@ -229,7 +229,7 @@ export default function AntiWrinklePage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">One Area</h2>
                 <p className="text-foreground/70 mb-2 text-center">Forehead, Frown or Crow's Feet</p>
-                <span className="text-2xl font-bold text-primary mb-1">£160</span>
+                <span className="text-2xl font-normal text-primary mb-1">£160</span>
                 <span className="text-muted-foreground text-sm mb-4">30min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book One Area</a>
@@ -238,7 +238,7 @@ export default function AntiWrinklePage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Two Areas</h2>
                 <p className="text-foreground/70 mb-2 text-center">Forehead, Frown or Crow's Feet</p>
-                <span className="text-2xl font-bold text-primary mb-1">£220</span>
+                <span className="text-2xl font-normal text-primary mb-1">£220</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book Two Areas</a>
@@ -247,7 +247,7 @@ export default function AntiWrinklePage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Three Areas</h2>
                 <p className="text-foreground/70 mb-2 text-center">Forehead, Frown & Crow's Feet</p>
-                <span className="text-2xl font-bold text-primary mb-1">£260</span>
+                <span className="text-2xl font-normal text-primary mb-1">£260</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book Three Areas</a>
@@ -265,27 +265,27 @@ export default function AntiWrinklePage() {
             </div>
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">Virtual or in-clinic: discuss goals, medical history, and suitability.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Precision Mapping & Dosing</h3>
                 <p className="text-sm text-foreground/70">Every face is unique, we mark injection points tailored to your anatomy.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">Quick Treatment</h3>
                 <p className="text-sm text-foreground/70">6–10 tiny injections, numbing cream applied. Most clients compare it to a brief scratch.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">After‑Care & Review</h3>
                 <p className="text-sm text-foreground/70">Return to daily life immediately; peak results by day 14. Complimentary check-up via Whatsapp at two weeks.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">5</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">5</div>
                 <h3 className="font-semibold mb-2 text-center">Enjoy Your Fresh Look</h3>
                 <p className="text-sm text-foreground/70">Enjoy wrinkle-free confidence for 3-4 months. We'll send a friendly reminder when it's time for your next refresh.</p>
               </div>

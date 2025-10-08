@@ -155,7 +155,7 @@ export default function SunekosPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">One Session</h2>
                 <p className="text-foreground/70 mb-2 text-center">Single Sunekos® treatment</p>
-                <span className="text-2xl font-bold text-primary mb-1">£250</span>
+                <span className="text-2xl font-normal text-primary mb-1">£250</span>
                 <div className="h-6 mb-2"></div>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
@@ -165,7 +165,7 @@ export default function SunekosPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Course of Four</h2>
                 <p className="text-foreground/70 mb-2 text-center">Recommended course</p>
-                <span className="text-2xl font-bold text-primary">£800</span>
+                <span className="text-2xl font-normal text-primary">£800</span>
                 <p className="text-sm text-green-600 font-semibold mb-2">
                   <span style={{ textDecoration: 'line-through', color: '#999', marginRight: '8px' }}>£1000</span> (Save £200)
                 </p>
@@ -186,27 +186,27 @@ export default function SunekosPage() {
             </div>
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2 text-center">Consultation</h3>
                 <p className="text-sm text-foreground/70">We'll discuss your skin concerns and goals to ensure Sunekos® is the right treatment for you.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2 text-center">Treatment Plan</h3>
                 <p className="text-sm text-foreground/70">A personalised treatment plan will be created, typically involving a course of 3-4 sessions.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2 text-center">The Treatment</h3>
                 <p className="text-sm text-foreground/70">The treatment involves a series of small injections into the targeted areas.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2 text-center">Repeat Sessions</h3>
                 <p className="text-sm text-foreground/70">Sessions are spaced 7-10 days apart to achieve the best possible results.</p>
               </div>
               <div className="text-center">
-                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">5</div>
+                <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">5</div>
                 <h3 className="font-semibold mb-2 text-center">Enjoy Revitalised Skin</h3>
                 <p className="text-sm text-foreground/70">Enjoy healthier, more youthful-looking skin. Maintenance sessions may be recommended.</p>
               </div>

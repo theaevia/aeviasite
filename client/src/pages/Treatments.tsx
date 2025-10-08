@@ -185,7 +185,7 @@ export default function Treatments() {
                       {subtitle && (
                         <p className="text-base text-foreground/60 font-normal mb-2">{subtitle}</p>
                       )}
-                      <span className="text-primary font-bold text-2xl mb-1">{offer.price}</span>
+                      <span className="text-primary font-normal text-2xl mb-1">{offer.price}</span>
                       <p className="text-foreground/70 mb-4">{offer.description}</p>
                       <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3">
                         {offer.features.map((feature) => (
