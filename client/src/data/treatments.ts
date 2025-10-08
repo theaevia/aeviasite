@@ -16,6 +16,7 @@ import {
   TRANSFORMATION_TWELVE_URL,
   SKIN_VIRTUAL_URL,
   SKIN_CLINIC_URL,
+  MICRONEEDLING_REG_URL,
 } from "@/lib/bookingUrls";
 
 // Assets (optimized public variants for responsive delivery)
@@ -262,16 +263,17 @@ export const treatmentCategories: TreatmentCategory[] = [
   {
     category: "Microneedling (Collagen Induction)",
     slug: "microneedling",
-    description: "Collagen induction therapy for texture, scars, and overall skin rejuvenation. Performed with the Dermalogica microneedling device for safety and results.",
+    description: "Doctor-led microneedling to stimulate collagen, refine texture, and intensify active absorption. Choose HA-infused classic or regenerative exosome + polynucleotide boosters.",
     treatments: [
       {
-        name: "Microneedling (Coming Soon)",
-        description: "Advanced microneedling using the Dermalogica device. Improves texture, scars, and stimulates collagen. Available soon.",
-        duration: "45min",
-        price: "TBA",
-        bookingUrl: "#",
+        name: "Microneedling",
+        subtitle: "Classic & Regenerative",
+        description: "Collagen induction therapy customised for dullness, texture, scarring, and early laxity. Select HA-infused classic for glow or regenerative exosomes + polynucleotides for accelerated repair.",
+        duration: "60min",
+        price: "From £200",
+        bookingUrl: MICRONEEDLING_REG_URL,
         slug: "microneedling",
-        image: "/hero_images/microneedling-example.webp"
+        image: "/assets/treatment_images/model-2-640w.webp"
       }
     ]
   },

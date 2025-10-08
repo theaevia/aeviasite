@@ -4,9 +4,9 @@ import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, Link } from "wouter";
 import SEO from "@/components/SEO";
-import { signatureOffers } from "@/data/signatureOffers";
 import { treatmentCategories, Treatment } from "@/data/treatments";
-import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { signatureOffers } from "@/data/signatureOffers";
+import { MICRONEEDLING_REG_URL, MICRONEEDLING_REGEN_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 export default function Treatments() {
   const [location] = useLocation();
@@ -248,6 +248,30 @@ export default function Treatments() {
                 const isSkinConsultationsCategory =
                   cat.slug === "skin-consultation" || /consult/i.test(cat.category);
 
+                const treatmentsToRender =
+                  cat.slug === "microneedling"
+                    ? [
+                        {
+                          name: "Classic Microneedling (HA-Infused)",
+                          description:
+                            "Microneedling refined with a hyaluronic acid infusion to soften fine lines, smooth texture, and restore luminosity.",
+                          duration: "60min",
+                          price: "£200",
+                          bookingUrl: MICRONEEDLING_REG_URL,
+                          slug: "microneedling",
+                        },
+                        {
+                          name: "Regenerative Microneedling (Exosomes + Polynucleotides)",
+                          description:
+                            "Regenerative microneedling that infuses purified polynucleotides plus the V-Tech exosome complex for deeper repair, faster recovery, and firmer skin.",
+                          duration: "60min",
+                          price: "£280",
+                          bookingUrl: MICRONEEDLING_REGEN_URL,
+                          slug: "microneedling",
+                        },
+                      ] satisfies Treatment[]
+                    : cat.treatments;
+
                 return (
                   <div key={cat.category} id={cat.slug} style={{ scrollMarginTop: topGap }} className="mb-12">
                     <h2 className="text-2xl font-semibold mb-2 text-center sm:text-left">{cat.category}</h2>
@@ -255,7 +279,7 @@ export default function Treatments() {
                       <p className="mb-6 text-muted-foreground text-center sm:text-left">{cat.description}</p>
                     )}
                     <div className="divide-y divide-gray-200 bg-white rounded-lg">
-                      {cat.treatments.map((treatment) => {
+                      {treatmentsToRender.map((treatment) => {
                         const hasBooking = Boolean(treatment.bookingUrl && treatment.bookingUrl !== "#");
 
                         // Decide label and click behavior

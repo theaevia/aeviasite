@@ -20,3 +20,5 @@ export const SCULPTRA_URL = '/go/sculptra';
 export const WRINKLE_RESET_URL = '/go/wrinkle_reset';
 export const GLOW_REVIVAL_URL = '/go/glow_revival';
 export const MIND_OFFERS_URL = '/go/mind_offers';
+export const MICRONEEDLING_REG_URL = '/go/microneedling_reg';
+export const MICRONEEDLING_REGEN_URL = '/go/microneedling_regen';

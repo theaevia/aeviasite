@@ -37,7 +37,7 @@ import ProfhiloPage from "@/pages/treatments/skin-boosters/profhilo";
 import SunekosPage from "@/pages/treatments/skin-boosters/sunekos";
 import EyeRejuvenationPage from "@/pages/treatments/polynucleotides/eye-rejuvenation";
 import FullFaceRegenerationPage from "@/pages/treatments/polynucleotides/full-face-regeneration";
-import MicroneedlingComingSoonPage from "@/pages/treatments/microneedling/microneedling";
+import MicroneedlingPage from "@/pages/treatments/microneedling/microneedling";
 import GlycolicPeelComingSoonPage from "@/pages/treatments/clinical-peels/glycolic-peel";
 import SalicylicPeelComingSoonPage from "@/pages/treatments/clinical-peels/salicylic-peel";
 import LacticAcidPeelComingSoonPage from "@/pages/treatments/clinical-peels/lactic-acid-peel";
@@ -93,7 +93,7 @@ function Router() {
         <Route path="/treatments/sunekos" component={SunekosPage} />
         <Route path="/treatments/eye-rejuvenation" component={EyeRejuvenationPage} />
         <Route path="/treatments/full-face-regeneration" component={FullFaceRegenerationPage} />
-        <Route path="/treatments/microneedling" component={MicroneedlingComingSoonPage} />
+        <Route path="/treatments/microneedling" component={MicroneedlingPage} />
         <Route path="/treatments/glycolic-peel" component={GlycolicPeelComingSoonPage} />
         <Route path="/treatments/salicylic-peel" component={SalicylicPeelComingSoonPage} />
         <Route path="/treatments/lactic-acid-peel" component={LacticAcidPeelComingSoonPage} />

@@ -39,6 +39,10 @@ const DEST: Record<string, string> = {
   wrinkle_reset: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/DHNAE4YPX7TJ2TYXHJX5NWFH",
   glow_revival: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/27TAWF7EQYSCHM6EB6ZIU463",
 
+  // Microneedling
+  microneedling_reg: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/QELFPIHBSOK3EPJOIWLC2N2J",
+  microneedling_regen: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/CN7V3ACDCMRBMAN747BEIFYA",
+
   //Mind services
   mind_consultation: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/GCC3YKLK465XLBFKMST26IXV",
   mind_offers: "https://app.squareup.com/appointments/buyer/widget/tfx99pbgmsnrno/L1TKSRMBS3N9H",
