@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Dna, Droplet, Sparkles, Clock, Check, Banknote, Gift, Camera } from "lucide-react";
+import { Dna, Droplet, Sparkles, Check, Gift, Camera, Star } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 import skinHeroImage from "@assets/hero_images/royalty-free-skin3.webp";
@@ -9,9 +9,40 @@ import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
 import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
 import skinModel2Image800 from "@assets/hero_images/skin-model-2-800w.webp";
 import SEO from "@/components/SEO";
+import TestimonialCard from "@/components/TestimonialCard";
 import { signatureOffers } from "@/data/signatureOffers";
+import { testimonials } from "@/data/testimonials";
+import underEyeResult from "@assets/before_afters/under-eye-1.png";
+import jawlineResult from "@assets/before_afters/jawline-slimming-1.jpg";
+import foreheadResult from "@assets/before_afters/forehead-png.png";
 
 export default function Skin() {
+  const beforeAfterCases = [
+    {
+      title: "Under-eye Brightening",
+      image: underEyeResult,
+      protocol: "Polynucleotide series + medical skincare",
+      timeframe: "3 weeks between photos",
+      summary: "Smoother tear troughs, improved hydration, and brighter tone without filler.",
+      alt: "Before and after showing brighter under-eye area after regenerative treatment",
+    },
+    {
+      title: "Jawline Refinement",
+      image: jawlineResult,
+      protocol: "Masseter relaxation + polynucleotides",
+      timeframe: "10 weeks between photos",
+      summary: "Slimmed lower face with more definition through muscle contouring and tissue support.",
+      alt: "Before and after image highlighting a more defined jawline following treatment",
+    },
+    {
+      title: "Forehead Softening",
+      image: foreheadResult,
+      protocol: "Targeted anti-wrinkle and skin booster protocol",
+      timeframe: "4 weeks between photos",
+      summary: "Fine lines softened while maintaining natural movement and skin luminosity.",
+      alt: "Before and after image emphasising smoother forehead lines after treatment",
+    },
+  ];
   return (
     <>
       <SEO 
@@ -99,7 +130,7 @@ export default function Skin() {
                       <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3">
                         {offer.features.map(feature => (
                           <li key={feature} className="relative pl-6 leading-relaxed">
-                            <Check className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
+                            <Check size={16} className="absolute left-0 top-1/2 -translate-y-1/2 text-primary" />
                             {feature}
                           </li>
                         ))}
@@ -112,6 +143,47 @@ export default function Skin() {
                 );
               })}
             </div>
+          </div>
+        </section>
+
+        {/* Before & After */}
+        <section className="py-12 md:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4">Before & After</h2>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                Real client journeys guided by our doctors. Subtle shifts, refreshed structure, and skin that still feels unmistakably you.
+              </p>
+            </div>
+            <div className="grid gap-8 md:grid-cols-3">
+              {beforeAfterCases.map((result) => (
+                <figure
+                  key={result.title}
+                  className="group bg-white rounded-3xl border border-[#e0ddd9] shadow-lg overflow-hidden flex flex-col h-full"
+                >
+                  <div className="aspect-[4/5] w-full overflow-hidden bg-secondary">
+                    <img
+                      src={result.image}
+                      alt={result.alt}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption className="p-6 flex-1 flex flex-col">
+                    <p className="text-xs uppercase tracking-[0.4em] text-primary/60 mb-3">{result.timeframe}</p>
+                    <h3 className="text-xl font-serif font-semibold mb-3 text-foreground">{result.title}</h3>
+                    <p className="text-sm text-foreground/70 mb-4 leading-relaxed flex-1">{result.summary}</p>
+                    <div className="text-xs text-foreground/60 space-y-1">
+                      <p className="font-medium text-foreground/80 uppercase tracking-[0.25em] text-[0.65rem]">Protocol</p>
+                      <p>{result.protocol}</p>
+                    </div>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="text-xs text-foreground/60 text-center mt-8">
+              Individual results vary; consultation required to determine the safest, most effective plan for you.
+            </p>
           </div>
         </section>
 
@@ -151,6 +223,46 @@ export default function Skin() {
           </div>
         </section>
 
+        {/* Client Transformations */}
+        <section className="py-12 md:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-6 md:mb-10">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Client Transformations</h2>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                Stories from clients who chose regenerative treatments for skin that looks rested, lifted, and unmistakably theirs.
+              </p>
+            </div>
+            <div className="text-center mb-6 md:mb-8">
+              <div className="inline-flex items-center bg-primary/10 border border-primary/20 rounded-2xl px-6 py-3 md:py-4">
+                <div className="flex items-center space-x-1 mr-3">
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                </div>
+                <span className="text-xl font-bold text-primary">5.0</span>
+                <span className="text-foreground/70 ml-2 font-medium">from verified Google reviews</span>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 mb-8 md:mb-12">
+              {testimonials.map(testimonial => (
+                <TestimonialCard key={testimonial.name} {...testimonial} />
+              ))}
+            </div>
+            <div className="text-center">
+              <a
+                href="https://maps.app.goo.gl/jpQNgXg92eiBesPD8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary hover:text-white transition-colors duration-200"
+              >
+                Read more client stories
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Process */}
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
@@ -167,15 +279,15 @@ export default function Skin() {
                     <h4 className="font-semibold text-foreground mb-3">Perfect for:</h4>
                     <ul className="space-y-2 text-foreground/70">
                       <li className="flex items-center">
-                        <Check className="h-4 w-4 text-primary mr-3" />
+                        <Check size={16} className="text-primary mr-3 flex-shrink-0" />
                         First-time clients
                       </li>
                       <li className="flex items-center">
-                        <Check className="h-4 w-4 text-primary mr-3" />
+                        <Check size={16} className="text-primary mr-3 flex-shrink-0" />
                         Unsure clients seeking guidance
                       </li>
                       <li className="flex items-center">
-                        <Check className="h-4 w-4 text-primary mr-3" />
+                        <Check size={16} className="text-primary mr-3 flex-shrink-0" />
                         Personalised treatment planning
                       </li>
                     </ul>

@@ -1,8 +1,5 @@
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Leaf, Brain, Star, Check, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
-import TestimonialCard from "@/components/TestimonialCard";
+import { Leaf, Brain, Sparkles, Check, Infinity, Feather } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import { BookingButton } from "@/components/BookingButton";
 import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
@@ -13,112 +10,9 @@ import mindMonk from "@assets/hero_images/mind-monk.jpeg";
 import skinModel4 from "@assets/hero_images/royalty-free-skin4.webp";
 import Map from "@/components/Map";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
-import { signatureOffers } from "@/data/signatureOffers";
-import { testimonials } from "@/data/testimonials";
 import { clinicOpeningHours } from "@/data/openingHours";
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-
-  // Check if mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // md breakpoint
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const handleSignatureOfferBook = (bookingUrl: string) => {
-    if (bookingUrl !== "#") {
-      window.open(bookingUrl, "_blank");
-    }
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % signatureOffers.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + signatureOffers.length) % signatureOffers.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  // Swipe functionality
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      nextSlide();
-    }
-    if (isRightSwipe) {
-      prevSlide();
-    }
-
-    // Reset values
-    setTouchStart(0);
-    setTouchEnd(0);
-  };
-
-  const renderOfferCard = (offer: any, index: number) => {
-    const [mainTitle, subtitle] = offer.name.split('\n');
-    const isAntiWrinkle = offer.name.toLowerCase().includes('anti-wrinkle');
-    const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
-    const onCtaClick = () => {
-      if (isAntiWrinkle) {
-        window.location.href = SKIN_CONSULTATION_URL;
-      } else {
-        handleSignatureOfferBook(offer.bookingUrl);
-      }
-    };
-    return (
-      <div key={offer.name} className="bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
-        <div className="flex-1 flex flex-col items-center">
-          <h3 className="text-2xl font-serif font-bold mb-1">{mainTitle}</h3>
-          {subtitle && <p className="text-base text-foreground/60 font-normal mb-2">{subtitle}</p>}
-          <span className="text-primary font-bold text-2xl mb-1">{offer.price}</span>
-          <p className="text-foreground/70 mb-4">{offer.description}</p>
-          <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3 md:block hidden">
-            {offer.features.map((feature: string) => (
-              <li key={feature} className="relative pl-6 leading-relaxed">
-                <Check className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
-                {feature}
-              </li>
-            ))}
-          </ul>
-          <hr className="border-t border-[#e0ddd9] my-4 w-3/4 mx-auto" />
-          <div className="text-xs text-muted-foreground">Normally {offer.normalPrice}. A medical consultation is required before any prescription treatment.</div>
-        </div>
-        <Button 
-          onClick={onCtaClick}
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
-        >
-          {ctaText}
-        </Button>
-      </div>
-    );
-  };
-
   return (
     <>
       <SEO 
@@ -163,10 +57,74 @@ export default function Home() {
           </div>
         </section>
 
-        
+        {/* Wellness Pillars */}
+        <section className="py-12 md:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-10 md:mb-16">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Wellness, Curated by Doctors</h2>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                Two dedicated pathways live under The Aevia umbrella so you can focus on regenerative skin medicine or strategic mindset coaching whenever you need it.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Link
+                href="/skin"
+                className="group rounded-3xl bg-gradient-to-br from-white via-white to-secondary/40 border border-[#e0ddd9] p-8 shadow-lg block hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
+              >
+                <span className="block text-[0.65rem] font-medium tracking-[0.5em] text-primary/60 uppercase mb-4">
+                  Aevia Skin
+                </span>
+                <Leaf className="w-10 h-10 text-primary mb-5" />
+                <h3 className="text-xl font-serif font-semibold mb-3">Regenerative Skin Wellness</h3>
+                <p className="text-foreground/70 mb-5 leading-relaxed">
+                  Advanced injectables and skin boosters mapped to your biology for results that stay true to your facial identity—crafted within the Aevia Skin programme.
+                </p>
+                <ul className="space-y-3 text-sm text-foreground/70">
+                  <li className="flex items-start">
+                    <Check size={16} className="mt-1 text-primary mr-3 flex-shrink-0" />
+                    Tailored collagen-stimulating protocols administered exclusively by doctors.
+                  </li>
+                  <li className="flex items-start">
+                    <Check size={16} className="mt-1 text-primary mr-3 flex-shrink-0" />
+                    Treatment timelines that respect seasonal shifts and your event calendar.
+                  </li>
+                </ul>
+                <span className="mt-6 inline-flex items-center text-sm font-medium text-primary underline underline-offset-4">
+                  Discover Aevia Skin
+                </span>
+              </Link>
+              <Link
+                href="/mind"
+                className="group rounded-3xl bg-white border border-[#e0ddd9] p-8 shadow-lg block hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
+              >
+                <span className="block text-[0.65rem] font-medium tracking-[0.5em] text-primary/60 uppercase mb-4">
+                  Aevia Mind
+                </span>
+                <Brain className="w-10 h-10 text-primary mb-5" />
+                <h3 className="text-xl font-serif font-semibold mb-3">Mindful Performance Coaching</h3>
+                <p className="text-foreground/70 mb-5 leading-relaxed">
+                  Structured coaching that builds clarity, resilience, and momentum for founders, creatives, and leaders through the Aevia Mind methodology.
+                </p>
+                <ul className="space-y-3 text-sm text-foreground/70">
+                  <li className="flex items-start">
+                    <Check size={16} className="mt-1 text-primary mr-3 flex-shrink-0" />
+                    Nervous-system aware frameworks for calm decision-making and confident presence.
+                  </li>
+                  <li className="flex items-start">
+                    <Check size={16} className="mt-1 text-primary mr-3 flex-shrink-0" />
+                    Measurable plans with weekly accountability to cement lasting change.
+                  </li>
+                </ul>
+                <span className="mt-6 inline-flex items-center text-sm font-medium text-primary underline underline-offset-4">
+                  Discover Aevia Mind
+                </span>
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* Dual Offer Introduction */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-secondary">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-8 md:mb-16">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Difference</h2>
@@ -223,7 +181,7 @@ for clarity, confidence, and consistency. Whether you're drawn to one or both, e
         </section>
 
         {/* Services Preview */}
-        <section className="py-12 md:py-20 bg-secondary">
+        <section className="py-12 md:py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12">
               <ServiceCard
@@ -253,132 +211,62 @@ for clarity, confidence, and consistency. Whether you're drawn to one or both, e
           </div>
         </section>
 
-        {/* Signature Offers Section */}
-        <section className="py-12 md:py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-8 md:mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold font-serif mb-3 tracking-wider text-primary">Signature Offers</h2>
-              <p className="text-lg text-muted-foreground">Our most-booked combinations for natural, lasting results.</p>
+        {/* Sanctuary Experience */}
+        <section className="relative overflow-hidden py-12 md:py-20 bg-secondary">
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.45),_transparent)]" />
+          <div className="relative max-w-6xl mx-auto px-6">
+            <div className="text-center mb-10 md:mb-16">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4">A Calm, Clinical Sanctuary</h2>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                Purpose-built spaces that balance medical precision with restorative quiet, so every touchpoint supports nervous system ease and beautiful outcomes.
+              </p>
             </div>
-            
-            {/* Desktop Grid Layout */}
-            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {signatureOffers.map((offer) => renderOfferCard(offer, 0))}
-            </div>
-
-            {/* Mobile Carousel Layout */}
-            <div className="md:hidden">
-              <div className="relative px-8">
-                {/* Carousel Container */}
-                <div className="overflow-hidden rounded-2xl">
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                  >
-                    {signatureOffers.map((offer, index) => (
-                      <div key={offer.name} className="w-full flex-shrink-0">
-                        {renderOfferCard(offer, index)}
-                      </div>
-                    ))}
+            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+              <div className="bg-white rounded-3xl p-10 lg:p-12 shadow-xl">
+                <h3 className="text-2xl font-serif font-bold mb-4">Inside the Sanctuary</h3>
+                <p className="text-foreground/70 leading-relaxed mb-6">
+                  Our clinic flows from light-filled treatment rooms to a quiet coaching lounge, creating an unhurried rhythm for both skin and mind work.
+                </p>
+                <div className="space-y-5">
+                  <div className="flex items-start">
+                    <Feather className="text-primary mt-[2px] w-[18px] h-[18px] sm:w-[16px] sm:h-[16px] flex-shrink-0" />
+                    <p className="ml-3 text-sm text-foreground/70">Sensory design that lowers cortisol before your appointment begins.</p>
+                  </div>
+                  <div className="flex items-start">
+                    <Infinity className="text-primary mt-[2px] w-[18px] h-[18px] sm:w-[16px] sm:h-[16px] flex-shrink-0" />
+                    <p className="ml-3 text-sm text-foreground/70">Seamless continuity between injectables, regenerative protocols, and coaching sessions.</p>
+                  </div>
+                  <div className="flex items-start">
+                    <Sparkles className="text-primary mt-[2px] w-[18px] h-[18px] sm:w-[16px] sm:h-[16px] flex-shrink-0" />
+                    <p className="ml-3 text-sm text-foreground/70">Premium formulations, mindful rituals, and measurable progress at every touchpoint.</p>
                   </div>
                 </div>
-                {/* Navigation Arrows */}
-                <button
-                  onClick={prevSlide}
-                  className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 z-10"
-                  aria-label="Previous offer"
-                >
-                  <ChevronLeft className="w-5 h-5 text-primary" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 z-10"
-                  aria-label="Next offer"
-                >
-                  <ChevronRight className="w-5 h-5 text-primary" />
-                </button>
-                {/* Dots Indicator */}
-                <div className="flex justify-center mt-6 space-x-2">
-                  {signatureOffers.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToSlide(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                        index === currentSlide 
-                          ? 'bg-primary w-6' 
-                          : 'bg-gray-300 hover:bg-gray-400'
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
+              </div>
+              <div className="space-y-6">
+                <div className="rounded-3xl border border-white/60 bg-white/80 backdrop-blur-lg shadow-lg p-8">
+                  <h4 className="text-xl font-serif font-semibold mb-3">The Weekly Rhythm</h4>
+                  <p className="text-sm text-foreground/70 leading-relaxed">
+                    Alternate regenerative treatments with guided coaching to reinforce biochemistry with mindset — your tailored blueprint for sustainable glow.
+                  </p>
                 </div>
-                {/* Slide Counter */}
-                <div className="text-center mt-2 text-sm text-muted-foreground">
-                  {currentSlide + 1} of {signatureOffers.length}
+                <div className="rounded-3xl border border-white/60 bg-white/80 backdrop-blur-lg shadow-lg p-8">
+                  <h4 className="text-xl font-serif font-semibold mb-3">The Aevia Circle</h4>
+                  <p className="text-sm text-foreground/70 leading-relaxed">
+                    Between visits we share journal prompts, breathwork micro-practices, and skincare adjustments so progress continues at home.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <Link href="/skin" className="text-sm font-medium text-primary underline underline-offset-4 hover:text-primary/80">
+                      Explore Aevia Skin
+                    </Link>
+                    <Link href="/mind" className="text-sm font-medium text-primary underline underline-offset-4 hover:text-primary/80">
+                      Discover Aevia Mind
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        {/* Instagram-Style Testimonials */}
-        <section className="py-12 md:py-20 bg-secondary">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-6 md:mb-8">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Client Transformations</h2>
-              <p className="text-lg text-foreground/70">Real results from our community</p>
-            </div>
-            {/* Trust Metric */}
-            <div className="text-center mb-4 md:mb-6">
-              <div className="inline-flex items-center bg-primary/10 border border-primary/20 rounded-2xl px-6 py-3 md:py-4">
-                <div className="flex items-center space-x-1 mr-3">
-                  <Star className="w-5 h-5 text-primary fill-current" />
-                  <Star className="w-5 h-5 text-primary fill-current" />
-                  <Star className="w-5 h-5 text-primary fill-current" />
-                  <Star className="w-5 h-5 text-primary fill-current" />
-                  <Star className="w-5 h-5 text-primary fill-current" />
-                </div>
-                <span className="text-xl font-bold text-primary">5.0</span>
-                <span className="text-foreground/70 ml-2 font-medium">from our clients</span>
-              </div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 mb-8 md:mb-12">
-              {testimonials.map((testimonial) => (
-                <TestimonialCard key={testimonial.name} {...testimonial} />
-              ))}
-            </div>
-            <div className="text-center">
-              <a 
-                href="https://www.google.com/maps/place/The+Aevia/@51.5310793,-0.1203023,17z/data=!4m18!1m9!3m8!1s0x48761be0d6318279:0x6231887d02d12d6b!2sThe+Aevia!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!3m7!1s0x48761be0d6318279:0x6231887d02d12d6b!8m2!3d51.5310793!4d-0.1203023!9m1!1b1!16s%2Fg%2F11ycs1_g7t!5m1!1e2?hl=en-GB&entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="group bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary transition-colors duration-200">
-                  <Star className="w-4 h-4 mr-2 transition-colors duration-200 text-white group-hover:text-yellow-600" />
-                  Read Client Stories
-                  <svg
-                    className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        
 
         {/* Final CTA */}
         <section className="py-12 md:py-20 bg-white">
@@ -416,10 +304,10 @@ for clarity, confidence, and consistency. Whether you're drawn to one or both, e
               <div className="space-y-6">
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-xl font-serif font-semibold mb-4">Location</h3>
-                  <a 
-                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-foreground/70 hover:text-primary smooth-transition block"
                   >
                     Minsony, 260 Pentonville Road<br />
@@ -441,14 +329,14 @@ for clarity, confidence, and consistency. Whether you're drawn to one or both, e
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-xl font-serif font-semibold mb-4">Contact</h3>
                   <div className="space-y-3">
-                    <a 
-                      href="tel:+447448012556" 
+                    <a
+                      href="tel:+447448012556"
                       className="block text-foreground/70 hover:text-primary smooth-transition"
                     >
                       +44 7448 012556
                     </a>
-                    <a 
-                      href="mailto:hello@theaevia.co.uk" 
+                    <a
+                      href="mailto:hello@theaevia.co.uk"
                       className="block text-foreground/70 hover:text-primary smooth-transition"
                     >
                       hello@theaevia.co.uk

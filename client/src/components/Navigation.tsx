@@ -20,7 +20,7 @@ import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { FaGoogle } from "react-icons/fa";
 import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 import { journalUrl } from "@/lib/journal";
-import { MIND_DISCOVERY_URL, MIND_OFFERS_URL, SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import { MIND_OFFERS_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 // Add slugify helper (same as in CategoryPage)
 const slugify = (str: string) =>
@@ -105,7 +105,6 @@ export default function Navigation() {
   // Mobile submenu states
   const [isSkinOpen, setIsSkinOpen] = useState(false);
   const [isMindOpen, setIsMindOpen] = useState(false);
-  const [isConsultOpen, setIsConsultOpen] = useState(false);
   // Mobile Skin sub-sections
   const [isSkinAntiOpen, setIsSkinAntiOpen] = useState(false);
   const [isSkinBoostersHeadOpen, setIsSkinBoostersHeadOpen] = useState(false);
@@ -122,20 +121,19 @@ export default function Navigation() {
   };
 
   // Disambiguate which top-level menu to highlight when multiple match (e.g. Mind vs Consult)
-  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'consult' | 'about'>(null);
+  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'about'>(null);
   const matches = (paths: string[]) => paths.some((p) => isActive(p));
   const flags = {
     skin: matches(["/treatments", "/categories/", "/gallery"]),
     mind: matches(["/mind", "/consultations/mind"]),
-    consult: matches(["/consultations/skin", "/consultations/mind"]),
     about: matches(["/team", "/clinic"]),
   } as const;
-  const keys: Array<keyof typeof flags> = ["skin", "mind", "consult", "about"];
+  const keys: Array<keyof typeof flags> = ["skin", "mind", "about"];
   const matchingKeys = keys.filter((k) => flags[k]);
   const preferredKey = activeMenu && flags[activeMenu] ? activeMenu : matchingKeys[0] || null;
   const isHighlighted = (key: keyof typeof flags) => flags[key] && preferredKey === key;
 
-  const onNavSelect = (key: 'skin' | 'mind' | 'consult' | 'about') => {
+  const onNavSelect = (key: 'skin' | 'mind' | 'about') => {
     setActiveMenu(key);
     handleLinkClick();
   };
@@ -151,7 +149,6 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
     setIsAboutOpen(false);
     setIsSkinOpen(false);
-    setIsConsultOpen(false);
     setIsSkinAntiOpen(false);
     setIsSkinBoostersHeadOpen(false);
     setIsSkinPnoOpen(false);
@@ -325,45 +322,6 @@ export default function Navigation() {
                   <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
                     What is Coaching?
                   </DropdownMenuItem>
-                </a>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <span
-                  className={cn(
-                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
-                    isHighlighted('consult') ? "text-primary" : "text-foreground"
-                  )}
-                  onClick={() => setActiveMenu('consult')}
-                >
-                  Book <ChevronDown className="ml-1 h-4 w-4" />
-                </span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <a
-                  href={SKIN_CONSULTATION_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin Consultation</DropdownMenuItem>
-                </a>
-                <a
-                  href={SQUARE_SITE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Book a treatment"
-                  onClick={() => onNavSelect('consult')}
-                  className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
-                >
-                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Skin Treatments</DropdownMenuItem>
-                </a>
-                <a
-                  href={MIND_OFFERS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <DropdownMenuItem onSelect={() => onNavSelect('consult')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Coaching Offers</DropdownMenuItem>
                 </a>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -585,36 +543,6 @@ export default function Navigation() {
             </Link>
             <a href={whatIsCoachingUrl} target="_blank" rel="noopener noreferrer">
               <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">What is Coaching?</span>
-            </a>
-          </div>
-        )}
-
-        <button
-          onClick={() => setIsConsultOpen(!isConsultOpen)}
-          className={cn(
-            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
-            isHighlighted('consult') && "text-primary"
-          )}
-        >
-          <span>Book</span>
-          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isConsultOpen && "rotate-180")} />
-        </button>
-        {isConsultOpen && (
-          <div className="ml-4 flex flex-col space-y-2">
-            <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Consultation</span>
-            </a>
-            <a
-              href={SQUARE_SITE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Book a treatment"
-              onClick={() => { setActiveMenu('consult'); handleLinkClick(); }}
-            >
-              <span className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Skin Treatments</span>
-            </a>
-            <a href={MIND_OFFERS_URL} target="_blank" rel="noopener noreferrer">
-              <span onClick={() => { setActiveMenu('consult'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
             </a>
           </div>
         )}
