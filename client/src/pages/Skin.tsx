@@ -12,35 +12,36 @@ import SEO from "@/components/SEO";
 import TestimonialCard from "@/components/TestimonialCard";
 import { signatureOffers } from "@/data/signatureOffers";
 import { testimonials } from "@/data/testimonials";
-import underEyeResult from "@assets/before_afters/under-eye-1.png";
-import jawlineResult from "@assets/before_afters/jawline-slimming-1.jpg";
-import foreheadResult from "@assets/before_afters/forehead-png.png";
 
 export default function Skin() {
+      
   const beforeAfterCases = [
     {
       title: "Under-eye Brightening",
-      image: underEyeResult,
       protocol: "Polynucleotide series + medical skincare",
       timeframe: "3 weeks between photos",
       summary: "Smoother tear troughs, improved hydration, and brighter tone without filler.",
+      image: "/assets/before_afters/under-eye-no-logo.png",
       alt: "Before and after showing brighter under-eye area after regenerative treatment",
+      href: "/treatments/eye-rejuvenation",
     },
     {
       title: "Jawline Refinement",
-      image: jawlineResult,
-      protocol: "Masseter relaxation + polynucleotides",
-      timeframe: "10 weeks between photos",
+      protocol: "Masseter relaxation",
+      timeframe: "4 weeks between photos",
       summary: "Slimmed lower face with more definition through muscle contouring and tissue support.",
+      image: "/assets/before_afters/masseter-no-logo.png",
       alt: "Before and after image highlighting a more defined jawline following treatment",
+      href: "/treatments/jawline-slimming",
     },
     {
       title: "Forehead Softening",
-      image: foreheadResult,
-      protocol: "Targeted anti-wrinkle and skin booster protocol",
-      timeframe: "4 weeks between photos",
+      protocol: "Targeted anti-wrinkle protocol",
+      timeframe: "2 weeks between photos",
       summary: "Fine lines softened while maintaining natural movement and skin luminosity.",
+      image: "/assets/before_afters/forehead-no-logo.png",
       alt: "Before and after image emphasising smoother forehead lines after treatment",
+      href: "/treatments/anti-wrinkle",
     },
   ];
   return (
@@ -150,36 +151,44 @@ export default function Skin() {
         <section className="py-12 md:py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4">Before & After</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4">Before & Afters</h2>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
                 Real client journeys guided by our doctors. Subtle shifts, refreshed structure, and skin that still feels unmistakably you.
               </p>
             </div>
             <div className="grid gap-8 md:grid-cols-3">
-              {beforeAfterCases.map((result) => (
-                <figure
-                  key={result.title}
-                  className="group bg-white rounded-3xl border border-[#e0ddd9] shadow-lg overflow-hidden flex flex-col h-full"
-                >
-                  <div className="aspect-[4/5] w-full overflow-hidden bg-secondary">
-                    <img
-                      src={result.image}
-                      alt={result.alt}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                  </div>
-                  <figcaption className="p-6 flex-1 flex flex-col">
-                    <p className="text-xs uppercase tracking-[0.4em] text-primary/60 mb-3">{result.timeframe}</p>
-                    <h3 className="text-xl font-serif font-semibold mb-3 text-foreground">{result.title}</h3>
-                    <p className="text-sm text-foreground/70 mb-4 leading-relaxed flex-1">{result.summary}</p>
-                    <div className="text-xs text-foreground/60 space-y-1">
-                      <p className="font-medium text-foreground/80 uppercase tracking-[0.25em] text-[0.65rem]">Protocol</p>
-                      <p>{result.protocol}</p>
+              {beforeAfterCases.map((result) => {
+                return (
+                  <figure
+                    key={result.title}
+                    className="group bg-white rounded-3xl border border-[#e0ddd9] shadow-lg overflow-hidden flex flex-col h-full"
+                  >
+                    <div className="aspect-[4/5] w-full overflow-hidden bg-secondary">
+                      <img
+                        src={result.image}
+                        alt={result.alt}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                        loading="lazy"
+                      />
                     </div>
-                  </figcaption>
-                </figure>
-              ))}
+                    <figcaption className="p-6 flex-1 flex flex-col">
+                    <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary/80 mb-3">{result.timeframe}</p>
+                      <h3 className="text-xl font-serif font-semibold mb-3 text-foreground">{result.title}</h3>
+                      <p className="text-sm text-foreground/70 mb-4 leading-relaxed flex-1">{result.summary}</p>
+                      <div className="text-xs text-foreground/60 space-y-1 mb-4">
+                        <p className="font-medium text-foreground/80 uppercase tracking-[0.25em] text-[0.65rem]">Protocol</p>
+                        <p>{result.protocol}</p>
+                      </div>
+                      <Link
+                        href={result.href}
+                        className="text-sm font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                      >
+                        View treatment details
+                      </Link>
+                    </figcaption>
+                  </figure>
+                );
+              })}
             </div>
             <p className="text-xs text-foreground/60 text-center mt-8">
               Individual results vary; consultation required to determine the safest, most effective plan for you.
