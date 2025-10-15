@@ -12,6 +12,9 @@ import SEO from "@/components/SEO";
 import TestimonialCard from "@/components/TestimonialCard";
 import { signatureOffers } from "@/data/signatureOffers";
 import { testimonials } from "@/data/testimonials";
+import underEyeImage from "@assets/before_afters/under-eye-no-logo.png";
+import masseterImage from "@assets/before_afters/masseter-1.png";
+import foreheadImage from "@assets/before_afters/forehead-no-logo.png";
 
 export default function Skin() {
       
@@ -21,7 +24,7 @@ export default function Skin() {
       protocol: "Polynucleotide series + medical skincare",
       timeframe: "3 weeks between photos",
       summary: "Smoother tear troughs, improved hydration, and brighter tone without filler.",
-      image: "/assets/before_afters/under-eye-no-logo.png",
+      image: underEyeImage,
       alt: "Before and after showing brighter under-eye area after regenerative treatment",
       href: "/treatments/eye-rejuvenation",
     },
@@ -30,7 +33,7 @@ export default function Skin() {
       protocol: "Masseter relaxation",
       timeframe: "4 weeks between photos",
       summary: "Slimmed lower face with more definition through muscle contouring and tissue support.",
-      image: "/assets/before_afters/masseter-no-logo.png",
+      image: masseterImage,
       alt: "Before and after image highlighting a more defined jawline following treatment",
       href: "/treatments/jawline-slimming",
     },
@@ -39,7 +42,7 @@ export default function Skin() {
       protocol: "Targeted anti-wrinkle protocol",
       timeframe: "2 weeks between photos",
       summary: "Fine lines softened while maintaining natural movement and skin luminosity.",
-      image: "/assets/before_afters/forehead-no-logo.png",
+      image: foreheadImage,
       alt: "Before and after image emphasising smoother forehead lines after treatment",
       href: "/treatments/anti-wrinkle",
     },
