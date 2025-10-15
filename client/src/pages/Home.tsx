@@ -239,7 +239,7 @@ for clarity, confidence, and consistency. Whether you're drawn to one or both, e
                   <div className="flex items-start">
                     <Sparkles className="text-primary mt-[2px] w-[18px] h-[18px] sm:w-[16px] sm:h-[16px] flex-shrink-0" />
                     <p className="ml-3 text-sm text-foreground/70">Premium formulations, mindful rituals, and measurable progress at every touchpoint.</p>
-                  </div>
+                  </div> 
                 </div>
               </div>
               <div className="space-y-6">
