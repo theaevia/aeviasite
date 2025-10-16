@@ -3,12 +3,17 @@ import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import path from "path";
 import { fileURLToPath } from "url";
-import type { ConfigEnv, UserConfig } from 'vite';
+import type { ConfigEnv, UserConfig } from "vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(async (_env: ConfigEnv): Promise<UserConfig> => {
+  const rawAssetBase = process.env.VITE_ASSET_BASE_URL?.trim();
+  const normalizedAssetBase = rawAssetBase ? rawAssetBase.replace(/\/+$/, "") : "";
+  const resolvedBase = normalizedAssetBase ? `${normalizedAssetBase}/` : "/";
+
   return {
+    base: resolvedBase,
     root: path.resolve(__dirname, "client"),
     publicDir: path.resolve(__dirname, "client/public"),
     plugins: [react(), svgr()],

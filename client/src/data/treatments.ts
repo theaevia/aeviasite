@@ -18,15 +18,17 @@ import {
   SKIN_CLINIC_URL,
   MICRONEEDLING_REG_URL,
 } from "@/lib/bookingUrls";
+import { asset, DEFAULT_ASSET_FALLBACK_PATH } from "@/lib/assets";
 
 // Assets (optimized public variants for responsive delivery)
 // Use 640w WebP as fallback; <picture> in cards will pick AVIF/WebP 320w/640w
-const antiWrinkleHero = "/assets/treatment_images/anti-wrinkle-hero-640w.webp";
-const lowerFaceHero = "/assets/treatment_images/lower-face-2-640w.webp";
-const neckHero = "/assets/treatment_images/neck-2-640w.webp";
-const sweatHero = "/assets/treatment_images/armpit-2-640w.webp";
-const smileHero = "/assets/treatment_images/dao-640w.webp";
-const jawSlimHero = "/assets/treatment_images/model-1-640w.webp";
+const antiWrinkleHero = asset("/assets/treatment_images/anti-wrinkle-hero-640w.webp");
+const lowerFaceHero = asset("/assets/treatment_images/lower-face-2-640w.webp");
+const neckHero = asset("/assets/treatment_images/neck-2-640w.webp");
+const sweatHero = asset("/assets/treatment_images/armpit-2-640w.webp");
+const smileHero = asset("/assets/treatment_images/dao-640w.webp");
+const jawSlimHero = asset("/assets/treatment_images/model-1-640w.webp");
+const defaultTreatmentImage = asset(DEFAULT_ASSET_FALLBACK_PATH);
 
 // Types
 export interface Treatment {
@@ -61,7 +63,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "Complimentary",
         bookingUrl: MIND_DISCOVERY_URL,
         slug: "discovery-call",
-        image: "https://placehold.co/600x400"
+        image: defaultTreatmentImage
       },
       {
         name: "Clarity & Strategy Session",
@@ -70,7 +72,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£250",
         bookingUrl: CLARITY_STRATEGY_URL,
         slug: "clarity-strategy-session",
-        image: "https://placehold.co/600x400"
+        image: defaultTreatmentImage
       },
       {
         name: "Momentum 6",
@@ -79,7 +81,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£1,350",
         bookingUrl: MOMENTUM_SIX_URL,
         slug: "momentum-6",
-        image: "https://placehold.co/600x400"
+        image: defaultTreatmentImage
       },
       {
         name: "Transformation 12",
@@ -88,7 +90,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£2,450",
         bookingUrl: TRANSFORMATION_TWELVE_URL,
         slug: "transformation-12",
-        image: "https://placehold.co/600x400"
+        image: defaultTreatmentImage
       },
       {
         name: "Elite Retainer",
@@ -97,7 +99,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£12,000",
         bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2606786&eid=4557161&oiid=sv%3A22711403&share&pId=2507365",
         slug: "elite-retainer",
-        image: "https://placehold.co/600x400"
+        image: defaultTreatmentImage
       },
     ]
   },
@@ -113,7 +115,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "Complimentary",
         bookingUrl: SKIN_VIRTUAL_URL,
         slug: "virtual-consultation",
-        image: "https://placehold.co/600x400"
+        image: defaultTreatmentImage
       },
       {
         name: "In Clinic Consultation",
@@ -122,7 +124,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         price: "£50",
         bookingUrl: SKIN_CLINIC_URL,
         slug: "in-clinic-consultation",
-        image: "https://placehold.co/600x400"
+        image: defaultTreatmentImage
       },
     ]
   },

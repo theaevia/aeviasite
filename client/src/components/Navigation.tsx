@@ -21,6 +21,7 @@ import { FaGoogle } from "react-icons/fa";
 import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 import { journalUrl } from "@/lib/journal";
 import { MIND_OFFERS_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import { SITE_URL, JOURNAL_URL } from "@/lib/env";
 
 // Add slugify helper (same as in CategoryPage)
 const slugify = (str: string) =>
@@ -34,10 +35,9 @@ const buildUrl = (origin: string | undefined, path: string) => {
 };
 
 export default function Navigation() {
-  const rawJournalBase = (import.meta.env["PUBLIC_JOURNAL_BASE"] ?? import.meta.env.BASE_URL ?? "/") as string;
+  const rawJournalBase = (JOURNAL_URL ?? import.meta.env.BASE_URL ?? "/") as string;
   const journalBase = rawJournalBase === "/" ? "" : rawJournalBase.replace(/\/$/, "");
-  const mainSiteOriginEnv = (import.meta.env["PUBLIC_MAIN_SITE_ORIGIN"] ?? "https://theaevia.co.uk") as string;
-  const mainSiteOrigin = mainSiteOriginEnv ? mainSiteOriginEnv.replace(/\/$/, "") : undefined;
+  const mainSiteOrigin = SITE_URL ? SITE_URL.replace(/\/$/, "") : undefined;
 
   const externalHrefPattern = /^(?:[a-z]+:|#)/i;
   const resolveHrefForJournal = (href: string) => {

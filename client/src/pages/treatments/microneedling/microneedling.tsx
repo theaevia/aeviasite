@@ -4,6 +4,7 @@ import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 import { MICRONEEDLING_REG_URL, MICRONEEDLING_REGEN_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { asset, assetSrcSet } from "@/lib/assets";
 import { Check, Clock3, Droplets, Dna, ShieldCheck, Sparkles } from "lucide-react";
 
 const protocols = [
@@ -73,6 +74,15 @@ const journeySteps = [
   },
 ];
 
+const MICRONEEDLING_HERO_BASE = "/assets/treatment_images/model-1-640w.webp";
+const microneedlingHero = asset(MICRONEEDLING_HERO_BASE);
+const MICRONEEDLING_HERO_AVIF_SET = assetSrcSet(
+  `${MICRONEEDLING_HERO_BASE.replace("-640w.webp", "-320w.avif")} 320w, ${MICRONEEDLING_HERO_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${MICRONEEDLING_HERO_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
+);
+const MICRONEEDLING_HERO_WEBP_SET = assetSrcSet(
+  `${MICRONEEDLING_HERO_BASE.replace("-640w.webp", "-320w.webp")} 320w, ${MICRONEEDLING_HERO_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${MICRONEEDLING_HERO_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
+);
+
 export default function MicroneedlingPage() {
   return (
     <>
@@ -128,16 +138,16 @@ export default function MicroneedlingPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`/assets/treatment_images/model-1-320w.avif 320w, /assets/treatment_images/model-1-640w.avif 640w, /assets/treatment_images/model-1-1280w.avif 1280w`}
+                      srcSet={MICRONEEDLING_HERO_AVIF_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`/assets/treatment_images/model-1-320w.webp 320w, /assets/treatment_images/model-1-640w.webp 640w, /assets/treatment_images/model-1-1280w.webp 1280w`}
+                      srcSet={MICRONEEDLING_HERO_WEBP_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
-                      src="/assets/treatment_images/model-1-640w.webp"
+                      src={microneedlingHero}
                       alt="Microneedling treatment example"
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('microneedling')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('microneedling') }}

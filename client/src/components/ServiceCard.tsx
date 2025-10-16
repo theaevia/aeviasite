@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { asset, DEFAULT_ASSET_FALLBACK_PATH } from "@/lib/assets";
 
 interface ServiceCardProps {
   title: string;
@@ -26,6 +27,8 @@ export default function ServiceCard({
   imagePositionTop = false,
   objectPosition
 }: ServiceCardProps) {
+  const imageSrc = asset(image, { fallback: DEFAULT_ASSET_FALLBACK_PATH });
+
   return (
     <div className={`${backgroundColor} rounded-2xl p-8 shadow-lg smooth-transition hover:shadow-xl`}>
       <div className="mb-6">
@@ -35,7 +38,7 @@ export default function ServiceCard({
       </div>
       
       <img
-        src={image}
+        src={imageSrc}
         alt={title}
         width="800"
         height="533"

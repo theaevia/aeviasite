@@ -8,10 +8,25 @@ import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 import { SKIN_CONSULTATION_URL, THREE_AREAS_URL } from "@/lib/bookingUrls";
+import { asset, assetSrcSet } from "@/lib/assets";
 
 // Assets
-const antiWrinkleDiagram = "/assets/diagrams/anti-wrinkle-1-640w.webp";
-const antiWrinkleHero = "/assets/treatment_images/anti-wrinkle-hero-640w.webp";
+const ANTI_WRINKLE_DIAGRAM_BASE = "/assets/diagrams/anti-wrinkle-1-640w.webp";
+const antiWrinkleDiagram = asset(ANTI_WRINKLE_DIAGRAM_BASE);
+const ANTI_WRINKLE_HERO_BASE = "/assets/treatment_images/anti-wrinkle-hero-640w.webp";
+const antiWrinkleHero = asset(ANTI_WRINKLE_HERO_BASE);
+const ANTI_WRINKLE_HERO_AVIF_SET = assetSrcSet(
+  `${ANTI_WRINKLE_HERO_BASE.replace("-640w.webp", "-320w.avif")} 320w, ${ANTI_WRINKLE_HERO_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${ANTI_WRINKLE_HERO_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
+);
+const ANTI_WRINKLE_HERO_WEBP_SET = assetSrcSet(
+  `${ANTI_WRINKLE_HERO_BASE.replace("-640w.webp", "-320w.webp")} 320w, ${ANTI_WRINKLE_HERO_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${ANTI_WRINKLE_HERO_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
+);
+const ANTI_WRINKLE_DIAGRAM_AVIF_SET = assetSrcSet(
+  `${ANTI_WRINKLE_DIAGRAM_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${ANTI_WRINKLE_DIAGRAM_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
+);
+const ANTI_WRINKLE_DIAGRAM_WEBP_SET = assetSrcSet(
+  `${ANTI_WRINKLE_DIAGRAM_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${ANTI_WRINKLE_DIAGRAM_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
+);
 // Use optimized public before/after variants
 
 
@@ -19,16 +34,23 @@ export default function AntiWrinklePage() {
   const [baIndex, setBaIndex] = useState(0);
   const baItems = [
     {
-      src: "/assets/before_afters/forehead-640w.webp",
+      src: asset("/assets/before_afters/forehead-640w.webp"),
       alt: "Anti-wrinkle forehead treatment before and after",
       caption: "Forehead lines softened two weeks after treatment.",
     },
     {
-      src: "/assets/before_afters/frown-640w.webp",
+      src: asset("/assets/before_afters/frown-640w.webp"),
       alt: "Anti-wrinkle frown lines treatment before and after",
       caption: "Frown lines softened two weeks after treatment.",
     },
   ];
+  const currentBaItem = baItems[baIndex];
+  const baAvifSet = assetSrcSet(
+    `${currentBaItem.src.replace("-640w.webp", "-640w.avif")} 640w, ${currentBaItem.src.replace("-640w.webp", "-1280w.avif")} 1280w`
+  );
+  const baWebpSet = assetSrcSet(
+    `${currentBaItem.src.replace("-640w.webp", "-640w.webp")} 640w, ${currentBaItem.src.replace("-640w.webp", "-1280w.webp")} 1280w`
+  );
   const antiWrinkleCategory = treatmentCategories.find(cat => cat.slug === "anti-wrinkle");
   const oneAreaTreatment = antiWrinkleCategory?.treatments.find(t => t.name.includes("One Area"));
 
@@ -81,12 +103,12 @@ export default function AntiWrinklePage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`${antiWrinkleHero.replace('-640w.webp','-320w.avif')} 320w, ${antiWrinkleHero.replace('-640w.webp','-640w.avif')} 640w, ${antiWrinkleHero.replace('-640w.webp','-1280w.avif')} 1280w`}
+                      srcSet={ANTI_WRINKLE_HERO_AVIF_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`${antiWrinkleHero.replace('-640w.webp','-320w.webp')} 320w, ${antiWrinkleHero.replace('-640w.webp','-640w.webp')} 640w, ${antiWrinkleHero.replace('-640w.webp','-1280w.webp')} 1280w`}
+                      srcSet={ANTI_WRINKLE_HERO_WEBP_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
@@ -114,17 +136,17 @@ export default function AntiWrinklePage() {
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet={`${baItems[baIndex].src.replace('-640w.webp','-640w.avif')} 640w, ${baItems[baIndex].src.replace('-640w.webp','-1280w.avif')} 1280w`}
+                    srcSet={baAvifSet}
                     sizes="(max-width: 640px) 100vw, 640px"
                   />
                   <source
                     type="image/webp"
-                    srcSet={`${baItems[baIndex].src.replace('-640w.webp','-640w.webp')} 640w, ${baItems[baIndex].src.replace('-640w.webp','-1280w.webp')} 1280w`}
+                    srcSet={baWebpSet}
                     sizes="(max-width: 640px) 100vw, 640px"
                   />
                   <img
-                    src={baItems[baIndex].src}
-                    alt={baItems[baIndex].alt}
+                    src={currentBaItem.src}
+                    alt={currentBaItem.alt}
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
                     width={640}
@@ -153,7 +175,7 @@ export default function AntiWrinklePage() {
                   </>
                 )}
               </div>
-              <p className="text-muted-foreground text-center text-sm mt-4">{baItems[baIndex].caption}</p>
+              <p className="text-muted-foreground text-center text-sm mt-4">{currentBaItem.caption}</p>
             </div>
             <div className="order-1 md:order-2">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Anti-Wrinkle at Aevia Skin?</h2>
@@ -198,12 +220,12 @@ export default function AntiWrinklePage() {
               <picture>
                 <source
                   type="image/avif"
-                  srcSet={`${antiWrinkleDiagram.replace('-640w.webp','-640w.avif')} 640w, ${antiWrinkleDiagram.replace('-640w.webp','-1280w.avif')} 1280w`}
+                  srcSet={ANTI_WRINKLE_DIAGRAM_AVIF_SET}
                   sizes="(max-width: 640px) 100vw, 640px"
                 />
                 <source
                   type="image/webp"
-                  srcSet={`${antiWrinkleDiagram.replace('-640w.webp','-640w.webp')} 640w, ${antiWrinkleDiagram.replace('-640w.webp','-1280w.webp')} 1280w`}
+                  srcSet={ANTI_WRINKLE_DIAGRAM_WEBP_SET}
                   sizes="(max-width: 640px) 100vw, 640px"
                 />
                 <img

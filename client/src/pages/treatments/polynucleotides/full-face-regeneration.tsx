@@ -8,6 +8,7 @@ import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { asset, assetSrcSet } from "@/lib/assets";
 
 // Assets
 import skinBoosterDiagram from "@assets/diagrams/skin-booster-1.png";
@@ -65,16 +66,16 @@ export default function FullFaceRegenerationPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`/assets/treatment_images/polynucleotides-1-320w.avif 320w, /assets/treatment_images/polynucleotides-1-640w.avif 640w, /assets/treatment_images/polynucleotides-1-1280w.avif 1280w`}
+                      srcSet={assetSrcSet(`/assets/treatment_images/polynucleotides-1-320w.avif 320w, /assets/treatment_images/polynucleotides-1-640w.avif 640w, /assets/treatment_images/polynucleotides-1-1280w.avif 1280w`)}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`/assets/treatment_images/polynucleotides-1-320w.webp 320w, /assets/treatment_images/polynucleotides-1-640w.webp 640w, /assets/treatment_images/polynucleotides-1-1280w.webp 1280w`}
+                      srcSet={assetSrcSet(`/assets/treatment_images/polynucleotides-1-320w.webp 320w, /assets/treatment_images/polynucleotides-1-640w.webp 640w, /assets/treatment_images/polynucleotides-1-1280w.webp 1280w`)}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
-                      src="/assets/treatment_images/polynucleotides-1-640w.webp"
+                      src={asset("/assets/treatment_images/polynucleotides-1-640w.webp")}
                       alt="Full Face Regeneration treatment example"
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('full-face-regeneration')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('full-face-regeneration') }}
