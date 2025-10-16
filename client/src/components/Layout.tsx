@@ -5,17 +5,18 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import MobileStickyBookingBar from "@/components/MobileStickyBookingBar";
 import { useLocation } from "wouter";
 import { Helmet } from "react-helmet-async";
+import { getSiteOrigin, withSiteUrl } from "@/lib/env";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const organizationSchema = {
+const createOrganizationSchema = (siteOrigin: string) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "The Aevia",
-  "url": "https://www.theaevia.co.uk",
-  "logo": "/aevia-logo.png",
+  "url": siteOrigin,
+  "logo": withSiteUrl("/aevia-logo.png"),
   "description": "The Aevia is a premium doctor-led brand combining advanced aesthetic treatments with transformative performance coaching.",
   "address": {
     "@type": "PostalAddress",
@@ -31,32 +32,32 @@ const organizationSchema = {
     "longitude": "-0.11996394395828247"
   },
   "founder": [
-    {
-      "@type": "Person",
-      "name": "Dr Terrell Okhiria",
-      "jobTitle": "Co-Founder",
-      "url": "https://www.theaevia.co.uk/team"
-    },
-    {
-      "@type": "Person",
-      "name": "Dr Renée Okhiria",
-      "jobTitle": "Co-Founder",
-      "url": "https://www.theaevia.co.uk/team"
-    },
-    {
-      "@type": "Person",
-      "name": "Dr Manu Sidhu",
-      "jobTitle": "Co-Founder",
-      "url": "https://www.theaevia.co.uk/team"
-    }
-  ],
-  "department": [
-    {
-      "@type": "MedicalClinic",
-      "name": "Aevia Skin",
-      "url": "https://www.theaevia.co.uk/skin",
-      "logo": "/aevia-skin.png",
-      "image": "/aevia-skin.png",
+      {
+        "@type": "Person",
+        "name": "Dr Terrell Okhiria",
+        "jobTitle": "Co-Founder",
+        "url": withSiteUrl("/team"),
+      },
+      {
+        "@type": "Person",
+        "name": "Dr Renée Okhiria",
+        "jobTitle": "Co-Founder",
+        "url": withSiteUrl("/team"),
+      },
+      {
+        "@type": "Person",
+        "name": "Dr Manu Sidhu",
+        "jobTitle": "Co-Founder",
+        "url": withSiteUrl("/team"),
+      }
+    ],
+    "department": [
+      {
+        "@type": "MedicalClinic",
+        "name": "Aevia Skin",
+        "url": withSiteUrl("/skin"),
+        "logo": withSiteUrl("/aevia-skin.png"),
+        "image": withSiteUrl("/aevia-skin.png"),
       "description": "Doctor-led clinic offering advanced skin rejuvenation, including polynucleotides, skin boosters, and anti-wrinkle treatments.",
       "address": {
         "@type": "PostalAddress",
@@ -82,20 +83,20 @@ const organizationSchema = {
         "ratingValue": "5",
         "reviewCount": "10"
       },
-      "founder": [
-        {
-          "@type": "Person",
-          "name": "Dr Terrell Okhiria",
-          "jobTitle": "Medical Aesthetic Doctor",
-          "url": "https://www.theaevia.co.uk/team"
-        },
-        {
-          "@type": "Person",
-          "name": "Dr Renée Okhiria",
-          "jobTitle": "Medical Aesthetic Doctor",
-          "url": "https://www.theaevia.co.uk/team"
-        }
-      ],
+        "founder": [
+          {
+            "@type": "Person",
+            "name": "Dr Terrell Okhiria",
+            "jobTitle": "Medical Aesthetic Doctor",
+            "url": withSiteUrl("/team"),
+          },
+          {
+            "@type": "Person",
+            "name": "Dr Renée Okhiria",
+            "jobTitle": "Medical Aesthetic Doctor",
+            "url": withSiteUrl("/team"),
+          }
+        ],
       "service": {
         "@type": "Service",
         "name": "Skin Refresh Package",
@@ -106,12 +107,12 @@ const organizationSchema = {
         }
       }
     },
-    {
-      "@type": "HealthAndBeautyBusiness",
-      "name": "Aevia Mind",
-      "url": "https://www.theaevia.co.uk/mind",
-      "logo": "/aevia-mind.png",
-      "description": "Doctor-led performance and transformative coaching for professionals, led by Dr Manu Sidhu.",
+      {
+        "@type": "HealthAndBeautyBusiness",
+        "name": "Aevia Mind",
+        "url": withSiteUrl("/mind"),
+        "logo": withSiteUrl("/aevia-mind.png"),
+        "description": "Doctor-led performance and transformative coaching for professionals, led by Dr Manu Sidhu.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "260 Pentonville Road, Minsony",
@@ -131,12 +132,12 @@ const organizationSchema = {
         "Sa 10:00-18:00",
         "Su 10:00-18:00"
       ],
-      "founder": {
-        "@type": "Person",
-        "name": "Dr Manu Sidhu",
-        "jobTitle": "Medical Doctor, Performance and Transformative Coach",
-        "url": "https://www.theaevia.co.uk/team"
-      },
+        "founder": {
+          "@type": "Person",
+          "name": "Dr Manu Sidhu",
+          "jobTitle": "Medical Doctor, Performance and Transformative Coach",
+          "url": withSiteUrl("/team"),
+        },
       "service": {
         "@type": "Service",
         "name": "Mind Breakthrough Session",
@@ -148,7 +149,7 @@ const organizationSchema = {
       }
     }
   ]
-};
+});
 
 export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
@@ -158,6 +159,8 @@ export default function Layout({ children }: LayoutProps) {
   const showFooter = !isBioRoute;
   const showFooterExtras = showFooter && !isMindExploredRoute;
   useEffect(() => {
+    const siteOrigin = getSiteOrigin();
+    const organizationSchema = createOrganizationSchema(siteOrigin);
     // Add JSON-LD script
     const script = document.createElement('script');
     script.type = 'application/ld+json';

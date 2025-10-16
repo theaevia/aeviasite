@@ -1,0 +1,40 @@
+name: Asset Integrity
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+  pull_request:
+    paths:
+      - 'client/**'
+      - 'shared/**'
+      - 'server/**'
+      - 'apps/journal/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - '.github/workflows/asset-integrity.yml'
+
+jobs:
+  verify:
+    name: Build and Check Assets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and verify asset integrity
+        run: npm run ci:verify
+        env:
+          VITE_ASSET_BASE_URL: ${{ secrets.VITE_ASSET_BASE_URL || '' }}

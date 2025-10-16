@@ -23,7 +23,9 @@
     "db:push": "drizzle-kit push",
     "convert-webp": "tsx convert-to-webp.ts",
     "optimize-hero-images": "tsx scripts/optimize-hero-images.ts",
-    "generate-variants": "node scripts/generate-treatment-variants.cjs"
+    "generate-variants": "node scripts/generate-treatment-variants.cjs",
+    "verify:assets": "node scripts/verify-assets.js",
+    "ci:verify": "npm run build && npm run verify:assets"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

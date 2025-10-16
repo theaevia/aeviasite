@@ -5,11 +5,20 @@ import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { CONTOUR_DUO_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { asset, assetSrcSet } from "@/lib/assets";
 
 import lowerFaceContourDuoDiagram from "@assets/diagrams/lower-face-1.png";
-const lowerFaceHero = "/assets/treatment_images/lower-face-2-640w.webp";
 import lowerFaceDuoBeforeAfter from "@assets/before_afters/lower-face-duo-placeholder.jpg";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
+
+const LOWER_FACE_HERO_BASE = "/assets/treatment_images/lower-face-2-640w.webp";
+const lowerFaceHero = asset(LOWER_FACE_HERO_BASE);
+const LOWER_FACE_AVIF_SET = assetSrcSet(
+  `${LOWER_FACE_HERO_BASE.replace("-640w.webp", "-320w.avif")} 320w, ${LOWER_FACE_HERO_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${LOWER_FACE_HERO_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
+);
+const LOWER_FACE_WEBP_SET = assetSrcSet(
+  `${LOWER_FACE_HERO_BASE.replace("-640w.webp", "-320w.webp")} 320w, ${LOWER_FACE_HERO_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${LOWER_FACE_HERO_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
+);
 
 export default function LowerFaceContourDuoPage() {
   return (
@@ -59,12 +68,12 @@ export default function LowerFaceContourDuoPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`${lowerFaceHero.replace('-640w.webp','-320w.avif')} 320w, ${lowerFaceHero.replace('-640w.webp','-640w.avif')} 640w, ${lowerFaceHero.replace('-640w.webp','-1280w.avif')} 1280w`}
+                      srcSet={LOWER_FACE_AVIF_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`${lowerFaceHero.replace('-640w.webp','-320w.webp')} 320w, ${lowerFaceHero.replace('-640w.webp','-640w.webp')} 640w, ${lowerFaceHero.replace('-640w.webp','-1280w.webp')} 1280w`}
+                      srcSet={LOWER_FACE_WEBP_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img

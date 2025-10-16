@@ -5,11 +5,19 @@ import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { DAO_SMILE_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
-
+import { asset, assetSrcSet } from "@/lib/assets";
 
 import smileLiftDiagram from "@assets/diagrams/smile-lift-1.png";
-const smileHero = "/assets/treatment_images/dao-640w.webp";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
+
+const SMILE_HERO_BASE = "/assets/treatment_images/dao-640w.webp";
+const smileHero = asset(SMILE_HERO_BASE);
+const SMILE_HERO_AVIF_SET = assetSrcSet(
+  `${SMILE_HERO_BASE.replace("-640w.webp", "-320w.avif")} 320w, ${SMILE_HERO_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${SMILE_HERO_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
+);
+const SMILE_HERO_WEBP_SET = assetSrcSet(
+  `${SMILE_HERO_BASE.replace("-640w.webp", "-320w.webp")} 320w, ${SMILE_HERO_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${SMILE_HERO_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
+);
 
 export default function SmileLiftPage() {
   return (
@@ -59,12 +67,12 @@ export default function SmileLiftPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`${smileHero.replace('-640w.webp','-320w.avif')} 320w, ${smileHero.replace('-640w.webp','-640w.avif')} 640w, ${smileHero.replace('-640w.webp','-1280w.avif')} 1280w`}
+                      srcSet={SMILE_HERO_AVIF_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`${smileHero.replace('-640w.webp','-320w.webp')} 320w, ${smileHero.replace('-640w.webp','-640w.webp')} 640w, ${smileHero.replace('-640w.webp','-1280w.webp')} 1280w`}
+                      srcSet={SMILE_HERO_WEBP_SET}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img

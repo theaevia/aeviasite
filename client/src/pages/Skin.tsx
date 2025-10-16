@@ -4,10 +4,6 @@ import { Dna, Droplet, Sparkles, Check, Gift, Camera, Star } from "lucide-react"
 import { BookingButton } from "@/components/BookingButton";
 import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 import skinHeroImage from "@assets/hero_images/royalty-free-skin3.webp";
-import skinModelImage from "@assets/hero_images/skin-model.webp";
-import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
-import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
-import skinModel2Image800 from "@assets/hero_images/skin-model-2-800w.webp";
 import SEO from "@/components/SEO";
 import TestimonialCard from "@/components/TestimonialCard";
 import { signatureOffers } from "@/data/signatureOffers";

@@ -8,6 +8,7 @@ import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { asset, assetSrcSet } from "@/lib/assets";
 
 // Assets
 // Optimised before/after variants served from public assets
@@ -66,21 +67,20 @@ export default function EyeRejuvenationPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={`/assets/treatment_images/under-eye-1-320w.avif 320w, /assets/treatment_images/under-eye-1-640w.avif 640w, /assets/treatment_images/under-eye-1-1280w.avif 1280w`}
+                      srcSet={assetSrcSet(`/assets/treatment_images/under-eye-1-320w.avif 320w, /assets/treatment_images/under-eye-1-640w.avif 640w, /assets/treatment_images/under-eye-1-1280w.avif 1280w`)}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={`/assets/treatment_images/under-eye-1-320w.webp 320w, /assets/treatment_images/under-eye-1-640w.webp 640w, /assets/treatment_images/under-eye-1-1280w.webp 1280w`}
+                      srcSet={assetSrcSet(`/assets/treatment_images/under-eye-1-320w.webp 320w, /assets/treatment_images/under-eye-1-640w.webp 640w, /assets/treatment_images/under-eye-1-1280w.webp 1280w`)}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
-                      src="/assets/treatment_images/under-eye-1-640w.webp"
+                      src={asset("/assets/treatment_images/under-eye-1-640w.webp")}
                       alt="Eye Rejuvenation treatment example"
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('eye-rejuvenation')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('eye-rejuvenation') }}
                       loading="eager"
-                     
                       width={1280}
                       height={960}
                     />
@@ -99,16 +99,16 @@ export default function EyeRejuvenationPage() {
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet={`/assets/before_afters/under-eye-1-640w.avif 640w, /assets/before_afters/under-eye-1-1280w.avif 1280w`}
+                    srcSet={assetSrcSet(`/assets/before_afters/under-eye-1-640w.avif 640w, /assets/before_afters/under-eye-1-1280w.avif 1280w`)}
                     sizes="(max-width: 640px) 100vw, 640px"
                   />
                   <source
                     type="image/webp"
-                    srcSet={`/assets/before_afters/under-eye-1-640w.webp 640w, /assets/before_afters/under-eye-1-1280w.webp 1280w`}
+                    srcSet={assetSrcSet(`/assets/before_afters/under-eye-1-640w.webp 640w, /assets/before_afters/under-eye-1-1280w.webp 1280w`)}
                     sizes="(max-width: 640px) 100vw, 640px"
                   />
                   <img
-                    src="/assets/before_afters/under-eye-1-640w.webp"
+                    src={asset("/assets/before_afters/under-eye-1-640w.webp")}
                     alt="Under-eye polynucleotides before and after"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"
