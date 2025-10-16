@@ -236,7 +236,7 @@ export default function Home() {
                     href="https://maps.app.goo.gl/KUyjk1sRrauncTx49"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 block text-lg uppercase tracking-[0.08em] text-primary hover:text-primary/80"
+                    className="mt-4 block text-md uppercase tracking-[0.08em] text-primary hover:text-primary/80"
                   >
                     Minsony<br />
                     260 Pentonville Road<br />
