@@ -155,7 +155,8 @@ export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
   const isBioRoute = location.startsWith("/bio") || location.startsWith("/tiktok");
   const isMindExploredRoute = location.startsWith("/themindexplored");
-  const hideNavigation = isBioRoute || isMindExploredRoute;
+  const isHomeRoute = location === "/";
+  const hideNavigation = isBioRoute || isMindExploredRoute || isHomeRoute;
   const showFooter = !isBioRoute;
   const showFooterExtras = showFooter && !isMindExploredRoute;
   useEffect(() => {
