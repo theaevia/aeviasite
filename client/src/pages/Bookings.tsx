@@ -111,7 +111,7 @@ export default function Bookings(): JSX.Element {
       <SEO title="Bookings | The Aevia" description="To book our treatments directly." />
       <section className="hero-gradient py-12 lg:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">Bookings</h1>
+          <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Bookings</h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">For booking our services directly.</p>
         </div>
       </section>

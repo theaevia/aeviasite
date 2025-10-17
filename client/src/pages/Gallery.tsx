@@ -8,7 +8,7 @@ export default function GalleryPage() {
       <SEO title="Before & After Gallery | The Aevia" description="Explore real patient results from our anti‑wrinkle, skin booster, and polynucleotide treatments." />
       <section className="hero-gradient py-12 lg:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">Results Gallery</h1>
+          <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Results <span className="text-primary">Gallery</span></h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
             A selection of before & after results from treatments performed at Aevia Skin. Individual results may vary.
           </p>

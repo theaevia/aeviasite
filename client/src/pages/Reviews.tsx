@@ -16,7 +16,7 @@ export default function Reviews() {
       <div className="min-h-screen py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6">Client Stories</h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Client <span className="text-primary">Stories</span></h1>
             <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
               Real transformations from our community. Each story represents a unique journey of growth and confidence.
             </p>

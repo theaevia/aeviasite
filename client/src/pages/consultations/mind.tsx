@@ -42,7 +42,7 @@ export default function MindConsultationPage() {
         {/* Hero */}
         <section className="bg-muted py-16 md:py-20 border-b border-[#e0ddd9]">
           <div className="max-w-5xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-3">Aevia Mind Discovery Call</h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Aevia Mind Discovery <span className="text-primary">Call</span></h1>
             <p className="text-base md:text-lg text-foreground/80 mb-6">Doctor-led, complimentary 30-min consult. Discreet & personalised.</p>
             {/* Segmented switch */}
             <div className="flex items-center justify-center gap-3 mb-8">
@@ -86,9 +86,18 @@ export default function MindConsultationPage() {
                 <h2 className="text-xl font-serif font-semibold">Quick facts</h2>
               </div>
               <ul className="space-y-3 text-foreground/80">
-                <li className="flex items-center"><Clock className="text-primary mr-3 h-5 w-5" /> 30-minute virtual consultation</li>
-                <li className="flex items-center"><Gift className="text-primary mr-3 h-5 w-5" /> Complimentary (no charge)</li>
-                <li className="flex items-center"><Target className="text-primary mr-3 h-5 w-5" /> Coaching strategy discussion</li>
+                <li className="flex items-center gap-3">
+                  <Clock className="h-5 w-5 flex-shrink-0 text-primary" />
+                  <span>30-minute virtual consultation</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Gift className="h-5 w-5 flex-shrink-0 text-primary" />
+                  <span>Complimentary (no charge)</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Target className="h-5 w-5 flex-shrink-0 text-primary" />
+                  <span>Coaching strategy discussion</span>
+                </li>
               </ul>
             </div>
             {/* What you'll get */}
@@ -101,8 +110,8 @@ export default function MindConsultationPage() {
             <div className="bg-white rounded-2xl p-8 border border-[#e0ddd9]">
               <h3 className="text-xl font-serif font-semibold mb-3">Why choose Aevia</h3>
               <ul className="space-y-2 text-foreground/80 text-sm">
-                <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>GMC-registered doctors</span></li>
-                <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>Certified coaches</span></li>
+                <li className="flex items-center gap-3"><Check className="h-5 w-5 flex-shrink-0 text-primary" /> <span>GMC-registered doctors</span></li>
+                <li className="flex items-center gap-3"><Check className="h-5 w-5 flex-shrink-0 text-primary" /> <span>Certified coaches</span></li>
               </ul>
             </div>
             {/* FAQs */}
@@ -137,8 +146,8 @@ function AccordionCard({ title, items }: { title: string; items: string[] }) {
         <AccordionContent>
           <ul className="space-y-2 text-foreground/80">
             {items.map((text) => (
-              <li key={text} className="grid grid-cols-[20px_1fr] gap-3 items-start">
-                <Check className="h-5 w-5 text-primary mt-0.5" />
+              <li key={text} className="flex items-center gap-3">
+                <Check className="h-5 w-5 flex-shrink-0 text-primary" />
                 <span>{text}</span>
               </li>
             ))}

@@ -6,7 +6,7 @@ export default function CancellationPolicyPage() {
       <SEO title="Cancellation Policy | The Aevia" description="Our policy on cancellations, late arrivals, no‑shows, and cooling‑off for distance purchases." />
       <section className="hero-gradient py-12 lg:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">Cancellations, Late Arrivals & No‑Shows</h1>
+          <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Cancellations, Late Arrivals & <span className="text-primary">No‑Shows</span></h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">Please review our policy before booking.</p>
         </div>
       </section>

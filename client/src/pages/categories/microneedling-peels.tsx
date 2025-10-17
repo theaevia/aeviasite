@@ -18,7 +18,7 @@ export default function MicroneedlingPeelsCategoryPage() {
       <SEO title={`${pageTitle} | The Aevia`} description={pageDescription} />
       <section className="hero-gradient py-12 lg:py-20">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">{pageTitle}</h1>
+          <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">{pageTitle}</h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
             Microneedling is now open for booking with both HA-infused and regenerative protocols. Medical-grade peels are in final development — join the waitlist to be first when they launch.
           </p>
@@ -36,7 +36,7 @@ export default function MicroneedlingPeelsCategoryPage() {
         <section className="w-full bg-white py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6 md:px-8">
             <div className="flex flex-col items-center text-center mb-10">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4 text-black">Microneedling Treatments</h2>
+              <h2 className="section-heading normal-case mb-4 text-black">Microneedling Treatments</h2>
               <p className="text-base text-foreground/80 max-w-2xl">
                 Choose between Classic (HA-infused) and Regenerative (Exosomes + Polynucleotides) microneedling. Both protocols target texture, scarring, and dullness with minimal downtime.
               </p>
@@ -62,7 +62,7 @@ export default function MicroneedlingPeelsCategoryPage() {
 
       <section className="w-full bg-secondary py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4 text-black">Clinical Peels Launching Soon</h2>
+          <h2 className="section-heading normal-case mb-4 text-black">Clinical Peels Launching Soon</h2>
           <p className="text-base text-foreground/80 mb-6">
             Our peel menu is in the final clinical testing phase. Register your interest and we will notify you the moment booking opens.
           </p>

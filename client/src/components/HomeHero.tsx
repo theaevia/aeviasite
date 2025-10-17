@@ -18,9 +18,16 @@ interface HomeHeroProps {
 }
 
 const navLinks = [
-  { label: "ABOUT", href: "/team" },
   { label: "TREATMENTS", href: "/treatments" },
+  { label: "ABOUT", href: "/team" },
 ];
+
+const mobileNavLinks = [
+  { label: "SKIN", href: "/skin" },
+  { label: "MIND", href: "/mind" },
+  ...navLinks,
+];
+
 
 export function HomeHero({
   backgroundImage,
@@ -68,6 +75,8 @@ export function HomeHero({
     "text-xs lg:text-sm font-normal uppercase tracking-[0.1em] hover:opacity-80 transition-opacity duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
   const bookNowButtonClasses =
     "inline-flex items-center justify-center rounded-full border-[1.5px] border-white/80 px-6 py-2 text-xs lg:text-sm uppercase tracking-[0.1em] font-medium transition duration-200 hover:bg-white hover:text-[#111] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  const heroCtaClasses =
+    "hero-text-shadow inline-flex h-12 w-full max-w-[210px] min-w-[180px] items-center justify-center rounded-none border-2 border-white bg-transparent px-6 text-xs font-medium uppercase tracking-[0.08em] text-white shadow-lg transition-all duration-300 ease-out sm:bg-white sm:text-[#111] sm:text-sm lg:w-auto lg:max-w-none lg:min-w-[220px] lg:px-8 hover:bg-transparent hover:text-white hover:shadow-xl sm:hover:text-white sm:hover:bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
   return (
     <section className="relative isolate flex min-h-screen flex-col overflow-hidden bg-black text-white font-coco">
@@ -156,16 +165,15 @@ export function HomeHero({
       </header>
 
       <div
-        className="hero-safe-padding relative z-20 flex flex-col justify-center py-8 lg:py-16"
-        style={{ minHeight: "calc(100vh - var(--header-h, 0px))" }}
+        className="hero-safe-padding relative z-20 flex flex-col justify-center py-12 lg:py-16"
+        style={{ minHeight: "calc(100svh - var(--header-h, 0px))" }}
       >
-        <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center text-center">
-          <div className="mx-auto flex w-full max-w-[820px] flex-col items-center gap-10 sm:gap-12 lg:gap-14">
-            <div className="flex w-full flex-col items-center gap-3">
-              <h1
-                className="hero-text-shadow uppercase tracking-[0.1em]"
-                style={{ fontSize: "clamp(28px, 3.2vw, 56px)", lineHeight: 1.2, fontWeight: 400 }}
-              >
+        <div
+          className="mx-auto flex w-full max-w-[1100px] flex-col items-center text-center"
+        >
+          <div className="mx-auto flex w-full max-w-[820px] flex-col items-center gap-10 sm:gap-12 lg:gap-14 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-12">
+            <div className="flex w-full flex-col items-center gap-3 text-center">
+              <h1 className="hero-text-shadow font-display uppercase tracking-[0.1em] text-[clamp(38px,5.4vw,56px)] font-light leading-[1.14] sm:text-[clamp(32px,3.2vw,56px)]">
                 A SPACE DEDICATED TO YOUR
                 <br className="hidden lg:block" />
                 <span className="lg:inline"> WELLNESS AND LONGEVITY</span>
@@ -178,22 +186,22 @@ export function HomeHero({
               </p>
             </div>
             <div className="flex w-full flex-col items-center gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
-            <Link
-              href="/skin"
-              className="hero-text-shadow inline-flex h-12 w-full max-w-[210px] min-w-[180px] items-center justify-center rounded-none border-2 border-white bg-white px-6 text-xs font-medium uppercase tracking-[0.08em] text-[#111] shadow-lg transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-sm lg:w-auto lg:max-w-none lg:min-w-[220px] lg:px-8"
-              role="button"
-              aria-label="Go to Skin"
-            >
-              SKIN
-            </Link>
-            <Link
-              href="/mind"
-              className="hero-text-shadow inline-flex h-12 w-full max-w-[210px] min-w-[180px] items-center justify-center rounded-none border-2 border-white bg-white px-6 text-xs font-medium uppercase tracking-[0.08em] text-[#111] shadow-lg transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-sm lg:w-auto lg:max-w-none lg:min-w-[220px] lg:px-8"
-              role="button"
-              aria-label="Go to Mind"
-            >
-              MIND
-            </Link>
+              <Link
+                href="/skin"
+                className={heroCtaClasses}
+                role="button"
+                aria-label="Go to Skin"
+              >
+                SKIN
+              </Link>
+              <Link
+                href="/mind"
+                className={heroCtaClasses}
+                role="button"
+                aria-label="Go to Mind"
+              >
+                MIND
+              </Link>
             </div>
           </div>
         </div>
@@ -238,7 +246,7 @@ export function HomeHero({
               Menu
             </span>
             <nav className="flex flex-col gap-6 text-lg uppercase tracking-[0.1em]">
-              {navLinks.map(({ label, href }) => (
+              {mobileNavLinks.map(({ label, href }) => (
                 <Link
                   key={label}
                   href={href}

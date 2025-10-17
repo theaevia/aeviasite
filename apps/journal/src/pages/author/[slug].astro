@@ -63,7 +63,7 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
       )}
       <div>
         <p class="eyebrow">Author</p>
-        <h1 class="text-3xl md:text-4xl font-serif font-bold">{author.name}</h1>
+        <h1 class="text-4xl lg:text-5xl font-serif font-bold">{author.name}</h1>
         {author.credentials && <p class="text-foreground/70">{author.credentials}</p>}
         {author.bio && <p class="text-sm text-foreground/60 mt-1 max-w-2xl">{author.bio}</p>}
       </div>
