@@ -9,7 +9,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { signatureOffers } from "@/data/signatureOffers";
 import { testimonials } from "@/data/testimonials";
 import underEyeImage from "@assets/before_afters/under-eye-no-logo.png";
-import masseterImage from "@assets/before_afters/masseter-no-logo.png";
+import masseterImage from "@assets/before_afters/masseter-1.png";
 import foreheadImage from "@assets/before_afters/forehead-no-logo.png";
 
 export default function Skin() {
@@ -52,23 +52,26 @@ export default function Skin() {
       />
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-white py-20 lg:py-32 text-[#111]">
-          <div className="hero-safe-padding">
-            <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
-              <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Aevia Skin: <span className="text-primary">Regenerative Aesthetics</span></h1>
-                <p className="eyebrow mb-4 text-primary/80">
+        <section className="bg-white py-20 lg:py-32">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
+                  Aevia Skin: <span className="text-primary">Regenerative Aesthetics</span>
+                </h1>
+                {/* Trust bar */}
+                <p className="text-sm md:text-base text-foreground/70 mb-4">
                   Doctor-led • King’s Cross • Subtle, natural results
                 </p>
-                <p className="max-w-xl text-sm sm:text-base leading-relaxed text-[#3f3a33]">
+                <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
                   Non-invasive skin longevity treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
                 </p>
-                <div className="mt-10 w-full sm:w-auto text-center lg:text-left">
-                  <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto lg:self-start">
+                <div className="w-full sm:w-auto text-center">
+                  <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
                     Book Consultation
                   </BookingButton>
-                  <div className="mt-3 text-sm text-center lg:text-left">
-                    <Link href="/treatments#skin" className="uppercase tracking-[0.16em] text-primary transition-colors duration-150 hover:text-primary/80">
+                  <div className="mt-3 text-sm text-center">
+                    <Link href="/treatments#skin" className="text-primary/80 hover:text-primary underline underline-offset-4">
                       View all treatments & prices
                     </Link>
                   </div>
@@ -84,7 +87,7 @@ export default function Skin() {
                     <img
                       src={skinHeroImage}
                       alt="Aevia Skin clinic showcasing skin treatments"
-                      className="absolute inset-0 h-full w-full border border-[#d9d0c4] object-cover loading:animate-pulse loading:blur-sm"
+                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
                       loading="eager"
                      
                       width="1600"
@@ -99,16 +102,13 @@ export default function Skin() {
         </section>
 
         {/* Signature Offers - surfaced high */}
-        <section className="bg-secondary py-16 md:py-24">
-          <div className="hero-safe-padding">
-            <div className="mx-auto mb-10 max-w-6xl text-center">
-              <p className="eyebrow text-primary/80">Signature Offers</p>
-              <h2 className="section-heading normal-case mt-4">Our Most-Booked Combinations</h2>
-              <p className="mt-4 text-sm sm:text-base text-[#3f3a33]">
-                Doctor-curated pairings that deliver natural, lasting results with fewer visits.
-              </p>
+        <section className="py-12 md:py-20 bg-secondary">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold font-serif mb-3 tracking-wider text-primary">Signature Offers</h2>
+              <p className="text-lg text-muted-foreground">Our most-booked combinations for natural, lasting results.</p>
             </div>
-            <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {signatureOffers.map((offer) => {
                 const [mainTitle, subtitle] = offer.name.split('\n');
                 const isAntiWrinkle = offer.name.toLowerCase().includes('anti-wrinkle');
@@ -121,39 +121,24 @@ export default function Skin() {
                   }
                 };
                 return (
-                  <div
-                    key={offer.name}
-                    className="card-surface flex h-full flex-col border border-[#d9d0c4] bg-white/95 p-8 text-center transition-all duration-300 hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
-                  >
-                    <div className="flex flex-1 flex-col items-center">
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#111]">
-                        {mainTitle}
-                      </h3>
-                      {subtitle && (
-                        <p className="mt-1 text-xs uppercase tracking-[0.16em] text-primary/80">
-                          {subtitle}
-                        </p>
-                      )}
-                      <span className="mt-4 text-xl font-semibold uppercase tracking-[0.1em] text-primary">
-                        {offer.price}
-                      </span>
-                      <p className="mt-4 text-sm leading-relaxed text-[#3f3a33]">{offer.description}</p>
-                      <ul className="mt-6 mb-4 space-y-2 text-left text-sm leading-relaxed text-[#3f3a33]/80">
-                        {offer.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-3 leading-relaxed">
-                            <Check className="h-4 w-4 flex-shrink-0 text-primary" />
-                            <span>{feature}</span>
+                  <div key={offer.name} className="bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+                    <div className="flex-1 flex flex-col items-center">
+                      <h3 className="text-2xl font-serif font-bold mb-1">{mainTitle}</h3>
+                      {subtitle && <p className="text-base text-foreground/60 font-normal mb-2">{subtitle}</p>}
+                      <span className="text-primary font-normal text-2xl mb-1">{offer.price}</span>
+                      <p className="text-foreground/70 mb-4">{offer.description}</p>
+                      <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3">
+                        {offer.features.map(feature => (
+                          <li key={feature} className="relative pl-6 leading-relaxed">
+                            <Check size={16} className="absolute left-0 top-1/2 -translate-y-1/2 text-primary" />
+                            {feature}
                           </li>
                         ))}
                       </ul>
-                      <hr className="my-4 border-[#d9d0c4]/80" />
-                      <div className="text-[0.7rem] tracking-[0.18em] text-[#3f3a33]/70">
-                        Normally {offer.normalPrice}. Consultation required before any prescription treatment.
-                      </div>
+                      <hr className="border-t border-[#e0ddd9] my-4 w-3/4 mx-auto" />
+                      <div className="text-xs text-muted-foreground">Normally {offer.normalPrice}. A medical consultation is required before any prescription treatment.</div>
                     </div>
-                    <Button onClick={onCtaClick} variant="primary" className="mt-6 w-full">
-                      {ctaText}
-                    </Button>
+                    <Button onClick={onCtaClick} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4">{ctaText}</Button>
                   </div>
                 );
               })}
@@ -162,12 +147,11 @@ export default function Skin() {
         </section>
 
         {/* Before & After */}
-        <section className="bg-white py-16 md:py-24">
-          <div className="hero-safe-padding">
-            <div className="mx-auto mb-12 max-w-5xl text-center">
-              <p className="eyebrow text-primary/80">Clinical Outcomes</p>
-              <h2 className="section-heading normal-case mt-4">Before & Afters</h2>
-              <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
+        <section className="py-12 md:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4">Before & Afters</h2>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
                 Real client journeys guided by our doctors. Subtle shifts, refreshed structure, and skin that still feels unmistakably you.
               </p>
             </div>
@@ -176,31 +160,27 @@ export default function Skin() {
                 return (
                   <figure
                     key={result.title}
-                    className="group card-surface flex h-full flex-col border border-[#d9d0c4] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                    className="group bg-white rounded-3xl border border-[#e0ddd9] shadow-lg overflow-hidden flex flex-col h-full"
                   >
-                    <div className="relative aspect-[4/5] w-full border-b border-[#d9d0c4] bg-secondary transition-transform duration-300 group-hover:scale-[1.015]">
+                    <div className="aspect-[4/5] w-full overflow-hidden bg-secondary">
                       <img
                         src={result.image}
                         alt={result.alt}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                         loading="lazy"
                       />
                     </div>
-                    <figcaption className="flex flex-1 flex-col gap-3 p-6">
-                      <p className="text-[0.65rem] uppercase tracking-[0.32em] text-primary/80">
-                        {result.timeframe}
-                      </p>
-                      <h3 className="text-sm uppercase tracking-[0.2em] text-[#111]">
-                        {result.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-[#3f3a33] flex-1">{result.summary}</p>
-                      <div className="space-y-1 text-[0.7rem] uppercase tracking-[0.2em] text-[#3f3a33]/70">
-                        <p className="text-[#111]">Protocol</p>
-                        <p className="normal-case tracking-normal text-[#3f3a33]">{result.protocol}</p>
+                    <figcaption className="p-6 flex-1 flex flex-col">
+                    <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary/80 mb-3">{result.timeframe}</p>
+                      <h3 className="text-xl font-serif font-semibold mb-3 text-foreground">{result.title}</h3>
+                      <p className="text-sm text-foreground/70 mb-4 leading-relaxed flex-1">{result.summary}</p>
+                      <div className="text-xs text-foreground/60 space-y-1 mb-4">
+                        <p className="font-medium text-foreground/80 uppercase tracking-[0.25em] text-[0.65rem]">Protocol</p>
+                        <p>{result.protocol}</p>
                       </div>
                       <Link
                         href={result.href}
-                        className="text-xs tracking-[0.18em] text-primary transition-colors duration-150 hover:text-primary/80"
+                        className="text-sm font-medium text-primary underline underline-offset-4 hover:text-primary/80"
                       >
                         View treatment details
                       </Link>
@@ -209,7 +189,7 @@ export default function Skin() {
                 );
               })}
             </div>
-            <p className="mt-10 text-[0.7rem] tracking-[0.18em] text-center text-[#3f3a33]/60">
+            <p className="text-xs text-foreground/60 text-center mt-8">
               Individual results vary; consultation required to determine the safest, most effective plan for you.
             </p>
           </div>
@@ -219,110 +199,83 @@ export default function Skin() {
         <section className="py-20 bg-accent/30">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="section-heading normal-case mb-6">Our Regenerative Treatments</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Our Regenerative Treatments</h2>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto">Science-backed procedures that work with your body's natural healing processes</p>
             </div>
             
-            <div className="grid gap-8 md:grid-cols-3">
-              <Link
-                href="/categories/polynucleotides"
-                className="card-surface block border border-[#d9d0c4] p-6 text-center transition-all duration-200 hover:shadow-[0_16px_32px_rgba(0,0,0,0.08)]"
-              >
-                <Dna className="mx-auto mb-4 h-10 w-10 text-primary" />
-                <h3 className="text-sm uppercase tracking-[0.2em] text-[#111]">Polynucleotides</h3>
-                <p className="mt-2 text-xs tracking-[0.18em] text-primary/80">From £250</p>
-                <p className="mt-4 text-sm leading-relaxed text-[#3f3a33]">
-                  DNA-based therapy that stimulates natural skin regeneration and hydration.
-                </p>
-                <span className="mt-5 inline-flex items-center justify-center text-xs tracking-[0.18em] text-primary">
-                  Learn more
-                </span>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Link href="/categories/polynucleotides" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
+                <Dna className="text-primary text-4xl mx-auto mb-4" />
+                <h3 className="text-xl font-serif font-semibold mb-1">Polynucleotides</h3>
+                <p className="text-primary font-medium mb-2">From £250</p>
+                <p className="text-foreground/70 text-sm mb-3">DNA-based therapy that stimulates natural skin regeneration and hydration</p>
+                <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
               
-              <Link
-                href="/categories/skin-boosters"
-                className="card-surface block border border-[#d9d0c4] p-6 text-center transition-all duration-200 hover:shadow-[0_16px_32px_rgba(0,0,0,0.08)]"
-              >
-                <Droplet className="mx-auto mb-4 h-10 w-10 text-primary" />
-                <h3 className="text-sm uppercase tracking-[0.2em] text-[#111]">Skin Boosters</h3>
-                <p className="mt-2 text-xs tracking-[0.18em] text-primary/80">From £250</p>
-                <p className="mt-4 text-sm leading-relaxed text-[#3f3a33]">
-                  Hyaluronic acid injections for deep hydration and improved skin quality.
-                </p>
-                <span className="mt-5 inline-flex items-center justify-center text-xs tracking-[0.18em] text-primary">
-                  Learn more
-                </span>
+              <Link href="/categories/skin-boosters" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
+                <Droplet className="text-primary text-4xl mx-auto mb-4" />
+                <h3 className="text-xl font-serif font-semibold mb-1">Skin Boosters</h3>
+                <p className="text-primary font-medium mb-2">From £250</p>
+                <p className="text-foreground/70 text-sm mb-3">Hyaluronic acid injections for deep hydration and improved skin quality</p>
+                <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
               
-              <Link
-                href="/categories/anti-wrinkle"
-                className="card-surface block border border-[#d9d0c4] p-6 text-center transition-all duration-200 hover:shadow-[0_16px_32px_rgba(0,0,0,0.08)]"
-              >
-                <Sparkles className="mx-auto mb-4 h-10 w-10 text-primary" />
-                <h3 className="text-sm uppercase tracking-[0.2em] text-[#111]">Anti-Wrinkle Injections</h3>
-                <p className="mt-2 text-xs tracking-[0.18em] text-primary/80">From £160</p>
-                <p className="mt-4 text-sm leading-relaxed text-[#3f3a33]">
-                  Precision muscle relaxation for natural-looking wrinkle softening.
-                </p>
-                <span className="mt-5 inline-flex items-center justify-center text-xs tracking-[0.18em] text-primary">
-                  Learn more
-                </span>
+              <Link href="/categories/anti-wrinkle" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
+                <Sparkles className="text-primary text-4xl mx-auto mb-4" />
+                <h3 className="text-xl font-serif font-semibold mb-1">Anti-Wrinkle Injections</h3>
+                <p className="text-primary font-medium mb-2">From £160</p>
+                <p className="text-foreground/70 text-sm mb-3">Precision muscle relaxation for natural-looking wrinkle reduction</p>
+                <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
             </div>
           </div>
         </section>
 
         {/* Client Transformations */}
-        <section className="bg-white py-16 md:py-24">
-          <div className="hero-safe-padding">
-            <div className="mx-auto mb-8 max-w-5xl text-center">
-              <p className="eyebrow text-primary/80">Client Transformations</p>
-              <h2 className="section-heading normal-case mt-4">Natural results led by doctors</h2>
-              <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
+        <section className="py-12 md:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-6 md:mb-10">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Client Transformations</h2>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
                 Stories from clients who chose regenerative treatments for skin that looks rested, lifted, and unmistakably theirs.
               </p>
             </div>
-            <div className="mb-10 text-center">
-              <div className="inline-flex items-center gap-4 border border-[#d9d0c4] px-6 py-3 tracking-[0.18em] text-[#111]">
-                <div className="flex items-center gap-1 text-primary">
-                  <Star className="h-5 w-5 fill-current" />
-                  <Star className="h-5 w-5 fill-current" />
-                  <Star className="h-5 w-5 fill-current" />
-                  <Star className="h-5 w-5 fill-current" />
-                  <Star className="h-5 w-5 fill-current" />
+            <div className="text-center mb-6 md:mb-8">
+              <div className="inline-flex items-center bg-primary/10 border border-primary/20 rounded-2xl px-6 py-3 md:py-4">
+                <div className="flex items-center space-x-1 mr-3">
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
+                  <Star className="w-5 h-5 text-primary fill-current" />
                 </div>
-                <span className="text-sm text-primary">5.0</span>
-                <span className="text-[0.68rem] text-[#3f3a33]/80">Verified Google reviews</span>
+                <span className="text-xl font-bold text-primary">5.0</span>
+                <span className="text-foreground/70 ml-2 font-medium">from verified Google reviews</span>
               </div>
             </div>
-            <div className="mb-12 grid gap-6 md:grid-cols-3">
+            <div className="grid md:grid-cols-3 gap-6 mb-8 md:mb-12">
               {testimonials.map(testimonial => (
                 <TestimonialCard key={testimonial.name} {...testimonial} />
               ))}
             </div>
             <div className="text-center">
-              <Button
-                asChild
-                variant="primary"
-                className="min-w-[220px]"
+              <a
+                href="https://maps.app.goo.gl/jpQNgXg92eiBesPD8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary hover:text-white transition-colors duration-200"
               >
-                <a
-                  href="https://maps.app.goo.gl/jpQNgXg92eiBesPD8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read more client stories
-                </a>
-              </Button>
+                Read more client stories
+              </a>
             </div>
           </div>
         </section>
 
         {/* Process */}
-        <section className="py-20 bg-accent/30">
+        <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="section-heading normal-case mb-6">The Aevia Skin Consultation</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Skin Consultation</h2>
               <div className="bg-primary/10 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
                 <h3 className="text-2xl font-serif font-semibold mb-4 text-primary">20-Minute Clinical Session</h3>
                 <p className="text-lg text-foreground/80 mb-6">
@@ -333,16 +286,16 @@ export default function Skin() {
                   <div>
                     <h4 className="font-semibold text-foreground mb-3">Perfect for:</h4>
                     <ul className="space-y-2 text-foreground/70">
-                      <li className="flex items-center gap-3">
-                        <Check className="h-4 w-4 flex-shrink-0 text-primary" />
+                      <li className="flex items-center">
+                        <Check size={16} className="text-primary mr-3 flex-shrink-0" />
                         First-time clients
                       </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-4 w-4 flex-shrink-0 text-primary" />
+                      <li className="flex items-center">
+                        <Check size={16} className="text-primary mr-3 flex-shrink-0" />
                         Unsure clients seeking guidance
                       </li>
-                      <li className="flex items-center gap-3">
-                        <Check className="h-4 w-4 flex-shrink-0 text-primary" />
+                      <li className="flex items-center">
+                        <Check size={16} className="text-primary mr-3 flex-shrink-0" />
                         Personalised treatment planning
                       </li>
                     </ul>
@@ -351,12 +304,12 @@ export default function Skin() {
                   <div>
                     <h4 className="font-semibold text-foreground mb-3">Pricing:</h4>
                     <ul className="space-y-2 text-foreground/70">
-                      <li className="flex items-center gap-3">
-                        <Gift className="h-5 w-5 flex-shrink-0 text-primary" />
+                      <li className="grid grid-cols-[20px_1fr] gap-3 items-start">
+                        <Gift className="h-5 w-5 text-primary" />
                         <span>Free (usually £30, now complimentary for first-time clients)</span>
                       </li>
-                      <li className="flex items-center gap-3">
-                        <Camera className="h-5 w-5 flex-shrink-0 text-primary" />
+                      <li className="grid grid-cols-[20px_1fr] gap-3 items-start">
+                        <Camera className="h-5 w-5 text-primary" />
                         <span>Virtual consultation</span>
                       </li>
                     </ul>
@@ -409,9 +362,9 @@ export default function Skin() {
         </section>
 
         {/* Booking Decision (binary) */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="section-heading normal-case mb-2">How should I book?</h2>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-2">How should I book?</h2>
             <p className="text-foreground/70 mb-8">We guide first-timers to the right plan. Returning clients can book specific treatments directly.</p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-accent/20 rounded-2xl p-6">
@@ -437,7 +390,7 @@ export default function Skin() {
         {/* CTA */}
         <section className="py-20 bg-accent/30">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="section-heading normal-case mb-6">Ready to Transform Your Skin?</h2>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
             <p className="text-lg text-foreground/70 mb-8">Book your FREE Aevia Skin Consultation</p>
             <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
               Book Your Aevia Skin Consultation

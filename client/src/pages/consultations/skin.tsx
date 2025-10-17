@@ -42,7 +42,7 @@ export default function SkinConsultationPage() {
         {/* Hero */}
         <section className="bg-secondary py-16 md:py-20 border-b border-[#e0ddd9]">
           <div className="max-w-5xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Aevia Skin <span className="text-primary">Consultation</span></h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-3">Aevia Skin Consultation</h1>
             <p className="text-base md:text-lg text-foreground/80 mb-6">Doctor-led, complimentary 20-min consult. Discreet & personalised.</p>
             {/* Segmented switch */}
             <div className="flex items-center justify-center gap-3 mb-8">
@@ -99,18 +99,9 @@ export default function SkinConsultationPage() {
                 <h2 className="text-xl font-serif font-semibold">Quick facts</h2>
               </div>
               <ul className="space-y-3 text-foreground/80">
-                <li className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 flex-shrink-0 text-primary" />
-                  <span>20-minute virtual consultation</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Gift className="h-5 w-5 flex-shrink-0 text-primary" />
-                  <span>Complimentary (no charge)</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Calendar className="h-5 w-5 flex-shrink-0 text-primary" />
-                  <span>Available most days of the week</span>
-                </li>
+                <li className="flex items-center"><Clock className="text-primary mr-3 h-5 w-5" /> 20-minute virtual consultation</li>
+                <li className="flex items-center"><Gift className="text-primary mr-3 h-5 w-5" /> Complimentary (no charge)</li>
+                <li className="flex items-center"><Calendar className="text-primary mr-3 h-5 w-5" /> Available most days of the week</li>
               </ul>
             </div>
             {/* What you'll get */}
@@ -123,9 +114,9 @@ export default function SkinConsultationPage() {
             <div className="bg-white rounded-2xl p-8 border border-[#e0ddd9]">
               <h3 className="text-xl font-serif font-semibold mb-3">Why choose The Aevia</h3>
               <ul className="space-y-2 text-foreground/80 text-sm">
-                <li className="flex items-center gap-3"><Check className="h-5 w-5 flex-shrink-0 text-primary" /> <span>GMC-registered doctors</span></li>
-                <li className="flex items-center gap-3"><Check className="h-5 w-5 flex-shrink-0 text-primary" /> <span>Clinic in Kings Cross, London</span></li>
-                <li className="flex items-center gap-3"><Check className="h-5 w-5 flex-shrink-0 text-primary" /> <span>Regenerative approach</span></li>
+                <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>GMC-registered doctors</span></li>
+                <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>Clinic in Kings Cross, London</span></li>
+                <li className="grid grid-cols-[20px_1fr] gap-3 items-start"><Check className="h-5 w-5 text-primary mt-0.5" /> <span>Regenerative approach</span></li>
               </ul>
             </div>
             {/* FAQs */}
@@ -160,8 +151,8 @@ function AccordionCard({ title, items }: { title: string; items: string[] }) {
         <AccordionContent>
           <ul className="space-y-2 text-foreground/80">
             {items.map((text) => (
-              <li key={text} className="flex items-center gap-3">
-                <Check className="h-5 w-5 flex-shrink-0 text-primary" />
+              <li key={text} className="grid grid-cols-[20px_1fr] gap-3 items-start">
+                <Check className="h-5 w-5 text-primary mt-0.5" />
                 <span>{text}</span>
               </li>
             ))}

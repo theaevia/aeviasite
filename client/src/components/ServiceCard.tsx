@@ -30,11 +30,11 @@ export default function ServiceCard({
   const imageSrc = asset(image, { fallback: DEFAULT_ASSET_FALLBACK_PATH });
 
   return (
-    <div className={`${backgroundColor} card-surface p-8 transition-all duration-200 hover:shadow-[0_18px_40px_rgba(0,0,0,0.08)]`}>
-      <div className="mb-6 space-y-3">
-        <p className="eyebrow text-primary/90">{subtitle}</p>
-        <h3 className="text-xl uppercase tracking-[0.16em] text-[#111]">{title}</h3>
-        <p className="body-copy">{description}</p>
+    <div className={`${backgroundColor} rounded-2xl p-8 shadow-lg smooth-transition hover:shadow-xl`}>
+      <div className="mb-6">
+        <h3 className="text-2xl font-serif font-bold mb-2">{title}</h3>
+        <p className="text-lg text-primary mb-4">{subtitle}</p>
+        <p className="text-foreground/70 mb-6">{description}</p>
       </div>
       
       <img
@@ -43,23 +43,22 @@ export default function ServiceCard({
         width="800"
         height="533"
         loading="lazy"
-        className={`mb-6 h-64 w-full border border-[#d9d0c4] object-cover ${imagePositionTop ? "object-top" : ""}`}
+        className={`rounded-xl mb-6 w-full h-64 object-cover${imagePositionTop ? ' object-top' : ''}`}
         style={objectPosition ? { objectPosition } : undefined}
       />
       
-      <ul className="mb-6 space-y-2">
+      <ul className="space-y-2 mb-6">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-3 text-sm leading-relaxed text-[#3f3a33]">
-            <Check className="h-4 w-4 text-primary" />
-            <span>{feature}</span>
+          <li key={index} className="flex items-center text-foreground/70">
+            <Check className="h-4 w-4 text-primary mr-3" />
+            {feature}
           </li>
         ))}
       </ul>
       
       <Button 
         onClick={onCtaClick}
-        variant="primary"
-        className="w-full"
+        className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
       >
         {ctaText}
       </Button>

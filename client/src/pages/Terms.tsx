@@ -14,7 +14,7 @@ export default function Terms() {
         {/* Hero */}
         <section className="bg-secondary py-12 lg:py-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Terms & <span className="text-primary">Conditions</span></h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4">Terms & Conditions</h1>
             <p className="text-lg text-foreground/70 leading-relaxed">
               The terms that govern using our website, services and bookings.
             </p>

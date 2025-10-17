@@ -7,9 +7,9 @@ import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111] py-16 text-white">
-      <div className="hero-safe-padding">
-        <div className="mx-auto grid max-w-6xl gap-12 border-b border-white/10 pb-12 md:grid-cols-4">
+    <footer className="bg-foreground text-white py-12">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <Link href="/" className="inline-block">
               <img
@@ -17,44 +17,32 @@ export default function Footer() {
                 alt="The Aevia"
                 width="916"
                 height="500"
-                className="mb-6 h-10 w-auto invert"
+                className="h-10 w-auto mb-4 filter invert"
               />
             </Link>
-            <p className="max-w-xs text-sm text-white/60">
-              Excellence and longevity in skin and mind.
-            </p>
+            <p className="text-gray-300 text-sm">Excellence and longevity in Skin and Mind</p>
           </div>
           
           <div>
-            <h4 className="text-sm font-semibold text-primary">Services</h4>
-            <ul className="mt-6 space-y-2 text-sm text-white/70">
+            <h4 className="font-semibold mb-4">Services</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <Link href="/skin" className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                <Link href="/skin" className="hover:text-primary smooth-transition">
                   Aevia Skin
                 </Link>
               </li>
               <li>
-                <Link href="/mind" className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                <Link href="/mind" className="hover:text-primary smooth-transition">
                   Aevia Mind
                 </Link>
               </li>
               <li>
-                <a
-                  href={SKIN_CONSULTATION_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
+                <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Skin Consultation
                 </a>
               </li>
               <li>
-                <a
-                  href={MIND_DISCOVERY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
+                <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Mind Discovery Call
                 </a>
               </li>
@@ -62,39 +50,25 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-sm font-semibold text-primary">Resources</h4>
-            <ul className="mt-6 space-y-2 text-sm text-white/70">
+            <h4 className="font-semibold mb-4">Resources</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <a
-                  href={journalUrl("/")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
+                <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Journal
                 </a>
               </li>
               <li>
-                <Link
-                  href="/privacy"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
+                <Link href="/privacy" className="hover:text-primary smooth-transition">
                   Privacy & Cookies
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/terms"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
+                <Link href="/terms" className="hover:text-primary smooth-transition">
                   Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/cancellation"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
+                <Link href="/cancellation" className="hover:text-primary smooth-transition">
                   Cancellation Policy
                 </Link>
               </li>
@@ -102,54 +76,30 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-sm font-semibold text-primary">Connect</h4>
-            <div className="mt-6 space-y-4 text-sm text-white/70">
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://instagram.com/the.aevia"
-                  aria-label="Instagram"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <Instagram className="h-5 w-5" />
+            <h4 className="font-semibold mb-4">Connect</h4>
+            <div className="space-y-4">
+              <div className="flex items-center text-sm text-gray-300 space-x-2">
+                <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                  <Instagram className="h-4 w-4" />
                 </a>
-                <a
-                  href="https://www.tiktok.com/@the.aevia"
-                  aria-label="TikTok"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <TikTokIcon className="h-5 w-5" />
+                <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                  <TikTokIcon className="h-4 w-4" />
                 </a>
-                <span className="text-xs text-white/50">@the.aevia</span>
+                <span className="ml-2">@the.aevia</span>
               </div>
-              <div className="flex flex-col space-y-2">
-                <a
-                  href="mailto:hello@theaevia.co.uk"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  hello@theaevia.co.uk
-                </a>
-                <a
-                  href="tel:+447448012556"
-                  className="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  +44 7448 012556
-                </a>
-                <address className="not-italic">
-                  <div className="flex flex-col space-y-1">
-                    <span>Minsony, 260 Pentonville Road</span>
-                    <span>N1 9JY, Kings Cross, London</span>
-                  </div>
-                </address>
-              </div>
+              <a href="mailto:hello@theaevia.co.uk" className="flex items-center text-sm text-gray-300 hover:text-primary smooth-transition">
+                hello@theaevia.co.uk
+              </a>
+              <a href="tel:+447448012556" className="flex items-center text-sm text-gray-300 hover:text-primary smooth-transition">
+                +44 7448 012556
+              </a>
+              <p className="text-sm text-gray-300">Minsony, 260 Pentonville Road, N1 9JY, Kings Cross, London</p>
             </div>
           </div>
         </div>
+        
 
-        <div className="mx-auto mt-10 max-w-6xl text-center text-xs text-white/40">
+        <div className="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
           <p>&copy; 2024 The Aevia. All rights reserved.</p>
         </div>
       </div>

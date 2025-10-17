@@ -205,8 +205,10 @@ export default function BioPage() {
         {/* 2) Hero */}
         <section className="bg-secondary">
           <div className="max-w-4xl mx-auto px-4 py-5 sm:py-12">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">{heroMain}
-              <span className="block text-xl md:text-3xl lg:text-4xl">{heroSub}</span></h1>
+            <h1 className="text-4xl md:text-4xl lg:text-5xl font-serif font-bold leading-snug text-balance text-center">
+              {heroMain}
+              <span className="block text-xl md:text-3xl lg:text-4xl">{heroSub}</span>
+            </h1>
             <p className="mt-3 text-foreground/80 text-center max-w-3xl mx-auto">
               We’ll guide you to suitable options like anti-wrinkle treatment, skin boosters, or polynucleotides - tailored to your goals.
             </p>

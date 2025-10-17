@@ -47,7 +47,7 @@ export default function TreatmentCard({
 
   return (
     <Link href={`/treatments/${slug}`}>
-      <a className="card-surface flex h-full min-h-[350px] min-w-[293px] flex-col overflow-hidden transition-shadow duration-200 hover:shadow-[0_16px_34px_rgba(0,0,0,0.08)]">
+      <a className="bg-white rounded-2xl shadow-lg transition-shadow overflow-hidden h-full flex flex-col min-h-[350px] min-w-[293.34px]">
         <div className="relative w-full aspect-[4/3] overflow-hidden">
           {hasOptimizedVariants ? (
             <picture>
@@ -68,7 +68,7 @@ export default function TreatmentCard({
                 decoding={priority ? "sync" : "async"}
                 width={640}
                 height={480}
-                className={cn("absolute inset-0 h-full w-full border-b border-[#d9d0c4] object-cover", imageClassName)}
+                className={cn("absolute inset-0 w-full h-full object-cover", imageClassName)}
                 style={{ objectPosition: imageObjectPosition }}
               />
             </picture>
@@ -78,22 +78,22 @@ export default function TreatmentCard({
               alt={name}
               loading={priority ? "eager" : "lazy"}
               decoding={priority ? "sync" : "async"}
-              className={cn("absolute inset-0 h-full w-full border-b border-[#d9d0c4] object-cover", imageClassName)}
+              className={cn("absolute inset-0 w-full h-full object-cover", imageClassName)}
               style={{ objectPosition: imageObjectPosition }}
             />
           )}
         </div>
 
-        <div className="flex flex-grow flex-col items-center justify-center gap-2 p-6 text-center">
-          <h3 className="text-sm uppercase tracking-[0.2em] text-[#111]">
+        <div className="p-6 flex-grow flex flex-col items-center justify-center">
+          <h3 className="text-lg font-serif font-bold text-primary text-center">
             {name}
           </h3>
           {subtitle && (
-            <p className="text-xs uppercase tracking-[0.18em] text-primary/80">
+            <p className="text-xs text-primary text-center">
               {subtitle}
             </p>
           )}
-          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#3f3a33]/70">
+          <p className="text-xs text-muted-foreground mt-2 text-center">
             {price} • {duration}
           </p>
         </div>

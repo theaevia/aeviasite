@@ -8,7 +8,9 @@ export default function SalicylicPeelComingSoonPage() {
       <SEO title="Salicylic Peel - Coming Soon | Aevia Skin" description="Salicylic Peel treatment is coming soon to Aevia Skin. Ideal for oily, acne-prone skin." />
       <section className="hero-gradient py-12 lg:py-20 text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Salicylic <span className="text-primary">Peel</span></h1>
+          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
+            Salicylic Peel
+          </h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
             BHA peel ideal for oily, acne-prone skin, helping unclog pores and reduce breakouts, is coming soon to Aevia Skin.
           </p>

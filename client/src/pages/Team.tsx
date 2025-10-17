@@ -18,7 +18,9 @@ export default function About() {
         {/* Hero Section */}
         <section className="bg-secondary py-20 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Meet the <span className="text-primary">Aevia Team</span></h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
+              Meet the <span className="text-primary">Aevia Team</span>
+            </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">
             A doctor-led team committed to natural results, self-confidence, and science-backed care.
             </p>
@@ -42,7 +44,7 @@ export default function About() {
                   />
                 </div>
                 <div>
-                  <h2 className="section-heading normal-case mb-4">Dr. Terrell Okhiria</h2>
+                  <h2 className="text-3xl font-serif font-bold mb-4">Dr. Terrell Okhiria</h2>
                   <p className="text-lg text-primary mb-4">GP Trainee & Aesthetic Doctor</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
                     Dr. Terrell Okhiria is a medical doctor and GP trainee based in North Central London. He holds an MBBS and intercalated BSc from Imperial College London and is certified in advanced aesthetic medicine. With a strong foundation in clinical medicine and a deep understanding of skin physiology, he specialises in regenerative, science-led treatments that support long-term skin health and natural rejuvenation.
@@ -69,7 +71,7 @@ export default function About() {
               {/* Dr. Renee */}
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="order-last lg:order-first">
-                  <h2 className="section-heading normal-case mb-4">Dr. Renee Okhiria</h2>
+                  <h2 className="text-3xl font-serif font-bold mb-4">Dr. Renee Okhiria</h2>
                   <p className="text-lg text-primary mb-4">Medical & Aesthetic Doctor</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
                   Dr. Renée Okhiria is a qualified medical doctor with an MBBS from the University of Manchester and a BSc from Imperial College London. She holds advanced certification in aesthetic medicine, with a focus on non-surgical facial rejuvenation. Known for her artistic eye and meticulous technique, Dr. Renée combines medical precision with creative vision to deliver refined, natural-looking results. Her approach focuses on enhancing each patient's unique features through evidence-based, minimally invasive treatments, prioritising elegance, harmony, and long-term skin health.
@@ -114,7 +116,7 @@ export default function About() {
                   />
                 </div>
                 <div>
-                  <h2 className="section-heading normal-case mb-4">Dr. Manu Sidhu</h2>
+                  <h2 className="text-3xl font-serif font-bold mb-4">Dr. Manu Sidhu</h2>
                   <p className="text-lg text-primary mb-4">Medical Doctor & Performance Coach</p>
                   <p className="text-foreground/70 mb-6 leading-relaxed">
                   Dr. Manu Sidhu is a medical doctor and certified performance coach with an MBBS and a BSc from Imperial College London. He brings a deep understanding of brain science and human behaviour to his work, helping professionals and high-performers unlock clarity, consistency, and long-term growth. With a special interest in mindset and mental wellbeing, Manu blends clinical insight with evidence-based coaching to guide lasting behavioural transformation. He is the author of The Mind Explored, host of the MindTech podcast, and a clinical advisor to the wellbeing platform Pareful.
@@ -142,7 +144,7 @@ export default function About() {
         {/* Our Philosophy */}
         <section className="py-20 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="section-heading normal-case mb-8">Our Philosophy</h2>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-8">Our Philosophy</h2>
             <p className="text-xl text-foreground/70 leading-relaxed mb-8">
               "True transformation happens when we address both the physical and mental aspects of human potential. At The Aevia, we believe that radiant skin and a sharp mind are not separate goals, but complementary pathways to your best self."
             </p>

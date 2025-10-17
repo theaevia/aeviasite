@@ -1,79 +1,91 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import { Link as RouterLink, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
-
-import logoGold from "@assets/logos/logo-gold-transparent.webp";
+import { Button } from "@/components/ui/button";
+import { Instagram, Menu, X, User, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useState, useEffect } from "react";
+import logoBlack from "@assets/logos/logo-black-transparent.webp";
+import logoGold from "@assets/logos/logo-gold-transparent.webp";
+import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
+import { FaGoogle } from "react-icons/fa";
+import { treatmentCategories, TreatmentCategory, Treatment } from "@/data/treatments";
 import { journalUrl } from "@/lib/journal";
-import { JOURNAL_URL, SITE_URL } from "@/lib/env";
-import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import { MIND_OFFERS_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import { SITE_URL, JOURNAL_URL } from "@/lib/env";
 
-type NavigationVariant = "solid" | "transparent";
+// Add slugify helper (same as in CategoryPage)
+const slugify = (str: string) =>
+  str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-interface NavigationProps {
-  variant?: NavigationVariant;
-}
+const buildUrl = (origin: string | undefined, path: string) => {
+  if (!origin) return path;
+  const cleanedOrigin = origin.replace(/\/$/, "");
+  const cleanedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${cleanedOrigin}${cleanedPath}`;
+};
 
-const navLinks = [
-  { label: "TREATMENTS", href: "/treatments" },
-  { label: "ABOUT", href: "/team" },
-];
-
-const mobileNavLinks = [
-  { label: "SKIN", href: "/skin" },
-  { label: "MIND", href: "/mind" },
-  ...navLinks,
-];
-
-export default function Navigation({ variant = "solid" }: NavigationProps) {
-  const [location] = useLocation();
-  const journalHref = useMemo(() => journalUrl("/"), []);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMenuClosing, setIsMenuClosing] = useState(false);
-  const hasMenuBeenOpenedRef = useRef(false);
-  const isTransparent = variant === "transparent";
-
+export default function Navigation() {
   const rawJournalBase = (JOURNAL_URL ?? import.meta.env.BASE_URL ?? "/") as string;
   const journalBase = rawJournalBase === "/" ? "" : rawJournalBase.replace(/\/$/, "");
   const mainSiteOrigin = SITE_URL ? SITE_URL.replace(/\/$/, "") : undefined;
 
   const externalHrefPattern = /^(?:[a-z]+:|#)/i;
-  const buildUrl = (origin: string | undefined, path: string) => {
-    if (!origin) return path;
-    const cleanedOrigin = origin.replace(/\/$/, "");
-    const cleanedPath = path.startsWith("/") ? path : `/${path}`;
-    return `${cleanedOrigin}${cleanedPath}`;
-  };
-
   const resolveHrefForJournal = (href: string) => {
     if (!href || externalHrefPattern.test(href)) {
       return href;
     }
-    if (href.startsWith("/journal")) {
-      const suffix = href.slice("/journal".length);
+    if (href.startsWith('/journal')) {
+      const suffix = href.slice('/journal'.length);
       if (journalBase) {
         return suffix ? `${journalBase}${suffix}` : journalBase;
       }
-      return suffix || "/";
+      return suffix || '/';
     }
     return buildUrl(mainSiteOrigin, href);
   };
 
   const resolveJournalOriginHref = (href: string) => {
-    if (!href) return journalUrl("/");
+    if (!href) return journalUrl('/');
     return journalUrl(href);
   };
 
-  const Link = (props: { href: string; children: React.ReactNode } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  const mindExploredPath = '/themindexplored';
+  const whatIsCoachingUrl = journalUrl('/what-is-coaching');
+
+  // Prefer full page reloads when rendered inside the Journal (Astro) app
+  // This avoids SPA-only navigation on static Journal pages.
+  const isJournalApp = typeof window !== 'undefined' && (
+    import.meta.env.DEV ||
+    (journalBase ? window.location.pathname.startsWith(journalBase) : window.location.pathname.startsWith('/journal')) ||
+    window.location.hostname.includes('journal')
+  );
+
+  // Smart Link that uses wouter in SPA, <a> in Journal
+  // Keep the name `Link` so existing usages below continue to work.
+  const Link = (props: {
+    href: string;
+    children: React.ReactNode;
+  } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const { href, children, ...rest } = props;
-    if (typeof window !== "undefined" && (window.location.hostname.includes("journal") || location.startsWith("/journal"))) {
+    const resolvedHref = isJournalApp ? resolveHrefForJournal(href) : href;
+    if (isJournalApp) {
       return (
-        <a href={resolveHrefForJournal(href)} {...rest}>
+        <a href={resolvedHref} {...rest}>
           {children}
         </a>
       );
     }
-    if (href.startsWith("/journal")) {
+    if (href.startsWith('/journal')) {
       return (
         <a href={resolveJournalOriginHref(href)} {...rest}>
           {children}
@@ -86,214 +98,534 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
       </RouterLink>
     );
   };
+  const [location] = useLocation();
+  const hideHeaderActions = location === '/glow-guide';
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  // Mobile submenu states
+  const [isSkinOpen, setIsSkinOpen] = useState(false);
+  const [isMindOpen, setIsMindOpen] = useState(false);
+  // Mobile Skin sub-sections
+  const [isSkinAntiOpen, setIsSkinAntiOpen] = useState(false);
+  const [isSkinBoostersHeadOpen, setIsSkinBoostersHeadOpen] = useState(false);
+  const [isSkinPnoOpen, setIsSkinPnoOpen] = useState(false);
+  const [isSkinBioOpen, setIsSkinBioOpen] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMenuOpen]);
+  const journalLogoBlackSrc = resolveHrefForJournal('/journal/assets/logos/logo-black-transparent.webp');
+  const journalLogoGoldSrc = resolveHrefForJournal('/journal/assets/logos/logo-gold-transparent.webp');
 
+  const isActive = (path: string) => {
+    if (path === "/" && location === "/") return true;
+    if (path !== "/" && location.startsWith(path)) return true;
+    return false;
+  };
+
+  // Disambiguate which top-level menu to highlight when multiple match (e.g. Mind vs Consult)
+  const [activeMenu, setActiveMenu] = useState<null | 'skin' | 'mind' | 'about'>(null);
+  const matches = (paths: string[]) => paths.some((p) => isActive(p));
+  const flags = {
+    skin: matches(["/treatments", "/categories/", "/gallery"]),
+    mind: matches(["/mind", "/consultations/mind"]),
+    about: matches(["/team", "/clinic"]),
+  } as const;
+  const keys: Array<keyof typeof flags> = ["skin", "mind", "about"];
+  const matchingKeys = keys.filter((k) => flags[k]);
+  const preferredKey = activeMenu && flags[activeMenu] ? activeMenu : matchingKeys[0] || null;
+  const isHighlighted = (key: keyof typeof flags) => flags[key] && preferredKey === key;
+
+  const onNavSelect = (key: 'skin' | 'mind' | 'about') => {
+    setActiveMenu(key);
+    handleLinkClick();
+  };
+
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+    setIsAboutOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Close mobile menu when location changes
   useEffect(() => {
-    setIsMenuOpen(false);
+    setIsMobileMenuOpen(false);
+    setIsAboutOpen(false);
+    setIsSkinOpen(false);
+    setIsSkinAntiOpen(false);
+    setIsSkinBoostersHeadOpen(false);
+    setIsSkinPnoOpen(false);
+    setIsSkinBioOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      hasMenuBeenOpenedRef.current = true;
-      setIsMenuClosing(false);
-      return;
-    }
-
-    if (!hasMenuBeenOpenedRef.current) return;
-
-    setIsMenuClosing(true);
-    const timeoutId = window.setTimeout(() => setIsMenuClosing(false), 250);
-    return () => window.clearTimeout(timeoutId);
-  }, [isMenuOpen]);
-
-  const toggleMenu = () => setIsMenuOpen((open) => !open);
-  const closeMenu = () => setIsMenuOpen(false);
-
-  const navClasses = cn(
-    "fixed top-0 z-50 w-full transition-colors duration-300",
-    isTransparent
-      ? "border-b border-transparent bg-black/80 text-white"
-      : [
-          "text-[#111] shadow-[0_12px_24px_rgba(0,0,0,0.05)]",
-          isMenuOpen || isMenuClosing
-            ? "bg-white"
-            : "bg-white/90 supports-[backdrop-filter:blur(0)]:bg-white/80 backdrop-blur"
-        ]
-  );
-
-  const linkClasses = cn(
-    "text-xs lg:text-sm font-normal uppercase tracking-[0.1em] hover:opacity-80 transition-opacity duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
-    isTransparent ? "focus-visible:outline-white text-white hero-text-shadow" : "focus-visible:outline-primary text-[#111]/80"
-  );
-
-  const journalLinkClasses = linkClasses;
-
-  const ctaClasses = cn(
-    "inline-flex items-center justify-center rounded-full border-[1.5px] px-6 py-2 text-xs lg:text-sm font-medium uppercase tracking-[0.1em] transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
-    isTransparent
-      ? "border-white/80 bg-transparent text-white hover:bg-white hover:text-[#111] focus-visible:outline-white"
-      : "border-primary bg-transparent text-primary hover:bg-primary hover:text-white focus-visible:outline-primary"
-  );
-
-  const mobileMenuClasses = cn(
-    "fixed inset-0 z-40 transform transition-opacity duration-200",
-    isTransparent ? "bg-black/80 text-white" : "bg-white text-[#111]",
-    isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-  );
-
-  const mobileLinkClasses = cn(
-    "text-lg uppercase tracking-[0.1em]",
-    isTransparent ? "text-white hero-text-shadow" : "text-[#111]"
-  );
+    // simplest & robust enough
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+  }, [isMobileMenuOpen]);
 
   return (
-    <nav
-      className={navClasses}
-      style={
-        isTransparent || (!isMenuOpen && !isMenuClosing)
-          ? { backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }
-          : undefined
-      }
-    >
-      <div className="hero-safe-padding">
-        <div className="grid h-[84px] w-full grid-cols-[auto_1fr_auto] items-center">
-          <div className="flex items-center gap-5 justify-self-start">
-            <button
-              type="button"
-              onClick={toggleMenu}
-              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={isMenuOpen}
-              aria-controls="site-nav-drawer"
-              className={cn(
-                "group relative flex h-12 w-12 items-center justify-center transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
-                isTransparent ? "text-white focus-visible:outline-white" : "text-[#111] focus-visible:outline-primary"
-              )}
-            >
-              <span
-                className={cn(
-                  "absolute h-[2px] w-6 transition-transform duration-200",
-                  isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-2",
-                  isTransparent ? "bg-white" : "bg-[#111]"
-                )}
-              />
-              <span
-                className={cn(
-                  "absolute h-[2px] w-6 transition-opacity duration-150",
-                  isMenuOpen ? "opacity-0" : "opacity-100",
-                  isTransparent ? "bg-white" : "bg-[#111]"
-                )}
-              />
-              <span
-                className={cn(
-                  "absolute h-[2px] w-6 transition-transform duration-200",
-                  isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-2",
-                  isTransparent ? "bg-white" : "bg-[#111]"
-                )}
-              />
-            </button>
-            <nav className="hidden gap-8 lg:flex">
-              {navLinks.map(({ label, href }) => (
-                <Link key={label} href={href} onClick={closeMenu} className={linkClasses}>
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div className="justify-self-center" />
-
-          <div className="flex items-center gap-5 justify-self-end">
-            <a href={journalHref} className={cn(journalLinkClasses, "hidden sm:inline-flex")}>
-              JOURNAL
-            </a>
-            <a href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now">
-              BOOK NOW
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="site-nav-drawer"
-        className={mobileMenuClasses}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="site-nav-drawer-title"
-      >
-        <div className="hero-safe-padding flex h-full flex-col py-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" onClick={closeMenu} className="inline-flex items-center">
-              <img
-                src={logoGold}
-                alt="The Aevia"
-                width={916}
-                height={500}
-                className="h-10 w-auto"
-              />
+    <nav className="fixed top-0 w-full z-50 glass-effect border-b border-gray-100 font-sans nav-halyard">
+      <div className="max-w-6xl mx-auto px-4 md:px-5 py-4">
+        <div className="grid grid-cols-3 items-center">
+          {/* Logo */}
+          <div className="justify-self-start">
+            <Link href="/">
+              <div onClick={handleLinkClick} className="cursor-pointer group relative smooth-transition flex-shrink-0">
+                <img
+                  src={isJournalApp ? journalLogoBlackSrc : (logoBlack as unknown as string)}
+                  alt="The Aevia"
+                  width="916"
+                  height="500"
+                  className="h-16 w-auto group-hover:opacity-0 smooth-transition"
+                />
+                <img
+                  src={isJournalApp ? journalLogoGoldSrc : (logoGold as unknown as string)}
+                  alt="The Aevia"
+                  width="916"
+                  height="500"
+                  className="h-16 w-auto absolute top-0 left-0 opacity-0 group-hover:opacity-100 smooth-transition"
+                />
+              </div>
             </Link>
-            <button
-              type="button"
-              onClick={closeMenu}
-              aria-label="Close navigation menu"
-              className={cn(
-                "flex h-11 w-11 items-center justify-center rounded-full border transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
-                isTransparent ? "border-white/20 bg-white/10 text-white focus-visible:outline-white" : "border-[#d9d0c4] bg-white text-[#111] focus-visible:outline-primary"
-              )}
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden nav:flex items-center space-x-6 justify-self-center">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isHighlighted('skin') ? "text-primary" : "text-foreground"
+                  )}
+                  onClick={() => setActiveMenu('skin')}
+                >
+                  Skin <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/skin">
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 font-semibold hover:text-primary">
+                    Overview
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/treatments">
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    All Treatments & Prices
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/treatments#signature-offers">
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    <span>Signature Offers</span>
+                    <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured</span>
+                  </DropdownMenuItem>
+                </Link>
+                <DropdownMenuSeparator />
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Anti‑Wrinkle</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/anti-wrinkle">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Forehead, Frown & Crow's Feet</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/jawline-slimming">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Jawline Slimming</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/smile-lift">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Smile Lift</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/neck-lift">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Neck Lift</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/sweat-control">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sweat Reduction</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/lower-face-contour-duo">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Lower Face Contour Duo</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Skin Boosters</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/profhilo">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Profhilo®</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/sunekos">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sunekos</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Polynucleotides</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/full-face-regeneration">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Full Face (Plinest)</DropdownMenuItem>
+                    </Link>
+                    <Link href="/treatments/eye-rejuvenation">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Eye (Plinest Eye)</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary data-[state=open]:bg-primary/10 data-[state=open]:text-primary">Bio‑Volumisation</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <Link href="/treatments/sculptra">
+                      <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Sculptra</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <Link href="/categories/microneedling-peels">
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Microneedling & Peels</DropdownMenuItem>
+                </Link>
+                <DropdownMenuSeparator />
+                <Link href="/gallery">
+                  <DropdownMenuItem onSelect={() => onNavSelect('skin')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">Results (Gallery)</DropdownMenuItem>
+                </Link>
+                <DropdownMenuItem disabled>Packages / Memberships (soon)</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isHighlighted('mind') ? "text-primary" : "text-foreground"
+                  )}
+                  onClick={() => setActiveMenu('mind')}
+                >
+                  Mind <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <Link href="/mind">
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Coaching Philosophy
+                  </DropdownMenuItem>
+                </Link>
+                <a
+                  href={MIND_OFFERS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    Coaching Offers
+                  </DropdownMenuItem>
+                </a>
+                <Link href={mindExploredPath}>
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    The Mind, Explored
+                  </DropdownMenuItem>
+                </Link>
+                <a
+                  href={whatIsCoachingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <DropdownMenuItem onSelect={() => onNavSelect('mind')} className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary">
+                    What is Coaching?
+                  </DropdownMenuItem>
+                </a>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            {/* Top-level Gallery removed on desktop; kept under Skin */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <span
+                  className={cn(
+                    "text-sm font-normal smooth-transition hover:text-primary cursor-pointer flex items-center",
+                    isHighlighted('about') ? "text-primary" : "text-foreground"
+                  )}
+                  onClick={() => setActiveMenu('about')}
+                >
+                  About <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                  <Link href="/team">
+                  <DropdownMenuItem
+                    onSelect={() => onNavSelect('about')}
+                    className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
+                  >
+                    Our Team
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/clinic">
+                  <DropdownMenuItem
+                    onSelect={() => onNavSelect('about')}
+                    className="hover:bg-primary/10 focus:bg-primary/10 hover:text-primary"
+                  >
+                    Our Clinic
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <a
+              href={journalUrl('/')}
+              target="_blank"
+              rel="noopener noreferrer"
+            className="text-sm font-normal smooth-transition hover:text-primary cursor-pointer text-foreground"
             >
-              <span className="sr-only">Close</span>
-              <span className="relative block h-5 w-5">
-                <span
-                  className={cn(
-                    "absolute left-1/2 top-1/2 h-[2px] w-full -translate-x-1/2 -translate-y-1/2 rotate-45",
-                    isTransparent ? "bg-white" : "bg-[#111]"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "absolute left-1/2 top-1/2 h-[2px] w-full -translate-x-1/2 -translate-y-1/2 -rotate-45",
-                    isTransparent ? "bg-white" : "bg-[#111]"
-                  )}
-                />
-              </span>
+              Journal
+            </a>
+          </div>
+          
+          {/* Right side icons */}
+          {!hideHeaderActions && (
+            <div className="justify-self-end hidden nav:flex items-center space-x-5">
+              <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <Instagram className="h-5 w-5" strokeWidth={3} />
+              </a>
+              <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <TikTokIcon className="h-5 w-5" />
+              </a>
+              <a href="https://maps.app.goo.gl/QBv4AiVSUycnsDJaA" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+                <FaGoogle className="h-4 w-4 fill-current" />
+              </a>
+              <a href={SQUARE_SITE_URL} target="_blank" rel="noopener noreferrer">
+                <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
+                  Book Now
+                </Button>
+              </a>
+            </div>
+          )}
+
+          {/* Mobile menu button */}
+          <div className="nav:hidden col-span-2 justify-self-end">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-foreground hover:text-primary smooth-transition"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-
-          <div className="mt-12 flex flex-1 flex-col gap-8 text-left">
-            <span
-              id="site-nav-drawer-title"
-              className={cn(
-                "text-xs font-medium uppercase tracking-[0.32em]",
-                isTransparent ? "text-white/60" : "text-[#111]/60"
-              )}
-            >
-              Menu
-            </span>
-            <nav className="flex flex-col gap-6 text-lg uppercase tracking-[0.1em]">
-              {mobileNavLinks.map(({ label, href }) => (
-                <Link key={label} href={href} onClick={closeMenu} className={mobileLinkClasses}>
-                  {label}
-                </Link>
-              ))}
-              <a href={journalHref} onClick={closeMenu} className={mobileLinkClasses}>
-                JOURNAL
-              </a>
-            </nav>
-            <div className="mt-auto flex flex-col gap-4">
-              <a href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now">
-                BOOK NOW
-              </a>
-              <p className={cn("text-sm uppercase tracking-[0.1em]", isTransparent ? "text-white/60" : "text-primary/80")}>
-                Crafted for skin + mind
-              </p>
-            </div>
-          </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+  // Keep page fixed as you already have. This makes ONLY the menu scrollable.
+  <div className="nav:hidden mt-4 border-t border-gray-100" id="mobile-menu">
+    {/* Constrain height to viewport minus header; adjust 80/88 to your header height */}
+    <div className="max-h-[calc(100dvh-88px)] overflow-y-auto">
+      <div className="flex flex-col space-y-4 pt-4 px-6 pb-6">
+        {/* Home removed; logo links home */}
+        <button
+          onClick={() => setIsSkinOpen(!isSkinOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('skin') && "text-primary"
+          )}
+        >
+          <span>Skin</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinOpen && "rotate-180")} />
+        </button>
+        {isSkinOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/skin">
+              <span
+                onClick={() => { setActiveMenu('skin'); handleLinkClick(); }}
+                  className={cn(
+                    "block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                    isActive("/skin") ? "text-primary font-semibold" : "text-foreground font-semibold"
+                  )}
+              >
+                Overview
+              </span>
+            </Link>
+            <Link href="/treatments">
+              <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="block text-sm font-normal px-2 py-1 hover:text-primary">All Treatments & Prices</span>
+            </Link>
+            <Link href="/treatments#signature-offers">
+              <span onClick={() => { setActiveMenu('skin'); handleLinkClick(); }} className="flex items-center gap-2 justify-between px-2 py-1 text-sm hover:text-primary">
+                <span className="font-normal">Signature Offers</span>
+                <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured</span>
+              </span>
+            </Link>
+            {/* Separator 1: after Signature Offers */}
+            <div className="my-1 border-t border-muted" />
+
+            {/* Anti‑Wrinkle collapsible */}
+            <button
+              onClick={() => setIsSkinAntiOpen(!isSkinAntiOpen)}
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
+            >
+              <span>Anti‑Wrinkle</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinAntiOpen && "rotate-180")} />
+            </button>
+            {isSkinAntiOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/anti-wrinkle"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Forehead, Frown & Crow's Feet</span></Link>
+                <Link href="/treatments/jawline-slimming"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Jawline Slimming</span></Link>
+                <Link href="/treatments/smile-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Smile Lift</span></Link>
+                <Link href="/treatments/neck-lift"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Neck Lift</span></Link>
+                <Link href="/treatments/sweat-control"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sweat Reduction</span></Link>
+                <Link href="/treatments/lower-face-contour-duo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Lower Face Contour Duo</span></Link>
+              </div>
+            )}
+
+            {/* Skin Boosters collapsible */}
+            <button
+              onClick={() => setIsSkinBoostersHeadOpen(!isSkinBoostersHeadOpen)}
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
+            >
+              <span>Skin Boosters</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBoostersHeadOpen && "rotate-180")} />
+            </button>
+            {isSkinBoostersHeadOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/profhilo"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Profhilo®</span></Link>
+                <Link href="/treatments/sunekos"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sunekos</span></Link>
+              </div>
+            )}
+
+            {/* Polynucleotides collapsible */}
+            <button
+              onClick={() => setIsSkinPnoOpen(!isSkinPnoOpen)}
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
+            >
+              <span>Polynucleotides</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinPnoOpen && "rotate-180")} />
+            </button>
+            {isSkinPnoOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/full-face-regeneration"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Full Face (Plinest)</span></Link>
+                <Link href="/treatments/eye-rejuvenation"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Eye (Plinest Eye)</span></Link>
+              </div>
+            )}
+
+            {/* Bio‑Volumisation collapsible */}
+            <button
+              onClick={() => {
+                setIsSkinBoostersHeadOpen(false);
+                setIsSkinPnoOpen(false);
+                setIsSkinAntiOpen(false);
+                setIsSkinBioOpen(!isSkinBioOpen);
+              }}
+              className="flex items-center justify-between w-full text-left text-sm font-normal px-2 py-1 hover:text-primary"
+            >
+              <span>Bio‑Volumisation</span>
+              <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isSkinBioOpen && "rotate-180")} />
+            </button>
+            {isSkinBioOpen && (
+              <div className="ml-4 flex flex-col">
+                <Link href="/treatments/sculptra"><span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Sculptra</span></Link>
+              </div>
+            )}
+
+            <Link href="/categories/microneedling-peels">
+              <span onClick={handleLinkClick} className="block text-sm px-2 py-1 hover:text-primary">Microneedling & Peels</span>
+            </Link>
+
+            {/* Separator 2: before Packages */}
+            <div className="my-1 border-t border-muted" />
+            <span className="block text-sm text-muted-foreground px-2 py-1">Packages / Memberships (soon)</span>
+          </div>
+        )}
+
+        <button
+          onClick={() => setIsMindOpen(!isMindOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('mind') && "text-primary"
+          )}
+        >
+          <span>Mind</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isMindOpen && "rotate-180")} />
+        </button>
+        {isMindOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/mind">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Philosophy</span>
+            </Link>
+            <a href={MIND_OFFERS_URL} target="_blank" rel="noopener noreferrer">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">Coaching Offers</span>
+            </a>
+            <Link href={mindExploredPath}>
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">The Mind, Explored</span>
+            </Link>
+            <a href={whatIsCoachingUrl} target="_blank" rel="noopener noreferrer">
+              <span onClick={() => { setActiveMenu('mind'); handleLinkClick(); }} className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary">What is Coaching?</span>
+            </a>
+          </div>
+        )}
+
+        <Link href="/gallery">
+          <span onClick={handleLinkClick} className={cn(
+            "block text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isActive("/gallery") ? "text-primary" : "text-foreground"
+          )}>
+            Gallery
+          </span>
+        </Link>
+
+        <button
+          onClick={() => setIsAboutOpen(!isAboutOpen)}
+          className={cn(
+            "flex items-center justify-between w-full text-left text-sm font-normal smooth-transition hover:text-primary cursor-pointer px-2 py-1",
+            isHighlighted('about') && "text-primary"
+          )}
+        >
+          <span>About</span>
+          <ChevronDown className={cn("ml-1 h-4 w-4 transition-transform", isAboutOpen && "rotate-180")} />
+        </button>
+        {isAboutOpen && (
+          <div className="ml-4 flex flex-col space-y-2">
+            <Link href="/team">
+              <span
+                onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
+                className={cn(
+                  "block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                  isActive("/team") ? "text-primary" : "text-foreground"
+                )}
+              >
+                Our Team
+              </span>
+            </Link>
+            <Link href="/clinic">
+              <span
+                onClick={() => { setActiveMenu('about'); handleLinkClick(); }}
+                className={cn(
+                  "block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary",
+                  isActive("/clinic") ? "text-primary" : "text-foreground"
+                )}
+              >
+                Our Clinic
+              </span>
+            </Link>
+            {/* Ethos removed per request */}
+          </div>
+        )}
+
+        <a
+          href={journalUrl('/')}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-sm font-normal smooth-transition cursor-pointer px-2 py-1 hover:text-primary text-foreground"
+          onClick={handleLinkClick}
+        >
+          Journal
+        </a>
+
+        {!hideHeaderActions && (
+          <div className="flex items-center space-x-6 pt-4">
+            <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <Instagram className="h-5 w-5" strokeWidth={2.5} />
+            </a>
+            <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <TikTokIcon className="h-5 w-5" />
+            </a>
+            <a href="https://g.page/r/CQqjt1Rcym1uQ9ByB6" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary smooth-transition">
+              <FaGoogle className="h-4 w-4 fill-current" />
+            </a>
+            <a href={SQUARE_SITE_URL} target="_blank" rel="noopener noreferrer">
+              <Button onClick={handleLinkClick} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
+                Book Now
+              </Button>
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+)}
       </div>
     </nav>
   );

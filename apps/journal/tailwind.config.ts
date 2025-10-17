@@ -43,8 +43,7 @@ export default {
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: '#8A7350',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -73,8 +72,7 @@ export default {
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
-        sans: ['Halyard Display', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        coco: ['Halyard Display', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

@@ -16,7 +16,9 @@ export default function ConsultationCategoryPage() {
       <SEO title={`Aevia Skin | ${category.category}`} description={category.description} />
       <section className="hero-gradient py-12 lg:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Aevia Skin <span className="text-primary">Consultation</span></h1>
+          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
+            Aevia Skin Consultation
+          </h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
             Services to guide new clients through their skin treatment journey with us. Fee redeemable against first treatment.
           </p>

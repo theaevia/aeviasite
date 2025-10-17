@@ -9,85 +9,77 @@ export default function Clinic() {
     <>
       <SEO
         title="The Aevia Clinic | King's Cross, London"
-        description="Visit The Aevia clinic in the heart of King’s Cross, London. Contact us and book a consultation."
+        description="Visit The Aevia clinic in the heart of Kings Cross, London. Contact us and book a consultation."
         image="/aevia-logo.png"
       />
       <div className="min-h-screen">
-        <section className="bg-secondary py-12 lg:py-16">
-          <div className="hero-safe-padding">
-            <div className="mx-auto max-w-4xl text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Our <span className="text-primary">Clinic</span></h1>
+        <section className="bg-secondary py-12 lg:py-16 mb-8 lg:mb-12">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
+              Our <span className="text-primary">Clinic</span>
+            </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">
-              Visit us in the heart of King’s Cross, London.
+              Visit us at our clinic in the heart of Kings Cross, London
             </p>
-            </div>
           </div>
         </section>
-        <section className="bg-white py-16">
-          <div className="hero-safe-padding">
-            <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2">
-              <div className="space-y-8 text-center md:text-left">
-                <div className="card-surface p-8 text-center md:text-left">
-                  <h3 className="section-heading normal-case mb-4 text-lg tracking-[0.18em] text-[#111]">
-                    Location
-                  </h3>
-                  <a
-                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="space-y-1 text-sm tracking-[0.18em] text-[#3f3a33]/80 transition-colors duration-200 hover:text-primary"
+        <section className="bg-white">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="space-y-8">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Location</h3>
+                  <a 
+                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-foreground/70 hover:text-primary smooth-transition block"
                   >
-                    <span className="block text-[#111]">Minsony</span>
-                    <span className="block">260 Pentonville Road</span>
-                    <span className="block">N1 9JY, London</span>
+                    Minsony, 260 Pentonville Road<br />
+                    N1 9JY, Kings Cross<br />
+                    London
                   </a>
                 </div>
-                <div className="card-surface p-8 text-center md:text-left">
-                  <h3 className="section-heading normal-case mb-4 text-lg tracking-[0.18em] text-[#111]">
-                    Opening Hours
-                  </h3>
-                  <div className="space-y-2 text-sm tracking-[0.18em] text-[#3f3a33]/80">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Opening Hours</h3>
+                  <div className="space-y-2 text-foreground/70 text-sm md:text-base text-left">
                     {clinicOpeningHours.map(({ day, hours }) => (
-                      <div key={day} className="flex items-center justify-between gap-6">
-                        <span className="text-[#111]">{day}</span>
+                      <div key={day} className="flex items-center justify-between">
+                        <span className="font-medium">{day}</span>
                         <span>{hours}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-              <div className="space-y-8 text-center md:text-left">
-                <div className="card-surface p-8 text-center md:text-left">
-                  <h3 className="section-heading normal-case mb-4 text-lg tracking-[0.18em] text-[#111]">
-                    Contact
-                  </h3>
-                  <div className="space-y-3 text-sm tracking-[0.18em] text-[#3f3a33]/80">
-                    <a
-                      href="tel:+447448012556"
-                      className="block transition-colors duration-200 hover:text-primary"
+              <div className="space-y-8">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Contact</h3>
+                  <div className="space-y-3">
+                    <a 
+                      href="tel:+447448012556" 
+                      className="block text-foreground/70 hover:text-primary smooth-transition"
                     >
                       +44 7448 012556
                     </a>
-                    <a
-                      href="mailto:hello@theaevia.co.uk"
-                      className="block transition-colors duration-200 hover:text-primary"
+                    <a 
+                      href="mailto:hello@theaevia.co.uk" 
+                      className="block text-foreground/70 hover:text-primary smooth-transition"
                     >
                       hello@theaevia.co.uk
                     </a>
                   </div>
                 </div>
-                <div className="card-surface p-8 text-center">
-                  <h3 className="section-heading normal-case mb-4 text-lg tracking-[0.18em] text-[#111]">
-                    Book a Consultation
-                  </h3>
-                  <div className="grid gap-3">
+                <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+                  <h3 className="text-xl font-serif font-semibold mb-4">Book a Consultation</h3>
+                  <div className="grid grid-cols-1 gap-3">
                     <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
-                      <Button variant="primary" className="w-full">
+                      <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                         Skin Consultation
                       </Button>
                     </a>
                     <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
+                      <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white shadow-sm">
                         Mind Discovery Call
                       </Button>
                     </a>
@@ -98,11 +90,9 @@ export default function Clinic() {
           </div>
         </section>
         {/* Map Section */}
-        <section className="bg-white pb-20">
-          <div className="hero-safe-padding">
-            <div className="mx-auto max-w-4xl">
-              <Map className="w-full border border-[#d9d0c4]" />
-            </div>
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-6">
+            <Map className="rounded-2xl shadow-lg w-full" />
           </div>
         </section>
       </div>

@@ -20,20 +20,20 @@ export default function TestimonialCard({ name, service, quote, image, likes, co
   };
 
   return (
-    <div className="card-surface relative p-6 transition-all duration-200 hover:shadow-[0_14px_30px_rgba(0,0,0,0.08)]">
+    <div className="bg-secondary rounded-2xl p-6 smooth-transition hover:shadow-lg relative">
       <div className="flex items-center mb-4">
         {[...Array(5)].map((_, i) => (
           <Star key={i} className="h-4 w-4 text-primary fill-primary" />
         ))}
       </div>
-      <p className="body-copy mb-4 italic text-[#3f3a33]/80">"{quote}"</p>
+      <p className="text-foreground/80 mb-4 italic">"{quote}"</p>
       <div className="flex items-center space-x-3">
-        <div className="flex h-12 w-12 items-center justify-center border border-[#d9d0c4] bg-[#f7f2ea] text-xs font-medium uppercase tracking-[0.24em] text-primary">
-          {getInitials(name)}
+        <div className="w-12 h-12 rounded-full bg-[#F5F1EA] border border-primary/20 shadow-sm flex items-center justify-center">
+          <span className="font-serif text-primary text-lg font-medium">{getInitials(name)}</span>
         </div>
         <div>
-          <p className="text-sm uppercase tracking-[0.16em] text-[#111]">{name}</p>
-          <p className="text-xs uppercase tracking-[0.2em] text-primary/70">{service}</p>
+          <p className="font-semibold text-foreground">{name}</p>
+          <p className="text-sm text-foreground/70">{service}</p>
         </div>
       </div>
       {reviewUrl && (
@@ -41,7 +41,7 @@ export default function TestimonialCard({ name, service, quote, image, likes, co
           href={reviewUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute top-4 right-4 text-[#111]/40 transition-colors duration-150 hover:text-primary"
+          className="absolute top-4 right-4 text-foreground/50 hover:text-primary smooth-transition"
           aria-label="View on Google Reviews"
         >
           <ExternalLink className="h-4 w-4" />

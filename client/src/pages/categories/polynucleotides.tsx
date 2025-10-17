@@ -16,7 +16,9 @@ export default function PolynucleotidesCategoryPage() {
       <SEO title={`Aevia Skin | ${category.category}`} description={category.description} />
       <section className="hero-gradient py-12 lg:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Polynucleotides</h1>
+          <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
+            Polynucleotides
+          </h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
             Injectable skin treatments that use purified DNA fragments to support long-term repair and tissue regeneration.
           </p>

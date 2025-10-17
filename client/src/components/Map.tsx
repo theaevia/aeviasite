@@ -5,7 +5,7 @@ interface MapProps {
 export default function Map({ className = "" }: MapProps) {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (
-    <div className={`w-full h-[500px] overflow-hidden shadow-lg ${className}`}>
+    <div className={`w-full h-[500px] rounded-2xl overflow-hidden shadow-lg ${className}`}>
       <iframe
         width="100%"
         height="100%"

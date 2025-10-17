@@ -28,7 +28,9 @@ export default function FullFaceRegenerationPage() {
           <div className="max-w-6xl container">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Full Face Regeneration <span className="text-primary">(Plinest)</span></h1>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
+                  Full Face Regeneration (Plinest)
+                </h1>
                 <p className="text-xl text-foreground/80 mb-4">
                   DNA-based injectable to improve skin density, elasticity and hydration.
                 </p>
@@ -46,15 +48,15 @@ export default function FullFaceRegenerationPage() {
                 </BookingButton>
                 <div className="flex flex-col items-center lg:items-start gap-y-2 lg:gap-y-4 mt-8">
                   <IconBadge>
-                    <Star className="h-5 w-5 flex-shrink-0 text-primary" />
+                    <Star className="w-5 h-5 text-primary" />
                     <span>5.0 Google Rating</span>
                   </IconBadge>
                   <IconBadge>
-                    <ShieldCheck className="h-5 w-5 flex-shrink-0 text-primary" />
+                    <ShieldCheck className="w-5 h-5 text-primary" />
                     <span>Performed by GMC-Registered Doctor</span>
                   </IconBadge>
                   <IconBadge>
-                    <Leaf className="h-5 w-5 flex-shrink-0 text-primary" />
+                    <Leaf className="w-5 h-5 text-primary" />
                     <span>Natural, Lasting Results</span>
                   </IconBadge>
                 </div>
@@ -93,7 +95,7 @@ export default function FullFaceRegenerationPage() {
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto grid grid-cols-1 gap-12 items-center justify-items-center px-6">
             <div className="order-1 mx-auto max-w-3xl text-center">
-              <h2 className="section-heading normal-case mb-6 text-black text-center">Why Choose Full Face Regeneration at Aevia Skin?</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Why Choose Full Face Regeneration at Aevia Skin?</h2>
               <div className="space-y-4 text-center">
                 <div className="mb-4">
                   <span className="font-semibold text-primary">Improves Skin Density:</span>
@@ -120,7 +122,7 @@ export default function FullFaceRegenerationPage() {
         <section className="w-full bg-white py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-1 md:order-1">
-              <h2 className="section-heading normal-case mb-6 text-black text-center md:text-left">Understanding Full Face Regeneration</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Understanding Full Face Regeneration</h2>
               <p className="text-base text-foreground/80 mb-4">
                 Plinest is a polynucleotide-based injectable treatment that works to regenerate the skin on a cellular level. It is suitable for treating the entire face, neck, and décolletage.
               </p>
@@ -148,7 +150,7 @@ export default function FullFaceRegenerationPage() {
         {/* Pricing & Options */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="section-heading normal-case mb-6 text-black text-center">Pricing and Packages</h2>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Pricing and Packages</h2>
             <p className="text-base text-foreground/80 text-center mb-8">Transparent pricing for Full Face Regeneration treatments at our London clinic.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -181,7 +183,7 @@ export default function FullFaceRegenerationPage() {
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-12">
-              <h2 className="section-heading normal-case mb-6 text-black text-center">Your Full Face Regeneration Journey</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Your Full Face Regeneration Journey</h2>
             </div>
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
@@ -216,7 +218,7 @@ export default function FullFaceRegenerationPage() {
         {/* FAQ & CTA Section */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-4xl mx-auto px-6">
-            <h2 className="section-heading normal-case mb-6 text-black text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Frequently Asked Questions</h2>
             <div className="space-y-4 mb-10">
               <div className="mb-4">
                 <div className="mb-2 font-semibold text-base text-primary">How long do results last?</div>
@@ -250,7 +252,7 @@ export default function FullFaceRegenerationPage() {
         <section className="w-full bg-white py-12 md:py-16">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center">
-              <h2 className="section-heading normal-case mb-6 text-black text-center">Ready to regenerate your skin?</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Ready to regenerate your skin?</h2>
             </div>
             <p className="text-base text-foreground/80 text-center mb-8">Book your Full Face Regeneration consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
