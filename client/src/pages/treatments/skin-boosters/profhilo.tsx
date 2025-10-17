@@ -7,7 +7,6 @@ import { BookingButton } from "@/components/BookingButton";
 import { treatmentCategories } from "@/data/treatments";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
-import { asset, assetSrcSet } from "@/lib/assets";
 
 // Assets
 import profhiloHero from "@assets/hero_images/profhilo.jpg";
@@ -67,16 +66,16 @@ export default function ProfhiloPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={assetSrcSet(`/assets/treatment_images/profhilo-320w.avif 320w, /assets/treatment_images/profhilo-640w.avif 640w, /assets/treatment_images/profhilo-1280w.avif 1280w`)}
+                      srcSet={`/assets/treatment_images/profhilo-320w.avif 320w, /assets/treatment_images/profhilo-640w.avif 640w, /assets/treatment_images/profhilo-1280w.avif 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={assetSrcSet(`/assets/treatment_images/profhilo-320w.webp 320w, /assets/treatment_images/profhilo-640w.webp 640w, /assets/treatment_images/profhilo-1280w.webp 1280w`)}
+                      srcSet={`/assets/treatment_images/profhilo-320w.webp 320w, /assets/treatment_images/profhilo-640w.webp 640w, /assets/treatment_images/profhilo-1280w.webp 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
-                      src={asset("/assets/treatment_images/profhilo-640w.webp")}
+                      src="/assets/treatment_images/profhilo-640w.webp"
                       alt="Profhilo treatment example"
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('profhilo')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('profhilo') }}

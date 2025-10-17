@@ -5,30 +5,11 @@ import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { CONTOUR_DUO_URL, MASSETER_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
-import { asset, assetSrcSet } from "@/lib/assets";
 
 // Assets
 import masseterDiagram from "@assets/diagrams/masseter-1.png";
 // Optimised before/after variants served from public assets
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
-
-const JAWLINE_HERO_BASE = "/assets/treatment_images/model-1-640w.webp";
-const jawlineHero = asset(JAWLINE_HERO_BASE);
-const JAWLINE_HERO_AVIF_SET = assetSrcSet(
-  `${JAWLINE_HERO_BASE.replace("-640w.webp", "-320w.avif")} 320w, ${JAWLINE_HERO_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${JAWLINE_HERO_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
-);
-const JAWLINE_HERO_WEBP_SET = assetSrcSet(
-  `${JAWLINE_HERO_BASE.replace("-640w.webp", "-320w.webp")} 320w, ${JAWLINE_HERO_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${JAWLINE_HERO_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
-);
-
-const MASSETER_BEFORE_AFTER_BASE = "/assets/before_afters/masseter-1-640w.webp";
-const masseterBeforeAfter = asset(MASSETER_BEFORE_AFTER_BASE);
-const MASSETER_BEFORE_AFTER_AVIF_SET = assetSrcSet(
-  `${MASSETER_BEFORE_AFTER_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${MASSETER_BEFORE_AFTER_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
-);
-const MASSETER_BEFORE_AFTER_WEBP_SET = assetSrcSet(
-  `${MASSETER_BEFORE_AFTER_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${MASSETER_BEFORE_AFTER_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
-);
 
 
 export default function JawlineSlimmingPage() {
@@ -79,16 +60,16 @@ export default function JawlineSlimmingPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={JAWLINE_HERO_AVIF_SET}
+                      srcSet={`/assets/treatment_images/model-1-320w.avif 320w, /assets/treatment_images/model-1-640w.avif 640w, /assets/treatment_images/model-1-1280w.avif 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={JAWLINE_HERO_WEBP_SET}
+                      srcSet={`/assets/treatment_images/model-1-320w.webp 320w, /assets/treatment_images/model-1-640w.webp 640w, /assets/treatment_images/model-1-1280w.webp 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
-                      src={jawlineHero}
+                      src="/assets/treatment_images/model-1-640w.webp"
                       alt="Jawline Slimming treatment example"
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('jawline-slimming')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('jawline-slimming') }}
@@ -112,16 +93,16 @@ export default function JawlineSlimmingPage() {
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet={MASSETER_BEFORE_AFTER_AVIF_SET}
+                    srcSet={`/assets/before_afters/masseter-1-640w.avif 640w, /assets/before_afters/masseter-1-1280w.avif 1280w`}
                     sizes="(max-width: 640px) 100vw, 640px"
                   />
                   <source
                     type="image/webp"
-                    srcSet={MASSETER_BEFORE_AFTER_WEBP_SET}
+                    srcSet={`/assets/before_afters/masseter-1-640w.webp 640w, /assets/before_afters/masseter-1-1280w.webp 1280w`}
                     sizes="(max-width: 640px) 100vw, 640px"
                   />
                   <img
-                    src={masseterBeforeAfter}
+                    src="/assets/before_afters/masseter-1-640w.webp"
                     alt="Jawline slimming treatment before and after"
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                     loading="lazy"

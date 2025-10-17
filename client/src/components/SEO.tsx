@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'wouter';
 import logoFavicon from '@assets/logos/logo-gold.webp';
-import { withSiteUrl } from '@/lib/env';
 
 interface SEOProps {
   title?: string;
@@ -10,9 +9,10 @@ interface SEOProps {
   type?: string;
 }
 
+const BASE_URL = 'https://www.theaevia.co.uk';
 const DEFAULT_TITLE = 'The Aevia - Excellence and longevity in Skin and Mind';
 const DEFAULT_DESCRIPTION = 'Doctor-led medical aesthetics and performance coaching for professionals. Expert skin treatments and transformative coaching in Kings Cross, London.';
-const DEFAULT_IMAGE = withSiteUrl('/aevia-logo.png');
+const DEFAULT_IMAGE = `${BASE_URL}/aevia-logo.png`;
 
 export default function SEO({
   title = DEFAULT_TITLE,
@@ -23,7 +23,7 @@ export default function SEO({
   const [location] = useLocation();
   // Preserve query parameters in the canonical URL but strip hash fragments
   const canonicalPath = location.split('#')[0];
-  const canonicalUrl = withSiteUrl(canonicalPath || '/');
+  const canonicalUrl = `${BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
 
   return (
     <Helmet>

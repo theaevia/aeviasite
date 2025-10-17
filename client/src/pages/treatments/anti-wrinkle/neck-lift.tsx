@@ -5,20 +5,11 @@ import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { CONTOUR_DUO_URL, NEFERTITI_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
-import { asset, assetSrcSet } from "@/lib/assets";
 
 import neckLiftDiagram from "@assets/diagrams/platysmal-bands-1.png";
+const neckHero = "/assets/treatment_images/neck-2-640w.webp";
 import neckLiftBeforeAfter from "@assets/before_afters/neck-lift-placeholder.png";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
-
-const NECK_HERO_BASE = "/assets/treatment_images/neck-2-640w.webp";
-const neckHero = asset(NECK_HERO_BASE);
-const NECK_HERO_AVIF_SET = assetSrcSet(
-  `${NECK_HERO_BASE.replace("-640w.webp", "-320w.avif")} 320w, ${NECK_HERO_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${NECK_HERO_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
-);
-const NECK_HERO_WEBP_SET = assetSrcSet(
-  `${NECK_HERO_BASE.replace("-640w.webp", "-320w.webp")} 320w, ${NECK_HERO_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${NECK_HERO_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
-);
 
 export default function NeckLiftPage() {
   return (
@@ -68,12 +59,12 @@ export default function NeckLiftPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={NECK_HERO_AVIF_SET}
+                      srcSet={`${neckHero.replace('-640w.webp','-320w.avif')} 320w, ${neckHero.replace('-640w.webp','-640w.avif')} 640w, ${neckHero.replace('-640w.webp','-1280w.avif')} 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={NECK_HERO_WEBP_SET}
+                      srcSet={`${neckHero.replace('-640w.webp','-320w.webp')} 320w, ${neckHero.replace('-640w.webp','-640w.webp')} 640w, ${neckHero.replace('-640w.webp','-1280w.webp')} 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img

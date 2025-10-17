@@ -5,19 +5,11 @@ import { BookingButton } from "@/components/BookingButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { HYPERHIDROSIS_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
-import { asset, assetSrcSet } from "@/lib/assets";
+
 
 import sweatControlDiagram from "@assets/diagrams/sweat-control-1.png";
+const sweatHero = "/assets/treatment_images/armpit-2-640w.webp";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
-
-const SWEAT_HERO_BASE = "/assets/treatment_images/armpit-2-640w.webp";
-const sweatHero = asset(SWEAT_HERO_BASE);
-const SWEAT_HERO_AVIF_SET = assetSrcSet(
-  `${SWEAT_HERO_BASE.replace("-640w.webp", "-320w.avif")} 320w, ${SWEAT_HERO_BASE.replace("-640w.webp", "-640w.avif")} 640w, ${SWEAT_HERO_BASE.replace("-640w.webp", "-1280w.avif")} 1280w`
-);
-const SWEAT_HERO_WEBP_SET = assetSrcSet(
-  `${SWEAT_HERO_BASE.replace("-640w.webp", "-320w.webp")} 320w, ${SWEAT_HERO_BASE.replace("-640w.webp", "-640w.webp")} 640w, ${SWEAT_HERO_BASE.replace("-640w.webp", "-1280w.webp")} 1280w`
-);
 
 export default function SweatControlPage() {
   return (
@@ -67,12 +59,12 @@ export default function SweatControlPage() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet={SWEAT_HERO_AVIF_SET}
+                      srcSet={`${sweatHero.replace('-640w.webp','-320w.avif')} 320w, ${sweatHero.replace('-640w.webp','-640w.avif')} 640w, ${sweatHero.replace('-640w.webp','-1280w.avif')} 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <source
                       type="image/webp"
-                      srcSet={SWEAT_HERO_WEBP_SET}
+                      srcSet={`${sweatHero.replace('-640w.webp','-320w.webp')} 320w, ${sweatHero.replace('-640w.webp','-640w.webp')} 640w, ${sweatHero.replace('-640w.webp','-1280w.webp')} 1280w`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
                     />
                     <img
@@ -81,6 +73,7 @@ export default function SweatControlPage() {
                       className={`absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg ${getHeroImageClassName('sweat-control')}`}
                       style={{ objectPosition: getHeroImageObjectPosition('sweat-control') }}
                       loading="eager"
+                     
                       width={1280}
                       height={960}
                     />

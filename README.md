@@ -20,10 +20,6 @@ This repo contains the main SPA (Vite + React + Wouter), the Express server, and
 - Start command: `npm start`
 - The Express server serves the SPA. Deploy the Journal separately (e.g. Vercel at https://journal.theaevia.co.uk).
 
-## Asset integrity
-
-- Run `npm run verify:assets` after building to ensure every referenced image or static file resolves locally or returns HTTP 200. CI executes `npm run ci:verify` automatically (see `docs/asset-pipeline.md`).
-
 
 ## Content Structure
 

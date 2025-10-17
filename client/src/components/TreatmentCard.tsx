@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 
-import { asset, assetSrcSet, DEFAULT_ASSET_FALLBACK_PATH } from "@/lib/assets";
 import { cn } from "@/lib/utils";
 
 interface TreatmentCardProps {
@@ -28,59 +27,55 @@ export default function TreatmentCard({
   imageObjectPosition = "50% 50%",
   priority = false,
 }: TreatmentCardProps) {
-  const imageInput = image ?? DEFAULT_ASSET_FALLBACK_PATH;
-  const resolvedImage = asset(imageInput, { fallback: DEFAULT_ASSET_FALLBACK_PATH });
-  const hasOptimizedVariants =
-    typeof image === "string" && /\/assets\/treatment_images\/.+-640w\.webp$/.test(image);
-
-  const avifSrcSet = hasOptimizedVariants
-    ? assetSrcSet(
-        `${imageInput.replace("-640w.webp", "-320w.avif")} 320w, ${imageInput.replace("-640w.webp", "-640w.avif")} 640w`
-      )
-    : undefined;
-
-  const webpSrcSet = hasOptimizedVariants
-    ? assetSrcSet(
-        `${imageInput.replace("-640w.webp", "-320w.webp")} 320w, ${imageInput.replace("-640w.webp", "-640w.webp")} 640w`
-      )
-    : undefined;
-
   return (
     <Link href={`/treatments/${slug}`}>
       <a className="bg-white rounded-2xl shadow-lg transition-shadow overflow-hidden h-full flex flex-col min-h-[350px] min-w-[293.34px]">
         <div className="relative w-full aspect-[4/3] overflow-hidden">
-          {hasOptimizedVariants ? (
-            <picture>
-              <source
-                type="image/avif"
-                srcSet={avifSrcSet}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              <source
-                type="image/webp"
-                srcSet={webpSrcSet}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
+          {image ? (
+            // If the provided image follows our optimized public naming, render responsive sources
+            /\/assets\/treatment_images\/.+-640w\.webp$/.test(image) ? (
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet={image.replace("-640w.webp", "-320w.avif") + " 320w, " + image.replace("-640w.webp", "-640w.avif") + " 640w"}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <source
+                  type="image/webp"
+                  srcSet={image.replace("-640w.webp", "-320w.webp") + " 320w, " + image.replace("-640w.webp", "-640w.webp") + " 640w"}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <img
+                  src={image}
+                  alt={name}
+                  loading={priority ? "eager" : "lazy"}
+                 
+                  decoding={priority ? "sync" : "async"}
+                  width={640}
+                  height={480}
+                  className={cn(
+                    "absolute inset-0 w-full h-full object-cover",
+                    imageClassName
+                  )}
+                  style={{ objectPosition: imageObjectPosition }}
+                />
+              </picture>
+            ) : (
               <img
-                src={resolvedImage}
+                src={image}
                 alt={name}
                 loading={priority ? "eager" : "lazy"}
+               
                 decoding={priority ? "sync" : "async"}
-                width={640}
-                height={480}
-                className={cn("absolute inset-0 w-full h-full object-cover", imageClassName)}
+                className={cn(
+                  "absolute inset-0 w-full h-full object-cover",
+                  imageClassName
+                )}
                 style={{ objectPosition: imageObjectPosition }}
               />
-            </picture>
+            )
           ) : (
-            <img
-              src={resolvedImage}
-              alt={name}
-              loading={priority ? "eager" : "lazy"}
-              decoding={priority ? "sync" : "async"}
-              className={cn("absolute inset-0 w-full h-full object-cover", imageClassName)}
-              style={{ objectPosition: imageObjectPosition }}
-            />
+            <div className="absolute inset-0 bg-muted" />
           )}
         </div>
 
