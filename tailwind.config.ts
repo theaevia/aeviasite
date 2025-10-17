@@ -36,9 +36,6 @@ export default {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: {
-          DEFAULT: '#8A7350',
-        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -63,15 +60,25 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        ink: "#111111",
+        parchment: "#F7F2EA",
+        ivory: "#FCFAF6",
+        sand: "#DDD4C7",
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Halyard Display', 'sans-serif'],
-        coco: ['Coco Gothic', 'Poppins', 'Montserrat', 'Arial', 'sans-serif'],
+        serif: ["Playfair Display", "serif"],
+        sans: ["Halyard Display", "Helvetica Neue", "Arial", "sans-serif"],
+        coco: ["Halyard Display", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["Halyard Display", "Helvetica Neue", "Arial", "sans-serif"],
       },
-      fontWeight: {
-        semibold: '500',
-        bold: '400',
+      letterSpacing: {
+        eyebrow: "0.28em",
+        heading: "0.12em",
+        button: "0.08em",
       },
       keyframes: {
         "accordion-down": {

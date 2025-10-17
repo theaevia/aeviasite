@@ -1,6 +1,6 @@
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import MobileStickyBookingBar from "@/components/MobileStickyBookingBar";
 import { useLocation } from "wouter";
@@ -159,6 +159,17 @@ export default function Layout({ children }: LayoutProps) {
   const hideNavigation = isBioRoute || isMindExploredRoute || isHomeRoute;
   const showFooter = !isBioRoute;
   const showFooterExtras = showFooter && !isMindExploredRoute;
+
+  const updateLayoutMetrics = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const header = document.querySelector("nav.fixed") as HTMLElement | null;
+    const footer = document.querySelector("footer") as HTMLElement | null;
+    document.documentElement.style.setProperty("--header-h", `${header?.offsetHeight ?? 0}px`);
+    if (footer) {
+      document.documentElement.style.setProperty("--footer-h", `${footer.offsetHeight}px`);
+    }
+  }, []);
+
   useEffect(() => {
     const siteOrigin = getSiteOrigin();
     const organizationSchema = createOrganizationSchema(siteOrigin);
@@ -169,26 +180,28 @@ export default function Layout({ children }: LayoutProps) {
     document.head.appendChild(script);
 
     // Header/Footer height logic
-    const setLayoutHeights = () => {
-      const header = document.querySelector('nav.fixed') as HTMLElement | null;
-      const footer = document.querySelector('footer') as HTMLElement | null;
-      document.documentElement.style.setProperty('--header-h', `${header?.offsetHeight ?? 0}px`);
-      if (footer) {
-        document.documentElement.style.setProperty('--footer-h', `${footer.offsetHeight}px`);
-      }
-    };
-
-    setLayoutHeights();
-    window.addEventListener('resize', setLayoutHeights);
+    updateLayoutMetrics();
+    window.addEventListener('resize', updateLayoutMetrics);
     
     return () => {
-      window.removeEventListener('resize', setLayoutHeights);
+      window.removeEventListener('resize', updateLayoutMetrics);
       document.head.removeChild(script);
     };
-  }, []);
+  }, [updateLayoutMetrics]);
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(updateLayoutMetrics);
+    const timeout = window.setTimeout(updateLayoutMetrics, 150);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timeout);
+    };
+  }, [location, updateLayoutMetrics]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
     const cleanupMailerlitePopups = () => {
       const popupSelectors = [

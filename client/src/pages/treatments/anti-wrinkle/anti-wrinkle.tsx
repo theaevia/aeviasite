@@ -65,9 +65,7 @@ export default function AntiWrinklePage() {
           <div className="max-w-6xl container">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
-                  Forehead, Frown & Crow's Feet Treatment
-                </h1>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Forehead, Frown & Crow's Feet <span className="text-primary">Treatment</span></h1>
                 <p className="text-xl text-foreground/80 mb-4">
                   Targeted muscle-relaxing treatment to soften lines and improve facial tension.
                 </p>
@@ -85,15 +83,15 @@ export default function AntiWrinklePage() {
                 </BookingButton>
                 <div className="flex flex-col items-center lg:items-start gap-y-2 lg:gap-y-4 mt-8">
                   <IconBadge>
-                    <Star className="w-5 h-5 text-primary" />
+                    <Star className="h-5 w-5 flex-shrink-0 text-primary" />
                     <span>5.0 Google Rating</span>
                   </IconBadge>
                   <IconBadge>
-                    <ShieldCheck className="w-5 h-5 text-primary" />
+                    <ShieldCheck className="h-5 w-5 flex-shrink-0 text-primary" />
                     <span>Performed by GMC-Registered Doctor</span>
                   </IconBadge>
                   <IconBadge>
-                    <Leaf className="w-5 h-5 text-primary" />
+                    <Leaf className="h-5 w-5 flex-shrink-0 text-primary" />
                     <span>Natural, Lasting Results</span>
                   </IconBadge>
                 </div>
@@ -178,7 +176,7 @@ export default function AntiWrinklePage() {
               <p className="text-muted-foreground text-center text-sm mt-4">{currentBaItem.caption}</p>
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Why Choose Anti-Wrinkle at Aevia Skin?</h2>
+              <h2 className="section-heading normal-case mb-6 text-black text-center md:text-left">Why Choose Anti-Wrinkle at Aevia Skin?</h2>
               <div className="space-y-4">
                 <div className="mb-4">
                   <span className="font-semibold text-primary">Smooth Away Lines:</span>
@@ -205,7 +203,7 @@ export default function AntiWrinklePage() {
         <section className="w-full bg-white py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-1 md:order-1">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center md:text-left">Understanding Anti-Wrinkle Treatment</h2>
+              <h2 className="section-heading normal-case mb-6 text-black text-center md:text-left">Understanding Anti-Wrinkle Treatment</h2>
               <p className="text-base text-foreground/80 mb-4">
                 Anti-wrinkle injections use a purified protein to relax specific facial muscles responsible for dynamic wrinkles. These are the lines that appear when you make expressions like frowning, smiling, or raising your eyebrows.
               </p>
@@ -245,7 +243,7 @@ export default function AntiWrinklePage() {
         {/* Pricing & Options */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Pricing and Packages</h2>
+            <h2 className="section-heading normal-case mb-6 text-black text-center">Pricing and Packages</h2>
             <p className="text-base text-foreground/80 text-center mb-8">Transparent pricing for anti-wrinkle treatments at our London clinic.</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -283,7 +281,7 @@ export default function AntiWrinklePage() {
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Your Anti-Wrinkle Journey</h2>
+              <h2 className="section-heading normal-case mb-6 text-black text-center">Your Anti-Wrinkle Journey</h2>
             </div>
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
@@ -318,7 +316,7 @@ export default function AntiWrinklePage() {
         {/* FAQ & CTA Section */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Frequently Asked Questions</h2>
+            <h2 className="section-heading normal-case mb-6 text-black text-center">Frequently Asked Questions</h2>
             <div className="space-y-4 mb-10">
               <div className="mb-4">
                 <div className="mb-2 font-semibold text-base text-primary">How long do results last?</div>
@@ -356,7 +354,7 @@ export default function AntiWrinklePage() {
         <section className="w-full bg-white py-12 md:py-16">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Ready to feel confidently refreshed?</h2>
+              <h2 className="section-heading normal-case mb-6 text-black text-center">Ready to feel confidently refreshed?</h2>
             </div>
             <p className="text-base text-foreground/80 text-center mb-8">Book your anti-wrinkle consultation in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">

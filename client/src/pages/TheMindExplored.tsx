@@ -47,7 +47,7 @@ export default function TheMindExplored() {
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <header className="mb-12 space-y-4">
             <p className="uppercase tracking-[0.3em] text-xs text-foreground/50">Aevia Mind Journal</p>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground">The Mind, Explored.</h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">The Mind, <span className="text-primary">Explored.</span></h1>
             <p className="text-lg md:text-xl text-foreground/70 max-w-3xl">
               Articles for ambitious people pursuing clarity, consistency, and deep-rooted change. Curated by The Aevia Mind team.
             </p>

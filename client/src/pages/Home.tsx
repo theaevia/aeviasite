@@ -59,22 +59,22 @@ export default function Home() {
                   extending cellular longevity.
                 </p>
                 <ul className="mt-8 space-y-4 text-sm text-[#4c463d]">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                  <li className="flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                     Tailored collagen stimulation mapped to your biology and event cadence.
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                  <li className="flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                     Subtle refinements that read as &ldquo;well-rested&rdquo; instead of obviously treated.
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                  <li className="flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                     Doctor consultations with data-led treatment plans and ongoing reviews.
                   </li>
                 </ul>
                 <Link
                   href="/skin"
-                  className="mt-10 inline-flex h-11 min-w-[170px] items-center justify-center rounded-none border border-primary bg-primary px-6 text-xs font-medium uppercase tracking-[0.08em] text-primary-foreground transition duration-200 hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:scale-99 sm:text-sm lg:min-w-[220px] lg:px-8"
+                  className="mt-10 inline-flex h-11 min-w-[170px] items-center justify-center rounded-none border border-primary bg-white px-6 text-xs font-medium uppercase tracking-[0.08em] text-primary transition duration-200 hover:bg-primary hover:text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:scale-99 sm:text-sm lg:min-w-[220px] lg:px-8"
                 >
                   Explore Skin
                 </Link>
@@ -87,16 +87,16 @@ export default function Home() {
                   sacrificing nervous-system calm.
                 </p>
                 <ul className="mt-8 space-y-4 text-sm text-[#4c463d]">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                  <li className="flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                     Diagnostic sessions that reveal patterns, blind spots, and leverage points.
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                  <li className="flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                     Habit architecture combining neuroscience, mindset strategy, and accountability.
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                  <li className="flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                     Integrated plans that align professional demands with restorative rituals.
                   </li>
                 </ul>
@@ -121,16 +121,16 @@ export default function Home() {
                 Each treatment or coaching session runs on an unhurried rhythm so results land deeper and last longer.
               </p>
               <ul className="space-y-4 text-sm text-[#4c463d]">
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                <li className="flex items-center gap-3">
+                  <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                   Zoned treatment rooms for injectables, regenerative protocols, and coaching intensives.
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                <li className="flex items-center gap-3">
+                  <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                   Evidence-led products paired with sensory rituals that anchor nervous system balance.
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 block h-2 w-2 bg-primary" aria-hidden />
+                <li className="flex items-center gap-3">
+                  <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
                   Integration touchpoints between visits: journal prompts, micro-practices, skincare resets.
                 </li>
               </ul>
@@ -204,7 +204,7 @@ export default function Home() {
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <a
                 href={SKIN_CONSULTATION_URL}
-                className="inline-flex h-11 w-full items-center justify-center rounded-none border border-primary bg-primary px-8 text-xs font-normal uppercase tracking-[0.08em] text-primary-foreground transition duration-200 hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:scale-99 sm:text-sm sm:w-[320px]"
+                className="inline-flex h-11 w-full items-center justify-center rounded-none border border-primary bg-white px-8 text-xs font-normal uppercase tracking-[0.08em] text-primary transition duration-200 hover:bg-primary hover:text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:scale-99 sm:text-sm sm:w-[320px]"
               >
                 Book Skin Consultation
               </a>
