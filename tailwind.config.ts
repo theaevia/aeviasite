@@ -67,7 +67,6 @@ export default {
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
         sans: ['Halyard Display', 'sans-serif'],
-        coco: ['Coco Gothic', 'Poppins', 'Montserrat', 'Arial', 'sans-serif'],
       },
       fontWeight: {
         semibold: '500',

@@ -34,30 +34,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/CocoGothic-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/CocoGothic-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Coco Gothic';
-  src: url('../assets/fonts/CocoGothic-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 .nav-halyard {
   font-family: 'Halyard Display', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
@@ -166,15 +142,6 @@
   
   .text-balance {
     text-wrap: balance;
-  }
-
-  .hero-safe-padding {
-    padding-left: clamp(16px, 4vw, 64px);
-    padding-right: clamp(16px, 4vw, 64px);
-  }
-
-  .hero-text-shadow {
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
   }
 }
 
