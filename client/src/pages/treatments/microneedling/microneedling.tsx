@@ -95,9 +95,7 @@ export default function MicroneedlingPage() {
           <div className="max-w-6xl container">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
-                  Microneedling Treatments
-                </h1>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Microneedling <span className="text-primary">Treatments</span></h1>
                 <p className="text-xl text-foreground/80 mb-4">
                   Doctor-led collagen induction tailored for texture, scarring, and early lines. Select HA-infused classic or our regenerative exosome + polynucleotide boost for deeper repair.
                 </p>
@@ -120,15 +118,15 @@ export default function MicroneedlingPage() {
                 </div>
                 <div className="flex flex-col items-center lg:items-start gap-y-2 lg:gap-y-4 mt-8">
                   <IconBadge>
-                    <ShieldCheck className="w-5 h-5 text-primary" />
+                    <ShieldCheck className="h-5 w-5 flex-shrink-0 text-primary" />
                     <span>Performed by GMC-registered doctor</span>
                   </IconBadge>
                   <IconBadge>
-                    <Sparkles className="w-5 h-5 text-primary" />
+                    <Sparkles className="h-5 w-5 flex-shrink-0 text-primary" />
                     <span>Minimal downtime, glow within 48h</span>
                   </IconBadge>
                   <IconBadge>
-                    <Droplets className="w-5 h-5 text-primary" />
+                    <Droplets className="h-5 w-5 flex-shrink-0 text-primary" />
                     <span>Advanced serums infused for deeper impact</span>
                   </IconBadge>
                 </div>
@@ -165,7 +163,7 @@ export default function MicroneedlingPage() {
 
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-8 text-black text-center">
+            <h2 className="section-heading normal-case mb-8 text-black text-center">
               Two Targeted Microneedling Protocols
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -180,8 +178,8 @@ export default function MicroneedlingPage() {
                   <p className="text-base text-foreground/80 mt-4">{protocol.description}</p>
                   <ul className="mt-6 space-y-3 text-foreground/80">
                     {protocol.bullets.map(point => (
-                      <li key={point} className="flex items-start gap-3">
-                        <Check className="w-4 h-4 mt-1 text-primary flex-shrink-0" />
+                      <li key={point} className="flex items-center gap-3">
+                        <Check className="h-4 w-4 flex-shrink-0 text-primary" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -222,7 +220,7 @@ export default function MicroneedlingPage() {
 
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-black text-center mb-10">
+            <h2 className="section-heading normal-case text-black text-center mb-10">
               Transparent Pricing & Packages
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -254,7 +252,7 @@ export default function MicroneedlingPage() {
 
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-12 text-center">
+            <h2 className="section-heading normal-case mb-12 text-center">
               Your Microneedling Journey
             </h2>
             <div className="grid md:grid-cols-4 gap-8">
@@ -273,7 +271,7 @@ export default function MicroneedlingPage() {
 
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4 text-black">Not sure where to start?</h2>
+            <h2 className="section-heading normal-case mb-4 text-black">Not sure where to start?</h2>
             <p className="text-base text-foreground/80 mb-6">
               Book a consultation to map your skin, plan your course, and receive bespoke aftercare guidance from Dr Manu.
             </p>

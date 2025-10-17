@@ -14,7 +14,7 @@ export default function Privacy() {
         {/* Hero */}
         <section className="bg-secondary py-12 lg:py-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4">Privacy & Cookies</h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Privacy & <span className="text-primary">Cookies</span></h1>
             <p className="text-lg text-foreground/70 leading-relaxed">
               How we collect, use and protect your information, and how we use cookies.
             </p>

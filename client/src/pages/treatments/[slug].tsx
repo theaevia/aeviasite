@@ -13,7 +13,7 @@ export default function TreatmentPage() {
   if (!treatment) {
     return (
       <TreatmentLayout>
-        <h1 className="text-3xl font-serif font-bold mb-4">Treatment Not Found</h1>
+        <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Treatment Not <span className="text-primary">Found</span></h1>
         <p className="mb-6">Sorry, we couldn't find the treatment you're looking for.</p>
       </TreatmentLayout>
     );
@@ -24,7 +24,7 @@ export default function TreatmentPage() {
     <>
       <SEO title={`Aevia | ${treatment.name}`} description={treatment.description} />
       <TreatmentLayout>
-        <h1 className="text-4xl font-serif font-bold mb-4 text-primary">{treatment.name}</h1>
+        <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">{treatment.name}</h1>
         <p className="text-lg text-foreground/70 mb-6">{treatment.description}</p>
         {/*
           Replace this skeleton with a static file for each treatment:

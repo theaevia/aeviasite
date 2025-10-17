@@ -32,7 +32,7 @@ export default function GlowGuide() {
       <main className="min-h-screen bg-white text-foreground">
         <section className="px-6 py-24 sm:py-28">
           <div className="mx-auto max-w-3xl text-center space-y-5">
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold">Your Glow Guide is ready</h1>
+            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">Your Glow Guide is <span className="text-primary">ready</span></h1>
             <p className="text-lg text-foreground/70">Doctor-led routine you can start tonight (2-page PDF).</p>
             <p className="text-sm text-foreground/60">Your download will start automatically. If not, tap below.</p>
             <div className="flex flex-col items-center justify-center gap-3 pt-2">
