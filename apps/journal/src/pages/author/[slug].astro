@@ -36,7 +36,7 @@ const authors = await getCollection('authors');
 const authorEntry = authors.find((entry) => slugOf(entry) === slug);
 
 if (!authorEntry) {
-  throw Astro.redirect(withBase('/'));
+  return Astro.redirect(withBase('/'));
 }
 
 const author = authorEntry.data;
@@ -62,7 +62,14 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
         />
       )}
       <div>
-        <p class="eyebrow">Author</p>
+        <div class="flex">
+          <a
+            class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-foreground hover:text-primary/80"
+            href={withBase('/')}
+          >
+            The Aevia Journal
+          </a>
+        </div>
         <h1 class="text-4xl lg:text-5xl font-serif font-bold">{author.name}</h1>
         {author.credentials && <p class="text-foreground/70">{author.credentials}</p>}
         {author.bio && <p class="text-sm text-foreground/60 mt-1 max-w-2xl">{author.bio}</p>}

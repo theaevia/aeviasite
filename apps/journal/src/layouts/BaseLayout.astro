@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Navigation from '@/components/Navigation';
+import JournalFooter from '../components/JournalFooter.astro';
 import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
@@ -74,25 +75,13 @@ const mainClass = chromeless ? 'container max-w-6xl py-10' : 'container max-w-6x
   </head>
   <body class={`bg-background text-foreground ${chromeless ? 'is-chromeless' : ''}`}>
     <!-- Header: SPA Navigation (be mindful of hardcoded '/journal' links in dev) -->
-    {!chromeless && <Navigation client:only="react" />}
+    {!chromeless && <Navigation client:only="react" showShadow={false} />}
 
     <!-- Page content -->
     <main class={mainClass}>
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer class="mt-8 border-t border-border/70">
-      <div class="container max-w-6xl py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <p class="text-sm text-foreground/60">© {new Date().getFullYear()} Aevia. All rights reserved.</p>
-        <nav class="flex items-center gap-4 text-sm text-foreground/70">
-          <!-- Main-site links: DO NOT withBase -->
-          <a href={DEFAULT_CONSULTATION_URL} class="hover:text-foreground" rel="noopener" target="_blank">Consultations</a>
-          <a href={mainSiteUrl('/treatments')} class="hover:text-foreground">Treatments</a>
-
-          <a href="https://journal.theaevia.co.uk" class="hover:text-foreground" rel="noopener" target="_blank">Journal</a>
-        </nav>
-      </div>
-    </footer>
+    {!chromeless && <JournalFooter />}
   </body>
 </html>

@@ -173,7 +173,7 @@ export function HomeHero({
         >
           <div className="mx-auto flex w-full max-w-[820px] flex-col items-center gap-10 sm:gap-12 lg:gap-14 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-12">
             <div className="flex w-full flex-col items-center gap-3 text-center">
-              <h1 className="hero-text-shadow font-display uppercase tracking-[0.1em] text-[clamp(38px,5.4vw,56px)] font-light leading-[1.14] sm:text-[clamp(32px,3.2vw,56px)]">
+              <h1 className="hero-text-shadow font-serif font-normal uppercase tracking-[0.1em] text-[clamp(38px,5.4vw,56px)] leading-[1.14] sm:text-[clamp(32px,3.2vw,56px)]">
                 A SPACE DEDICATED TO YOUR
                 <br className="hidden lg:block" />
                 <span className="lg:inline"> WELLNESS AND LONGEVITY</span>

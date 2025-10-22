@@ -42,7 +42,7 @@ const relationSlug = (value: any): string => {
 const allPosts = await getCollection('posts', ({ data }) => data.status === 'published');
 const post = allPosts.find((p) => slugOf(p) === slug);
 if (!post) {
-  throw Astro.redirect(withBase('/'));
+  return Astro.redirect(withBase('/'));
 }
 
 const authorEntries = await getCollection('authors');
