@@ -1,0 +1,156 @@
+---
+import { withBase } from '../utils/withBase';
+import { mainSiteUrl } from '../utils/mainSiteUrl';
+import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
+import logoBlack from '@assets/logos/logo-black-transparent.webp';
+
+const servicesLinks = [
+  { label: 'Aevia Skin', href: mainSiteUrl('/skin') },
+  { label: 'Aevia Mind', href: mainSiteUrl('/mind') },
+];
+
+const resourceLinks = [
+  { label: 'Privacy & Cookies', href: mainSiteUrl('/privacy') },
+  { label: 'Terms & Conditions', href: mainSiteUrl('/terms') },
+  { label: 'Cancellation Policy', href: mainSiteUrl('/cancellation') },
+];
+---
+
+<footer class="bg-[#111] py-16 text-white">
+  <div class="hero-safe-padding">
+    <div class="mx-auto grid max-w-6xl gap-12 border-b border-white/10 pb-12 md:grid-cols-4">
+      <div>
+        <a href={mainSiteUrl('/')} class="inline-block">
+          <img
+            src={logoBlack}
+            alt="The Aevia"
+            width="916"
+            height="500"
+            class="mb-6 h-10 w-auto invert"
+            loading="lazy"
+          />
+        </a>
+        <p class="max-w-xs text-sm text-white/60">
+          Excellence and longevity in skin and mind.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-primary">Services</h4>
+        <ul class="mt-6 space-y-2 text-sm text-white/70">
+          {servicesLinks.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href={mainSiteUrl(SKIN_CONSULTATION_URL)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Skin Consultation
+            </a>
+          </li>
+          <li>
+            <a
+              href={mainSiteUrl(MIND_DISCOVERY_URL)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Mind Discovery Call
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-primary">Resources</h4>
+        <ul class="mt-6 space-y-2 text-sm text-white/70">
+          <li>
+            <a
+              href={withBase('/')}
+              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Journal
+            </a>
+          </li>
+          {resourceLinks.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-primary">Connect</h4>
+        <div class="mt-6 space-y-4 text-sm text-white/70">
+          <div class="flex items-center gap-3">
+            <a
+              href="https://instagram.com/the.aevia"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M17.5 3h-11A3.5 3.5 0 0 0 3 6.5v11A3.5 3.5 0 0 0 6.5 21h11a3.5 3.5 0 0 0 3.5-3.5v-11A3.5 3.5 0 0 0 17.5 3Z" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" />
+                <path d="M17.5 6.5h.01" />
+              </svg>
+            </a>
+            <a
+              href="https://www.tiktok.com/@the.aevia"
+              aria-label="TikTok"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
+                <path d="M14.646 14.798V7.809c1.346.966 2.998 1.537 4.78 1.537V6.676c-1.03-.218-1.935-.776-2.603-1.542C15.746 4.433 14.971 3.309 14.725 2h-2.515l-.005 13.778c-.055 1.541-1.326 2.781-2.88 2.781-.965 0-1.814-.478-2.343-1.203-.919-.487-1.55-1.449-1.55-2.559 0-1.593 1.294-2.888 2.886-2.888.297 0 .585.051.854.134V9.351C5.756 9.425 3 12.23 3 15.671c0 1.662.645 3.176 1.699 4.309 1.025.719 2.278 1.147 3.623 1.147 3.484 0 6.324-2.842 6.324-6.33Zm1.498-9.663C16.089 4.294 15.648 3.198 15.648 2H14.73c.237 1.31 1.016 2.434 1.413 3.135Z" />
+              </svg>
+            </a>
+            <span class="text-xs text-white/50">@the.aevia</span>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <a
+              href="mailto:hello@theaevia.co.uk"
+              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              hello@theaevia.co.uk
+            </a>
+            <a
+              href="tel:+447448012556"
+              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              +44 7448 012556
+            </a>
+            <address class="not-italic">
+              <div class="flex flex-col space-y-1">
+                <span>Minsony, 260 Pentonville Road</span>
+                <span>N1 9JY, Kings Cross, London</span>
+              </div>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-10 max-w-6xl text-center text-xs text-white/40">
+      <p>&copy; {new Date().getFullYear()} The Aevia. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

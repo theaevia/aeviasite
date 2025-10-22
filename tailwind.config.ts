@@ -74,6 +74,7 @@ export default {
         sans: ["Halyard Display", "Helvetica Neue", "Arial", "sans-serif"],
         coco: ["Halyard Display", "Helvetica Neue", "Arial", "sans-serif"],
         display: ["Halyard Display", "Helvetica Neue", "Arial", "sans-serif"],
+        catchy: ["Catchy Mager", "Halyard Display", "Helvetica Neue", "Arial", "sans-serif"],
       },
       letterSpacing: {
         eyebrow: "0.28em",

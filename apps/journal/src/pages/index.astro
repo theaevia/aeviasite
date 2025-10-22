@@ -43,7 +43,14 @@ const categoryMap = Object.fromEntries(categories.map((entry) => {
 <BaseLayout title="The Aevia Journal" description="Evidence-based aesthetics, longevity & mindset.">
   <main class="space-y-10">
     <header class="space-y-4">
-      <p class="eyebrow">THE AEVIA JOURNAL</p>
+      <div class="flex">
+        <a
+          class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-foreground hover:text-primary/80"
+          href={withBase('/')}
+        >
+          The Aevia Journal
+        </a>
+      </div>
       <h1 class="text-4xl md:text-5xl font-serif font-bold">Doctor-led insights on skin, longevity, and performance.</h1>
 
       <!-- Category pills -->

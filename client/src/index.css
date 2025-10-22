@@ -34,6 +34,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Catchy Mager';
+  src: url('../assets/fonts/Catchy Mager.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   font-size: 18px;
   --header-h: 80px; /* Default header height, will be updated by JS */

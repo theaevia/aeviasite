@@ -36,7 +36,7 @@ const categories = await getCollection('categories');
 const category = categories.find((entry) => slugOf(entry) === slug);
 
 if (!category) {
-  throw Astro.redirect(withBase('/'));
+  return Astro.redirect(withBase('/'));
 }
 
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published'))
@@ -46,7 +46,18 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
 ---
 <BaseLayout title={category.data.label} description={category.data.description}>
   <main class="space-y-8">
-    <h1 class="text-3xl md:text-4xl font-serif font-bold">{category.data.label}</h1>
+    <div class="space-y-3">
+      <div class="flex">
+        <a
+          class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-foreground hover:text-primary/80"
+          href={withBase('/')}
+        >
+          The Aevia Journal
+        </a>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-serif font-bold">{category.data.label}</h1>
+      {category.data.description && <p class="text-sm text-foreground/70 max-w-3xl">{category.data.description}</p>}
+    </div>
 
     <div class="grid gap-8 md:grid-cols-2">
       {posts.map((p) => {

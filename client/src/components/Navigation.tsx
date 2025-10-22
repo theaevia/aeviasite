@@ -12,6 +12,7 @@ type NavigationVariant = "solid" | "transparent";
 
 interface NavigationProps {
   variant?: NavigationVariant;
+  showShadow?: boolean;
 }
 
 const navLinks = [
@@ -25,7 +26,7 @@ const mobileNavLinks = [
   ...navLinks,
 ];
 
-export default function Navigation({ variant = "solid" }: NavigationProps) {
+export default function Navigation({ variant = "solid", showShadow = true }: NavigationProps) {
   const [location] = useLocation();
   const journalHref = useMemo(() => journalUrl("/"), []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +36,9 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
 
   const rawJournalBase = (JOURNAL_URL ?? import.meta.env.BASE_URL ?? "/") as string;
   const journalBase = rawJournalBase === "/" ? "" : rawJournalBase.replace(/\/$/, "");
-  const mainSiteOrigin = SITE_URL ? SITE_URL.replace(/\/$/, "") : undefined;
+  const mainSiteFallback = "https://theaevia.co.uk";
+  const resolvedMainOrigin = (SITE_URL && SITE_URL.trim()) || mainSiteFallback;
+  const mainSiteOrigin = resolvedMainOrigin.replace(/\/$/, "");
 
   const externalHrefPattern = /^(?:[a-z]+:|#)/i;
   const buildUrl = (origin: string | undefined, path: string) => {
@@ -66,13 +69,17 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
 
   const Link = (props: { href: string; children: React.ReactNode } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const { href, children, ...rest } = props;
-    if (typeof window !== "undefined" && (window.location.hostname.includes("journal") || location.startsWith("/journal"))) {
+    const onJournalHost =
+      typeof window !== "undefined" && (window.location.hostname.includes("journal") || location.startsWith("/journal"));
+
+    if (onJournalHost) {
       return (
         <a href={resolveHrefForJournal(href)} {...rest}>
           {children}
         </a>
       );
     }
+
     if (href.startsWith("/journal")) {
       return (
         <a href={resolveJournalOriginHref(href)} {...rest}>
@@ -80,6 +87,7 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
         </a>
       );
     }
+
     return (
       <RouterLink href={href} {...rest}>
         {children}
@@ -120,7 +128,10 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
     isTransparent
       ? "border-b border-transparent bg-black/80 text-white"
       : [
-          "text-[#111] shadow-[0_12px_24px_rgba(0,0,0,0.05)]",
+          "text-[#111]",
+          showShadow
+            ? "shadow-[0_12px_24px_rgba(0,0,0,0.05)]"
+            : ["shadow-none", "border-b", "border-border/80"],
           isMenuOpen || isMenuClosing
             ? "bg-white"
             : "bg-white/90 supports-[backdrop-filter:blur(0)]:bg-white/80 backdrop-blur"
@@ -128,8 +139,10 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
   );
 
   const linkClasses = cn(
-    "text-xs lg:text-sm font-normal uppercase tracking-[0.1em] hover:opacity-80 transition-opacity duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
-    isTransparent ? "focus-visible:outline-white text-white hero-text-shadow" : "focus-visible:outline-primary text-[#111]/80"
+    "text-xs lg:text-sm font-normal uppercase tracking-[0.1em] transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    isTransparent
+      ? "text-white hero-text-shadow hover:text-primary focus-visible:outline-white"
+      : "text-[#111]/80 hover:text-primary focus-visible:outline-primary"
   );
 
   const journalLinkClasses = linkClasses;
@@ -148,8 +161,8 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
   );
 
   const mobileLinkClasses = cn(
-    "text-lg uppercase tracking-[0.1em]",
-    isTransparent ? "text-white hero-text-shadow" : "text-[#111]"
+    "text-lg uppercase tracking-[0.1em] transition-colors duration-150",
+    isTransparent ? "text-white hero-text-shadow hover:text-primary" : "text-[#111] hover:text-primary"
   );
 
   return (
@@ -212,9 +225,9 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
             <a href={journalHref} className={cn(journalLinkClasses, "hidden sm:inline-flex")}>
               JOURNAL
             </a>
-            <a href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now">
+            <Link href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now" onClick={closeMenu}>
               BOOK NOW
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -285,9 +298,9 @@ export default function Navigation({ variant = "solid" }: NavigationProps) {
               </a>
             </nav>
             <div className="mt-auto flex flex-col gap-4">
-              <a href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now">
+              <Link href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now" onClick={closeMenu}>
                 BOOK NOW
-              </a>
+              </Link>
               <p className={cn("text-sm uppercase tracking-[0.1em]", isTransparent ? "text-white/60" : "text-primary/80")}>
                 Crafted for skin + mind
               </p>

@@ -42,7 +42,7 @@ export default function Home() {
         <section className="bg-white py-16 sm:py-20">
           <div className="hero-safe-padding mx-auto max-w-6xl text-[#111]">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">THE AEVIA PATHWAYS</p>
-            <h2 className="mt-6 text-3xl sm:text-4xl uppercase tracking-[0.12em]">
+            <h2 className="mt-6 text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">
               Choose your <span className="text-primary">focus</span>
             </h2>
             <p className="mt-5 max-w-3xl text-sm sm:text-base leading-relaxed text-[#3f3a33]">
@@ -53,7 +53,7 @@ export default function Home() {
             <div className="mt-12 grid gap-8 lg:grid-cols-2">
               <article className="border border-primary/20 bg-white px-8 py-10 transition-colors duration-300 hover:border-primary/40">
                 <span className="text-[0.65rem] font-medium uppercase tracking-[0.4em] text-primary">Aevia Skin</span>
-                <h3 className="mt-5 text-2xl uppercase tracking-[0.12em] text-[#111]">Regenerative Skin Medicine</h3>
+                <h3 className="mt-5 text-2xl font-serif font-normal uppercase tracking-[0.12em] text-[#111]">Regenerative Skin Medicine</h3>
                 <p className="mt-5 text-sm sm:text-base leading-relaxed text-[#4c463d]">
                   Doctor-led injectables and regenerative protocols that honour your unique facial identity while
                   extending cellular longevity.
@@ -81,7 +81,7 @@ export default function Home() {
               </article>
               <article className="border border-primary/20 bg-white px-8 py-10 transition-colors duration-300 hover:border-primary/40">
                 <span className="text-[0.65rem] font-medium uppercase tracking-[0.4em] text-primary">Aevia Mind</span>
-                <h3 className="mt-5 text-2xl uppercase tracking-[0.12em] text-[#111]">Strategic Mind Coaching</h3>
+                <h3 className="mt-5 text-2xl font-serif font-normal uppercase tracking-[0.12em] text-[#111]">Strategic Mind Coaching</h3>
                 <p className="mt-5 text-sm sm:text-base leading-relaxed text-[#4c463d]">
                   Bespoke performance coaching for founders, creatives, and leaders who require sharp thinking without
                   sacrificing nervous-system calm.
@@ -115,7 +115,7 @@ export default function Home() {
           <div className="hero-safe-padding mx-auto max-w-6xl grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-6">
               <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">THE EXPERIENCE</p>
-              <h2 className="text-3xl sm:text-4xl uppercase tracking-[0.12em]">Sanctuary-level calm, clinical precision</h2>
+              <h2 className="text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">Sanctuary-level calm, clinical precision</h2>
               <p className="text-sm sm:text-base leading-relaxed text-[#3f3a33]">
                 Our King&rsquo;s Cross sanctuary is designed to lower cortisol before the first conversation begins.
                 Each treatment or coaching session runs on an unhurried rhythm so results land deeper and last longer.
@@ -156,7 +156,7 @@ export default function Home() {
         <section className="bg-white py-16 sm:py-24 text-[#111]">
           <div className="hero-safe-padding mx-auto max-w-6xl">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">LED BY DOCTORS</p>
-            <h2 className="mt-6 text-3xl sm:text-4xl uppercase tracking-[0.12em]">The team behind The Aevia</h2>
+            <h2 className="mt-6 text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">The team behind The Aevia</h2>
             <p className="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-[#3f3a33]">
               Three doctors with complementary specialisms collaborate on every plan. Your skin medicine, mindset
               strategy, and ongoing regeneration are held by people who understand how biology and behaviour work
@@ -184,7 +184,7 @@ export default function Home() {
                 },
               ].map((doctor) => (
                 <article key={doctor.name} className="flex h-full flex-col border border-primary/20 bg-white px-8 py-10">
-                  <h3 className="text-lg uppercase tracking-[0.16em] text-primary">{doctor.name}</h3>
+                  <h3 className="text-lg font-serif font-normal uppercase tracking-[0.16em] text-primary">{doctor.name}</h3>
                   <p className="mt-3 text-xs uppercase tracking-[0.28em] text-[#111]">{doctor.title}</p>
                   <p className="mt-6 text-sm leading-relaxed text-[#4c463d]">{doctor.focus}</p>
                 </article>
@@ -196,7 +196,7 @@ export default function Home() {
         <section className="bg-[#f8f6f2] py-16 sm:py-24 text-[#111]">
           <div className="hero-safe-padding mx-auto max-w-4xl text-center">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">Begin</p>
-            <h2 className="mt-6 text-3xl sm:text-4xl uppercase tracking-[0.12em]">Secure your consultation</h2>
+            <h2 className="mt-6 text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">Secure your consultation</h2>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
               Availability is limited so every visit feels personal and meticulously prepared. Based in
               King&rsquo;s Cross, London.
@@ -222,7 +222,7 @@ export default function Home() {
           <div className="hero-safe-padding mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">Visit</p>
-              <h2 className="mt-6 text-3xl sm:text-4xl uppercase tracking-[0.12em]">The Aevia clinic</h2>
+              <h2 className="mt-6 text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">The Aevia clinic</h2>
               <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
                 Find us inside Minsony, 260 Pentonville Road, King&rsquo;s Cross. Clinic appointments are by prior
                 booking only.
