@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link } from "wouter";
 import { journalUrl } from "@/lib/journal";
 import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
@@ -27,7 +27,6 @@ const mobileNavLinks = [
   { label: "MIND", href: "/mind" },
   ...navLinks,
 ];
-
 
 export function HomeHero({
   backgroundImage,
@@ -76,7 +75,7 @@ export function HomeHero({
   const bookNowButtonClasses =
     "inline-flex items-center justify-center rounded-full border-[1.5px] border-white/80 px-6 py-2 text-xs lg:text-sm uppercase tracking-[0.1em] font-medium transition duration-200 hover:bg-white hover:text-[#111] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
   const heroCtaClasses =
-    "hero-text-shadow inline-flex h-12 w-full max-w-[210px] min-w-[180px] items-center justify-center rounded-none border-2 border-white bg-transparent px-6 text-xs font-medium uppercase tracking-[0.08em] text-white shadow-lg transition-all duration-300 ease-out sm:bg-white sm:text-[#111] sm:text-sm lg:w-auto lg:max-w-none lg:min-w-[220px] lg:px-8 hover:bg-transparent hover:text-white hover:shadow-xl sm:hover:text-white sm:hover:bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+    "hero-text-shadow inline-flex h-12 w-full min-w-0 items-center justify-center rounded-none border-2 border-white bg-transparent px-6 text-xs font-medium uppercase tracking-[0.08em] text-white shadow-lg transition-all duration-300 ease-out sm:w-auto sm:min-w-[180px] sm:bg-white sm:text-[#111] sm:text-sm lg:min-w-[220px] lg:px-8 hover:bg-transparent hover:text-white hover:shadow-xl sm:hover:text-white sm:hover:bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
   return (
     <section className="relative isolate flex min-h-screen flex-col overflow-hidden bg-black text-white font-coco">
@@ -133,75 +132,80 @@ export function HomeHero({
                   </Link>
                 ))}
               </nav>
-            </div>
-            <Link href="/" onClick={closeMenu} className="inline-flex items-center justify-center justify-self-center">
-              <img
-                src={logoSrc}
-                alt="The Aevia"
-                width={logoWidth}
-                height={logoHeight}
-                className="h-12 w-auto lg:h-16"
-                loading="eager"
-              />
-            </Link>
-            <div className="flex items-center gap-5 justify-self-end">
               <a
                 href={journalHref}
                 className={`${sharedNavLinkClasses} hero-text-shadow hidden sm:inline-flex`}
               >
                 JOURNAL
               </a>
-              <a
-                href={SQUARE_SITE_URL}
-                className={`${bookNowButtonClasses} hero-text-shadow`}
-                role="button"
-                aria-label="Book now"
-              >
-                BOOK NOW
-              </a>
             </div>
+            <div />
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="inline-flex items-center justify-center justify-self-end"
+            >
+              <img
+                src={logoSrc}
+                alt="The Aevia"
+                width={logoWidth}
+                height={logoHeight}
+                className="h-16 w-auto lg:h-24"
+                loading="eager"
+              />
+            </Link>
           </div>
         </div>
       </header>
 
       <div
-        className="hero-safe-padding relative z-20 flex flex-col justify-center py-12 lg:py-16"
-        style={{ minHeight: "calc(100svh - var(--header-h, 0px))" }}
+        className="hero-safe-padding hero-mobile-clearance relative z-20 flex flex-1 flex-col justify-end py-12 lg:py-16"
+        style={{
+          minHeight: "calc(100dvh - var(--header-h, 0px))",
+          paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + var(--hero-cta-clearance, 24px))",
+        }}
       >
-        <div
-          className="mx-auto flex w-full max-w-[1100px] flex-col items-center text-center"
-        >
-          <div className="mx-auto flex w-full max-w-[820px] flex-col items-center gap-10 sm:gap-12 lg:gap-14 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-12">
-            <div className="flex w-full flex-col items-center gap-3 text-center">
-              <h1 className="hero-text-shadow font-serif font-normal uppercase tracking-[0.1em] text-[clamp(38px,5.4vw,56px)] leading-[1.14] sm:text-[clamp(32px,3.2vw,56px)]">
-                A SPACE DEDICATED TO YOUR
-                <br className="hidden lg:block" />
-                <span className="lg:inline"> WELLNESS AND LONGEVITY</span>
-              </h1>
-              <p
-                className="hero-text-shadow max-w-[820px] text-white/90"
-                style={{ fontSize: "clamp(14px, 1.4vw, 20px)", fontWeight: 300, lineHeight: 1.4 }}
-              >
-                Caring for both your physical and mental wellbeing
-              </p>
-            </div>
-            <div className="flex w-full flex-col items-center gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
-              <Link
-                href="/skin"
-                className={heroCtaClasses}
-                role="button"
-                aria-label="Go to Skin"
-              >
-                SKIN
-              </Link>
-              <Link
-                href="/mind"
-                className={heroCtaClasses}
-                role="button"
-                aria-label="Go to Mind"
-              >
-                MIND
-              </Link>
+        <div className="mx-auto flex w-full max-w-[1100px] flex-col items-stretch text-left lg:items-center lg:text-center">
+          <div className="mx-auto flex w-full max-w-[820px] flex-col items-start gap-8 sm:gap-10 lg:gap-12 lg:items-center">
+            <div className="relative w-full">
+              <div
+                className="pointer-events-none absolute -left-6 -right-6 -top-6 rounded-[32px] rounded-b-none bg-gradient-to-t from-black/80 via-black/55 to-transparent sm:-left-8 sm:-right-8 sm:-top-8 sm:rounded-[40px] sm:rounded-b-none lg:hidden"
+                aria-hidden="true"
+                style={{ bottom: "calc(-1 * var(--hero-cta-clearance, 24px))" }}
+              />
+              <div className="relative flex w-full flex-col items-start gap-5 text-left lg:items-center lg:gap-6 lg:text-center">
+                <div className="flex flex-col items-start gap-3 lg:items-center lg:gap-4">
+                  <h1 className="font-serif font-normal uppercase tracking-[0.1em] text-white text-balance max-w-[22ch] leading-[1.1] text-[clamp(28px,8vw,40px)] sm:text-[clamp(36px,3.2vw,56px)] lg:max-w-none lg:hero-text-shadow">
+                    A SPACE DEDICATED TO YOUR
+                    <br className="hidden lg:block" />
+                    <span className="lg:inline"> WELLNESS AND LONGEVITY</span>
+                  </h1>
+                  <p
+                    className="relative max-w-[32ch] text-balance text-white/95 sm:max-w-[38ch] lg:max-w-[520px] lg:text-white/90 lg:hero-text-shadow"
+                    style={{ fontSize: "clamp(16px, 4.2vw, 20px)", fontWeight: 300, lineHeight: 1.5 }}
+                  >
+                    Caring for both your physical and mental wellbeing
+                  </p>
+                </div>
+                <div className="relative grid w-full max-w-[360px] grid-cols-2 gap-3 self-start sm:flex sm:max-w-none sm:items-center sm:justify-center sm:self-center lg:w-full lg:justify-between lg:gap-4">
+                  <Link
+                    href="/skin"
+                    className={heroCtaClasses}
+                    role="button"
+                    aria-label="Go to Skin"
+                  >
+                    SKIN
+                  </Link>
+                  <Link
+                    href="/mind"
+                    className={heroCtaClasses}
+                    role="button"
+                    aria-label="Go to Mind"
+                  >
+                    MIND
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
