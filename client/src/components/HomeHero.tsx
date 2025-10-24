@@ -106,7 +106,7 @@ export default function HomeHero({
           alt={backgroundAlt}
           loading="eager"
           decoding="async"
-          className="h-full w-full object-cover object-[45%_bottom] lg:object-center"
+          className="h-full w-full object-cover object-[40%_bottom] lg:object-center"
         />
       </picture>
       <div className="absolute inset-0 -z-10 bg-black/45 transition-colors lg:bg-black/35" aria-hidden />
