@@ -187,7 +187,7 @@ export function HomeHero({
                     Caring for both your physical and mental wellbeing
                   </p>
                 </div>
-                <div className="relative grid w-full max-w-[360px] grid-cols-2 gap-3 self-start sm:flex sm:max-w-none sm:items-center sm:justify-center sm:self-center lg:self-end lg:w-full lg:justify-between lg:self-stretch lg:gap-4">
+                <div className="relative grid w-full max-w-[360px] grid-cols-2 gap-3 self-start sm:flex sm:max-w-none sm:items-center sm:justify-center sm:self-center lg:w-full lg:justify-between lg:gap-4">
                   <Link
                     href="/skin"
                     className={heroCtaClasses}
