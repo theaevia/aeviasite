@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import type { LucideProps } from "lucide-react";
 import { Link } from "wouter";
 import { journalUrl } from "@/lib/journal";
 import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
@@ -28,7 +29,25 @@ const mobileNavLinks = [
   ...navLinks,
 ];
 
-export function HomeHero({
+const HandbagIcon = (props: LucideProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z" />
+    <path d="M8 11V6a4 4 0 0 1 8 0v5" />
+  </svg>
+);
+
+export default function HomeHero({
   backgroundImage,
   backgroundSources,
   logoSrc,
@@ -87,7 +106,7 @@ export function HomeHero({
           alt={backgroundAlt}
           loading="eager"
           decoding="async"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-[45%_bottom] lg:object-center"
         />
       </picture>
       <div className="absolute inset-0 -z-10 bg-black/45 transition-colors lg:bg-black/35" aria-hidden />
@@ -132,28 +151,46 @@ export function HomeHero({
                   </Link>
                 ))}
               </nav>
-              <a
-                href={journalHref}
-                className={`${sharedNavLinkClasses} hero-text-shadow hidden sm:inline-flex`}
-              >
-                JOURNAL
-              </a>
             </div>
-            <div />
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="inline-flex items-center justify-center justify-self-end"
-            >
+
+            <Link href="/" onClick={closeMenu} className="inline-flex items-center justify-center justify-self-center">
               <img
                 src={logoSrc}
                 alt="The Aevia"
                 width={logoWidth}
                 height={logoHeight}
-                className="h-16 w-auto lg:h-24"
+                className="h-14 w-auto lg:h-20"
                 loading="eager"
               />
             </Link>
+
+            <div className="flex items-center gap-5 justify-self-end">
+              <Link
+                href="/treatments"
+                onClick={closeMenu}
+                aria-label="View all treatments"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-opacity duration-200 hero-text-shadow hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
+              >
+                <HandbagIcon className="h-6 w-6 text-white" />
+                <span className="sr-only">View all treatments</span>
+              </Link>
+              <div className="hidden items-center gap-5 lg:flex">
+                <a
+                  href={journalHref}
+                  className={`${sharedNavLinkClasses} hero-text-shadow`}
+                >
+                  JOURNAL
+                </a>
+                <a
+                  href={SQUARE_SITE_URL}
+                  className={`${bookNowButtonClasses} hero-text-shadow`}
+                  role="button"
+                  aria-label="Book now"
+                >
+                  BOOK NOW
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -166,14 +203,14 @@ export function HomeHero({
         }}
       >
         <div className="mx-auto flex w-full max-w-[1100px] flex-col items-stretch text-left lg:items-center lg:text-center">
-          <div className="mx-auto flex w-full max-w-[820px] flex-col items-start gap-8 sm:gap-10 lg:gap-12 lg:items-center">
+          <div className="mx-auto flex w-full max-w-[820px] flex-col items-start gap-8 sm:gap-10 lg:gap-12 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-12 lg:items-center">
             <div className="relative w-full">
               <div
                 className="pointer-events-none absolute -left-6 -right-6 -top-6 rounded-[32px] rounded-b-none bg-gradient-to-t from-black/80 via-black/55 to-transparent sm:-left-8 sm:-right-8 sm:-top-8 sm:rounded-[40px] sm:rounded-b-none lg:hidden"
                 aria-hidden="true"
                 style={{ bottom: "calc(-1 * var(--hero-cta-clearance, 24px))" }}
               />
-              <div className="relative flex w-full flex-col items-start gap-5 text-left lg:items-center lg:gap-6 lg:text-center">
+              <div className="relative flex w-full flex-col items-start gap-5 text-left -translate-y-2 sm:-translate-y-3 lg:translate-y-0 lg:items-center lg:gap-6 lg:text-center">
                 <div className="flex flex-col items-start gap-3 lg:items-center lg:gap-4">
                   <h1 className="font-serif font-normal uppercase tracking-[0.1em] text-white text-balance max-w-[22ch] leading-[1.1] text-[clamp(28px,8vw,40px)] sm:text-[clamp(36px,3.2vw,56px)] lg:max-w-none lg:hero-text-shadow">
                     A SPACE DEDICATED TO YOUR
@@ -187,7 +224,7 @@ export function HomeHero({
                     Caring for both your physical and mental wellbeing
                   </p>
                 </div>
-                <div className="relative grid w-full max-w-[360px] grid-cols-2 gap-3 self-start sm:flex sm:max-w-none sm:items-center sm:justify-center sm:self-center lg:w-full lg:justify-between lg:gap-4">
+                <div className="relative mt-6 grid w-full max-w-[360px] grid-cols-2 gap-3 self-start sm:mt-10 sm:flex sm:max-w-none sm:items-center sm:justify-center sm:self-center lg:mt-12 lg:self-center lg:w-full lg:justify-between lg:gap-4">
                   <Link
                     href="/skin"
                     className={heroCtaClasses}
@@ -210,78 +247,6 @@ export function HomeHero({
           </div>
         </div>
       </div>
-
-      <div
-        id="homepage-hero-drawer"
-        className={`fixed inset-0 z-40 transform bg-black/95 text-white transition-opacity duration-200 ${
-          isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="homepage-hero-drawer-title"
-      >
-        <div className="hero-safe-padding flex h-full flex-col py-8">
-          <div className="flex items-center justify-between">
-            <img
-              src={logoSrc}
-              alt="The Aevia"
-              width={logoWidth}
-              height={logoHeight}
-              className="h-10 w-auto"
-            />
-            <button
-              type="button"
-              onClick={closeMenu}
-              aria-label="Close navigation menu"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              <span className="sr-only">Close</span>
-              <span className="relative block h-5 w-5">
-                <span className="absolute left-1/2 top-1/2 h-[2px] w-full -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white" />
-                <span className="absolute left-1/2 top-1/2 h-[2px] w-full -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white" />
-              </span>
-            </button>
-          </div>
-          <div className="mt-12 flex flex-1 flex-col gap-8 text-left">
-            <span
-              id="homepage-hero-drawer-title"
-              className="text-xs font-medium uppercase tracking-[0.32em] text-white/60"
-            >
-              Menu
-            </span>
-            <nav className="flex flex-col gap-6 text-lg uppercase tracking-[0.1em]">
-              {mobileNavLinks.map(({ label, href }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  onClick={closeMenu}
-                  className="hero-text-shadow"
-                >
-                  {label}
-                </Link>
-              ))}
-              <a href={journalHref} onClick={closeMenu} className="hero-text-shadow">
-                JOURNAL
-              </a>
-            </nav>
-            <div className="mt-auto flex flex-col gap-4">
-              <a
-                href={SQUARE_SITE_URL}
-                className={`${bookNowButtonClasses} hero-text-shadow justify-center`}
-                role="button"
-                aria-label="Book now"
-              >
-                BOOK NOW
-              </a>
-              <p className="text-sm uppercase tracking-[0.1em] text-white/60">
-                Crafted for skin + mind
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
-
-export default HomeHero;
