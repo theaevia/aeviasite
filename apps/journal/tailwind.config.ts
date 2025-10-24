@@ -73,6 +73,9 @@ export default {
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
         sans: ['Inter', 'sans-serif'],
+        coco: ['Halyard Display', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['Halyard Display', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        catchy: ['Catchy Mager', 'Halyard Display', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
