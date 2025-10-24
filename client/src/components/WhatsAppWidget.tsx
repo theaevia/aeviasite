@@ -22,6 +22,7 @@ export default function WhatsAppWidget() {
   const [isMobile, setIsMobile] = useState<boolean>(() =>
     typeof window !== "undefined" ? window.matchMedia("(max-width: 767px)").matches : false
   );
+  const [isVisible, setIsVisible] = useState(false);
   const targetProgressRef = useRef(1);   // target (0..1)
   const currentProgressRef = useRef(1);  // smoothed (0..1)
   const rafRef = useRef<number | null>(null);
@@ -60,6 +61,29 @@ export default function WhatsAppWidget() {
       // @ts-ignore older Safari
       else if ("removeListener" in mq) mq.removeListener(onChange);
     };
+  }, []);
+
+  // Toggle visibility based on scroll position
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const threshold = 120;
+    let ticking = false;
+
+    const evaluate = () => {
+      const shouldShow = window.scrollY > threshold;
+      setIsVisible((prev) => (prev === shouldShow ? prev : shouldShow));
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(evaluate);
+    };
+
+    evaluate();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Compute the *target* progress from sticky progress (only when sticky present on mobile)
@@ -134,11 +158,10 @@ export default function WhatsAppWidget() {
   return (
     <a
       href={whatsappUrl}
-      className="whatsapp-float"
+      className={`whatsapp-float ${isVisible ? "whatsapp-float--visible" : "whatsapp-float--hidden"}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      style={{ opacity: 1, pointerEvents: "auto" }} // never fade, always clickable
     >
       <svg
         width="24"

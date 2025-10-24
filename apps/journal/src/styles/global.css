@@ -2,72 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Halyard Display';
-  src: url('/fonts/Halyard_Display_Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Halyard Display';
-  src: url('/fonts/Halyard_Display_Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Halyard Display';
-  src: url('/fonts/Halyard_Display_Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Halyard Display';
-  src: url('/fonts/Halyard_Display_Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-.nav-halyard {
-  font-family: 'Halyard Display', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 400;
-}
-
-.nav-halyard .font-semibold {
-  font-weight: 500;
-}
-
-.nav-halyard .font-bold {
-  font-weight: 600;
-}
-
-.nav-halyard .text-sm {
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.4;
-}
-
 :root {
-  --background: 0 0% 100%; /* #FFFFFF */
-  --foreground: 0 0% 17%; /* #2D2D2D */
-  --muted: 43 10% 96%; /* #F9F8F6 */
-  --muted-foreground: 25 5% 45%;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 7%;
+  --muted: 43 22% 95%;
+  --muted-foreground: 28 8% 35%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 17%;
   --card: 0 0% 100%;
   --card-foreground: 0 0% 17%;
-  --border: 20 6% 90%;
-  --input: 20 6% 90%;
-  --primary: 36 35% 62%; /* #C5A87A */
+  --border: 35 15% 85%;
+  --input: 35 15% 85%;
+  --primary: 36 38% 62%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 43 14% 97%; /* #FAFAF8 */
+  --secondary: 40 20% 97%;
   --secondary-foreground: 0 0% 17%;
-  --accent: 95 16% 89%; /* #E2E8E3 */
+  --accent: 44 12% 92%;
   --accent-foreground: 0 0% 17%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 60 9% 98%;
@@ -90,8 +40,33 @@
 
 @layer base {
   * { @apply border-border; }
-  body { @apply bg-background text-foreground font-sans antialiased; }
-  h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Halyard Display', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl font-serif font-bold mb-4;
+  }
+
+  strong {
+    font-weight: 500;
+  }
 }
 
 /* Typography tweaks for MDX content */
@@ -104,9 +79,17 @@
 .smooth-transition { @apply transition-all duration-200 ease-out; }
 .glass-effect { backdrop-filter: blur(10px); background: rgba(255,255,255,0.9); }
 
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl,
+.rounded-4xl {
+  border-radius: 0 !important;
+}
+
 /* Rich prose styling */
 .prose {
-  @apply prose-neutral prose-headings:font-serif prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl lg:prose-lg;
+  @apply prose-neutral prose-headings:font-coco prose-h1:text-4xl lg:prose-h1:text-5xl prose-h2:text-3xl prose-h3:text-xl lg:prose-lg;
   /* Tighter body rhythm */
   @apply prose-p:leading-normal prose-p:my-3 prose-li:my-1 prose-ol:my-3 prose-ul:my-3;
 }
@@ -116,7 +99,7 @@
   word-break: normal;
 }
 .prose :where(img):not(:where([class~="not-prose"] *)) {
-  @apply rounded-xl border border-border mx-auto;
+  @apply border border-border mx-auto;
 }
 .prose :where(h2, h3):not(:where([class~="not-prose"] *)) {
   @apply scroll-mt-24 pt-2;
@@ -127,7 +110,7 @@
 
 /* Figure component sizing & alignment */
 .fig { @apply my-4; }
-.fig img { @apply w-full h-auto rounded-xl border border-border; }
+.fig img { @apply w-full h-auto border border-border; }
 .fig--small { max-width: 28rem; margin-left: auto; margin-right: auto; }
 .fig--normal { max-width: 48rem; margin-left: auto; margin-right: auto; }
 .fig--wide { max-width: 72rem; margin-left: auto; margin-right: auto; }
@@ -154,13 +137,43 @@
   @apply rounded-xl border border-border bg-white shadow-none hover:shadow-sm smooth-transition;
 }
 .card-bleed {
-  @apply -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-xl md:-mx-6;
+  @apply -mx-6 -mt-6 mb-4 overflow-hidden rounded-none md:-mx-6;
 }
 .eyebrow {
   @apply text-xs uppercase tracking-wider text-foreground/60;
 }
 .chip {
-  @apply inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs text-foreground/80 hover:bg-secondary/70 smooth-transition;
+  @apply inline-flex items-center justify-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.58rem] uppercase tracking-[0.2em] transition-colors duration-200;
+  border-color: rgba(17, 17, 17, 0.12);
+  background-color: rgba(255, 255, 255, 0.85);
+  color: rgba(17, 17, 17, 0.72);
+  letter-spacing: 0.2em;
+  box-shadow: 0 8px 16px rgba(17, 17, 17, 0.05);
 }
-.chip--primary { @apply border-transparent bg-primary/10 text-foreground hover:bg-primary/20; }
-.chip-group { @apply flex flex-wrap gap-2; }
+.chip:hover {
+  background-color: rgba(197, 168, 122, 0.15);
+  border-color: rgba(197, 168, 122, 0.5);
+  color: #111;
+}
+.chip--primary {
+  border-color: rgba(197, 168, 122, 0.45);
+  background-color: rgba(197, 168, 122, 0.2);
+  color: #2a2115;
+}
+.chip--primary:hover {
+  background-color: rgba(197, 168, 122, 0.28);
+  border-color: rgba(197, 168, 122, 0.65);
+  color: #111;
+}
+.chip-group { @apply flex flex-wrap gap-3; }
+
+@layer utilities {
+  .hero-safe-padding {
+    padding-left: clamp(1.5rem, 5vw, 4.5rem);
+    padding-right: clamp(1.5rem, 5vw, 4.5rem);
+  }
+
+  .hero-text-shadow {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  }
+}
