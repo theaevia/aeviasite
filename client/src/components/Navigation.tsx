@@ -301,7 +301,12 @@ export default function Navigation({ variant = "solid", showShadow = true }: Nav
               <Link href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now" onClick={closeMenu}>
                 BOOK NOW
               </Link>
-              <p className={cn("text-sm uppercase tracking-[0.1em]", isTransparent ? "text-white/60" : "text-primary/80")}>
+              <p
+                className={cn(
+                  "text-sm uppercase tracking-[0.1em] text-center",
+                  isTransparent ? "text-white/60" : "text-primary/80"
+                )}
+              >
                 Crafted for skin + mind
               </p>
             </div>

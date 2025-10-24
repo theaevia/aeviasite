@@ -169,31 +169,30 @@ export default function Mind() {
       />
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-accent/30 py-20 lg:py-32">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight"><span className="block">Aevia Mind:</span>
-                  <span className="text-primary">Performance Coaching for the Ambitious</span></h1>
-                <p className="mb-4 text-[clamp(0.95rem,0.85rem+0.3vw,1.125rem)] leading-[1.4] font-sans text-foreground tracking-[0.01em]">
-                  <span className="font-semibold text-[#B89A6A]">Think</span> with clarity.
-                  <br className="sm:hidden" />
-                  <span className="font-semibold text-[#B89A6A]"> Perform</span> with consistency.
+        <section className="bg-accent/30 py-20 lg:py-32 text-[#111]">
+          <div className="hero-safe-padding">
+            <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+              <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold leading-tight text-balance mb-4 sm:mb-5">
+                  Aevia Mind: <span className="text-primary">Performance Coaching</span>
+                </h1>
+                <p className="eyebrow hidden sm:inline-flex text-primary/80 mb-5">
+                  Doctor-led • King’s Cross • High-performance coaching
                 </p>
-                <p className="text-xl lg:text-lg text-foreground/70 mb-6 leading-relaxed">
-                  Clear the path from where you are to where you want to be - and build the mindset, systems, and support to get there.
+                <p className="max-w-xl text-base sm:text-lg leading-relaxed text-[#3f3a33] text-balance">
+                  Clear the path from where you are to where you want to be - and build the mindset, systems, and support to make it inevitable.
                 </p>
-                <div className="flex flex-col items-stretch gap-3 w-full max-w-md text-left">
-                  <span className="text-lg text-foreground/80 italic">
-                    Every first session is free.
-                  </span>
+                <div className="mt-8 sm:mt-10 w-full sm:w-auto text-center lg:text-left">
                   <BookingButton
                     href={MIND_DISCOVERY_URL}
                     variant="primary"
-                    className="self-start px-6 py-2 text-base whitespace-nowrap md:min-w-[200px]"
+                    className="w-full sm:w-auto"
                   >
-                    Book Yours
+                    Book First Session
                   </BookingButton>
+                  <p className="mt-4 text-sm text-foreground/80 italic text-center lg:text-left">
+                    Every first session is free.
+                  </p>
                 </div>
               </div>
               <div className="order-1 lg:order-2 w-full">

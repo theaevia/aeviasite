@@ -233,10 +233,19 @@
   animation: float 3s ease-in-out infinite;
 }
 
+.hero-mobile-clearance {
+  --hero-cta-clearance: calc(var(--fab-base-offset, 20px) + 56px);
+}
+@media (min-width: 1024px) {
+  .hero-mobile-clearance {
+    --hero-cta-clearance: 24px;
+  }
+}
+
 /* WhatsApp Widget Styles */
 .whatsapp-float {
   position: fixed;
-  bottom: calc(var(--fab-base-offset) + var(--sticky-bottom-offset) + max(0px, env(safe-area-inset-bottom)));
+  bottom: calc(var(--fab-base-offset) + var(--sticky-bottom-offset) + max(0px, env(safe-area-inset-bottom)) + 8px);
   right: 20px;
   z-index: 9999;
   background: linear-gradient(135deg, #C5A87A 0%, #B89A6A 100%);
@@ -252,6 +261,8 @@
   --fab-translate: 0%;
   --fab-scale: 1;
   transform: translateY(var(--fab-translate)) scale(var(--fab-scale));
+  opacity: 0;
+  pointer-events: none;
 }
 
 .whatsapp-float:hover {
@@ -266,6 +277,16 @@
   transform: scale(0.95);
   --fab-scale: 0.95;
 
+}
+
+.whatsapp-float--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.whatsapp-float--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .whatsapp-icon {
