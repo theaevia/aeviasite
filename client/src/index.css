@@ -45,6 +45,7 @@
 :root {
   font-size: 18px;
   --header-h: 80px; /* Default header height, will be updated by JS */
+  --nav-h: 0px;
   --background: 0 0% 100%; /* #FFFFFF */
   --foreground: 0 0% 7%; /* #111111 */
   --muted: 43 22% 95%; /* #F7F2EA */
@@ -80,6 +81,10 @@
   --sidebar-ring: 36 35% 62%;
   --sticky-bottom-offset: 0px; /* space the FAB needs when sticky bar is shown */
   --fab-base-offset: 20px;     /* default FAB margin from the bottom */
+}
+
+html {
+  scroll-padding-top: var(--header-h, 80px);
 }
 
 @layer base {

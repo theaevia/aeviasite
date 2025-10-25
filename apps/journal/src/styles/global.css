@@ -101,6 +101,11 @@
 .prose :where(img):not(:where([class~="not-prose"] *)) {
   @apply border border-border mx-auto;
 }
+.prose :where(strong, b):not(:where([class~="not-prose"] *)) {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: inherit;
+}
 .prose :where(h2, h3):not(:where([class~="not-prose"] *)) {
   @apply scroll-mt-24 pt-2;
 }
@@ -134,7 +139,7 @@
 
 /* Card */
 .card {
-  @apply rounded-xl border border-border bg-white shadow-none hover:shadow-sm smooth-transition;
+  @apply rounded-xl border border-border bg-white shadow-none smooth-transition hover:-translate-y-1 hover:shadow-lg;
 }
 .card-bleed {
   @apply -mx-6 -mt-6 mb-4 overflow-hidden rounded-none md:-mx-6;

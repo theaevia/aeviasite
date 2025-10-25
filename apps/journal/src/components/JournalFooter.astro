@@ -2,12 +2,13 @@
 import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
-import logoBlack from '@assets/logos/logo-black-transparent.webp';
 
 const servicesLinks = [
   { label: 'Aevia Skin', href: mainSiteUrl('/skin') },
   { label: 'Aevia Mind', href: mainSiteUrl('/mind') },
 ];
+
+const footerLogo = withBase('/assets/logos/logo-black-transparent.webp');
 
 const resourceLinks = [
   { label: 'Privacy & Cookies', href: mainSiteUrl('/privacy') },
@@ -22,7 +23,7 @@ const resourceLinks = [
       <div>
         <a href={mainSiteUrl('/')} class="inline-block">
           <img
-            src={logoBlack}
+            src={footerLogo}
             alt="The Aevia"
             width="916"
             height="500"

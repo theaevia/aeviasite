@@ -1,6 +1,6 @@
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import MobileStickyBookingBar from "@/components/MobileStickyBookingBar";
 import { useLocation } from "wouter";
@@ -152,36 +152,53 @@ const organizationSchema = {
 
 export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
+  const scrollOnRouteChangeRef = useRef(false);
   const isBioRoute = location.startsWith("/bio") || location.startsWith("/tiktok");
   const isMindExploredRoute = location.startsWith("/themindexplored");
-  const hideNavigation = isBioRoute || isMindExploredRoute;
+  const isHomeRoute = location === "/";
+  const hideNavigation = isBioRoute || isMindExploredRoute || isHomeRoute;
   const showFooter = !isBioRoute;
   const showFooterExtras = showFooter && !isMindExploredRoute;
+
   useEffect(() => {
-    // Add JSON-LD script
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
     script.text = JSON.stringify(organizationSchema);
     document.head.appendChild(script);
 
-    // Header/Footer height logic
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
     const setLayoutHeights = () => {
-      const header = document.querySelector('nav.fixed') as HTMLElement | null;
-      const footer = document.querySelector('footer') as HTMLElement | null;
-      document.documentElement.style.setProperty('--header-h', `${header?.offsetHeight ?? 0}px`);
+      const header = document.querySelector("nav.fixed") as HTMLElement | null;
+      const footer = document.querySelector("footer") as HTMLElement | null;
+      document.documentElement.style.setProperty("--header-h", `${header?.offsetHeight ?? 0}px`);
       if (footer) {
-        document.documentElement.style.setProperty('--footer-h', `${footer.offsetHeight}px`);
+        document.documentElement.style.setProperty("--footer-h", `${footer.offsetHeight}px`);
       }
     };
 
     setLayoutHeights();
-    window.addEventListener('resize', setLayoutHeights);
-    
+    window.addEventListener("resize", setLayoutHeights);
     return () => {
-      window.removeEventListener('resize', setLayoutHeights);
-      document.head.removeChild(script);
+      window.removeEventListener("resize", setLayoutHeights);
     };
-  }, []);
+  }, [hideNavigation]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!scrollOnRouteChangeRef.current) {
+      scrollOnRouteChangeRef.current = true;
+      return;
+    }
+    if (window.location.hash) return;
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }, [location]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

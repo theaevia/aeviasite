@@ -13,6 +13,7 @@ type NavigationVariant = "solid" | "transparent";
 interface NavigationProps {
   variant?: NavigationVariant;
   showShadow?: boolean;
+  logoSrc?: string;
 }
 
 const navLinks = [
@@ -26,7 +27,7 @@ const mobileNavLinks = [
   ...navLinks,
 ];
 
-export default function Navigation({ variant = "solid", showShadow = true }: NavigationProps) {
+export default function Navigation({ variant = "solid", showShadow = true, logoSrc }: NavigationProps) {
   const [location] = useLocation();
   const journalHref = useMemo(() => journalUrl("/"), []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -165,6 +166,8 @@ export default function Navigation({ variant = "solid", showShadow = true }: Nav
     isTransparent ? "text-white hero-text-shadow hover:text-primary" : "text-[#111] hover:text-primary"
   );
 
+  const navLogoSrc = logoSrc || logoGold;
+
   return (
     <nav
       className={navClasses}
@@ -243,7 +246,7 @@ export default function Navigation({ variant = "solid", showShadow = true }: Nav
           <div className="flex items-center justify-between">
             <Link href="/" onClick={closeMenu} className="inline-flex items-center">
               <img
-                src={logoGold}
+                src={navLogoSrc}
                 alt="The Aevia"
                 width={916}
                 height={500}
@@ -303,7 +306,7 @@ export default function Navigation({ variant = "solid", showShadow = true }: Nav
               </Link>
               <p
                 className={cn(
-                  "text-sm uppercase tracking-[0.1em] text-center",
+                  "text-sm uppercase tracking-[0.1em] text-center lg:text-left",
                   isTransparent ? "text-white/60" : "text-primary/80"
                 )}
               >

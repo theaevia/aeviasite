@@ -7,6 +7,7 @@ import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
 
 const DEFAULT_CONSULTATION_URL = mainSiteUrl(SKIN_CONSULTATION_URL);
+const journalNavLogo = withBase('/assets/logos/logo-gold-transparent.webp');
 
 const {
   title = 'The Aevia Journal',
@@ -75,7 +76,7 @@ const mainClass = chromeless ? 'container max-w-6xl py-10' : 'container max-w-6x
   </head>
   <body class={`bg-background text-foreground ${chromeless ? 'is-chromeless' : ''}`}>
     <!-- Header: SPA Navigation (be mindful of hardcoded '/journal' links in dev) -->
-    {!chromeless && <Navigation client:only="react" showShadow={false} />}
+    {!chromeless && <Navigation client:only="react" showShadow={false} logoSrc={journalNavLogo} />}
 
     <!-- Page content -->
     <main class={mainClass}>

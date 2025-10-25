@@ -247,6 +247,78 @@ export default function HomeHero({
           </div>
         </div>
       </div>
+
+      <div
+        id="homepage-hero-drawer"
+        className={`fixed inset-0 z-40 transform bg-black/95 text-white transition-opacity duration-200 ${
+          isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="homepage-hero-drawer-title"
+      >
+        <div className="hero-safe-padding flex h-full flex-col py-8">
+          <div className="flex items-center justify-between">
+            <img
+              src={logoSrc}
+              alt="The Aevia"
+              width={logoWidth}
+              height={logoHeight}
+              className="h-10 w-auto"
+              loading="eager"
+            />
+            <button
+              type="button"
+              onClick={closeMenu}
+              aria-label="Close navigation menu"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <span className="sr-only">Close</span>
+              <span className="relative block h-5 w-5">
+                <span className="absolute left-1/2 top-1/2 h-[2px] w-full -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white" />
+                <span className="absolute left-1/2 top-1/2 h-[2px] w-full -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white" />
+              </span>
+            </button>
+          </div>
+          <div className="mt-12 flex flex-1 flex-col gap-8 text-left">
+            <span
+              id="homepage-hero-drawer-title"
+              className="text-xs font-medium uppercase tracking-[0.32em] text-white/60"
+            >
+              Menu
+            </span>
+            <nav className="flex flex-col gap-6 text-lg uppercase tracking-[0.1em]">
+              {mobileNavLinks.map(({ label, href }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={closeMenu}
+                  className="hero-text-shadow hover:text-primary"
+                >
+                  {label}
+                </Link>
+              ))}
+              <a href={journalHref} onClick={closeMenu} className="hero-text-shadow hover:text-primary">
+                JOURNAL
+              </a>
+            </nav>
+            <div className="mt-auto flex flex-col gap-4">
+              <a
+                href={SQUARE_SITE_URL}
+                className={`${bookNowButtonClasses} hero-text-shadow justify-center`}
+                role="button"
+                aria-label="Book now"
+                onClick={closeMenu}
+              >
+                BOOK NOW
+              </a>
+              <p className="text-sm uppercase tracking-[0.1em] text-white/60">
+                Crafted for skin + mind
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
