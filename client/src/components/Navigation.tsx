@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { MouseEvent } from "react";
 import { Link as RouterLink, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 
@@ -68,14 +69,22 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
     return journalUrl(href);
   };
 
-  const Link = (props: { href: string; children: React.ReactNode } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-    const { href, children, ...rest } = props;
+  const Link = (
+    props: { href: string; children: React.ReactNode; forceReload?: boolean } & React.AnchorHTMLAttributes<HTMLAnchorElement>
+  ) => {
+    const { href, children, onClick, forceReload = false, ...rest } = props;
     const onJournalHost =
       typeof window !== "undefined" && (window.location.hostname.includes("journal") || location.startsWith("/journal"));
+    const handleForceReloadClick = (event: MouseEvent<HTMLAnchorElement>) => {
+      onClick?.(event);
+      if (event.defaultPrevented) return;
+      event.preventDefault();
+      window.location.assign((event.currentTarget as HTMLAnchorElement).href);
+    };
 
     if (onJournalHost) {
       return (
-        <a href={resolveHrefForJournal(href)} {...rest}>
+        <a href={resolveHrefForJournal(href)} onClick={onClick} {...rest}>
           {children}
         </a>
       );
@@ -83,14 +92,22 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
 
     if (href.startsWith("/journal")) {
       return (
-        <a href={resolveJournalOriginHref(href)} {...rest}>
+        <a href={resolveJournalOriginHref(href)} onClick={onClick} {...rest}>
+          {children}
+        </a>
+      );
+    }
+
+    if (forceReload) {
+      return (
+        <a href={href} onClick={handleForceReloadClick} {...rest}>
           {children}
         </a>
       );
     }
 
     return (
-      <RouterLink href={href} {...rest}>
+      <RouterLink href={href} onClick={onClick} {...rest}>
         {children}
       </RouterLink>
     );
@@ -228,7 +245,14 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
             <a href={journalHref} className={cn(journalLinkClasses, "hidden sm:inline-flex")}>
               JOURNAL
             </a>
-            <Link href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now" onClick={closeMenu}>
+            <Link
+              href={SQUARE_SITE_URL}
+              className={ctaClasses}
+              role="button"
+              aria-label="Book now"
+              onClick={closeMenu}
+              forceReload
+            >
               BOOK NOW
             </Link>
           </div>
@@ -301,7 +325,14 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
               </a>
             </nav>
             <div className="mt-auto flex flex-col gap-4">
-              <Link href={SQUARE_SITE_URL} className={ctaClasses} role="button" aria-label="Book now" onClick={closeMenu}>
+              <Link
+                href={SQUARE_SITE_URL}
+                className={ctaClasses}
+                role="button"
+                aria-label="Book now"
+                onClick={closeMenu}
+                forceReload
+              >
                 BOOK NOW
               </Link>
               <p
