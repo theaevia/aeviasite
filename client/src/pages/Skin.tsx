@@ -5,8 +5,6 @@ import { BookingButton } from "@/components/BookingButton";
 import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 import clinicHeroImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicHeroImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
-import skinModelImage from "@assets/hero_images/skin-model.webp";
-import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
 import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
 import skinModel2Image800 from "@assets/hero_images/skin-model-2-800w.webp";
 import terrellImage from "@assets/about_pics/terrell-pic3.webp";
@@ -99,7 +97,7 @@ export default function Skin() {
                     <img
                       src={clinicHeroImage}
                       srcSet={`${clinicHeroImage800} 800w, ${clinicHeroImage} 1600w`}
-                      alt="The Aevia clinic in King's Cross, London"
+                      alt="Aevia Skin clinic in King's Cross, London"
                       className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
                       width="1600"
@@ -149,7 +147,7 @@ export default function Skin() {
                     </div>
                     <div className="flex items-center text-foreground/70">
                       <Award className="text-primary mr-3 h-5 w-5" />
-                      Co-founder, The Aevia
+                      Co-founder, Aevia Skin
                     </div>
                   </div>
                 </div>
@@ -172,7 +170,7 @@ export default function Skin() {
                     </div>
                     <div className="flex items-center text-foreground/70">
                       <Award className="text-primary mr-3 h-5 w-5" />
-                      Co-founder, The Aevia
+                      Co-founder, Aevia Skin
                     </div>
                   </div>
                 </div>
@@ -196,7 +194,7 @@ export default function Skin() {
           <div className="hero-safe-padding mx-auto max-w-6xl grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-6">
               <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">THE EXPERIENCE</p>
-              <h2 className="text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">Sanctuary-level calm, clinical precision</h2>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold">Sanctuary-level calm, clinical precision</h2>
               <p className="text-sm sm:text-base leading-relaxed text-[#3f3a33]">
                 Our King&rsquo;s Cross sanctuary is designed to lower cortisol before the first conversation begins.
                 Each treatment runs on an unhurried rhythm so results land deeper and last longer.
@@ -222,7 +220,7 @@ export default function Skin() {
                 <img
                   src={skinModel2Image}
                   srcSet={`${skinModel2Image800} 800w, ${skinModel2Image} 1600w`}
-                  alt="The Aevia clinic interior"
+                  alt="Aevia Skin clinic interior"
                   className="h-full w-full object-cover"
                   loading="lazy"
                   width="1600"
@@ -408,7 +406,7 @@ export default function Skin() {
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">The Aevia Skin Consultation</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Aevia Skin Consultation</h2>
               <div className="bg-primary/10 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
                 <h3 className="text-2xl font-serif font-semibold mb-4 text-primary">20-Minute Clinical Session</h3>
                 <p className="text-lg text-foreground/80 mb-6">
@@ -495,7 +493,7 @@ export default function Skin() {
           <div className="hero-safe-padding mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">Visit</p>
-              <h2 className="mt-6 text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">The Aevia clinic</h2>
+              <h2 className="mt-6 text-3xl lg:text-4xl font-serif font-bold">Aevia Skin Clinic</h2>
               <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
                 Find us inside Minsony, 260 Pentonville Road, King&rsquo;s Cross. Clinic appointments are by prior
                 booking only.
@@ -545,13 +543,13 @@ export default function Skin() {
         </section>
 
         {/* Booking Decision */}
-        <section className="py-20 bg-secondary">
+        <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-2">How should I book?</h2>
             <p className="text-foreground/70 mb-8">We guide first-timers to the right plan. Returning clients can book specific treatments directly.</p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-accent/20 rounded-2xl p-6">
-                <h3 className="text-xl font-serif font-semibold mb-2">New to Aevia?</h3>
+                <h3 className="text-xl font-serif font-semibold mb-2">New to Aevia Skin?</h3>
                 <p className="text-sm text-foreground/70 mb-4">Start with a consultation.</p>
                 <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
                   Book Consultation
@@ -568,17 +566,6 @@ export default function Skin() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-20 bg-accent/30">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
-            <p className="text-lg text-foreground/70 mb-8">Book your FREE Aevia Skin Consultation</p>
-            <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
-              Book Your Aevia Skin Consultation
-            </BookingButton>
-            <BnplNotice className="mt-6" />
-          </div>
-        </section>
       </div>
       <WhatsAppWidget />
     </>
