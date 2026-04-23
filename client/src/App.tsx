@@ -10,13 +10,11 @@ import Layout from "@/components/Layout";
 // Page Imports
 import Home from "@/pages/Home";
 import Skin from "@/pages/Skin";
-import Mind from "@/pages/Mind";
 import Team from "@/pages/Team";
 import Clinic from "@/pages/Clinic";
 import Gallery from "@/pages/Gallery";
 import GlowGuide from "@/pages/GlowGuide";
 import SkinConsultationPage from "@/pages/consultations/skin";
-import MindConsultationPage from "@/pages/consultations/mind";
 import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
 import Privacy from "@/pages/Privacy";
@@ -24,7 +22,7 @@ import Terms from "@/pages/Terms";
 import CancellationPolicyPage from "@/pages/Cancellation";
 import BioPage from "@/pages/Bio";
 import QuizPlaceholder from "@/pages/Quiz";
-import TheMindExplored from "@/pages/TheMindExplored";
+import Bookings from "@/pages/Bookings";
 
 // Treatment Page Imports
 import AntiWrinklePage from "@/pages/treatments/anti-wrinkle/anti-wrinkle";
@@ -59,14 +57,12 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/skin" component={Skin} />
-        <Route path="/mind" component={Mind} />
-        <Route path="/themindexplored" component={TheMindExplored} />
         <Route path="/team" component={Team} />
         <Route path="/clinic" component={Clinic} />
         <Route path="/glow-guide" component={GlowGuide} />
         <Route path="/gallery" component={Gallery} />
+        <Route path="/bookings" component={Bookings} />
         <Route path="/consultations/skin" component={SkinConsultationPage} />
-        <Route path="/consultations/mind" component={MindConsultationPage} />
         <Route path="/consultations" component={SkinConsultationPage} />
         {/* TikTok Bio and Quiz */}
         <Route path="/bio" component={BioPage} />

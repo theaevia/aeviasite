@@ -1,6 +1,7 @@
 import TreatmentLayout from "@/components/TreatmentLayout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import EnquireToBookButton from "@/components/EnquireToBookButton";
 import { IconBadge } from "@/components/IconBadge";
 import { Leaf, ShieldCheck, Star } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
@@ -171,9 +172,7 @@ export default function ProfhiloPage() {
                   <span style={{ textDecoration: 'line-through', color: '#999', marginRight: '8px' }}>£600</span> (Save £50)
                 </p>
                 <span className="text-muted-foreground text-sm mb-4">45min per session</span>
-                <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href={profhiloTreatment.bookingUrl} target="_blank" rel="noopener noreferrer">Book Two Sessions</a>
-                </Button>
+                <EnquireToBookButton className="w-full" />
               </div>
             </div>
           </div>

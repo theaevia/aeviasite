@@ -19,12 +19,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/mind</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.theaevia.co.uk/clinic</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -44,12 +38,6 @@
   </url>
   <url>
     <loc>https://www.theaevia.co.uk/consultations/skin</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/consultations/mind</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -209,36 +197,6 @@
     <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/clarity-strategy-session</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/discovery-call</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/momentum-6</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/transformation-12</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/elite-retainer</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.theaevia.co.uk/treatments/virtual-consultation</loc>

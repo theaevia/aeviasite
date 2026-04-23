@@ -1,6 +1,7 @@
 import TreatmentLayout from "@/components/TreatmentLayout";
 import SEO from "@/components/SEO";
 import { BookingButton } from "@/components/BookingButton";
+import EnquireToBookButton from "@/components/EnquireToBookButton";
 import { IconBadge } from "@/components/IconBadge";
 import { getHeroImageClassName, getHeroImageObjectPosition } from "@/lib/treatmentImageUtils";
 import { MICRONEEDLING_REG_URL, MICRONEEDLING_REGEN_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
@@ -234,8 +235,9 @@ export default function MicroneedlingPage() {
                     ))}
                   </div>
                   <BookingButton href={plan.href} className="mt-8 w-full">
-                    Book {plan.variant}
+                    Book Single Session
                   </BookingButton>
+                  <EnquireToBookButton className="mt-4 w-full" />
                 </div>
               ))}
             </div>
@@ -265,7 +267,7 @@ export default function MicroneedlingPage() {
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4 text-black">Not sure where to start?</h2>
             <p className="text-base text-foreground/80 mb-6">
-              Book a consultation to map your skin, plan your course, and receive bespoke aftercare guidance from Dr Manu.
+              Book a consultation to map your skin, plan your course, and receive bespoke aftercare guidance from our doctors.
             </p>
             <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
               Book Skin Consultation

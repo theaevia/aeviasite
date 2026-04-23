@@ -10,8 +10,8 @@ interface SEOProps {
 }
 
 const BASE_URL = 'https://www.theaevia.co.uk';
-const DEFAULT_TITLE = 'The Aevia - Excellence and longevity in Skin and Mind';
-const DEFAULT_DESCRIPTION = 'Doctor-led medical aesthetics and performance coaching for professionals. Expert skin treatments and transformative coaching in Kings Cross, London.';
+const DEFAULT_TITLE = 'The Aevia | Doctor-Led Aesthetics | King\'s Cross, London';
+const DEFAULT_DESCRIPTION = 'Doctor-led regenerative aesthetics in King\'s Cross, London. Advanced skin treatments designed for natural, lasting results.';
 const DEFAULT_IMAGE = `${BASE_URL}/aevia-logo.png`;
 
 export default function SEO({

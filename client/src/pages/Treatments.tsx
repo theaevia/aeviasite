@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { Check } from "lucide-react";
 
@@ -14,38 +14,7 @@ import {
 } from "@/lib/bookingUrls";
 import treatmentsHeroImage from "@assets/hero_images/skin-model-2.webp";
 
-const sections: Array<{ id: "skin" | "mind"; label: string }> = [
-  { id: "skin", label: "Skin" },
-  { id: "mind", label: "Mind" },
-];
-
 export default function Treatments() {
-  const [activeSection, setActiveSection] = useState<null | "skin" | "mind">(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const skin = document.getElementById("skin");
-      const mind = document.getElementById("mind");
-      if (!skin || !mind) return;
-
-      const headerH =
-        parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 80;
-      const navH =
-        parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")) || 0;
-      const visualLift = navH / 2;
-
-      const current = window.scrollY + headerH + navH - visualLift;
-
-      if (current >= mind.offsetTop) setActiveSection("mind");
-      else if (current >= skin.offsetTop) setActiveSection("skin");
-      else setActiveSection(null);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const handleBookNow = (treatment: Treatment) => {
     window.open(treatment.bookingUrl, "_blank");
   };
@@ -72,7 +41,6 @@ export default function Treatments() {
       const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
       window.scrollTo({ top: y, behavior: "smooth" });
-      setActiveSection("skin");
     };
 
     const id = window.setTimeout(scrollFromHash, 0);
@@ -83,29 +51,12 @@ export default function Treatments() {
     };
   }, []);
 
-  const scrollToSection = (section: "skin" | "mind") => {
-    const el = document.getElementById(section);
-    if (!el) return;
-
-    const headerH =
-      parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 80;
-    const navH =
-      parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")) || 0;
-    const visualLift = navH / 2;
-
-    const yOffset = -(headerH + navH - visualLift);
-    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-    window.scrollTo({ top: y, behavior: "smooth" });
-    setActiveSection(section);
-  };
-
   const topGap = "var(--header-h, 80px)";
 
   return (
     <>
       <SEO
-        title="The Aevia | Aesthetic & Coaching Services | King's Cross, London"
+        title="The Aevia | Aesthetic Treatments | King's Cross, London"
         description="Discover our range of doctor-led medical aesthetics treatments. With a focus on regenerative aesthetics, experience science-backed treatments for natural, lasting results."
         image="/hero_images/skin-model-2.webp"
       />
@@ -119,30 +70,9 @@ export default function Treatments() {
                   Our Treatments
                 </h1>
                 <p className="mt-6 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
-                  Regenerative aesthetics, advanced injectables, and mindset coaching delivered by doctors.
+                  Regenerative aesthetics and advanced injectables delivered by doctors.
                   Each plan is built around longevity, subtle definition, and how you want to feel.
                 </p>
-                <div className="mt-10 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:items-center">
-                  {sections.map(({ id, label }) => {
-                    const isActive = activeSection === id;
-                    return (
-                      <button
-                        key={id}
-                        type="button"
-                        onClick={() => scrollToSection(id)}
-                        aria-pressed={isActive}
-                        className={cn(
-                          "w-full sm:w-auto inline-flex items-center justify-center rounded-none border px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-                          isActive
-                            ? "border-transparent bg-primary text-primary-foreground shadow"
-                            : "border-[#d9d0c4] text-primary hover:bg-primary/10"
-                        )}
-                      >
-                        {label}
-                      </button>
-                    );
-                  })}
-                </div>
               </div>
               <div className="order-1 w-full lg:order-2">
                 <div className="relative w-full border border-[#d9d0c4] bg-secondary pb-[75%]">
@@ -255,16 +185,15 @@ export default function Treatments() {
                 </p>
               </div>
               {treatmentCategories
-                .filter((cat) => cat.category !== "Performance & Transformative Coaching")
                 .sort((a, b) => {
                   const order: Record<string, number> = {
-                    "skin-consultation": 5,
                     "anti-wrinkle": 10,
                     "skin-boosters": 20,
                     polynucleotides: 30,
                     "bio-voluminisation": 40,
                     microneedling: 50,
                     "clinical-peels": 60,
+                    "skin-consultation": 70,
                   };
                   const ai = order[a.slug] ?? 1000;
                   const bi = order[b.slug] ?? 1000;
@@ -360,11 +289,24 @@ export default function Treatments() {
                                     </span>
                                   ))}
                                 </div>
+                                {treatment.priceTiers && (
+                                  <div className="mt-2 space-y-1.5">
+                                    {treatment.priceTiers.map((tier) => (
+                                      <div
+                                        key={tier.label}
+                                        className="flex items-center justify-between text-xs"
+                                      >
+                                        <span className="text-[#3f3a33]">{tier.label}</span>
+                                        <span className="font-medium text-primary">{tier.price}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
                               </div>
                               <div className="mt-6 border-t border-[#d9d0c4]/80 pt-4">
                                 <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                                   <span className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                                    {priceDisplay}
+                                    {treatment.priceTiers ? `${treatment.duration}` : priceDisplay}
                                   </span>
                                   <Button
                                     variant="ghost"
@@ -386,74 +328,6 @@ export default function Treatments() {
           </div>
         </section>
 
-        <section
-          id="mind"
-          style={{ scrollMarginTop: topGap }}
-          className="bg-secondary py-16 md:py-24"
-        >
-          <div className="hero-safe-padding">
-            <div className="mx-auto max-w-6xl">
-              <div className="mx-auto mb-14 max-w-3xl text-center">
-                <p className="eyebrow text-primary/80">Aevia Mind</p>
-                <h2 className="section-heading normal-case mt-4">Coaching for High Performers</h2>
-                <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
-                  High-touch coaching programmes led by Dr Manu Sidhu to optimise mindset, performance,
-                  and fulfilment beyond the clinic room.
-                </p>
-              </div>
-              {treatmentCategories
-                .filter((cat) => cat.category === "Performance & Transformative Coaching")
-                .map((cat) => (
-                  <div key={cat.category} className="mb-16">
-                    <div className="grid gap-6 md:grid-cols-2">
-                      {cat.treatments.map((treatment) => {
-                        const priceDisplay = `${treatment.price} · ${treatment.duration}`;
-                        return (
-                          <div
-                            key={treatment.name}
-                            className="card-surface flex h-full flex-col border border-[#d9d0c4] bg-white p-6 transition-all duration-200 hover:shadow-[0_16px_32px_rgba(0,0,0,0.08)]"
-                          >
-                            <div className="flex flex-1 flex-col gap-3 text-left">
-                              <h4 className="text-base font-semibold text-[#111]">
-                                <Link
-                                  href={`/treatments/${treatment.slug}`}
-                                  className="text-[#111] transition-colors duration-150 hover:text-primary"
-                                >
-                                  {treatment.name}
-                                </Link>
-                              </h4>
-                              <div className="text-sm leading-relaxed text-[#3f3a33]">
-                                {treatment.description.split("\n").map((line, idx, arr) => (
-                                  <span key={`${treatment.slug}-${idx}`}>
-                                    {line}
-                                    {idx !== arr.length - 1 && <br />}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                            <div className="mt-6 border-t border-[#d9d0c4]/80 pt-4">
-                              <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-                                <span className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                                  {priceDisplay}
-                                </span>
-                                <Button
-                                  variant="ghost"
-                                  onClick={() => handleBookNow(treatment)}
-                                  className="border border-primary/70 px-5 py-2 text-sm normal-case tracking-normal text-primary hover:border-primary hover:text-primary"
-                                >
-                                  Book session
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </section>
       </div>
     </>
   );

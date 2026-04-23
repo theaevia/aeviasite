@@ -2,7 +2,6 @@ import { GraduationCap, Award, IdCard } from "lucide-react";
 import SEO from "@/components/SEO";
 import terrellImage from "@assets/about_pics/terrell-pic3.webp";
 import reneeImage from "@assets/about_pics/renee-pic.webp";
-import manuImage from "@assets/about_pics/manu-pic.webp";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -11,7 +10,7 @@ export default function About() {
     <>
       <SEO 
         title="The Aevia | Meet Our Doctor-Led Team | King's Cross, London"
-        description="Meet the doctor-led team behind The Aevia. Our founders combine medical expertise with a passion for natural results and transformative coaching in Kings Cross, London."
+        description="Meet the doctor-led team behind The Aevia. Our founders combine medical expertise with a passion for natural results in King's Cross, London."
         image="/about_pics/terrell-pic3.webp"
       />
       <div className="min-h-screen">
@@ -103,40 +102,6 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Dr. Manu */}
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <img
-                    src={manuImage}
-                    alt="Dr. Manu - Performance and Transformative Coach"
-                    width="480"
-                    height="600"
-                    loading="lazy"
-                    className="rounded-2xl shadow-lg w-full h-auto"
-                  />
-                </div>
-                <div>
-                  <h2 className="text-3xl font-serif font-bold mb-4">Dr. Manu Sidhu</h2>
-                  <p className="text-lg text-primary mb-4">Medical Doctor & Performance Coach</p>
-                  <p className="text-foreground/70 mb-6 leading-relaxed">
-                  Dr. Manu Sidhu is a medical doctor and certified performance coach with an MBBS and a BSc from Imperial College London. He brings a deep understanding of brain science and human behaviour to his work, helping professionals and high-performers unlock clarity, consistency, and long-term growth. With a special interest in mindset and mental wellbeing, Manu blends clinical insight with evidence-based coaching to guide lasting behavioural transformation. He is the author of The Mind Explored, host of the MindTech podcast, and a clinical advisor to the wellbeing platform Pareful.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-center text-foreground/70">
-                      <GraduationCap className="text-primary mr-3 h-5 w-5" />
-                      MBBS, BSc, Imperial College London
-                    </div>
-                    <div className="flex items-center text-foreground/70">
-                      <IdCard className="text-primary mr-3 h-5 w-5" />
-                      Medical Doctor, High-Performance Coach
-                    </div>
-                    <div className="flex items-center text-foreground/70">
-                      <Award className="text-primary mr-3 h-5 w-5" />
-                      Co-founder, The Aevia
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -146,7 +111,7 @@ export default function About() {
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-8">Our Philosophy</h2>
             <p className="text-xl text-foreground/70 leading-relaxed mb-8">
-              "True transformation happens when we address both the physical and mental aspects of human potential. At The Aevia, we believe that radiant skin and a sharp mind are not separate goals, but complementary pathways to your best self."
+              "We believe lasting results come from understanding your skin at a deeper level. Every treatment we deliver is grounded in science, guided by clinical training, and designed to work with your body's own capacity for renewal."
             </p>
             <p className="text-lg text-foreground/50 italic">- The Aevia Team</p>
           </div>

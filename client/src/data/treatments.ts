@@ -1,11 +1,8 @@
 import {
-  CLARITY_STRATEGY_URL,
   CONTOUR_DUO_URL,
   DAO_SMILE_URL,
   HYPERHIDROSIS_URL,
   MASSETER_URL,
-  MIND_DISCOVERY_URL,
-  MOMENTUM_SIX_URL,
   NEFERTITI_URL,
   PNS_EYES_URL,
   PNS_FACE_URL,
@@ -13,7 +10,6 @@ import {
   SCULPTRA_URL,
   SUNEKOS_URL,
   THREE_AREAS_URL,
-  TRANSFORMATION_TWELVE_URL,
   SKIN_VIRTUAL_URL,
   SKIN_CLINIC_URL,
   MICRONEEDLING_REG_URL,
@@ -29,6 +25,11 @@ const smileHero = "/assets/treatment_images/dao-640w.webp";
 const jawSlimHero = "/assets/treatment_images/model-1-640w.webp";
 
 // Types
+export interface PriceTier {
+  label: string;
+  price: string;
+}
+
 export interface Treatment {
   name: string;
   description: string;
@@ -38,6 +39,7 @@ export interface Treatment {
   slug: string;
   image?: string;
   subtitle?: string;
+  priceTiers?: PriceTier[];
 }
 
 export interface TreatmentCategory {
@@ -49,58 +51,6 @@ export interface TreatmentCategory {
 
 // Data
 export const treatmentCategories: TreatmentCategory[] = [
-  {
-    category: "Performance & Transformative Coaching",
-    slug: "coaching",
-    description: "Transformative coaching for high-performers: athletes, executives, and other leaders dedicated to fulfilling their potential. Coached by Dr Manu Sidhu - integrating insights from mental health, peak performance science, and psychological flourishing.",
-    treatments: [
-      {
-        name: "Discovery Call",
-        description: "A 30-minute call to explore your goals, challenges, and whether we're the right fit to work together.",
-        duration: "30min",
-        price: "Complimentary",
-        bookingUrl: MIND_DISCOVERY_URL,
-        slug: "discovery-call",
-        image: "https://placehold.co/600x400"
-      },
-      {
-        name: "Clarity & Strategy Session",
-        description: "A 60-minute analytic deep dive to understand your goals, obstacles, and systems. You'll receive a written summary with an implementation strategy. The £250 fee is credited if you continue into a coaching programme.",
-        duration: "1h",
-        price: "£250",
-        bookingUrl: CLARITY_STRATEGY_URL,
-        slug: "clarity-strategy-session",
-        image: "https://placehold.co/600x400"
-      },
-      {
-        name: "Momentum 6",
-        description: "A focused 6-session coaching programme over 8 weeks to sharpen your mindset, build momentum, and shift your approach to performance. Includes tools and support between sessions. (Split payment of 2 x £675 available).",
-        duration: "1h (per session)",
-        price: "£1,350",
-        bookingUrl: MOMENTUM_SIX_URL,
-        slug: "momentum-6",
-        image: "https://placehold.co/600x400"
-      },
-      {
-        name: "Transformation 12",
-        description: "A deep 12-session journey over 3 months to rewire mindset, strengthen identity, and improve performance across work and life. For clients ready to commit to rich internal growth. (Split payment of 3 x £950 available).",
-        duration: "1h (per session)",
-        price: "£2,450",
-        bookingUrl: TRANSFORMATION_TWELVE_URL,
-        slug: "transformation-12",
-        image: "https://placehold.co/600x400"
-      },
-      {
-        name: "Elite Retainer",
-        description: "Sustained coaching for high-performers dedicated to consistently improving, cultivating, and optimising their performance. Includes 4 sessions/month, quarterly/yearly reviews, and end-to-end goal fulfilment.",
-        duration: "1h (per session)",
-        price: "£12,000",
-        bookingUrl: "https://www.fresha.com/book-now/aevia-clinic-ma38rc5q/services?lid=2606786&eid=4557161&oiid=sv%3A22711403&share&pId=2507365",
-        slug: "elite-retainer",
-        image: "https://placehold.co/600x400"
-      },
-    ]
-  },
   {
     category: "Aevia Skin Consultation",
     slug: "skin-consultation",
@@ -132,31 +82,18 @@ export const treatmentCategories: TreatmentCategory[] = [
     description: "Targeted muscle-relaxing treatments to soften lines, improve facial tension, and reduce sweating.",
     treatments: [
       {
-        name: "One Area (Forehead, Frown or Crow's Feet)",
-        description: "Choose one area to target. Designed to reduce lines while maintaining natural expression.",
-        duration: "30min",
-        price: "£160",
+        name: "Anti-Wrinkle Areas (Forehead, Frown or Crow's Feet)",
+        description: "Target one, two, or three areas to soften lines while maintaining natural expression.",
+        duration: "30\u201345min",
+        price: "From £160",
         bookingUrl: THREE_AREAS_URL,
         slug: "anti-wrinkle",
-        image: antiWrinkleHero
-      },
-      {
-        name: "Two Areas (Forehead, Frown or Crow's Feet)",
-        description: "Choose two areas to target. Designed to reduce lines while maintaining natural expression.",
-        duration: "45min",
-        price: "£220",
-        bookingUrl: THREE_AREAS_URL,
-        slug: "anti-wrinkle",
-        image: antiWrinkleHero
-      },
-      {
-        name: "Three Areas (Forehead, Frown or Crow's Feet)",
-        description: "Choose three areas to target. Designed to reduce lines while maintaining natural expression.",
-        duration: "45min",
-        price: "£260",
-        bookingUrl: THREE_AREAS_URL,
-        slug: "anti-wrinkle",
-        image: antiWrinkleHero
+        image: antiWrinkleHero,
+        priceTiers: [
+          { label: "One Area", price: "£160" },
+          { label: "Two Areas", price: "£220" },
+          { label: "Three Areas", price: "£260" },
+        ],
       },
       {
         name: "Jawline Slimming (Masseter Reduction)",

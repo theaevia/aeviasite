@@ -3,21 +3,29 @@ import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Check, Gift, Camera, Star } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
 import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
-import skinHeroImage from "@assets/hero_images/royalty-free-skin3.webp";
+import clinicHeroImage from "@assets/hero_images/aevia-clinic3.webp";
+import clinicHeroImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import skinModelImage from "@assets/hero_images/skin-model.webp";
 import skinModelImage800 from "@assets/hero_images/skin-model-800w.webp";
 import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
 import skinModel2Image800 from "@assets/hero_images/skin-model-2-800w.webp";
+import terrellImage from "@assets/about_pics/terrell-pic3.webp";
+import reneeImage from "@assets/about_pics/renee-pic.webp";
 import SEO from "@/components/SEO";
 import TestimonialCard from "@/components/TestimonialCard";
+import BnplNotice from "@/components/BnplNotice";
+import Map from "@/components/Map";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import { signatureOffers } from "@/data/signatureOffers";
 import { testimonials } from "@/data/testimonials";
+import { clinicOpeningHours } from "@/data/openingHours";
 import underEyeImage from "@assets/before_afters/under-eye-no-logo.png";
 import masseterImage from "@assets/before_afters/masseter-1.png";
 import foreheadImage from "@assets/before_afters/forehead-no-logo.png";
+import { GraduationCap, IdCard, Award } from "lucide-react";
 
 export default function Skin() {
-      
+
   const beforeAfterCases = [
     {
       title: "Under-eye Brightening",
@@ -49,10 +57,10 @@ export default function Skin() {
   ];
   return (
     <>
-      <SEO 
-        title="Aevia Skin | Medical Aesthetics | King's Cross, London"
-        description="Experience regenerative, science-backed skin treatments led by doctors. For those who value natural results and long-term skin health. King's Cross, London."
-        image="/hero_images/royalty-free-skin4.webp"
+      <SEO
+        title="Aevia Skin | Doctor-Led Aesthetics | King's Cross, London"
+        description="Doctor-led preventative aesthetics in King's Cross. Regenerative treatments designed for natural, lasting results. Two doctors. Evidence-based protocols."
+        image="/hero_images/aevia-clinic3.webp"
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -60,12 +68,15 @@ export default function Skin() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
+                {/* Old copy preserved for reference:
+                  Aevia Skin: Regenerative Aesthetics
+                  Non-invasive skin longevity treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
+                */}
                 <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
-                  Aevia Skin: <span className="text-primary">Regenerative Aesthetics</span>
+                  Doctor-led preventative aesthetics in <span className="text-primary">King's Cross</span>
                 </h1>
-                {/* Trust bar */}
                 <p className="text-sm md:text-base text-foreground/70 mb-4">
-                  Doctor-led • King’s Cross • Subtle, natural results
+                  Two doctors. Regenerative protocols. Natural, lasting results.
                 </p>
                 <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
                   Non-invasive skin longevity treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
@@ -74,29 +85,26 @@ export default function Skin() {
                   <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
                     Book Consultation
                   </BookingButton>
-                  <div className="mt-3 text-sm text-center">
-                    <Link href="/treatments#skin" className="text-primary/80 hover:text-primary underline underline-offset-4">
-                      View all treatments & prices
-                    </Link>
-                  </div>
+                  <BnplNotice className="mt-4" />
                 </div>
               </div>
               <div className="order-1 lg:order-2 w-full">
                 <div className="relative w-full pb-[75%]">
                   <picture>
                     <source
-                      srcSet={skinHeroImage}
+                      srcSet={`${clinicHeroImage800} 800w, ${clinicHeroImage} 1600w`}
                       type="image/webp"
+                      sizes="(max-width: 1024px) 100vw, 640px"
                     />
                     <img
-                      src={skinHeroImage}
-                      alt="Aevia Skin clinic showcasing skin treatments"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg loading:blur-sm loading:animate-pulse"
+                      src={clinicHeroImage}
+                      srcSet={`${clinicHeroImage800} 800w, ${clinicHeroImage} 1600w`}
+                      alt="The Aevia clinic in King's Cross, London"
+                      className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"
                       loading="eager"
-                     
                       width="1600"
                       height="1200"
-                      sizes="(max-width: 1024px) 100vw, 1600px"
+                      sizes="(max-width: 1024px) 100vw, 640px"
                     />
                   </picture>
                 </div>
@@ -105,7 +113,128 @@ export default function Skin() {
           </div>
         </section>
 
-        {/* Signature Offers - surfaced high */}
+        {/* About the Doctors */}
+        <section className="py-16 md:py-24 bg-[#f8f6f2]">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">LED BY DOCTORS</p>
+              <h2 className="mt-4 text-3xl lg:text-4xl font-serif font-bold">Meet your doctors</h2>
+            </div>
+            <div className="space-y-16">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <img
+                    src={terrellImage}
+                    alt="Dr. Terrell Okhiria"
+                    width="600"
+                    height="800"
+                    loading="lazy"
+                    className="rounded-2xl shadow-lg w-full h-auto"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-serif font-bold mb-4">Dr. Terrell Okhiria</h3>
+                  <p className="text-lg text-primary mb-4">GP Trainee & Aesthetic Doctor</p>
+                  <p className="text-foreground/70 mb-6 leading-relaxed">
+                    Dr. Terrell Okhiria is a medical doctor and GP trainee based in North Central London. He holds an MBBS and intercalated BSc from Imperial College London and is certified in advanced aesthetic medicine. With a strong foundation in clinical medicine and a deep understanding of skin physiology, he specialises in regenerative, science-led treatments that support long-term skin health and natural rejuvenation.
+                  </p>
+                  <div className="space-y-2">
+                    <div className="flex items-center text-foreground/70">
+                      <GraduationCap className="text-primary mr-3 h-5 w-5" />
+                      MBBS, BSc, Imperial College London
+                    </div>
+                    <div className="flex items-center text-foreground/70">
+                      <IdCard className="text-primary mr-3 h-5 w-5" />
+                      GP Trainee, North Central London
+                    </div>
+                    <div className="flex items-center text-foreground/70">
+                      <Award className="text-primary mr-3 h-5 w-5" />
+                      Co-founder, The Aevia
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="order-last lg:order-first">
+                  <h3 className="text-3xl font-serif font-bold mb-4">Dr. Renee Okhiria</h3>
+                  <p className="text-lg text-primary mb-4">Medical & Aesthetic Doctor</p>
+                  <p className="text-foreground/70 mb-6 leading-relaxed">
+                    Dr. Renee Okhiria is a qualified medical doctor with an MBBS from the University of Manchester and a BSc from Imperial College London. She holds advanced certification in aesthetic medicine, with a focus on non-surgical facial rejuvenation. Known for her artistic eye and meticulous technique, Dr. Renee combines medical precision with creative vision to deliver refined, natural-looking results.
+                  </p>
+                  <div className="space-y-2">
+                    <div className="flex items-center text-foreground/70">
+                      <GraduationCap className="text-primary mr-3 h-5 w-5" />
+                      MBBS, BSc, University of Manchester & Imperial College London
+                    </div>
+                    <div className="flex items-center text-foreground/70">
+                      <IdCard className="text-primary mr-3 h-5 w-5" />
+                      Resident Doctor, East of England
+                    </div>
+                    <div className="flex items-center text-foreground/70">
+                      <Award className="text-primary mr-3 h-5 w-5" />
+                      Co-founder, The Aevia
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <img
+                    src={reneeImage}
+                    alt="Dr. Renee Okhiria"
+                    width="600"
+                    height="800"
+                    loading="lazy"
+                    className="rounded-2xl shadow-lg w-full h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* The Experience (relocated from homepage) */}
+        <section className="bg-white py-16 sm:py-24 text-[#111]">
+          <div className="hero-safe-padding mx-auto max-w-6xl grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div className="space-y-6">
+              <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">THE EXPERIENCE</p>
+              <h2 className="text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">Sanctuary-level calm, clinical precision</h2>
+              <p className="text-sm sm:text-base leading-relaxed text-[#3f3a33]">
+                Our King&rsquo;s Cross sanctuary is designed to lower cortisol before the first conversation begins.
+                Each treatment runs on an unhurried rhythm so results land deeper and last longer.
+              </p>
+              <ul className="space-y-4 text-sm text-[#4c463d]">
+                <li className="flex items-center gap-3">
+                  <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
+                  Zoned treatment rooms for injectables and regenerative protocols.
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
+                  Evidence-led products paired with sensory rituals that anchor nervous system balance.
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="inline-block h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden />
+                  Integration touchpoints between visits: skincare resets and aftercare check-ins.
+                </li>
+              </ul>
+            </div>
+            <div className="order-2 overflow-hidden border border-primary/20 bg-white lg:order-2">
+              <picture>
+                <source srcSet={`${skinModel2Image800} 800w, ${skinModel2Image} 1600w`} type="image/webp" />
+                <img
+                  src={skinModel2Image}
+                  srcSet={`${skinModel2Image800} 800w, ${skinModel2Image} 1600w`}
+                  alt="The Aevia clinic interior"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  width="1600"
+                  height="1200"
+                  sizes="(max-width: 1024px) 100vw, 640px"
+                />
+              </picture>
+            </div>
+          </div>
+        </section>
+
+        {/* Signature Offers */}
         <section className="py-12 md:py-20 bg-secondary">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-8 md:mb-12">
@@ -206,7 +335,7 @@ export default function Skin() {
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Our Regenerative Treatments</h2>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto">Science-backed procedures that work with your body's natural healing processes</p>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-8">
               <Link href="/categories/polynucleotides" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Dna className="text-primary text-4xl mx-auto mb-4" />
@@ -215,7 +344,7 @@ export default function Skin() {
                 <p className="text-foreground/70 text-sm mb-3">DNA-based therapy that stimulates natural skin regeneration and hydration</p>
                 <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
-              
+
               <Link href="/categories/skin-boosters" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Droplet className="text-primary text-4xl mx-auto mb-4" />
                 <h3 className="text-xl font-serif font-semibold mb-1">Skin Boosters</h3>
@@ -223,7 +352,7 @@ export default function Skin() {
                 <p className="text-foreground/70 text-sm mb-3">Hyaluronic acid injections for deep hydration and improved skin quality</p>
                 <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
-              
+
               <Link href="/categories/anti-wrinkle" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Sparkles className="text-primary text-4xl mx-auto mb-4" />
                 <h3 className="text-xl font-serif font-semibold mb-1">Anti-Wrinkle Injections</h3>
@@ -285,7 +414,7 @@ export default function Skin() {
                 <p className="text-lg text-foreground/80 mb-6">
                   A comprehensive virtual clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or anti-wrinkle injections.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6 mb-6 text-left">
                   <div>
                     <h4 className="font-semibold text-foreground mb-3">Perfect for:</h4>
@@ -304,7 +433,7 @@ export default function Skin() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-foreground mb-3">Pricing:</h4>
                     <ul className="space-y-2 text-foreground/70">
@@ -326,36 +455,32 @@ export default function Skin() {
                 </div>
               </div>
             </div>
-            
+
             <div className="text-center mb-12">
               <h3 className="text-2xl font-serif font-bold mb-8">Your Journey to Radiant Skin</h3>
             </div>
-            
+
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
                 <h3 className="font-semibold mb-2">Book Consultation</h3>
                 <p className="text-sm text-foreground/70">Schedule your Aevia Skin Consultation</p>
               </div>
-              
               <div className="text-center">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
                 <h3 className="font-semibold mb-2">Facial Mapping</h3>
                 <p className="text-sm text-foreground/70">Comprehensive clinical assessment</p>
               </div>
-              
               <div className="text-center">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">3</div>
                 <h3 className="font-semibold mb-2">Treatment Plan</h3>
                 <p className="text-sm text-foreground/70">Tailored recommendations for your goals</p>
               </div>
-              
               <div className="text-center">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">4</div>
                 <h3 className="font-semibold mb-2">Treatment</h3>
                 <p className="text-sm text-foreground/70">Begin your regenerative journey</p>
               </div>
-              
               <div className="text-center">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">5</div>
                 <h3 className="font-semibold mb-2">Results</h3>
@@ -365,7 +490,61 @@ export default function Skin() {
           </div>
         </section>
 
-        {/* Booking Decision (binary) */}
+        {/* Clinic Visit (relocated from homepage) */}
+        <section className="bg-[#f8f6f2] py-16 sm:py-24 text-[#111]">
+          <div className="hero-safe-padding mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary/70">Visit</p>
+              <h2 className="mt-6 text-3xl sm:text-4xl font-serif font-normal uppercase tracking-[0.12em]">The Aevia clinic</h2>
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#3f3a33]">
+                Find us inside Minsony, 260 Pentonville Road, King&rsquo;s Cross. Clinic appointments are by prior
+                booking only.
+              </p>
+            </div>
+            <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+              <div className="space-y-8">
+                <article className="border border-primary/20 bg-white px-8 py-10">
+                  <h3 className="text-sm uppercase tracking-[0.28em] text-primary/70">Location</h3>
+                  <a
+                    href="https://maps.app.goo.gl/KUyjk1sRrauncTx49"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 block text-base font-light tracking-[0.02em] text-primary hover:text-primary/80"
+                  >
+                    Minsony<br />
+                    260 Pentonville Road<br />
+                    N1 9JY, London
+                  </a>
+                </article>
+                <article className="border border-primary/20 bg-white px-8 py-10">
+                  <h3 className="text-sm uppercase tracking-[0.28em] text-primary/70">Opening Hours</h3>
+                  <div className="mt-4 space-y-3 text-sm text-[#4c463d]">
+                    {clinicOpeningHours.map(({ day, hours }) => (
+                      <div key={day} className="flex items-center justify-between">
+                        <span className="uppercase tracking-[0.12em] text-primary/70">{day}</span>
+                        <span>{hours}</span>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+                <article className="border border-primary/20 bg-white px-8 py-10">
+                  <h3 className="text-sm uppercase tracking-[0.28em] text-primary/70">Contact</h3>
+                  <div className="mt-4 space-y-3 text-sm text-[#4c463d]">
+                    <a href="tel:+447448012556" className="block text-primary hover:text-primary/80">
+                      +44 7448 012556
+                    </a>
+                    <a href="mailto:hello@theaevia.co.uk" className="block text-primary hover:text-primary/80">
+                      hello@theaevia.co.uk
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <Map className="border border-primary/20 bg-white" />
+            </div>
+          </div>
+        </section>
+
+        {/* Booking Decision */}
         <section className="py-20 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-2">How should I book?</h2>
@@ -389,9 +568,7 @@ export default function Skin() {
           </div>
         </section>
 
-        {/* Removed Treatment Fees section per request */}
-
-        {/* CTA */}
+        {/* Final CTA */}
         <section className="py-20 bg-accent/30">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Ready to Transform Your Skin?</h2>
@@ -399,9 +576,11 @@ export default function Skin() {
             <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
               Book Your Aevia Skin Consultation
             </BookingButton>
+            <BnplNotice className="mt-6" />
           </div>
         </section>
       </div>
+      <WhatsAppWidget />
     </>
   );
 }

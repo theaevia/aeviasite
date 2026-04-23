@@ -16,7 +16,7 @@ const organizationSchema = {
   "name": "The Aevia",
   "url": "https://www.theaevia.co.uk",
   "logo": "/aevia-logo.png",
-  "description": "The Aevia is a premium doctor-led brand combining advanced aesthetic treatments with transformative performance coaching.",
+  "description": "The Aevia is a premium doctor-led brand offering advanced regenerative aesthetic treatments in King's Cross, London.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "260 Pentonville Road, Minsony",
@@ -43,12 +43,6 @@ const organizationSchema = {
       "jobTitle": "Co-Founder",
       "url": "https://www.theaevia.co.uk/team"
     },
-    {
-      "@type": "Person",
-      "name": "Dr Manu Sidhu",
-      "jobTitle": "Co-Founder",
-      "url": "https://www.theaevia.co.uk/team"
-    }
   ],
   "department": [
     {
@@ -105,47 +99,6 @@ const organizationSchema = {
           "name": "Aevia Skin"
         }
       }
-    },
-    {
-      "@type": "HealthAndBeautyBusiness",
-      "name": "Aevia Mind",
-      "url": "https://www.theaevia.co.uk/mind",
-      "logo": "/aevia-mind.png",
-      "description": "Doctor-led performance and transformative coaching for professionals, led by Dr Manu Sidhu.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "260 Pentonville Road, Minsony",
-        "addressLocality": "London",
-        "addressRegion": "England",
-        "postalCode": "N1 9JY",
-        "addressCountry": "GB"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "51.53095626831055",
-        "longitude": "-0.11996394395828247"
-      },
-      "openingHours": [
-        "Tu 13:00-18:00",
-        "We 10:00-18:00",
-        "Sa 10:00-18:00",
-        "Su 10:00-18:00"
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Dr Manu Sidhu",
-        "jobTitle": "Medical Doctor, Performance and Transformative Coach",
-        "url": "https://www.theaevia.co.uk/team"
-      },
-      "service": {
-        "@type": "Service",
-        "name": "Mind Breakthrough Session",
-        "description": "A premium 90-minute session combining mindset clarity with strategic performance coaching.",
-        "provider": {
-          "@type": "ProfessionalService",
-          "name": "Aevia Mind"
-        } 
-      }
     }
   ]
 };
@@ -154,11 +107,10 @@ export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
   const scrollOnRouteChangeRef = useRef(false);
   const isBioRoute = location.startsWith("/bio") || location.startsWith("/tiktok");
-  const isMindExploredRoute = location.startsWith("/themindexplored");
   const isHomeRoute = location === "/";
-  const hideNavigation = isBioRoute || isMindExploredRoute || isHomeRoute;
+  const hideNavigation = isBioRoute || isHomeRoute;
   const showFooter = !isBioRoute;
-  const showFooterExtras = showFooter && !isMindExploredRoute;
+  const showFooterExtras = showFooter;
 
   useEffect(() => {
     const script = document.createElement("script");

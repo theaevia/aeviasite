@@ -1,11 +1,10 @@
 ---
 import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
-import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
+import { SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
 
 const servicesLinks = [
   { label: 'Aevia Skin', href: mainSiteUrl('/skin') },
-  { label: 'Aevia Mind', href: mainSiteUrl('/mind') },
 ];
 
 const footerLogo = withBase('/assets/logos/logo-black-transparent.webp');
@@ -32,7 +31,7 @@ const resourceLinks = [
           />
         </a>
         <p class="max-w-xs text-sm text-white/60">
-          Excellence and longevity in skin and mind.
+          Doctor-led regenerative aesthetics in King's Cross.
         </p>
       </div>
 
@@ -57,16 +56,6 @@ const resourceLinks = [
               class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Skin Consultation
-            </a>
-          </li>
-          <li>
-            <a
-              href={mainSiteUrl(MIND_DISCOVERY_URL)}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="transition-colors duration-150 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Mind Discovery Call
             </a>
           </li>
         </ul>

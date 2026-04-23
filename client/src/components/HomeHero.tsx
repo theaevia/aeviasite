@@ -25,7 +25,6 @@ const navLinks = [
 
 const mobileNavLinks = [
   { label: "SKIN", href: "/skin" },
-  { label: "MIND", href: "/mind" },
   ...navLinks,
 ];
 
@@ -224,22 +223,14 @@ export default function HomeHero({
                     Caring for both your physical and mental wellbeing
                   </p>
                 </div>
-                <div className="relative mt-6 grid w-full max-w-[360px] grid-cols-2 gap-3 self-start sm:mt-10 sm:flex sm:max-w-none sm:items-center sm:justify-center sm:self-center lg:mt-12 lg:self-center lg:w-full lg:justify-between lg:gap-4">
+                <div className="relative mt-6 flex w-full max-w-[360px] justify-center self-start sm:mt-10 sm:max-w-none sm:self-center lg:mt-12 lg:self-center">
                   <Link
                     href="/skin"
                     className={heroCtaClasses}
                     role="button"
                     aria-label="Go to Skin"
                   >
-                    SKIN
-                  </Link>
-                  <Link
-                    href="/mind"
-                    className={heroCtaClasses}
-                    role="button"
-                    aria-label="Go to Mind"
-                  >
-                    MIND
+                    EXPLORE
                   </Link>
                 </div>
               </div>
@@ -313,7 +304,7 @@ export default function HomeHero({
                 BOOK NOW
               </a>
               <p className="text-sm uppercase tracking-[0.1em] text-white/60">
-                Crafted for skin + mind
+                Crafted for skin
               </p>
             </div>
           </div>

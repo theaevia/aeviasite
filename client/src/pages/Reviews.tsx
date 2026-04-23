@@ -10,7 +10,7 @@ export default function Reviews() {
     <>
       <SEO 
         title="Client Reviews - The Aevia"
-        description="Read authentic reviews from our clients about their experiences with our medical aesthetics treatments and performance coaching at The Aevia clinic in Kings Cross."
+        description="Read authentic reviews from our clients about their experiences with our medical aesthetics treatments at The Aevia clinic in King's Cross."
         image="/hero_images/reviews-hero.webp"
       />
       <div className="min-h-screen py-20">
@@ -64,36 +64,6 @@ export default function Reviews() {
               reviewUrl="https://maps.app.goo.gl/your-review-id"
             />
 
-            <TestimonialCard
-              name="David L."
-              service="Aevia Mind"
-              quote="The performance coaching sessions have been transformative. I've gained clarity in my career decisions and personal life."
-              image=""
-              likes={92}
-              comments={10}
-              reviewUrl="https://maps.app.goo.gl/your-review-id"
-            />
-
-            <TestimonialCard
-              name="Sophie T."
-              service="Both Services"
-              quote="Starting with skin treatments and then adding coaching was the perfect combination. The results have been life-changing."
-              image=""
-              likes={178}
-              comments={20}
-              reviewUrl="https://maps.app.goo.gl/your-review-id"
-            />
-
-            {/* Additional Reviews */}
-            <TestimonialCard
-              name="James W."
-              service="Aevia Mind"
-              quote="The strategic planning sessions have helped me achieve goals I never thought possible. Dr. Manu's approach is both practical and inspiring."
-              image=""
-              likes={145}
-              comments={18}
-              reviewUrl="https://maps.app.goo.gl/your-review-id"
-            />
 
             <TestimonialCard
               name="Emma P."
@@ -105,15 +75,6 @@ export default function Reviews() {
               reviewUrl="https://maps.app.goo.gl/your-review-id"
             />
 
-            <TestimonialCard
-              name="Michael R."
-              service="Both Services"
-              quote="The holistic approach of combining skin treatments with mindset coaching has been incredible. I feel like a new person."
-              image=""
-              likes={189}
-              comments={25}
-              reviewUrl="https://maps.app.goo.gl/your-review-id"
-            />
           </div>
 
           <div className="text-center">

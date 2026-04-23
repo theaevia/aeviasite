@@ -83,7 +83,7 @@ export default function GlowGuide() {
             <p className="mt-4 text-sm uppercase tracking-[0.3em] text-foreground/50">— R, Events Manager</p>
           </div>
           <div className="mt-12 mx-auto max-w-4xl text-center text-sm text-foreground/60">
-            <p>The Aevia · Excellence and longevity in skin and mind · King&apos;s Cross, London</p>
+            <p>The Aevia · Doctor-led regenerative aesthetics · King&apos;s Cross, London</p>
           </div>
         </section>
       </main>

@@ -50,6 +50,7 @@ export default defineConfig(async (_env: ConfigEnv): Promise<UserConfig> => {
     server: {
       port: Number(process.env.PORT) || 5000,
       open: true,
+      allowedHosts: ['thievish-prowess-exorcism.ngrok-free.dev'],
     },
   };
 });

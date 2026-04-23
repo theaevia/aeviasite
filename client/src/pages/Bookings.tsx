@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import SEO from "@/components/SEO";
+import BnplNotice from "@/components/BnplNotice";
 
 const SQUARE_SRC =
   "https://square.site/appointments/buyer/widget/jwhtw6lg3uleti/L1TKSRMBS3N9H.js";
@@ -118,6 +119,7 @@ export default function Bookings(): JSX.Element {
 
       <section className="w-full bg-white py-12 md:py-16">
         <div className="max-w-3xl mx-auto px-6 prose prose-neutral">
+          <BnplNotice variant="banner" className="mb-8" />
           <div
             id="square-appointments-container"
             ref={containerRef}

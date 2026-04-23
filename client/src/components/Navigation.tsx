@@ -24,7 +24,6 @@ const navLinks = [
 
 const mobileNavLinks = [
   { label: "SKIN", href: "/skin" },
-  { label: "MIND", href: "/mind" },
   ...navLinks,
 ];
 
@@ -341,7 +340,7 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
                   isTransparent ? "text-white/60" : "text-primary/80"
                 )}
               >
-                Crafted for skin + mind
+                Crafted for skin
               </p>
             </div>
           </div>

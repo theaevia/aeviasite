@@ -5,8 +5,8 @@ export const go = Router();
 
 const DEST: Record<string, string> = {
   // Square Site
-  square_site: "https://theaevia.square.site/",
-  
+  square_site: "https://aeviaskin.square.site/",
+
   // Skin Consultations
   skin_consultations: "https://book.squareup.com/appointments/flwwunfdy1hm72/location/L1TKSRMBS3N9H/services",
   skin_virtual: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/YVJF3NEOQ3BDDDBRTCLVHKIN",
@@ -42,13 +42,6 @@ const DEST: Record<string, string> = {
   // Microneedling
   microneedling_reg: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/QELFPIHBSOK3EPJOIWLC2N2J",
   microneedling_regen: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/CN7V3ACDCMRBMAN747BEIFYA",
-
-  //Mind services
-  mind_consultation: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/GCC3YKLK465XLBFKMST26IXV",
-  mind_offers: "https://app.squareup.com/appointments/buyer/widget/tfx99pbgmsnrno/L1TKSRMBS3N9H",
-  clarity_strategy_session: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/MSQRJ3E3FMVF25P4P2RVX6MH",
-  momentum_6: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services?service_id=EWO2ZNUMY3K3NX7DWE6R3BIV",
-  transformation_12: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H?service_id=LGKQHJZFMGCCEJB2N3C4ZJ36",
 };
 
 go.get('/go/:slug', (req, res) => {

@@ -45,12 +45,6 @@ export default function SkinConsultationPage() {
             <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-3">Aevia Skin Consultation</h1>
             <p className="text-base md:text-lg text-foreground/80 mb-6">Doctor-led, complimentary 20-min consult. Discreet & personalised.</p>
             {/* Segmented switch */}
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="inline-flex rounded-full border bg-white p-1">
-                <span className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold">Skin</span>
-                <Link href="/consultations/mind" className="px-4 py-2 rounded-full text-sm text-foreground/80 hover:bg-primary/10 smooth-transition">Mind</Link>
-              </div>
-            </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <a
                 href={SKIN_CONSULTATION_URL}

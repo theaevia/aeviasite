@@ -3,7 +3,7 @@ import { Instagram } from "lucide-react";
 import logoBlack from "@assets/logos/logo-black-transparent.webp";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { journalUrl } from "@/lib/journal";
-import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 export default function Footer() {
   return (
@@ -20,7 +20,7 @@ export default function Footer() {
                 className="h-10 w-auto mb-4 filter invert"
               />
             </Link>
-            <p className="text-gray-300 text-sm">Excellence and longevity in Skin and Mind</p>
+            <p className="text-gray-300 text-sm">Doctor-led regenerative aesthetics in King's Cross</p>
           </div>
           
           <div>
@@ -32,18 +32,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/mind" className="hover:text-primary smooth-transition">
-                  Aevia Mind
-                </Link>
-              </li>
-              <li>
                 <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Skin Consultation
-                </a>
-              </li>
-              <li>
-                <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
-                  Mind Discovery Call
                 </a>
               </li>
             </ul>

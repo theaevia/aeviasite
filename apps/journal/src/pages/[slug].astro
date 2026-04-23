@@ -7,7 +7,7 @@ import type { ImageMetadata } from 'astro';
 import { withBase } from '../utils/withBase';
 import { mainSiteUrl } from '../utils/mainSiteUrl';
 import { resolveImageModule, resolveMediaPath } from '../utils/media';
-import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
+import { SKIN_CONSULTATION_URL } from '@/lib/bookingUrls';
 
 const { slug } = Astro.params;
 const viewParam = Astro.url.searchParams.get('view');
@@ -89,14 +89,10 @@ const authorRefs = (post.data.authors || [])
   })
   .filter(Boolean) as Array<{ slug: string; data: any; avatarUrl?: string; avatarModule?: ImageMetadata }>;
 
-const defaultConsultationUrl = mainSiteUrl(SKIN_CONSULTATION_URL);
-const mindConsultationUrl = mainSiteUrl(MIND_DISCOVERY_URL);
-const mindExploredLanding = mainSiteUrl('/themindexplored');
+const consultationUrl = mainSiteUrl(SKIN_CONSULTATION_URL);
 const journalHome = 'https://journal.theaevia.co.uk/';
-const isMindCategory = (post.data.categories || []).some((value: any) => relationSlug(value) === 'mind');
-const consultationUrl = isMindCategory ? mindConsultationUrl : defaultConsultationUrl;
-const headingLabel = minimalView ? 'The Mind, Explored.' : 'The Aevia Journal';
-const headingHref = minimalView ? mindExploredLanding : journalHome;
+const headingLabel = 'The Aevia Journal';
+const headingHref = journalHome;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -239,12 +235,10 @@ const canonicalPrimary = post.data.canonical
     <div class="md:flex md:items-center md:justify-between gap-6">
       <div>
         <h3 class="text-2xl font-serif font-semibold">
-          {isMindCategory ? 'Every first session is free' : 'Prefer tailored guidance?'}
+          Prefer tailored guidance?
         </h3>
         <p class="text-foreground/70 mt-1">
-          {isMindCategory
-            ? 'Identify your blockers, create actionable strategies, and experience the value of coaching before making a commitment.'
-            : 'Book a medical consultation to discuss your goals and the safest path forward.'}
+          Book a medical consultation to discuss your goals and the safest path forward.
         </p>
       </div>
       <div class="mt-4 md:mt-0">
@@ -254,15 +248,10 @@ const canonicalPrimary = post.data.canonical
           rel="noopener"
           target="_blank"
         >
-          {isMindCategory ? 'Book Yours' : 'Book a consultation'}
+          Book a consultation
         </a>
       </div>
     </div>
   </div>
 
-  {isMindCategory && (
-    <div class="mt-12">
-      <div class="ml-embedded" data-form="sx5eR7"></div>
-    </div>
-  )}
 </BaseLayout>

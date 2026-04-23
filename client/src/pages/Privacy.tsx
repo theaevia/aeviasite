@@ -47,7 +47,7 @@ export default function Privacy() {
                   Visit <a href="https://www.theaevia.co.uk" target="_blank" rel="noopener noreferrer">theaevia.co.uk</a>,
                   <a href="https://quiz.theaevia.co.uk" target="_blank" rel="noopener noreferrer" className="ml-1">quiz.theaevia.co.uk</a>, or pages that link here
                 </li>
-                <li>Book, pay for, or receive services from Aevia Skin (doctor‑led medical aesthetics) or Aevia Mind (coaching)</li>
+                <li>Book, pay for, or receive services from Aevia Skin (doctor‑led medical aesthetics)</li>
                 <li>Engage with us by email, phone, WhatsApp, social media, or at events</li>
               </ul>
               <p>If you do not agree with this Notice, please do not use our services.</p>
@@ -70,10 +70,7 @@ export default function Privacy() {
               <h3>e) Aevia Skin</h3>
               <p>Medical history, medications, allergies, previous aesthetic procedures, relevant lifestyle information, clinical assessments, treatment plans and consents, batch numbers, aftercare notes, adverse event records, and clinical photographs (retained as part of the medical record). Marketing use of photos (e.g., website/Instagram) is separately consented and optional.</p>
 
-              <h3>f) Aevia Mind</h3>
-              <p>Session notes, goals, questionnaires, and any personal information you choose to share. If you disclose health‑related information, we will seek explicit consent to process it.</p>
-
-              <h3>g) Sources of data</h3>
+              <h3>f) Sources of data</h3>
               <ul>
                 <li>You (forms, emails, quizzes, during appointments)</li>
                 <li>Automated via cookies/analytics (with consent)</li>
@@ -96,18 +93,13 @@ export default function Privacy() {
                   <tbody>
                     <tr className="align-top">
                       <td className="p-2 border-b">Provide and manage services</td>
-                      <td className="p-2 border-b">Bookings, consultations, treatment or coaching delivery, payments, appointment reminders, aftercare messages</td>
+                      <td className="p-2 border-b">Bookings, consultations, treatment delivery, payments, appointment reminders, aftercare messages</td>
                       <td className="p-2 border-b">Contract (Art 6(1)(b)); Legitimate interests (reminders & continuity of care)</td>
                     </tr>
                     <tr className="align-top">
                       <td className="p-2 border-b">Clinical records (Aevia Skin)</td>
                       <td className="p-2 border-b">Assess suitability; record treatments, consents, batch numbers; safety follow‑up</td>
                       <td className="p-2 border-b">Special‑category health data for care: Art 9(2)(h) (healthcare) under professional secrecy; plus Art 6(1)(b)/(f)</td>
-                    </tr>
-                    <tr className="align-top">
-                      <td className="p-2 border-b">Coaching notes (Aevia Mind)</td>
-                      <td className="p-2 border-b">Session notes/goals; if health info is disclosed</td>
-                      <td className="p-2 border-b">Contract (Art 6(1)(b)); Explicit consent for special‑category data (Art 9(2)(a))</td>
                     </tr>
                     <tr className="align-top">
                       <td className="p-2 border-b">Safety & safeguarding</td>
@@ -168,7 +160,6 @@ export default function Privacy() {
               <ul>
                 <li><strong>Aevia Skin clinical records:</strong> 8 years after last treatment for adults (longer if required for defence of claims).</li>
                 <li><strong>Clinical photography (in record):</strong> retained with the clinical record. <em>Marketing copies</em> are kept until consent is withdrawn or material is retired.</li>
-                <li><strong>Aevia Mind coaching notes:</strong> up to 3 years after last session unless longer is required for legal/defence reasons.</li>
                 <li><strong>Financial/transaction records:</strong> 6 years (HMRC).</li>
                 <li><strong>Marketing preferences & email engagement:</strong> until you unsubscribe or after 24 months of inactivity, whichever is sooner.</li>
               </ul>

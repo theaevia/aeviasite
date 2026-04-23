@@ -35,7 +35,7 @@ export default function Terms() {
               <h2>Terms of Use & Client Service Terms</h2>
               <p>
                 These Terms set out the basis on which The Aevia Group LTD ("The Aevia", "we", "us", "our") provides its services and the terms for using our websites.
-                By booking, purchasing, or using any of our services (including Aevia Skin and Aevia Mind) or by accessing
+                By booking, purchasing, or using any of our services (including Aevia Skin) or by accessing
                 <a href="https://www.theaevia.co.uk" target="_blank" rel="noopener noreferrer" className="ml-1">theaevia.co.uk</a>
                 {" "}or{" "}
                 <a href="https://quiz.theaevia.co.uk" target="_blank" rel="noopener noreferrer" className="ml-1">quiz.theaevia.co.uk</a>
@@ -45,7 +45,7 @@ export default function Terms() {
               <h2>1) Who we are</h2>
               <ul>
                 <li><strong>Legal entity:</strong> The Aevia Group LTD, 5 Brayford Square, London E1 0SG, United Kingdom.</li>
-                <li><strong>Trading names:</strong> <Link href="/skin" className="text-primary underline underline-offset-4">Aevia Skin</Link> (medical aesthetics), <Link href="/mind" className="text-primary underline underline-offset-4">Aevia Mind</Link> (coaching).</li>
+                <li><strong>Trading names:</strong> <Link href="/skin" className="text-primary underline underline-offset-4">Aevia Skin</Link> (medical aesthetics). Coaching is no longer offered under The Aevia brand.</li>
                 <li><strong>Clinic location(s):</strong> Currently operating from <Link href="/clinic" className="text-primary underline underline-offset-4">Minsony, King’s Cross, London</Link> (by appointment only).</li>
                 <li><strong>Contact:</strong> <a href="mailto:hello@theaevia.co.uk">hello@theaevia.co.uk</a> • <a href="mailto:privacy@theaevia.co.uk">privacy@theaevia.co.uk</a></li>
               </ul>
@@ -53,7 +53,7 @@ export default function Terms() {
               <h2>2) Scope & key definitions</h2>
               <ul>
                 <li><strong>Client:</strong> the individual booking or receiving services.</li>
-                <li><strong>Services:</strong> consultations, medical aesthetic treatments, coaching, and any related offerings.</li>
+                <li><strong>Services:</strong> consultations, medical aesthetic treatments, and any related offerings.</li>
                 <li><strong>Appointment:</strong> a scheduled time for consultation or treatment, whether in person or virtual.</li>
                 <li><strong>Packages/Memberships:</strong> any prepaid bundles, plans, or subscription-style arrangements offered by us.</li>
                 <li><strong>Retail Products:</strong> skincare or other physical items sold by us.</li>
@@ -97,21 +97,17 @@ export default function Terms() {
               <p><strong>Follow‑up/adjustments:</strong> Some treatments may include a review window; adjustments are at the clinician’s discretion and subject to medical need and the treatment protocol.</p>
               <p>Maintenance intervals are estimates only; we do not guarantee duration.</p>
 
-              <h2>8) Coaching service notes (Aevia Mind)</h2>
-              <p>Coaching supports clarity, performance, and wellbeing but is not a substitute for medical or mental‑health care. We do not diagnose conditions or prescribe. If we believe another service is more appropriate, we may signpost you.</p>
-              <p>If you disclose health information during coaching, we will handle it per our <Link href="/privacy" className="text-primary underline underline-offset-4">Privacy Policy</Link> and may request explicit consent to process special‑category data.</p>
-
-              <h2>9) Refunds & remedies</h2>
+              <h2>8) Refunds & remedies</h2>
               <p><strong>Services:</strong> Once a service has been performed, refunds are not provided on the basis of dissatisfaction with results alone. We are committed to high standards; if you believe our service has not been delivered with reasonable care and skill, please raise a complaint (Section 15). Where appropriate, we will offer a remedy in line with UK consumer law (e.g., re‑performance or price reduction).</p>
               <p><strong>Retail products:</strong> For faulty or misdescribed items, statutory remedies apply. For unopened, unused items purchased in‑clinic, we usually accept returns within 14 days with proof of purchase; hygiene rules mean we cannot accept returns of opened items unless faulty.</p>
               <p><strong>Gift cards & prepayments:</strong> Non‑transferable, not redeemable for cash, and valid until the printed expiry (typically 12 months). Lost cards are not replaceable except with proof and at our discretion.</p>
               <p><strong>Packages/Memberships:</strong> Unless stated otherwise, packages are non‑transferable, valid for 12 months, and any remaining sessions expire after that date. Cooling‑off rights apply if purchased at a distance and not yet used.</p>
 
-              <h2>10) Photography, testimonials & marketing permissions</h2>
+              <h2>9) Photography, testimonials & marketing permissions</h2>
               <p>Clinical photography may be required for your medical record (Aevia Skin). These images are kept confidential as part of your file.</p>
               <p>Marketing use of images/testimonials is separate and optional; we’ll only use them with your documented consent. You can withdraw consent at any time for future use.</p>
 
-              <h2>11) Your information & privacy</h2>
+              <h2>10) Your information & privacy</h2>
               <p>Your personal data will be processed in accordance with our <Link href="/privacy" className="text-primary underline underline-offset-4">Privacy Policy</Link> (available on our Sites). This explains what we collect, why, how long we keep it, your rights, and who we share it with. Key points include:</p>
               <ul>
                 <li>Clinical data is processed under appropriate legal bases and kept for typical retention periods (e.g., 8 years for adult clinical records).</li>
@@ -119,7 +115,7 @@ export default function Terms() {
                 <li>Some providers may process data outside the UK with appropriate safeguards.</li>
               </ul>
 
-              <h2>12) Website use, content & IP</h2>
+              <h2>11) Website use, content & IP</h2>
               <h3>Informational only</h3>
               <p>Content on our Sites is provided for general information and does not constitute medical advice. Do not rely on it as a substitute for professional assessment.</p>
               <h3>Intellectual property</h3>
@@ -129,31 +125,31 @@ export default function Terms() {
               <h3>Third‑party links</h3>
               <p>We are not responsible for the content or policies of external sites.</p>
 
-              <h2>13) Contraindications & obligations</h2>
+              <h2>12) Contraindications & obligations</h2>
               <ul>
                 <li>You must disclose relevant medical history, medications, allergies, and recent procedures truthfully and update us of any changes before treatment.</li>
                 <li>You must follow pre‑treatment and aftercare instructions. Failure to do so may affect your results and our ability to offer remedies.</li>
                 <li>We may postpone or refuse treatment if alcohol/drug use, illness, or other factors could compromise safety or results.</li>
               </ul>
 
-              <h2>14) Liability</h2>
+              <h2>13) Liability</h2>
               <p>We do not exclude or limit liability where it would be unlawful, including liability for death or personal injury caused by our negligence, for fraud or fraudulent misrepresentation, or for breach of your statutory rights.</p>
               <p>Subject to the above, and to the maximum extent permitted by law, our liability for losses arising in connection with the services will be limited to the amount you paid for the relevant service.</p>
-              <p>We are not liable for loss or damage that is not reasonably foreseeable or for indirect/special losses (e.g., loss of earnings) arising from elective aesthetic treatments or coaching outcomes.</p>
+              <p>We are not liable for loss or damage that is not reasonably foreseeable or for indirect/special losses (e.g., loss of earnings) arising from elective aesthetic treatments.</p>
               <p>We are not responsible for delays or failures caused by events outside our reasonable control.</p>
 
-              <h2>15) Complaints</h2>
+              <h2>14) Complaints</h2>
               <p>We aim to resolve issues quickly and fairly. Please email <a href="mailto:hello@theaevia.co.uk">hello@theaevia.co.uk</a> with details (name, date, service, and outcome sought).</p>
               <p>We’ll acknowledge within 3–5 business days and provide a response or next steps as soon as reasonably possible.</p>
               <p>If your complaint concerns a clinician’s professional conduct, you may also contact their professional body or insurer. This does not affect your statutory rights.</p>
 
-              <h2>16) Changes to these Terms</h2>
+              <h2>15) Changes to these Terms</h2>
               <p>We may update these Terms from time to time. The latest version will be posted on our Sites with the updated date. Material changes may be notified by email or during booking.</p>
 
-              <h2>17) Governing law & jurisdiction</h2>
+              <h2>16) Governing law & jurisdiction</h2>
               <p>These Terms and any non‑contractual obligations are governed by the laws of England &amp; Wales. You and we submit to the exclusive jurisdiction of the courts of England and Wales.</p>
 
-              <h2>18) Contact</h2>
+              <h2>17) Contact</h2>
               <p>
                 The Aevia Group LTD<br />
                 5 Brayford Square, London E1 0SG, United Kingdom<br />

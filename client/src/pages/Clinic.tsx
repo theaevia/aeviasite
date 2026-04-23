@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MIND_DISCOVERY_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 import SEO from "@/components/SEO";
 import Map from "@/components/Map";
 import { clinicOpeningHours } from "@/data/openingHours";
@@ -76,11 +76,6 @@ export default function Clinic() {
                     <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
                       <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
                         Skin Consultation
-                      </Button>
-                    </a>
-                    <a href={MIND_DISCOVERY_URL} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white shadow-sm">
-                        Mind Discovery Call
                       </Button>
                     </a>
                   </div>

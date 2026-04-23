@@ -28,20 +28,8 @@ const heroImages = [
         quality: 80
     },
     {
-        input: 'client/assets/hero_images/mind-hero.webp',
-        output: 'client/assets/hero_images/mind-hero-800w.webp',
-        width: 800,
-        quality: 80
-    },
-    {
         input: 'client/assets/hero_images/skin-model.webp',
         output: 'client/assets/hero_images/skin-model-800w.webp',
-        width: 800,
-        quality: 80
-    },
-    {
-        input: 'client/assets/hero_images/mind-coaching-water.webp',
-        output: 'client/assets/hero_images/mind-coaching-water-800w.webp',
         width: 800,
         quality: 80
     },
