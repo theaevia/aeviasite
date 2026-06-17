@@ -3,7 +3,8 @@ import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
 import { treatmentCategories } from "@/data/treatments";
 import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
-import { MICRONEEDLING_REG_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { MICRONEEDLING_REG_URL, PEELS_WAITLIST_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { openPeelsWaitlistForm } from "@/lib/mailerLite";
 
 const CATEGORY_SLUG = "microneedling";
 
@@ -68,7 +69,11 @@ export default function MicroneedlingPeelsCategoryPage() {
             Our peel menu is in the final clinical testing phase. Register your interest and we will notify you the moment booking opens.
           </p>
           <a
-            href="mailto:hello@theaevia.co.uk?subject=Clinical%20Peels%20Waitlist"
+            href={PEELS_WAITLIST_URL}
+            onClick={(event) => {
+              event.preventDefault();
+              openPeelsWaitlistForm();
+            }}
             className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium text-base smooth-transition shadow-lg border-2 border-primary bg-primary text-primary-foreground hover:bg-white hover:text-primary hover:border-primary"
           >
             Join Peel Waitlist

@@ -1,4 +1,4 @@
-import { GLOW_REVIVAL_URL, WRINKLE_RESET_URL } from "@/lib/bookingUrls";
+import { GLOW_REVIVAL_URL, PEELS_WAITLIST_URL, WRINKLE_RESET_URL } from "@/lib/bookingUrls";
 
 export interface SignatureOffer {
   name: string;
@@ -51,7 +51,7 @@ export const signatureOffers: SignatureOffer[] = [
       "Results-driven, safe for all skin types"
     ],
     normalPrice: "TBA",
-    bookingUrl: "#",
+    bookingUrl: PEELS_WAITLIST_URL,
     ctaText: "Join Waitlist"
   },
 ]; 

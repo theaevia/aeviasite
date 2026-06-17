@@ -2,7 +2,6 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { useEffect, useRef } from "react";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
-import MobileStickyBookingBar from "@/components/MobileStickyBookingBar";
 import ScrollRevealObserver from "@/components/ScrollRevealObserver";
 import { useLocation } from "wouter";
 import { Helmet } from "react-helmet-async";
@@ -129,6 +128,8 @@ export default function Layout({ children }: LayoutProps) {
       const header = document.querySelector("nav.fixed") as HTMLElement | null;
       const footer = document.querySelector("footer") as HTMLElement | null;
       document.documentElement.style.setProperty("--header-h", `${header?.offsetHeight ?? 0}px`);
+      document.documentElement.style.setProperty("--sticky-bottom-offset", "0px");
+      document.documentElement.style.setProperty("--sticky-reveal-progress", "0");
       if (footer) {
         document.documentElement.style.setProperty("--footer-h", `${footer.offsetHeight}px`);
       }
@@ -226,10 +227,7 @@ export default function Layout({ children }: LayoutProps) {
       )}
       {showFooter && <Footer />}
       {showFooterExtras && (
-        <>
-          <MobileStickyBookingBar />
-          <WhatsAppWidget />
-        </>
+        <WhatsAppWidget />
       )}
     </div>
   );

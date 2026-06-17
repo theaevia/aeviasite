@@ -42,6 +42,9 @@ const DEST: Record<string, string> = {
   // Microneedling
   microneedling_reg: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/QELFPIHBSOK3EPJOIWLC2N2J",
   microneedling_regen: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/CN7V3ACDCMRBMAN747BEIFYA",
+
+  // Waitlists
+  peels_waitlist: "mailto:hello@theaevia.co.uk?subject=Clinical%20Peels%20Waitlist",
 };
 
 go.get('/go/:slug', (req, res) => {

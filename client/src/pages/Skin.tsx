@@ -21,6 +21,7 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import { signatureOffers } from "@/data/signatureOffers";
 import { testimonials } from "@/data/testimonials";
 import { clinicOpeningHours } from "@/data/openingHours";
+import { openPeelsWaitlistForm } from "@/lib/mailerLite";
 import underEyeImage from "@assets/before_afters/under-eye-no-logo.png";
 import masseterImage from "@assets/before_afters/masseter-1.png";
 import foreheadImage from "@assets/before_afters/forehead-no-logo.png";
@@ -259,8 +260,16 @@ export default function Skin() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {signatureOffers.map((offer) => {
                 const [mainTitle, subtitle] = offer.name.split('\n');
-                const ctaText = offer.bookingUrl === '#' ? offer.ctaText : offer.ctaText || 'Book Treatment';
+                const isWaitlist =
+                  !offer.bookingUrl ||
+                  offer.bookingUrl === '#' ||
+                  offer.ctaText.toLowerCase().includes('waitlist');
+                const ctaText = isWaitlist ? offer.ctaText : offer.ctaText || 'Book Treatment';
                 const onCtaClick = () => {
+                  if (isWaitlist) {
+                    openPeelsWaitlistForm();
+                    return;
+                  }
                   if (offer.bookingUrl !== '#') {
                     window.open(offer.bookingUrl, '_blank');
                     return;

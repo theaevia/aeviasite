@@ -13,6 +13,7 @@ import {
   SKIN_VIRTUAL_URL,
   SKIN_CLINIC_URL,
   MICRONEEDLING_REG_URL,
+  PEELS_WAITLIST_URL,
 } from "@/lib/bookingUrls";
 
 // Assets (optimized public variants for responsive delivery)
@@ -224,7 +225,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "AHA peel for brightening, smoothing, and improving skin texture. Available soon.",
         duration: "30min",
         price: "TBA",
-        bookingUrl: "#",
+        bookingUrl: PEELS_WAITLIST_URL,
         slug: "glycolic-peel",
         image: "/hero_images/glycolic-peel-example.webp"
       },
@@ -233,7 +234,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "BHA peel ideal for oily, acne-prone skin. Helps unclog pores and reduce breakouts. Available soon.",
         duration: "30min",
         price: "TBA",
-        bookingUrl: "#",
+        bookingUrl: PEELS_WAITLIST_URL,
         slug: "salicylic-peel",
         image: "/hero_images/salicylic-peel-example.webp"
       },
@@ -242,7 +243,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Gentle AHA peel for hydration and mild exfoliation. Suitable for sensitive skin. Available soon.",
         duration: "30min",
         price: "TBA",
-        bookingUrl: "#",
+        bookingUrl: PEELS_WAITLIST_URL,
         slug: "lactic-acid-peel",
         image: "/hero_images/lactic-acid-peel-example.webp"
       },
@@ -251,7 +252,7 @@ export const treatmentCategories: TreatmentCategory[] = [
         description: "Medium-depth peel for pigmentation, texture, and rejuvenation. Available soon.",
         duration: "30min",
         price: "TBA",
-        bookingUrl: "#",
+        bookingUrl: PEELS_WAITLIST_URL,
         slug: "tca-peel",
         image: "/hero_images/tca-peel-example.webp"
       }

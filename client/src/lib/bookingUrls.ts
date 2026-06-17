@@ -17,6 +17,7 @@ export const WRINKLE_RESET_URL = '/go/wrinkle_reset';
 export const GLOW_REVIVAL_URL = '/go/glow_revival';
 export const MICRONEEDLING_REG_URL = '/go/microneedling_reg';
 export const MICRONEEDLING_REGEN_URL = '/go/microneedling_regen';
+export const PEELS_WAITLIST_URL = '/go/peels_waitlist';
 
 // Clinic WhatsApp number for "Enquire to book" CTAs on course bundles.
 // Sourced from WhatsAppWidget.tsx; wa.me wants the number without spaces or plus.

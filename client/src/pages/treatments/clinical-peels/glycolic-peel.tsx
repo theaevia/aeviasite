@@ -1,6 +1,7 @@
 import SEO from "@/components/SEO";
 import { BookingButton } from "@/components/BookingButton";
-import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { PEELS_WAITLIST_URL } from "@/lib/bookingUrls";
+import { openPeelsWaitlistForm } from "@/lib/mailerLite";
 
 export default function GlycolicPeelComingSoonPage() {
   return (
@@ -17,8 +18,16 @@ export default function GlycolicPeelComingSoonPage() {
           <p className="text-2xl font-normal text-primary mb-8">
             Coming Soon to Aevia Skin!
           </p>
-          <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full sm:w-auto">
-            Book a Consultation to Learn More
+          <BookingButton
+            href={PEELS_WAITLIST_URL}
+            variant="secondary"
+            className="w-full sm:w-auto"
+            onClick={(event) => {
+              event.preventDefault();
+              openPeelsWaitlistForm();
+            }}
+          >
+            Join Waitlist
           </BookingButton>
         </div>
       </section>

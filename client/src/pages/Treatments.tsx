@@ -10,8 +10,10 @@ import { signatureOffers } from "@/data/signatureOffers";
 import {
   MICRONEEDLING_REG_URL,
   MICRONEEDLING_REGEN_URL,
+  PEELS_WAITLIST_URL,
   SQUARE_SITE_URL,
 } from "@/lib/bookingUrls";
+import { openPeelsWaitlistForm } from "@/lib/mailerLite";
 import treatmentsHeroImage from "@assets/hero_images/skin-model-2.webp";
 
 export default function Treatments() {
@@ -106,10 +108,17 @@ export default function Treatments() {
             <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3">
               {signatureOffers.map((offer) => {
                 const [mainTitle, subtitle] = offer.name.split("\n");
-                const isWaitlist = !offer.bookingUrl || offer.bookingUrl === "#";
+                const isWaitlist =
+                  !offer.bookingUrl ||
+                  offer.bookingUrl === "#" ||
+                  offer.ctaText.toLowerCase().includes("waitlist");
                 const ctaText = isWaitlist ? offer.ctaText : offer.ctaText || "Book Now";
                 const onCtaClick = () => {
                   if (isWaitlist) {
+                    openPeelsWaitlistForm();
+                    return;
+                  }
+                  if (!offer.bookingUrl || offer.bookingUrl === "#") {
                     window.open(SQUARE_SITE_URL, "_blank");
                     return;
                   }
@@ -232,9 +241,15 @@ export default function Treatments() {
                       </div>
                       <div className="grid gap-6 md:grid-cols-2">
                         {treatmentsToRender.map((treatment) => {
+                          const isClinicalPeel = cat.slug === "clinical-peels";
                           const hasBooking =
                             Boolean(treatment.bookingUrl && treatment.bookingUrl !== "#");
-                          const bookingHref = hasBooking ? treatment.bookingUrl : SQUARE_SITE_URL;
+                          const bookingHref = isClinicalPeel
+                            ? PEELS_WAITLIST_URL
+                            : hasBooking
+                              ? treatment.bookingUrl
+                              : SQUARE_SITE_URL;
+                          const ctaText = isClinicalPeel ? "Join waitlist" : "Book treatment";
 
                           return (
                             <div
@@ -265,9 +280,14 @@ export default function Treatments() {
                                     href={bookingHref}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    onClick={(event) => {
+                                      if (!isClinicalPeel) return;
+                                      event.preventDefault();
+                                      openPeelsWaitlistForm();
+                                    }}
                                     className="inline-flex items-center justify-center border border-primary/70 px-5 py-2 text-sm font-medium normal-case tracking-normal text-primary transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
                                   >
-                                    Book treatment
+                                    {ctaText}
                                   </a>
                                 </div>
                               </div>
