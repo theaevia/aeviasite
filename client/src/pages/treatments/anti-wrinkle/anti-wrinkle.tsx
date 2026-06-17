@@ -30,7 +30,7 @@ export default function AntiWrinklePage() {
     },
   ];
   const antiWrinkleCategory = treatmentCategories.find(cat => cat.slug === "anti-wrinkle");
-  const oneAreaTreatment = antiWrinkleCategory?.treatments.find(t => t.name.includes("One Area"));
+  const oneAreaTreatment = antiWrinkleCategory?.treatments.find(t => t.slug === "anti-wrinkle");
 
   if (!oneAreaTreatment) return null; // Handle case where treatment is not found
 
@@ -50,8 +50,6 @@ export default function AntiWrinklePage() {
                   Targeted muscle-relaxing treatment to soften lines and improve facial tension.
                 </p>
                 <div className="flex items-center text-lg text-foreground/80 mb-6">
-                  <span>From £160</span>
-                  <span className="mx-2">•</span>
                   <span>30 mins</span>
                 </div>
                 <BookingButton
@@ -223,13 +221,12 @@ export default function AntiWrinklePage() {
         {/* Pricing & Options */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Pricing and Packages</h2>
-            <p className="text-base text-foreground/80 text-center mb-8">Transparent pricing for anti-wrinkle treatments at our London clinic.</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Treatment Options</h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">One Area</h2>
                 <p className="text-foreground/70 mb-2 text-center">Forehead, Frown or Crow's Feet</p>
-                <span className="text-2xl font-normal text-primary mb-1">£160</span>
                 <span className="text-muted-foreground text-sm mb-4">30min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book One Area</a>
@@ -238,7 +235,6 @@ export default function AntiWrinklePage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Two Areas</h2>
                 <p className="text-foreground/70 mb-2 text-center">Forehead, Frown or Crow's Feet</p>
-                <span className="text-2xl font-normal text-primary mb-1">£220</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book Two Areas</a>
@@ -247,7 +243,6 @@ export default function AntiWrinklePage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Three Areas</h2>
                 <p className="text-foreground/70 mb-2 text-center">Forehead, Frown & Crow's Feet</p>
-                <span className="text-2xl font-normal text-primary mb-1">£260</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={THREE_AREAS_URL} target="_blank" rel="noopener noreferrer">Book Three Areas</a>
@@ -336,19 +331,19 @@ export default function AntiWrinklePage() {
             <div className="text-center">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Ready to feel confidently refreshed?</h2>
             </div>
-            <p className="text-base text-foreground/80 text-center mb-8">Book your anti-wrinkle consultation in London today.</p>
+            <p className="text-base text-foreground/80 text-center mb-8">Book your anti-wrinkle appointment in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
-                  Book Aevia Skin Consultation
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full">
+                  Get Guidance First
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Optional guidance</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={THREE_AREAS_URL} variant="secondary" className="w-full">
+                <BookingButton href={THREE_AREAS_URL} variant="primary" className="w-full">
                   Book Anti-Wrinkle Treatment
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Book directly online</span>
               </div>
             </div>
             <p className="text-xs text-muted-foreground text-center mt-8 max-w-2xl mx-auto">

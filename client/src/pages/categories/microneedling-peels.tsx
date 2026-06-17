@@ -27,9 +27,10 @@ export default function MicroneedlingPeelsCategoryPage() {
               Book Microneedling
             </BookingButton>
             <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full sm:w-auto">
-              Book Skin Consultation
+              Unsure? Get Guidance First
             </BookingButton>
           </div>
+          <p className="mt-3 text-sm text-foreground/70">Your doctor will confirm suitability before treatment.</p>
         </div>
       </section>
       {microneedlingTreatment.length > 0 && (

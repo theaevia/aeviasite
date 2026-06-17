@@ -59,7 +59,7 @@ export default function Privacy() {
               <p>Name, email, phone, postal address, marketing preferences, age confirmation (18+).</p>
 
               <h3>b) Bookings, payments & transactions</h3>
-              <p>Appointment history, services booked, payment status and references (we do not store full card numbers). In‑clinic payments may be processed via Square Appointments; online consults may be scheduled via Calendly.</p>
+              <p>Appointment history, services booked, payment status and references (we do not store full card numbers). Clinic bookings, deposits, and appointment reminders may be processed through our scheduling partners.</p>
 
               <h3>c) Communications</h3>
               <p>Emails, contact forms, WhatsApp messages/check‑ins, consultation correspondence, and related metadata.</p>
@@ -141,7 +141,7 @@ export default function Privacy() {
               <h3>Core processors</h3>
               <ul>
                 <li><strong>Square</strong> – bookings, payments, notifications (clinic)</li>
-                <li><strong>Calendly</strong> – scheduling virtual consultations</li>
+                <li><strong>Scheduling partners</strong> – managing appointments, guidance calls, deposits, and reminders</li>
                 <li><strong>Mailchimp (Intuit)</strong> – email marketing & subscriber management</li>
                 <li><strong>Jotform</strong> – intake forms and questionnaires</li>
                 <li><strong>Google</strong> – Analytics (with consent), reCAPTCHA</li>

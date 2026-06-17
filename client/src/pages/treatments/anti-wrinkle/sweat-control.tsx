@@ -28,8 +28,6 @@ export default function SweatControlPage() {
                   Underarm and palms treatment to reduce excessive sweating for up to 9 months.
                 </p>
                 <div className="flex items-center text-lg text-foreground/80 mb-6">
-                  <span>£350</span>
-                  <span className="mx-2">•</span>
                   <span>1h</span>
                 </div>
                 <BookingButton
@@ -142,13 +140,12 @@ export default function SweatControlPage() {
         {/* Pricing & Options */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Pricing and Packages</h2>
-            <p className="text-base text-foreground/80 text-center mb-8">Transparent pricing for Sweat Reduction treatments at our London clinic.</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Treatment Options</h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-1 gap-8 justify-items-center">
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center max-w-sm w-full">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Sweat Reduction</h2>
                 <p className="text-foreground/70 mb-2 text-center">Underarms</p>
-                <span className="text-2xl font-normal text-primary mb-1">£350</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <BookingButton
                   href={HYPERHIDROSIS_URL}
@@ -224,19 +221,19 @@ export default function SweatControlPage() {
             <div className="text-center">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Ready to feel confidently refreshed?</h2>
             </div>
-            <p className="text-base text-foreground/80 text-center mb-8">Book your Sweat Reduction consultation in London today.</p>
+            <p className="text-base text-foreground/80 text-center mb-8">Book your Sweat Reduction appointment in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
-                  Book Aevia Skin Consultation
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full">
+                  Get Guidance First
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Optional guidance</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={HYPERHIDROSIS_URL} variant="secondary" className="w-full">
+                <BookingButton href={HYPERHIDROSIS_URL} variant="primary" className="w-full">
                   Book Sweat Reduction Treatment
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Book directly online</span>
               </div>
             </div>
             <p className="text-xs text-muted-foreground text-center mt-8 max-w-2xl mx-auto">

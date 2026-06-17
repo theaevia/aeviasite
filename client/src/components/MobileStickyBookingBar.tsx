@@ -1,10 +1,7 @@
 // MobileStickyBookingBar.tsx
 import { useEffect, useRef, useState } from "react";
-import { Link } from "wouter";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
-
-type Mode = "new" | "returning";
+import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 /**
  * Scroll-revealed Mobile Sticky Bar
@@ -20,7 +17,6 @@ export default function MobileStickyBookingBar() {
   const APPEAR_END = 420;   // px where bar is fully revealed
   const GAP = 50;           // px between bar and WhatsApp FAB
 
-  const [mode, setMode] = useState<Mode>("new");
   const [dismissed, setDismissed] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean>(() =>
     typeof window !== "undefined" ? window.matchMedia("(max-width: 767px)").matches : false
@@ -36,8 +32,6 @@ export default function MobileStickyBookingBar() {
 
   // Load persisted states
   useEffect(() => {
-    const saved = (localStorage.getItem("aevia-booking-mode") as Mode | null) ?? "new";
-    setMode(saved);
     const dismissedSaved = sessionStorage.getItem("aevia-sticky-hidden") === "1";
     if (dismissedSaved) setDismissed(true);
   }, []);
@@ -108,12 +102,6 @@ export default function MobileStickyBookingBar() {
       setReveal(0);
     };
   }, [isMobile, dismissed, APPEAR_START, APPEAR_END]);
-
-  // Persist mode choice
-  const setAndPersist = (next: Mode) => {
-    setMode(next);
-    localStorage.setItem("aevia-booking-mode", next);
-  };
 
   // Offset WhatsApp FAB by only the *visible* portion of the bar
   useEffect(() => {
@@ -202,7 +190,7 @@ export default function MobileStickyBookingBar() {
     <div className="md:hidden fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
       <div
         ref={barRef}
-        className="mx-auto max-w-3xl rounded-2xl shadow-lg border border-muted-foreground/10 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 p-3 flex items-center justify-between relative will-change-transform"
+        className="mx-auto flex max-w-3xl items-center justify-between gap-3 rounded-2xl border border-muted-foreground/10 bg-white/90 p-3 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-white/70 relative will-change-transform"
         style={{
           transform: `translateY(${translateY}%)`,
           opacity,
@@ -226,62 +214,20 @@ export default function MobileStickyBookingBar() {
           <ChevronDown className="w-4 h-4 text-muted-foreground" />
         </button>
 
-        {/* Mode toggle */}
-        <div
-          role="tablist"
-          aria-label="Choose booking type"
-          className="flex gap-1 p-1 rounded-full border border-muted-foreground/10 bg-white/70"
-        >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={mode === "new"}
-            onClick={() => setAndPersist("new")}
-            className={`px-3 py-1.5 text-sm rounded-full transition-colors ${
-              mode === "new"
-                ? "bg-primary text-primary-foreground shadow"
-                : "text-primary hover:bg-primary/10"
-            }`}
-          >
-            New
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={mode === "returning"}
-            onClick={() => setAndPersist("returning")}
-            className={`px-3 py-1.5 text-sm rounded-full transition-colors ${
-              mode === "returning"
-                ? "bg-primary text-primary-foreground shadow"
-                : "text-primary hover:bg-primary/10"
-            }`}
-          >
-            Returning
-          </button>
+        <div className="min-w-0">
+          <p className="text-sm font-medium text-foreground">Ready when you are</p>
+          <p className="text-xs text-foreground/60">Assessment is included in clinic.</p>
         </div>
 
-        {/* Primary action */}
-        {mode === "new" ? (
-          <a
-            href={SKIN_CONSULTATION_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-medium border-2 border-primary hover:bg-white hover:text-primary smooth-transition"
-            aria-label="Book a skin consultation"
-          >
-            Book Consultation
-          </a>
-        ) : (
-          <a
-            href={SQUARE_SITE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-medium border-2 border-primary hover:bg-white hover:text-primary smooth-transition"
-            aria-label="Book a treatment"
-          >
-            Book Treatment
-          </a>
-        )}
+        <a
+          href={SQUARE_SITE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 rounded-xl border-2 border-primary bg-primary px-4 py-2 text-sm font-medium text-primary-foreground smooth-transition hover:bg-white hover:text-primary"
+          aria-label="Book a treatment"
+        >
+          Book Treatment
+        </a>
       </div>
     </div>
   );

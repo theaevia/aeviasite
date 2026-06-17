@@ -19,8 +19,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="The Aevia | King's Cross, London"
-        description="The Aevia is a doctor-led aesthetics brand based in King's Cross, London. Regenerative treatments designed for natural, lasting results."
+        title="The Aevia | Aevia Skin, King's Cross"
+        description="The Aevia is home to Aevia Skin, a doctor-led regenerative aesthetics clinic in King's Cross, London."
         image="/aevia-clinic3.webp"
       />
       <div className="min-h-screen">

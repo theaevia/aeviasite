@@ -20,7 +20,7 @@ export default function TestimonialCard({ name, service, quote, image, likes, co
   };
 
   return (
-    <div className="bg-secondary rounded-2xl p-6 smooth-transition hover:shadow-lg relative">
+    <div className="bg-secondary rounded-2xl p-6 smooth-transition hover:shadow-lg relative" data-scroll-reveal>
       <div className="flex items-center mb-4">
         {[...Array(5)].map((_, i) => (
           <Star key={i} className="h-4 w-4 text-primary fill-primary" />

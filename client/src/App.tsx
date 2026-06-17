@@ -55,8 +55,9 @@ function Router() {
   return (
     <Layout>
       <Switch>
-        <Route path="/" component={Home} />
+        <Route path="/" component={Skin} />
         <Route path="/skin" component={Skin} />
+        <Route path="/the-aevia" component={Home} />
         <Route path="/team" component={Team} />
         <Route path="/clinic" component={Clinic} />
         <Route path="/glow-guide" component={GlowGuide} />

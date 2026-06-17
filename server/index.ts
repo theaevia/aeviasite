@@ -211,7 +211,7 @@ app.use((req, res, next) => {
       url.searchParams.set('utm_source', 'instagram');
       url.searchParams.set('utm_medium', 'bio');
       url.searchParams.set('utm_campaign', 'profile');
-      // For Instagram, make Consult primary
+      // For Instagram, make direct booking primary.
       url.searchParams.set('intent', 'consult');
       return res.redirect(302, url.pathname + url.search);
     }

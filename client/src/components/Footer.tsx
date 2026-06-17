@@ -3,7 +3,7 @@ import { Instagram } from "lucide-react";
 import logoBlack from "@assets/logos/logo-black-transparent.webp";
 import TikTokIcon from "@assets/svgs/tiktok-fill-svgrepo-com.svg?react";
 import { journalUrl } from "@/lib/journal";
-import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 export default function Footer() {
   return (
@@ -27,13 +27,13 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <Link href="/skin" className="hover:text-primary smooth-transition">
+                <Link href="/" className="hover:text-primary smooth-transition">
                   Aevia Skin
                 </Link>
               </li>
               <li>
-                <a href={SKIN_CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
-                  Skin Consultation
+                <a href={SQUARE_SITE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                  Book Treatment
                 </a>
               </li>
             </ul>
@@ -46,6 +46,11 @@ export default function Footer() {
                 <a href={journalUrl('/')} target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   Journal
                 </a>
+              </li>
+              <li>
+                <Link href="/the-aevia" className="hover:text-primary smooth-transition">
+                  The Aevia
+                </Link>
               </li>
               <li>
                 <Link href="/privacy" className="hover:text-primary smooth-transition">
@@ -69,13 +74,13 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Connect</h4>
             <div className="space-y-4">
               <div className="flex items-center text-sm text-gray-300 space-x-2">
-                <a href="https://instagram.com/the.aevia" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
+                <a href="https://instagram.com/aevia.skin" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   <Instagram className="h-4 w-4" />
                 </a>
                 <a href="https://www.tiktok.com/@the.aevia" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="hover:text-primary smooth-transition">
                   <TikTokIcon className="h-4 w-4" />
                 </a>
-                <span className="ml-2">@the.aevia</span>
+                <span className="ml-2">@aevia.skin</span>
               </div>
               <a href="mailto:hello@theaevia.co.uk" className="flex items-center text-sm text-gray-300 hover:text-primary smooth-transition">
                 hello@theaevia.co.uk

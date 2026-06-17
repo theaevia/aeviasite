@@ -10,15 +10,11 @@ import { signatureOffers } from "@/data/signatureOffers";
 import {
   MICRONEEDLING_REG_URL,
   MICRONEEDLING_REGEN_URL,
-  SKIN_CONSULTATION_URL,
+  SQUARE_SITE_URL,
 } from "@/lib/bookingUrls";
 import treatmentsHeroImage from "@assets/hero_images/skin-model-2.webp";
 
 export default function Treatments() {
-  const handleBookNow = (treatment: Treatment) => {
-    window.open(treatment.bookingUrl, "_blank");
-  };
-
   const handleSignatureOfferBook = (bookingUrl: string) => {
     window.open(bookingUrl, "_blank");
   };
@@ -114,7 +110,7 @@ export default function Treatments() {
                 const ctaText = isWaitlist ? offer.ctaText : offer.ctaText || "Book Now";
                 const onCtaClick = () => {
                   if (isWaitlist) {
-                    window.location.href = SKIN_CONSULTATION_URL;
+                    window.open(SQUARE_SITE_URL, "_blank");
                     return;
                   }
                   handleSignatureOfferBook(offer.bookingUrl);
@@ -133,9 +129,6 @@ export default function Treatments() {
                           {subtitle}
                         </p>
                       )}
-                      <span className="mt-4 text-xl font-semibold uppercase tracking-[0.1em] text-primary">
-                        {offer.price}
-                      </span>
                       <p className="mt-4 text-sm leading-relaxed text-[#3f3a33]">{offer.description}</p>
                       <ul className="mt-6 mb-4 space-y-2 text-left text-sm leading-relaxed text-[#3f3a33]/80">
                         {offer.features.map((feature) => (
@@ -145,11 +138,6 @@ export default function Treatments() {
                           </li>
                         ))}
                       </ul>
-                      <hr className="my-4 w-full border-[#d9d0c4]/80" />
-                      <div className="text-[0.7rem] tracking-[0.18em] text-[#3f3a33]/70">
-                        Normally {offer.normalPrice}. Consultation required before any prescription
-                        treatment.
-                      </div>
                     </div>
                     <Button
                       onClick={onCtaClick}
@@ -185,6 +173,7 @@ export default function Treatments() {
                 </p>
               </div>
               {treatmentCategories
+                .filter((cat) => cat.slug !== "skin-consultation")
                 .sort((a, b) => {
                   const order: Record<string, number> = {
                     "anti-wrinkle": 10,
@@ -200,9 +189,6 @@ export default function Treatments() {
                   return ai - bi;
                 })
                 .map((cat) => {
-                  const isSkinConsultationsCategory =
-                    cat.slug === "skin-consultation" || /consult/i.test(cat.category);
-
                   const treatmentsToRender =
                     cat.slug === "microneedling"
                       ? [
@@ -211,7 +197,7 @@ export default function Treatments() {
                             description:
                               "Microneedling refined with a hyaluronic acid infusion to soften fine lines, smooth texture, and restore luminosity.",
                             duration: "60min",
-                            price: "£200",
+                            price: "",
                             bookingUrl: MICRONEEDLING_REG_URL,
                             slug: "microneedling",
                           },
@@ -220,7 +206,7 @@ export default function Treatments() {
                             description:
                               "Regenerative microneedling that infuses purified polynucleotides plus the V-Tech exosome complex for deeper repair, faster recovery, and firmer skin.",
                             duration: "60min",
-                            price: "£280",
+                            price: "",
                             bookingUrl: MICRONEEDLING_REGEN_URL,
                             slug: "microneedling",
                           },
@@ -248,24 +234,7 @@ export default function Treatments() {
                         {treatmentsToRender.map((treatment) => {
                           const hasBooking =
                             Boolean(treatment.bookingUrl && treatment.bookingUrl !== "#");
-
-                          const label = isSkinConsultationsCategory
-                            ? "Book consultation"
-                            : hasBooking
-                            ? "Book treatment"
-                            : "Book consultation";
-
-                          const onClick = () => {
-                            if (isSkinConsultationsCategory || !hasBooking) {
-                              window.location.href = SKIN_CONSULTATION_URL;
-                            } else {
-                              handleBookNow(treatment);
-                            }
-                          };
-
-                          const priceDisplay = `${treatment.price} · ${treatment.duration}${
-                            treatment.slug === "lower-face-contour-duo" ? " · 2 services" : ""
-                          }`;
+                          const bookingHref = hasBooking ? treatment.bookingUrl : SQUARE_SITE_URL;
 
                           return (
                             <div
@@ -289,32 +258,17 @@ export default function Treatments() {
                                     </span>
                                   ))}
                                 </div>
-                                {treatment.priceTiers && (
-                                  <div className="mt-2 space-y-1.5">
-                                    {treatment.priceTiers.map((tier) => (
-                                      <div
-                                        key={tier.label}
-                                        className="flex items-center justify-between text-xs"
-                                      >
-                                        <span className="text-[#3f3a33]">{tier.label}</span>
-                                        <span className="font-medium text-primary">{tier.price}</span>
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
                               </div>
-                              <div className="mt-6 border-t border-[#d9d0c4]/80 pt-4">
+                              <div className="mt-5">
                                 <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-                                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                                    {treatment.priceTiers ? `${treatment.duration}` : priceDisplay}
-                                  </span>
-                                  <Button
-                                    variant="ghost"
-                                    onClick={onClick}
-                                    className="border border-primary/70 px-5 py-2 text-sm normal-case tracking-normal text-primary hover:border-primary hover:text-primary"
+                                  <a
+                                    href={bookingHref}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center border border-primary/70 px-5 py-2 text-sm font-medium normal-case tracking-normal text-primary transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
                                   >
-                                    {label}
-                                  </Button>
+                                    Book treatment
+                                  </a>
                                 </div>
                               </div>
                             </div>

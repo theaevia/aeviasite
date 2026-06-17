@@ -3,7 +3,7 @@ import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
 import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
-import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { SQUARE_SITE_URL, SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
 
 const CATEGORY_SLUG = "consultation";
 
@@ -17,16 +17,18 @@ export default function ConsultationCategoryPage() {
       <section className="hero-gradient py-12 lg:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
-            Aevia Skin Consultation
+            Aevia Skin Guidance
           </h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-            Services to guide new clients through their skin treatment journey with us. Fee redeemable against first treatment.
+            If you know what you want, you can book treatment directly. If you are unsure, start here and we will guide you.
           </p>
-          <div className="flex flex-col items-center w-full sm:w-auto">
-            <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
-              Start Virtual Consultation
+          <div className="flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
+            <BookingButton href={SQUARE_SITE_URL} variant="primary" className="w-full sm:w-auto">
+              Book Treatment
             </BookingButton>
-            <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>
+            <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full sm:w-auto">
+              Get Guidance First
+            </BookingButton>
           </div>
         </div>
       </section>

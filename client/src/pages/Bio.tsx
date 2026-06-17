@@ -12,7 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { galleryItems } from "@/data/galleryItems";
-import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 type Intent = "quiz" | "consult";
 
@@ -108,24 +108,24 @@ export default function BioPage() {
     return u.toString();
   }, [utmMedium, utmCampaign, sourcePlatform]);
 
-  const consultHref = useMemo(() => {
+  const bookingHref = useMemo(() => {
     const params = new URLSearchParams({
       utm_source: UTM_SOURCE_DEFAULT,
       utm_medium: utmMedium,
       utm_campaign: utmCampaign,
     });
     params.set("utm_source_platform", sourcePlatform);
-    return `${SKIN_CONSULTATION_URL}?${params.toString()}`;
+    return `${SQUARE_SITE_URL}?${params.toString()}`;
   }, [utmMedium, utmCampaign, sourcePlatform]);
 
-  const primaryHref = intent === "consult" ? consultHref : quizHref;
-  const primaryLabel = intent === "consult" ? "Book a free consult" : "Get your 60-sec Skin Plan";
-  const secondaryHref = intent === "consult" ? quizHref : consultHref;
-  const secondaryLabel = intent === "consult" ? "Prefer guidance? Take the 60-sec quiz" : "Already decided? Book a free consult";
+  const primaryHref = intent === "consult" ? bookingHref : quizHref;
+  const primaryLabel = intent === "consult" ? "Book a treatment" : "Get your 60-sec Skin Plan";
+  const secondaryHref = intent === "consult" ? quizHref : bookingHref;
+  const secondaryLabel = intent === "consult" ? "Prefer guidance? Take the 60-sec quiz" : "Already decided? Book treatment";
 
   const isConsultPrimary = intent === "consult";
-  const heroMain = isConsultPrimary ? "Book a free consult" : "60-sec Skin Plan";
-  const heroSub = isConsultPrimary ? "or get your 60-sec Skin Plan" : "or book a free consult";
+  const heroMain = isConsultPrimary ? "Book your treatment" : "60-sec Skin Plan";
+  const heroSub = isConsultPrimary ? "or get your 60-sec Skin Plan" : "or book treatment";
 
   const concerns = useMemo(
     () => [
@@ -196,8 +196,8 @@ export default function BioPage() {
   return (
     <>
       <SEO
-        title="The Aevia — 60-sec Skin Plan & Free Doctor-Led Consult"
-        description="Doctor-led, discreet studio in King’s Cross. Start with a 60‑sec Skin Plan or book a free consult. Natural, evidence-based results."
+        title="The Aevia — 60-sec Skin Plan & Treatment Booking"
+        description="Doctor-led, discreet studio in King’s Cross. Start with a 60-sec Skin Plan or book a treatment appointment. Natural, evidence-based results."
       />
 
       {/* Page Shell */}
@@ -247,21 +247,21 @@ export default function BioPage() {
           <div className="max-w-3xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {isConsultPrimary ? (
               <>
-                {/* Card A — Consult (Recommended) */}
+                {/* Card A - Booking (Recommended) */}
                 <a
-                  href={consultHref}
-                  onClick={() => track("cta_click", { cta: "consult", placement: "cards" })}
+                  href={bookingHref}
+                  onClick={() => track("cta_click", { cta: "booking", placement: "cards" })}
                   className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-semibold">Consult</h3>
+                    <h3 className="font-semibold">Book treatment</h3>
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">Recommended</span>
                   </div>
                   <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
                     <li>Best if you’re ready to proceed</li>
-                    <li>20 min virtual or in-clinic</li>
-                    <li>Doctor-led, bespoke plan & pricing</li>
-                    <li>Priority booking for treatment</li>
+                    <li>Choose the treatment you are interested in</li>
+                    <li>Doctor confirms suitability in clinic</li>
+                    <li>Same-day treatment if appropriate</li>
                   </ul>
                   <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
                 </a>
@@ -311,18 +311,19 @@ export default function BioPage() {
                   <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
                 </a>
 
-                {/* Card B — Consult */}
+                {/* Card B - Booking */}
                 <a
-                  href={consultHref}
-                  onClick={() => track("cta_click", { cta: "consult", placement: "cards" })}
+                  href={bookingHref}
+                  onClick={() => track("cta_click", { cta: "booking", placement: "cards" })}
                   className="group block rounded-2xl border border-muted-foreground/20 bg-white p-4 hover:shadow-md smooth-transition focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-semibold">Consult</h3>
+                    <h3 className="font-semibold">Book treatment</h3>
                   </div>
                   <ul className="text-sm text-foreground/80 space-y-1 list-disc pl-5">
                     <li>Best if you’re ready to proceed</li>
-                    <li>10–15 min virtual or in-clinic</li>
+                    <li>Choose your preferred treatment</li>
+                    <li>Suitability checked in clinic</li>
                     <li>Doctor-led, bespoke plan & pricing</li>
                     <li>Priority booking for treatment</li>
                   </ul>
@@ -502,10 +503,10 @@ export default function BioPage() {
                 </a>
                 <a
                   className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
-                  href={consultHref}
-                  onClick={() => track("cta_click", { cta: "consult", placement: "cards" })}
+                  href={bookingHref}
+                  onClick={() => track("cta_click", { cta: "booking", placement: "location" })}
                 >
-                  Book a consult
+                  Book treatment
                 </a>
               </div>
             </div>
@@ -520,7 +521,7 @@ export default function BioPage() {
                 <AccordionTrigger>Is the consult really free?</AccordionTrigger>
                 <AccordionContent>
                   <p className="text-sm text-foreground/80">
-                    Yes. Virtual consults are free; in-clinic consults may be redeemable against treatment. We’ll confirm what’s best for you.
+                    Treatment appointments include an in-clinic assessment first. Any separate guidance options are available if you would like help choosing where to start.
                   </p>
                 </AccordionContent>
               </AccordionItem>

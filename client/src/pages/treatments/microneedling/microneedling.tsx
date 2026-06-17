@@ -10,7 +10,7 @@ import { Check, Clock3, Droplets, Dna, ShieldCheck, Sparkles } from "lucide-reac
 const protocols = [
   {
     title: "Classic (HA-Infused)",
-    price: "Single session £200",
+    price: "",
     description: "Medical-grade microneedling paired with a hyaluronic acid serum to refine texture, soften lines, and restore glow.",
     bullets: [
       "Creates micro-channels to stimulate fresh collagen",
@@ -22,7 +22,7 @@ const protocols = [
   },
   {
     title: "Regenerative (Exosomes + PNs)",
-    price: "Single session £280",
+    price: "",
     description: "Amplified collagen induction infusing purified polynucleotides plus the V-Tech exosome complex for faster repair and resilience.",
     bullets: [
       "Targets dullness, scarring, and early laxity with regenerative actives",
@@ -39,18 +39,18 @@ const pricing = [
     variant: "Classic (HA-Infused)",
     href: MICRONEEDLING_REG_URL,
     options: [
-      { label: "Single Session", price: "£200", note: "Best for a quick refresh" },
-      { label: "Course of 3", price: "£560", note: "Save £40 vs. booking individually" },
-      { label: "Course of 6", price: "£1,050", note: "Save £150 and maintain results" },
+      { label: "Single Session", price: "", note: "Best for a quick refresh" },
+      { label: "Course of 3", price: "", note: "Course options available" },
+      { label: "Course of 6", price: "", note: "Course options available" },
     ],
   },
   {
     variant: "Regenerative (Exosomes + PNs)",
     href: MICRONEEDLING_REGEN_URL,
     options: [
-      { label: "Single Session", price: "£280", note: "Enhanced recovery and repair" },
-      { label: "Course of 3", price: "£790", note: "Save £50 compared to single sessions" },
-      { label: "Course of 6", price: "£1,480", note: "Save £200 and build cumulative results" },
+      { label: "Single Session", price: "", note: "Enhanced recovery and repair" },
+      { label: "Course of 3", price: "", note: "Course options available" },
+      { label: "Course of 6", price: "", note: "Course options available" },
     ],
   },
 ];
@@ -93,8 +93,6 @@ export default function MicroneedlingPage() {
                   Doctor-led collagen induction tailored for texture, scarring, and early lines. Select HA-infused classic or our regenerative exosome + polynucleotide boost for deeper repair.
                 </p>
                 <div className="flex items-center text-lg text-foreground/80 mb-6">
-                  <span>From £200</span>
-                  <span className="mx-2">•</span>
                   <span>60 mins</span>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -267,10 +265,10 @@ export default function MicroneedlingPage() {
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4 text-black">Not sure where to start?</h2>
             <p className="text-base text-foreground/80 mb-6">
-              Book a consultation to map your skin, plan your course, and receive bespoke aftercare guidance from our doctors.
+              Book microneedling directly, or start with a guidance call if you are unsure which protocol suits you.
             </p>
-            <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
-              Book Skin Consultation
+            <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full sm:w-auto">
+              Get Guidance First
             </BookingButton>
           </div>
         </section>

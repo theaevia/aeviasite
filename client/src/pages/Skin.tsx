@@ -2,7 +2,11 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Dna, Droplet, Sparkles, Check, Gift, Camera, Star } from "lucide-react";
 import { BookingButton } from "@/components/BookingButton";
-import { SKIN_CONSULTATION_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import {
+  CLINIC_WHATSAPP_ENQUIRE_URL,
+  SKIN_CONSULTATION_URL,
+  SQUARE_SITE_URL,
+} from "@/lib/bookingUrls";
 import clinicHeroImage from "@assets/hero_images/aevia-clinic3.webp";
 import clinicHeroImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
 import skinModel2Image from "@assets/hero_images/skin-model-2.webp";
@@ -68,7 +72,7 @@ export default function Skin() {
               <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
                 {/* Old copy preserved for reference:
                   Aevia Skin: Regenerative Aesthetics
-                  Non-invasive skin longevity treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
+                  Natural skin optimisation for professionals who want fresher, healthier and more polished skin through subtle, evidence-based treatments.
                 */}
                 <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
                   Doctor-led preventative aesthetics in <span className="text-primary">King's Cross</span>
@@ -76,13 +80,26 @@ export default function Skin() {
                 <p className="text-sm md:text-base text-foreground/70 mb-4">
                   Two doctors. Regenerative protocols. Natural, lasting results.
                 </p>
-                <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
-                  Non-invasive skin longevity treatments that enhance your natural beauty through regenerative medicine, without the need for fillers.
+                <p className="text-xl text-foreground/70 mb-4 leading-relaxed">
+                  Natural skin optimisation for professionals who want fresher, healthier and more polished skin through subtle, evidence-based treatments.
                 </p>
-                <div className="w-full sm:w-auto text-center">
-                  <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
-                    Book Consultation
+                <p className="text-sm text-foreground/60 mb-8">
+                  One of your doctors will confirm suitability at the start of your appointment.
+                </p>
+                <div className="flex w-full flex-col items-center gap-4 text-center sm:w-auto sm:items-start">
+                  <BookingButton href={SQUARE_SITE_URL} variant="primary" className="w-full sm:w-auto">
+                    Book Treatment
                   </BookingButton>
+                  <a
+                    href={CLINIC_WHATSAPP_ENQUIRE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-foreground/70 underline underline-offset-4 transition-colors hover:text-primary"
+                  >
+                    Unsure? WhatsApp us
+                  </a>
+                </div>
+                <div className="w-full sm:w-auto text-center">
                   <BnplNotice className="mt-4" />
                 </div>
               </div>
@@ -242,21 +259,19 @@ export default function Skin() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {signatureOffers.map((offer) => {
                 const [mainTitle, subtitle] = offer.name.split('\n');
-                const isAntiWrinkle = offer.name.toLowerCase().includes('anti-wrinkle');
-                const ctaText = isAntiWrinkle ? 'Book Consultation' : (offer.bookingUrl === '#' ? offer.ctaText : 'Book Now');
+                const ctaText = offer.bookingUrl === '#' ? offer.ctaText : offer.ctaText || 'Book Treatment';
                 const onCtaClick = () => {
-                  if (isAntiWrinkle) {
-                    window.location.href = SKIN_CONSULTATION_URL;
-                  } else if (offer.bookingUrl !== '#') {
+                  if (offer.bookingUrl !== '#') {
                     window.open(offer.bookingUrl, '_blank');
+                    return;
                   }
+                  window.open(SQUARE_SITE_URL, '_blank');
                 };
                 return (
                   <div key={offer.name} className="bg-white rounded-2xl p-8 shadow-lg flex flex-col h-full text-center border border-[#e0ddd9] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
                     <div className="flex-1 flex flex-col items-center">
                       <h3 className="text-2xl font-serif font-bold mb-1">{mainTitle}</h3>
                       {subtitle && <p className="text-base text-foreground/60 font-normal mb-2">{subtitle}</p>}
-                      <span className="text-primary font-normal text-2xl mb-1">{offer.price}</span>
                       <p className="text-foreground/70 mb-4">{offer.description}</p>
                       <ul className="space-y-2 text-foreground/70 text-sm text-left mx-auto max-w-xs mb-3">
                         {offer.features.map(feature => (
@@ -266,8 +281,6 @@ export default function Skin() {
                           </li>
                         ))}
                       </ul>
-                      <hr className="border-t border-[#e0ddd9] my-4 w-3/4 mx-auto" />
-                      <div className="text-xs text-muted-foreground">Normally {offer.normalPrice}. A medical consultation is required before any prescription treatment.</div>
                     </div>
                     <Button onClick={onCtaClick} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4">{ctaText}</Button>
                   </div>
@@ -338,7 +351,6 @@ export default function Skin() {
               <Link href="/categories/polynucleotides" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Dna className="text-primary text-4xl mx-auto mb-4" />
                 <h3 className="text-xl font-serif font-semibold mb-1">Polynucleotides</h3>
-                <p className="text-primary font-medium mb-2">From £250</p>
                 <p className="text-foreground/70 text-sm mb-3">DNA-based therapy that stimulates natural skin regeneration and hydration</p>
                 <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
@@ -346,7 +358,6 @@ export default function Skin() {
               <Link href="/categories/skin-boosters" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Droplet className="text-primary text-4xl mx-auto mb-4" />
                 <h3 className="text-xl font-serif font-semibold mb-1">Skin Boosters</h3>
-                <p className="text-primary font-medium mb-2">From £250</p>
                 <p className="text-foreground/70 text-sm mb-3">Hyaluronic acid injections for deep hydration and improved skin quality</p>
                 <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
@@ -354,7 +365,6 @@ export default function Skin() {
               <Link href="/categories/anti-wrinkle" className="bg-white rounded-2xl p-6 text-center shadow-lg smooth-transition hover:shadow-xl block">
                 <Sparkles className="text-primary text-4xl mx-auto mb-4" />
                 <h3 className="text-xl font-serif font-semibold mb-1">Anti-Wrinkle Injections</h3>
-                <p className="text-primary font-medium mb-2">From £160</p>
                 <p className="text-foreground/70 text-sm mb-3">Precision muscle relaxation for natural-looking wrinkle reduction</p>
                 <span className="text-sm text-primary underline underline-offset-4">Learn more</span>
               </Link>
@@ -394,7 +404,7 @@ export default function Skin() {
                 href="https://maps.app.goo.gl/jpQNgXg92eiBesPD8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary hover:text-white transition-colors duration-200"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-primary bg-white px-6 py-3 text-base font-medium text-primary shadow-lg smooth-transition transition-colors transition-shadow hover:bg-primary hover:text-primary-foreground hover:shadow-xl"
               >
                 Read more client stories
               </a>
@@ -406,11 +416,11 @@ export default function Skin() {
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Aevia Skin Consultation</h2>
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Not sure what to book?</h2>
               <div className="bg-primary/10 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
-                <h3 className="text-2xl font-serif font-semibold mb-4 text-primary">20-Minute Clinical Session</h3>
+                <h3 className="text-2xl font-serif font-semibold mb-4 text-primary">Start with guidance</h3>
                 <p className="text-lg text-foreground/80 mb-6">
-                  A comprehensive virtual clinical session including facial mapping, injectable options review, and tailored treatment plan using polynucleotides, boosters or anti-wrinkle injections.
+                  If you already know which treatment you want, you can book it directly. If you would like guidance first, we can talk through your goals and recommend the best starting point.
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-6 text-left">
@@ -437,18 +447,18 @@ export default function Skin() {
                     <ul className="space-y-2 text-foreground/70">
                       <li className="grid grid-cols-[20px_1fr] gap-3 items-start">
                         <Gift className="h-5 w-5 text-primary" />
-                        <span>Free (usually £30, now complimentary for first-time clients)</span>
+                        <span>Complimentary for first-time clients</span>
                       </li>
                       <li className="grid grid-cols-[20px_1fr] gap-3 items-start">
                         <Camera className="h-5 w-5 text-primary" />
-                        <span>Virtual consultation</span>
+                        <span>Virtual or phone guidance</span>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className="text-center">
-                  <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
-                    Book Your Consultation
+                  <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full sm:w-auto">
+                    Get Guidance First
                   </BookingButton>
                 </div>
               </div>
@@ -461,8 +471,8 @@ export default function Skin() {
             <div className="grid md:grid-cols-5 gap-8">
               <div className="text-center">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">1</div>
-                <h3 className="font-semibold mb-2">Book Consultation</h3>
-                <p className="text-sm text-foreground/70">Schedule your Aevia Skin Consultation</p>
+                <h3 className="font-semibold mb-2">Consultation</h3>
+                <p className="text-sm text-foreground/70">We confirm your goals and suitability</p>
               </div>
               <div className="text-center">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center text-xl font-normal mx-auto mb-4">2</div>
@@ -546,20 +556,20 @@ export default function Skin() {
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-2">How should I book?</h2>
-            <p className="text-foreground/70 mb-8">We guide first-timers to the right plan. Returning clients can book specific treatments directly.</p>
+            <p className="text-foreground/70 mb-8">Book the treatment you are interested in. We will confirm the right plan with you in clinic before treatment begins.</p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-accent/20 rounded-2xl p-6">
-                <h3 className="text-xl font-serif font-semibold mb-2">New to Aevia Skin?</h3>
-                <p className="text-sm text-foreground/70 mb-4">Start with a consultation.</p>
-                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
-                  Book Consultation
+                <h3 className="text-xl font-serif font-semibold mb-2">Know what you want?</h3>
+                <p className="text-sm text-foreground/70 mb-4">Choose a treatment appointment directly.</p>
+                <BookingButton href={SQUARE_SITE_URL} variant="primary" className="w-full">
+                  Book Treatment
                 </BookingButton>
               </div>
               <div className="bg-accent/20 rounded-2xl p-6">
-                <h3 className="text-xl font-serif font-semibold mb-2">Returning client?</h3>
-                <p className="text-sm text-foreground/70 mb-4">Book a specific treatment.</p>
-                <BookingButton href={SQUARE_SITE_URL} variant="primary" className="w-full">
-                  Book Treatment
+                <h3 className="text-xl font-serif font-semibold mb-2">Unsure what to book?</h3>
+                <p className="text-sm text-foreground/70 mb-4">Message us and we will guide you.</p>
+                <BookingButton href={CLINIC_WHATSAPP_ENQUIRE_URL} variant="primary" className="w-full">
+                  WhatsApp Us
                 </BookingButton>
               </div>
             </div>

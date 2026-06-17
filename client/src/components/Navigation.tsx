@@ -23,7 +23,7 @@ const navLinks = [
 ];
 
 const mobileNavLinks = [
-  { label: "SKIN", href: "/skin" },
+  { label: "SKIN", href: "/" },
   ...navLinks,
 ];
 
@@ -248,11 +248,11 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
               href={SQUARE_SITE_URL}
               className={ctaClasses}
               role="button"
-              aria-label="Book now"
+              aria-label="Book a treatment"
               onClick={closeMenu}
               forceReload
             >
-              BOOK NOW
+              BOOK TREATMENT
             </Link>
           </div>
         </div>
@@ -328,11 +328,11 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
                 href={SQUARE_SITE_URL}
                 className={ctaClasses}
                 role="button"
-                aria-label="Book now"
+                aria-label="Book a treatment"
                 onClick={closeMenu}
                 forceReload
               >
-                BOOK NOW
+                BOOK TREATMENT
               </Link>
               <p
                 className={cn(

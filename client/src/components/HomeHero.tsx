@@ -24,7 +24,7 @@ const navLinks = [
 ];
 
 const mobileNavLinks = [
-  { label: "SKIN", href: "/skin" },
+  { label: "SKIN", href: "/" },
   ...navLinks,
 ];
 
@@ -184,9 +184,9 @@ export default function HomeHero({
                   href={SQUARE_SITE_URL}
                   className={`${bookNowButtonClasses} hero-text-shadow`}
                   role="button"
-                  aria-label="Book now"
+                  aria-label="Book a treatment"
                 >
-                  BOOK NOW
+                  BOOK TREATMENT
                 </a>
               </div>
             </div>
@@ -212,25 +212,25 @@ export default function HomeHero({
               <div className="relative flex w-full flex-col items-start gap-5 text-left -translate-y-2 sm:-translate-y-3 lg:translate-y-0 lg:items-center lg:gap-6 lg:text-center">
                 <div className="flex flex-col items-start gap-3 lg:items-center lg:gap-4">
                   <h1 className="font-serif font-normal uppercase tracking-[0.1em] text-white text-balance max-w-[22ch] leading-[1.1] text-[clamp(28px,8vw,40px)] sm:text-[clamp(36px,3.2vw,56px)] lg:max-w-none lg:hero-text-shadow">
-                    A SPACE DEDICATED TO YOUR
+                    DOCTOR-LED SKIN AND NATURAL
                     <br className="hidden lg:block" />
-                    <span className="lg:inline"> WELLNESS AND LONGEVITY</span>
+                    <span className="lg:inline"> AESTHETICS</span>
                   </h1>
                   <p
                     className="relative max-w-[32ch] text-balance text-white/95 sm:max-w-[38ch] lg:max-w-[520px] lg:text-white/90 lg:hero-text-shadow"
                     style={{ fontSize: "clamp(16px, 4.2vw, 20px)", fontWeight: 300, lineHeight: 1.5 }}
                   >
-                    Caring for both your physical and mental wellbeing
+                    Regenerative treatments in King's Cross for subtle, natural results.
                   </p>
                 </div>
                 <div className="relative mt-6 flex w-full max-w-[360px] justify-center self-start sm:mt-10 sm:max-w-none sm:self-center lg:mt-12 lg:self-center">
                   <Link
-                    href="/skin"
+                    href="/"
                     className={heroCtaClasses}
                     role="button"
-                    aria-label="Go to Skin"
+                    aria-label="Explore Aevia Skin"
                   >
-                    EXPLORE
+                    EXPLORE SKIN
                   </Link>
                 </div>
               </div>
@@ -298,10 +298,10 @@ export default function HomeHero({
                 href={SQUARE_SITE_URL}
                 className={`${bookNowButtonClasses} hero-text-shadow justify-center`}
                 role="button"
-                aria-label="Book now"
+                aria-label="Book a treatment"
                 onClick={closeMenu}
               >
-                BOOK NOW
+                BOOK TREATMENT
               </a>
               <p className="text-sm uppercase tracking-[0.1em] text-white/60">
                 Crafted for skin

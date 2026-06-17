@@ -3,7 +3,7 @@ import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
 import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
-import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 const CATEGORY_SLUG = "skin-boosters";
 
@@ -23,10 +23,10 @@ export default function SkinBoostersCategoryPage() {
                 Advanced injectables to improve skin hydration, firmness, and radiance.
               </p>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
-                  Start Virtual Consultation
+                <BookingButton href={SQUARE_SITE_URL} variant="primary" className="w-full sm:w-auto">
+                  Book Treatment
                 </BookingButton>
-                <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>
+                <p className="text-sm text-foreground/70 mt-2">Your doctor will confirm suitability before treatment.</p>
               </div>
             </div>
       </section>

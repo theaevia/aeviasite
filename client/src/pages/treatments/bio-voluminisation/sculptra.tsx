@@ -38,8 +38,6 @@ export default function SculptraPage() {
                   A regenerative biostimulant that works deep within the skin to restore facial volume and support structure.
                 </p>
                 <div className="flex items-center text-lg text-foreground/80 mb-6">
-                  <span>£550</span>
-                  <span className="mx-2">•</span>
                   <span>1h</span>
                 </div>
                 <BookingButton
@@ -111,7 +109,7 @@ export default function SculptraPage() {
                 </div>
                 <div>
                   <span className="font-semibold text-primary">Subtle Rejuvenation</span>
-                  <p className="text-base text-foreground/80 mb-0">Achieve a refreshed, youthful appearance without looking overfilled.</p>
+                  <p className="text-base text-foreground/80 mb-0">Achieve a fresher, more polished appearance with gradual, natural-looking volume support.</p>
                 </div>
               </div>
             </div>
@@ -135,13 +133,12 @@ export default function SculptraPage() {
         {/* Pricing & Options */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Pricing and Packages</h2>
-            <p className="text-base text-foreground/80 text-center mb-8">Transparent pricing for Sculptra® treatments at our London clinic.</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Treatment Options</h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">One Vial</h2>
                 <p className="text-foreground/70 mb-2 text-center">Single Sculptra® vial</p>
-                <span className="text-2xl font-normal text-primary mb-1">£550</span>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={sculptraTreatment.bookingUrl} target="_blank" rel="noopener noreferrer">Book One Vial</a>
@@ -150,10 +147,6 @@ export default function SculptraPage() {
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Course of Two Vials</h2>
                 <p className="text-foreground/70 mb-2 text-center">Recommended initial course</p>
-                <span className="text-2xl font-normal text-primary">£1000</span>
-                <p className="text-sm text-green-600 font-semibold mb-2">
-                  <span style={{ textDecoration: 'line-through', color: '#999', marginRight: '8px' }}>£1100</span> (Save £100)
-                </p>
                 <span className="text-muted-foreground text-sm mb-4">1h per session</span>
                 <EnquireToBookButton className="w-full" />
               </div>
@@ -219,8 +212,8 @@ export default function SculptraPage() {
                 <p className="text-base text-foreground/80 mb-0">You may experience some swelling, bruising, or tenderness at the injection sites, which typically resolves within a few days.</p>
               </div>
               <div className="mb-4">
-                <div className="mb-2 font-semibold text-base text-primary">Will I look overfilled?</div>
-                <p className="text-base text-foreground/80 mb-0">No, Sculptra® provides gradual and natural-looking results, enhancing your features without an artificial appearance.</p>
+                <div className="mb-2 font-semibold text-base text-primary">Will the result look natural?</div>
+                <p className="text-base text-foreground/80 mb-0">Sculptra® works gradually by supporting your own collagen, so results develop subtly over time.</p>
               </div>
               <div className="mb-4">
                 <div className="mb-2 font-semibold text-base text-primary">Who isn’t suitable?</div>
@@ -236,19 +229,19 @@ export default function SculptraPage() {
             <div className="text-center">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Ready to restore your youthful volume?</h2>
             </div>
-            <p className="text-base text-foreground/80 text-center mb-8">Book your Sculptra® consultation in London today.</p>
+            <p className="text-base text-foreground/80 text-center mb-8">Book your Sculptra® appointment in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
-                  Book Aevia Skin Consultation
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full">
+                  Get Guidance First
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Optional guidance</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={sculptraTreatment.bookingUrl} variant="secondary" className="w-full">
+                <BookingButton href={sculptraTreatment.bookingUrl} variant="primary" className="w-full">
                   Book Sculptra® Treatment
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Book directly online</span>
               </div>
             </div>
             <p className="text-xs text-muted-foreground text-center mt-8 max-w-2xl mx-auto">

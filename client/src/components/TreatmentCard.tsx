@@ -19,7 +19,6 @@ interface TreatmentCardProps {
 export default function TreatmentCard({
   name,
   slug,
-  price,
   duration,
   subtitle,
   image,
@@ -29,7 +28,10 @@ export default function TreatmentCard({
 }: TreatmentCardProps) {
   return (
     <Link href={`/treatments/${slug}`}>
-      <a className="bg-white rounded-2xl shadow-lg transition-shadow overflow-hidden h-full flex flex-col min-h-[350px] min-w-[293.34px]">
+      <a
+        className="bg-white rounded-2xl shadow-lg transition-shadow overflow-hidden h-full flex flex-col min-h-[350px] min-w-[293.34px]"
+        data-scroll-reveal
+      >
         <div className="relative w-full aspect-[4/3] overflow-hidden">
           {image ? (
             // If the provided image follows our optimized public naming, render responsive sources
@@ -89,7 +91,7 @@ export default function TreatmentCard({
             </p>
           )}
           <p className="text-xs text-muted-foreground mt-2 text-center">
-            {price} • {duration}
+            {duration}
           </p>
         </div>
       </a>

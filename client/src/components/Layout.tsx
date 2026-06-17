@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import { useEffect, useRef } from "react";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import MobileStickyBookingBar from "@/components/MobileStickyBookingBar";
+import ScrollRevealObserver from "@/components/ScrollRevealObserver";
 import { useLocation } from "wouter";
 import { Helmet } from "react-helmet-async";
 
@@ -107,8 +108,8 @@ export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
   const scrollOnRouteChangeRef = useRef(false);
   const isBioRoute = location.startsWith("/bio") || location.startsWith("/tiktok");
-  const isHomeRoute = location === "/";
-  const hideNavigation = isBioRoute || isHomeRoute;
+  const isBrandRoute = location === "/the-aevia";
+  const hideNavigation = isBioRoute || isBrandRoute;
   const showFooter = !isBioRoute;
   const showFooterExtras = showFooter;
 
@@ -148,7 +149,7 @@ export default function Layout({ children }: LayoutProps) {
     }
     if (window.location.hash) return;
     window.requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     });
   }, [location]);
 
@@ -215,6 +216,7 @@ export default function Layout({ children }: LayoutProps) {
       </Helmet>
       {!hideNavigation && <Navigation />}
       <main className={`${hideNavigation ? '' : 'pt-[var(--header-h,80px)]'} flex-1`}>{children}</main>
+      <ScrollRevealObserver />
       {showFooterExtras && (
         <div className="w-full bg-white border-t border-muted-foreground/10 py-2">
           <div className="max-w-6xl mx-auto px-4 text-center text-sm text-primary font-medium">

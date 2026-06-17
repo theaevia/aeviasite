@@ -28,8 +28,6 @@ export default function NeckLiftPage() {
                   Get rid of "turkey neck" and smooth your neck contours using targeted lower-face injections.
                 </p>
                 <div className="flex items-center text-lg text-foreground/80 mb-6">
-                  <span>£270</span>
-                  <span className="mx-2">•</span>
                   <span>45 mins</span>
                 </div>
                 <BookingButton
@@ -160,13 +158,12 @@ export default function NeckLiftPage() {
         {/* Pricing & Options */}
         <section className="w-full bg-secondary py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Pricing and Packages</h2>
-            <p className="text-base text-foreground/80 text-center mb-8">Transparent pricing for Neck Lift treatments at our London clinic.</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Treatment Options</h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Neck Lift</h2>
                 <p className="text-foreground/70 mb-2 text-center">For a softer, tighter-looking neck.</p>
-                <span className="text-2xl font-normal text-primary mb-1">£270</span>
                 <span className="text-muted-foreground text-sm mb-4">45min</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={NEFERTITI_URL} target="_blank" rel="noopener noreferrer">Book Neck Lift</a>
@@ -176,10 +173,7 @@ export default function NeckLiftPage() {
                 <h2 className="text-xl font-serif font-semibold mb-2 text-primary">Lower-Face Contour Duo</h2>
                 <p className="text-foreground/70 mb-2 text-center">Pair with Masseter Reduction</p>
                 <div className="flex items-baseline justify-center my-1">
-                  <span className="text-2xl font-normal text-primary">£520</span>
-                  <span className="text-xl font-medium text-gray-500 line-through ml-2">£570</span>
                 </div>
-                <p className="text-sm font-semibold text-green-600 mb-2">Save £50</p>
                 <span className="text-muted-foreground text-sm mb-4">1h</span>
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={CONTOUR_DUO_URL} target="_blank" rel="noopener noreferrer">Book Lower-Face Contour Duo</a>
@@ -255,19 +249,19 @@ export default function NeckLiftPage() {
             <div className="text-center">
               <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6 text-black text-center">Ready to feel confidently refreshed?</h2>
             </div>
-            <p className="text-base text-foreground/80 text-center mb-8">Book your Neck Lift consultation in London today.</p>
+            <p className="text-base text-foreground/80 text-center mb-8">Book your Neck Lift appointment in London today.</p>
             <div className="text-center flex flex-col sm:flex-row sm:justify-center gap-6 mt-8">
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full">
-                  Book Aevia Skin Consultation
+                <BookingButton href={SKIN_CONSULTATION_URL} variant="secondary" className="w-full">
+                  Get Guidance First
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For new customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Optional guidance</span>
               </div>
               <div className="flex flex-col items-center w-full sm:w-auto">
-                <BookingButton href={NEFERTITI_URL} variant="secondary" className="w-full">
+                <BookingButton href={NEFERTITI_URL} variant="primary" className="w-full">
                   Book Neck Lift Treatment
                 </BookingButton>
-                <span className="text-xs font-semibold text-muted-foreground mt-2">For returning customers</span>
+                <span className="text-xs font-semibold text-muted-foreground mt-2">Book directly online</span>
               </div>
             </div>
             <p className="text-xs text-muted-foreground text-center mt-8 max-w-2xl mx-auto">

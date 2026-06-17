@@ -69,10 +69,10 @@ export default function Terms() {
 
               <h2>4) Consultations, bookings & deposits</h2>
               <ul>
-                <li><strong>Booking system:</strong> Appointments are managed via our scheduling partners (e.g., Square Appointments for clinic bookings, Calendly for virtual consultations). Separate platform terms may also apply.</li>
-                <li><strong>Consultation fees (typical):</strong> free virtual; £50 in‑clinic. If you proceed to treatment within the stated period, we redeem this fee against your first treatment (details confirmed at booking).</li>
+                <li><strong>Booking system:</strong> Appointments are managed via our scheduling partners, including Square Appointments for clinic bookings. Separate platform terms may also apply.</li>
+                <li><strong>Assessment and guidance:</strong> Treatment appointments include an in‑clinic assessment before treatment begins. Where separate guidance calls or assessment appointments are offered, fees, deposits, and redemption terms are shown at booking.</li>
                 <li><strong>Pre‑treatment review:</strong> We may require forms, photos, ID verification, or additional medical information in advance. Please complete these promptly; failure may lead to rescheduling or cancellation.</li>
-                <li><strong>Deposits:</strong> Some services may require a deposit at the time of booking. Deposits are generally applied to your treatment on the day. If you are clinically unsuitable, the consultation fee covers the professional assessment; any separate treatment deposit will be refunded.</li>
+                <li><strong>Deposits:</strong> Some services may require a deposit at the time of booking. Deposits are generally applied to your treatment on the day. If you are clinically unsuitable, any assessment component covers the professional assessment; any separate treatment deposit will be handled according to the booking terms shown at checkout.</li>
                 <li><strong>Right to refuse:</strong> We reserve the right to decline bookings or treatment in the interest of safety, professional standards, or where behaviour is abusive or inappropriate.</li>
               </ul>
 

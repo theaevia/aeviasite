@@ -4,7 +4,7 @@ import { treatmentCategories } from "@/data/treatments";
 import { BookingButton } from "@/components/BookingButton";
 import TreatmentCard from "@/components/TreatmentCard";
 import { getThumbnailClassName, getThumbnailObjectPosition } from "@/lib/treatmentImageUtils";
-import { SKIN_CONSULTATION_URL } from "@/lib/bookingUrls";
+import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
 const CATEGORY_SLUG = "anti-wrinkle";
 
@@ -13,7 +13,7 @@ export default function AntiWrinkleCategoryPage() {
   if (!category) return null;
 
   const areaSlug = "anti-wrinkle";
-  const oneAreaTreatment = category.treatments.find(t => t.name.includes("One Area"));
+  const oneAreaTreatment = category.treatments.find(t => t.slug === areaSlug);
   const otherTreatments = category.treatments.filter(t => t.slug !== areaSlug);
   // Enforce explicit order after the 'Forehead, Frown or Crow's Feet' card
   const desiredOrder = [
@@ -43,10 +43,10 @@ export default function AntiWrinkleCategoryPage() {
             Soften expression lines while preserving natural movement - with subtle, doctor-performed injectables tailored to your features.
           </p>
           <div className="flex flex-col items-center w-full sm:w-auto">
-            <BookingButton href={SKIN_CONSULTATION_URL} variant="primary" className="w-full sm:w-auto">
-              Start Virtual Consultation
+            <BookingButton href={SQUARE_SITE_URL} variant="primary" className="w-full sm:w-auto">
+              Book Appointment
             </BookingButton>
-            <p className="text-sm text-foreground/70 mt-2">Free for first-time clients</p>
+            <p className="text-sm text-foreground/70 mt-2">Your doctor will confirm suitability before treatment.</p>
           </div>
         </div>
       </section>
