@@ -203,9 +203,11 @@ export default function Skin() {
                   image: reneeImage,
                 },
               ].map((doctor) => (
-                <article key={doctor.name} className="grid gap-6 sm:grid-cols-[0.8fr_1.2fr] sm:items-end">
-                  <img src={doctor.image} alt={doctor.name} className="aspect-[4/5] h-full w-full object-cover" width="600" height="800" loading="lazy" />
-                  <div className="pb-2">
+                <article key={doctor.name} className="grid min-w-0 gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+                  <div className="relative min-w-0 overflow-hidden">
+                    <img src={doctor.image} alt={doctor.name} className="block aspect-[4/5] h-auto w-full object-cover" width="600" height="800" loading="lazy" />
+                  </div>
+                  <div className="relative z-10 min-w-0 bg-[#fbf9f5] pb-2">
                     <p className="text-xs uppercase tracking-[0.18em] text-[#8a6a3b]">GMC-registered doctor</p>
                     <h3 className="mt-3 text-3xl font-medium">{doctor.name}</h3>
                     <p className="mt-2 text-sm text-[#736b60]">{doctor.role}</p>
