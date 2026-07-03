@@ -77,7 +77,7 @@ const organizationSchema = {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5",
-          "reviewCount": "10"
+          "reviewCount": "7"
         }
       } : {}),
       "founder": [

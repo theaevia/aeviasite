@@ -17,7 +17,7 @@ export default function BnplNotice({ className, variant = "inline" }: BnplNotice
       )}
     >
       <p className={variant === "banner" ? "text-sm font-medium text-[#111]" : undefined}>
-        Pay in 4 instalments over 6 weeks with Clearpay. Subject to eligibility.
+        Eligible clients may be able to use Clearpay at checkout for selected treatment plans. Approval and repayment terms are managed by Clearpay. Please only proceed if the repayments are manageable for you.
       </p>
     </div>
   );

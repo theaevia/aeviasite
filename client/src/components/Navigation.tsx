@@ -24,7 +24,7 @@ const navLinks = [
   { label: "ABOUT", href: "/team" },
 ];
 
-const mobileNavLinks = navLinks;
+const mobileNavLinks = [...navLinks, { label: "REVIEWS", href: "/reviews" }];
 
 export default function Navigation({ variant = "solid", showShadow = true, logoSrc }: NavigationProps) {
   const [location] = useLocation();
@@ -155,7 +155,7 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
   );
 
   const linkClasses = cn(
-    "text-xs lg:text-sm font-normal uppercase tracking-[0.1em] transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    "whitespace-nowrap text-xs lg:text-sm font-normal uppercase tracking-[0.1em] transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
     isTransparent
       ? "text-white hero-text-shadow hover:text-primary focus-visible:outline-white"
       : "text-[#111]/80 hover:text-primary focus-visible:outline-primary"

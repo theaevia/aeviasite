@@ -20,6 +20,8 @@ export interface PriceMenuItem {
   note?: string;
   href: string;
   action?: string;
+  label?: string;
+  recommended?: boolean;
   children?: PriceMenuItem[];
 }
 
@@ -30,6 +32,33 @@ export interface PriceMenuCategory {
   items: PriceMenuItem[];
   footer?: string;
 }
+
+export const regenerativeSingleSessions: PriceMenuItem[] = [
+  {
+    name: "Profhilo® single session",
+    price: pricing.regenerative.profhilo.display,
+    note: "For maintenance, top-ups, or where advised after consultation",
+    href: PROFHILO_URL,
+  },
+  {
+    name: "Plinest full face single session",
+    price: pricing.regenerative.plinestFace.display,
+    note: "For maintenance, staged treatment, or where advised after consultation",
+    href: PNS_FACE_URL,
+  },
+  {
+    name: "Plinest eye single session",
+    price: pricing.regenerative.plinestEye.display,
+    note: "For maintenance, staged treatment, or where advised after consultation",
+    href: PNS_EYES_URL,
+  },
+  {
+    name: "Sunekos single session",
+    price: pricing.regenerative.sunekos.display,
+    note: "For maintenance, staged treatment, or where advised after consultation",
+    href: SUNEKOS_URL,
+  },
+];
 
 export const treatmentPriceMenu: PriceMenuCategory[] = [
   {
@@ -57,58 +86,36 @@ export const treatmentPriceMenu: PriceMenuCategory[] = [
     gloss: "Skin Quality & Regeneration",
     items: [
       {
-        name: "Profhilo",
-        price: pricing.regenerative.profhilo.display,
-        href: PROFHILO_URL,
-        children: [
-          {
-            name: "The Glow Protocol",
-            price: pricing.protocols.glow.display,
-            note: "Two sessions + review",
-            href: whatsappEnquiryUrl("The Glow Protocol"),
-            action: "Enquire",
-          },
-        ],
+        name: "Profhilo® Glow Protocol",
+        price: pricing.protocols.glow.display,
+        note: "Two Profhilo® sessions, four weeks apart, plus review",
+        recommended: true,
+        href: whatsappEnquiryUrl("the Profhilo Glow Protocol"),
+        action: "Discuss this plan",
       },
       {
-        name: "Polynucleotides, full face (Plinest)",
-        price: pricing.regenerative.plinestFace.display,
-        href: PNS_FACE_URL,
-        children: [
-          {
-            name: "Course of three",
-            price: pricing.regenerative.plinestFace.courseDisplay,
-            href: whatsappEnquiryUrl("Course of three"),
-            action: "Enquire",
-          },
-        ],
+        name: "Plinest Full Face Regeneration Course",
+        price: pricing.regenerative.plinestFace.courseDisplay,
+        note: "Course of three Plinest full face sessions",
+        recommended: true,
+        href: whatsappEnquiryUrl("the Plinest Full Face Regeneration Course"),
+        action: "Discuss this plan",
       },
       {
-        name: "Polynucleotides, under-eye (Plinest Eye)",
-        price: pricing.regenerative.plinestEye.display,
-        href: PNS_EYES_URL,
-        children: [
-          {
-            name: "The Eye Revival",
-            price: pricing.protocols.eyeRevival.display,
-            note: "Course of three",
-            href: whatsappEnquiryUrl("The Eye Revival"),
-            action: "Enquire",
-          },
-        ],
+        name: "Plinest Eye Revival Course",
+        price: pricing.protocols.eyeRevival.display,
+        note: "Course of three Plinest Eye sessions",
+        recommended: true,
+        href: whatsappEnquiryUrl("the Plinest Eye Revival Course"),
+        action: "Discuss this plan",
       },
       {
-        name: "Sunekos",
-        price: pricing.regenerative.sunekos.display,
-        href: SUNEKOS_URL,
-        children: [
-          {
-            name: "Course of four",
-            price: pricing.regenerative.sunekos.courseDisplay,
-            href: whatsappEnquiryUrl("Course of four"),
-            action: "Enquire",
-          },
-        ],
+        name: "Sunekos Skin Renewal Course",
+        price: pricing.regenerative.sunekos.courseDisplay,
+        note: "Course of four Sunekos sessions",
+        recommended: true,
+        href: whatsappEnquiryUrl("the Sunekos Skin Renewal Course"),
+        action: "Discuss this plan",
       },
     ],
   },

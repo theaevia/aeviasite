@@ -3,8 +3,8 @@ import { Check } from "lucide-react";
 
 import SEO from "@/components/SEO";
 import { pricing } from "@/data/pricing";
-import { PriceMenuItem, treatmentPriceMenu } from "@/data/treatmentMenu";
-import { whatsappEnquiryUrl } from "@/lib/bookingUrls";
+import { PriceMenuItem, regenerativeSingleSessions, treatmentPriceMenu } from "@/data/treatmentMenu";
+import { SQUARE_SITE_URL, whatsappEnquiryUrl } from "@/lib/bookingUrls";
 import treatmentsHeroImage from "@assets/hero_images/skin-model-2.webp";
 
 const protocolCards = [
@@ -15,9 +15,9 @@ const protocolCards = [
     price: `From ${pricing.antiWrinkle.oneArea.display}`,
     note: "One treatment, chosen for one priority.",
     examples: [
-      `Anti-wrinkle treatment — from ${pricing.antiWrinkle.oneArea.display}`,
-      `Polynucleotides (eye or full face) — from ${pricing.regenerative.plinestEye.display}`,
-      `Profhilo — ${pricing.regenerative.profhilo.display}`,
+      `Anti-wrinkle treatment, from ${pricing.antiWrinkle.oneArea.display}`,
+      `Polynucleotides (eye or full face), from ${pricing.regenerative.plinestEye.display}`,
+      `Profhilo, ${pricing.regenerative.profhilo.display}`,
     ],
     features: [
       "Doctor-led suitability check",
@@ -40,7 +40,7 @@ const protocolCards = [
       "A maintenance recommendation at completion",
     ],
     featured: true,
-    cta: "Discuss on WhatsApp",
+    cta: "Discuss this plan",
     href: whatsappEnquiryUrl("The Glow Protocol"),
   },
   {
@@ -64,17 +64,10 @@ const protocolCards = [
 function PriceMenuRow({ item, child = false }: { item: PriceMenuItem; child?: boolean }) {
   return (
     <>
-      <div className={`grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-1 border-t border-[#d9d0c4] py-3 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-center sm:gap-4 sm:py-5 ${child ? "ml-3 border-l border-l-[#d2b582]/40 py-2.5 pl-3 sm:ml-8 sm:pl-7" : ""}`}>
+      <div className={`grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-1 border-t border-[#d9d0c4] py-3 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-center sm:gap-4 sm:py-5 ${item.recommended ? "bg-[#f7f1e7] px-3 sm:px-5" : ""} ${child ? "ml-3 border-l border-l-[#d2b582]/50 py-2.5 pl-3 sm:ml-8 sm:pl-7" : ""}`}>
         <div className="row-span-2 min-w-0 sm:row-span-1">
-          {child ? (
-            <h4 className="flex min-w-0 items-baseline gap-2 leading-snug">
-              <span className="shrink-0 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-[#806234]">Course</span>
-              <span className="text-xs text-[#9a7742]">·</span>
-              <span className="min-w-0 font-serif text-sm italic sm:text-base">{item.name}</span>
-            </h4>
-          ) : (
-            <h4 className="text-base font-medium leading-snug sm:text-lg">{item.name}</h4>
-          )}
+          {item.label && <p className="mb-1 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-[#806234]">{item.label}</p>}
+          <h4 className={`${item.recommended ? "font-serif text-lg font-medium sm:text-xl" : child ? "text-sm font-medium sm:text-base" : "text-base font-medium sm:text-lg"} leading-snug`}>{item.name}</h4>
           {item.note && <p className="mt-0.5 line-clamp-1 text-[13px] leading-snug text-[#6a6259] sm:mt-1 sm:line-clamp-none sm:text-sm sm:leading-relaxed">{item.note}</p>}
         </div>
         <p className="col-start-2 row-start-1 text-right text-sm font-medium tabular-nums text-[#806234] sm:col-start-2 sm:row-auto sm:px-5 sm:text-base">{item.price}</p>
@@ -89,6 +82,42 @@ function PriceMenuRow({ item, child = false }: { item: PriceMenuItem; child?: bo
       </div>
       {item.children?.map((childItem) => <PriceMenuRow key={`${item.name}-${childItem.name}`} item={childItem} child />)}
     </>
+  );
+}
+
+function RegenerativePriceMenu({ items }: { items: PriceMenuItem[] }) {
+  return (
+    <div>
+      <p className="max-w-[72ch] text-sm leading-relaxed text-[#5d564d] sm:text-base">Most regenerative treatments work best as a planned course. Your clinician will confirm the right plan during consultation.</p>
+      <div className="mt-7 grid gap-px bg-[#d8cfc2] sm:grid-cols-2">
+        {items.map((item) => (
+          <article key={item.name} className="flex min-h-[16rem] flex-col bg-[#f7f1e7] p-6 sm:min-h-[18rem] sm:p-8">
+            <h4 className="max-w-[18ch] font-serif text-2xl font-medium leading-tight sm:text-[1.7rem]">{item.name}</h4>
+            {item.note && <p className="mt-3 text-sm text-[#625b52]">{item.note}</p>}
+            <p className="mt-5 text-3xl font-medium tabular-nums text-[#806234]">{item.price}</p>
+            <a href={item.href} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex min-h-11 items-center justify-center border border-[#806234] px-4 text-center text-sm font-medium text-[#806234] transition-colors hover:bg-[#806234] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#806234] sm:mt-auto">{item.action}</a>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-10 border-t border-[#cfc4b5] pt-7">
+        <div className="grid gap-3 sm:grid-cols-[0.75fr_1.25fr] sm:items-end">
+          <div><p className="eyebrow">Single sessions</p><h4 className="mt-3 font-serif text-2xl font-medium">A quieter maintenance option.</h4></div>
+          <p className="max-w-[62ch] text-sm leading-relaxed text-[#625b52] sm:justify-self-end">Available for maintenance, top-ups, staged treatment, or where advised after consultation.</p>
+        </div>
+        <div className="mt-6 border-y border-[#d9d0c4]">
+          {regenerativeSingleSessions.map((item) => (
+            <div key={item.name} className="flex items-center justify-between gap-4 border-b border-[#d9d0c4] py-3 last:border-b-0 sm:py-4">
+              <p className="text-sm leading-snug sm:text-base">{item.name}</p>
+              <p className="shrink-0 text-sm font-medium tabular-nums text-[#806234] sm:text-base">{item.price}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 flex justify-end">
+          <a href={SQUARE_SITE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center border border-[#806234] px-5 text-sm font-medium text-[#806234] transition-colors hover:bg-[#806234] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#806234]">Book a single session</a>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -154,6 +183,7 @@ export default function Treatments() {
                     <h3 className="mt-7 max-w-[14ch] text-3xl font-medium leading-tight sm:text-4xl">{protocol.name}</h3>
                     <p className={`mt-7 text-4xl font-medium tabular-nums ${protocol.featured ? "text-white" : "text-[#806234]"}`}>{protocol.price}</p>
                     <p className={`mt-3 text-sm leading-relaxed ${protocol.featured ? "text-white/65" : "text-[#6a6259]"}`}>{protocol.note}</p>
+                    {protocol.id !== "single-session" && <p className={`mt-3 text-xs leading-relaxed ${protocol.featured ? "text-[#d2b582]" : "text-[#806234]"}`}>Flexible payment options are available for eligible treatment plans.</p>}
                     {protocol.examples && <div className="mt-6 space-y-2 text-sm leading-relaxed text-[#514b43]">{protocol.examples.map((example) => <p key={example}>{example}</p>)}</div>}
                     <ul className={`mt-8 space-y-4 border-t pt-7 text-sm leading-relaxed ${protocol.featured ? "border-white/20 text-white/80" : "border-[#d8cfc2] text-[#514b43]"}`}>
                       {protocol.features.map((feature) => <li key={feature} className="flex gap-3"><Check className={`mt-1 h-4 w-4 shrink-0 ${protocol.featured ? "text-[#d2b582]" : "text-[#9a7742]"}`} /><span>{feature}</span></li>)}
@@ -175,6 +205,10 @@ export default function Treatments() {
                 <div><p className="eyebrow">Prices and booking</p><h2 className="mt-4 text-balance text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.03em]">Choose your treatment.</h2></div>
                 <p className="max-w-[62ch] leading-relaxed text-[#514b43] md:justify-self-end">The menu is grouped in the same order clients move through care: start with advice, compare skin-quality treatments, review anti-wrinkle options, then consider same-visit combinations.</p>
               </div>
+              <aside className="mb-12 border-l-2 border-[#9a7742] bg-[#f7f1e7] px-6 py-6 sm:px-8" aria-label="Course guidance">
+                <h3 className="font-serif text-2xl font-medium">Courses are the usual starting point for regenerative treatments.</h3>
+                <p className="mt-3 max-w-[78ch] text-sm leading-relaxed text-[#514b43] sm:text-base">Skin boosters and polynucleotides usually work best as a planned course rather than a one-off treatment. Your clinician will confirm the right plan for your skin during consultation. If you start with a single session and a course is recommended, the price of that session can be put towards your course when booked within 30 days.</p>
+              </aside>
               <div className="space-y-14">
                 {treatmentPriceMenu.map((category, index) => (
                   <section id={category.id} key={category.id} style={{ scrollMarginTop: topGap }} aria-labelledby={`${category.id}-heading`}>
@@ -182,10 +216,22 @@ export default function Treatments() {
                       <h3 id={`${category.id}-heading`} className="text-2xl font-medium sm:text-3xl"><span className="mr-4 font-mono text-xs text-[#967544]">0{index + 1}</span>{category.name}</h3>
                       <p className="text-sm text-[#6a6259]">{category.gloss}</p>
                     </div>
-                    <div>{category.items.map((item) => <PriceMenuRow key={item.name} item={item} />)}</div>
+                    {category.id === "skin-quality-regeneration" ? <RegenerativePriceMenu items={category.items} /> : <div>{category.items.map((item) => <PriceMenuRow key={item.name} item={item} />)}</div>}
                     {category.footer && <p className="border-t border-[#d9d0c4] pt-5 text-sm font-medium text-[#5d564d]">{category.footer}</p>}
                   </section>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-[#d9d0c4] bg-[#f2ede5] py-16 sm:py-20" aria-labelledby="payment-options">
+          <div className="hero-safe-padding">
+            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.65fr_1.35fr]">
+              <div><p className="eyebrow">Plan + payment</p><h2 id="payment-options" className="mt-4 text-balance text-[clamp(2rem,3.5vw,3rem)] font-medium leading-[1.04] tracking-[-0.03em]">Useful details before you book.</h2></div>
+              <div className="border-t border-[#cfc4b5]">
+                <div className="border-b border-[#cfc4b5] py-6"><h3 className="text-xl font-medium">Can a single session count towards a course?</h3><p className="mt-3 max-w-[65ch] leading-relaxed text-[#5d564d]">Yes. When your clinician recommends continuing as a course, the single-session price can be put towards that course if you book it within 30 days.</p></div>
+                <div className="border-b border-[#cfc4b5] py-6"><h3 className="text-xl font-medium">Can I split the cost of treatment?</h3><p className="mt-3 max-w-[65ch] leading-relaxed text-[#5d564d]">Eligible clients may be able to use Clearpay at checkout for selected treatment plans. Approval and repayment terms are managed by Clearpay. Please only proceed with a treatment plan if the repayments are manageable for you.</p></div>
               </div>
             </div>
           </div>

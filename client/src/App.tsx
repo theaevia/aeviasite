@@ -27,6 +27,7 @@ import PolynucleotidesPage from "@/pages/Polynucleotides";
 import SkinOfColourPage from "@/pages/SkinOfColour";
 import ConcernsPage from "@/pages/Concerns";
 import ConcernPage from "@/pages/Concern";
+import Reviews from "@/pages/Reviews";
 
 // Treatment Page Imports
 import TreatmentPage from "@/pages/treatments/[slug]";
@@ -76,6 +77,7 @@ function Router() {
         <Route path="/skin-of-colour" component={SkinOfColourPage} />
         <Route path="/concerns/:slug" component={ConcernPage} />
         <Route path="/concerns" component={ConcernsPage} />
+        <Route path="/reviews" component={Reviews} />
         {/* Category static pages */}
         <Route path="/categories/anti-wrinkle" component={AntiWrinkleCategory} />
         <Route path="/categories/skin-boosters" component={SkinBoostersCategory} />

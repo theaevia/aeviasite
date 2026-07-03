@@ -13,7 +13,8 @@ import { treatmentDetails, treatmentMappings, treatmentProfiles } from "../clien
 import { concernBySlug } from "../client/src/data/concerns";
 import { pricing, treatmentPriceBySlug } from "../client/src/data/pricing";
 import { findTreatmentBySlug } from "../client/src/data/treatments";
-import { treatmentPriceMenu, type PriceMenuItem } from "../client/src/data/treatmentMenu";
+import { regenerativeSingleSessions, treatmentPriceMenu, type PriceMenuItem } from "../client/src/data/treatmentMenu";
+import { testimonials } from "../client/src/data/testimonials";
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -49,6 +50,7 @@ const VALID_ROUTES = [
   '/treatments/eye-rejuvenation',
   '/treatments/full-face-regeneration',
   '/gallery',
+  '/reviews',
   '/cancellation',
   '/bookings',
   '/bio',
@@ -87,7 +89,7 @@ const ROUTE_META: Record<string, RouteMeta> = {
   '/team': {
     title: "Meet the Aevia Doctors | King's Cross, London",
     description: "Meet Dr Terrell Okhiria and Dr Renée Okhiria, the GMC-registered medical doctors behind Aevia Skin in King's Cross.",
-    heading: "Meet the Aevia doctors",
+    heading: "Meet the Aevia SKIN team",
   },
   '/clinic': {
     title: "Aevia Skin Clinic in King's Cross | Location and Hours",
@@ -108,6 +110,11 @@ const ROUTE_META: Record<string, RouteMeta> = {
     title: "Aevia Skin Glow Guide | Doctor-Led Skin Advice",
     description: "Download the Aevia Skin Glow Guide for practical, doctor-led advice on skin treatments and long-term skin quality.",
     heading: "The Aevia Skin Glow Guide",
+  },
+  '/reviews': {
+    title: "Client Reviews | Aevia Skin King's Cross",
+    description: "Read verified Google reviews from Aevia Skin clients and open the live Google listing for the complete, current review record.",
+    heading: "What clients say",
   },
   '/profhilo': {
     title: "Profhilo in King's Cross, London | Aevia Skin",
@@ -270,7 +277,15 @@ function buildTreatmentCrawlableContent(slug: string, heading: string, descripti
 
   const treatment = findTreatmentBySlug(slug);
   const price = treatment?.price ?? treatmentPriceBySlug[slug]?.display ?? '';
-  const priceNote = treatment?.priceNote ? `<p>${escapeHtml(treatment.priceNote)}</p>` : '';
+  const courseOffer = ({
+    profhilo: { title: 'Profhilo® Glow Protocol', price: pricing.protocols.glow.display, plan: 'Two Profhilo® sessions, four weeks apart, plus review' },
+    'full-face-regeneration': { title: 'Plinest Full Face Regeneration Course', price: pricing.regenerative.plinestFace.courseDisplay, plan: 'Course of three Plinest full face sessions' },
+    'eye-rejuvenation': { title: 'Plinest Eye Revival Course', price: pricing.protocols.eyeRevival.display, plan: 'Course of three Plinest Eye sessions' },
+    sunekos: { title: 'Sunekos Skin Renewal Course', price: pricing.regenerative.sunekos.courseDisplay, plan: 'Course of four Sunekos sessions' },
+  } as Record<string, { title: string; price: string; plan: string }>)[slug];
+  const priceContent = courseOffer
+    ? `<h3>Clinician-recommended plan: ${escapeHtml(courseOffer.title)}</h3><p>${escapeHtml(courseOffer.plan)}: ${escapeHtml(courseOffer.price)}</p><p>Single session: ${escapeHtml(price)}. For maintenance, staged treatment or where advised after consultation.</p><p>If your clinician recommends a course after a single session, that session price can be put towards the course when you book it within 30 days.</p>`
+    : `<p>${escapeHtml(price)}</p>${treatment?.priceNote ? `<p>${escapeHtml(treatment.priceNote)}</p>` : ''}`;
   return `<main class="prerender-shell">
     <article>
       <header><p>${escapeHtml(profile.keyword)}</p><h1>${heading}</h1><p>${escapeHtml(profile.summary)}</p></header>
@@ -278,7 +293,7 @@ function buildTreatmentCrawlableContent(slug: string, heading: string, descripti
       <section><h2>Who it is for</h2>${renderList(profile.whoFor)}</section>
       ${mapping ? `<section><h2>How treatment is mapped</h2><p>${escapeHtml(mapping.summary)}</p>${renderList(mapping.points)}</section>` : ''}
       <section><h2>What results look like</h2><p>${escapeHtml(profile.result)}</p><h3>Honest timeline</h3><p>${escapeHtml(profile.timeline)}</p></section>
-      <section><h2>Price and sessions</h2><p>${escapeHtml(price)}</p>${priceNote}<p>${escapeHtml(profile.sessions)}</p></section>
+      <section><h2>Price and sessions</h2>${priceContent}<p>${escapeHtml(profile.sessions)}</p></section>
       <section><h2>Safety and downtime</h2><p>${escapeHtml(profile.safety)}</p><p>${escapeHtml(profile.downtime)}</p></section>
       <section><h2>Skin-tone guidance</h2><p>${escapeHtml(profile.skinTone)}</p></section>
       <section><h2>Frequently asked questions</h2>${faqs}</section>
@@ -337,7 +352,13 @@ function buildCrawlableBody(pathname: string, meta: RouteMeta, heading: string, 
 
   if (pathname === '/treatments') {
     const categories = treatmentPriceMenu.map((category) => `<section id="${escapeHtml(category.id)}"><h2>${escapeHtml(category.name)}</h2><p>${escapeHtml(category.gloss)}</p>${renderPriceMenuItems(category.items)}${category.footer ? `<p>${escapeHtml(category.footer)}</p>` : ''}</section>`).join('');
-    return `<main class="prerender-shell"><article><header><h1>${heading}</h1><p>${description}</p></header><section id="protocols"><h2>Doctor-planned options</h2><h3>A Focused Treatment, from ${escapeHtml(pricing.antiWrinkle.oneArea.display)}</h3><p>One treatment, chosen for one priority.</p><h3>The Glow Protocol, ${escapeHtml(pricing.protocols.glow.display)}</h3><p>Two Profhilo sessions, four weeks apart, with a photo review at week two.</p><h3>The Aevia Plan, ${escapeHtml(pricing.protocols.aeviaPlan.display)}</h3><p>A doctor-designed plan across three or more months, combining treatments where useful.</p></section><section id="price-menu"><h2>Choose your treatment</h2>${categories}</section></article><nav aria-label="Related pages"><a href="/concerns">Concern guides</a> <a href="/skin-of-colour">Skin of colour</a> <a href="/team">The doctors</a></nav></main>`;
+    const singleSessions = renderPriceMenuItems(regenerativeSingleSessions);
+    return `<main class="prerender-shell"><article><header><h1>${heading}</h1><p>${description}</p></header><section id="protocols"><h2>Doctor-planned options</h2><h3>The Glow Protocol, ${escapeHtml(pricing.protocols.glow.display)}</h3><p>Two Profhilo sessions, four weeks apart, with a photo review at week two.</p><h3>A Focused Treatment, from ${escapeHtml(pricing.antiWrinkle.oneArea.display)}</h3><p>One treatment, chosen for one priority or for maintenance where advised.</p><h3>The Aevia Plan, ${escapeHtml(pricing.protocols.aeviaPlan.display)}</h3><p>A doctor-designed plan across three or more months, combining treatments where useful.</p></section><section><h2>Courses are the usual starting point for regenerative treatments.</h2><p>Skin boosters and polynucleotides usually work best as a planned course rather than a one-off treatment. Your clinician will confirm the right plan for your skin during consultation. If you start with a single session and a course is recommended, the price of that session can be put towards your course when booked within 30 days.</p></section><section id="price-menu"><h2>Choose your treatment</h2>${categories}<section><h2>Single regenerative sessions</h2><p>Available for maintenance, top-ups, staged treatment or where advised after consultation.</p>${singleSessions}</section></section></article><nav aria-label="Related pages"><a href="/concerns">Concern guides</a> <a href="/skin-of-colour">Skin of colour</a> <a href="/team">The doctors</a> <a href="/reviews">Client reviews</a></nav></main>`;
+  }
+
+  if (pathname === '/reviews') {
+    const reviews = testimonials.map((testimonial) => `<article><h2>${escapeHtml(testimonial.name)}</h2><p>5 out of 5 stars, ${escapeHtml(testimonial.date)}</p>${testimonial.quote ? `<blockquote>${escapeHtml(testimonial.quote)}</blockquote>` : '<p>Five-star rating with no written comment.</p>'}<p><a href="${escapeHtml(testimonial.reviewUrl)}">Read the original Google review</a></p></article>`).join('');
+    return `<main class="prerender-shell"><header><h1>${heading}</h1><p>${description}</p></header><section><h2>Verified Google reviews</h2>${reviews}</section><p><a href="https://www.google.com/maps/search/?api=1&amp;query=Aevia+Skin%2C+260+Pentonville+Road%2C+London">See the complete current review record on Google</a></p><nav aria-label="Related pages"><a href="/">Home</a> <a href="/treatments">Treatments and prices</a> <a href="/team">Meet the Aevia SKIN team</a></nav></main>`;
   }
 
   const prioritySections = PRIORITY_PAGE_CONTENT[pathname];

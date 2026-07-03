@@ -53,6 +53,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/reviews" className="hover:text-primary smooth-transition">
+                  Client Reviews
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy" className="hover:text-primary smooth-transition">
                   Privacy & Cookies
                 </Link>

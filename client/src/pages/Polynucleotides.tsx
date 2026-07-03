@@ -8,18 +8,20 @@ import { CLINIC_WHATSAPP_ENQUIRE_URL } from "@/lib/bookingUrls";
 
 const options = [
   {
-    title: "Under-eye polynucleotides",
+    title: "Plinest Eye Revival Course",
     href: "/treatments/eye-rejuvenation",
     copy: "For selected crepiness, dehydration and dark-circle concerns where improving skin quality is the goal.",
-    price: pricing.regenerative.plinestEye.display,
-    course: `The Eye Revival, course of 3: ${pricing.protocols.eyeRevival.display}`,
+    price: pricing.protocols.eyeRevival.display,
+    course: "Course of three Plinest Eye sessions",
+    single: `Single Plinest Eye Session · ${pricing.regenerative.plinestEye.display}`,
   },
   {
-    title: "Full-face polynucleotides",
+    title: "Plinest Full Face Regeneration Course",
     href: "/treatments/full-face-regeneration",
     copy: "For gradual improvement in facial hydration, texture and resilience without structural filler volume.",
-    price: pricing.regenerative.plinestFace.display,
-    course: `Course of 3 (recommended): ${pricing.regenerative.plinestFace.courseDisplay}`,
+    price: pricing.regenerative.plinestFace.courseDisplay,
+    course: "Course of three Plinest full face sessions",
+    single: `Single Plinest Full Face Session · ${pricing.regenerative.plinestFace.display}`,
   },
 ];
 
@@ -65,12 +67,15 @@ export default function PolynucleotidesPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <p className="eyebrow">Treatment options</p>
             <h2 id="polynucleotide-options" className="mt-5 text-balance text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.03em]">Choose by concern, not by trend.</h2>
+            <p className="mt-5 max-w-[75ch] leading-relaxed text-[#5d564d]">Polynucleotides are commonly advised as a course of three. Your clinician will confirm the right plan for your skin during consultation. Single sessions remain available for maintenance, staged treatment, or where clinically advised.</p>
             <div className="mt-10 grid gap-px bg-[#d8cfc2] md:grid-cols-2">
               {options.map((option) => (
                 <Link key={option.href} href={option.href} className="group flex min-h-72 flex-col bg-[#fbf9f5] p-8 transition-colors hover:bg-[#f2ede5] sm:p-10">
-                  <div className="flex items-start justify-between gap-5"><h3 className="text-3xl font-medium">{option.title}</h3><span className="text-xl font-medium text-[#806234]">{option.price}</span></div>
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#806234]">Clinician-recommended plan</p>
+                  <div className="mt-3 flex items-start justify-between gap-5"><h3 className="max-w-[15ch] font-serif text-3xl font-medium">{option.title}</h3><span className="shrink-0 text-xl font-medium text-[#806234]">{option.price}</span></div>
+                  <p className="mt-3 text-sm font-medium text-[#806234]">{option.course}</p>
                   <p className="mt-6 max-w-[52ch] leading-relaxed text-[#5d564d]">{option.copy}</p>
-                  <p className="mt-4 text-sm font-medium text-[#806234]">{option.course}</p>
+                  <p className="mt-5 border-t border-[#d8cfc2] pt-4 text-sm text-[#6a6259]">{option.single}</p>
                   <span className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-medium">See treatment details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
                 </Link>
               ))}

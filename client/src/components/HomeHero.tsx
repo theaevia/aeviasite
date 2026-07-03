@@ -25,7 +25,7 @@ const navLinks = [
   { label: "ABOUT", href: "/team" },
 ];
 
-const mobileNavLinks = navLinks;
+const mobileNavLinks = [...navLinks, { label: "REVIEWS", href: "/reviews" }];
 
 const HandbagIcon = (props: LucideProps) => (
   <svg
@@ -88,7 +88,7 @@ export default function HomeHero({
   const closeMenu = () => setIsMenuOpen(false);
 
   const sharedNavLinkClasses =
-    "text-xs lg:text-sm font-normal uppercase tracking-[0.1em] hover:opacity-80 transition-opacity duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+    "whitespace-nowrap text-xs lg:text-sm font-normal uppercase tracking-[0.1em] hover:opacity-80 transition-opacity duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
   const bookNowButtonClasses =
     "inline-flex items-center justify-center rounded-full border-[1.5px] border-white/80 px-6 py-2 text-xs lg:text-sm uppercase tracking-[0.1em] font-medium transition duration-200 hover:bg-white hover:text-[#111] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
   const heroCtaClasses =

@@ -5,7 +5,7 @@ import SEO from "@/components/SEO";
 import { BookingButton } from "@/components/BookingButton";
 import Map from "@/components/Map";
 import { clinicOpeningHours } from "@/data/openingHours";
-import { testimonials } from "@/data/testimonials";
+import { featuredTestimonials } from "@/data/testimonials";
 import { findTreatmentBySlug, getTreatmentPath } from "@/data/treatments";
 import { CLINIC_WHATSAPP_ENQUIRE_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
@@ -242,9 +242,12 @@ export default function Skin() {
                 <a href="https://maps.app.goo.gl/jpQNgXg92eiBesPD8" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm underline decoration-[#d2b582] underline-offset-4">
                   View on Google <ArrowRight className="h-4 w-4" />
                 </a>
+                <a href="/reviews" className="mt-4 inline-flex items-center gap-2 text-sm underline decoration-[#d2b582] underline-offset-4">
+                  Read all reviews <ArrowRight className="h-4 w-4" />
+                </a>
               </div>
               <div className="grid gap-px bg-white/20 md:grid-cols-3">
-                {testimonials.map((testimonial) => (
+                {featuredTestimonials.map((testimonial) => (
                   <a
                     key={testimonial.name}
                     href={testimonial.reviewUrl}

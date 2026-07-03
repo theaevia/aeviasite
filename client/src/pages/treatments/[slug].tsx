@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Check, Clock, ShieldCheck } from "lucide-react";
 
 import SEO from "@/components/SEO";
 import { BookingButton } from "@/components/BookingButton";
+import { pricing } from "@/data/pricing";
 import { findTreatmentBySlug } from "@/data/treatments";
 import { treatmentDetails, treatmentMappings, treatmentProfiles } from "@/data/treatmentProfiles";
 import { whatsappEnquiryUrl } from "@/lib/bookingUrls";
@@ -21,6 +22,41 @@ const treatmentDiagrams: Record<string, { src: string; alt: string }> = {
 };
 
 const sectionHeadingClassName = "mt-5 text-balance text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.03em]";
+
+const courseOffers: Record<string, { title: string; price: string; plan: string; singleTitle: string; singlePrice: string; singleNote: string }> = {
+  profhilo: {
+    title: "Profhilo® Glow Protocol",
+    price: pricing.protocols.glow.display,
+    plan: "Two Profhilo® sessions, four weeks apart, plus review",
+    singleTitle: "Single Profhilo® Session",
+    singlePrice: pricing.regenerative.profhilo.display,
+    singleNote: "For maintenance, top-ups, or where advised after consultation",
+  },
+  "full-face-regeneration": {
+    title: "Plinest Full Face Regeneration Course",
+    price: pricing.regenerative.plinestFace.courseDisplay,
+    plan: "Course of three Plinest full face sessions",
+    singleTitle: "Single Plinest Full Face Session",
+    singlePrice: pricing.regenerative.plinestFace.display,
+    singleNote: "For maintenance, staged treatment, or where advised after consultation",
+  },
+  "eye-rejuvenation": {
+    title: "Plinest Eye Revival Course",
+    price: pricing.protocols.eyeRevival.display,
+    plan: "Course of three Plinest Eye sessions",
+    singleTitle: "Single Plinest Eye Session",
+    singlePrice: pricing.regenerative.plinestEye.display,
+    singleNote: "For maintenance, staged treatment, or where advised after consultation",
+  },
+  sunekos: {
+    title: "Sunekos Skin Renewal Course",
+    price: pricing.regenerative.sunekos.courseDisplay,
+    plan: "Course of four Sunekos sessions",
+    singleTitle: "Single Sunekos Session",
+    singlePrice: pricing.regenerative.sunekos.display,
+    singleNote: "For maintenance, staged treatment, or where advised after consultation",
+  },
+};
 
 export default function TreatmentPage({ slugOverride }: { slugOverride?: string; params?: Record<string, string> } = {}) {
   const params = useParams<{ slug?: string }>();
@@ -41,9 +77,15 @@ export default function TreatmentPage({ slugOverride }: { slugOverride?: string;
   }
 
   const pageTitle = `${treatment.name} in King's Cross, London | Aevia Skin`;
-  const priceLines = treatment.priceTiers?.length
-    ? treatment.priceTiers
-    : [{ label: "Treatment", price: treatment.price }];
+  const courseOffer = courseOffers[slug];
+  const priceLines = courseOffer
+    ? [
+        { label: courseOffer.title, price: courseOffer.price },
+        { label: courseOffer.singleTitle, price: courseOffer.singlePrice },
+      ]
+    : treatment.priceTiers?.length
+      ? treatment.priceTiers
+      : [{ label: "Treatment", price: treatment.price }];
   const heroImage = treatment.image?.startsWith("/") ? treatment.image : null;
   const diagram = treatmentDiagrams[slug];
   const mapping = treatmentMappings[slug];
@@ -81,20 +123,36 @@ export default function TreatmentPage({ slugOverride }: { slugOverride?: string;
                   </div>
                 )}
                 <div className="border-l border-[#cfc4b5] pl-7">
-                  <p className="text-xs uppercase tracking-[0.18em] text-[#7a7065]">From</p>
-                  <p className="mt-2 text-4xl font-medium tabular-nums text-[#806234]">{treatment.price}</p>
-                  <p className="mt-4 flex items-center gap-2 text-sm text-[#625b52]"><Clock className="h-4 w-4" /> {treatment.duration}</p>
-                  {treatment.priceNote && (
-                    <p className="mt-5 text-sm leading-relaxed text-[#625b52]">
-                      {treatment.priceNote}
-                      {slug === "profhilo" && <> <a href="/treatments#glow-protocol" className="font-medium underline decoration-[#c5a87a] underline-offset-4">See The Glow Protocol</a>.</>}
-                    </p>
+                  {courseOffer ? (
+                    <>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#806234]">Clinician-recommended plan</p>
+                      <h2 className="mt-3 max-w-[22ch] font-serif text-2xl font-medium leading-tight">{courseOffer.title}</h2>
+                      <p className="mt-2 text-sm text-[#625b52]">{courseOffer.plan}</p>
+                      <p className="mt-4 text-4xl font-medium tabular-nums text-[#806234]">{courseOffer.price}</p>
+                      <p className="mt-4 flex items-center gap-2 text-sm text-[#625b52]"><Clock className="h-4 w-4" /> {treatment.duration} per visit</p>
+                      <BookingButton href={whatsappEnquiryUrl(courseOffer.title)} className="mt-6 w-full">Discuss this plan</BookingButton>
+                      <p className="mt-3 text-center text-xs leading-relaxed text-[#806234]">Flexible payment options are available for eligible treatment plans.</p>
+                      <div className="mt-7 border-t border-[#d9d0c4] pt-6">
+                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#806234]">Single session</p>
+                        <div className="mt-2 flex items-start justify-between gap-5"><h3 className="font-medium">{courseOffer.singleTitle}</h3><p className="shrink-0 font-medium tabular-nums text-[#806234]">{courseOffer.singlePrice}</p></div>
+                        <p className="mt-2 text-sm leading-relaxed text-[#625b52]">{courseOffer.singleNote}</p>
+                        <BookingButton href={treatment.bookingUrl} variant="secondary" className="mt-5 w-full">Book single session</BookingButton>
+                      </div>
+                      <p className="mt-5 text-xs leading-relaxed text-[#625b52]">If your clinician recommends a course after a single session, that session price can be put towards the course when you book it within 30 days.</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#7a7065]">From</p>
+                      <p className="mt-2 text-4xl font-medium tabular-nums text-[#806234]">{treatment.price}</p>
+                      <p className="mt-4 flex items-center gap-2 text-sm text-[#625b52]"><Clock className="h-4 w-4" /> {treatment.duration}</p>
+                      {treatment.priceNote && <p className="mt-5 text-sm leading-relaxed text-[#625b52]">{treatment.priceNote}</p>}
+                      {slug === "anti-wrinkle" && <p className="mt-4 text-sm leading-relaxed text-[#625b52]">Price includes a complimentary 2-week review. We will invite you to book your next appointment at your review. Most clients return every 12 weeks.</p>}
+                      <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                        <BookingButton href={treatment.bookingUrl} className="w-full">Book now</BookingButton>
+                        <BookingButton href={whatsappUrl} variant="secondary" className="w-full">Ask a doctor on WhatsApp</BookingButton>
+                      </div>
+                    </>
                   )}
-                  {slug === "anti-wrinkle" && <p className="mt-4 text-sm leading-relaxed text-[#625b52]">Price includes a complimentary 2-week review. We will invite you to book your next appointment at your review. Most clients return every 12 weeks.</p>}
-                  <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                    <BookingButton href={treatment.bookingUrl} className="w-full">Book now</BookingButton>
-                    <BookingButton href={whatsappUrl} variant="secondary" className="w-full">Ask a doctor on WhatsApp</BookingButton>
-                  </div>
                 </div>
               </div>
             </div>
@@ -215,6 +273,7 @@ export default function TreatmentPage({ slugOverride }: { slugOverride?: string;
                   <p className="max-w-[65ch] pt-5 leading-relaxed text-[#5d564d]">{faq.answer}</p>
                 </details>
               ))}
+              {courseOffer && <details className="group border-b border-[#cfc4b5] py-6"><summary className="flex cursor-pointer list-none justify-between gap-6 text-xl font-medium marker:content-none">Can I split the cost of the course?<span className="text-2xl font-light transition-transform group-open:rotate-45">+</span></summary><p className="max-w-[65ch] pt-5 leading-relaxed text-[#5d564d]">Eligible clients may be able to use Clearpay at checkout for selected treatment plans. Approval and repayment terms are managed by Clearpay. Please only proceed if the repayments are manageable for you.</p></details>}
             </div>
           </div>
         </section>
@@ -227,8 +286,8 @@ export default function TreatmentPage({ slugOverride }: { slugOverride?: string;
             </h2>
             <p className="mx-auto mt-5 max-w-[58ch] leading-relaxed text-[#493e31]">Book directly or ask for guidance first. Your doctor confirms suitability before treatment.</p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <BookingButton href={treatment.bookingUrl} className="border-[#806234] bg-[#806234] text-white hover:border-[#6f542f] hover:bg-[#6f542f] hover:text-white sm:min-w-56">Book now</BookingButton>
-              <BookingButton href={whatsappUrl} variant="secondary" className="border-[#171512] text-[#171512] hover:border-[#171512] hover:bg-[#171512] sm:min-w-56">Ask a doctor on WhatsApp</BookingButton>
+              {courseOffer ? <BookingButton href={whatsappEnquiryUrl(courseOffer.title)} className="border-[#806234] bg-[#806234] text-white hover:border-[#6f542f] hover:bg-[#6f542f] hover:text-white sm:min-w-56">Discuss this plan</BookingButton> : <BookingButton href={treatment.bookingUrl} className="border-[#806234] bg-[#806234] text-white hover:border-[#6f542f] hover:bg-[#6f542f] hover:text-white sm:min-w-56">Book now</BookingButton>}
+              <BookingButton href={courseOffer ? treatment.bookingUrl : whatsappUrl} variant="secondary" className="border-[#171512] text-[#171512] hover:border-[#171512] hover:bg-[#171512] sm:min-w-56">{courseOffer ? "Book single session" : "Ask a doctor on WhatsApp"}</BookingButton>
             </div>
             <Link href="/treatments" className="mt-8 inline-flex items-center gap-2 text-sm underline decoration-[#5f4c31] underline-offset-4">Compare all treatments <ArrowRight className="h-4 w-4" /></Link>
           </div>

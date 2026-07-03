@@ -18,7 +18,7 @@ export default function About() {
         <section className="bg-secondary py-20 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="page-title mb-6">
-              Meet the <span className="text-primary">Aevia Team</span>
+              Meet the <span className="text-primary">Aevia SKIN team</span>
             </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">
             A doctor-led team committed to natural results, self-confidence, and science-backed care.
