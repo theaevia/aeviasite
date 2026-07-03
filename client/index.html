@@ -12,6 +12,32 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Keep server-rendered crawler copy in the HTML without flashing it before React mounts. -->
+    <style>
+      html,
+      body,
+      #root {
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: #fbf9f5;
+      }
+
+      .prerender-shell {
+        display: none !important;
+      }
+    </style>
+    <noscript>
+      <style>
+        .prerender-shell {
+          display: block !important;
+          padding: 1.5rem;
+        }
+      </style>
+    </noscript>
     
     <!-- Primary Meta Tags -->
     <title>The Aevia | Doctor-Led Aesthetics | King's Cross, London</title>
