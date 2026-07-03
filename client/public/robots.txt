@@ -4,4 +4,13 @@ Disallow: /staging/
 Disallow: /test/
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 Sitemap: https://www.theaevia.co.uk/sitemap_index.xml

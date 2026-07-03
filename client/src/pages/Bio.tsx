@@ -196,7 +196,7 @@ export default function BioPage() {
   return (
     <>
       <SEO
-        title="The Aevia — 60-sec Skin Plan & Treatment Booking"
+        title="The Aevia , 60-sec Skin Plan & Treatment Booking"
         description="Doctor-led, discreet studio in King’s Cross. Start with a 60-sec Skin Plan or book a treatment appointment. Natural, evidence-based results."
       />
 
@@ -266,7 +266,7 @@ export default function BioPage() {
                   <div className="mt-3 text-xs text-muted-foreground">Tap to continue →</div>
                 </a>
 
-                {/* Card B — Quiz */}
+                {/* Card B , Quiz */}
                 <a
                   href={quizHref}
                   onClick={() => {
@@ -289,7 +289,7 @@ export default function BioPage() {
               </>
             ) : (
               <>
-                {/* Card A — Quiz (Recommended) */}
+                {/* Card A , Quiz (Recommended) */}
                 <a
                   href={quizHref}
                   onClick={() => {
@@ -490,7 +490,7 @@ export default function BioPage() {
           <div className="max-w-3xl mx-auto px-4">
             <div className="rounded-2xl border border-muted-foreground/20 bg-secondary p-4 sm:p-5">
               <p className="text-sm sm:text-base text-foreground/90">
-                Visit us at Minsony, King’s Cross — 2 mins from the station. Discreet, appointment-only studio.
+                Visit us at Minsony, King’s Cross , 2 mins from the station. Discreet, appointment-only studio.
               </p>
               <div className="mt-3 flex flex-col sm:flex-row gap-2">
                 <a

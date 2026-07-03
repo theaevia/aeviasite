@@ -20,7 +20,6 @@ export default function AntiWrinkleCategoryPage() {
     'jawline-slimming',
     'neck-lift',
     'lower-face-contour-duo',
-    'smile-lift',
     'sweat-control',
   ];
   const orderIndex = (slug: string) => {
@@ -57,7 +56,7 @@ export default function AntiWrinkleCategoryPage() {
             <TreatmentCard 
               name="Forehead, Frown or Crow's Feet" 
               slug={areaSlug} 
-              price={`From ${oneAreaTreatment.price}`} 
+              price={oneAreaTreatment.price}
               duration={oneAreaTreatment.duration} 
               image={oneAreaTreatment.image} 
               imageClassName={getThumbnailClassName(oneAreaTreatment)}
@@ -74,9 +73,6 @@ export default function AntiWrinkleCategoryPage() {
               } else if (treatment.slug === 'jawline-slimming') {
                 displayName = 'Jawline Slimming';
                 displaySubtitle = 'Masseter Reduction';
-              } else if (treatment.slug === 'smile-lift') {
-                displayName = 'Smile Lift';
-                displaySubtitle = 'DAO Treatment';
               } else if (treatment.slug === 'neck-lift') {
                 displayName = 'Neck Lift';
                 displaySubtitle = 'Nefertiti';

@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 
 import { cn } from "@/lib/utils";
+import { getTreatmentPath } from "@/data/treatments";
 
 interface TreatmentCardProps {
   name: string;
@@ -27,7 +28,7 @@ export default function TreatmentCard({
   priority = false,
 }: TreatmentCardProps) {
   return (
-    <Link href={`/treatments/${slug}`}>
+    <Link href={getTreatmentPath(slug)}>
       <a
         className="bg-white rounded-2xl shadow-lg transition-shadow overflow-hidden h-full flex flex-col min-h-[350px] min-w-[293.34px]"
         data-scroll-reveal

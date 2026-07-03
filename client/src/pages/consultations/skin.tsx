@@ -46,7 +46,7 @@ export default function SkinConsultationPage() {
         {/* Hero */}
         <section className="bg-secondary py-16 md:py-20 border-b border-[#e0ddd9]">
           <div className="max-w-5xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-3">Aevia Skin Guidance</h1>
+            <h1 className="page-title mb-3">Aevia Skin Guidance</h1>
             <p className="text-base md:text-lg text-foreground/80 mb-6">For clients who would like help choosing the right appointment.</p>
             {/* Segmented switch */}
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">

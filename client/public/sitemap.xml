@@ -2,21 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.theaevia.co.uk/</loc>
-    <lastmod>2025-09-25</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.theaevia.co.uk/treatments</loc>
-    <lastmod>2025-09-25</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/skin</loc>
-    <lastmod>2025-09-25</lastmod>
+    <loc>https://www.theaevia.co.uk/the-aevia</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.theaevia.co.uk/glow-guide</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.theaevia.co.uk/bookings</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.theaevia.co.uk/clinic</loc>
@@ -28,18 +40,6 @@
     <loc>https://www.theaevia.co.uk/team</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/consultations</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/consultations/skin</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
@@ -79,34 +79,64 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/categories/microneedling-peels</loc>
-    <lastmod>2025-09-25</lastmod>
+    <loc>https://www.theaevia.co.uk/polynucleotides</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/categories/bio-voluminisation</loc>
-    <lastmod>2025-09-25</lastmod>
+    <loc>https://www.theaevia.co.uk/skin-of-colour</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/categories/polynucleotides</loc>
-    <lastmod>2025-09-25</lastmod>
+    <loc>https://www.theaevia.co.uk/concerns</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/categories/consultation</loc>
-    <lastmod>2025-09-25</lastmod>
+    <loc>https://www.theaevia.co.uk/concerns/dull-tired-skin</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/treatments/anti-wrinkle</loc>
-    <lastmod>2025-09-25</lastmod>
+    <loc>https://www.theaevia.co.uk/concerns/dark-under-eyes</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theaevia.co.uk/concerns/fine-lines-wrinkles</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theaevia.co.uk/concerns/uneven-texture-tone</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theaevia.co.uk/concerns/excessive-sweating</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theaevia.co.uk/concerns/strong-painful-jaw</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theaevia.co.uk/anti-wrinkle</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.theaevia.co.uk/treatments/jawline-slimming</loc>
@@ -127,22 +157,16 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/treatments/smile-lift</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.theaevia.co.uk/treatments/sweat-control</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.theaevia.co.uk/treatments/profhilo</loc>
-    <lastmod>2025-09-25</lastmod>
+    <loc>https://www.theaevia.co.uk/profhilo</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.theaevia.co.uk/treatments/sunekos</loc>
@@ -161,54 +185,6 @@
     <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/microneedling</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/glycolic-peel</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/salicylic-peel</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/lactic-acid-peel</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/tca-peel</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/sculptra</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/virtual-consultation</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.theaevia.co.uk/treatments/in-clinic-consultation</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.theaevia.co.uk/privacy</loc>

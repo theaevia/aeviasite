@@ -80,7 +80,7 @@ export default function GlowGuide() {
             <blockquote className="text-xl font-serif leading-relaxed text-foreground/90">
               “My skin has never felt this good. The Glow Guide gave me clarity, the consultation gave me momentum.”
             </blockquote>
-            <p className="mt-4 text-sm uppercase tracking-[0.3em] text-foreground/50">— R, Events Manager</p>
+            <p className="mt-4 text-sm uppercase tracking-[0.3em] text-foreground/50">, R, Events Manager</p>
           </div>
           <div className="mt-12 mx-auto max-w-4xl text-center text-sm text-foreground/60">
             <p>The Aevia · Doctor-led regenerative aesthetics · King&apos;s Cross, London</p>

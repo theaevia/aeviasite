@@ -137,7 +137,7 @@ export default function Privacy() {
               <p>We do not make decisions producing legal or similarly significant effects solely by automated means. We may segment audiences for relevance; you can object at any time.</p>
 
               <h2>4) Who we share data with</h2>
-              <p>We use providers under data‑processing agreements. They act on our instructions and implement safeguards. Some also act as independent controllers for their own purposes — see their notices.</p>
+              <p>We use providers under data‑processing agreements. They act on our instructions and implement safeguards. Some also act as independent controllers for their own purposes , see their notices.</p>
               <h3>Core processors</h3>
               <ul>
                 <li><strong>Square</strong> – bookings, payments, notifications (clinic)</li>

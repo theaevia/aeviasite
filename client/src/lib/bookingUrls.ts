@@ -5,6 +5,7 @@ export const DAO_SMILE_URL = '/go/dao';
 export const NEFERTITI_URL = '/go/nefertiti';
 export const MASSETER_URL = '/go/masseter';
 export const THREE_AREAS_URL = '/go/three_areas';
+export const ANTI_WRINKLE_URL = '/go/all_anti_wrinkle';
 export const SQUARE_SITE_URL = '/go/square_site';
 export const SKIN_VIRTUAL_URL = '/go/skin_virtual';
 export const SKIN_CLINIC_URL = '/go/skin_clinic';
@@ -22,6 +23,9 @@ export const PEELS_WAITLIST_URL = '/go/peels_waitlist';
 // Clinic WhatsApp number for "Enquire to book" CTAs on course bundles.
 // Sourced from WhatsAppWidget.tsx; wa.me wants the number without spaces or plus.
 export const CLINIC_WHATSAPP_NUMBER = '447448012556';
-export const CLINIC_WHATSAPP_ENQUIRE_URL = `https://wa.me/${CLINIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  "Hi Aevia, I'd like to enquire about booking a treatment course."
-)}`;
+export const whatsappEnquiryUrl = (subject = "a treatment") =>
+  `https://wa.me/${CLINIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    `Hi, I'd like to ask about ${subject}.`
+  )}`;
+
+export const CLINIC_WHATSAPP_ENQUIRE_URL = whatsappEnquiryUrl("a treatment");

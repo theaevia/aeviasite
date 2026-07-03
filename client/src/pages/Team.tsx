@@ -17,7 +17,7 @@ export default function About() {
         {/* Hero Section */}
         <section className="bg-secondary py-20 lg:py-32">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
+            <h1 className="page-title mb-6">
               Meet the <span className="text-primary">Aevia Team</span>
             </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">

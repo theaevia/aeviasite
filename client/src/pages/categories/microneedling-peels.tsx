@@ -21,7 +21,7 @@ export default function MicroneedlingPeelsCategoryPage() {
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h1 className="text-3xl lg:text-5xl font-serif font-bold mb-4 leading-tight">{pageTitle}</h1>
           <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-            Microneedling is now open for booking with both HA-infused and regenerative protocols. Medical-grade peels are in final development — join the waitlist to be first when they launch.
+            Microneedling is now open for booking with both HA-infused and regenerative protocols. Medical-grade peels are in final development , join the waitlist to be first when they launch.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <BookingButton href={MICRONEEDLING_REG_URL} variant="primary" className="w-full sm:w-auto">

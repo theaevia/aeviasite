@@ -10,7 +10,7 @@ export interface GalleryItem {
 export const galleryItems: GalleryItem[] = [
   {
     id: "forehead",
-    title: "Anti‑Wrinkle — Forehead",
+    title: "Anti‑Wrinkle , Forehead",
     caption: "Forehead lines softened two weeks after treatment.",
     src: "/assets/before_afters/forehead-640w.webp",
     kind: "publicWebP",
@@ -18,7 +18,7 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: "frown",
-    title: "Anti‑Wrinkle — Frown Lines",
+    title: "Anti‑Wrinkle , Frown Lines",
     caption: "Frown lines softened two weeks after treatment.",
     src: "/assets/before_afters/frown-640w.webp",
     kind: "publicWebP",

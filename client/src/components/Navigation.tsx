@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { journalUrl } from "@/lib/journal";
 import { JOURNAL_URL, SITE_URL } from "@/lib/env";
 import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import { concerns } from "@/data/concerns";
 
 type NavigationVariant = "solid" | "transparent";
 
@@ -19,13 +20,11 @@ interface NavigationProps {
 
 const navLinks = [
   { label: "TREATMENTS", href: "/treatments" },
+  { label: "CONCERNS", href: "/concerns" },
   { label: "ABOUT", href: "/team" },
 ];
 
-const mobileNavLinks = [
-  { label: "SKIN", href: "/" },
-  ...navLinks,
-];
+const mobileNavLinks = navLinks;
 
 export default function Navigation({ variant = "solid", showShadow = true, logoSrc }: NavigationProps) {
   const [location] = useLocation();
@@ -265,7 +264,7 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
         aria-modal="true"
         aria-labelledby="site-nav-drawer-title"
       >
-        <div className="hero-safe-padding flex h-full flex-col py-8">
+        <div className="hero-safe-padding flex h-full flex-col overflow-y-auto py-8">
           <div className="flex items-center justify-between">
             <Link href="/" onClick={closeMenu} className="inline-flex items-center">
               <img
@@ -323,6 +322,17 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
                 JOURNAL
               </a>
             </nav>
+            <div className={cn("border-t pt-6", isTransparent ? "border-white/20" : "border-[#d9d0c4]")}>
+              <p className={cn("text-xs font-medium uppercase tracking-[0.24em]", isTransparent ? "text-white/60" : "text-[#111]/60")}>Concern guides</p>
+              <div className="mt-4 grid gap-x-5 gap-y-3 sm:grid-cols-2">
+                {concerns.map((concern) => (
+                  <Link key={concern.slug} href={`/concerns/${concern.slug}`} onClick={closeMenu} className={cn("text-sm normal-case tracking-normal", isTransparent ? "text-white/80 hover:text-primary" : "text-[#514b43] hover:text-primary")}>
+                    {concern.navLabel}
+                  </Link>
+                ))}
+              </div>
+              <Link href="/skin-of-colour" onClick={closeMenu} className={cn("mt-4 inline-block text-sm font-medium underline underline-offset-4", isTransparent ? "text-[#d2b582]" : "text-[#806234]")}>Skin of colour</Link>
+            </div>
             <div className="mt-auto flex flex-col gap-4">
               <Link
                 href={SQUARE_SITE_URL}
@@ -334,14 +344,6 @@ export default function Navigation({ variant = "solid", showShadow = true, logoS
               >
                 BOOK TREATMENT
               </Link>
-              <p
-                className={cn(
-                  "text-sm uppercase tracking-[0.1em] text-center lg:text-left",
-                  isTransparent ? "text-white/60" : "text-primary/80"
-                )}
-              >
-                Crafted for skin
-              </p>
             </div>
           </div>
         </div>

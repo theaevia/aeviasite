@@ -3,6 +3,7 @@ import type { LucideProps } from "lucide-react";
 import { Link } from "wouter";
 import { journalUrl } from "@/lib/journal";
 import { SQUARE_SITE_URL } from "@/lib/bookingUrls";
+import { concerns } from "@/data/concerns";
 
 type HeroImageSource = {
   src: string;
@@ -20,13 +21,11 @@ interface HomeHeroProps {
 
 const navLinks = [
   { label: "TREATMENTS", href: "/treatments" },
+  { label: "CONCERNS", href: "/concerns" },
   { label: "ABOUT", href: "/team" },
 ];
 
-const mobileNavLinks = [
-  { label: "SKIN", href: "/" },
-  ...navLinks,
-];
+const mobileNavLinks = navLinks;
 
 const HandbagIcon = (props: LucideProps) => (
   <svg
@@ -248,7 +247,7 @@ export default function HomeHero({
         aria-modal="true"
         aria-labelledby="homepage-hero-drawer-title"
       >
-        <div className="hero-safe-padding flex h-full flex-col py-8">
+        <div className="hero-safe-padding flex h-full flex-col overflow-y-auto py-8">
           <div className="flex items-center justify-between">
             <img
               src={logoSrc}
@@ -293,6 +292,17 @@ export default function HomeHero({
                 JOURNAL
               </a>
             </nav>
+            <div className="border-t border-white/20 pt-6">
+              <p className="text-xs font-medium uppercase tracking-[0.24em] text-white/60">Concern guides</p>
+              <div className="mt-4 grid gap-x-5 gap-y-3 sm:grid-cols-2">
+                {concerns.map((concern) => (
+                  <Link key={concern.slug} href={`/concerns/${concern.slug}`} onClick={closeMenu} className="text-sm normal-case tracking-normal text-white/80 hover:text-primary">
+                    {concern.navLabel}
+                  </Link>
+                ))}
+              </div>
+              <Link href="/skin-of-colour" onClick={closeMenu} className="mt-4 inline-block text-sm font-medium text-[#d2b582] underline underline-offset-4">Skin of colour</Link>
+            </div>
             <div className="mt-auto flex flex-col gap-4">
               <a
                 href={SQUARE_SITE_URL}
@@ -303,9 +313,6 @@ export default function HomeHero({
               >
                 BOOK TREATMENT
               </a>
-              <p className="text-sm uppercase tracking-[0.1em] text-white/60">
-                Crafted for skin
-              </p>
             </div>
           </div>
         </div>

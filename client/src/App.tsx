@@ -1,5 +1,6 @@
 // Framework Imports
-import { Route, Switch } from "wouter";
+import { useEffect } from "react";
+import { Redirect, Route, Switch } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from 'react-helmet-async';
 import { queryClient } from "./lib/queryClient";
@@ -14,7 +15,6 @@ import Team from "@/pages/Team";
 import Clinic from "@/pages/Clinic";
 import Gallery from "@/pages/Gallery";
 import GlowGuide from "@/pages/GlowGuide";
-import SkinConsultationPage from "@/pages/consultations/skin";
 import Treatments from "@/pages/Treatments";
 import NotFound from "@/pages/not-found";
 import Privacy from "@/pages/Privacy";
@@ -23,33 +23,31 @@ import CancellationPolicyPage from "@/pages/Cancellation";
 import BioPage from "@/pages/Bio";
 import QuizPlaceholder from "@/pages/Quiz";
 import Bookings from "@/pages/Bookings";
+import PolynucleotidesPage from "@/pages/Polynucleotides";
+import SkinOfColourPage from "@/pages/SkinOfColour";
+import ConcernsPage from "@/pages/Concerns";
+import ConcernPage from "@/pages/Concern";
 
 // Treatment Page Imports
-import AntiWrinklePage from "@/pages/treatments/anti-wrinkle/anti-wrinkle";
-import JawlineSlimmingPage from "@/pages/treatments/anti-wrinkle/jawline-slimming";
-import LowerFaceContourDuoPage from "@/pages/treatments/anti-wrinkle/lower-face-contour-duo";
-import NeckLiftPage from "@/pages/treatments/anti-wrinkle/neck-lift";
-import SmileLiftPage from "@/pages/treatments/anti-wrinkle/smile-lift";
-import SweatControlPage from "@/pages/treatments/anti-wrinkle/sweat-control";
-import ProfhiloPage from "@/pages/treatments/skin-boosters/profhilo";
-import SunekosPage from "@/pages/treatments/skin-boosters/sunekos";
-import EyeRejuvenationPage from "@/pages/treatments/polynucleotides/eye-rejuvenation";
-import FullFaceRegenerationPage from "@/pages/treatments/polynucleotides/full-face-regeneration";
-import MicroneedlingPage from "@/pages/treatments/microneedling/microneedling";
-import GlycolicPeelComingSoonPage from "@/pages/treatments/clinical-peels/glycolic-peel";
-import SalicylicPeelComingSoonPage from "@/pages/treatments/clinical-peels/salicylic-peel";
-import LacticAcidPeelComingSoonPage from "@/pages/treatments/clinical-peels/lactic-acid-peel";
-import TCAPeelComingSoonPage from "@/pages/treatments/clinical-peels/tca-peel";
-import SculptraPage from "@/pages/treatments/bio-voluminisation/sculptra";
 import TreatmentPage from "@/pages/treatments/[slug]";
 
 // Category Page Imports
 import AntiWrinkleCategory from "@/pages/categories/anti-wrinkle";
 import SkinBoostersCategory from "@/pages/categories/skin-boosters";
-import MicroneedlingPeelsCategory from "@/pages/categories/microneedling-peels";
-import BioVoluminisationCategory from "@/pages/categories/bio-voluminisation";
 import PolynucleotidesCategory from "@/pages/categories/polynucleotides";
-import ConsultationCategory from "@/pages/categories/consultation";
+import { CLINIC_WHATSAPP_ENQUIRE_URL } from "@/lib/bookingUrls";
+
+const ProfhiloPage = () => <TreatmentPage slugOverride="profhilo" />;
+const AntiWrinklePage = () => <TreatmentPage slugOverride="anti-wrinkle" />;
+const RoutedTreatmentPage = () => <TreatmentPage />;
+const WhatsAppRedirect = () => {
+  useEffect(() => window.location.replace(CLINIC_WHATSAPP_ENQUIRE_URL), []);
+  return <main className="mx-auto max-w-2xl px-6 py-24 text-center"><h1 className="text-4xl font-medium">Opening WhatsApp</h1><a href={CLINIC_WHATSAPP_ENQUIRE_URL} className="mt-8 inline-block underline underline-offset-4">Continue to WhatsApp</a></main>;
+};
+const PricingRedirect = () => {
+  useEffect(() => window.location.replace(`/treatments${window.location.hash || "#protocols"}`), []);
+  return <main className="mx-auto max-w-2xl px-6 py-24 text-center"><h1 className="text-4xl font-medium">Opening treatment pricing</h1><a href="/treatments#protocols" className="mt-8 inline-block underline underline-offset-4">Continue to pricing</a></main>;
+};
 
 function Router() {
   return (
@@ -63,8 +61,8 @@ function Router() {
         <Route path="/glow-guide" component={GlowGuide} />
         <Route path="/gallery" component={Gallery} />
         <Route path="/bookings" component={Bookings} />
-        <Route path="/consultations/skin" component={SkinConsultationPage} />
-        <Route path="/consultations" component={SkinConsultationPage} />
+        <Route path="/consultations/skin" component={WhatsAppRedirect} />
+        <Route path="/consultations" component={WhatsAppRedirect} />
         {/* TikTok Bio and Quiz */}
         <Route path="/bio" component={BioPage} />
         <Route path="/tiktok" component={BioPage} />
@@ -72,32 +70,32 @@ function Router() {
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
         <Route path="/cancellation" component={CancellationPolicyPage} />
+        <Route path="/profhilo" component={ProfhiloPage} />
+        <Route path="/anti-wrinkle" component={AntiWrinklePage} />
+        <Route path="/polynucleotides" component={PolynucleotidesPage} />
+        <Route path="/skin-of-colour" component={SkinOfColourPage} />
+        <Route path="/concerns/:slug" component={ConcernPage} />
+        <Route path="/concerns" component={ConcernsPage} />
         {/* Category static pages */}
         <Route path="/categories/anti-wrinkle" component={AntiWrinkleCategory} />
         <Route path="/categories/skin-boosters" component={SkinBoostersCategory} />
-        <Route path="/categories/microneedling-peels" component={MicroneedlingPeelsCategory} />
-        <Route path="/categories/bio-voluminisation" component={BioVoluminisationCategory} />
+        <Route path="/categories/microneedling-peels"><Redirect to="/treatments" /></Route>
+        <Route path="/categories/bio-voluminisation"><Redirect to="/treatments" /></Route>
         <Route path="/categories/polynucleotides" component={PolynucleotidesCategory} />
-        <Route path="/categories/consultation" component={ConsultationCategory} />
+        <Route path="/categories/consultation" component={WhatsAppRedirect} />
         {/* Treatments and fallback */}
-        <Route path="/treatments/anti-wrinkle" component={AntiWrinklePage} />
-        <Route path="/treatments/jawline-slimming" component={JawlineSlimmingPage} />
-        <Route path="/treatments/lower-face-contour-duo" component={LowerFaceContourDuoPage} />
-        <Route path="/treatments/neck-lift" component={NeckLiftPage} />
-        <Route path="/treatments/smile-lift" component={SmileLiftPage} />
-        <Route path="/treatments/sweat-control" component={SweatControlPage} />
-        <Route path="/treatments/profhilo" component={ProfhiloPage} />
-        <Route path="/treatments/sunekos" component={SunekosPage} />
-        <Route path="/treatments/eye-rejuvenation" component={EyeRejuvenationPage} />
-        <Route path="/treatments/full-face-regeneration" component={FullFaceRegenerationPage} />
-        <Route path="/treatments/microneedling" component={MicroneedlingPage} />
-        <Route path="/treatments/glycolic-peel" component={GlycolicPeelComingSoonPage} />
-        <Route path="/treatments/salicylic-peel" component={SalicylicPeelComingSoonPage} />
-        <Route path="/treatments/lactic-acid-peel" component={LacticAcidPeelComingSoonPage} />
-        <Route path="/treatments/tca-peel" component={TCAPeelComingSoonPage} />
-        <Route path="/treatments/sculptra" component={SculptraPage} />
-        <Route path="/treatments/:slug" component={TreatmentPage} />
+        <Route path="/treatments/virtual-consultation" component={WhatsAppRedirect} />
+        <Route path="/treatments/in-clinic-consultation" component={WhatsAppRedirect} />
+        <Route path="/treatments/smile-lift"><Redirect to="/anti-wrinkle" /></Route>
+        <Route path="/treatments/microneedling"><Redirect to="/treatments" /></Route>
+        <Route path="/treatments/sculptra"><Redirect to="/treatments" /></Route>
+        <Route path="/treatments/glycolic-peel"><Redirect to="/treatments" /></Route>
+        <Route path="/treatments/salicylic-peel"><Redirect to="/treatments" /></Route>
+        <Route path="/treatments/lactic-acid-peel"><Redirect to="/treatments" /></Route>
+        <Route path="/treatments/tca-peel"><Redirect to="/treatments" /></Route>
+        <Route path="/treatments/:slug" component={RoutedTreatmentPage} />
         <Route path="/treatments" component={Treatments} />
+        <Route path="/pricing" component={PricingRedirect} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

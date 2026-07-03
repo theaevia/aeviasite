@@ -15,7 +15,7 @@ export default function Clinic() {
       <div className="min-h-screen">
         <section className="bg-secondary py-12 lg:py-16 mb-8 lg:mb-12">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4 leading-tight">
+            <h1 className="page-title mb-4">
               Our <span className="text-primary">Clinic</span>
             </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">

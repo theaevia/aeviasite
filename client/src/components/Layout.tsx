@@ -10,6 +10,8 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+const showGoogleRating = import.meta.env.VITE_SHOW_GOOGLE_RATING === "true";
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -71,11 +73,13 @@ const organizationSchema = {
         "Sa 10:00-18:00",
         "Su 10:00-18:00"
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "10"
-      },
+      ...(showGoogleRating ? {
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "10"
+        }
+      } : {}),
       "founder": [
         {
           "@type": "Person",
@@ -92,8 +96,8 @@ const organizationSchema = {
       ],
       "service": {
         "@type": "Service",
-        "name": "Skin Refresh Package",
-        "description": "A signature treatment combining targeted polynucleotides with anti-wrinkle injections to deeply rejuvenate, hydrate, and refine the skin — promoting cellular renewal and a naturally refreshed appearance.",
+        "name": "The Glow Protocol",
+        "description": "Two doctor-planned Profhilo sessions, four weeks apart, with a photo review at week two.",
         "provider": {
           "@type": "MedicalClinic",
           "name": "Aevia Skin"
@@ -221,7 +225,7 @@ export default function Layout({ children }: LayoutProps) {
       {showFooterExtras && (
         <div className="w-full bg-white border-t border-muted-foreground/10 py-2">
           <div className="max-w-6xl mx-auto px-4 text-center text-sm text-primary font-medium">
-            ★★★★★ Google • GMC-registered • Fully insured
+            {showGoogleRating && <span>★★★★★ Google · </span>}GMC-registered doctors · Fully insured
           </div>
         </div>
       )}

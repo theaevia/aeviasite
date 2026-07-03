@@ -210,6 +210,12 @@ html {
 }
 
 @layer components {
+  .page-title {
+    @apply text-balance font-serif font-medium tracking-[-0.045em];
+    font-size: clamp(2.8rem, 6vw, 5.6rem);
+    line-height: 0.98;
+  }
+
   .eyebrow {
     @apply text-xs font-medium uppercase tracking-[0.28em] text-primary;
   }
