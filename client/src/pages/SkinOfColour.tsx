@@ -23,8 +23,8 @@ export default function SkinOfColourPage() {
   return (
     <>
       <SEO
-        title="Aesthetics for black skin London | Skin of Colour | Aevia"
-        description="Doctor-led aesthetics for black skin and skin of colour in London. Individual planning for pigmentation risk, acne marks, skin boosters and injectables."
+        title="Aesthetics for Black skin London | Skin of Colour | Aevia"
+        description="Doctor-led aesthetics for Black skin and skin of colour in London. Individual planning for pigmentation risk, acne marks, skin boosters and injectables."
         image="/assets/treatment_images/skin-of-colour-hero.png"
       />
       <article className="bg-[#fbf9f5] text-[#171512]">
@@ -41,7 +41,7 @@ export default function SkinOfColourPage() {
             <p className="eyebrow">Skin of colour aesthetics London</p>
             <h1 className="mt-5 max-w-[14ch] text-balance font-serif text-[clamp(2.8rem,5.4vw,5.2rem)] font-medium leading-[0.98] tracking-[-0.045em]">The standard of care should fit your skin.</h1>
             <div className="mt-10 grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-              <p className="max-w-[48ch] text-xl leading-relaxed text-[#514b43]">Doctor-led treatment planning for black skin, brown skin and every melanin-rich skin tone.</p>
+              <p className="max-w-[48ch] text-xl leading-relaxed text-[#514b43]">Doctor-led treatment planning for Black skin, brown skin and every melanin-rich skin tone.</p>
               <p className="max-w-[66ch] text-lg leading-relaxed text-[#5d564d]">Skin colour does not automatically exclude you from aesthetic treatment. It does change how we think about inflammation, post-inflammatory pigmentation, scarring, product choice, treatment depth and aftercare.</p>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function SkinOfColourPage() {
           <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.6fr_1.4fr] lg:px-10">
             <div><p className="eyebrow">FAQ</p><h2 id="skin-colour-faq" className="mt-5 text-balance text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.03em]">Direct answers about darker skin.</h2></div>
             <div className="border-t border-[#cfc4b5]">
-              <div className="border-b border-[#cfc4b5] py-6"><h3 className="text-xl font-medium">Are injectables safe for black skin?</h3><p className="mt-3 max-w-[65ch] leading-relaxed text-[#5d564d]">Many injectable treatments can be considered across skin tones. Safety depends on the medicine or product, anatomy, technique, medical history and aftercare, not skin colour alone.</p></div>
+              <div className="border-b border-[#cfc4b5] py-6"><h3 className="text-xl font-medium">Are injectables safe for Black skin?</h3><p className="mt-3 max-w-[65ch] leading-relaxed text-[#5d564d]">Many injectable treatments can be considered across skin tones. Safety depends on the medicine or product, anatomy, technique, medical history and aftercare, not skin colour alone.</p></div>
               <div className="border-b border-[#cfc4b5] py-6"><h3 className="text-xl font-medium">Can darker skin have regenerative injectables?</h3><p className="mt-3 max-w-[65ch] leading-relaxed text-[#5d564d]">Yes, when appropriate. Inflammation, active skin disease and aftercare still need careful control because post-inflammatory pigmentation is a relevant risk.</p></div>
               <div className="border-b border-[#cfc4b5] py-6"><h3 className="text-xl font-medium">Do I need a consultation first?</h3><p className="mt-3 max-w-[65ch] leading-relaxed text-[#5d564d]">A consultation is useful when the diagnosis is unclear, pigmentation is active, you have reacted to previous treatments or you are comparing several options.</p></div>
             </div>

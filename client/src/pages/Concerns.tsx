@@ -40,7 +40,7 @@ export default function ConcernsPage() {
 
         <section className="border-y border-[#d9d0c4] bg-[#1d1b18] py-16 text-white sm:py-24">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:px-10">
-            <div><p className="text-xs font-medium uppercase tracking-[0.28em] text-[#d2b582]">A separate clinical pillar</p><h2 className="mt-5 text-balance text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">Aesthetics for black skin and skin of colour.</h2></div>
+            <div><p className="text-xs font-medium uppercase tracking-[0.28em] text-[#d2b582]">A separate clinical pillar</p><h2 className="mt-5 text-balance text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">Aesthetics for Black skin and skin of colour.</h2></div>
             <div><p className="max-w-[64ch] leading-relaxed text-white/75">Skin of colour is not one concern. It affects how inflammation, post-inflammatory pigmentation, scarring, treatment depth and aftercare should be considered across many concerns.</p><Link href="/skin-of-colour" className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-[#d2b582] underline underline-offset-4">Read the skin of colour guide <ArrowRight className="h-4 w-4" /></Link></div>
           </div>
         </section>

@@ -132,9 +132,9 @@ const ROUTE_META: Record<string, RouteMeta> = {
     heading: "Polynucleotides",
   },
   '/skin-of-colour': {
-    title: "Aesthetics for black skin London | Skin of Colour | Aevia",
-    description: "Doctor-led aesthetics for black skin and skin of colour in London, with individual planning for pigmentation risk, acne marks, skin boosters and injectables.",
-    heading: "Aesthetics for black skin and skin of colour",
+    title: "Aesthetics for Black skin London | Skin of Colour | Aevia",
+    description: "Doctor-led aesthetics for Black skin and skin of colour in London, with individual planning for pigmentation risk, acne marks, skin boosters and injectables.",
+    heading: "Aesthetics for Black skin and skin of colour",
   },
   '/concerns': {
     title: "Skin and Aesthetic Concerns | Aevia Skin London",
@@ -328,7 +328,7 @@ const PRIORITY_PAGE_CONTENT: Record<string, Array<{ heading: string; paragraphs:
   '/skin-of-colour': [
     { heading: 'A clinical approach to skin of colour', paragraphs: ['Skin colour does not automatically exclude someone from aesthetic treatment. It does affect how a doctor considers inflammation, post-inflammatory pigmentation, scarring, product choice, treatment depth and aftercare.'] },
     { heading: 'Diagnose before treating', paragraphs: ['Pigment, inflammation, texture, visible vessels, hollowness and shadow can look similar but need different approaches. The cause of the concern should be identified before a procedure is selected.'] },
-    { heading: 'Control inflammation', paragraphs: ['For black skin, brown skin and other melanin-rich skin tones, unnecessary inflammation can increase the chance of post-inflammatory hyperpigmentation. Technique and aftercare should be adjusted accordingly.'] },
+    { heading: 'Control inflammation', paragraphs: ['For Black skin, brown skin and other melanin-rich skin tones, unnecessary inflammation can increase the chance of post-inflammatory hyperpigmentation. Technique and aftercare should be adjusted accordingly.'] },
     { heading: 'Treatments considered across skin tones', paragraphs: ['Skin boosters, polynucleotides and anti-wrinkle treatment can be considered when medically and anatomically suitable. Active inflammation, previous reactions and pigmentation history form part of the plan.'] },
   ],
 };
@@ -357,7 +357,7 @@ function buildCrawlableBody(pathname: string, meta: RouteMeta, heading: string, 
   }
 
   if (pathname === '/reviews') {
-    const reviews = testimonials.map((testimonial) => `<article><h2>${escapeHtml(testimonial.name)}</h2><p>5 out of 5 stars, ${escapeHtml(testimonial.date)}</p>${testimonial.quote ? `<blockquote>${escapeHtml(testimonial.quote)}</blockquote>` : '<p>Five-star rating with no written comment.</p>'}<p><a href="${escapeHtml(testimonial.reviewUrl)}">Read the original Google review</a></p></article>`).join('');
+    const reviews = testimonials.map((testimonial) => `<article><h2>${escapeHtml(testimonial.name)}</h2><p>5 out of 5 stars</p>${testimonial.quote ? `<blockquote>${escapeHtml(testimonial.quote)}</blockquote>` : '<p>Five-star rating with no written comment.</p>'}<p><a href="${escapeHtml(testimonial.reviewUrl)}">Read the original Google review</a></p></article>`).join('');
     return `<main class="prerender-shell"><header><h1>${heading}</h1><p>${description}</p></header><section><h2>Verified Google reviews</h2>${reviews}</section><p><a href="https://www.google.com/maps/search/?api=1&amp;query=Aevia+Skin%2C+260+Pentonville+Road%2C+London">See the complete current review record on Google</a></p><nav aria-label="Related pages"><a href="/">Home</a> <a href="/treatments">Treatments and prices</a> <a href="/team">Meet the Aevia SKIN team</a></nav></main>`;
   }
 

@@ -6,8 +6,6 @@ import { testimonials } from "@/data/testimonials";
 
 const googleListingUrl = "https://www.google.com/maps/search/?api=1&query=Aevia+Skin%2C+260+Pentonville+Road%2C+London";
 
-const reviewDateFormatter = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
-
 export default function Reviews() {
   return (
     <>
@@ -50,7 +48,7 @@ export default function Reviews() {
                   <div className="flex" aria-label={`${testimonial.rating} out of 5 stars`}>{Array.from({ length: testimonial.rating }).map((_, index) => <Star key={index} className="h-4 w-4 fill-[#9a7742] text-[#9a7742]" />)}</div>
                   {testimonial.quote ? <blockquote className="mt-8 font-serif text-xl leading-relaxed text-[#322e29]">“{testimonial.quote}”</blockquote> : <p className="mt-8 font-serif text-xl leading-relaxed text-[#6a6259]">Five-star rating with no written comment.</p>}
                   <p className="mt-auto flex items-center justify-between gap-4 pt-10 text-sm font-medium text-[#806234]">
-                    <span>{testimonial.name}<span className="block pt-1 text-xs font-normal text-[#6a6259]">{reviewDateFormatter.format(new Date(`${testimonial.date}T00:00:00Z`))} · Google review</span></span>
+                    <span>{testimonial.name}<span className="block pt-1 text-xs font-normal text-[#6a6259]">Google review</span></span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </p>
                 </a>
