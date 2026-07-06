@@ -12,7 +12,7 @@ const options = [
     href: "/treatments/eye-rejuvenation",
     copy: "For selected crepiness, dehydration and dark-circle concerns where improving skin quality is the goal.",
     price: pricing.protocols.eyeRevival.display,
-    course: "Course of three Plinest Eye sessions",
+    course: pricing.regenerative.plinestEye.coursePaymentDisplay,
     single: `Single Plinest Eye Session · ${pricing.regenerative.plinestEye.display}`,
   },
   {
@@ -20,7 +20,7 @@ const options = [
     href: "/treatments/full-face-regeneration",
     copy: "For gradual improvement in facial hydration, texture and resilience without structural filler volume.",
     price: pricing.regenerative.plinestFace.courseDisplay,
-    course: "Course of three Plinest full face sessions",
+    course: pricing.regenerative.plinestFace.coursePaymentDisplay,
     single: `Single Plinest Full Face Session · ${pricing.regenerative.plinestFace.display}`,
   },
 ];

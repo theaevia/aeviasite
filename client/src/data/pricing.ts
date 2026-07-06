@@ -5,12 +5,12 @@ export const pricing = {
   },
   regenerative: {
     profhilo: { display: "£300", amount: 300 },
-    plinestFace: { display: "£300", amount: 300, courseDisplay: "£800", courseAmount: 800, courseSessions: 3 },
-    plinestEye: { display: "£250", amount: 250, courseDisplay: "£650", courseAmount: 650, courseSessions: 3 },
-    sunekos: { display: "£250", amount: 250, courseDisplay: "£850", courseAmount: 850, courseSessions: 4 },
+    plinestFace: { display: "£300", amount: 300, courseDisplay: "£800", courseAmount: 800, courseSessions: 3, coursePaymentDisplay: "Course of three Plinest full face sessions, with each session paid per visit." },
+    plinestEye: { display: "£250", amount: 250, courseDisplay: "£650", courseAmount: 650, courseSessions: 3, coursePaymentDisplay: "Course of three Plinest Eye sessions, with each session paid per visit." },
+    sunekos: { display: "£250", amount: 250, courseDisplay: "£850", courseAmount: 850, courseSessions: 4, coursePaymentDisplay: "Course of four Sunekos sessions, with each session paid per visit." },
   },
   protocols: {
-    glow: { display: "£545", amount: 545, perSessionDisplay: "£273" },
+    glow: { display: "£545", amount: 545, paymentDisplay: "Two Profhilo® sessions, four weeks apart, plus review, with each session paid per visit." },
     eyeRevival: { display: "£650", amount: 650 },
     aeviaPlan: { display: "From £950", amount: 950 },
   },

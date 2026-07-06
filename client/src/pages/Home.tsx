@@ -1,10 +1,9 @@
 import SEO from "@/components/SEO";
 import HomeHero from "@/components/HomeHero";
-import heroImageDefault from "@assets/hero_images/homepage/homepage-hero.webp";
-import heroImage768 from "@assets/hero_images/homepage/homepage-hero-768w.webp";
-import heroImage1280 from "@assets/hero_images/homepage/homepage-hero-1280w.webp";
-import heroImage1920 from "@assets/hero_images/homepage/homepage-hero-1920w.webp";
-import heroImage2560 from "@assets/hero_images/homepage/homepage-hero-2560w.webp";
+import heroImageDefault from "@assets/hero_images/homepage/img-0533-main-hero.webp";
+import heroImage768 from "@assets/hero_images/homepage/img-0533-main-hero-768w.webp";
+import heroImage1280 from "@assets/hero_images/homepage/img-0533-main-hero-1280w.webp";
+import heroImage1920 from "@assets/hero_images/homepage/img-0533-main-hero-1920w.webp";
 import logoGold from "@assets/logos/logo-gold-transparent.webp";
 
 export default function Home() {
@@ -12,8 +11,7 @@ export default function Home() {
     { src: heroImage768, width: 768 },
     { src: heroImage1280, width: 1280 },
     { src: heroImage1920, width: 1920 },
-    { src: heroImage2560, width: 2560 },
-    { src: heroImageDefault, width: 4088 },
+    { src: heroImageDefault, width: 2048 },
   ];
 
   return (
@@ -30,6 +28,7 @@ export default function Home() {
           logoSrc={logoGold}
           logoWidth={916}
           logoHeight={500}
+          backgroundAlt="The Aevia clinical team in the King's Cross clinic"
         />
       </div>
     </>

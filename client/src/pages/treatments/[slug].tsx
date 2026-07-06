@@ -23,11 +23,13 @@ const treatmentDiagrams: Record<string, { src: string; alt: string }> = {
 
 const sectionHeadingClassName = "mt-5 text-balance text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.03em]";
 
+type PriceLine = { label: string; price: string; note?: string };
+
 const courseOffers: Record<string, { title: string; price: string; plan: string; singleTitle: string; singlePrice: string; singleNote: string }> = {
   profhilo: {
     title: "Profhilo® Glow Protocol",
     price: pricing.protocols.glow.display,
-    plan: "Two Profhilo® sessions, four weeks apart, plus review",
+    plan: pricing.protocols.glow.paymentDisplay,
     singleTitle: "Single Profhilo® Session",
     singlePrice: pricing.regenerative.profhilo.display,
     singleNote: "For maintenance, top-ups, or where advised after consultation",
@@ -35,7 +37,7 @@ const courseOffers: Record<string, { title: string; price: string; plan: string;
   "full-face-regeneration": {
     title: "Plinest Full Face Regeneration Course",
     price: pricing.regenerative.plinestFace.courseDisplay,
-    plan: "Course of three Plinest full face sessions",
+    plan: pricing.regenerative.plinestFace.coursePaymentDisplay,
     singleTitle: "Single Plinest Full Face Session",
     singlePrice: pricing.regenerative.plinestFace.display,
     singleNote: "For maintenance, staged treatment, or where advised after consultation",
@@ -43,7 +45,7 @@ const courseOffers: Record<string, { title: string; price: string; plan: string;
   "eye-rejuvenation": {
     title: "Plinest Eye Revival Course",
     price: pricing.protocols.eyeRevival.display,
-    plan: "Course of three Plinest Eye sessions",
+    plan: pricing.regenerative.plinestEye.coursePaymentDisplay,
     singleTitle: "Single Plinest Eye Session",
     singlePrice: pricing.regenerative.plinestEye.display,
     singleNote: "For maintenance, staged treatment, or where advised after consultation",
@@ -51,7 +53,7 @@ const courseOffers: Record<string, { title: string; price: string; plan: string;
   sunekos: {
     title: "Sunekos Skin Renewal Course",
     price: pricing.regenerative.sunekos.courseDisplay,
-    plan: "Course of four Sunekos sessions",
+    plan: pricing.regenerative.sunekos.coursePaymentDisplay,
     singleTitle: "Single Sunekos Session",
     singlePrice: pricing.regenerative.sunekos.display,
     singleNote: "For maintenance, staged treatment, or where advised after consultation",
@@ -78,7 +80,7 @@ export default function TreatmentPage({ slugOverride }: { slugOverride?: string;
 
   const pageTitle = `${treatment.name} in King's Cross, London | Aevia Skin`;
   const courseOffer = courseOffers[slug];
-  const priceLines = courseOffer
+  const priceLines: PriceLine[] = courseOffer
     ? [
         { label: courseOffer.title, price: courseOffer.price },
         { label: courseOffer.singleTitle, price: courseOffer.singlePrice },
@@ -237,7 +239,15 @@ export default function TreatmentPage({ slugOverride }: { slugOverride?: string;
                 <div className="bg-[#fbf9f5] p-8">
                   <p className="text-xs uppercase tracking-[0.18em] text-[#776e63]">Price</p>
                   <dl className="mt-6 space-y-3">
-                    {priceLines.map((line) => <div key={line.label} className="flex justify-between gap-5 border-b border-[#ddd4c7] pb-3"><dt>{line.label}</dt><dd className="font-medium tabular-nums">{line.price}</dd></div>)}
+                    {priceLines.map((line) => (
+                      <div key={line.label} className="flex justify-between gap-5 border-b border-[#ddd4c7] pb-3">
+                        <dt className="min-w-0">
+                          <span className="block">{line.label}</span>
+                          {line.note && <span className="mt-1 block max-w-[28ch] text-xs leading-relaxed text-[#6a6259]">{line.note}</span>}
+                        </dt>
+                        <dd className="shrink-0 font-medium tabular-nums">{line.price}</dd>
+                      </div>
+                    ))}
                   </dl>
                 </div>
                 <div className="bg-[#fbf9f5] p-8"><p className="text-xs uppercase tracking-[0.18em] text-[#776e63]">Sessions</p><p className="mt-6 leading-relaxed text-[#575149]">{profile.sessions}</p></div>

@@ -15,6 +15,7 @@ import {
 export interface PriceTier {
   label: string;
   price: string;
+  note?: string;
 }
 
 export interface Treatment {
@@ -52,9 +53,9 @@ export const treatmentCategories: TreatmentCategory[] = [
         slug: "anti-wrinkle",
         image: "/assets/treatment_images/anti-wrinkle-hero-640w.webp",
         priceTiers: [
-          { label: "One area", price: pricing.antiWrinkle.oneArea.display },
-          { label: "Two areas", price: pricing.antiWrinkle.twoAreas.display },
-          { label: "Three areas", price: pricing.antiWrinkle.threeAreas.display },
+          { label: "One Area", price: pricing.antiWrinkle.oneArea.display, note: "One of forehead lines, frown lines or crow's feet" },
+          { label: "Two Areas", price: pricing.antiWrinkle.twoAreas.display, note: "Any two of forehead lines, frown lines or crow's feet" },
+          { label: "Three Areas", price: pricing.antiWrinkle.threeAreas.display, note: "All three: forehead lines, frown lines and crow's feet" },
         ],
         priceNote: `Add a smile lift (DAO) to any anti-wrinkle appointment, ${pricing.antiWrinkle.smileLiftAddon.display}.`,
       },

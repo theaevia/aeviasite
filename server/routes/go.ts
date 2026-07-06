@@ -8,36 +8,40 @@ const DEST: Record<string, string> = {
   square_site: "https://aeviaskin.square.site/",
 
   // Skin Consultations
-  skin_consultations: "https://book.squareup.com/appointments/flwwunfdy1hm72/location/L1TKSRMBS3N9H/services",
+  skin_consultations: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/Y3OKJD2YYAJ63DKH3GUEB5S6",
   skin_virtual: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/YVJF3NEOQ3BDDDBRTCLVHKIN",
   skin_clinic: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/Y3OKJD2YYAJ63DKH3GUEB5S6",
 
   // Anti-wrinkle 
-  all_anti_wrinkle: "https://app.squareup.com/appointments/buyer/widget/1k3jc9ixa10yk7/L1TKSRMBS3N9H",
+  all_anti_wrinkle: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/ON4GV5WYYWPY4SQDAJUTO6KC",
   three_areas: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/ON4GV5WYYWPY4SQDAJUTO6KC",
   masseter: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/OVJ7CCR56PAS5U6UXCOESIKG",
   nefertiti: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/WL6KSZX75GUXV2IPZD5DVN3B",
   dao: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/UHWQSUZOAETSA4MYBHWGU3QR",
   hyperhidrosis: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/WKPVKNLVYWDO5QXYASJBRDG3",
-  contour_duo: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/TJODL43UWGBSOXFWHP4BRWGA",
+  contour_duo: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/27TAWF7EQYSCHM6EB6ZIU463",
 
   // Polynucleotides
   all_pns: "https://app.squareup.com/appointments/buyer/widget/mh0b7onlv9ths6/L1TKSRMBS3N9H",
   face_pns: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/2ZKXKHXJRQCJ34V74F7QTHHU",
   eyes_pns: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/PR5TPFISQ5TS5XKK3MUTMZLD",
+  face_pns_course: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/JYRDBC7L6LWJKAE2HJVGVJMJ",
+  eyes_pns_course: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/KZUNH7VFZIWJDJK4RCD76WMI",
   pns_3x: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/TQBUFP46OX3TM66VYQ7X4BV5",
 
   // Boosters
   skin_boosters: "https://book.squareup.com/appointments/18lb1m8iirrpqg/location/L1TKSRMBS3N9H/services",
   sunekos: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/OGM54Y3R44JDMBBSKD6WVHWJ",
+  sunekos_course: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/TMXNA7QKDFBVH2RR7RHOZ3MA",
   profhilo: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/QHKI7JHEM3A65CJ4GTNYJTSW",
+  profhilo_glow: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/DJE37NXFB2SJ44YV36CLY4BR",
 
   // Bio-voluminisation 
   sculptra: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/5YRBIUCURJZQ3NMDACZMXCUW",
 
   // Signature offers
   wrinkle_reset: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/DHNAE4YPX7TJ2TYXHJX5NWFH",
-  glow_revival: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/27TAWF7EQYSCHM6EB6ZIU463",
+  glow_revival: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/DJE37NXFB2SJ44YV36CLY4BR",
 
   // Microneedling
   microneedling_reg: "https://book.squareup.com/appointments/jwhtw6lg3uleti/location/L1TKSRMBS3N9H/services/QELFPIHBSOK3EPJOIWLC2N2J",

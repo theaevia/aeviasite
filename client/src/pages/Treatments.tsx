@@ -33,7 +33,7 @@ const protocolCards = [
     name: "The Glow Protocol",
     eyebrow: "Two-session protocol",
     price: pricing.protocols.glow.display,
-    note: `Two Profhilo sessions, four weeks apart, with a photo review at week two, approximately ${pricing.protocols.glow.perSessionDisplay} per session.`,
+    note: pricing.protocols.glow.paymentDisplay,
     features: [
       "Two staged Profhilo sessions (weeks 0 and 4)",
       "Photo review and adjustment at week two",

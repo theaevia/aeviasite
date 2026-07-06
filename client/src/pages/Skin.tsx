@@ -9,8 +9,10 @@ import { featuredTestimonials } from "@/data/testimonials";
 import { findTreatmentBySlug, getTreatmentPath } from "@/data/treatments";
 import { CLINIC_WHATSAPP_ENQUIRE_URL, SQUARE_SITE_URL } from "@/lib/bookingUrls";
 
-import clinicHeroImage from "@assets/hero_images/aevia-clinic3.webp";
-import clinicHeroImage800 from "@assets/hero_images/aevia-clinic3-800w.webp";
+import clinicHeroImage from "@assets/hero_images/homepage/img-0533-main-hero.webp";
+import clinicHeroImage768 from "@assets/hero_images/homepage/img-0533-main-hero-768w.webp";
+import clinicHeroImage1280 from "@assets/hero_images/homepage/img-0533-main-hero-1280w.webp";
+import clinicHeroImage1920 from "@assets/hero_images/homepage/img-0533-main-hero-1920w.webp";
 import terrellImage from "@assets/about_pics/terrell-pic3.webp";
 import reneeImage from "@assets/about_pics/renee-pic.webp";
 
@@ -88,15 +90,15 @@ export default function Skin() {
             <div className="order-1 lg:order-2">
               <div className="relative aspect-[4/5] overflow-hidden bg-[#e8e1d7] sm:aspect-[5/4] lg:aspect-[4/5]">
                 <picture>
-                  <source srcSet={`${clinicHeroImage800} 800w, ${clinicHeroImage} 1600w`} type="image/webp" />
+                  <source srcSet={`${clinicHeroImage768} 768w, ${clinicHeroImage1280} 1280w, ${clinicHeroImage1920} 1920w, ${clinicHeroImage} 2048w`} type="image/webp" />
                   <img
                     src={clinicHeroImage}
-                    srcSet={`${clinicHeroImage800} 800w, ${clinicHeroImage} 1600w`}
+                    srcSet={`${clinicHeroImage768} 768w, ${clinicHeroImage1280} 1280w, ${clinicHeroImage1920} 1920w, ${clinicHeroImage} 2048w`}
                     sizes="(max-width: 1024px) 100vw, 55vw"
-                    alt="Aevia Skin treatment room in King's Cross, London"
+                    alt="The Aevia clinical team in the King's Cross clinic"
                     className="h-full w-full object-cover"
-                    width="1600"
-                    height="1200"
+                    width="2048"
+                    height="1536"
                     loading="eager"
                   />
                 </picture>
