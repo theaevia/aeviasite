@@ -58,6 +58,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/skin-procedures" className="hover:text-primary smooth-transition">
+                  Skin Procedures (2028)
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy" className="hover:text-primary smooth-transition">
                   Privacy & Cookies
                 </Link>

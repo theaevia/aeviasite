@@ -1,5 +1,5 @@
 // Framework Imports
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Redirect, Route, Switch } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from 'react-helmet-async';
@@ -41,6 +41,27 @@ import { CLINIC_WHATSAPP_ENQUIRE_URL } from "@/lib/bookingUrls";
 const ProfhiloPage = () => <TreatmentPage slugOverride="profhilo" />;
 const AntiWrinklePage = () => <TreatmentPage slugOverride="anti-wrinkle" />;
 const RoutedTreatmentPage = () => <TreatmentPage />;
+const SkinProceduresHubPage = lazy(() => import("@/pages/skin-procedures"));
+const SkinTagRemovalPage = lazy(() => import("@/pages/skin-procedures/SkinTagRemoval"));
+const MoleRemovalPage = lazy(() => import("@/pages/skin-procedures/MoleRemoval"));
+const CystRemovalPage = lazy(() => import("@/pages/skin-procedures/CystRemoval"));
+const MiliaRemovalPage = lazy(() => import("@/pages/skin-procedures/MiliaRemoval"));
+const WartRemovalPage = lazy(() => import("@/pages/skin-procedures/WartRemoval"));
+const NhsRemovalGuidePage = lazy(() => import("@/pages/skin-procedures/NhsRemovalGuide"));
+const MoleRemovalGuidePage = lazy(() => import("@/pages/skin-procedures/MoleRemovalGuide"));
+
+function SkinProcedureRoute({ children }: { children: React.ReactNode }) {
+  return <Suspense fallback={<div className="min-h-[24rem] bg-[#fbf9f5]" />}>{children}</Suspense>;
+}
+
+const SkinProceduresHubRoute = () => <SkinProcedureRoute><SkinProceduresHubPage /></SkinProcedureRoute>;
+const SkinTagRemovalRoute = () => <SkinProcedureRoute><SkinTagRemovalPage /></SkinProcedureRoute>;
+const MoleRemovalRoute = () => <SkinProcedureRoute><MoleRemovalPage /></SkinProcedureRoute>;
+const CystRemovalRoute = () => <SkinProcedureRoute><CystRemovalPage /></SkinProcedureRoute>;
+const MiliaRemovalRoute = () => <SkinProcedureRoute><MiliaRemovalPage /></SkinProcedureRoute>;
+const WartRemovalRoute = () => <SkinProcedureRoute><WartRemovalPage /></SkinProcedureRoute>;
+const NhsRemovalGuideRoute = () => <SkinProcedureRoute><NhsRemovalGuidePage /></SkinProcedureRoute>;
+const MoleRemovalGuideRoute = () => <SkinProcedureRoute><MoleRemovalGuidePage /></SkinProcedureRoute>;
 const WhatsAppRedirect = () => {
   useEffect(() => window.location.replace(CLINIC_WHATSAPP_ENQUIRE_URL), []);
   return <main className="mx-auto max-w-2xl px-6 py-24 text-center"><h1 className="text-4xl font-medium">Opening WhatsApp</h1><a href={CLINIC_WHATSAPP_ENQUIRE_URL} className="mt-8 inline-block underline underline-offset-4">Continue to WhatsApp</a></main>;
@@ -78,6 +99,14 @@ function Router() {
         <Route path="/concerns/:slug" component={ConcernPage} />
         <Route path="/concerns" component={ConcernsPage} />
         <Route path="/reviews" component={Reviews} />
+        <Route path="/skin-procedures" component={SkinProceduresHubRoute} />
+        <Route path="/skin-procedures/skin-tag-removal-london" component={SkinTagRemovalRoute} />
+        <Route path="/skin-procedures/mole-removal-london" component={MoleRemovalRoute} />
+        <Route path="/skin-procedures/cyst-removal-london" component={CystRemovalRoute} />
+        <Route path="/skin-procedures/milia-removal-london" component={MiliaRemovalRoute} />
+        <Route path="/skin-procedures/wart-removal-london" component={WartRemovalRoute} />
+        <Route path="/skin-procedures/guides/why-wont-the-nhs-remove-my-skin-tag-or-mole" component={NhsRemovalGuideRoute} />
+        <Route path="/skin-procedures/guides/mole-removal-cosmetic-vs-medical" component={MoleRemovalGuideRoute} />
         {/* Category static pages */}
         <Route path="/categories/anti-wrinkle" component={AntiWrinkleCategory} />
         <Route path="/categories/skin-boosters" component={SkinBoostersCategory} />

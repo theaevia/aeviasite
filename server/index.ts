@@ -15,6 +15,16 @@ import { pricing, treatmentPriceBySlug } from "../client/src/data/pricing";
 import { findTreatmentBySlug } from "../client/src/data/treatments";
 import { regenerativeSingleSessions, treatmentPriceMenu, type PriceMenuItem } from "../client/src/data/treatmentMenu";
 import { testimonials } from "../client/src/data/testimonials";
+import {
+  buildSkinProcedureSchema,
+  getSkinProcedurePageByPath,
+  SKIN_PROCEDURES,
+  SKIN_PROCEDURES_HUB,
+  SKIN_PROCEDURE_GUIDES,
+  type SkinProcedure,
+  type SkinProcedureGuide,
+  type SkinProcedurePage,
+} from "../client/src/data/skinProcedures";
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -61,6 +71,14 @@ const VALID_ROUTES = [
   '/categories/anti-wrinkle',
   '/categories/skin-boosters',
   '/categories/polynucleotides',
+  '/skin-procedures',
+  '/skin-procedures/skin-tag-removal-london',
+  '/skin-procedures/mole-removal-london',
+  '/skin-procedures/cyst-removal-london',
+  '/skin-procedures/milia-removal-london',
+  '/skin-procedures/wart-removal-london',
+  '/skin-procedures/guides/why-wont-the-nhs-remove-my-skin-tag-or-mole',
+  '/skin-procedures/guides/mole-removal-cosmetic-vs-medical',
 ];
 
 type RouteMeta = { title: string; description: string; heading?: string };
@@ -230,6 +248,14 @@ const TREATMENT_META: Record<string, RouteMeta> = {
 };
 
 function getRouteMeta(pathname: string): RouteMeta {
+  const skinProcedurePage = getSkinProcedurePageByPath(pathname);
+  if (skinProcedurePage) {
+    return {
+      title: skinProcedurePage.title,
+      description: skinProcedurePage.description,
+      heading: skinProcedurePage.name,
+    };
+  }
   if (ROUTE_META[pathname]) return ROUTE_META[pathname];
   if (pathname.startsWith('/concerns/')) {
     const concern = concernBySlug(pathname.slice('/concerns/'.length));
@@ -266,6 +292,52 @@ function renderList(items: string[]): string {
 
 function renderPriceMenuItems(items: PriceMenuItem[]): string {
   return `<ul>${items.map((item) => `<li><span>${escapeHtml(item.name)}: ${escapeHtml(item.price)}</span>${item.note ? ` <span>${escapeHtml(item.note)}</span>` : ''} <a href="${escapeHtml(item.href)}">${escapeHtml(item.action ?? 'Book')}</a>${item.children ? renderPriceMenuItems(item.children) : ''}</li>`).join('')}</ul>`;
+}
+
+function skinProceduresSafetyCallout(safety?: SkinProcedure['safety']): string {
+  const title = safety?.title ?? 'Changing, bleeding or irregular lesions need GP or NHS assessment first.';
+  const body = safety?.body ?? 'Aevia Skin does not treat suspicious lesions cosmetically. If a lesion has changed, is bleeding, looks irregular, is painful or you are unsure what it is, please use the GP or NHS route before considering a cosmetic procedure.';
+  return `<aside aria-labelledby="skin-procedures-safety"><h2 id="skin-procedures-safety">${escapeHtml(title)}</h2><p>${escapeHtml(body)}</p></aside>`;
+}
+
+function skinProceduresInterestForm(context: string): string {
+  return `<section aria-labelledby="skin-procedures-interest"><h2 id="skin-procedures-interest">Join the list for the 2028 launch</h2><p>Register your interest in the planned skin procedures service. Transparent protocol pricing will be published from launch. Submitting opens a pre-addressed email to the clinic so we can record your interest.</p><form action="mailto:hello@theaevia.co.uk?subject=Skin%20Procedures%202028%20interest" method="post" enctype="text/plain"><label>Name <input name="name" required></label><label>Email address <input name="email" type="email" required></label><label>Interest <input name="interest" value="${escapeHtml(context)}"></label><label>Optional note <input name="message"></label><button type="submit">Join the list for the 2028 launch</button></form><p>Already looking for guidance on current Aevia Skin treatments? <a href="/go/skin_consultations">Book a skin consultation</a>.</p></section>`;
+}
+
+function skinProceduresRelatedLinks(procedureSlugs: string[], guideSlugs: string[]): string {
+  const procedureLinks = procedureSlugs
+    .map((slug) => SKIN_PROCEDURES.find((procedure) => procedure.slug === slug))
+    .filter((procedure): procedure is SkinProcedure => Boolean(procedure))
+    .map((procedure) => `<li><a href="${escapeHtml(procedure.path)}">${escapeHtml(procedure.name)}</a></li>`);
+  const guideLinks = guideSlugs
+    .map((slug) => SKIN_PROCEDURE_GUIDES.find((guide) => guide.slug === slug))
+    .filter((guide): guide is SkinProcedureGuide => Boolean(guide))
+    .map((guide) => `<li><a href="${escapeHtml(guide.path)}">${escapeHtml(guide.name)}</a></li>`);
+
+  return `<nav aria-label="Related skin procedure pages"><h2>Continue reading</h2><ul>${[...procedureLinks, ...guideLinks].join('')}</ul></nav>`;
+}
+
+function buildSkinProceduresCrawlableContent(page: SkinProcedurePage): string {
+  const launchNotice = '<p><strong>Launching in 2028.</strong> These procedures are planned for the future and are not currently bookable.</p>';
+
+  if (page.kind === 'hub') {
+    const procedureCards = SKIN_PROCEDURES.map((procedure) => `<section><h2><a href="${escapeHtml(procedure.path)}">${escapeHtml(procedure.name)}</a></h2><p>${escapeHtml(procedure.introduction)}</p><p>Planned for 2028.</p></section>`).join('');
+    const guideCards = SKIN_PROCEDURE_GUIDES.map((guide) => `<section><h2><a href="${escapeHtml(guide.path)}">${escapeHtml(guide.name)}</a></h2><p>${escapeHtml(guide.introduction)}</p></section>`).join('');
+    return `<main class="prerender-shell"><article><header><p>${escapeHtml(page.primaryKeyword)}</p><h1>Doctor-led skin lesion removal in London, with diagnosis before a decision.</h1><p>${escapeHtml(page.introduction)}</p>${launchNotice}</header><section><h2>For doctor-led lesion removal, assessment is the procedure before the procedure.</h2><p>Minor skin surgery is not simply about technique. A doctor needs to establish whether a growth appears appropriate for a cosmetic pathway, whether there are reasons to defer it, and whether the trade-off of a scar or pigment change is acceptable.</p><p>Dr Terrell Okhiria and Dr Renée Okhiria are GMC-registered doctors. The planned 2028 service will focus on selected benign lesion removal in London&apos;s King&apos;s Cross, with clear signposting to GP or NHS care whenever that is the safer route.</p></section><section><h2>Five focused procedures, each preceded by assessment.</h2>${procedureCards}</section>${skinProceduresSafetyCallout()}<section><h2>A clearer route after a declined request.</h2>${guideCards}</section>${skinProceduresInterestForm('Skin procedures overview')}</article></main>`;
+  }
+
+  if (page.kind === 'procedure') {
+    const methods = page.methods.map((method) => `<section><h3>${escapeHtml(method.name)}</h3><p>${escapeHtml(method.detail)}</p></section>`).join('');
+    const journey = page.journey.map((step) => `<section><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.detail)}</p></section>`).join('');
+    const faqs = page.faqs.map((faq) => `<section><h3>${escapeHtml(faq.question)}</h3><p>${escapeHtml(faq.answer)}</p></section>`).join('');
+    const additionalSection = page.additionalSection ? `<section><h2>${escapeHtml(page.additionalSection.title)}</h2>${page.additionalSection.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>` : '';
+    const cost = `<section><h2>${escapeHtml(page.cost.title)}</h2><p>${escapeHtml(page.cost.marketRange)}</p><p>${escapeHtml(page.cost.context)}</p></section>`;
+    return `<main class="prerender-shell"><article><header><p><a href="${SKIN_PROCEDURES_HUB.path}">All planned skin procedures</a></p><p>${escapeHtml(page.primaryKeyword)}</p><h1>${escapeHtml(page.name)}</h1><p>${escapeHtml(page.introduction)}</p>${launchNotice}</header><section><h2>What it is.</h2>${page.whatItIs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>${additionalSection}<section><h2>Cosmetic thresholds are different from medical need.</h2>${page.nhsContext.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section><section><h2>Removal methods a doctor may use.</h2>${methods}</section><section><h2>Consultation, histology where relevant, and aftercare.</h2>${journey}<p>If you want guidance on current skin concerns while this service is being developed, you can <a href="/go/skin_consultations">book a skin consultation</a>.</p></section>${cost}${skinProceduresSafetyCallout(page.safety)}<section><h2>Before you decide.</h2>${faqs}</section>${skinProceduresRelatedLinks(page.relatedProcedureSlugs, page.relatedGuideSlugs)}${skinProceduresInterestForm(page.name)}</article></main>`;
+  }
+
+  const sections = page.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('');
+  const faqs = page.faqs.map((faq) => `<section><h3>${escapeHtml(faq.question)}</h3><p>${escapeHtml(faq.answer)}</p></section>`).join('');
+  return `<main class="prerender-shell"><article><header><p><a href="${SKIN_PROCEDURES_HUB.path}">All planned skin procedures</a></p><p>${escapeHtml(page.primaryKeyword)}</p><h1>${escapeHtml(page.name)}</h1><p>${escapeHtml(page.introduction)}</p>${launchNotice}</header>${sections}${skinProceduresSafetyCallout()}${skinProceduresRelatedLinks(page.relatedProcedureSlugs, [])}<section><h2>Before you decide.</h2>${faqs}</section>${skinProceduresInterestForm('Skin procedures overview')}</article></main>`;
 }
 
 function buildTreatmentCrawlableContent(slug: string, heading: string, description: string): string | null {
@@ -334,6 +406,11 @@ const PRIORITY_PAGE_CONTENT: Record<string, Array<{ heading: string; paragraphs:
 };
 
 function buildCrawlableBody(pathname: string, meta: RouteMeta, heading: string, description: string): string {
+  const skinProcedurePage = getSkinProcedurePageByPath(pathname);
+  if (skinProcedurePage) {
+    return buildSkinProceduresCrawlableContent(skinProcedurePage);
+  }
+
   const treatmentSlug = getTreatmentSlug(pathname);
   if (treatmentSlug) {
     const treatmentContent = buildTreatmentCrawlableContent(treatmentSlug, heading, description);
@@ -367,6 +444,11 @@ function buildCrawlableBody(pathname: string, meta: RouteMeta, heading: string, 
 }
 
 function buildStructuredData(pathname: string, canonicalUrl: string, meta: RouteMeta): string {
+  const skinProcedurePage = getSkinProcedurePageByPath(pathname);
+  if (skinProcedurePage) {
+    return JSON.stringify(buildSkinProcedureSchema(skinProcedurePage, BASE_URL)).replace(/</g, '\\u003c');
+  }
+
   const graph: Array<Record<string, unknown>> = [
     {
       '@type': ['MedicalClinic', 'LocalBusiness'],
@@ -556,7 +638,7 @@ const cspGlobal: CspDirectives = {
   ],
   "font-src": ["'self'", "https://fonts.gstatic.com"],
   "frame-ancestors": ["'none'"],
-  "form-action": ["'self'"],
+  "form-action": ["'self'", "mailto:"],
   "base-uri": ["'self'"],
   "object-src": ["'none'"],
   "upgrade-insecure-requests": null,
